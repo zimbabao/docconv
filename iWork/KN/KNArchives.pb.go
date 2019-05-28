@@ -792,7 +792,7 @@ type AnimationAttributesArchive struct {
 	Direction            *uint32  `protobuf:"varint,4,opt,name=direction" json:"direction,omitempty"`
 	Delay                *float64 `protobuf:"fixed64,5,opt,name=delay" json:"delay,omitempty"`
 	IsAutomatic          *bool    `protobuf:"varint,6,opt,name=isAutomatic" json:"isAutomatic,omitempty"`
-	TSP.Color                *Color   `protobuf:"bytes,7,opt,name=color" json:"color,omitempty"`
+	Color                *TSP.Color   `protobuf:"bytes,7,opt,name=color" json:"color,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -865,7 +865,7 @@ func (m *AnimationAttributesArchive) GetIsAutomatic() bool {
 	return false
 }
 
-func (m *AnimationAttributesArchive) GetColor() *Color {
+func (m *AnimationAttributesArchive) GetColor() *TSP.Color {
 	if m != nil {
 		return m.Color
 	}
@@ -887,7 +887,7 @@ type TransitionAttributesArchive struct {
 	DatabaseDuration                    *float64                                                                `protobuf:"fixed64,3,opt,name=database_duration,json=databaseDuration" json:"database_duration,omitempty"`
 	DatabaseDirection                   *uint32                                                                 `protobuf:"varint,4,opt,name=database_direction,json=databaseDirection" json:"database_direction,omitempty"`
 	DatabaseDelay                       *float32                                                                `protobuf:"fixed32,5,opt,name=database_delay,json=databaseDelay" json:"database_delay,omitempty"`
-	DatabaseColor                       *Color                                                                  `protobuf:"bytes,7,opt,name=database_color,json=databaseColor" json:"database_color,omitempty"`
+	DatabaseColor                       *TSP.Color                                                                  `protobuf:"bytes,7,opt,name=database_color,json=databaseColor" json:"database_color,omitempty"`
 	XXX_NoUnkeyedLiteral                struct{}                                                                `json:"-"`
 	XXX_unrecognized                    []byte                                                                  `json:"-"`
 	XXX_sizecache                       int32                                                                   `json:"-"`
@@ -1016,7 +1016,7 @@ func (m *TransitionAttributesArchive) GetDatabaseDelay() float32 {
 	return 0
 }
 
-func (m *TransitionAttributesArchive) GetDatabaseColor() *Color {
+func (m *TransitionAttributesArchive) GetDatabaseColor() *TSP.Color {
 	if m != nil {
 		return m.DatabaseColor
 	}
@@ -1168,7 +1168,7 @@ type BuildAttributesArchive struct {
 	DatabaseDirection           *uint32                                                      `protobuf:"varint,3,opt,name=database_direction,json=databaseDirection" json:"database_direction,omitempty"`
 	DatabaseDelay               *float64                                                     `protobuf:"fixed64,5,opt,name=database_delay,json=databaseDelay" json:"database_delay,omitempty"`
 	DatabaseDuration            *float64                                                     `protobuf:"fixed64,8,opt,name=database_duration,json=databaseDuration" json:"database_duration,omitempty"`
-	DatabaseColor               *Color                                                       `protobuf:"bytes,16,opt,name=database_color,json=databaseColor" json:"database_color,omitempty"`
+	DatabaseColor               *TSP.Color                                                       `protobuf:"bytes,16,opt,name=database_color,json=databaseColor" json:"database_color,omitempty"`
 	MotionPathString            *string                                                      `protobuf:"bytes,15,opt,name=motionPathString" json:"motionPathString,omitempty"` // Deprecated: Do not use.
 	XXX_NoUnkeyedLiteral        struct{}                                                     `json:"-"`
 	XXX_unrecognized            []byte                                                       `json:"-"`
@@ -1382,7 +1382,7 @@ func (m *BuildAttributesArchive) GetDatabaseDuration() float64 {
 	return 0
 }
 
-func (m *BuildAttributesArchive) GetDatabaseColor() *Color {
+func (m *BuildAttributesArchive) GetDatabaseColor() *TSP.Color {
 	if m != nil {
 		return m.DatabaseColor
 	}
