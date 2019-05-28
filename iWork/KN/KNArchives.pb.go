@@ -7,6 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	math "math"
+  TSP "../TSP"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -791,7 +792,7 @@ type AnimationAttributesArchive struct {
 	Direction            *uint32  `protobuf:"varint,4,opt,name=direction" json:"direction,omitempty"`
 	Delay                *float64 `protobuf:"fixed64,5,opt,name=delay" json:"delay,omitempty"`
 	IsAutomatic          *bool    `protobuf:"varint,6,opt,name=isAutomatic" json:"isAutomatic,omitempty"`
-	Color                *Color   `protobuf:"bytes,7,opt,name=color" json:"color,omitempty"`
+	TSP.Color                *Color   `protobuf:"bytes,7,opt,name=color" json:"color,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
