@@ -485,7 +485,7 @@ message ThemePresetsArchive {
   repeated .TSP.Reference character_style_presets = 6;
   repeated .TSP.Reference paragraph_style_presets = 7;
   extend .TSS.ThemeArchive {
-    required .TSWP.ThemePresetsArchive extension = 110;
+    optional /*required*/ .TSWP.ThemePresetsArchive extension = 110;
   }
 }
 

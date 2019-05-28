@@ -83,7 +83,7 @@ message ChartStylePreset {
 message ChartPresetsArchive {
   repeated .TSP.Reference chart_presets = 1;
   extend .TSS.ThemeArchive {
-    required .TSCH.ChartPresetsArchive extension = 120;
+    optional /*required*/ .TSCH.ChartPresetsArchive extension = 120;
   }
 }
 
