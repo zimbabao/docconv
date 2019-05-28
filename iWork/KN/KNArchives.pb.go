@@ -7,7 +7,7 @@ import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
 	math "math"
-  TSP "../TSP"
+  TSP "github.com/zimbabao/docconv/iWork/TSP"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.
