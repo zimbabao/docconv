@@ -1,13 +1,11 @@
 syntax = "proto2";
 
 import "TSPMessages.proto";
-import "TSKArchives.proto";
+//import "TSKArchives.proto";
 import "TSDArchives.proto";
 import "TSSArchives.proto";
-import "TSCHArchives_Common.proto";
+import "TSCHArchives.Common.proto";
 import "TSCH3DArchives.proto";
-
-option go_package = "github.com/zimbabao/docconv/iWork/TSCH/PreUFF";
 package TSCH.PreUFF;
 
 message ChartInfoArchive {
@@ -22,8 +20,8 @@ message ChartInfoArchive {
   repeated .TSP.Reference value_axis_nonstyles = 9;
   repeated .TSP.Reference category_axis_nonstyles = 10;
   repeated .TSP.Reference series_theme_styles = 11;
-  optional .TSP.SparseReferenceArray series_private_styles = 12;
-  optional .TSP.SparseReferenceArray series_non_styles = 13;
+  optional .TSCH.SparseReferenceArrayArchive series_private_styles = 12;
+  optional .TSCH.SparseReferenceArrayArchive series_non_styles = 13;
   optional .TSP.Reference non_style = 14;
   optional .TSP.Reference mediator = 15;
   optional .TSP.Point cde_preview_origin = 16;

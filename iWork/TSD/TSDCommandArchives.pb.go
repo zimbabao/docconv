@@ -6,9 +6,6 @@ package TSD
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	TSK "github.com/zimbabao/docconv/iWork/TSK"
-	TSP "github.com/zimbabao/docconv/iWork/TSP"
-	TSS "github.com/zimbabao/docconv/iWork/TSS"
 	math "math"
 )
 
@@ -22,92 +19,6 @@ var _ = math.Inf
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
-
-type CommentCommandVariant int32
-
-const (
-	CommentCommandVariant_BaseComment CommentCommandVariant = 0
-	CommentCommandVariant_AddReply    CommentCommandVariant = 1
-	CommentCommandVariant_EditReply   CommentCommandVariant = 2
-	CommentCommandVariant_DeleteReply CommentCommandVariant = 3
-)
-
-var CommentCommandVariant_name = map[int32]string{
-	0: "BaseComment",
-	1: "AddReply",
-	2: "EditReply",
-	3: "DeleteReply",
-}
-
-var CommentCommandVariant_value = map[string]int32{
-	"BaseComment": 0,
-	"AddReply":    1,
-	"EditReply":   2,
-	"DeleteReply": 3,
-}
-
-func (x CommentCommandVariant) Enum() *CommentCommandVariant {
-	p := new(CommentCommandVariant)
-	*p = x
-	return p
-}
-
-func (x CommentCommandVariant) String() string {
-	return proto.EnumName(CommentCommandVariant_name, int32(x))
-}
-
-func (x *CommentCommandVariant) UnmarshalJSON(data []byte) error {
-	value, err := proto.UnmarshalJSONEnum(CommentCommandVariant_value, data, "CommentCommandVariant")
-	if err != nil {
-		return err
-	}
-	*x = CommentCommandVariant(value)
-	return nil
-}
-
-func (CommentCommandVariant) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{0}
-}
-
-type GroupUngroupInformativeCommandArchive_CommandType int32
-
-const (
-	GroupUngroupInformativeCommandArchive_Group   GroupUngroupInformativeCommandArchive_CommandType = 0
-	GroupUngroupInformativeCommandArchive_Ungroup GroupUngroupInformativeCommandArchive_CommandType = 1
-)
-
-var GroupUngroupInformativeCommandArchive_CommandType_name = map[int32]string{
-	0: "Group",
-	1: "Ungroup",
-}
-
-var GroupUngroupInformativeCommandArchive_CommandType_value = map[string]int32{
-	"Group":   0,
-	"Ungroup": 1,
-}
-
-func (x GroupUngroupInformativeCommandArchive_CommandType) Enum() *GroupUngroupInformativeCommandArchive_CommandType {
-	p := new(GroupUngroupInformativeCommandArchive_CommandType)
-	*p = x
-	return p
-}
-
-func (x GroupUngroupInformativeCommandArchive_CommandType) String() string {
-	return proto.EnumName(GroupUngroupInformativeCommandArchive_CommandType_name, int32(x))
-}
-
-func (x *GroupUngroupInformativeCommandArchive_CommandType) UnmarshalJSON(data []byte) error {
-	value, err := proto.UnmarshalJSONEnum(GroupUngroupInformativeCommandArchive_CommandType_value, data, "GroupUngroupInformativeCommandArchive_CommandType")
-	if err != nil {
-		return err
-	}
-	*x = GroupUngroupInformativeCommandArchive_CommandType(value)
-	return nil
-}
-
-func (GroupUngroupInformativeCommandArchive_CommandType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{8, 0}
-}
 
 type MovieSetValueCommandArchive_LoopOption int32
 
@@ -149,7 +60,7 @@ func (x *MovieSetValueCommandArchive_LoopOption) UnmarshalJSON(data []byte) erro
 }
 
 func (MovieSetValueCommandArchive_LoopOption) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{23, 0}
+	return fileDescriptor_cadc508b609773c5, []int{16, 0}
 }
 
 type DrawablesCommandGroupArchive_DrawablesCommandGroupType int32
@@ -192,79 +103,184 @@ func (x *DrawablesCommandGroupArchive_DrawablesCommandGroupType) UnmarshalJSON(d
 }
 
 func (DrawablesCommandGroupArchive_DrawablesCommandGroupType) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{24, 0}
+}
+
+type CommandSelectionBehaviorArchive_CommandSelectionBehaviorType int32
+
+const (
+	CommandSelectionBehaviorArchive_Constructive CommandSelectionBehaviorArchive_CommandSelectionBehaviorType = 1
+	CommandSelectionBehaviorArchive_Destructive  CommandSelectionBehaviorArchive_CommandSelectionBehaviorType = 2
+	CommandSelectionBehaviorArchive_InPlace      CommandSelectionBehaviorArchive_CommandSelectionBehaviorType = 3
+	CommandSelectionBehaviorArchive_Replace      CommandSelectionBehaviorArchive_CommandSelectionBehaviorType = 4
+)
+
+var CommandSelectionBehaviorArchive_CommandSelectionBehaviorType_name = map[int32]string{
+	1: "Constructive",
+	2: "Destructive",
+	3: "InPlace",
+	4: "Replace",
+}
+
+var CommandSelectionBehaviorArchive_CommandSelectionBehaviorType_value = map[string]int32{
+	"Constructive": 1,
+	"Destructive":  2,
+	"InPlace":      3,
+	"Replace":      4,
+}
+
+func (x CommandSelectionBehaviorArchive_CommandSelectionBehaviorType) Enum() *CommandSelectionBehaviorArchive_CommandSelectionBehaviorType {
+	p := new(CommandSelectionBehaviorArchive_CommandSelectionBehaviorType)
+	*p = x
+	return p
+}
+
+func (x CommandSelectionBehaviorArchive_CommandSelectionBehaviorType) String() string {
+	return proto.EnumName(CommandSelectionBehaviorArchive_CommandSelectionBehaviorType_name, int32(x))
+}
+
+func (x *CommandSelectionBehaviorArchive_CommandSelectionBehaviorType) UnmarshalJSON(data []byte) error {
+	value, err := proto.UnmarshalJSONEnum(CommandSelectionBehaviorArchive_CommandSelectionBehaviorType_value, data, "CommandSelectionBehaviorArchive_CommandSelectionBehaviorType")
+	if err != nil {
+		return err
+	}
+	*x = CommandSelectionBehaviorArchive_CommandSelectionBehaviorType(value)
+	return nil
+}
+
+func (CommandSelectionBehaviorArchive_CommandSelectionBehaviorType) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{27, 0}
+}
+
+type GuideCommandArchive_GuideCommandMode int32
+
+const (
+	GuideCommandArchive_Add     GuideCommandArchive_GuideCommandMode = 1
+	GuideCommandArchive_Replace GuideCommandArchive_GuideCommandMode = 2
+	GuideCommandArchive_Delete  GuideCommandArchive_GuideCommandMode = 3
+)
+
+var GuideCommandArchive_GuideCommandMode_name = map[int32]string{
+	1: "Add",
+	2: "Replace",
+	3: "Delete",
+}
+
+var GuideCommandArchive_GuideCommandMode_value = map[string]int32{
+	"Add":     1,
+	"Replace": 2,
+	"Delete":  3,
+}
+
+func (x GuideCommandArchive_GuideCommandMode) Enum() *GuideCommandArchive_GuideCommandMode {
+	p := new(GuideCommandArchive_GuideCommandMode)
+	*p = x
+	return p
+}
+
+func (x GuideCommandArchive_GuideCommandMode) String() string {
+	return proto.EnumName(GuideCommandArchive_GuideCommandMode_name, int32(x))
+}
+
+func (x *GuideCommandArchive_GuideCommandMode) UnmarshalJSON(data []byte) error {
+	value, err := proto.UnmarshalJSONEnum(GuideCommandArchive_GuideCommandMode_value, data, "GuideCommandArchive_GuideCommandMode")
+	if err != nil {
+		return err
+	}
+	*x = GuideCommandArchive_GuideCommandMode(value)
+	return nil
+}
+
+func (GuideCommandArchive_GuideCommandMode) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_cadc508b609773c5, []int{32, 0}
 }
 
-type UndoObjectArchive struct {
-	Stylesheet           *TSP.Reference   `protobuf:"bytes,2,opt,name=stylesheet" json:"stylesheet,omitempty"`
-	Objects              []*TSP.Reference `protobuf:"bytes,1,rep,name=objects" json:"objects,omitempty"`
-	Keys                 []string         `protobuf:"bytes,3,rep,name=keys" json:"keys,omitempty"`
-	Counts               []uint32         `protobuf:"varint,4,rep,name=counts" json:"counts,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
-	XXX_unrecognized     []byte           `json:"-"`
-	XXX_sizecache        int32            `json:"-"`
+type ConnectionLineConnectCommandArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ConnectionLine       *Reference      `protobuf:"bytes,2,req,name=connection_line,json=connectionLine" json:"connection_line,omitempty"`
+	ConnectTo            *Reference      `protobuf:"bytes,3,opt,name=connect_to,json=connectTo" json:"connect_to,omitempty"`
+	ConnectFrom          *Reference      `protobuf:"bytes,4,opt,name=connect_from,json=connectFrom" json:"connect_from,omitempty"`
+	OldConnectTo         *Reference      `protobuf:"bytes,5,opt,name=old_connect_to,json=oldConnectTo" json:"old_connect_to,omitempty"`
+	OldConnectFrom       *Reference      `protobuf:"bytes,6,opt,name=old_connect_from,json=oldConnectFrom" json:"old_connect_from,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
-func (m *UndoObjectArchive) Reset()         { *m = UndoObjectArchive{} }
-func (m *UndoObjectArchive) String() string { return proto.CompactTextString(m) }
-func (*UndoObjectArchive) ProtoMessage()    {}
-func (*UndoObjectArchive) Descriptor() ([]byte, []int) {
+func (m *ConnectionLineConnectCommandArchive) Reset()         { *m = ConnectionLineConnectCommandArchive{} }
+func (m *ConnectionLineConnectCommandArchive) String() string { return proto.CompactTextString(m) }
+func (*ConnectionLineConnectCommandArchive) ProtoMessage()    {}
+func (*ConnectionLineConnectCommandArchive) Descriptor() ([]byte, []int) {
 	return fileDescriptor_cadc508b609773c5, []int{0}
 }
 
-func (m *UndoObjectArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UndoObjectArchive.Unmarshal(m, b)
+func (m *ConnectionLineConnectCommandArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ConnectionLineConnectCommandArchive.Unmarshal(m, b)
 }
-func (m *UndoObjectArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UndoObjectArchive.Marshal(b, m, deterministic)
+func (m *ConnectionLineConnectCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ConnectionLineConnectCommandArchive.Marshal(b, m, deterministic)
 }
-func (m *UndoObjectArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UndoObjectArchive.Merge(m, src)
+func (m *ConnectionLineConnectCommandArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ConnectionLineConnectCommandArchive.Merge(m, src)
 }
-func (m *UndoObjectArchive) XXX_Size() int {
-	return xxx_messageInfo_UndoObjectArchive.Size(m)
+func (m *ConnectionLineConnectCommandArchive) XXX_Size() int {
+	return xxx_messageInfo_ConnectionLineConnectCommandArchive.Size(m)
 }
-func (m *UndoObjectArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_UndoObjectArchive.DiscardUnknown(m)
+func (m *ConnectionLineConnectCommandArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_ConnectionLineConnectCommandArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_UndoObjectArchive proto.InternalMessageInfo
+var xxx_messageInfo_ConnectionLineConnectCommandArchive proto.InternalMessageInfo
 
-func (m *UndoObjectArchive) GetStylesheet() *TSP.Reference {
+func (m *ConnectionLineConnectCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
-		return m.Stylesheet
+		return m.Super
 	}
 	return nil
 }
 
-func (m *UndoObjectArchive) GetObjects() []*TSP.Reference {
+func (m *ConnectionLineConnectCommandArchive) GetConnectionLine() *Reference {
 	if m != nil {
-		return m.Objects
+		return m.ConnectionLine
 	}
 	return nil
 }
 
-func (m *UndoObjectArchive) GetKeys() []string {
+func (m *ConnectionLineConnectCommandArchive) GetConnectTo() *Reference {
 	if m != nil {
-		return m.Keys
+		return m.ConnectTo
 	}
 	return nil
 }
 
-func (m *UndoObjectArchive) GetCounts() []uint32 {
+func (m *ConnectionLineConnectCommandArchive) GetConnectFrom() *Reference {
 	if m != nil {
-		return m.Counts
+		return m.ConnectFrom
+	}
+	return nil
+}
+
+func (m *ConnectionLineConnectCommandArchive) GetOldConnectTo() *Reference {
+	if m != nil {
+		return m.OldConnectTo
+	}
+	return nil
+}
+
+func (m *ConnectionLineConnectCommandArchive) GetOldConnectFrom() *Reference {
+	if m != nil {
+		return m.OldConnectFrom
 	}
 	return nil
 }
 
 type GroupDrawablesCommandArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Drawables            []*TSP.Reference    `protobuf:"bytes,2,rep,name=drawables" json:"drawables,omitempty"`
-	Group                *TSP.Reference      `protobuf:"bytes,3,opt,name=group" json:"group,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Drawables            []*Reference    `protobuf:"bytes,2,rep,name=drawables" json:"drawables,omitempty"`
+	Group                *Reference      `protobuf:"bytes,3,opt,name=group" json:"group,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *GroupDrawablesCommandArchive) Reset()         { *m = GroupDrawablesCommandArchive{} }
@@ -292,21 +308,21 @@ func (m *GroupDrawablesCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GroupDrawablesCommandArchive proto.InternalMessageInfo
 
-func (m *GroupDrawablesCommandArchive) GetSuper() *TSK.CommandArchive {
+func (m *GroupDrawablesCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *GroupDrawablesCommandArchive) GetDrawables() []*TSP.Reference {
+func (m *GroupDrawablesCommandArchive) GetDrawables() []*Reference {
 	if m != nil {
 		return m.Drawables
 	}
 	return nil
 }
 
-func (m *GroupDrawablesCommandArchive) GetGroup() *TSP.Reference {
+func (m *GroupDrawablesCommandArchive) GetGroup() *Reference {
 	if m != nil {
 		return m.Group
 	}
@@ -314,12 +330,12 @@ func (m *GroupDrawablesCommandArchive) GetGroup() *TSP.Reference {
 }
 
 type UngroupGroupCommandArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Drawables            []*TSP.Reference    `protobuf:"bytes,2,rep,name=drawables" json:"drawables,omitempty"`
-	Group                *TSP.Reference      `protobuf:"bytes,3,opt,name=group" json:"group,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Drawables            []*Reference    `protobuf:"bytes,2,rep,name=drawables" json:"drawables,omitempty"`
+	Group                *Reference      `protobuf:"bytes,3,opt,name=group" json:"group,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *UngroupGroupCommandArchive) Reset()         { *m = UngroupGroupCommandArchive{} }
@@ -347,21 +363,21 @@ func (m *UngroupGroupCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UngroupGroupCommandArchive proto.InternalMessageInfo
 
-func (m *UngroupGroupCommandArchive) GetSuper() *TSK.CommandArchive {
+func (m *UngroupGroupCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *UngroupGroupCommandArchive) GetDrawables() []*TSP.Reference {
+func (m *UngroupGroupCommandArchive) GetDrawables() []*Reference {
 	if m != nil {
 		return m.Drawables
 	}
 	return nil
 }
 
-func (m *UngroupGroupCommandArchive) GetGroup() *TSP.Reference {
+func (m *UngroupGroupCommandArchive) GetGroup() *Reference {
 	if m != nil {
 		return m.Group
 	}
@@ -369,13 +385,13 @@ func (m *UngroupGroupCommandArchive) GetGroup() *TSP.Reference {
 }
 
 type ContainerRemoveChildrenCommandArchive struct {
-	Super                *TSK.CommandArchive          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ContainerIdPath      *TSP.UUIDPath                `protobuf:"bytes,2,opt,name=container_id_path,json=containerIdPath" json:"container_id_path,omitempty"`
-	ArgsList             []*TSK.RemoveIdOperationArgs `protobuf:"bytes,3,rep,name=args_list,json=argsList" json:"args_list,omitempty"`
-	Children             []*TSP.Reference             `protobuf:"bytes,4,rep,name=children" json:"children,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Container            *Reference      `protobuf:"bytes,2,opt,name=container" json:"container,omitempty"`
+	Children             []*Reference    `protobuf:"bytes,3,rep,name=children" json:"children,omitempty"`
+	ChildrenIndices      *IndexSet       `protobuf:"bytes,4,opt,name=children_indices,json=childrenIndices" json:"children_indices,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *ContainerRemoveChildrenCommandArchive) Reset()         { *m = ContainerRemoveChildrenCommandArchive{} }
@@ -403,92 +419,49 @@ func (m *ContainerRemoveChildrenCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ContainerRemoveChildrenCommandArchive proto.InternalMessageInfo
 
-func (m *ContainerRemoveChildrenCommandArchive) GetSuper() *TSK.CommandArchive {
+func (m *ContainerRemoveChildrenCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ContainerRemoveChildrenCommandArchive) GetContainerIdPath() *TSP.UUIDPath {
+func (m *ContainerRemoveChildrenCommandArchive) GetContainer() *Reference {
 	if m != nil {
-		return m.ContainerIdPath
+		return m.Container
 	}
 	return nil
 }
 
-func (m *ContainerRemoveChildrenCommandArchive) GetArgsList() []*TSK.RemoveIdOperationArgs {
-	if m != nil {
-		return m.ArgsList
-	}
-	return nil
-}
-
-func (m *ContainerRemoveChildrenCommandArchive) GetChildren() []*TSP.Reference {
+func (m *ContainerRemoveChildrenCommandArchive) GetChildren() []*Reference {
 	if m != nil {
 		return m.Children
 	}
 	return nil
 }
 
-type ContainerRemoveDrawablesCommandArchive struct {
-	Super                *ContainerRemoveChildrenCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                               `json:"-"`
-	XXX_unrecognized     []byte                                 `json:"-"`
-	XXX_sizecache        int32                                  `json:"-"`
-}
-
-func (m *ContainerRemoveDrawablesCommandArchive) Reset() {
-	*m = ContainerRemoveDrawablesCommandArchive{}
-}
-func (m *ContainerRemoveDrawablesCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*ContainerRemoveDrawablesCommandArchive) ProtoMessage()    {}
-func (*ContainerRemoveDrawablesCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{4}
-}
-
-func (m *ContainerRemoveDrawablesCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ContainerRemoveDrawablesCommandArchive.Unmarshal(m, b)
-}
-func (m *ContainerRemoveDrawablesCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ContainerRemoveDrawablesCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *ContainerRemoveDrawablesCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ContainerRemoveDrawablesCommandArchive.Merge(m, src)
-}
-func (m *ContainerRemoveDrawablesCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_ContainerRemoveDrawablesCommandArchive.Size(m)
-}
-func (m *ContainerRemoveDrawablesCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ContainerRemoveDrawablesCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ContainerRemoveDrawablesCommandArchive proto.InternalMessageInfo
-
-func (m *ContainerRemoveDrawablesCommandArchive) GetSuper() *ContainerRemoveChildrenCommandArchive {
+func (m *ContainerRemoveChildrenCommandArchive) GetChildrenIndices() *IndexSet {
 	if m != nil {
-		return m.Super
+		return m.ChildrenIndices
 	}
 	return nil
 }
 
 type ContainerInsertChildrenCommandArchive struct {
-	Super                *TSK.CommandArchive       `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ContainerIdPath      *TSP.UUIDPath             `protobuf:"bytes,2,opt,name=container_id_path,json=containerIdPath" json:"container_id_path,omitempty"`
-	Children             []*TSP.Reference          `protobuf:"bytes,3,rep,name=children" json:"children,omitempty"`
-	ArgsList             []*TSK.AddIdOperationArgs `protobuf:"bytes,4,rep,name=args_list,json=argsList" json:"args_list,omitempty"`
-	CustomFormatKeys     []*TSP.UUID               `protobuf:"bytes,5,rep,name=custom_format_keys,json=customFormatKeys" json:"custom_format_keys,omitempty"`
-	UndoObject           *TSP.Reference            `protobuf:"bytes,6,opt,name=undo_object,json=undoObject" json:"undo_object,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
-	XXX_unrecognized     []byte                    `json:"-"`
-	XXX_sizecache        int32                     `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Container            *Reference      `protobuf:"bytes,2,opt,name=container" json:"container,omitempty"`
+	Children             []*Reference    `protobuf:"bytes,3,rep,name=children" json:"children,omitempty"`
+	Index                *uint64         `protobuf:"varint,4,opt,name=index" json:"index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *ContainerInsertChildrenCommandArchive) Reset()         { *m = ContainerInsertChildrenCommandArchive{} }
 func (m *ContainerInsertChildrenCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ContainerInsertChildrenCommandArchive) ProtoMessage()    {}
 func (*ContainerInsertChildrenCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{5}
+	return fileDescriptor_cadc508b609773c5, []int{4}
 }
 
 func (m *ContainerInsertChildrenCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -509,104 +482,42 @@ func (m *ContainerInsertChildrenCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ContainerInsertChildrenCommandArchive proto.InternalMessageInfo
 
-func (m *ContainerInsertChildrenCommandArchive) GetSuper() *TSK.CommandArchive {
+func (m *ContainerInsertChildrenCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ContainerInsertChildrenCommandArchive) GetContainerIdPath() *TSP.UUIDPath {
+func (m *ContainerInsertChildrenCommandArchive) GetContainer() *Reference {
 	if m != nil {
-		return m.ContainerIdPath
+		return m.Container
 	}
 	return nil
 }
 
-func (m *ContainerInsertChildrenCommandArchive) GetChildren() []*TSP.Reference {
+func (m *ContainerInsertChildrenCommandArchive) GetChildren() []*Reference {
 	if m != nil {
 		return m.Children
 	}
 	return nil
 }
 
-func (m *ContainerInsertChildrenCommandArchive) GetArgsList() []*TSK.AddIdOperationArgs {
-	if m != nil {
-		return m.ArgsList
+func (m *ContainerInsertChildrenCommandArchive) GetIndex() uint64 {
+	if m != nil && m.Index != nil {
+		return *m.Index
 	}
-	return nil
-}
-
-func (m *ContainerInsertChildrenCommandArchive) GetCustomFormatKeys() []*TSP.UUID {
-	if m != nil {
-		return m.CustomFormatKeys
-	}
-	return nil
-}
-
-func (m *ContainerInsertChildrenCommandArchive) GetUndoObject() *TSP.Reference {
-	if m != nil {
-		return m.UndoObject
-	}
-	return nil
-}
-
-type ContainerInsertDrawablesCommandArchive struct {
-	Super                *ContainerInsertChildrenCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Drawables            []*TSP.Reference                       `protobuf:"bytes,2,rep,name=drawables" json:"drawables,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                               `json:"-"`
-	XXX_unrecognized     []byte                                 `json:"-"`
-	XXX_sizecache        int32                                  `json:"-"`
-}
-
-func (m *ContainerInsertDrawablesCommandArchive) Reset() {
-	*m = ContainerInsertDrawablesCommandArchive{}
-}
-func (m *ContainerInsertDrawablesCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*ContainerInsertDrawablesCommandArchive) ProtoMessage()    {}
-func (*ContainerInsertDrawablesCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{6}
-}
-
-func (m *ContainerInsertDrawablesCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ContainerInsertDrawablesCommandArchive.Unmarshal(m, b)
-}
-func (m *ContainerInsertDrawablesCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ContainerInsertDrawablesCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *ContainerInsertDrawablesCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ContainerInsertDrawablesCommandArchive.Merge(m, src)
-}
-func (m *ContainerInsertDrawablesCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_ContainerInsertDrawablesCommandArchive.Size(m)
-}
-func (m *ContainerInsertDrawablesCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ContainerInsertDrawablesCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ContainerInsertDrawablesCommandArchive proto.InternalMessageInfo
-
-func (m *ContainerInsertDrawablesCommandArchive) GetSuper() *ContainerInsertChildrenCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *ContainerInsertDrawablesCommandArchive) GetDrawables() []*TSP.Reference {
-	if m != nil {
-		return m.Drawables
-	}
-	return nil
+	return 0
 }
 
 type ContainerReorderChildrenCommandArchive struct {
-	Super                *TSK.CommandArchive             `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ContainerIdPath      *TSP.UUIDPath                   `protobuf:"bytes,2,opt,name=container_id_path,json=containerIdPath" json:"container_id_path,omitempty"`
-	ArgsList             []*TSK.RearrangeIdOperationArgs `protobuf:"bytes,3,rep,name=args_list,json=argsList" json:"args_list,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Container            *Reference      `protobuf:"bytes,2,opt,name=container" json:"container,omitempty"`
+	Children             []*Reference    `protobuf:"bytes,3,rep,name=children" json:"children,omitempty"`
+	ChildrenIndices      *IndexSet       `protobuf:"bytes,4,opt,name=children_indices,json=childrenIndices" json:"children_indices,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *ContainerReorderChildrenCommandArchive) Reset() {
@@ -615,7 +526,7 @@ func (m *ContainerReorderChildrenCommandArchive) Reset() {
 func (m *ContainerReorderChildrenCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ContainerReorderChildrenCommandArchive) ProtoMessage()    {}
 func (*ContainerReorderChildrenCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{7}
+	return fileDescriptor_cadc508b609773c5, []int{5}
 }
 
 func (m *ContainerReorderChildrenCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -636,226 +547,51 @@ func (m *ContainerReorderChildrenCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ContainerReorderChildrenCommandArchive proto.InternalMessageInfo
 
-func (m *ContainerReorderChildrenCommandArchive) GetSuper() *TSK.CommandArchive {
+func (m *ContainerReorderChildrenCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ContainerReorderChildrenCommandArchive) GetContainerIdPath() *TSP.UUIDPath {
+func (m *ContainerReorderChildrenCommandArchive) GetContainer() *Reference {
 	if m != nil {
-		return m.ContainerIdPath
+		return m.Container
 	}
 	return nil
 }
 
-func (m *ContainerReorderChildrenCommandArchive) GetArgsList() []*TSK.RearrangeIdOperationArgs {
+func (m *ContainerReorderChildrenCommandArchive) GetChildren() []*Reference {
 	if m != nil {
-		return m.ArgsList
+		return m.Children
 	}
 	return nil
 }
 
-type GroupUngroupInformativeCommandArchive struct {
-	Super                *TSK.CommandArchive                                `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RemovedInfos         []*TSP.Reference                                   `protobuf:"bytes,2,rep,name=removed_infos,json=removedInfos" json:"removed_infos,omitempty"`
-	InsertedInfos        []*TSP.Reference                                   `protobuf:"bytes,3,rep,name=inserted_infos,json=insertedInfos" json:"inserted_infos,omitempty"`
-	CommandType          *GroupUngroupInformativeCommandArchive_CommandType `protobuf:"varint,4,opt,name=command_type,json=commandType,enum=TSD.GroupUngroupInformativeCommandArchive_CommandType" json:"command_type,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                           `json:"-"`
-	XXX_unrecognized     []byte                                             `json:"-"`
-	XXX_sizecache        int32                                              `json:"-"`
-}
-
-func (m *GroupUngroupInformativeCommandArchive) Reset()         { *m = GroupUngroupInformativeCommandArchive{} }
-func (m *GroupUngroupInformativeCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*GroupUngroupInformativeCommandArchive) ProtoMessage()    {}
-func (*GroupUngroupInformativeCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{8}
-}
-
-func (m *GroupUngroupInformativeCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GroupUngroupInformativeCommandArchive.Unmarshal(m, b)
-}
-func (m *GroupUngroupInformativeCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GroupUngroupInformativeCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *GroupUngroupInformativeCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GroupUngroupInformativeCommandArchive.Merge(m, src)
-}
-func (m *GroupUngroupInformativeCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_GroupUngroupInformativeCommandArchive.Size(m)
-}
-func (m *GroupUngroupInformativeCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_GroupUngroupInformativeCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GroupUngroupInformativeCommandArchive proto.InternalMessageInfo
-
-func (m *GroupUngroupInformativeCommandArchive) GetSuper() *TSK.CommandArchive {
+func (m *ContainerReorderChildrenCommandArchive) GetChildrenIndices() *IndexSet {
 	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *GroupUngroupInformativeCommandArchive) GetRemovedInfos() []*TSP.Reference {
-	if m != nil {
-		return m.RemovedInfos
-	}
-	return nil
-}
-
-func (m *GroupUngroupInformativeCommandArchive) GetInsertedInfos() []*TSP.Reference {
-	if m != nil {
-		return m.InsertedInfos
-	}
-	return nil
-}
-
-func (m *GroupUngroupInformativeCommandArchive) GetCommandType() GroupUngroupInformativeCommandArchive_CommandType {
-	if m != nil && m.CommandType != nil {
-		return *m.CommandType
-	}
-	return GroupUngroupInformativeCommandArchive_Group
-}
-
-type InfoCommandArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	InfoIdPath           *TSP.UUIDPath       `protobuf:"bytes,2,opt,name=info_id_path,json=infoIdPath" json:"info_id_path,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *InfoCommandArchive) Reset()         { *m = InfoCommandArchive{} }
-func (m *InfoCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*InfoCommandArchive) ProtoMessage()    {}
-func (*InfoCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{9}
-}
-
-func (m *InfoCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_InfoCommandArchive.Unmarshal(m, b)
-}
-func (m *InfoCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_InfoCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *InfoCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InfoCommandArchive.Merge(m, src)
-}
-func (m *InfoCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_InfoCommandArchive.Size(m)
-}
-func (m *InfoCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_InfoCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_InfoCommandArchive proto.InternalMessageInfo
-
-func (m *InfoCommandArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *InfoCommandArchive) GetInfoIdPath() *TSP.UUIDPath {
-	if m != nil {
-		return m.InfoIdPath
-	}
-	return nil
-}
-
-type ConnectionLineConnectCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ConnectedFromId      *TSP.UUID           `protobuf:"bytes,4,opt,name=connected_from_id,json=connectedFromId" json:"connected_from_id,omitempty"`
-	ConnectedToId        *TSP.UUID           `protobuf:"bytes,5,opt,name=connected_to_id,json=connectedToId" json:"connected_to_id,omitempty"`
-	OldConnectedToId     *TSP.UUID           `protobuf:"bytes,6,opt,name=old_connected_to_id,json=oldConnectedToId" json:"old_connected_to_id,omitempty"`
-	OldConnectedFromId   *TSP.UUID           `protobuf:"bytes,7,opt,name=old_connected_from_id,json=oldConnectedFromId" json:"old_connected_from_id,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *ConnectionLineConnectCommandArchive) Reset()         { *m = ConnectionLineConnectCommandArchive{} }
-func (m *ConnectionLineConnectCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*ConnectionLineConnectCommandArchive) ProtoMessage()    {}
-func (*ConnectionLineConnectCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{10}
-}
-
-func (m *ConnectionLineConnectCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ConnectionLineConnectCommandArchive.Unmarshal(m, b)
-}
-func (m *ConnectionLineConnectCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ConnectionLineConnectCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *ConnectionLineConnectCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ConnectionLineConnectCommandArchive.Merge(m, src)
-}
-func (m *ConnectionLineConnectCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_ConnectionLineConnectCommandArchive.Size(m)
-}
-func (m *ConnectionLineConnectCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ConnectionLineConnectCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ConnectionLineConnectCommandArchive proto.InternalMessageInfo
-
-func (m *ConnectionLineConnectCommandArchive) GetSuper() *InfoCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *ConnectionLineConnectCommandArchive) GetConnectedFromId() *TSP.UUID {
-	if m != nil {
-		return m.ConnectedFromId
-	}
-	return nil
-}
-
-func (m *ConnectionLineConnectCommandArchive) GetConnectedToId() *TSP.UUID {
-	if m != nil {
-		return m.ConnectedToId
-	}
-	return nil
-}
-
-func (m *ConnectionLineConnectCommandArchive) GetOldConnectedToId() *TSP.UUID {
-	if m != nil {
-		return m.OldConnectedToId
-	}
-	return nil
-}
-
-func (m *ConnectionLineConnectCommandArchive) GetOldConnectedFromId() *TSP.UUID {
-	if m != nil {
-		return m.OldConnectedFromId
+		return m.ChildrenIndices
 	}
 	return nil
 }
 
 type InfoGeometryCommandArchive struct {
-	Super                             *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewGeometry                       *GeometryArchive    `protobuf:"bytes,2,opt,name=newGeometry" json:"newGeometry,omitempty"`
-	OldGeometry                       *GeometryArchive    `protobuf:"bytes,3,opt,name=oldGeometry" json:"oldGeometry,omitempty"`
-	MatchObjectPlaceholderGeometry    *bool               `protobuf:"varint,4,opt,name=matchObjectPlaceholderGeometry" json:"matchObjectPlaceholderGeometry,omitempty"`
-	OldMatchObjectPlaceholderGeometry *bool               `protobuf:"varint,5,opt,name=oldMatchObjectPlaceholderGeometry" json:"oldMatchObjectPlaceholderGeometry,omitempty"`
-	ShouldTriggerRtuAnimation         *bool               `protobuf:"varint,6,opt,name=shouldTriggerRtuAnimation" json:"shouldTriggerRtuAnimation,omitempty"`
-	InitiatedOnWeb                    *bool               `protobuf:"varint,7,opt,name=initiatedOnWeb" json:"initiatedOnWeb,omitempty"`
-	XXX_NoUnkeyedLiteral              struct{}            `json:"-"`
-	XXX_unrecognized                  []byte              `json:"-"`
-	XXX_sizecache                     int32               `json:"-"`
+	Super                             *CommandArchive  `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                              *Reference       `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	NewGeometry                       *GeometryArchive `protobuf:"bytes,3,opt,name=newGeometry" json:"newGeometry,omitempty"`
+	OldGeometry                       *GeometryArchive `protobuf:"bytes,4,opt,name=oldGeometry" json:"oldGeometry,omitempty"`
+	ShouldClearObjectPlaceholderFlag  *bool            `protobuf:"varint,5,opt,name=shouldClearObjectPlaceholderFlag" json:"shouldClearObjectPlaceholderFlag,omitempty"`
+	DidMatchObjectPlaceholderGeometry *bool            `protobuf:"varint,6,opt,name=didMatchObjectPlaceholderGeometry" json:"didMatchObjectPlaceholderGeometry,omitempty"`
+	XXX_NoUnkeyedLiteral              struct{}         `json:"-"`
+	XXX_unrecognized                  []byte           `json:"-"`
+	XXX_sizecache                     int32            `json:"-"`
 }
 
 func (m *InfoGeometryCommandArchive) Reset()         { *m = InfoGeometryCommandArchive{} }
 func (m *InfoGeometryCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*InfoGeometryCommandArchive) ProtoMessage()    {}
 func (*InfoGeometryCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{11}
+	return fileDescriptor_cadc508b609773c5, []int{6}
 }
 
 func (m *InfoGeometryCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -876,9 +612,16 @@ func (m *InfoGeometryCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_InfoGeometryCommandArchive proto.InternalMessageInfo
 
-func (m *InfoGeometryCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *InfoGeometryCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
+	}
+	return nil
+}
+
+func (m *InfoGeometryCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
 	}
 	return nil
 }
@@ -897,48 +640,35 @@ func (m *InfoGeometryCommandArchive) GetOldGeometry() *GeometryArchive {
 	return nil
 }
 
-func (m *InfoGeometryCommandArchive) GetMatchObjectPlaceholderGeometry() bool {
-	if m != nil && m.MatchObjectPlaceholderGeometry != nil {
-		return *m.MatchObjectPlaceholderGeometry
+func (m *InfoGeometryCommandArchive) GetShouldClearObjectPlaceholderFlag() bool {
+	if m != nil && m.ShouldClearObjectPlaceholderFlag != nil {
+		return *m.ShouldClearObjectPlaceholderFlag
 	}
 	return false
 }
 
-func (m *InfoGeometryCommandArchive) GetOldMatchObjectPlaceholderGeometry() bool {
-	if m != nil && m.OldMatchObjectPlaceholderGeometry != nil {
-		return *m.OldMatchObjectPlaceholderGeometry
-	}
-	return false
-}
-
-func (m *InfoGeometryCommandArchive) GetShouldTriggerRtuAnimation() bool {
-	if m != nil && m.ShouldTriggerRtuAnimation != nil {
-		return *m.ShouldTriggerRtuAnimation
-	}
-	return false
-}
-
-func (m *InfoGeometryCommandArchive) GetInitiatedOnWeb() bool {
-	if m != nil && m.InitiatedOnWeb != nil {
-		return *m.InitiatedOnWeb
+func (m *InfoGeometryCommandArchive) GetDidMatchObjectPlaceholderGeometry() bool {
+	if m != nil && m.DidMatchObjectPlaceholderGeometry != nil {
+		return *m.DidMatchObjectPlaceholderGeometry
 	}
 	return false
 }
 
 type DrawablePathSourceCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldPathSource        *PathSourceArchive  `protobuf:"bytes,2,opt,name=old_path_source,json=oldPathSource" json:"old_path_source,omitempty"`
-	NewPathSource        *PathSourceArchive  `protobuf:"bytes,3,opt,name=new_path_source,json=newPathSource" json:"new_path_source,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference         `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	Oldpathsource        *PathSourceArchive `protobuf:"bytes,3,opt,name=oldpathsource" json:"oldpathsource,omitempty"`
+	Newpathsource        *PathSourceArchive `protobuf:"bytes,4,opt,name=newpathsource" json:"newpathsource,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
 }
 
 func (m *DrawablePathSourceCommandArchive) Reset()         { *m = DrawablePathSourceCommandArchive{} }
 func (m *DrawablePathSourceCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*DrawablePathSourceCommandArchive) ProtoMessage()    {}
 func (*DrawablePathSourceCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{12}
+	return fileDescriptor_cadc508b609773c5, []int{7}
 }
 
 func (m *DrawablePathSourceCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -959,41 +689,49 @@ func (m *DrawablePathSourceCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DrawablePathSourceCommandArchive proto.InternalMessageInfo
 
-func (m *DrawablePathSourceCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *DrawablePathSourceCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *DrawablePathSourceCommandArchive) GetOldPathSource() *PathSourceArchive {
+func (m *DrawablePathSourceCommandArchive) GetInfo() *Reference {
 	if m != nil {
-		return m.OldPathSource
+		return m.Info
 	}
 	return nil
 }
 
-func (m *DrawablePathSourceCommandArchive) GetNewPathSource() *PathSourceArchive {
+func (m *DrawablePathSourceCommandArchive) GetOldpathsource() *PathSourceArchive {
 	if m != nil {
-		return m.NewPathSource
+		return m.Oldpathsource
+	}
+	return nil
+}
+
+func (m *DrawablePathSourceCommandArchive) GetNewpathsource() *PathSourceArchive {
+	if m != nil {
+		return m.Newpathsource
 	}
 	return nil
 }
 
 type InstantAlphaCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Oldpath              *TSP.Path           `protobuf:"bytes,2,opt,name=oldpath" json:"oldpath,omitempty"`
-	Newpath              *TSP.Path           `protobuf:"bytes,3,opt,name=newpath" json:"newpath,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Image                *Reference      `protobuf:"bytes,2,opt,name=image" json:"image,omitempty"`
+	Oldpath              *Path           `protobuf:"bytes,3,opt,name=oldpath" json:"oldpath,omitempty"`
+	Newpath              *Path           `protobuf:"bytes,4,opt,name=newpath" json:"newpath,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *InstantAlphaCommandArchive) Reset()         { *m = InstantAlphaCommandArchive{} }
 func (m *InstantAlphaCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*InstantAlphaCommandArchive) ProtoMessage()    {}
 func (*InstantAlphaCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{13}
+	return fileDescriptor_cadc508b609773c5, []int{8}
 }
 
 func (m *InstantAlphaCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -1014,41 +752,111 @@ func (m *InstantAlphaCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_InstantAlphaCommandArchive proto.InternalMessageInfo
 
-func (m *InstantAlphaCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *InstantAlphaCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *InstantAlphaCommandArchive) GetOldpath() *TSP.Path {
+func (m *InstantAlphaCommandArchive) GetImage() *Reference {
+	if m != nil {
+		return m.Image
+	}
+	return nil
+}
+
+func (m *InstantAlphaCommandArchive) GetOldpath() *Path {
 	if m != nil {
 		return m.Oldpath
 	}
 	return nil
 }
 
-func (m *InstantAlphaCommandArchive) GetNewpath() *TSP.Path {
+func (m *InstantAlphaCommandArchive) GetNewpath() *Path {
 	if m != nil {
 		return m.Newpath
 	}
 	return nil
 }
 
+type DrawableShadowCommandArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	Oldshadow            *ShadowArchive  `protobuf:"bytes,3,opt,name=oldshadow" json:"oldshadow,omitempty"`
+	Newshadow            *ShadowArchive  `protobuf:"bytes,4,opt,name=newshadow" json:"newshadow,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *DrawableShadowCommandArchive) Reset()         { *m = DrawableShadowCommandArchive{} }
+func (m *DrawableShadowCommandArchive) String() string { return proto.CompactTextString(m) }
+func (*DrawableShadowCommandArchive) ProtoMessage()    {}
+func (*DrawableShadowCommandArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{9}
+}
+
+func (m *DrawableShadowCommandArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DrawableShadowCommandArchive.Unmarshal(m, b)
+}
+func (m *DrawableShadowCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DrawableShadowCommandArchive.Marshal(b, m, deterministic)
+}
+func (m *DrawableShadowCommandArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DrawableShadowCommandArchive.Merge(m, src)
+}
+func (m *DrawableShadowCommandArchive) XXX_Size() int {
+	return xxx_messageInfo_DrawableShadowCommandArchive.Size(m)
+}
+func (m *DrawableShadowCommandArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_DrawableShadowCommandArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DrawableShadowCommandArchive proto.InternalMessageInfo
+
+func (m *DrawableShadowCommandArchive) GetSuper() *CommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *DrawableShadowCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
+	}
+	return nil
+}
+
+func (m *DrawableShadowCommandArchive) GetOldshadow() *ShadowArchive {
+	if m != nil {
+		return m.Oldshadow
+	}
+	return nil
+}
+
+func (m *DrawableShadowCommandArchive) GetNewshadow() *ShadowArchive {
+	if m != nil {
+		return m.Newshadow
+	}
+	return nil
+}
+
 type DrawableApplyThemeCommandArchive struct {
-	Super                *TSS.ApplyThemeChildCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Info                 *TSP.Reference                     `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
-	Style                *TSP.Reference                     `protobuf:"bytes,3,opt,name=style" json:"style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                           `json:"-"`
-	XXX_unrecognized     []byte                             `json:"-"`
-	XXX_sizecache        int32                              `json:"-"`
+	Super                *ApplyThemeChildCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference                     `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	Style                *Reference                     `protobuf:"bytes,3,opt,name=style" json:"style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
+	XXX_unrecognized     []byte                         `json:"-"`
+	XXX_sizecache        int32                          `json:"-"`
 }
 
 func (m *DrawableApplyThemeCommandArchive) Reset()         { *m = DrawableApplyThemeCommandArchive{} }
 func (m *DrawableApplyThemeCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*DrawableApplyThemeCommandArchive) ProtoMessage()    {}
 func (*DrawableApplyThemeCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{14}
+	return fileDescriptor_cadc508b609773c5, []int{10}
 }
 
 func (m *DrawableApplyThemeCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -1069,21 +877,76 @@ func (m *DrawableApplyThemeCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DrawableApplyThemeCommandArchive proto.InternalMessageInfo
 
-func (m *DrawableApplyThemeCommandArchive) GetSuper() *TSS.ApplyThemeChildCommandArchive {
+func (m *DrawableApplyThemeCommandArchive) GetSuper() *ApplyThemeChildCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *DrawableApplyThemeCommandArchive) GetInfo() *TSP.Reference {
+func (m *DrawableApplyThemeCommandArchive) GetInfo() *Reference {
 	if m != nil {
 		return m.Info
 	}
 	return nil
 }
 
-func (m *DrawableApplyThemeCommandArchive) GetStyle() *TSP.Reference {
+func (m *DrawableApplyThemeCommandArchive) GetStyle() *Reference {
+	if m != nil {
+		return m.Style
+	}
+	return nil
+}
+
+type StyledInfoSetStyleCommandArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	Style                *Reference      `protobuf:"bytes,3,opt,name=style" json:"style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *StyledInfoSetStyleCommandArchive) Reset()         { *m = StyledInfoSetStyleCommandArchive{} }
+func (m *StyledInfoSetStyleCommandArchive) String() string { return proto.CompactTextString(m) }
+func (*StyledInfoSetStyleCommandArchive) ProtoMessage()    {}
+func (*StyledInfoSetStyleCommandArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{11}
+}
+
+func (m *StyledInfoSetStyleCommandArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_StyledInfoSetStyleCommandArchive.Unmarshal(m, b)
+}
+func (m *StyledInfoSetStyleCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_StyledInfoSetStyleCommandArchive.Marshal(b, m, deterministic)
+}
+func (m *StyledInfoSetStyleCommandArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_StyledInfoSetStyleCommandArchive.Merge(m, src)
+}
+func (m *StyledInfoSetStyleCommandArchive) XXX_Size() int {
+	return xxx_messageInfo_StyledInfoSetStyleCommandArchive.Size(m)
+}
+func (m *StyledInfoSetStyleCommandArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_StyledInfoSetStyleCommandArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_StyledInfoSetStyleCommandArchive proto.InternalMessageInfo
+
+func (m *StyledInfoSetStyleCommandArchive) GetSuper() *CommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *StyledInfoSetStyleCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
+	}
+	return nil
+}
+
+func (m *StyledInfoSetStyleCommandArchive) GetStyle() *Reference {
 	if m != nil {
 		return m.Style
 	}
@@ -1091,22 +954,22 @@ func (m *DrawableApplyThemeCommandArchive) GetStyle() *TSP.Reference {
 }
 
 type ShapePathSourceFlipCommandArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Info                 *TSP.Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
-	NewHorizontalFlip    *bool               `protobuf:"varint,3,opt,name=newHorizontalFlip" json:"newHorizontalFlip,omitempty"`
-	NewVerticalFlip      *bool               `protobuf:"varint,4,opt,name=newVerticalFlip" json:"newVerticalFlip,omitempty"`
-	OldHorizontalFlip    *bool               `protobuf:"varint,5,opt,name=oldHorizontalFlip" json:"oldHorizontalFlip,omitempty"`
-	OldVerticalFlip      *bool               `protobuf:"varint,6,opt,name=oldVerticalFlip" json:"oldVerticalFlip,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	NewHorizontalFlip    *bool           `protobuf:"varint,3,opt,name=newHorizontalFlip" json:"newHorizontalFlip,omitempty"`
+	NewVerticalFlip      *bool           `protobuf:"varint,4,opt,name=newVerticalFlip" json:"newVerticalFlip,omitempty"`
+	OldHorizontalFlip    *bool           `protobuf:"varint,5,opt,name=oldHorizontalFlip" json:"oldHorizontalFlip,omitempty"`
+	OldVerticalFlip      *bool           `protobuf:"varint,6,opt,name=oldVerticalFlip" json:"oldVerticalFlip,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *ShapePathSourceFlipCommandArchive) Reset()         { *m = ShapePathSourceFlipCommandArchive{} }
 func (m *ShapePathSourceFlipCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ShapePathSourceFlipCommandArchive) ProtoMessage()    {}
 func (*ShapePathSourceFlipCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{15}
+	return fileDescriptor_cadc508b609773c5, []int{12}
 }
 
 func (m *ShapePathSourceFlipCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -1127,14 +990,14 @@ func (m *ShapePathSourceFlipCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ShapePathSourceFlipCommandArchive proto.InternalMessageInfo
 
-func (m *ShapePathSourceFlipCommandArchive) GetSuper() *TSK.CommandArchive {
+func (m *ShapePathSourceFlipCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ShapePathSourceFlipCommandArchive) GetInfo() *TSP.Reference {
+func (m *ShapePathSourceFlipCommandArchive) GetInfo() *Reference {
 	if m != nil {
 		return m.Info
 	}
@@ -1169,246 +1032,19 @@ func (m *ShapePathSourceFlipCommandArchive) GetOldVerticalFlip() bool {
 	return false
 }
 
-type AbstractStyleCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *AbstractStyleCommandArchive) Reset()         { *m = AbstractStyleCommandArchive{} }
-func (m *AbstractStyleCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*AbstractStyleCommandArchive) ProtoMessage()    {}
-func (*AbstractStyleCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{16}
-}
-
-func (m *AbstractStyleCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AbstractStyleCommandArchive.Unmarshal(m, b)
-}
-func (m *AbstractStyleCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AbstractStyleCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *AbstractStyleCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AbstractStyleCommandArchive.Merge(m, src)
-}
-func (m *AbstractStyleCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_AbstractStyleCommandArchive.Size(m)
-}
-func (m *AbstractStyleCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_AbstractStyleCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_AbstractStyleCommandArchive proto.InternalMessageInfo
-
-func (m *AbstractStyleCommandArchive) GetSuper() *InfoCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type StyledInfoSetStyleCommandArchive struct {
-	Super                *AbstractStyleCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewStyle             *TSP.Reference               `protobuf:"bytes,2,opt,name=new_style,json=newStyle" json:"new_style,omitempty"`
-	RollbackStyle        *TSP.Reference               `protobuf:"bytes,4,opt,name=rollback_style,json=rollbackStyle" json:"rollback_style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
-}
-
-func (m *StyledInfoSetStyleCommandArchive) Reset()         { *m = StyledInfoSetStyleCommandArchive{} }
-func (m *StyledInfoSetStyleCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*StyledInfoSetStyleCommandArchive) ProtoMessage()    {}
-func (*StyledInfoSetStyleCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{17}
-}
-
-func (m *StyledInfoSetStyleCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_StyledInfoSetStyleCommandArchive.Unmarshal(m, b)
-}
-func (m *StyledInfoSetStyleCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_StyledInfoSetStyleCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *StyledInfoSetStyleCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StyledInfoSetStyleCommandArchive.Merge(m, src)
-}
-func (m *StyledInfoSetStyleCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_StyledInfoSetStyleCommandArchive.Size(m)
-}
-func (m *StyledInfoSetStyleCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_StyledInfoSetStyleCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_StyledInfoSetStyleCommandArchive proto.InternalMessageInfo
-
-func (m *StyledInfoSetStyleCommandArchive) GetSuper() *AbstractStyleCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *StyledInfoSetStyleCommandArchive) GetNewStyle() *TSP.Reference {
-	if m != nil {
-		return m.NewStyle
-	}
-	return nil
-}
-
-func (m *StyledInfoSetStyleCommandArchive) GetRollbackStyle() *TSP.Reference {
-	if m != nil {
-		return m.RollbackStyle
-	}
-	return nil
-}
-
-type BaseApplyPresetCommandArchive struct {
-	Super                *AbstractStyleCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	PresetStyle          *TSP.Reference               `protobuf:"bytes,2,opt,name=preset_style,json=presetStyle" json:"preset_style,omitempty"`
-	RollbackStyle        *TSP.Reference               `protobuf:"bytes,4,opt,name=rollback_style,json=rollbackStyle" json:"rollback_style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
-}
-
-func (m *BaseApplyPresetCommandArchive) Reset()         { *m = BaseApplyPresetCommandArchive{} }
-func (m *BaseApplyPresetCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*BaseApplyPresetCommandArchive) ProtoMessage()    {}
-func (*BaseApplyPresetCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{18}
-}
-
-func (m *BaseApplyPresetCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_BaseApplyPresetCommandArchive.Unmarshal(m, b)
-}
-func (m *BaseApplyPresetCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_BaseApplyPresetCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *BaseApplyPresetCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BaseApplyPresetCommandArchive.Merge(m, src)
-}
-func (m *BaseApplyPresetCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_BaseApplyPresetCommandArchive.Size(m)
-}
-func (m *BaseApplyPresetCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_BaseApplyPresetCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_BaseApplyPresetCommandArchive proto.InternalMessageInfo
-
-func (m *BaseApplyPresetCommandArchive) GetSuper() *AbstractStyleCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *BaseApplyPresetCommandArchive) GetPresetStyle() *TSP.Reference {
-	if m != nil {
-		return m.PresetStyle
-	}
-	return nil
-}
-
-func (m *BaseApplyPresetCommandArchive) GetRollbackStyle() *TSP.Reference {
-	if m != nil {
-		return m.RollbackStyle
-	}
-	return nil
-}
-
-type ShapeApplyPresetCommandArchive struct {
-	Super                *BaseApplyPresetCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
-	XXX_unrecognized     []byte                         `json:"-"`
-	XXX_sizecache        int32                          `json:"-"`
-}
-
-func (m *ShapeApplyPresetCommandArchive) Reset()         { *m = ShapeApplyPresetCommandArchive{} }
-func (m *ShapeApplyPresetCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*ShapeApplyPresetCommandArchive) ProtoMessage()    {}
-func (*ShapeApplyPresetCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{19}
-}
-
-func (m *ShapeApplyPresetCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ShapeApplyPresetCommandArchive.Unmarshal(m, b)
-}
-func (m *ShapeApplyPresetCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ShapeApplyPresetCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *ShapeApplyPresetCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ShapeApplyPresetCommandArchive.Merge(m, src)
-}
-func (m *ShapeApplyPresetCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_ShapeApplyPresetCommandArchive.Size(m)
-}
-func (m *ShapeApplyPresetCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ShapeApplyPresetCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ShapeApplyPresetCommandArchive proto.InternalMessageInfo
-
-func (m *ShapeApplyPresetCommandArchive) GetSuper() *BaseApplyPresetCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type MediaApplyPresetCommandArchive struct {
-	Super                *BaseApplyPresetCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
-	XXX_unrecognized     []byte                         `json:"-"`
-	XXX_sizecache        int32                          `json:"-"`
-}
-
-func (m *MediaApplyPresetCommandArchive) Reset()         { *m = MediaApplyPresetCommandArchive{} }
-func (m *MediaApplyPresetCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*MediaApplyPresetCommandArchive) ProtoMessage()    {}
-func (*MediaApplyPresetCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{20}
-}
-
-func (m *MediaApplyPresetCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_MediaApplyPresetCommandArchive.Unmarshal(m, b)
-}
-func (m *MediaApplyPresetCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_MediaApplyPresetCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *MediaApplyPresetCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MediaApplyPresetCommandArchive.Merge(m, src)
-}
-func (m *MediaApplyPresetCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_MediaApplyPresetCommandArchive.Size(m)
-}
-func (m *MediaApplyPresetCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_MediaApplyPresetCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MediaApplyPresetCommandArchive proto.InternalMessageInfo
-
-func (m *MediaApplyPresetCommandArchive) GetSuper() *BaseApplyPresetCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
 type ShapeStyleSetValueCommandArchive struct {
-	Super                *BaseStyleSetValueCommandArchive        `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Change               *BaseShapeStylePropertyChangeSetArchive `protobuf:"bytes,4,opt,name=change" json:"change,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                `json:"-"`
-	XXX_unrecognized     []byte                                  `json:"-"`
-	XXX_sizecache        int32                                   `json:"-"`
+	Super                *StyledInfoSetStyleCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ShapeProperties      *ShapeStylePropertiesArchive      `protobuf:"bytes,4,opt,name=shape_properties,json=shapeProperties" json:"shape_properties,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
+	XXX_unrecognized     []byte                            `json:"-"`
+	XXX_sizecache        int32                             `json:"-"`
 }
 
 func (m *ShapeStyleSetValueCommandArchive) Reset()         { *m = ShapeStyleSetValueCommandArchive{} }
 func (m *ShapeStyleSetValueCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ShapeStyleSetValueCommandArchive) ProtoMessage()    {}
 func (*ShapeStyleSetValueCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{21}
+	return fileDescriptor_cadc508b609773c5, []int{13}
 }
 
 func (m *ShapeStyleSetValueCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -1429,92 +1065,170 @@ func (m *ShapeStyleSetValueCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ShapeStyleSetValueCommandArchive proto.InternalMessageInfo
 
-func (m *ShapeStyleSetValueCommandArchive) GetSuper() *BaseStyleSetValueCommandArchive {
+func (m *ShapeStyleSetValueCommandArchive) GetSuper() *StyledInfoSetStyleCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ShapeStyleSetValueCommandArchive) GetChange() *BaseShapeStylePropertyChangeSetArchive {
+func (m *ShapeStyleSetValueCommandArchive) GetShapeProperties() *ShapeStylePropertiesArchive {
 	if m != nil {
-		return m.Change
+		return m.ShapeProperties
 	}
 	return nil
 }
 
-type BaseStyleSetValueCommandArchive struct {
-	Super                *AbstractStyleCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldStyle             *TSP.Reference               `protobuf:"bytes,4,opt,name=old_style,json=oldStyle" json:"old_style,omitempty"`
-	IsBorderChange       *bool                        `protobuf:"varint,5,req,name=is_border_change,json=isBorderChange" json:"is_border_change,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+type ShapeApplyPresetCommandArchive struct {
+	Super                *StyledInfoSetStyleCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Stylepreset          *Reference                        `protobuf:"bytes,10,opt,name=stylepreset" json:"stylepreset,omitempty"`
+	Colorpreset          *Color                            `protobuf:"bytes,11,opt,name=colorpreset" json:"colorpreset,omitempty"`
+	Fillpreset           *FillArchive                      `protobuf:"bytes,12,opt,name=fillpreset" json:"fillpreset,omitempty"`
+	Shadowpreset         *ShadowArchive                    `protobuf:"bytes,13,opt,name=shadowpreset" json:"shadowpreset,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
+	XXX_unrecognized     []byte                            `json:"-"`
+	XXX_sizecache        int32                             `json:"-"`
 }
 
-func (m *BaseStyleSetValueCommandArchive) Reset()         { *m = BaseStyleSetValueCommandArchive{} }
-func (m *BaseStyleSetValueCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*BaseStyleSetValueCommandArchive) ProtoMessage()    {}
-func (*BaseStyleSetValueCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{22}
+func (m *ShapeApplyPresetCommandArchive) Reset()         { *m = ShapeApplyPresetCommandArchive{} }
+func (m *ShapeApplyPresetCommandArchive) String() string { return proto.CompactTextString(m) }
+func (*ShapeApplyPresetCommandArchive) ProtoMessage()    {}
+func (*ShapeApplyPresetCommandArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{14}
 }
 
-func (m *BaseStyleSetValueCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_BaseStyleSetValueCommandArchive.Unmarshal(m, b)
+func (m *ShapeApplyPresetCommandArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ShapeApplyPresetCommandArchive.Unmarshal(m, b)
 }
-func (m *BaseStyleSetValueCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_BaseStyleSetValueCommandArchive.Marshal(b, m, deterministic)
+func (m *ShapeApplyPresetCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ShapeApplyPresetCommandArchive.Marshal(b, m, deterministic)
 }
-func (m *BaseStyleSetValueCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_BaseStyleSetValueCommandArchive.Merge(m, src)
+func (m *ShapeApplyPresetCommandArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ShapeApplyPresetCommandArchive.Merge(m, src)
 }
-func (m *BaseStyleSetValueCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_BaseStyleSetValueCommandArchive.Size(m)
+func (m *ShapeApplyPresetCommandArchive) XXX_Size() int {
+	return xxx_messageInfo_ShapeApplyPresetCommandArchive.Size(m)
 }
-func (m *BaseStyleSetValueCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_BaseStyleSetValueCommandArchive.DiscardUnknown(m)
+func (m *ShapeApplyPresetCommandArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_ShapeApplyPresetCommandArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_BaseStyleSetValueCommandArchive proto.InternalMessageInfo
+var xxx_messageInfo_ShapeApplyPresetCommandArchive proto.InternalMessageInfo
 
-func (m *BaseStyleSetValueCommandArchive) GetSuper() *AbstractStyleCommandArchive {
+func (m *ShapeApplyPresetCommandArchive) GetSuper() *StyledInfoSetStyleCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *BaseStyleSetValueCommandArchive) GetOldStyle() *TSP.Reference {
+func (m *ShapeApplyPresetCommandArchive) GetStylepreset() *Reference {
 	if m != nil {
-		return m.OldStyle
+		return m.Stylepreset
 	}
 	return nil
 }
 
-func (m *BaseStyleSetValueCommandArchive) GetIsBorderChange() bool {
-	if m != nil && m.IsBorderChange != nil {
-		return *m.IsBorderChange
+func (m *ShapeApplyPresetCommandArchive) GetColorpreset() *Color {
+	if m != nil {
+		return m.Colorpreset
+	}
+	return nil
+}
+
+func (m *ShapeApplyPresetCommandArchive) GetFillpreset() *FillArchive {
+	if m != nil {
+		return m.Fillpreset
+	}
+	return nil
+}
+
+func (m *ShapeApplyPresetCommandArchive) GetShadowpreset() *ShadowArchive {
+	if m != nil {
+		return m.Shadowpreset
+	}
+	return nil
+}
+
+type ShapeSetLineEndCommandArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Shape                *Reference      `protobuf:"bytes,2,opt,name=shape" json:"shape,omitempty"`
+	LineEnd              *LineEndArchive `protobuf:"bytes,3,opt,name=line_end,json=lineEnd" json:"line_end,omitempty"`
+	IsHeadLineEnd        *bool           `protobuf:"varint,4,opt,name=is_head_line_end,json=isHeadLineEnd" json:"is_head_line_end,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *ShapeSetLineEndCommandArchive) Reset()         { *m = ShapeSetLineEndCommandArchive{} }
+func (m *ShapeSetLineEndCommandArchive) String() string { return proto.CompactTextString(m) }
+func (*ShapeSetLineEndCommandArchive) ProtoMessage()    {}
+func (*ShapeSetLineEndCommandArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{15}
+}
+
+func (m *ShapeSetLineEndCommandArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ShapeSetLineEndCommandArchive.Unmarshal(m, b)
+}
+func (m *ShapeSetLineEndCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ShapeSetLineEndCommandArchive.Marshal(b, m, deterministic)
+}
+func (m *ShapeSetLineEndCommandArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ShapeSetLineEndCommandArchive.Merge(m, src)
+}
+func (m *ShapeSetLineEndCommandArchive) XXX_Size() int {
+	return xxx_messageInfo_ShapeSetLineEndCommandArchive.Size(m)
+}
+func (m *ShapeSetLineEndCommandArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_ShapeSetLineEndCommandArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ShapeSetLineEndCommandArchive proto.InternalMessageInfo
+
+func (m *ShapeSetLineEndCommandArchive) GetSuper() *CommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *ShapeSetLineEndCommandArchive) GetShape() *Reference {
+	if m != nil {
+		return m.Shape
+	}
+	return nil
+}
+
+func (m *ShapeSetLineEndCommandArchive) GetLineEnd() *LineEndArchive {
+	if m != nil {
+		return m.LineEnd
+	}
+	return nil
+}
+
+func (m *ShapeSetLineEndCommandArchive) GetIsHeadLineEnd() bool {
+	if m != nil && m.IsHeadLineEnd != nil {
+		return *m.IsHeadLineEnd
 	}
 	return false
 }
 
 type MovieSetValueCommandArchive struct {
-	Super                     *InfoCommandArchive                        `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Property                  *int32                                     `protobuf:"varint,2,opt,name=property" json:"property,omitempty"`
-	Value                     *MovieSetValueCommandArchive_PropertyValue `protobuf:"bytes,3,opt,name=value" json:"value,omitempty"`
-	OldValue                  *MovieSetValueCommandArchive_PropertyValue `protobuf:"bytes,4,opt,name=oldValue" json:"oldValue,omitempty"`
-	Importedauxiliarymedia    *TSP.DataReference                         `protobuf:"bytes,5,opt,name=importedauxiliarymedia" json:"importedauxiliarymedia,omitempty"`
-	Oldimportedauxiliarymedia *TSP.DataReference                         `protobuf:"bytes,6,opt,name=oldimportedauxiliarymedia" json:"oldimportedauxiliarymedia,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}                                   `json:"-"`
-	XXX_unrecognized          []byte                                     `json:"-"`
-	XXX_sizecache             int32                                      `json:"-"`
+	Super                *CommandArchive                            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Movie                *Reference                                 `protobuf:"bytes,2,opt,name=movie" json:"movie,omitempty"`
+	DeprecatedProperty   *string                                    `protobuf:"bytes,3,opt,name=deprecated_property,json=deprecatedProperty" json:"deprecated_property,omitempty"`
+	Property             *int32                                     `protobuf:"varint,4,opt,name=property" json:"property,omitempty"`
+	Value                *MovieSetValueCommandArchive_PropertyValue `protobuf:"bytes,5,opt,name=value" json:"value,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                   `json:"-"`
+	XXX_unrecognized     []byte                                     `json:"-"`
+	XXX_sizecache        int32                                      `json:"-"`
 }
 
 func (m *MovieSetValueCommandArchive) Reset()         { *m = MovieSetValueCommandArchive{} }
 func (m *MovieSetValueCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*MovieSetValueCommandArchive) ProtoMessage()    {}
 func (*MovieSetValueCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{23}
+	return fileDescriptor_cadc508b609773c5, []int{16}
 }
 
 func (m *MovieSetValueCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -1535,11 +1249,25 @@ func (m *MovieSetValueCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MovieSetValueCommandArchive proto.InternalMessageInfo
 
-func (m *MovieSetValueCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *MovieSetValueCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
+}
+
+func (m *MovieSetValueCommandArchive) GetMovie() *Reference {
+	if m != nil {
+		return m.Movie
+	}
+	return nil
+}
+
+func (m *MovieSetValueCommandArchive) GetDeprecatedProperty() string {
+	if m != nil && m.DeprecatedProperty != nil {
+		return *m.DeprecatedProperty
+	}
+	return ""
 }
 
 func (m *MovieSetValueCommandArchive) GetProperty() int32 {
@@ -1556,39 +1284,19 @@ func (m *MovieSetValueCommandArchive) GetValue() *MovieSetValueCommandArchive_Pr
 	return nil
 }
 
-func (m *MovieSetValueCommandArchive) GetOldValue() *MovieSetValueCommandArchive_PropertyValue {
-	if m != nil {
-		return m.OldValue
-	}
-	return nil
-}
-
-func (m *MovieSetValueCommandArchive) GetImportedauxiliarymedia() *TSP.DataReference {
-	if m != nil {
-		return m.Importedauxiliarymedia
-	}
-	return nil
-}
-
-func (m *MovieSetValueCommandArchive) GetOldimportedauxiliarymedia() *TSP.DataReference {
-	if m != nil {
-		return m.Oldimportedauxiliarymedia
-	}
-	return nil
-}
-
 type MovieSetValueCommandArchive_PropertyValue struct {
-	Starttime            *float64                                `protobuf:"fixed64,1,opt,name=starttime" json:"starttime,omitempty"`
-	Endtime              *float64                                `protobuf:"fixed64,2,opt,name=endtime" json:"endtime,omitempty"`
-	Postertime           *float64                                `protobuf:"fixed64,3,opt,name=postertime" json:"postertime,omitempty"`
-	Posterimagedata      *TSP.DataReference                      `protobuf:"bytes,4,opt,name=posterimagedata" json:"posterimagedata,omitempty"`
-	Autoplay             *bool                                   `protobuf:"varint,5,opt,name=autoplay" json:"autoplay,omitempty"`
-	LoopOption           *MovieSetValueCommandArchive_LoopOption `protobuf:"varint,6,opt,name=loopOption,enum=TSD.MovieSetValueCommandArchive_LoopOption" json:"loopOption,omitempty"`
-	Volume               *float32                                `protobuf:"fixed32,7,opt,name=volume" json:"volume,omitempty"`
-	Media                *TSP.DataReference                      `protobuf:"bytes,8,opt,name=media" json:"media,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                `json:"-"`
-	XXX_unrecognized     []byte                                  `json:"-"`
-	XXX_sizecache        int32                                   `json:"-"`
+	Starttime              *float64                                `protobuf:"fixed64,1,opt,name=starttime" json:"starttime,omitempty"`
+	Endtime                *float64                                `protobuf:"fixed64,2,opt,name=endtime" json:"endtime,omitempty"`
+	Postertime             *float64                                `protobuf:"fixed64,3,opt,name=postertime" json:"postertime,omitempty"`
+	Posterimagedata        *DataReference                          `protobuf:"bytes,4,opt,name=posterimagedata" json:"posterimagedata,omitempty"`
+	Autoplay               *bool                                   `protobuf:"varint,5,opt,name=autoplay" json:"autoplay,omitempty"`
+	LoopOption             *MovieSetValueCommandArchive_LoopOption `protobuf:"varint,6,opt,name=loopOption,enum=TSD.MovieSetValueCommandArchive_LoopOption" json:"loopOption,omitempty"`
+	Volume                 *float32                                `protobuf:"fixed32,7,opt,name=volume" json:"volume,omitempty"`
+	Media                  *DataReference                          `protobuf:"bytes,8,opt,name=media" json:"media,omitempty"`
+	Importedauxiliarymedia *DataReference                          `protobuf:"bytes,9,opt,name=importedauxiliarymedia" json:"importedauxiliarymedia,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{}                                `json:"-"`
+	XXX_unrecognized       []byte                                  `json:"-"`
+	XXX_sizecache          int32                                   `json:"-"`
 }
 
 func (m *MovieSetValueCommandArchive_PropertyValue) Reset() {
@@ -1597,7 +1305,7 @@ func (m *MovieSetValueCommandArchive_PropertyValue) Reset() {
 func (m *MovieSetValueCommandArchive_PropertyValue) String() string { return proto.CompactTextString(m) }
 func (*MovieSetValueCommandArchive_PropertyValue) ProtoMessage()    {}
 func (*MovieSetValueCommandArchive_PropertyValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{23, 0}
+	return fileDescriptor_cadc508b609773c5, []int{16, 0}
 }
 
 func (m *MovieSetValueCommandArchive_PropertyValue) XXX_Unmarshal(b []byte) error {
@@ -1639,7 +1347,7 @@ func (m *MovieSetValueCommandArchive_PropertyValue) GetPostertime() float64 {
 	return 0
 }
 
-func (m *MovieSetValueCommandArchive_PropertyValue) GetPosterimagedata() *TSP.DataReference {
+func (m *MovieSetValueCommandArchive_PropertyValue) GetPosterimagedata() *DataReference {
 	if m != nil {
 		return m.Posterimagedata
 	}
@@ -1667,26 +1375,33 @@ func (m *MovieSetValueCommandArchive_PropertyValue) GetVolume() float32 {
 	return 0
 }
 
-func (m *MovieSetValueCommandArchive_PropertyValue) GetMedia() *TSP.DataReference {
+func (m *MovieSetValueCommandArchive_PropertyValue) GetMedia() *DataReference {
 	if m != nil {
 		return m.Media
 	}
 	return nil
 }
 
+func (m *MovieSetValueCommandArchive_PropertyValue) GetImportedauxiliarymedia() *DataReference {
+	if m != nil {
+		return m.Importedauxiliarymedia
+	}
+	return nil
+}
+
 type MediaStyleSetValueCommandArchive struct {
-	Super                *BaseStyleSetValueCommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Change               *MediaStylePropertyChangeSetArchive `protobuf:"bytes,4,opt,name=change" json:"change,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
-	XXX_unrecognized     []byte                              `json:"-"`
-	XXX_sizecache        int32                               `json:"-"`
+	Super                *StyledInfoSetStyleCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	MediaProperties      *MediaStylePropertiesArchive      `protobuf:"bytes,4,opt,name=media_properties,json=mediaProperties" json:"media_properties,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
+	XXX_unrecognized     []byte                            `json:"-"`
+	XXX_sizecache        int32                             `json:"-"`
 }
 
 func (m *MediaStyleSetValueCommandArchive) Reset()         { *m = MediaStyleSetValueCommandArchive{} }
 func (m *MediaStyleSetValueCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*MediaStyleSetValueCommandArchive) ProtoMessage()    {}
 func (*MediaStyleSetValueCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{24}
+	return fileDescriptor_cadc508b609773c5, []int{17}
 }
 
 func (m *MediaStyleSetValueCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -1707,51 +1422,45 @@ func (m *MediaStyleSetValueCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MediaStyleSetValueCommandArchive proto.InternalMessageInfo
 
-func (m *MediaStyleSetValueCommandArchive) GetSuper() *BaseStyleSetValueCommandArchive {
+func (m *MediaStyleSetValueCommandArchive) GetSuper() *StyledInfoSetStyleCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *MediaStyleSetValueCommandArchive) GetChange() *MediaStylePropertyChangeSetArchive {
+func (m *MediaStyleSetValueCommandArchive) GetMediaProperties() *MediaStylePropertiesArchive {
 	if m != nil {
-		return m.Change
+		return m.MediaProperties
 	}
 	return nil
 }
 
 type ImageMediaCommandArchive struct {
-	Super                         *InfoCommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewImageData                  *TSP.DataReference       `protobuf:"bytes,8,opt,name=newImageData" json:"newImageData,omitempty"`
-	OldImageData                  *TSP.DataReference       `protobuf:"bytes,9,opt,name=oldImageData" json:"oldImageData,omitempty"`
-	OldOriginalImageData          *TSP.DataReference       `protobuf:"bytes,10,opt,name=oldOriginalImageData" json:"oldOriginalImageData,omitempty"`
-	OldNaturalSize                *TSP.Size                `protobuf:"bytes,6,opt,name=oldNaturalSize" json:"oldNaturalSize,omitempty"`
-	NewOriginalImageData          *TSP.DataReference       `protobuf:"bytes,11,opt,name=newOriginalImageData" json:"newOriginalImageData,omitempty"`
-	OldImageAdjustments           *ImageAdjustmentsArchive `protobuf:"bytes,12,opt,name=oldImageAdjustments" json:"oldImageAdjustments,omitempty"`
-	OldAdjustedImageData          *TSP.DataReference       `protobuf:"bytes,13,opt,name=oldAdjustedImageData" json:"oldAdjustedImageData,omitempty"`
-	OldEnhancedImageData          *TSP.DataReference       `protobuf:"bytes,14,opt,name=oldEnhancedImageData" json:"oldEnhancedImageData,omitempty"`
-	ImageAdjustments              *ImageAdjustmentsArchive `protobuf:"bytes,15,opt,name=imageAdjustments" json:"imageAdjustments,omitempty"`
-	AdjustedImageData             *TSP.DataReference       `protobuf:"bytes,16,opt,name=adjustedImageData" json:"adjustedImageData,omitempty"`
-	EnhancedImageData             *TSP.DataReference       `protobuf:"bytes,17,opt,name=enhancedImageData" json:"enhancedImageData,omitempty"`
-	NewThumbnailImageData         *TSP.DataReference       `protobuf:"bytes,18,opt,name=newThumbnailImageData" json:"newThumbnailImageData,omitempty"`
-	OldThumbnailImageData         *TSP.DataReference       `protobuf:"bytes,19,opt,name=oldThumbnailImageData" json:"oldThumbnailImageData,omitempty"`
-	ThumbnailAdjustedImageData    *TSP.DataReference       `protobuf:"bytes,20,opt,name=thumbnailAdjustedImageData" json:"thumbnailAdjustedImageData,omitempty"`
-	OldThumbnailAdjustedImageData *TSP.DataReference       `protobuf:"bytes,21,opt,name=oldThumbnailAdjustedImageData" json:"oldThumbnailAdjustedImageData,omitempty"`
-	DatabaseNewImageData          *TSP.Reference           `protobuf:"bytes,3,opt,name=database_newImageData,json=databaseNewImageData" json:"database_newImageData,omitempty"`
-	DatabaseOldImageData          *TSP.Reference           `protobuf:"bytes,4,opt,name=database_oldImageData,json=databaseOldImageData" json:"database_oldImageData,omitempty"`
-	DatabaseOldOriginalImageData  *TSP.Reference           `protobuf:"bytes,5,opt,name=database_oldOriginalImageData,json=databaseOldOriginalImageData" json:"database_oldOriginalImageData,omitempty"`
-	DatabaseNewOriginalImageData  *TSP.Reference           `protobuf:"bytes,7,opt,name=database_newOriginalImageData,json=databaseNewOriginalImageData" json:"database_newOriginalImageData,omitempty"`
-	XXX_NoUnkeyedLiteral          struct{}                 `json:"-"`
-	XXX_unrecognized              []byte                   `json:"-"`
-	XXX_sizecache                 int32                    `json:"-"`
+	Super                        *CommandArchive          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                         *Reference               `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	NewImageData                 *DataReference           `protobuf:"bytes,8,opt,name=newImageData" json:"newImageData,omitempty"`
+	OldImageData                 *DataReference           `protobuf:"bytes,9,opt,name=oldImageData" json:"oldImageData,omitempty"`
+	OldOriginalImageData         *DataReference           `protobuf:"bytes,10,opt,name=oldOriginalImageData" json:"oldOriginalImageData,omitempty"`
+	OldNaturalSize               *Size                    `protobuf:"bytes,6,opt,name=oldNaturalSize" json:"oldNaturalSize,omitempty"`
+	NewOriginalImageData         *DataReference           `protobuf:"bytes,11,opt,name=newOriginalImageData" json:"newOriginalImageData,omitempty"`
+	OldImageAdjustments          *ImageAdjustmentsArchive `protobuf:"bytes,12,opt,name=oldImageAdjustments" json:"oldImageAdjustments,omitempty"`
+	OldAdjustedImageData         *DataReference           `protobuf:"bytes,13,opt,name=oldAdjustedImageData" json:"oldAdjustedImageData,omitempty"`
+	OldEnhancedImageData         *DataReference           `protobuf:"bytes,14,opt,name=oldEnhancedImageData" json:"oldEnhancedImageData,omitempty"`
+	DatabaseNewImageData         *Reference               `protobuf:"bytes,3,opt,name=database_newImageData,json=databaseNewImageData" json:"database_newImageData,omitempty"`
+	DatabaseOldImageData         *Reference               `protobuf:"bytes,4,opt,name=database_oldImageData,json=databaseOldImageData" json:"database_oldImageData,omitempty"`
+	DatabaseOldOriginalImageData *Reference               `protobuf:"bytes,5,opt,name=database_oldOriginalImageData,json=databaseOldOriginalImageData" json:"database_oldOriginalImageData,omitempty"`
+	DatabaseNewOriginalImageData *Reference               `protobuf:"bytes,7,opt,name=database_newOriginalImageData,json=databaseNewOriginalImageData" json:"database_newOriginalImageData,omitempty"`
+	XXX_NoUnkeyedLiteral         struct{}                 `json:"-"`
+	XXX_unrecognized             []byte                   `json:"-"`
+	XXX_sizecache                int32                    `json:"-"`
 }
 
 func (m *ImageMediaCommandArchive) Reset()         { *m = ImageMediaCommandArchive{} }
 func (m *ImageMediaCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ImageMediaCommandArchive) ProtoMessage()    {}
 func (*ImageMediaCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{25}
+	return fileDescriptor_cadc508b609773c5, []int{18}
 }
 
 func (m *ImageMediaCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -1772,42 +1481,49 @@ func (m *ImageMediaCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ImageMediaCommandArchive proto.InternalMessageInfo
 
-func (m *ImageMediaCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *ImageMediaCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetNewImageData() *TSP.DataReference {
+func (m *ImageMediaCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
+	}
+	return nil
+}
+
+func (m *ImageMediaCommandArchive) GetNewImageData() *DataReference {
 	if m != nil {
 		return m.NewImageData
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetOldImageData() *TSP.DataReference {
+func (m *ImageMediaCommandArchive) GetOldImageData() *DataReference {
 	if m != nil {
 		return m.OldImageData
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetOldOriginalImageData() *TSP.DataReference {
+func (m *ImageMediaCommandArchive) GetOldOriginalImageData() *DataReference {
 	if m != nil {
 		return m.OldOriginalImageData
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetOldNaturalSize() *TSP.Size {
+func (m *ImageMediaCommandArchive) GetOldNaturalSize() *Size {
 	if m != nil {
 		return m.OldNaturalSize
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetNewOriginalImageData() *TSP.DataReference {
+func (m *ImageMediaCommandArchive) GetNewOriginalImageData() *DataReference {
 	if m != nil {
 		return m.NewOriginalImageData
 	}
@@ -1821,91 +1537,42 @@ func (m *ImageMediaCommandArchive) GetOldImageAdjustments() *ImageAdjustmentsArc
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetOldAdjustedImageData() *TSP.DataReference {
+func (m *ImageMediaCommandArchive) GetOldAdjustedImageData() *DataReference {
 	if m != nil {
 		return m.OldAdjustedImageData
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetOldEnhancedImageData() *TSP.DataReference {
+func (m *ImageMediaCommandArchive) GetOldEnhancedImageData() *DataReference {
 	if m != nil {
 		return m.OldEnhancedImageData
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetImageAdjustments() *ImageAdjustmentsArchive {
-	if m != nil {
-		return m.ImageAdjustments
-	}
-	return nil
-}
-
-func (m *ImageMediaCommandArchive) GetAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.AdjustedImageData
-	}
-	return nil
-}
-
-func (m *ImageMediaCommandArchive) GetEnhancedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.EnhancedImageData
-	}
-	return nil
-}
-
-func (m *ImageMediaCommandArchive) GetNewThumbnailImageData() *TSP.DataReference {
-	if m != nil {
-		return m.NewThumbnailImageData
-	}
-	return nil
-}
-
-func (m *ImageMediaCommandArchive) GetOldThumbnailImageData() *TSP.DataReference {
-	if m != nil {
-		return m.OldThumbnailImageData
-	}
-	return nil
-}
-
-func (m *ImageMediaCommandArchive) GetThumbnailAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.ThumbnailAdjustedImageData
-	}
-	return nil
-}
-
-func (m *ImageMediaCommandArchive) GetOldThumbnailAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.OldThumbnailAdjustedImageData
-	}
-	return nil
-}
-
-func (m *ImageMediaCommandArchive) GetDatabaseNewImageData() *TSP.Reference {
+func (m *ImageMediaCommandArchive) GetDatabaseNewImageData() *Reference {
 	if m != nil {
 		return m.DatabaseNewImageData
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetDatabaseOldImageData() *TSP.Reference {
+func (m *ImageMediaCommandArchive) GetDatabaseOldImageData() *Reference {
 	if m != nil {
 		return m.DatabaseOldImageData
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetDatabaseOldOriginalImageData() *TSP.Reference {
+func (m *ImageMediaCommandArchive) GetDatabaseOldOriginalImageData() *Reference {
 	if m != nil {
 		return m.DatabaseOldOriginalImageData
 	}
 	return nil
 }
 
-func (m *ImageMediaCommandArchive) GetDatabaseNewOriginalImageData() *TSP.Reference {
+func (m *ImageMediaCommandArchive) GetDatabaseNewOriginalImageData() *Reference {
 	if m != nil {
 		return m.DatabaseNewOriginalImageData
 	}
@@ -1913,20 +1580,20 @@ func (m *ImageMediaCommandArchive) GetDatabaseNewOriginalImageData() *TSP.Refere
 }
 
 type MediaOriginalSizeCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewOriginalSize      *TSP.Size           `protobuf:"bytes,2,opt,name=newOriginalSize" json:"newOriginalSize,omitempty"`
-	OldOriginalSize      *TSP.Size           `protobuf:"bytes,3,opt,name=oldOriginalSize" json:"oldOriginalSize,omitempty"`
-	PropertyName         *string             `protobuf:"bytes,4,req,name=propertyName" json:"propertyName,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	NewOriginalSize      *Size           `protobuf:"bytes,3,opt,name=newOriginalSize" json:"newOriginalSize,omitempty"`
+	OldOriginalSize      *Size           `protobuf:"bytes,4,opt,name=oldOriginalSize" json:"oldOriginalSize,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *MediaOriginalSizeCommandArchive) Reset()         { *m = MediaOriginalSizeCommandArchive{} }
 func (m *MediaOriginalSizeCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*MediaOriginalSizeCommandArchive) ProtoMessage()    {}
 func (*MediaOriginalSizeCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{26}
+	return fileDescriptor_cadc508b609773c5, []int{19}
 }
 
 func (m *MediaOriginalSizeCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -1947,158 +1614,49 @@ func (m *MediaOriginalSizeCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MediaOriginalSizeCommandArchive proto.InternalMessageInfo
 
-func (m *MediaOriginalSizeCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *MediaOriginalSizeCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *MediaOriginalSizeCommandArchive) GetNewOriginalSize() *TSP.Size {
+func (m *MediaOriginalSizeCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
+	}
+	return nil
+}
+
+func (m *MediaOriginalSizeCommandArchive) GetNewOriginalSize() *Size {
 	if m != nil {
 		return m.NewOriginalSize
 	}
 	return nil
 }
 
-func (m *MediaOriginalSizeCommandArchive) GetOldOriginalSize() *TSP.Size {
+func (m *MediaOriginalSizeCommandArchive) GetOldOriginalSize() *Size {
 	if m != nil {
 		return m.OldOriginalSize
-	}
-	return nil
-}
-
-func (m *MediaOriginalSizeCommandArchive) GetPropertyName() string {
-	if m != nil && m.PropertyName != nil {
-		return *m.PropertyName
-	}
-	return ""
-}
-
-type MediaInfoGeometryCommandArchive struct {
-	Super                *InfoGeometryCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewOriginalSize      *TSP.Size                   `protobuf:"bytes,2,req,name=newOriginalSize" json:"newOriginalSize,omitempty"`
-	OldOriginalSize      *TSP.Size                   `protobuf:"bytes,3,req,name=oldOriginalSize" json:"oldOriginalSize,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
-	XXX_unrecognized     []byte                      `json:"-"`
-	XXX_sizecache        int32                       `json:"-"`
-}
-
-func (m *MediaInfoGeometryCommandArchive) Reset()         { *m = MediaInfoGeometryCommandArchive{} }
-func (m *MediaInfoGeometryCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*MediaInfoGeometryCommandArchive) ProtoMessage()    {}
-func (*MediaInfoGeometryCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{27}
-}
-
-func (m *MediaInfoGeometryCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_MediaInfoGeometryCommandArchive.Unmarshal(m, b)
-}
-func (m *MediaInfoGeometryCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_MediaInfoGeometryCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *MediaInfoGeometryCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_MediaInfoGeometryCommandArchive.Merge(m, src)
-}
-func (m *MediaInfoGeometryCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_MediaInfoGeometryCommandArchive.Size(m)
-}
-func (m *MediaInfoGeometryCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_MediaInfoGeometryCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_MediaInfoGeometryCommandArchive proto.InternalMessageInfo
-
-func (m *MediaInfoGeometryCommandArchive) GetSuper() *InfoGeometryCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *MediaInfoGeometryCommandArchive) GetNewOriginalSize() *TSP.Size {
-	if m != nil {
-		return m.NewOriginalSize
-	}
-	return nil
-}
-
-func (m *MediaInfoGeometryCommandArchive) GetOldOriginalSize() *TSP.Size {
-	if m != nil {
-		return m.OldOriginalSize
-	}
-	return nil
-}
-
-type ImageNaturalSizeCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewNaturalSize       *TSP.Size           `protobuf:"bytes,2,opt,name=new_natural_size,json=newNaturalSize" json:"new_natural_size,omitempty"`
-	OldNaturalSize       *TSP.Size           `protobuf:"bytes,3,opt,name=old_natural_size,json=oldNaturalSize" json:"old_natural_size,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *ImageNaturalSizeCommandArchive) Reset()         { *m = ImageNaturalSizeCommandArchive{} }
-func (m *ImageNaturalSizeCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*ImageNaturalSizeCommandArchive) ProtoMessage()    {}
-func (*ImageNaturalSizeCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{28}
-}
-
-func (m *ImageNaturalSizeCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ImageNaturalSizeCommandArchive.Unmarshal(m, b)
-}
-func (m *ImageNaturalSizeCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ImageNaturalSizeCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *ImageNaturalSizeCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ImageNaturalSizeCommandArchive.Merge(m, src)
-}
-func (m *ImageNaturalSizeCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_ImageNaturalSizeCommandArchive.Size(m)
-}
-func (m *ImageNaturalSizeCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ImageNaturalSizeCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ImageNaturalSizeCommandArchive proto.InternalMessageInfo
-
-func (m *ImageNaturalSizeCommandArchive) GetSuper() *InfoCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *ImageNaturalSizeCommandArchive) GetNewNaturalSize() *TSP.Size {
-	if m != nil {
-		return m.NewNaturalSize
-	}
-	return nil
-}
-
-func (m *ImageNaturalSizeCommandArchive) GetOldNaturalSize() *TSP.Size {
-	if m != nil {
-		return m.OldNaturalSize
 	}
 	return nil
 }
 
 type ImageMaskCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewMaskInfo          *TSP.Reference      `protobuf:"bytes,2,opt,name=newMaskInfo" json:"newMaskInfo,omitempty"`
-	OldMaskInfo          *TSP.Reference      `protobuf:"bytes,3,opt,name=oldMaskInfo" json:"oldMaskInfo,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	NewMaskInfo          *Reference      `protobuf:"bytes,3,opt,name=newMaskInfo" json:"newMaskInfo,omitempty"`
+	OldMaskInfo          *Reference      `protobuf:"bytes,4,opt,name=oldMaskInfo" json:"oldMaskInfo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *ImageMaskCommandArchive) Reset()         { *m = ImageMaskCommandArchive{} }
 func (m *ImageMaskCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ImageMaskCommandArchive) ProtoMessage()    {}
 func (*ImageMaskCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{29}
+	return fileDescriptor_cadc508b609773c5, []int{20}
 }
 
 func (m *ImageMaskCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -2119,47 +1677,107 @@ func (m *ImageMaskCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ImageMaskCommandArchive proto.InternalMessageInfo
 
-func (m *ImageMaskCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *ImageMaskCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ImageMaskCommandArchive) GetNewMaskInfo() *TSP.Reference {
+func (m *ImageMaskCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
+	}
+	return nil
+}
+
+func (m *ImageMaskCommandArchive) GetNewMaskInfo() *Reference {
 	if m != nil {
 		return m.NewMaskInfo
 	}
 	return nil
 }
 
-func (m *ImageMaskCommandArchive) GetOldMaskInfo() *TSP.Reference {
+func (m *ImageMaskCommandArchive) GetOldMaskInfo() *Reference {
 	if m != nil {
 		return m.OldMaskInfo
 	}
 	return nil
 }
 
+type MediaApplyPresetCommandArchive struct {
+	Super                *StyledInfoSetStyleCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Stylepreset          *Reference                        `protobuf:"bytes,10,opt,name=stylepreset" json:"stylepreset,omitempty"`
+	Shadowpreset         *ShadowArchive                    `protobuf:"bytes,11,opt,name=shadowpreset" json:"shadowpreset,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
+	XXX_unrecognized     []byte                            `json:"-"`
+	XXX_sizecache        int32                             `json:"-"`
+}
+
+func (m *MediaApplyPresetCommandArchive) Reset()         { *m = MediaApplyPresetCommandArchive{} }
+func (m *MediaApplyPresetCommandArchive) String() string { return proto.CompactTextString(m) }
+func (*MediaApplyPresetCommandArchive) ProtoMessage()    {}
+func (*MediaApplyPresetCommandArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{21}
+}
+
+func (m *MediaApplyPresetCommandArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_MediaApplyPresetCommandArchive.Unmarshal(m, b)
+}
+func (m *MediaApplyPresetCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_MediaApplyPresetCommandArchive.Marshal(b, m, deterministic)
+}
+func (m *MediaApplyPresetCommandArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_MediaApplyPresetCommandArchive.Merge(m, src)
+}
+func (m *MediaApplyPresetCommandArchive) XXX_Size() int {
+	return xxx_messageInfo_MediaApplyPresetCommandArchive.Size(m)
+}
+func (m *MediaApplyPresetCommandArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_MediaApplyPresetCommandArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_MediaApplyPresetCommandArchive proto.InternalMessageInfo
+
+func (m *MediaApplyPresetCommandArchive) GetSuper() *StyledInfoSetStyleCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *MediaApplyPresetCommandArchive) GetStylepreset() *Reference {
+	if m != nil {
+		return m.Stylepreset
+	}
+	return nil
+}
+
+func (m *MediaApplyPresetCommandArchive) GetShadowpreset() *ShadowArchive {
+	if m != nil {
+		return m.Shadowpreset
+	}
+	return nil
+}
+
 type ImageAdjustmentsCommandArchive struct {
-	Super                              *InfoCommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldImageAdjustments                *ImageAdjustmentsArchive `protobuf:"bytes,2,opt,name=old_image_adjustments,json=oldImageAdjustments" json:"old_image_adjustments,omitempty"`
-	NewImageAdjustments                *ImageAdjustmentsArchive `protobuf:"bytes,3,opt,name=new_image_adjustments,json=newImageAdjustments" json:"new_image_adjustments,omitempty"`
-	AdjustedImageData                  *TSP.DataReference       `protobuf:"bytes,4,opt,name=adjustedImageData" json:"adjustedImageData,omitempty"`
-	ReplacedAdjustedImageData          *TSP.DataReference       `protobuf:"bytes,5,opt,name=replacedAdjustedImageData" json:"replacedAdjustedImageData,omitempty"`
-	EnhancedImageData                  *TSP.DataReference       `protobuf:"bytes,6,opt,name=enhancedImageData" json:"enhancedImageData,omitempty"`
-	ReplacedEnhancedImageData          *TSP.DataReference       `protobuf:"bytes,7,opt,name=replacedEnhancedImageData" json:"replacedEnhancedImageData,omitempty"`
-	ThumbnailAdjustedImageData         *TSP.DataReference       `protobuf:"bytes,8,opt,name=thumbnailAdjustedImageData" json:"thumbnailAdjustedImageData,omitempty"`
-	ReplacedThumbnailAdjustedImageData *TSP.DataReference       `protobuf:"bytes,9,opt,name=replacedThumbnailAdjustedImageData" json:"replacedThumbnailAdjustedImageData,omitempty"`
-	XXX_NoUnkeyedLiteral               struct{}                 `json:"-"`
-	XXX_unrecognized                   []byte                   `json:"-"`
-	XXX_sizecache                      int32                    `json:"-"`
+	Super                     *CommandArchive          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	OldImageAdjustments       *ImageAdjustmentsArchive `protobuf:"bytes,2,opt,name=old_image_adjustments,json=oldImageAdjustments" json:"old_image_adjustments,omitempty"`
+	NewImageAdjustments       *ImageAdjustmentsArchive `protobuf:"bytes,3,opt,name=new_image_adjustments,json=newImageAdjustments" json:"new_image_adjustments,omitempty"`
+	AdjustedImageData         *DataReference           `protobuf:"bytes,4,opt,name=adjustedImageData" json:"adjustedImageData,omitempty"`
+	ReplacedAdjustedImageData *DataReference           `protobuf:"bytes,5,opt,name=replacedAdjustedImageData" json:"replacedAdjustedImageData,omitempty"`
+	EnhancedImageData         *DataReference           `protobuf:"bytes,6,opt,name=enhancedImageData" json:"enhancedImageData,omitempty"`
+	ReplacedEnhancedImageData *DataReference           `protobuf:"bytes,7,opt,name=replacedEnhancedImageData" json:"replacedEnhancedImageData,omitempty"`
+	XXX_NoUnkeyedLiteral      struct{}                 `json:"-"`
+	XXX_unrecognized          []byte                   `json:"-"`
+	XXX_sizecache             int32                    `json:"-"`
 }
 
 func (m *ImageAdjustmentsCommandArchive) Reset()         { *m = ImageAdjustmentsCommandArchive{} }
 func (m *ImageAdjustmentsCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ImageAdjustmentsCommandArchive) ProtoMessage()    {}
 func (*ImageAdjustmentsCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{30}
+	return fileDescriptor_cadc508b609773c5, []int{22}
 }
 
 func (m *ImageAdjustmentsCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -2180,7 +1798,7 @@ func (m *ImageAdjustmentsCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ImageAdjustmentsCommandArchive proto.InternalMessageInfo
 
-func (m *ImageAdjustmentsCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *ImageAdjustmentsCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -2201,65 +1819,48 @@ func (m *ImageAdjustmentsCommandArchive) GetNewImageAdjustments() *ImageAdjustme
 	return nil
 }
 
-func (m *ImageAdjustmentsCommandArchive) GetAdjustedImageData() *TSP.DataReference {
+func (m *ImageAdjustmentsCommandArchive) GetAdjustedImageData() *DataReference {
 	if m != nil {
 		return m.AdjustedImageData
 	}
 	return nil
 }
 
-func (m *ImageAdjustmentsCommandArchive) GetReplacedAdjustedImageData() *TSP.DataReference {
+func (m *ImageAdjustmentsCommandArchive) GetReplacedAdjustedImageData() *DataReference {
 	if m != nil {
 		return m.ReplacedAdjustedImageData
 	}
 	return nil
 }
 
-func (m *ImageAdjustmentsCommandArchive) GetEnhancedImageData() *TSP.DataReference {
+func (m *ImageAdjustmentsCommandArchive) GetEnhancedImageData() *DataReference {
 	if m != nil {
 		return m.EnhancedImageData
 	}
 	return nil
 }
 
-func (m *ImageAdjustmentsCommandArchive) GetReplacedEnhancedImageData() *TSP.DataReference {
+func (m *ImageAdjustmentsCommandArchive) GetReplacedEnhancedImageData() *DataReference {
 	if m != nil {
 		return m.ReplacedEnhancedImageData
 	}
 	return nil
 }
 
-func (m *ImageAdjustmentsCommandArchive) GetThumbnailAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.ThumbnailAdjustedImageData
-	}
-	return nil
-}
-
-func (m *ImageAdjustmentsCommandArchive) GetReplacedThumbnailAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.ReplacedThumbnailAdjustedImageData
-	}
-	return nil
-}
-
 type MediaFlagsCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	WasMediaReplaced     *bool               `protobuf:"varint,5,opt,name=was_media_replaced,json=wasMediaReplaced" json:"was_media_replaced,omitempty"`
-	IsPlaceholder        *bool               `protobuf:"varint,6,opt,name=is_placeholder,json=isPlaceholder" json:"is_placeholder,omitempty"`
-	OldWasMediaReplaced  *bool               `protobuf:"varint,7,opt,name=old_was_media_replaced,json=oldWasMediaReplaced" json:"old_was_media_replaced,omitempty"`
-	OldIsPlaceholder     *bool               `protobuf:"varint,8,opt,name=old_is_placeholder,json=oldIsPlaceholder" json:"old_is_placeholder,omitempty"`
-	PropertyName         *string             `protobuf:"bytes,4,req,name=property_name,json=propertyName" json:"property_name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	Flags                *uint32         `protobuf:"varint,3,opt,name=flags" json:"flags,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *MediaFlagsCommandArchive) Reset()         { *m = MediaFlagsCommandArchive{} }
 func (m *MediaFlagsCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*MediaFlagsCommandArchive) ProtoMessage()    {}
 func (*MediaFlagsCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{31}
+	return fileDescriptor_cadc508b609773c5, []int{23}
 }
 
 func (m *MediaFlagsCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -2280,55 +1881,34 @@ func (m *MediaFlagsCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_MediaFlagsCommandArchive proto.InternalMessageInfo
 
-func (m *MediaFlagsCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *MediaFlagsCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *MediaFlagsCommandArchive) GetWasMediaReplaced() bool {
-	if m != nil && m.WasMediaReplaced != nil {
-		return *m.WasMediaReplaced
+func (m *MediaFlagsCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
 	}
-	return false
+	return nil
 }
 
-func (m *MediaFlagsCommandArchive) GetIsPlaceholder() bool {
-	if m != nil && m.IsPlaceholder != nil {
-		return *m.IsPlaceholder
+func (m *MediaFlagsCommandArchive) GetFlags() uint32 {
+	if m != nil && m.Flags != nil {
+		return *m.Flags
 	}
-	return false
-}
-
-func (m *MediaFlagsCommandArchive) GetOldWasMediaReplaced() bool {
-	if m != nil && m.OldWasMediaReplaced != nil {
-		return *m.OldWasMediaReplaced
-	}
-	return false
-}
-
-func (m *MediaFlagsCommandArchive) GetOldIsPlaceholder() bool {
-	if m != nil && m.OldIsPlaceholder != nil {
-		return *m.OldIsPlaceholder
-	}
-	return false
-}
-
-func (m *MediaFlagsCommandArchive) GetPropertyName() string {
-	if m != nil && m.PropertyName != nil {
-		return *m.PropertyName
-	}
-	return ""
+	return 0
 }
 
 type DrawablesCommandGroupArchive struct {
-	Super                *TSK.CommandGroupArchive                                `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Super                *CommandGroupArchive                                    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
 	ObsoleteSelection    *CanvasSelectionArchive                                 `protobuf:"bytes,2,opt,name=obsolete_selection,json=obsoleteSelection" json:"obsolete_selection,omitempty"`
-	Modelforselection    *TSP.Reference                                          `protobuf:"bytes,3,opt,name=modelforselection" json:"modelforselection,omitempty"`
+	Modelforselection    *Reference                                              `protobuf:"bytes,3,opt,name=modelforselection" json:"modelforselection,omitempty"`
 	Type                 *DrawablesCommandGroupArchive_DrawablesCommandGroupType `protobuf:"varint,4,opt,name=type,enum=TSD.DrawablesCommandGroupArchive_DrawablesCommandGroupType" json:"type,omitempty"`
 	ForDrag              *bool                                                   `protobuf:"varint,5,opt,name=forDrag" json:"forDrag,omitempty"`
-	Archivedselection    *TSP.Reference                                          `protobuf:"bytes,6,opt,name=archivedselection" json:"archivedselection,omitempty"`
+	Archivedselection    *Reference                                              `protobuf:"bytes,6,opt,name=archivedselection" json:"archivedselection,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                                `json:"-"`
 	XXX_unrecognized     []byte                                                  `json:"-"`
 	XXX_sizecache        int32                                                   `json:"-"`
@@ -2338,7 +1918,7 @@ func (m *DrawablesCommandGroupArchive) Reset()         { *m = DrawablesCommandGr
 func (m *DrawablesCommandGroupArchive) String() string { return proto.CompactTextString(m) }
 func (*DrawablesCommandGroupArchive) ProtoMessage()    {}
 func (*DrawablesCommandGroupArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{32}
+	return fileDescriptor_cadc508b609773c5, []int{24}
 }
 
 func (m *DrawablesCommandGroupArchive) XXX_Unmarshal(b []byte) error {
@@ -2359,7 +1939,7 @@ func (m *DrawablesCommandGroupArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DrawablesCommandGroupArchive proto.InternalMessageInfo
 
-func (m *DrawablesCommandGroupArchive) GetSuper() *TSK.CommandGroupArchive {
+func (m *DrawablesCommandGroupArchive) GetSuper() *CommandGroupArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -2373,7 +1953,7 @@ func (m *DrawablesCommandGroupArchive) GetObsoleteSelection() *CanvasSelectionAr
 	return nil
 }
 
-func (m *DrawablesCommandGroupArchive) GetModelforselection() *TSP.Reference {
+func (m *DrawablesCommandGroupArchive) GetModelforselection() *Reference {
 	if m != nil {
 		return m.Modelforselection
 	}
@@ -2394,7 +1974,7 @@ func (m *DrawablesCommandGroupArchive) GetForDrag() bool {
 	return false
 }
 
-func (m *DrawablesCommandGroupArchive) GetArchivedselection() *TSP.Reference {
+func (m *DrawablesCommandGroupArchive) GetArchivedselection() *Reference {
 	if m != nil {
 		return m.Archivedselection
 	}
@@ -2402,24 +1982,18 @@ func (m *DrawablesCommandGroupArchive) GetArchivedselection() *TSP.Reference {
 }
 
 type ExteriorTextWrapCommandArchive struct {
-	Super                *InfoCommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldExteriorTextWrap  *ExteriorTextWrapArchive `protobuf:"bytes,3,opt,name=old_exterior_text_wrap,json=oldExteriorTextWrap" json:"old_exterior_text_wrap,omitempty"`
-	Type                 *uint32                  `protobuf:"varint,4,opt,name=type" json:"type,omitempty"`
-	Direction            *uint32                  `protobuf:"varint,5,opt,name=direction" json:"direction,omitempty"`
-	FitType              *uint32                  `protobuf:"varint,6,opt,name=fit_type,json=fitType" json:"fit_type,omitempty"`
-	Margin               *float32                 `protobuf:"fixed32,7,opt,name=margin" json:"margin,omitempty"`
-	AlphaThreshold       *float32                 `protobuf:"fixed32,8,opt,name=alpha_threshold,json=alphaThreshold" json:"alpha_threshold,omitempty"`
-	IsHtmlWrap           *bool                    `protobuf:"varint,9,opt,name=is_html_wrap,json=isHtmlWrap" json:"is_html_wrap,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	Super                *CommandArchive                               `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	InfoAndWrap          []*ExteriorTextWrapCommandArchive_InfoAndWrap `protobuf:"bytes,2,rep,name=info_and_wrap,json=infoAndWrap" json:"info_and_wrap,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *ExteriorTextWrapCommandArchive) Reset()         { *m = ExteriorTextWrapCommandArchive{} }
 func (m *ExteriorTextWrapCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ExteriorTextWrapCommandArchive) ProtoMessage()    {}
 func (*ExteriorTextWrapCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{33}
+	return fileDescriptor_cadc508b609773c5, []int{25}
 }
 
 func (m *ExteriorTextWrapCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -2440,76 +2014,86 @@ func (m *ExteriorTextWrapCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ExteriorTextWrapCommandArchive proto.InternalMessageInfo
 
-func (m *ExteriorTextWrapCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *ExteriorTextWrapCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ExteriorTextWrapCommandArchive) GetOldExteriorTextWrap() *ExteriorTextWrapArchive {
+func (m *ExteriorTextWrapCommandArchive) GetInfoAndWrap() []*ExteriorTextWrapCommandArchive_InfoAndWrap {
 	if m != nil {
-		return m.OldExteriorTextWrap
+		return m.InfoAndWrap
 	}
 	return nil
 }
 
-func (m *ExteriorTextWrapCommandArchive) GetType() uint32 {
-	if m != nil && m.Type != nil {
-		return *m.Type
-	}
-	return 0
+type ExteriorTextWrapCommandArchive_InfoAndWrap struct {
+	Info                 *Reference               `protobuf:"bytes,1,opt,name=info" json:"info,omitempty"`
+	ExteriorTextWrap     *ExteriorTextWrapArchive `protobuf:"bytes,2,opt,name=exterior_text_wrap,json=exteriorTextWrap" json:"exterior_text_wrap,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
 }
 
-func (m *ExteriorTextWrapCommandArchive) GetDirection() uint32 {
-	if m != nil && m.Direction != nil {
-		return *m.Direction
-	}
-	return 0
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) Reset() {
+	*m = ExteriorTextWrapCommandArchive_InfoAndWrap{}
+}
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) String() string {
+	return proto.CompactTextString(m)
+}
+func (*ExteriorTextWrapCommandArchive_InfoAndWrap) ProtoMessage() {}
+func (*ExteriorTextWrapCommandArchive_InfoAndWrap) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{25, 0}
 }
 
-func (m *ExteriorTextWrapCommandArchive) GetFitType() uint32 {
-	if m != nil && m.FitType != nil {
-		return *m.FitType
-	}
-	return 0
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ExteriorTextWrapCommandArchive_InfoAndWrap.Unmarshal(m, b)
+}
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ExteriorTextWrapCommandArchive_InfoAndWrap.Marshal(b, m, deterministic)
+}
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ExteriorTextWrapCommandArchive_InfoAndWrap.Merge(m, src)
+}
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) XXX_Size() int {
+	return xxx_messageInfo_ExteriorTextWrapCommandArchive_InfoAndWrap.Size(m)
+}
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) XXX_DiscardUnknown() {
+	xxx_messageInfo_ExteriorTextWrapCommandArchive_InfoAndWrap.DiscardUnknown(m)
 }
 
-func (m *ExteriorTextWrapCommandArchive) GetMargin() float32 {
-	if m != nil && m.Margin != nil {
-		return *m.Margin
+var xxx_messageInfo_ExteriorTextWrapCommandArchive_InfoAndWrap proto.InternalMessageInfo
+
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
 	}
-	return 0
+	return nil
 }
 
-func (m *ExteriorTextWrapCommandArchive) GetAlphaThreshold() float32 {
-	if m != nil && m.AlphaThreshold != nil {
-		return *m.AlphaThreshold
+func (m *ExteriorTextWrapCommandArchive_InfoAndWrap) GetExteriorTextWrap() *ExteriorTextWrapArchive {
+	if m != nil {
+		return m.ExteriorTextWrap
 	}
-	return 0
-}
-
-func (m *ExteriorTextWrapCommandArchive) GetIsHtmlWrap() bool {
-	if m != nil && m.IsHtmlWrap != nil {
-		return *m.IsHtmlWrap
-	}
-	return false
+	return nil
 }
 
 type DrawableHyperlinkCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldhyperlinkUrl      *string             `protobuf:"bytes,2,opt,name=oldhyperlink_url,json=oldhyperlinkUrl" json:"oldhyperlink_url,omitempty"`
-	NewhyperlinkUrl      *string             `protobuf:"bytes,3,opt,name=newhyperlink_url,json=newhyperlinkUrl" json:"newhyperlink_url,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	OldhyperlinkUrl      *string         `protobuf:"bytes,3,opt,name=oldhyperlink_url,json=oldhyperlinkUrl" json:"oldhyperlink_url,omitempty"`
+	NewhyperlinkUrl      *string         `protobuf:"bytes,4,opt,name=newhyperlink_url,json=newhyperlinkUrl" json:"newhyperlink_url,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *DrawableHyperlinkCommandArchive) Reset()         { *m = DrawableHyperlinkCommandArchive{} }
 func (m *DrawableHyperlinkCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*DrawableHyperlinkCommandArchive) ProtoMessage()    {}
 func (*DrawableHyperlinkCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{34}
+	return fileDescriptor_cadc508b609773c5, []int{26}
 }
 
 func (m *DrawableHyperlinkCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -2530,9 +2114,16 @@ func (m *DrawableHyperlinkCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DrawableHyperlinkCommandArchive proto.InternalMessageInfo
 
-func (m *DrawableHyperlinkCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *DrawableHyperlinkCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
+	}
+	return nil
+}
+
+func (m *DrawableHyperlinkCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
 	}
 	return nil
 }
@@ -2551,125 +2142,81 @@ func (m *DrawableHyperlinkCommandArchive) GetNewhyperlinkUrl() string {
 	return ""
 }
 
-type CommentInvalidatingCommandSelectionBehaviorArchive struct {
-	Super                       *TSK.CommandSelectionBehaviorArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	AnnotationDisplayingCommand *TSP.Reference                       `protobuf:"bytes,2,opt,name=annotation_displaying_command,json=annotationDisplayingCommand" json:"annotation_displaying_command,omitempty"`
-	BeginEditingOnUndo          *bool                                `protobuf:"varint,3,opt,name=begin_editing_on_undo,json=beginEditingOnUndo" json:"begin_editing_on_undo,omitempty"`
-	BeginEditingOnRedo          *bool                                `protobuf:"varint,4,opt,name=begin_editing_on_redo,json=beginEditingOnRedo" json:"begin_editing_on_redo,omitempty"`
-	ShouldInvalidateOnUndo      *bool                                `protobuf:"varint,5,opt,name=should_invalidate_on_undo,json=shouldInvalidateOnUndo" json:"should_invalidate_on_undo,omitempty"`
-	ShouldInvalidateOnRedo      *bool                                `protobuf:"varint,6,opt,name=should_invalidate_on_redo,json=shouldInvalidateOnRedo" json:"should_invalidate_on_redo,omitempty"`
-	XXX_NoUnkeyedLiteral        struct{}                             `json:"-"`
-	XXX_unrecognized            []byte                               `json:"-"`
-	XXX_sizecache               int32                                `json:"-"`
+type CommandSelectionBehaviorArchive struct {
+	ModelForSelection    *Reference                                                    `protobuf:"bytes,2,opt,name=model_for_selection,json=modelForSelection" json:"model_for_selection,omitempty"`
+	Type                 *CommandSelectionBehaviorArchive_CommandSelectionBehaviorType `protobuf:"varint,3,opt,name=type,enum=TSD.CommandSelectionBehaviorArchive_CommandSelectionBehaviorType" json:"type,omitempty"`
+	ArchivedSelection    *Reference                                                    `protobuf:"bytes,4,opt,name=archived_selection,json=archivedSelection" json:"archived_selection,omitempty"`
+	ArchivedNewSelection *Reference                                                    `protobuf:"bytes,5,opt,name=archived_new_selection,json=archivedNewSelection" json:"archived_new_selection,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                                      `json:"-"`
+	XXX_unrecognized     []byte                                                        `json:"-"`
+	XXX_sizecache        int32                                                         `json:"-"`
 }
 
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) Reset() {
-	*m = CommentInvalidatingCommandSelectionBehaviorArchive{}
-}
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommentInvalidatingCommandSelectionBehaviorArchive) ProtoMessage() {}
-func (*CommentInvalidatingCommandSelectionBehaviorArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{35}
+func (m *CommandSelectionBehaviorArchive) Reset()         { *m = CommandSelectionBehaviorArchive{} }
+func (m *CommandSelectionBehaviorArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSelectionBehaviorArchive) ProtoMessage()    {}
+func (*CommandSelectionBehaviorArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{27}
 }
 
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommentInvalidatingCommandSelectionBehaviorArchive.Unmarshal(m, b)
+func (m *CommandSelectionBehaviorArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSelectionBehaviorArchive.Unmarshal(m, b)
 }
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommentInvalidatingCommandSelectionBehaviorArchive.Marshal(b, m, deterministic)
+func (m *CommandSelectionBehaviorArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSelectionBehaviorArchive.Marshal(b, m, deterministic)
 }
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommentInvalidatingCommandSelectionBehaviorArchive.Merge(m, src)
+func (m *CommandSelectionBehaviorArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSelectionBehaviorArchive.Merge(m, src)
 }
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) XXX_Size() int {
-	return xxx_messageInfo_CommentInvalidatingCommandSelectionBehaviorArchive.Size(m)
+func (m *CommandSelectionBehaviorArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSelectionBehaviorArchive.Size(m)
 }
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommentInvalidatingCommandSelectionBehaviorArchive.DiscardUnknown(m)
+func (m *CommandSelectionBehaviorArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSelectionBehaviorArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommentInvalidatingCommandSelectionBehaviorArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandSelectionBehaviorArchive proto.InternalMessageInfo
 
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) GetSuper() *TSK.CommandSelectionBehaviorArchive {
+func (m *CommandSelectionBehaviorArchive) GetModelForSelection() *Reference {
 	if m != nil {
-		return m.Super
+		return m.ModelForSelection
 	}
 	return nil
 }
 
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) GetAnnotationDisplayingCommand() *TSP.Reference {
+func (m *CommandSelectionBehaviorArchive) GetType() CommandSelectionBehaviorArchive_CommandSelectionBehaviorType {
+	if m != nil && m.Type != nil {
+		return *m.Type
+	}
+	return CommandSelectionBehaviorArchive_Constructive
+}
+
+func (m *CommandSelectionBehaviorArchive) GetArchivedSelection() *Reference {
 	if m != nil {
-		return m.AnnotationDisplayingCommand
+		return m.ArchivedSelection
 	}
 	return nil
 }
 
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) GetBeginEditingOnUndo() bool {
-	if m != nil && m.BeginEditingOnUndo != nil {
-		return *m.BeginEditingOnUndo
+func (m *CommandSelectionBehaviorArchive) GetArchivedNewSelection() *Reference {
+	if m != nil {
+		return m.ArchivedNewSelection
 	}
-	return false
-}
-
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) GetBeginEditingOnRedo() bool {
-	if m != nil && m.BeginEditingOnRedo != nil {
-		return *m.BeginEditingOnRedo
-	}
-	return false
-}
-
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) GetShouldInvalidateOnUndo() bool {
-	if m != nil && m.ShouldInvalidateOnUndo != nil {
-		return *m.ShouldInvalidateOnUndo
-	}
-	return false
-}
-
-func (m *CommentInvalidatingCommandSelectionBehaviorArchive) GetShouldInvalidateOnRedo() bool {
-	if m != nil && m.ShouldInvalidateOnRedo != nil {
-		return *m.ShouldInvalidateOnRedo
-	}
-	return false
+	return nil
 }
 
 type ImageReplaceCommandArchive struct {
-	Super                         *InfoCommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewImageData                  *TSP.DataReference       `protobuf:"bytes,2,opt,name=new_image_data,json=newImageData" json:"new_image_data,omitempty"`
-	NewOriginalImageData          *TSP.DataReference       `protobuf:"bytes,3,opt,name=new_original_image_data,json=newOriginalImageData" json:"new_original_image_data,omitempty"`
-	OldImageData                  *TSP.DataReference       `protobuf:"bytes,4,opt,name=old_image_data,json=oldImageData" json:"old_image_data,omitempty"`
-	OldOriginalImageData          *TSP.DataReference       `protobuf:"bytes,5,opt,name=old_original_image_data,json=oldOriginalImageData" json:"old_original_image_data,omitempty"`
-	InstantAlphaPath              *TSP.Path                `protobuf:"bytes,6,opt,name=instant_alpha_path,json=instantAlphaPath" json:"instant_alpha_path,omitempty"`
-	OldInstantAlphaPath           *TSP.Path                `protobuf:"bytes,7,opt,name=old_instant_alpha_path,json=oldInstantAlphaPath" json:"old_instant_alpha_path,omitempty"`
-	NaturalSizeFor_IAPath         *TSP.Size                `protobuf:"bytes,8,opt,name=natural_size_for_IAPath,json=naturalSizeForIAPath" json:"natural_size_for_IAPath,omitempty"`
-	OldNaturalSizeFor_IAPath      *TSP.Size                `protobuf:"bytes,9,opt,name=old_natural_size_for_IAPath,json=oldNaturalSizeForIAPath" json:"old_natural_size_for_IAPath,omitempty"`
-	TargetImageGeometry           *GeometryArchive         `protobuf:"bytes,10,opt,name=target_image_geometry,json=targetImageGeometry" json:"target_image_geometry,omitempty"`
-	OldTargetImageGeometry        *GeometryArchive         `protobuf:"bytes,12,opt,name=old_target_image_geometry,json=oldTargetImageGeometry" json:"old_target_image_geometry,omitempty"`
-	TargetMaskGeometry            *GeometryArchive         `protobuf:"bytes,13,opt,name=target_mask_geometry,json=targetMaskGeometry" json:"target_mask_geometry,omitempty"`
-	OldTargetMaskGeometry         *GeometryArchive         `protobuf:"bytes,14,opt,name=old_target_mask_geometry,json=oldTargetMaskGeometry" json:"old_target_mask_geometry,omitempty"`
-	ImageAdjustments              *ImageAdjustmentsArchive `protobuf:"bytes,15,opt,name=image_adjustments,json=imageAdjustments" json:"image_adjustments,omitempty"`
-	AdjustedImageData             *TSP.DataReference       `protobuf:"bytes,16,opt,name=adjusted_image_data,json=adjustedImageData" json:"adjusted_image_data,omitempty"`
-	EnhancedImageData             *TSP.DataReference       `protobuf:"bytes,17,opt,name=enhanced_image_data,json=enhancedImageData" json:"enhanced_image_data,omitempty"`
-	OldImageAdjustments           *ImageAdjustmentsArchive `protobuf:"bytes,18,opt,name=old_image_adjustments,json=oldImageAdjustments" json:"old_image_adjustments,omitempty"`
-	OldAdjustedImageData          *TSP.DataReference       `protobuf:"bytes,19,opt,name=old_adjusted_image_data,json=oldAdjustedImageData" json:"old_adjusted_image_data,omitempty"`
-	OldEnhancedImageData          *TSP.DataReference       `protobuf:"bytes,20,opt,name=old_enhanced_image_data,json=oldEnhancedImageData" json:"old_enhanced_image_data,omitempty"`
-	ThumbnailImageData            *TSP.DataReference       `protobuf:"bytes,21,opt,name=thumbnail_image_data,json=thumbnailImageData" json:"thumbnail_image_data,omitempty"`
-	OldThumbnailImageData         *TSP.DataReference       `protobuf:"bytes,22,opt,name=old_thumbnail_image_data,json=oldThumbnailImageData" json:"old_thumbnail_image_data,omitempty"`
-	ThumbnailAdjustedImageData    *TSP.DataReference       `protobuf:"bytes,23,opt,name=thumbnail_adjusted_image_data,json=thumbnailAdjustedImageData" json:"thumbnail_adjusted_image_data,omitempty"`
-	OldThumbnailAdjustedImageData *TSP.DataReference       `protobuf:"bytes,24,opt,name=old_thumbnail_adjusted_image_data,json=oldThumbnailAdjustedImageData" json:"old_thumbnail_adjusted_image_data,omitempty"`
-	NaturalSize                   *TSP.Size                `protobuf:"bytes,25,opt,name=natural_size,json=naturalSize" json:"natural_size,omitempty"`
-	OldNaturalSize                *TSP.Size                `protobuf:"bytes,26,opt,name=old_natural_size,json=oldNaturalSize" json:"old_natural_size,omitempty"`
-	XXX_NoUnkeyedLiteral          struct{}                 `json:"-"`
-	XXX_unrecognized              []byte                   `json:"-"`
-	XXX_sizecache                 int32                    `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *ImageReplaceCommandArchive) Reset()         { *m = ImageReplaceCommandArchive{} }
 func (m *ImageReplaceCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ImageReplaceCommandArchive) ProtoMessage()    {}
 func (*ImageReplaceCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{36}
+	return fileDescriptor_cadc508b609773c5, []int{28}
 }
 
 func (m *ImageReplaceCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -2690,195 +2237,27 @@ func (m *ImageReplaceCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ImageReplaceCommandArchive proto.InternalMessageInfo
 
-func (m *ImageReplaceCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *ImageReplaceCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ImageReplaceCommandArchive) GetNewImageData() *TSP.DataReference {
-	if m != nil {
-		return m.NewImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetNewOriginalImageData() *TSP.DataReference {
-	if m != nil {
-		return m.NewOriginalImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldImageData() *TSP.DataReference {
-	if m != nil {
-		return m.OldImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldOriginalImageData() *TSP.DataReference {
-	if m != nil {
-		return m.OldOriginalImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetInstantAlphaPath() *TSP.Path {
-	if m != nil {
-		return m.InstantAlphaPath
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldInstantAlphaPath() *TSP.Path {
-	if m != nil {
-		return m.OldInstantAlphaPath
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetNaturalSizeFor_IAPath() *TSP.Size {
-	if m != nil {
-		return m.NaturalSizeFor_IAPath
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldNaturalSizeFor_IAPath() *TSP.Size {
-	if m != nil {
-		return m.OldNaturalSizeFor_IAPath
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetTargetImageGeometry() *GeometryArchive {
-	if m != nil {
-		return m.TargetImageGeometry
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldTargetImageGeometry() *GeometryArchive {
-	if m != nil {
-		return m.OldTargetImageGeometry
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetTargetMaskGeometry() *GeometryArchive {
-	if m != nil {
-		return m.TargetMaskGeometry
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldTargetMaskGeometry() *GeometryArchive {
-	if m != nil {
-		return m.OldTargetMaskGeometry
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetImageAdjustments() *ImageAdjustmentsArchive {
-	if m != nil {
-		return m.ImageAdjustments
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.AdjustedImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetEnhancedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.EnhancedImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldImageAdjustments() *ImageAdjustmentsArchive {
-	if m != nil {
-		return m.OldImageAdjustments
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.OldAdjustedImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldEnhancedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.OldEnhancedImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetThumbnailImageData() *TSP.DataReference {
-	if m != nil {
-		return m.ThumbnailImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldThumbnailImageData() *TSP.DataReference {
-	if m != nil {
-		return m.OldThumbnailImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetThumbnailAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.ThumbnailAdjustedImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldThumbnailAdjustedImageData() *TSP.DataReference {
-	if m != nil {
-		return m.OldThumbnailAdjustedImageData
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetNaturalSize() *TSP.Size {
-	if m != nil {
-		return m.NaturalSize
-	}
-	return nil
-}
-
-func (m *ImageReplaceCommandArchive) GetOldNaturalSize() *TSP.Size {
-	if m != nil {
-		return m.OldNaturalSize
-	}
-	return nil
-}
-
 type DrawableLockCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Locked               *bool               `protobuf:"varint,2,opt,name=locked" json:"locked,omitempty"`
-	WasLocked            *bool               `protobuf:"varint,3,opt,name=was_locked,json=wasLocked" json:"was_locked,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	Lock                 *bool           `protobuf:"varint,3,opt,name=lock" json:"lock,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *DrawableLockCommandArchive) Reset()         { *m = DrawableLockCommandArchive{} }
 func (m *DrawableLockCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*DrawableLockCommandArchive) ProtoMessage()    {}
 func (*DrawableLockCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{37}
+	return fileDescriptor_cadc508b609773c5, []int{29}
 }
 
 func (m *DrawableLockCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -2899,43 +2278,42 @@ func (m *DrawableLockCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DrawableLockCommandArchive proto.InternalMessageInfo
 
-func (m *DrawableLockCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *DrawableLockCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *DrawableLockCommandArchive) GetLocked() bool {
-	if m != nil && m.Locked != nil {
-		return *m.Locked
+func (m *DrawableLockCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
 	}
-	return false
+	return nil
 }
 
-func (m *DrawableLockCommandArchive) GetWasLocked() bool {
-	if m != nil && m.WasLocked != nil {
-		return *m.WasLocked
+func (m *DrawableLockCommandArchive) GetLock() bool {
+	if m != nil && m.Lock != nil {
+		return *m.Lock
 	}
 	return false
 }
 
 type DrawableInfoCommentCommandArchive struct {
-	Super                *InfoCommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldComment           *TSP.Reference         `protobuf:"bytes,2,opt,name=old_comment,json=oldComment" json:"old_comment,omitempty"`
-	NewComment           *TSP.Reference         `protobuf:"bytes,3,opt,name=new_comment,json=newComment" json:"new_comment,omitempty"`
-	ForwardVariant       *CommentCommandVariant `protobuf:"varint,4,opt,name=forward_variant,json=forwardVariant,enum=TSD.CommentCommandVariant" json:"forward_variant,omitempty"`
-	InverseVariant       *CommentCommandVariant `protobuf:"varint,5,opt,name=inverse_variant,json=inverseVariant,enum=TSD.CommentCommandVariant" json:"inverse_variant,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	OldComment           *Reference      `protobuf:"bytes,3,opt,name=old_comment,json=oldComment" json:"old_comment,omitempty"`
+	NewComment           *Reference      `protobuf:"bytes,4,opt,name=new_comment,json=newComment" json:"new_comment,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *DrawableInfoCommentCommandArchive) Reset()         { *m = DrawableInfoCommentCommandArchive{} }
 func (m *DrawableInfoCommentCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*DrawableInfoCommentCommandArchive) ProtoMessage()    {}
 func (*DrawableInfoCommentCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{38}
+	return fileDescriptor_cadc508b609773c5, []int{30}
 }
 
 func (m *DrawableInfoCommentCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -2956,166 +2334,113 @@ func (m *DrawableInfoCommentCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DrawableInfoCommentCommandArchive proto.InternalMessageInfo
 
-func (m *DrawableInfoCommentCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *DrawableInfoCommentCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *DrawableInfoCommentCommandArchive) GetOldComment() *TSP.Reference {
+func (m *DrawableInfoCommentCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
+	}
+	return nil
+}
+
+func (m *DrawableInfoCommentCommandArchive) GetOldComment() *Reference {
 	if m != nil {
 		return m.OldComment
 	}
 	return nil
 }
 
-func (m *DrawableInfoCommentCommandArchive) GetNewComment() *TSP.Reference {
+func (m *DrawableInfoCommentCommandArchive) GetNewComment() *Reference {
 	if m != nil {
 		return m.NewComment
 	}
 	return nil
 }
 
-func (m *DrawableInfoCommentCommandArchive) GetForwardVariant() CommentCommandVariant {
-	if m != nil && m.ForwardVariant != nil {
-		return *m.ForwardVariant
-	}
-	return CommentCommandVariant_BaseComment
+type CommentStorageApplyCommandArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	CommentStorage       *Reference      `protobuf:"bytes,2,req,name=comment_storage,json=commentStorage" json:"comment_storage,omitempty"`
+	CommentString        *string         `protobuf:"bytes,3,req,name=comment_string,json=commentString" json:"comment_string,omitempty"`
+	OldCommentString     *string         `protobuf:"bytes,4,req,name=old_comment_string,json=oldCommentString" json:"old_comment_string,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
-func (m *DrawableInfoCommentCommandArchive) GetInverseVariant() CommentCommandVariant {
-	if m != nil && m.InverseVariant != nil {
-		return *m.InverseVariant
-	}
-	return CommentCommandVariant_BaseComment
+func (m *CommentStorageApplyCommandArchive) Reset()         { *m = CommentStorageApplyCommandArchive{} }
+func (m *CommentStorageApplyCommandArchive) String() string { return proto.CompactTextString(m) }
+func (*CommentStorageApplyCommandArchive) ProtoMessage()    {}
+func (*CommentStorageApplyCommandArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_cadc508b609773c5, []int{31}
 }
 
-type DrawablePencilAnnotationCommandArchive struct {
-	Super                    *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	PencilAnnotationToAdd    *TSP.Reference      `protobuf:"bytes,2,opt,name=pencil_annotation_to_add,json=pencilAnnotationToAdd" json:"pencil_annotation_to_add,omitempty"`
-	PencilAnnotationToRemove *TSP.Reference      `protobuf:"bytes,3,opt,name=pencil_annotation_to_remove,json=pencilAnnotationToRemove" json:"pencil_annotation_to_remove,omitempty"`
-	XXX_NoUnkeyedLiteral     struct{}            `json:"-"`
-	XXX_unrecognized         []byte              `json:"-"`
-	XXX_sizecache            int32               `json:"-"`
+func (m *CommentStorageApplyCommandArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommentStorageApplyCommandArchive.Unmarshal(m, b)
+}
+func (m *CommentStorageApplyCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommentStorageApplyCommandArchive.Marshal(b, m, deterministic)
+}
+func (m *CommentStorageApplyCommandArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommentStorageApplyCommandArchive.Merge(m, src)
+}
+func (m *CommentStorageApplyCommandArchive) XXX_Size() int {
+	return xxx_messageInfo_CommentStorageApplyCommandArchive.Size(m)
+}
+func (m *CommentStorageApplyCommandArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommentStorageApplyCommandArchive.DiscardUnknown(m)
 }
 
-func (m *DrawablePencilAnnotationCommandArchive) Reset() {
-	*m = DrawablePencilAnnotationCommandArchive{}
-}
-func (m *DrawablePencilAnnotationCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*DrawablePencilAnnotationCommandArchive) ProtoMessage()    {}
-func (*DrawablePencilAnnotationCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{39}
-}
+var xxx_messageInfo_CommentStorageApplyCommandArchive proto.InternalMessageInfo
 
-func (m *DrawablePencilAnnotationCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DrawablePencilAnnotationCommandArchive.Unmarshal(m, b)
-}
-func (m *DrawablePencilAnnotationCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DrawablePencilAnnotationCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *DrawablePencilAnnotationCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DrawablePencilAnnotationCommandArchive.Merge(m, src)
-}
-func (m *DrawablePencilAnnotationCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_DrawablePencilAnnotationCommandArchive.Size(m)
-}
-func (m *DrawablePencilAnnotationCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_DrawablePencilAnnotationCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DrawablePencilAnnotationCommandArchive proto.InternalMessageInfo
-
-func (m *DrawablePencilAnnotationCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *CommentStorageApplyCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *DrawablePencilAnnotationCommandArchive) GetPencilAnnotationToAdd() *TSP.Reference {
+func (m *CommentStorageApplyCommandArchive) GetCommentStorage() *Reference {
 	if m != nil {
-		return m.PencilAnnotationToAdd
+		return m.CommentStorage
 	}
 	return nil
 }
 
-func (m *DrawablePencilAnnotationCommandArchive) GetPencilAnnotationToRemove() *TSP.Reference {
-	if m != nil {
-		return m.PencilAnnotationToRemove
+func (m *CommentStorageApplyCommandArchive) GetCommentString() string {
+	if m != nil && m.CommentString != nil {
+		return *m.CommentString
 	}
-	return nil
+	return ""
 }
 
-type AbstractGuideCommandArchive struct {
-	Super                *TSK.CommandArchive        `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldGuides            []*UserDefinedGuideArchive `protobuf:"bytes,7,rep,name=old_guides,json=oldGuides" json:"old_guides,omitempty"`
-	NewGuides            []*UserDefinedGuideArchive `protobuf:"bytes,8,rep,name=new_guides,json=newGuides" json:"new_guides,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
-	XXX_unrecognized     []byte                     `json:"-"`
-	XXX_sizecache        int32                      `json:"-"`
-}
-
-func (m *AbstractGuideCommandArchive) Reset()         { *m = AbstractGuideCommandArchive{} }
-func (m *AbstractGuideCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*AbstractGuideCommandArchive) ProtoMessage()    {}
-func (*AbstractGuideCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{40}
-}
-
-func (m *AbstractGuideCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_AbstractGuideCommandArchive.Unmarshal(m, b)
-}
-func (m *AbstractGuideCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_AbstractGuideCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *AbstractGuideCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_AbstractGuideCommandArchive.Merge(m, src)
-}
-func (m *AbstractGuideCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_AbstractGuideCommandArchive.Size(m)
-}
-func (m *AbstractGuideCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_AbstractGuideCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_AbstractGuideCommandArchive proto.InternalMessageInfo
-
-func (m *AbstractGuideCommandArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
+func (m *CommentStorageApplyCommandArchive) GetOldCommentString() string {
+	if m != nil && m.OldCommentString != nil {
+		return *m.OldCommentString
 	}
-	return nil
-}
-
-func (m *AbstractGuideCommandArchive) GetOldGuides() []*UserDefinedGuideArchive {
-	if m != nil {
-		return m.OldGuides
-	}
-	return nil
-}
-
-func (m *AbstractGuideCommandArchive) GetNewGuides() []*UserDefinedGuideArchive {
-	if m != nil {
-		return m.NewGuides
-	}
-	return nil
+	return ""
 }
 
 type GuideCommandArchive struct {
-	Super                *AbstractGuideCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	StorageIdPath        *TSP.UUIDPath                `protobuf:"bytes,2,req,name=storage_id_path,json=storageIdPath" json:"storage_id_path,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	Super                *CommandArchive                       `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Storage              *Reference                            `protobuf:"bytes,2,opt,name=storage" json:"storage,omitempty"`
+	OldGuide             *UserDefinedGuideArchive              `protobuf:"bytes,3,opt,name=old_guide,json=oldGuide" json:"old_guide,omitempty"`
+	NewGuide             *UserDefinedGuideArchive              `protobuf:"bytes,4,opt,name=new_guide,json=newGuide" json:"new_guide,omitempty"`
+	Mode                 *GuideCommandArchive_GuideCommandMode `protobuf:"varint,5,opt,name=mode,enum=TSD.GuideCommandArchive_GuideCommandMode" json:"mode,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                              `json:"-"`
+	XXX_unrecognized     []byte                                `json:"-"`
+	XXX_sizecache        int32                                 `json:"-"`
 }
 
 func (m *GuideCommandArchive) Reset()         { *m = GuideCommandArchive{} }
 func (m *GuideCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*GuideCommandArchive) ProtoMessage()    {}
 func (*GuideCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{41}
+	return fileDescriptor_cadc508b609773c5, []int{32}
 }
 
 func (m *GuideCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -3136,27 +2461,48 @@ func (m *GuideCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GuideCommandArchive proto.InternalMessageInfo
 
-func (m *GuideCommandArchive) GetSuper() *AbstractGuideCommandArchive {
+func (m *GuideCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *GuideCommandArchive) GetStorageIdPath() *TSP.UUIDPath {
+func (m *GuideCommandArchive) GetStorage() *Reference {
 	if m != nil {
-		return m.StorageIdPath
+		return m.Storage
 	}
 	return nil
 }
 
+func (m *GuideCommandArchive) GetOldGuide() *UserDefinedGuideArchive {
+	if m != nil {
+		return m.OldGuide
+	}
+	return nil
+}
+
+func (m *GuideCommandArchive) GetNewGuide() *UserDefinedGuideArchive {
+	if m != nil {
+		return m.NewGuide
+	}
+	return nil
+}
+
+func (m *GuideCommandArchive) GetMode() GuideCommandArchive_GuideCommandMode {
+	if m != nil && m.Mode != nil {
+		return *m.Mode
+	}
+	return GuideCommandArchive_Add
+}
+
 type DrawableAspectRatioLockedCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	AspectRatioLocked    *bool               `protobuf:"varint,2,opt,name=aspect_ratio_locked,json=aspectRatioLocked" json:"aspect_ratio_locked,omitempty"`
-	WasAspectRatioLocked *bool               `protobuf:"varint,3,opt,name=was_aspect_ratio_locked,json=wasAspectRatioLocked" json:"was_aspect_ratio_locked,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                 *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	AspectRatioLocked    *bool           `protobuf:"varint,3,opt,name=aspect_ratio_locked,json=aspectRatioLocked" json:"aspect_ratio_locked,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *DrawableAspectRatioLockedCommandArchive) Reset() {
@@ -3165,7 +2511,7 @@ func (m *DrawableAspectRatioLockedCommandArchive) Reset() {
 func (m *DrawableAspectRatioLockedCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*DrawableAspectRatioLockedCommandArchive) ProtoMessage()    {}
 func (*DrawableAspectRatioLockedCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{42}
+	return fileDescriptor_cadc508b609773c5, []int{33}
 }
 
 func (m *DrawableAspectRatioLockedCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -3186,9 +2532,16 @@ func (m *DrawableAspectRatioLockedCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DrawableAspectRatioLockedCommandArchive proto.InternalMessageInfo
 
-func (m *DrawableAspectRatioLockedCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *DrawableAspectRatioLockedCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
+	}
+	return nil
+}
+
+func (m *DrawableAspectRatioLockedCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
 	}
 	return nil
 }
@@ -3200,20 +2553,13 @@ func (m *DrawableAspectRatioLockedCommandArchive) GetAspectRatioLocked() bool {
 	return false
 }
 
-func (m *DrawableAspectRatioLockedCommandArchive) GetWasAspectRatioLocked() bool {
-	if m != nil && m.WasAspectRatioLocked != nil {
-		return *m.WasAspectRatioLocked
-	}
-	return false
-}
-
 type DrawableAccessibilityDescriptionCommandArchive struct {
-	Super                       *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	AccessibilityDescription    *string             `protobuf:"bytes,2,opt,name=accessibility_description,json=accessibilityDescription" json:"accessibility_description,omitempty"`
-	OldAccessibilityDescription *string             `protobuf:"bytes,3,opt,name=old_accessibility_description,json=oldAccessibilityDescription" json:"old_accessibility_description,omitempty"`
-	XXX_NoUnkeyedLiteral        struct{}            `json:"-"`
-	XXX_unrecognized            []byte              `json:"-"`
-	XXX_sizecache               int32               `json:"-"`
+	Super                    *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Info                     *Reference      `protobuf:"bytes,2,opt,name=info" json:"info,omitempty"`
+	AccessibilityDescription *string         `protobuf:"bytes,3,opt,name=accessibility_description,json=accessibilityDescription" json:"accessibility_description,omitempty"`
+	XXX_NoUnkeyedLiteral     struct{}        `json:"-"`
+	XXX_unrecognized         []byte          `json:"-"`
+	XXX_sizecache            int32           `json:"-"`
 }
 
 func (m *DrawableAccessibilityDescriptionCommandArchive) Reset() {
@@ -3224,7 +2570,7 @@ func (m *DrawableAccessibilityDescriptionCommandArchive) String() string {
 }
 func (*DrawableAccessibilityDescriptionCommandArchive) ProtoMessage() {}
 func (*DrawableAccessibilityDescriptionCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{43}
+	return fileDescriptor_cadc508b609773c5, []int{34}
 }
 
 func (m *DrawableAccessibilityDescriptionCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -3245,9 +2591,16 @@ func (m *DrawableAccessibilityDescriptionCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_DrawableAccessibilityDescriptionCommandArchive proto.InternalMessageInfo
 
-func (m *DrawableAccessibilityDescriptionCommandArchive) GetSuper() *InfoCommandArchive {
+func (m *DrawableAccessibilityDescriptionCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
+	}
+	return nil
+}
+
+func (m *DrawableAccessibilityDescriptionCommandArchive) GetInfo() *Reference {
+	if m != nil {
+		return m.Info
 	}
 	return nil
 }
@@ -3259,28 +2612,20 @@ func (m *DrawableAccessibilityDescriptionCommandArchive) GetAccessibilityDescrip
 	return ""
 }
 
-func (m *DrawableAccessibilityDescriptionCommandArchive) GetOldAccessibilityDescription() string {
-	if m != nil && m.OldAccessibilityDescription != nil {
-		return *m.OldAccessibilityDescription
-	}
-	return ""
-}
-
 type PasteStyleCommandArchive struct {
-	Super                *AbstractStyleCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewStyle             *TSP.Reference               `protobuf:"bytes,2,opt,name=new_style,json=newStyle" json:"new_style,omitempty"`
-	RollbackStyle        *TSP.Reference               `protobuf:"bytes,5,opt,name=rollback_style,json=rollbackStyle" json:"rollback_style,omitempty"`
-	TailEndOnLeft        *bool                        `protobuf:"varint,4,opt,name=tail_end_on_left,json=tailEndOnLeft" json:"tail_end_on_left,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	DestInfo             *Reference      `protobuf:"bytes,2,req,name=dest_info,json=destInfo" json:"dest_info,omitempty"`
+	ShapeStyle           *Reference      `protobuf:"bytes,3,opt,name=shape_style,json=shapeStyle" json:"shape_style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *PasteStyleCommandArchive) Reset()         { *m = PasteStyleCommandArchive{} }
 func (m *PasteStyleCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*PasteStyleCommandArchive) ProtoMessage()    {}
 func (*PasteStyleCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{44}
+	return fileDescriptor_cadc508b609773c5, []int{35}
 }
 
 func (m *PasteStyleCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -3301,928 +2646,228 @@ func (m *PasteStyleCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_PasteStyleCommandArchive proto.InternalMessageInfo
 
-func (m *PasteStyleCommandArchive) GetSuper() *AbstractStyleCommandArchive {
+func (m *PasteStyleCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *PasteStyleCommandArchive) GetNewStyle() *TSP.Reference {
+func (m *PasteStyleCommandArchive) GetDestInfo() *Reference {
 	if m != nil {
-		return m.NewStyle
+		return m.DestInfo
 	}
 	return nil
 }
 
-func (m *PasteStyleCommandArchive) GetRollbackStyle() *TSP.Reference {
+func (m *PasteStyleCommandArchive) GetShapeStyle() *Reference {
 	if m != nil {
-		return m.RollbackStyle
-	}
-	return nil
-}
-
-func (m *PasteStyleCommandArchive) GetTailEndOnLeft() bool {
-	if m != nil && m.TailEndOnLeft != nil {
-		return *m.TailEndOnLeft
-	}
-	return false
-}
-
-type ImageInfoAbstractGeometryCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewImageGeometry     *GeometryArchive    `protobuf:"bytes,2,opt,name=new_image_geometry,json=newImageGeometry" json:"new_image_geometry,omitempty"`
-	OldImageGeometry     *GeometryArchive    `protobuf:"bytes,3,opt,name=old_image_geometry,json=oldImageGeometry" json:"old_image_geometry,omitempty"`
-	NewMaskGeometry      *GeometryArchive    `protobuf:"bytes,4,opt,name=new_mask_geometry,json=newMaskGeometry" json:"new_mask_geometry,omitempty"`
-	OldMaskGeometry      *GeometryArchive    `protobuf:"bytes,5,opt,name=old_mask_geometry,json=oldMaskGeometry" json:"old_mask_geometry,omitempty"`
-	NewMaskPathSource    *PathSourceArchive  `protobuf:"bytes,6,opt,name=new_mask_path_source,json=newMaskPathSource" json:"new_mask_path_source,omitempty"`
-	OldMaskPathSource    *PathSourceArchive  `protobuf:"bytes,7,opt,name=old_mask_path_source,json=oldMaskPathSource" json:"old_mask_path_source,omitempty"`
-	NewImageOriginalSize *TSP.Size           `protobuf:"bytes,8,opt,name=new_image_original_size,json=newImageOriginalSize" json:"new_image_original_size,omitempty"`
-	OldImageOriginalSize *TSP.Size           `protobuf:"bytes,9,opt,name=old_image_original_size,json=oldImageOriginalSize" json:"old_image_original_size,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) Reset() {
-	*m = ImageInfoAbstractGeometryCommandArchive{}
-}
-func (m *ImageInfoAbstractGeometryCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*ImageInfoAbstractGeometryCommandArchive) ProtoMessage()    {}
-func (*ImageInfoAbstractGeometryCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{45}
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ImageInfoAbstractGeometryCommandArchive.Unmarshal(m, b)
-}
-func (m *ImageInfoAbstractGeometryCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ImageInfoAbstractGeometryCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *ImageInfoAbstractGeometryCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ImageInfoAbstractGeometryCommandArchive.Merge(m, src)
-}
-func (m *ImageInfoAbstractGeometryCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_ImageInfoAbstractGeometryCommandArchive.Size(m)
-}
-func (m *ImageInfoAbstractGeometryCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ImageInfoAbstractGeometryCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ImageInfoAbstractGeometryCommandArchive proto.InternalMessageInfo
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetSuper() *InfoCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetNewImageGeometry() *GeometryArchive {
-	if m != nil {
-		return m.NewImageGeometry
-	}
-	return nil
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetOldImageGeometry() *GeometryArchive {
-	if m != nil {
-		return m.OldImageGeometry
-	}
-	return nil
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetNewMaskGeometry() *GeometryArchive {
-	if m != nil {
-		return m.NewMaskGeometry
-	}
-	return nil
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetOldMaskGeometry() *GeometryArchive {
-	if m != nil {
-		return m.OldMaskGeometry
-	}
-	return nil
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetNewMaskPathSource() *PathSourceArchive {
-	if m != nil {
-		return m.NewMaskPathSource
-	}
-	return nil
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetOldMaskPathSource() *PathSourceArchive {
-	if m != nil {
-		return m.OldMaskPathSource
-	}
-	return nil
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetNewImageOriginalSize() *TSP.Size {
-	if m != nil {
-		return m.NewImageOriginalSize
-	}
-	return nil
-}
-
-func (m *ImageInfoAbstractGeometryCommandArchive) GetOldImageOriginalSize() *TSP.Size {
-	if m != nil {
-		return m.OldImageOriginalSize
-	}
-	return nil
-}
-
-type ImageInfoGeometryCommandArchive struct {
-	Super                *ImageInfoAbstractGeometryCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *ImageInfoGeometryCommandArchive) Reset()         { *m = ImageInfoGeometryCommandArchive{} }
-func (m *ImageInfoGeometryCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*ImageInfoGeometryCommandArchive) ProtoMessage()    {}
-func (*ImageInfoGeometryCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{46}
-}
-
-func (m *ImageInfoGeometryCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ImageInfoGeometryCommandArchive.Unmarshal(m, b)
-}
-func (m *ImageInfoGeometryCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ImageInfoGeometryCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *ImageInfoGeometryCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ImageInfoGeometryCommandArchive.Merge(m, src)
-}
-func (m *ImageInfoGeometryCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_ImageInfoGeometryCommandArchive.Size(m)
-}
-func (m *ImageInfoGeometryCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ImageInfoGeometryCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ImageInfoGeometryCommandArchive proto.InternalMessageInfo
-
-func (m *ImageInfoGeometryCommandArchive) GetSuper() *ImageInfoAbstractGeometryCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type ImageInfoMaskGeometryCommandArchive struct {
-	Super                *ImageInfoAbstractGeometryCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *ImageInfoMaskGeometryCommandArchive) Reset()         { *m = ImageInfoMaskGeometryCommandArchive{} }
-func (m *ImageInfoMaskGeometryCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*ImageInfoMaskGeometryCommandArchive) ProtoMessage()    {}
-func (*ImageInfoMaskGeometryCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{47}
-}
-
-func (m *ImageInfoMaskGeometryCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ImageInfoMaskGeometryCommandArchive.Unmarshal(m, b)
-}
-func (m *ImageInfoMaskGeometryCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ImageInfoMaskGeometryCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *ImageInfoMaskGeometryCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ImageInfoMaskGeometryCommandArchive.Merge(m, src)
-}
-func (m *ImageInfoMaskGeometryCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_ImageInfoMaskGeometryCommandArchive.Size(m)
-}
-func (m *ImageInfoMaskGeometryCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ImageInfoMaskGeometryCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ImageInfoMaskGeometryCommandArchive proto.InternalMessageInfo
-
-func (m *ImageInfoMaskGeometryCommandArchive) GetSuper() *ImageInfoAbstractGeometryCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type InfoCollectionSelectionTransformerHelperArchive struct {
-	InfoUuidPathList     []*TSP.UUIDPath `protobuf:"bytes,1,rep,name=info_uuid_path_list,json=infoUuidPathList" json:"info_uuid_path_list,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
-}
-
-func (m *InfoCollectionSelectionTransformerHelperArchive) Reset() {
-	*m = InfoCollectionSelectionTransformerHelperArchive{}
-}
-func (m *InfoCollectionSelectionTransformerHelperArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*InfoCollectionSelectionTransformerHelperArchive) ProtoMessage() {}
-func (*InfoCollectionSelectionTransformerHelperArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{48}
-}
-
-func (m *InfoCollectionSelectionTransformerHelperArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_InfoCollectionSelectionTransformerHelperArchive.Unmarshal(m, b)
-}
-func (m *InfoCollectionSelectionTransformerHelperArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_InfoCollectionSelectionTransformerHelperArchive.Marshal(b, m, deterministic)
-}
-func (m *InfoCollectionSelectionTransformerHelperArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InfoCollectionSelectionTransformerHelperArchive.Merge(m, src)
-}
-func (m *InfoCollectionSelectionTransformerHelperArchive) XXX_Size() int {
-	return xxx_messageInfo_InfoCollectionSelectionTransformerHelperArchive.Size(m)
-}
-func (m *InfoCollectionSelectionTransformerHelperArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_InfoCollectionSelectionTransformerHelperArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_InfoCollectionSelectionTransformerHelperArchive proto.InternalMessageInfo
-
-func (m *InfoCollectionSelectionTransformerHelperArchive) GetInfoUuidPathList() []*TSP.UUIDPath {
-	if m != nil {
-		return m.InfoUuidPathList
-	}
-	return nil
-}
-
-type DrawableSelectionTransformerArchive struct {
-	TransformerHelper              *InfoCollectionSelectionTransformerHelperArchive `protobuf:"bytes,1,req,name=transformer_helper,json=transformerHelper" json:"transformer_helper,omitempty"`
-	UntransformedDrawableSelection *TSP.Reference                                   `protobuf:"bytes,2,req,name=untransformed_drawable_selection,json=untransformedDrawableSelection" json:"untransformed_drawable_selection,omitempty"`
-	XXX_NoUnkeyedLiteral           struct{}                                         `json:"-"`
-	XXX_unrecognized               []byte                                           `json:"-"`
-	XXX_sizecache                  int32                                            `json:"-"`
-}
-
-func (m *DrawableSelectionTransformerArchive) Reset()         { *m = DrawableSelectionTransformerArchive{} }
-func (m *DrawableSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*DrawableSelectionTransformerArchive) ProtoMessage()    {}
-func (*DrawableSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{49}
-}
-
-func (m *DrawableSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DrawableSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *DrawableSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DrawableSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *DrawableSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DrawableSelectionTransformerArchive.Merge(m, src)
-}
-func (m *DrawableSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_DrawableSelectionTransformerArchive.Size(m)
-}
-func (m *DrawableSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_DrawableSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DrawableSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *DrawableSelectionTransformerArchive) GetTransformerHelper() *InfoCollectionSelectionTransformerHelperArchive {
-	if m != nil {
-		return m.TransformerHelper
-	}
-	return nil
-}
-
-func (m *DrawableSelectionTransformerArchive) GetUntransformedDrawableSelection() *TSP.Reference {
-	if m != nil {
-		return m.UntransformedDrawableSelection
-	}
-	return nil
-}
-
-type CanvasSelectionTransformerArchive struct {
-	TransformerHelper    *InfoCollectionSelectionTransformerHelperArchive `protobuf:"bytes,1,req,name=transformer_helper,json=transformerHelper" json:"transformer_helper,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                         `json:"-"`
-	XXX_unrecognized     []byte                                           `json:"-"`
-	XXX_sizecache        int32                                            `json:"-"`
-}
-
-func (m *CanvasSelectionTransformerArchive) Reset()         { *m = CanvasSelectionTransformerArchive{} }
-func (m *CanvasSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*CanvasSelectionTransformerArchive) ProtoMessage()    {}
-func (*CanvasSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{50}
-}
-
-func (m *CanvasSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CanvasSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *CanvasSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CanvasSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *CanvasSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CanvasSelectionTransformerArchive.Merge(m, src)
-}
-func (m *CanvasSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_CanvasSelectionTransformerArchive.Size(m)
-}
-func (m *CanvasSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CanvasSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CanvasSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *CanvasSelectionTransformerArchive) GetTransformerHelper() *InfoCollectionSelectionTransformerHelperArchive {
-	if m != nil {
-		return m.TransformerHelper
-	}
-	return nil
-}
-
-type PathSelectionTransformerArchive struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *PathSelectionTransformerArchive) Reset()         { *m = PathSelectionTransformerArchive{} }
-func (m *PathSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*PathSelectionTransformerArchive) ProtoMessage()    {}
-func (*PathSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{51}
-}
-
-func (m *PathSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PathSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *PathSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PathSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *PathSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PathSelectionTransformerArchive.Merge(m, src)
-}
-func (m *PathSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_PathSelectionTransformerArchive.Size(m)
-}
-func (m *PathSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_PathSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_PathSelectionTransformerArchive proto.InternalMessageInfo
-
-type ShapeSelectionTransformerArchive struct {
-	Super                *DrawableSelectionTransformerArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                             `json:"-"`
-	XXX_unrecognized     []byte                               `json:"-"`
-	XXX_sizecache        int32                                `json:"-"`
-}
-
-func (m *ShapeSelectionTransformerArchive) Reset()         { *m = ShapeSelectionTransformerArchive{} }
-func (m *ShapeSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*ShapeSelectionTransformerArchive) ProtoMessage()    {}
-func (*ShapeSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{52}
-}
-
-func (m *ShapeSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ShapeSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *ShapeSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ShapeSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *ShapeSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ShapeSelectionTransformerArchive.Merge(m, src)
-}
-func (m *ShapeSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_ShapeSelectionTransformerArchive.Size(m)
-}
-func (m *ShapeSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ShapeSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ShapeSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *ShapeSelectionTransformerArchive) GetSuper() *DrawableSelectionTransformerArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type GroupSelectionTransformerArchive struct {
-	Super                *DrawableSelectionTransformerArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                             `json:"-"`
-	XXX_unrecognized     []byte                               `json:"-"`
-	XXX_sizecache        int32                                `json:"-"`
-}
-
-func (m *GroupSelectionTransformerArchive) Reset()         { *m = GroupSelectionTransformerArchive{} }
-func (m *GroupSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*GroupSelectionTransformerArchive) ProtoMessage()    {}
-func (*GroupSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{53}
-}
-
-func (m *GroupSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GroupSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *GroupSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GroupSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *GroupSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GroupSelectionTransformerArchive.Merge(m, src)
-}
-func (m *GroupSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_GroupSelectionTransformerArchive.Size(m)
-}
-func (m *GroupSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_GroupSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GroupSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *GroupSelectionTransformerArchive) GetSuper() *DrawableSelectionTransformerArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type PencilAnnotationSelectionTransformerArchive struct {
-	PencilAnnotationUuid *TSP.UUID `protobuf:"bytes,1,req,name=pencil_annotation_uuid,json=pencilAnnotationUuid" json:"pencil_annotation_uuid,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
-	XXX_unrecognized     []byte    `json:"-"`
-	XXX_sizecache        int32     `json:"-"`
-}
-
-func (m *PencilAnnotationSelectionTransformerArchive) Reset() {
-	*m = PencilAnnotationSelectionTransformerArchive{}
-}
-func (m *PencilAnnotationSelectionTransformerArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*PencilAnnotationSelectionTransformerArchive) ProtoMessage() {}
-func (*PencilAnnotationSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{54}
-}
-
-func (m *PencilAnnotationSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_PencilAnnotationSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *PencilAnnotationSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_PencilAnnotationSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *PencilAnnotationSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_PencilAnnotationSelectionTransformerArchive.Merge(m, src)
-}
-func (m *PencilAnnotationSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_PencilAnnotationSelectionTransformerArchive.Size(m)
-}
-func (m *PencilAnnotationSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_PencilAnnotationSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_PencilAnnotationSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *PencilAnnotationSelectionTransformerArchive) GetPencilAnnotationUuid() *TSP.UUID {
-	if m != nil {
-		return m.PencilAnnotationUuid
-	}
-	return nil
-}
-
-type FreehandDrawingOpacityCommandArchive struct {
-	Super                *InfoCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Opacity              *float64            `protobuf:"fixed64,2,opt,name=opacity" json:"opacity,omitempty"`
-	OldOpacity           *float64            `protobuf:"fixed64,3,opt,name=old_opacity,json=oldOpacity" json:"old_opacity,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *FreehandDrawingOpacityCommandArchive) Reset()         { *m = FreehandDrawingOpacityCommandArchive{} }
-func (m *FreehandDrawingOpacityCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*FreehandDrawingOpacityCommandArchive) ProtoMessage()    {}
-func (*FreehandDrawingOpacityCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{55}
-}
-
-func (m *FreehandDrawingOpacityCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FreehandDrawingOpacityCommandArchive.Unmarshal(m, b)
-}
-func (m *FreehandDrawingOpacityCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FreehandDrawingOpacityCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *FreehandDrawingOpacityCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FreehandDrawingOpacityCommandArchive.Merge(m, src)
-}
-func (m *FreehandDrawingOpacityCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_FreehandDrawingOpacityCommandArchive.Size(m)
-}
-func (m *FreehandDrawingOpacityCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_FreehandDrawingOpacityCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_FreehandDrawingOpacityCommandArchive proto.InternalMessageInfo
-
-func (m *FreehandDrawingOpacityCommandArchive) GetSuper() *InfoCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *FreehandDrawingOpacityCommandArchive) GetOpacity() float64 {
-	if m != nil && m.Opacity != nil {
-		return *m.Opacity
-	}
-	return 0
-}
-
-func (m *FreehandDrawingOpacityCommandArchive) GetOldOpacity() float64 {
-	if m != nil && m.OldOpacity != nil {
-		return *m.OldOpacity
-	}
-	return 0
-}
-
-type FreehandDrawingAnimationCommandArchive struct {
-	Super                *InfoCommandArchive              `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Animation            *FreehandDrawingAnimationArchive `protobuf:"bytes,2,opt,name=animation" json:"animation,omitempty"`
-	OldAnimation         *FreehandDrawingAnimationArchive `protobuf:"bytes,3,opt,name=old_animation,json=oldAnimation" json:"old_animation,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                         `json:"-"`
-	XXX_unrecognized     []byte                           `json:"-"`
-	XXX_sizecache        int32                            `json:"-"`
-}
-
-func (m *FreehandDrawingAnimationCommandArchive) Reset() {
-	*m = FreehandDrawingAnimationCommandArchive{}
-}
-func (m *FreehandDrawingAnimationCommandArchive) String() string { return proto.CompactTextString(m) }
-func (*FreehandDrawingAnimationCommandArchive) ProtoMessage()    {}
-func (*FreehandDrawingAnimationCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_cadc508b609773c5, []int{56}
-}
-
-func (m *FreehandDrawingAnimationCommandArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FreehandDrawingAnimationCommandArchive.Unmarshal(m, b)
-}
-func (m *FreehandDrawingAnimationCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FreehandDrawingAnimationCommandArchive.Marshal(b, m, deterministic)
-}
-func (m *FreehandDrawingAnimationCommandArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FreehandDrawingAnimationCommandArchive.Merge(m, src)
-}
-func (m *FreehandDrawingAnimationCommandArchive) XXX_Size() int {
-	return xxx_messageInfo_FreehandDrawingAnimationCommandArchive.Size(m)
-}
-func (m *FreehandDrawingAnimationCommandArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_FreehandDrawingAnimationCommandArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_FreehandDrawingAnimationCommandArchive proto.InternalMessageInfo
-
-func (m *FreehandDrawingAnimationCommandArchive) GetSuper() *InfoCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *FreehandDrawingAnimationCommandArchive) GetAnimation() *FreehandDrawingAnimationArchive {
-	if m != nil {
-		return m.Animation
-	}
-	return nil
-}
-
-func (m *FreehandDrawingAnimationCommandArchive) GetOldAnimation() *FreehandDrawingAnimationArchive {
-	if m != nil {
-		return m.OldAnimation
+		return m.ShapeStyle
 	}
 	return nil
 }
 
 func init() {
-	proto.RegisterEnum("TSD.CommentCommandVariant", CommentCommandVariant_name, CommentCommandVariant_value)
-	proto.RegisterEnum("TSD.GroupUngroupInformativeCommandArchive_CommandType", GroupUngroupInformativeCommandArchive_CommandType_name, GroupUngroupInformativeCommandArchive_CommandType_value)
 	proto.RegisterEnum("TSD.MovieSetValueCommandArchive_LoopOption", MovieSetValueCommandArchive_LoopOption_name, MovieSetValueCommandArchive_LoopOption_value)
 	proto.RegisterEnum("TSD.DrawablesCommandGroupArchive_DrawablesCommandGroupType", DrawablesCommandGroupArchive_DrawablesCommandGroupType_name, DrawablesCommandGroupArchive_DrawablesCommandGroupType_value)
-	proto.RegisterType((*UndoObjectArchive)(nil), "TSD.UndoObjectArchive")
+	proto.RegisterEnum("TSD.CommandSelectionBehaviorArchive_CommandSelectionBehaviorType", CommandSelectionBehaviorArchive_CommandSelectionBehaviorType_name, CommandSelectionBehaviorArchive_CommandSelectionBehaviorType_value)
+	proto.RegisterEnum("TSD.GuideCommandArchive_GuideCommandMode", GuideCommandArchive_GuideCommandMode_name, GuideCommandArchive_GuideCommandMode_value)
+	proto.RegisterType((*ConnectionLineConnectCommandArchive)(nil), "TSD.ConnectionLineConnectCommandArchive")
 	proto.RegisterType((*GroupDrawablesCommandArchive)(nil), "TSD.GroupDrawablesCommandArchive")
 	proto.RegisterType((*UngroupGroupCommandArchive)(nil), "TSD.UngroupGroupCommandArchive")
 	proto.RegisterType((*ContainerRemoveChildrenCommandArchive)(nil), "TSD.ContainerRemoveChildrenCommandArchive")
-	proto.RegisterType((*ContainerRemoveDrawablesCommandArchive)(nil), "TSD.ContainerRemoveDrawablesCommandArchive")
 	proto.RegisterType((*ContainerInsertChildrenCommandArchive)(nil), "TSD.ContainerInsertChildrenCommandArchive")
-	proto.RegisterType((*ContainerInsertDrawablesCommandArchive)(nil), "TSD.ContainerInsertDrawablesCommandArchive")
 	proto.RegisterType((*ContainerReorderChildrenCommandArchive)(nil), "TSD.ContainerReorderChildrenCommandArchive")
-	proto.RegisterType((*GroupUngroupInformativeCommandArchive)(nil), "TSD.GroupUngroupInformativeCommandArchive")
-	proto.RegisterType((*InfoCommandArchive)(nil), "TSD.InfoCommandArchive")
-	proto.RegisterType((*ConnectionLineConnectCommandArchive)(nil), "TSD.ConnectionLineConnectCommandArchive")
 	proto.RegisterType((*InfoGeometryCommandArchive)(nil), "TSD.InfoGeometryCommandArchive")
 	proto.RegisterType((*DrawablePathSourceCommandArchive)(nil), "TSD.DrawablePathSourceCommandArchive")
 	proto.RegisterType((*InstantAlphaCommandArchive)(nil), "TSD.InstantAlphaCommandArchive")
+	proto.RegisterType((*DrawableShadowCommandArchive)(nil), "TSD.DrawableShadowCommandArchive")
 	proto.RegisterType((*DrawableApplyThemeCommandArchive)(nil), "TSD.DrawableApplyThemeCommandArchive")
-	proto.RegisterType((*ShapePathSourceFlipCommandArchive)(nil), "TSD.ShapePathSourceFlipCommandArchive")
-	proto.RegisterType((*AbstractStyleCommandArchive)(nil), "TSD.AbstractStyleCommandArchive")
 	proto.RegisterType((*StyledInfoSetStyleCommandArchive)(nil), "TSD.StyledInfoSetStyleCommandArchive")
-	proto.RegisterType((*BaseApplyPresetCommandArchive)(nil), "TSD.BaseApplyPresetCommandArchive")
-	proto.RegisterType((*ShapeApplyPresetCommandArchive)(nil), "TSD.ShapeApplyPresetCommandArchive")
-	proto.RegisterType((*MediaApplyPresetCommandArchive)(nil), "TSD.MediaApplyPresetCommandArchive")
+	proto.RegisterType((*ShapePathSourceFlipCommandArchive)(nil), "TSD.ShapePathSourceFlipCommandArchive")
 	proto.RegisterType((*ShapeStyleSetValueCommandArchive)(nil), "TSD.ShapeStyleSetValueCommandArchive")
-	proto.RegisterType((*BaseStyleSetValueCommandArchive)(nil), "TSD.BaseStyleSetValueCommandArchive")
+	proto.RegisterType((*ShapeApplyPresetCommandArchive)(nil), "TSD.ShapeApplyPresetCommandArchive")
+	proto.RegisterType((*ShapeSetLineEndCommandArchive)(nil), "TSD.ShapeSetLineEndCommandArchive")
 	proto.RegisterType((*MovieSetValueCommandArchive)(nil), "TSD.MovieSetValueCommandArchive")
 	proto.RegisterType((*MovieSetValueCommandArchive_PropertyValue)(nil), "TSD.MovieSetValueCommandArchive.PropertyValue")
 	proto.RegisterType((*MediaStyleSetValueCommandArchive)(nil), "TSD.MediaStyleSetValueCommandArchive")
 	proto.RegisterType((*ImageMediaCommandArchive)(nil), "TSD.ImageMediaCommandArchive")
 	proto.RegisterType((*MediaOriginalSizeCommandArchive)(nil), "TSD.MediaOriginalSizeCommandArchive")
-	proto.RegisterType((*MediaInfoGeometryCommandArchive)(nil), "TSD.MediaInfoGeometryCommandArchive")
-	proto.RegisterType((*ImageNaturalSizeCommandArchive)(nil), "TSD.ImageNaturalSizeCommandArchive")
 	proto.RegisterType((*ImageMaskCommandArchive)(nil), "TSD.ImageMaskCommandArchive")
+	proto.RegisterType((*MediaApplyPresetCommandArchive)(nil), "TSD.MediaApplyPresetCommandArchive")
 	proto.RegisterType((*ImageAdjustmentsCommandArchive)(nil), "TSD.ImageAdjustmentsCommandArchive")
 	proto.RegisterType((*MediaFlagsCommandArchive)(nil), "TSD.MediaFlagsCommandArchive")
 	proto.RegisterType((*DrawablesCommandGroupArchive)(nil), "TSD.DrawablesCommandGroupArchive")
 	proto.RegisterType((*ExteriorTextWrapCommandArchive)(nil), "TSD.ExteriorTextWrapCommandArchive")
+	proto.RegisterType((*ExteriorTextWrapCommandArchive_InfoAndWrap)(nil), "TSD.ExteriorTextWrapCommandArchive.InfoAndWrap")
 	proto.RegisterType((*DrawableHyperlinkCommandArchive)(nil), "TSD.DrawableHyperlinkCommandArchive")
-	proto.RegisterType((*CommentInvalidatingCommandSelectionBehaviorArchive)(nil), "TSD.CommentInvalidatingCommandSelectionBehaviorArchive")
+	proto.RegisterType((*CommandSelectionBehaviorArchive)(nil), "TSD.CommandSelectionBehaviorArchive")
 	proto.RegisterType((*ImageReplaceCommandArchive)(nil), "TSD.ImageReplaceCommandArchive")
 	proto.RegisterType((*DrawableLockCommandArchive)(nil), "TSD.DrawableLockCommandArchive")
 	proto.RegisterType((*DrawableInfoCommentCommandArchive)(nil), "TSD.DrawableInfoCommentCommandArchive")
-	proto.RegisterType((*DrawablePencilAnnotationCommandArchive)(nil), "TSD.DrawablePencilAnnotationCommandArchive")
-	proto.RegisterType((*AbstractGuideCommandArchive)(nil), "TSD.AbstractGuideCommandArchive")
+	proto.RegisterType((*CommentStorageApplyCommandArchive)(nil), "TSD.CommentStorageApplyCommandArchive")
 	proto.RegisterType((*GuideCommandArchive)(nil), "TSD.GuideCommandArchive")
 	proto.RegisterType((*DrawableAspectRatioLockedCommandArchive)(nil), "TSD.DrawableAspectRatioLockedCommandArchive")
 	proto.RegisterType((*DrawableAccessibilityDescriptionCommandArchive)(nil), "TSD.DrawableAccessibilityDescriptionCommandArchive")
 	proto.RegisterType((*PasteStyleCommandArchive)(nil), "TSD.PasteStyleCommandArchive")
-	proto.RegisterType((*ImageInfoAbstractGeometryCommandArchive)(nil), "TSD.ImageInfoAbstractGeometryCommandArchive")
-	proto.RegisterType((*ImageInfoGeometryCommandArchive)(nil), "TSD.ImageInfoGeometryCommandArchive")
-	proto.RegisterType((*ImageInfoMaskGeometryCommandArchive)(nil), "TSD.ImageInfoMaskGeometryCommandArchive")
-	proto.RegisterType((*InfoCollectionSelectionTransformerHelperArchive)(nil), "TSD.InfoCollectionSelectionTransformerHelperArchive")
-	proto.RegisterType((*DrawableSelectionTransformerArchive)(nil), "TSD.DrawableSelectionTransformerArchive")
-	proto.RegisterType((*CanvasSelectionTransformerArchive)(nil), "TSD.CanvasSelectionTransformerArchive")
-	proto.RegisterType((*PathSelectionTransformerArchive)(nil), "TSD.PathSelectionTransformerArchive")
-	proto.RegisterType((*ShapeSelectionTransformerArchive)(nil), "TSD.ShapeSelectionTransformerArchive")
-	proto.RegisterType((*GroupSelectionTransformerArchive)(nil), "TSD.GroupSelectionTransformerArchive")
-	proto.RegisterType((*PencilAnnotationSelectionTransformerArchive)(nil), "TSD.PencilAnnotationSelectionTransformerArchive")
-	proto.RegisterType((*FreehandDrawingOpacityCommandArchive)(nil), "TSD.FreehandDrawingOpacityCommandArchive")
-	proto.RegisterType((*FreehandDrawingAnimationCommandArchive)(nil), "TSD.FreehandDrawingAnimationCommandArchive")
 }
 
 func init() { proto.RegisterFile("TSDCommandArchives.proto", fileDescriptor_cadc508b609773c5) }
 
 var fileDescriptor_cadc508b609773c5 = []byte{
-	// 4002 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x5b, 0x4b, 0x6c, 0x24, 0x49,
-	0x5a, 0x9e, 0xac, 0xf2, 0xf3, 0xb7, 0xcb, 0x2e, 0x87, 0x1f, 0x5d, 0xed, 0x7e, 0xb9, 0xb3, 0xa7,
-	0xa7, 0xbd, 0x33, 0x8d, 0x9b, 0xe9, 0x79, 0xee, 0x4e, 0x6b, 0xb6, 0xfd, 0x68, 0x77, 0x7b, 0xfa,
-	0x61, 0x53, 0x55, 0x9e, 0x59, 0x46, 0x48, 0xa9, 0x70, 0x65, 0xb8, 0x2a, 0xa7, 0xb3, 0x22, 0x52,
-	0x99, 0x51, 0xae, 0xf1, 0x1c, 0x11, 0x07, 0x8e, 0x5c, 0x90, 0x40, 0x08, 0xb1, 0x80, 0x34, 0x27,
-	0x0e, 0x9c, 0x40, 0x5c, 0x16, 0xd8, 0x23, 0x07, 0xc4, 0xe3, 0xc4, 0x05, 0x38, 0x20, 0xae, 0x08,
-	0x8e, 0x9c, 0x56, 0xf1, 0xc8, 0xac, 0xcc, 0xac, 0xcc, 0xf4, 0xa3, 0x76, 0x34, 0x7b, 0xab, 0x8c,
-	0xf8, 0xbf, 0x2f, 0xfe, 0xf8, 0x23, 0xe2, 0x8f, 0xff, 0x8f, 0x88, 0x82, 0x5a, 0xb3, 0xb1, 0xb3,
-	0xcd, 0xba, 0x5d, 0x4c, 0xed, 0x4d, 0xbf, 0xd5, 0x71, 0x4e, 0x48, 0xb0, 0xe1, 0xf9, 0x8c, 0x33,
-	0x54, 0x6e, 0x36, 0x76, 0x56, 0x17, 0x9a, 0x8d, 0x83, 0x97, 0x24, 0x08, 0x70, 0x3b, 0x2c, 0x17,
-	0x45, 0xcf, 0x93, 0xa2, 0xa2, 0xa8, 0x31, 0x5c, 0xb4, 0x93, 0x2a, 0x5a, 0x8e, 0x15, 0x59, 0x01,
-	0xd3, 0xc5, 0xe6, 0x1f, 0x1a, 0xb0, 0x70, 0x48, 0x6d, 0xb6, 0x7f, 0xf4, 0x15, 0x69, 0x71, 0x2d,
-	0x80, 0x36, 0x00, 0x02, 0x7e, 0xea, 0x92, 0xa0, 0x43, 0x08, 0xaf, 0x95, 0xd6, 0x8c, 0xf5, 0x99,
-	0x87, 0x73, 0x1b, 0xcd, 0xc6, 0xc1, 0x46, 0x9d, 0x1c, 0x13, 0x9f, 0xd0, 0x16, 0xa9, 0xc7, 0x24,
-	0xd0, 0x3a, 0x4c, 0x32, 0x49, 0x10, 0xd4, 0x8c, 0xb5, 0x72, 0x86, 0x70, 0x58, 0x8d, 0x10, 0x8c,
-	0xbd, 0x26, 0xa7, 0x41, 0xad, 0xbc, 0x56, 0x5e, 0x9f, 0xae, 0xcb, 0xdf, 0x68, 0x05, 0x26, 0x5a,
-	0xac, 0x47, 0x79, 0x50, 0x1b, 0x5b, 0x2b, 0xaf, 0x57, 0xea, 0xfa, 0xcb, 0xfc, 0x63, 0x03, 0xae,
-	0x3f, 0xf5, 0x59, 0xcf, 0xdb, 0xf1, 0x71, 0x1f, 0x1f, 0xb9, 0x24, 0x48, 0xda, 0x0a, 0xfd, 0x00,
-	0xc6, 0x83, 0x9e, 0x47, 0xfc, 0x9a, 0xb1, 0x56, 0x5a, 0x9f, 0x79, 0xb8, 0xb8, 0xd1, 0x6c, 0x3c,
-	0xdf, 0x48, 0xca, 0xd4, 0x95, 0x04, 0xba, 0x0f, 0xd3, 0x76, 0xc8, 0x52, 0x2b, 0x65, 0xea, 0x38,
-	0x10, 0x40, 0x6f, 0xc2, 0x78, 0x5b, 0x34, 0x5c, 0x2b, 0x67, 0x76, 0x5d, 0x55, 0x9a, 0x7f, 0x64,
-	0xc0, 0xea, 0x21, 0x95, 0xbf, 0xa5, 0x9a, 0xbf, 0x5a, 0xda, 0xfd, 0x9f, 0x01, 0x77, 0xb7, 0x19,
-	0xe5, 0xd8, 0xa1, 0xc4, 0xaf, 0x93, 0x2e, 0x3b, 0x21, 0xdb, 0x1d, 0xc7, 0xb5, 0x7d, 0x42, 0x2f,
-	0xaf, 0xe8, 0x0f, 0x61, 0xa1, 0x15, 0x72, 0x5a, 0x8e, 0x6d, 0x79, 0x98, 0x77, 0xf4, 0xfc, 0xa8,
-	0x48, 0x35, 0x0e, 0x0f, 0xf7, 0x76, 0x0e, 0x30, 0xef, 0xd4, 0xe7, 0x23, 0xb9, 0x3d, 0x5b, 0x14,
-	0xa0, 0x8f, 0x60, 0x1a, 0xfb, 0xed, 0xc0, 0x72, 0x9d, 0x80, 0xcb, 0xe1, 0x9f, 0x79, 0xb8, 0x2a,
-	0x5b, 0x52, 0xba, 0xed, 0xd9, 0xfb, 0x1e, 0xf1, 0x31, 0x77, 0x18, 0xdd, 0xf4, 0xdb, 0x41, 0x7d,
-	0x4a, 0x08, 0xbf, 0x70, 0x02, 0x8e, 0xde, 0x86, 0xa9, 0x96, 0x56, 0x5c, 0x4e, 0x90, 0xe1, 0x1e,
-	0x47, 0xf5, 0xe6, 0x57, 0xf0, 0x56, 0xaa, 0xcf, 0x79, 0x73, 0xe7, 0x71, 0xb2, 0xd3, 0x6f, 0x6f,
-	0x34, 0x1b, 0x3b, 0x1b, 0xe7, 0xb2, 0x97, 0xb6, 0x85, 0xf9, 0x6f, 0xa5, 0x98, 0x81, 0xf7, 0x68,
-	0x40, 0x7c, 0xfe, 0xbd, 0x1a, 0x38, 0x6e, 0xa7, 0x72, 0xb1, 0x9d, 0xd0, 0xfb, 0xf1, 0xc1, 0x50,
-	0x46, 0xbd, 0x22, 0xb5, 0xda, 0xb4, 0xed, 0xfc, 0x91, 0xf8, 0x08, 0x50, 0xab, 0x17, 0x70, 0xd6,
-	0xb5, 0x8e, 0x99, 0xdf, 0xc5, 0xdc, 0x92, 0x4b, 0x79, 0x5c, 0xc2, 0xa7, 0x23, 0xed, 0xea, 0x55,
-	0x25, 0xb4, 0x2b, 0x65, 0x9e, 0x8b, 0x15, 0xfe, 0x00, 0x66, 0x7a, 0xd4, 0x66, 0x96, 0xf2, 0x02,
-	0xb5, 0x89, 0x6c, 0x87, 0xd2, 0x8b, 0xfc, 0x90, 0xf9, 0x07, 0x46, 0x6c, 0x20, 0x95, 0x6d, 0x2f,
-	0x37, 0x90, 0x45, 0xe3, 0x72, 0xa9, 0xd5, 0x67, 0xfe, 0x83, 0x91, 0x98, 0x63, 0xcc, 0xb7, 0x89,
-	0xff, 0xbd, 0x8e, 0xfb, 0x8f, 0x86, 0x17, 0xd6, 0x0d, 0xbd, 0xb0, 0xb0, 0xef, 0x63, 0xda, 0xce,
-	0x5f, 0x5b, 0xe6, 0xdf, 0x95, 0xe0, 0xae, 0xf4, 0x5d, 0xda, 0x8f, 0xed, 0x51, 0x35, 0xb2, 0xce,
-	0x09, 0xb9, 0x7c, 0x5f, 0xde, 0x83, 0x8a, 0x2f, 0xd7, 0x8f, 0x6d, 0x39, 0xf4, 0x98, 0xe5, 0xd9,
-	0x74, 0x56, 0x0b, 0x89, 0x36, 0x03, 0xf4, 0x01, 0xcc, 0x39, 0x72, 0xac, 0x22, 0x54, 0xf6, 0x1c,
-	0xae, 0x84, 0x52, 0x0a, 0xf6, 0x9b, 0x30, 0xdb, 0x52, 0x4a, 0x58, 0xfc, 0xd4, 0x23, 0xb5, 0xb1,
-	0x35, 0x63, 0x7d, 0xee, 0xe1, 0x87, 0x72, 0x12, 0x9c, 0xab, 0x63, 0x61, 0x1f, 0x9a, 0xa7, 0x1e,
-	0xa9, 0xcf, 0xb4, 0x06, 0x1f, 0xe6, 0x5d, 0x98, 0x89, 0xd5, 0xa1, 0x69, 0x18, 0x97, 0x84, 0xd5,
-	0x37, 0xd0, 0x0c, 0x4c, 0x6a, 0xda, 0xaa, 0x61, 0x7a, 0x80, 0x04, 0xf9, 0xe5, 0xcd, 0xf5, 0x00,
-	0x66, 0x45, 0x87, 0x8b, 0x47, 0x1d, 0x84, 0x88, 0x1a, 0x70, 0xf3, 0xaf, 0x4a, 0x70, 0x67, 0x9b,
-	0x51, 0x4a, 0x5a, 0x62, 0x44, 0x5f, 0x38, 0x94, 0xe8, 0xaf, 0x94, 0x0e, 0xbf, 0x96, 0xd4, 0xe1,
-	0x8a, 0x34, 0xca, 0xb0, 0xae, 0xa1, 0x1e, 0x1f, 0xc8, 0x29, 0x28, 0x78, 0x88, 0x6d, 0x1d, 0xfb,
-	0xac, 0x6b, 0x39, 0xb6, 0xb4, 0x67, 0x62, 0x71, 0xcf, 0x47, 0x32, 0xbb, 0x3e, 0xeb, 0xee, 0xd9,
-	0xe8, 0x5d, 0x18, 0x14, 0x59, 0x5c, 0x74, 0xa3, 0x36, 0x9e, 0x06, 0x55, 0x22, 0x89, 0x26, 0xdb,
-	0xb3, 0xd1, 0xc7, 0xb0, 0xc8, 0x5c, 0xdb, 0x4a, 0xc3, 0x26, 0xd2, 0xb0, 0x2a, 0x73, 0xed, 0xed,
-	0x04, 0xf2, 0x11, 0x2c, 0x27, 0x91, 0xa1, 0x9e, 0x93, 0x69, 0x2c, 0x8a, 0x63, 0x95, 0xaa, 0xe6,
-	0x5f, 0x97, 0x61, 0x55, 0xf4, 0xff, 0x29, 0x61, 0x5d, 0xc2, 0xfd, 0xd3, 0xd1, 0xec, 0xf5, 0x21,
-	0xcc, 0x50, 0xd2, 0x0f, 0xb9, 0xf4, 0xb0, 0x2d, 0xa9, 0x99, 0xa7, 0x0b, 0x43, 0x44, 0x5c, 0x50,
-	0xe0, 0x98, 0x6b, 0x47, 0xb8, 0x72, 0x11, 0x2e, 0x26, 0x88, 0x76, 0xe1, 0x66, 0x17, 0xf3, 0x56,
-	0x47, 0xb9, 0xc8, 0x03, 0x17, 0xb7, 0x48, 0x87, 0xb9, 0x36, 0xf1, 0x23, 0x2a, 0x31, 0x58, 0x53,
-	0xf5, 0x33, 0xa4, 0xd0, 0x0b, 0xb8, 0xcd, 0x5c, 0xfb, 0x65, 0x31, 0xd5, 0xb8, 0xa4, 0x3a, 0x5b,
-	0x10, 0x3d, 0x82, 0xab, 0x41, 0x87, 0xf5, 0x5c, 0xbb, 0xe9, 0x3b, 0xed, 0x36, 0xf1, 0xeb, 0xbc,
-	0xb7, 0x49, 0x9d, 0xae, 0x74, 0x36, 0x72, 0x44, 0xa7, 0xea, 0xf9, 0x02, 0xe8, 0x2d, 0xb1, 0xea,
-	0x1d, 0xee, 0x60, 0x4e, 0xec, 0x7d, 0xfa, 0x05, 0x39, 0x92, 0x03, 0x39, 0x55, 0x4f, 0x95, 0x9a,
-	0xff, 0x6c, 0xc0, 0x5a, 0xb8, 0x01, 0x88, 0x35, 0xd0, 0x60, 0x3d, 0xbf, 0x45, 0x46, 0x1b, 0xbf,
-	0x4f, 0x61, 0x5e, 0xcc, 0x25, 0xb1, 0xe6, 0xac, 0x40, 0xf2, 0xe9, 0x31, 0x5c, 0x91, 0xc0, 0x41,
-	0x33, 0x21, 0xae, 0xc2, 0x5c, 0x7b, 0x50, 0x2a, 0xf0, 0x94, 0xf4, 0x13, 0xf8, 0x72, 0x31, 0x9e,
-	0x92, 0xfe, 0xa0, 0xd4, 0xfc, 0x7d, 0x43, 0xcc, 0xc6, 0x80, 0x63, 0xca, 0x37, 0x5d, 0xaf, 0x83,
-	0x47, 0xeb, 0xcd, 0x1d, 0x98, 0x64, 0xae, 0x1d, 0x73, 0x20, 0x6a, 0x2d, 0x48, 0xe7, 0x11, 0xd6,
-	0x08, 0x21, 0x4a, 0xfa, 0x52, 0xa8, 0x3c, 0x24, 0xa4, 0x6b, 0xcc, 0x6f, 0x63, 0xb6, 0xde, 0xf4,
-	0x3c, 0xf7, 0xb4, 0xd9, 0x21, 0xdd, 0xb4, 0xad, 0x3f, 0x4e, 0x6a, 0x67, 0x6e, 0x34, 0x1b, 0x8d,
-	0x8d, 0x98, 0xb4, 0xd8, 0x10, 0xb3, 0x15, 0x35, 0x61, 0x4c, 0xf8, 0xb2, 0x9c, 0xac, 0x42, 0xd6,
-	0x89, 0x08, 0x57, 0x66, 0x17, 0x79, 0x11, 0xae, 0xac, 0x34, 0xff, 0xac, 0x04, 0xb7, 0x1b, 0x1d,
-	0xec, 0xc5, 0x66, 0xc4, 0xae, 0xeb, 0x8c, 0x10, 0x86, 0x9f, 0x47, 0xb5, 0xfb, 0xb0, 0x40, 0x49,
-	0xff, 0x19, 0xf3, 0x9d, 0x6f, 0xc4, 0x3e, 0xec, 0x8a, 0x16, 0xa5, 0x9a, 0x53, 0xf5, 0xe1, 0x0a,
-	0xb4, 0x2e, 0xe7, 0xc8, 0xe7, 0xc4, 0xe7, 0x4e, 0x4b, 0xcb, 0xaa, 0x45, 0x9a, 0x2e, 0x16, 0xbc,
-	0xcc, 0xb5, 0x53, 0xbc, 0x6a, 0x15, 0x0e, 0x57, 0x08, 0x5e, 0xe6, 0xda, 0x09, 0x5e, 0xb5, 0xd6,
-	0xd2, 0xc5, 0xe6, 0x0b, 0xb8, 0xb6, 0x79, 0x14, 0x70, 0x1f, 0xb7, 0x78, 0x43, 0x58, 0x6d, 0xa4,
-	0x59, 0x66, 0xfe, 0xcc, 0x80, 0x35, 0x49, 0x23, 0xb7, 0xdf, 0x06, 0xc9, 0xe4, 0xfc, 0x30, 0xc9,
-	0xb9, 0x26, 0x39, 0x0b, 0x94, 0x08, 0xcd, 0xff, 0x0e, 0x4c, 0x8b, 0x05, 0xa5, 0x46, 0x3e, 0x7b,
-	0x0c, 0xa6, 0x28, 0xe9, 0x4b, 0x06, 0x11, 0x2f, 0xf8, 0xcc, 0x75, 0x8f, 0x70, 0xeb, 0xb5, 0x46,
-	0x8c, 0x65, 0x22, 0x2a, 0xa1, 0x94, 0x84, 0x99, 0x7f, 0x6f, 0xc0, 0x8d, 0x2d, 0x1c, 0xa8, 0x89,
-	0x7d, 0xe0, 0x93, 0x80, 0xf0, 0x5f, 0x92, 0xf6, 0xef, 0xc2, 0xac, 0x27, 0xf9, 0x0a, 0x3b, 0x30,
-	0xa3, 0x64, 0x46, 0xea, 0xc3, 0x97, 0x70, 0x53, 0x4e, 0xfb, 0xfc, 0x3e, 0x64, 0xac, 0xce, 0x9d,
-	0x8d, 0xc2, 0x6e, 0x87, 0x03, 0xfc, 0x25, 0xdc, 0x7c, 0x49, 0x6c, 0x07, 0x7f, 0x17, 0xdc, 0x7f,
-	0x2e, 0x26, 0x8f, 0x50, 0x5c, 0x76, 0xa3, 0x41, 0xf8, 0xe7, 0xd8, 0xed, 0xa5, 0x27, 0xcf, 0x8f,
-	0x92, 0xf4, 0x6f, 0x46, 0xf4, 0x05, 0xa0, 0x70, 0x08, 0xb6, 0x61, 0xa2, 0xd5, 0x11, 0x01, 0xaf,
-	0xb6, 0xe3, 0x3b, 0x03, 0x70, 0xd4, 0xec, 0x81, 0xcf, 0x3c, 0xe2, 0xf3, 0xd3, 0x6d, 0x29, 0xd8,
-	0x20, 0xe1, 0x99, 0x47, 0x5d, 0x43, 0xcd, 0xbf, 0x34, 0xe0, 0xd6, 0x19, 0xed, 0x8d, 0x32, 0xc3,
-	0xc5, 0x96, 0x53, 0x34, 0xd6, 0x53, 0xcc, 0xb5, 0xd5, 0xec, 0x58, 0x87, 0xaa, 0x13, 0x58, 0x47,
-	0x32, 0xc1, 0xb0, 0x74, 0xbf, 0xc6, 0xd7, 0x4a, 0x72, 0x77, 0x0c, 0xb6, 0x74, 0xde, 0x21, 0x55,
-	0xfe, 0xd3, 0x09, 0xb8, 0xf6, 0x92, 0x9d, 0x38, 0x79, 0xea, 0x5e, 0x70, 0x2b, 0x59, 0x85, 0x29,
-	0x4f, 0x5b, 0x49, 0xce, 0xe2, 0xf1, 0x7a, 0xf4, 0x8d, 0x76, 0x60, 0xfc, 0x44, 0xb4, 0xa0, 0x3d,
-	0xf3, 0x86, 0xa4, 0x2a, 0x68, 0x7b, 0x23, 0xb4, 0xb7, 0xac, 0xab, 0x2b, 0x30, 0xfa, 0x0c, 0x44,
-	0x37, 0x65, 0x91, 0x36, 0xc3, 0x45, 0x89, 0x22, 0x3c, 0xfa, 0x0c, 0x56, 0x9c, 0xae, 0xc7, 0x44,
-	0x4a, 0x80, 0x7b, 0x5f, 0x3b, 0xae, 0x83, 0xfd, 0xd3, 0xae, 0x98, 0xc2, 0x3a, 0x0c, 0x45, 0xd2,
-	0xc0, 0x3b, 0x98, 0xe3, 0x81, 0x91, 0x73, 0x10, 0xe8, 0x00, 0xae, 0x32, 0xd7, 0xce, 0xa1, 0x9b,
-	0xc8, 0xa5, 0xcb, 0x07, 0xad, 0xfe, 0x53, 0x09, 0x2a, 0x09, 0xcd, 0xd1, 0x75, 0x98, 0x0e, 0x38,
-	0xf6, 0x39, 0x77, 0xba, 0xa4, 0x66, 0xac, 0x19, 0xeb, 0x46, 0x7d, 0x50, 0x80, 0x6a, 0x30, 0x49,
-	0xa8, 0x2d, 0xeb, 0x4a, 0xb2, 0x2e, 0xfc, 0x44, 0x37, 0x01, 0x3c, 0x16, 0x70, 0xe1, 0xdb, 0xbb,
-	0xca, 0xfc, 0x46, 0x3d, 0x56, 0x82, 0x1e, 0xc1, 0xbc, 0xfa, 0x72, 0xba, 0xb8, 0x4d, 0x6c, 0xcc,
-	0xb1, 0x36, 0x6d, 0x96, 0xc6, 0x69, 0x51, 0x31, 0xe6, 0xb8, 0xc7, 0x99, 0xe7, 0xe2, 0x30, 0xf6,
-	0x8b, 0xbe, 0xd1, 0x73, 0x00, 0x97, 0x31, 0x6f, 0xdf, 0x8b, 0x62, 0xba, 0x39, 0xbd, 0xb4, 0x8a,
-	0xc6, 0xeb, 0x45, 0x04, 0xa9, 0xc7, 0xe0, 0x68, 0x05, 0x26, 0x4e, 0x98, 0xdb, 0xeb, 0x12, 0x19,
-	0xe9, 0x95, 0xea, 0xfa, 0x0b, 0xad, 0xc3, 0xb8, 0x32, 0xf3, 0x54, 0xae, 0xd2, 0x4a, 0xc0, 0x7c,
-	0x1f, 0x60, 0xc0, 0x8d, 0xa6, 0x60, 0xec, 0x15, 0xa3, 0xa4, 0xfa, 0x06, 0x02, 0x98, 0xa8, 0x13,
-	0x8f, 0x60, 0x5e, 0x35, 0x50, 0x15, 0x66, 0xb7, 0x70, 0xeb, 0xf5, 0x26, 0xb5, 0x77, 0x99, 0xcf,
-	0x3b, 0xd5, 0x92, 0xf9, 0x27, 0x06, 0xac, 0x49, 0xcf, 0xf6, 0x5d, 0x39, 0x9f, 0x1f, 0xa7, 0x9c,
-	0xcf, 0x3d, 0x65, 0xa1, 0xa8, 0xc9, 0x33, 0x1d, 0xcf, 0x4f, 0x67, 0xa0, 0xb6, 0x27, 0x06, 0x44,
-	0x62, 0x46, 0xcd, 0x4d, 0x66, 0x29, 0xe9, 0x4b, 0x36, 0x61, 0xc3, 0x02, 0xa3, 0x26, 0xe4, 0x04,
-	0x8e, 0xb9, 0xf6, 0x00, 0x37, 0x9d, 0x8f, 0x8b, 0xcb, 0xa1, 0x5d, 0x58, 0x62, 0xae, 0xbd, 0xef,
-	0x3b, 0x6d, 0x87, 0x62, 0x77, 0x80, 0x87, 0x5c, 0x7c, 0xa6, 0x3c, 0x7a, 0x17, 0xe6, 0x98, 0x6b,
-	0xbf, 0xc2, 0xbc, 0xe7, 0x63, 0xb7, 0xe1, 0x7c, 0x43, 0x12, 0x49, 0xa1, 0x28, 0xa8, 0xa7, 0x04,
-	0x44, 0xd3, 0x94, 0xf4, 0x87, 0x9b, 0x9e, 0xc9, 0x6f, 0x3a, 0x4b, 0x1e, 0xbd, 0x92, 0x49, 0xa9,
-	0xfc, 0xde, 0xb4, 0xbf, 0xea, 0x05, 0xbc, 0x4b, 0x28, 0x0f, 0x6a, 0xb3, 0x92, 0xe6, 0xba, 0xb2,
-	0x77, 0xaa, 0x32, 0x34, 0x7a, 0x16, 0x50, 0x9b, 0x44, 0x95, 0x90, 0x98, 0x49, 0x2b, 0x85, 0x26,
-	0x19, 0x92, 0xd7, 0x3c, 0x4f, 0x68, 0x07, 0xd3, 0x56, 0x9c, 0x67, 0xae, 0x90, 0x67, 0x48, 0x1e,
-	0x3d, 0x83, 0xaa, 0x93, 0xee, 0xdc, 0xfc, 0x39, 0x3a, 0x37, 0x84, 0x42, 0x8f, 0x61, 0x01, 0x0f,
-	0x75, 0xab, 0x9a, 0xab, 0xce, 0xb0, 0xb0, 0x60, 0x20, 0x43, 0x1d, 0x5a, 0xc8, 0x67, 0x20, 0x19,
-	0xbd, 0x59, 0xa6, 0xa4, 0xdf, 0xec, 0xf4, 0xba, 0x47, 0x14, 0x3b, 0xb1, 0x61, 0x47, 0xb9, 0x2c,
-	0xd9, 0x00, 0xc1, 0xc4, 0x5c, 0x3b, 0x83, 0x69, 0x31, 0x9f, 0x29, 0x13, 0x80, 0xea, 0xb0, 0xca,
-	0xc3, 0xd2, 0xe1, 0x71, 0x5f, 0xca, 0xa5, 0x2b, 0x40, 0xa1, 0x9f, 0xc0, 0x8d, 0x78, 0x63, 0xc3,
-	0xb4, 0xcb, 0xb9, 0xb4, 0xc5, 0x40, 0xb4, 0x0d, 0xcb, 0xc2, 0xf3, 0x1f, 0xe1, 0x80, 0x58, 0x09,
-	0x5f, 0x91, 0x9d, 0x73, 0x2d, 0x85, 0xc2, 0xaf, 0xe2, 0xfe, 0x22, 0x4e, 0x92, 0x70, 0x1c, 0x63,
-	0xc5, 0x24, 0xfb, 0x71, 0xe7, 0xd1, 0x80, 0x1b, 0x71, 0x92, 0xe1, 0xa5, 0x3c, 0x9e, 0x49, 0x76,
-	0x3d, 0x46, 0x36, 0xbc, 0x9c, 0xe3, 0xa4, 0x99, 0xfe, 0x61, 0xb2, 0x98, 0xf4, 0x55, 0x06, 0xc6,
-	0xfc, 0x77, 0x03, 0x6e, 0x49, 0xef, 0x1c, 0x56, 0x09, 0x0f, 0x34, 0x9a, 0xa7, 0x7e, 0x4f, 0x66,
-	0x88, 0x71, 0xbe, 0x44, 0xfe, 0x2e, 0x5d, 0x5e, 0x5a, 0x42, 0x80, 0x62, 0x86, 0x92, 0xa0, 0xf2,
-	0x10, 0x28, 0x25, 0x81, 0x4c, 0x91, 0xa0, 0xa8, 0x3d, 0xe8, 0x15, 0xee, 0x8a, 0x6d, 0xaa, 0xb4,
-	0x3e, 0x5d, 0x4f, 0x94, 0x99, 0x3f, 0x0f, 0x3b, 0x58, 0x70, 0x4c, 0xf6, 0x41, 0xb2, 0x83, 0xb7,
-	0xa2, 0x0e, 0x66, 0xcb, 0x17, 0x76, 0xb4, 0x74, 0x99, 0x8e, 0x96, 0x8a, 0x3b, 0x6a, 0xfe, 0x8d,
-	0x01, 0x37, 0xe5, 0x98, 0xc5, 0xb6, 0x89, 0x51, 0x07, 0xa9, 0x2a, 0x32, 0x53, 0xaa, 0xf8, 0xac,
-	0x20, 0x73, 0x94, 0xe6, 0x28, 0xe9, 0xc7, 0x37, 0xa6, 0xf7, 0xa0, 0x2a, 0x82, 0xfd, 0x04, 0xa8,
-	0x7c, 0xc6, 0x6e, 0x66, 0xfe, 0x85, 0x01, 0x57, 0x54, 0x10, 0x80, 0x83, 0xd7, 0xa3, 0x29, 0xfd,
-	0xeb, 0xf2, 0x7c, 0x52, 0xf0, 0xec, 0xe5, 0x1f, 0x6a, 0xc4, 0x45, 0x04, 0x42, 0x1e, 0xf8, 0x69,
-	0x44, 0xb6, 0x23, 0x88, 0x8b, 0x98, 0xff, 0x3a, 0xae, 0x4d, 0x1d, 0xdb, 0x1f, 0x46, 0xd3, 0xfa,
-	0x40, 0x9d, 0xf0, 0xca, 0x4d, 0xc7, 0xc2, 0xb1, 0xbd, 0xaa, 0x74, 0xd9, 0x8d, 0xf8, 0x40, 0x6e,
-	0x15, 0x19, 0x8c, 0xe5, 0xf3, 0x30, 0x86, 0xae, 0xf1, 0xcc, 0x0d, 0x70, 0xec, 0x22, 0x1b, 0xe0,
-	0x01, 0x5c, 0xf5, 0x89, 0xe7, 0xe2, 0x16, 0xc9, 0x88, 0x10, 0xf2, 0xf3, 0x96, 0x7c, 0x50, 0xf6,
-	0x96, 0x3a, 0x71, 0x91, 0x2d, 0x35, 0xa6, 0xd3, 0x70, 0xb4, 0x31, 0x79, 0xb6, 0x4e, 0xc3, 0x21,
-	0x47, 0xf1, 0x86, 0x38, 0x75, 0xa9, 0x0d, 0xf1, 0x08, 0xcc, 0xb0, 0xc1, 0x82, 0x5d, 0x31, 0x3f,
-	0x6e, 0x3d, 0x07, 0xda, 0xfc, 0xb6, 0x04, 0x35, 0xe9, 0x05, 0x77, 0x5d, 0xdc, 0x1e, 0x71, 0x3e,
-	0xdf, 0x07, 0xd4, 0xc7, 0x81, 0x25, 0x53, 0x17, 0x2b, 0x6c, 0x5b, 0xa7, 0x58, 0xd5, 0x3e, 0x0e,
-	0x64, 0x3b, 0x75, 0x5d, 0x8e, 0xee, 0xc2, 0x9c, 0x13, 0x58, 0xde, 0xe0, 0x9c, 0x5d, 0x1f, 0xeb,
-	0x55, 0x9c, 0x20, 0x76, 0xf8, 0x8e, 0xde, 0x83, 0x15, 0xb1, 0x48, 0x32, 0x88, 0xd5, 0xf1, 0xb9,
-	0x58, 0x07, 0x5f, 0xa4, 0xb9, 0xef, 0x03, 0x92, 0x2b, 0x2b, 0xc9, 0x3f, 0xa5, 0x34, 0x11, 0x0b,
-	0x27, 0xd1, 0xc4, 0x1d, 0xa8, 0x84, 0x3b, 0x83, 0x45, 0xf3, 0xb6, 0x8b, 0x7f, 0x2c, 0xc3, 0xf5,
-	0xf4, 0xbd, 0xac, 0xbc, 0x24, 0x1b, 0x3c, 0x24, 0x49, 0x18, 0xab, 0x16, 0x3f, 0x7c, 0x8d, 0x0b,
-	0x86, 0xd6, 0xfa, 0x0c, 0x10, 0x3b, 0x0a, 0x98, 0x4b, 0x38, 0xb1, 0x02, 0xe2, 0xaa, 0x1b, 0x2e,
-	0xbd, 0xf4, 0xaf, 0xa9, 0x9b, 0x5d, 0x4c, 0x4f, 0x70, 0xd0, 0x08, 0xeb, 0x42, 0xfc, 0x42, 0x08,
-	0x8b, 0x6a, 0xd0, 0x23, 0x58, 0xe8, 0x32, 0x9b, 0xb8, 0xc7, 0xcc, 0x1f, 0x50, 0x65, 0xfb, 0xb4,
-	0x61, 0x41, 0xb4, 0x0f, 0x63, 0xb1, 0x0b, 0xc5, 0x4f, 0x64, 0xdb, 0x45, 0x5d, 0xcd, 0xae, 0x94,
-	0xb7, 0x8a, 0x92, 0x48, 0x64, 0xf6, 0xc7, 0xcc, 0xdf, 0xf1, 0x71, 0x5b, 0x8f, 0x7e, 0xf8, 0x29,
-	0x14, 0xc5, 0x8a, 0xc4, 0x1e, 0x28, 0x9a, 0x7d, 0x47, 0x3e, 0x2c, 0x68, 0x3e, 0x87, 0xab, 0xb9,
-	0x4d, 0x8b, 0x3c, 0x78, 0x9b, 0xd1, 0x80, 0xfb, 0xbd, 0x16, 0x77, 0x4e, 0x48, 0xd5, 0x40, 0xf3,
-	0x30, 0xb3, 0x43, 0x06, 0x05, 0x25, 0x34, 0x03, 0x93, 0x7b, 0x54, 0x8e, 0x7c, 0xb5, 0x6c, 0xfe,
-	0x4b, 0x09, 0x6e, 0x3e, 0xf9, 0x9a, 0x13, 0xdf, 0x61, 0x7e, 0x93, 0x7c, 0xcd, 0xbf, 0xf0, 0xb1,
-	0x37, 0xda, 0xfc, 0xff, 0x0d, 0x35, 0x55, 0x89, 0x26, 0xb5, 0x38, 0xf9, 0x9a, 0x5b, 0x7d, 0x1f,
-	0x7b, 0x09, 0xf7, 0x9b, 0x6e, 0x33, 0xee, 0xd0, 0xd3, 0x75, 0x08, 0xc5, 0x86, 0xa6, 0xa2, 0xad,
-	0x7b, 0x1d, 0xa6, 0x6d, 0xc7, 0xd7, 0xb6, 0x1b, 0x97, 0x15, 0x83, 0x02, 0x74, 0x15, 0xa6, 0x8e,
-	0x1d, 0xae, 0x6e, 0x88, 0x27, 0x64, 0xe5, 0xe4, 0xb1, 0xc3, 0xa5, 0x85, 0x56, 0x60, 0xa2, 0x8b,
-	0xfd, 0xb6, 0x43, 0xc3, 0xf3, 0x08, 0xf5, 0x85, 0xee, 0xc1, 0x3c, 0x76, 0xbd, 0x0e, 0xb6, 0x78,
-	0xc7, 0x27, 0x81, 0x58, 0x14, 0x72, 0xa9, 0x94, 0xea, 0x73, 0xb2, 0xb8, 0x19, 0x96, 0xa2, 0x35,
-	0x98, 0x75, 0x02, 0xab, 0xc3, 0xbb, 0xae, 0xea, 0xd6, 0xb4, 0x1c, 0x5c, 0x70, 0x82, 0x67, 0xbc,
-	0xeb, 0x0a, 0x7d, 0xcd, 0x6f, 0x0d, 0xb8, 0x15, 0x0e, 0xd1, 0xb3, 0x53, 0x8f, 0xf8, 0xae, 0x43,
-	0x47, 0xdc, 0xdb, 0x7f, 0x20, 0x63, 0x8b, 0x4e, 0x48, 0x66, 0xf5, 0x7c, 0x57, 0xae, 0x92, 0x69,
-	0x19, 0x0d, 0x45, 0xe5, 0x87, 0xbe, 0x2b, 0x44, 0x29, 0xe9, 0x27, 0x45, 0xcb, 0x4a, 0x34, 0x5e,
-	0x7e, 0xe8, 0xbb, 0xe6, 0x4f, 0xcb, 0xf0, 0x50, 0xb4, 0x47, 0x28, 0xdf, 0xa3, 0x27, 0xd8, 0x75,
-	0x6c, 0xcc, 0x1d, 0xda, 0xd6, 0x2a, 0x44, 0x2b, 0x6b, 0x8b, 0x74, 0xf0, 0x89, 0xc3, 0xfc, 0x82,
-	0x53, 0x93, 0x68, 0x91, 0xe7, 0x81, 0xc2, 0x8e, 0xd4, 0xe1, 0x06, 0xa6, 0x94, 0x71, 0x79, 0x1d,
-	0x68, 0xd9, 0x4e, 0xe0, 0xb9, 0xf8, 0xd4, 0xa1, 0x6d, 0x4b, 0xdf, 0xc4, 0xe7, 0x84, 0x2d, 0xd7,
-	0x06, 0xa0, 0x9d, 0x08, 0xa3, 0x9b, 0x44, 0xef, 0xc2, 0xf2, 0x11, 0x69, 0x3b, 0xd4, 0x22, 0xb6,
-	0x23, 0xf4, 0xb7, 0x18, 0xb5, 0x7a, 0xd4, 0x66, 0xfa, 0x9a, 0x06, 0xc9, 0xca, 0x27, 0xaa, 0x6e,
-	0x9f, 0x1e, 0x52, 0x9b, 0x65, 0x42, 0x7c, 0x62, 0x33, 0x7d, 0x5b, 0x93, 0x82, 0xd4, 0x89, 0xcd,
-	0xd0, 0x0f, 0xc3, 0x8b, 0x4f, 0xcb, 0x09, 0x6d, 0x45, 0xa2, 0x96, 0xd4, 0x0a, 0x5f, 0x51, 0x02,
-	0x91, 0x2d, 0x89, 0x6e, 0x2d, 0x0f, 0x2a, 0x5b, 0x9c, 0xc8, 0x83, 0x8a, 0x56, 0xcd, 0xff, 0xad,
-	0xc0, 0xaa, 0xdc, 0xa8, 0xb4, 0x5b, 0x1f, 0x6d, 0x1a, 0x7d, 0x0c, 0x73, 0x83, 0xd0, 0x48, 0x1e,
-	0x19, 0x96, 0xce, 0x79, 0x50, 0xb4, 0x07, 0x57, 0x04, 0x92, 0xe9, 0xb8, 0x3b, 0x4e, 0x51, 0xbe,
-	0xe0, 0xc1, 0xcb, 0xc7, 0xf2, 0xcc, 0x27, 0xce, 0x30, 0x76, 0xce, 0x53, 0xa7, 0x3d, 0xb8, 0x22,
-	0x90, 0x59, 0x4a, 0x8c, 0x5f, 0xf0, 0xe0, 0xe9, 0x23, 0x40, 0x8e, 0xba, 0x8b, 0xb5, 0xd4, 0xb2,
-	0x97, 0x97, 0xa4, 0x13, 0xe9, 0x4b, 0xd2, 0xaa, 0x13, 0xbb, 0xb0, 0x95, 0xaf, 0x6f, 0x3e, 0x55,
-	0xfe, 0x2d, 0x03, 0x3c, 0x99, 0x06, 0xcb, 0xe8, 0x34, 0x8d, 0x7f, 0x0c, 0x57, 0xe2, 0x19, 0x82,
-	0x75, 0xcc, 0x7c, 0x6b, 0x6f, 0x53, 0x54, 0xe9, 0x00, 0x29, 0x96, 0x2c, 0x2c, 0xd1, 0x41, 0xa6,
-	0xb0, 0xcb, 0x7c, 0x25, 0x86, 0x9e, 0xc2, 0xb5, 0x74, 0x9e, 0x11, 0x67, 0x99, 0x4e, 0xb3, 0x5c,
-	0x49, 0xa6, 0x1c, 0x03, 0xa2, 0x67, 0xb0, 0xcc, 0xb1, 0xdf, 0x26, 0x5c, 0x1b, 0xb2, 0x1d, 0x3e,
-	0x06, 0x80, 0x82, 0x27, 0x0a, 0x8b, 0x0a, 0x22, 0x2d, 0x19, 0x3d, 0x0a, 0xd8, 0x97, 0xe7, 0xe8,
-	0x56, 0x36, 0xdb, 0x6c, 0x01, 0x9b, 0xb0, 0x65, 0x33, 0x83, 0x70, 0x17, 0x96, 0x34, 0x59, 0x17,
-	0x07, 0xaf, 0x07, 0x5c, 0x95, 0x02, 0x2e, 0xa4, 0x10, 0x22, 0x57, 0x89, 0x78, 0x5e, 0x42, 0x2d,
-	0xa6, 0x58, 0x92, 0x6b, 0xae, 0x80, 0x6b, 0x39, 0xd2, 0x2b, 0x41, 0xb7, 0x07, 0x0b, 0xc3, 0x69,
-	0xc5, 0xe5, 0x0e, 0xd5, 0xb6, 0x60, 0x31, 0x4c, 0x13, 0xe2, 0xf3, 0xf8, 0x42, 0xc7, 0x6a, 0x5b,
-	0xb0, 0x18, 0x86, 0xf5, 0x71, 0x8e, 0x85, 0x8b, 0x65, 0x01, 0x39, 0xf9, 0x17, 0xba, 0x6c, 0xfe,
-	0xa5, 0x57, 0x69, 0x56, 0xef, 0x16, 0x2f, 0x78, 0x16, 0xaa, 0xa9, 0xb2, 0x3a, 0xb9, 0x74, 0xc1,
-	0xe3, 0xd0, 0x1d, 0x58, 0x8a, 0xb2, 0x8c, 0x38, 0x4f, 0xfe, 0x79, 0x1a, 0xe2, 0xc3, 0x47, 0x7e,
-	0xcf, 0xf5, 0x7c, 0xca, 0x62, 0x5a, 0xb9, 0xe8, 0xf9, 0xe1, 0x21, 0xdc, 0x18, 0x10, 0x65, 0x99,
-	0xeb, 0xca, 0xa5, 0x32, 0xa6, 0xdf, 0x92, 0xef, 0x7d, 0xac, 0x62, 0xea, 0xda, 0x65, 0x8f, 0x11,
-	0xef, 0xc3, 0x6c, 0xe2, 0x84, 0xe3, 0x6a, 0xda, 0xdd, 0xcc, 0xd0, 0x33, 0xce, 0x44, 0x56, 0xcf,
-	0x3a, 0x13, 0xf9, 0x6d, 0x03, 0x56, 0xc3, 0xf8, 0xe9, 0x05, 0x6b, 0x8d, 0x18, 0x3a, 0xad, 0xc0,
-	0x84, 0xcb, 0x5a, 0xaf, 0x89, 0x0a, 0x2d, 0xa6, 0xea, 0xfa, 0x0b, 0xdd, 0x00, 0x10, 0xf9, 0x94,
-	0xae, 0x53, 0xa1, 0xc2, 0x74, 0x1f, 0x07, 0x2f, 0x64, 0x81, 0xf9, 0xb3, 0x12, 0xdc, 0x0e, 0x95,
-	0x08, 0xc9, 0x09, 0x1d, 0xf1, 0xc9, 0xdd, 0x03, 0x79, 0xe0, 0x22, 0x63, 0x1d, 0x42, 0x73, 0x1f,
-	0xda, 0x33, 0xf5, 0x94, 0x86, 0x50, 0x2e, 0x00, 0x62, 0xdb, 0x0d, 0x01, 0xd9, 0xd9, 0x0c, 0x50,
-	0xd2, 0x0f, 0x01, 0xdb, 0x30, 0x7f, 0xcc, 0xfc, 0x3e, 0xf6, 0x6d, 0xeb, 0x04, 0xfb, 0x0e, 0xa6,
-	0x5c, 0x67, 0x34, 0xab, 0xfa, 0x9d, 0x6c, 0xbc, 0x17, 0x9f, 0x2b, 0x89, 0xfa, 0x9c, 0x86, 0xe8,
-	0x6f, 0x41, 0xe2, 0xd0, 0x13, 0xe2, 0x07, 0x24, 0x22, 0x19, 0x3f, 0x9b, 0x44, 0x43, 0xf4, 0xb7,
-	0xf9, 0x3f, 0x06, 0xbc, 0x15, 0x3d, 0xe1, 0x22, 0xb4, 0xe5, 0xb8, 0x9b, 0x51, 0x0c, 0x37, 0x9a,
-	0x15, 0x9f, 0x42, 0xcd, 0x93, 0x84, 0x56, 0x2c, 0x94, 0xe4, 0xcc, 0xc2, 0x76, 0x5e, 0xf8, 0xb8,
-	0xec, 0xa5, 0x14, 0x68, 0xb2, 0x4d, 0xdb, 0x46, 0x2f, 0xe1, 0x5a, 0x26, 0x91, 0x7a, 0xa8, 0x9a,
-	0x63, 0xed, 0xda, 0x30, 0x97, 0x7a, 0x3d, 0x6e, 0xfe, 0xdc, 0x18, 0xbc, 0xbd, 0x79, 0xda, 0x73,
-	0xec, 0x11, 0x9e, 0xd4, 0x7e, 0x02, 0x62, 0x16, 0x58, 0x6d, 0xc1, 0x12, 0xd4, 0x26, 0xe5, 0xcb,
-	0x58, 0xe5, 0x8a, 0x0f, 0x03, 0xe2, 0xef, 0x90, 0x63, 0x87, 0x12, 0x5b, 0xb6, 0x11, 0x02, 0xa7,
-	0x99, 0xab, 0x0a, 0x02, 0x01, 0x16, 0x93, 0x46, 0x83, 0xa7, 0xce, 0x03, 0xa6, 0xa4, 0xaf, 0xc0,
-	0xe6, 0xef, 0x18, 0xb0, 0x98, 0xa5, 0x7c, 0xe1, 0x13, 0x88, 0x0c, 0xc0, 0xe0, 0x95, 0xe9, 0x7c,
-	0xc0, 0x99, 0x2f, 0x1c, 0xcf, 0xe0, 0xc1, 0x6b, 0x69, 0xf8, 0xc1, 0x6b, 0x45, 0x4b, 0xe9, 0x37,
-	0xaf, 0x7f, 0x6b, 0xc0, 0xbd, 0xe8, 0x51, 0x5a, 0xe0, 0x91, 0x16, 0xaf, 0x0b, 0x63, 0xab, 0xc5,
-	0x39, 0xda, 0xf4, 0xd9, 0x80, 0x45, 0x2c, 0x19, 0x2d, 0xf9, 0x44, 0xda, 0x4a, 0x78, 0x87, 0x05,
-	0x9c, 0x6e, 0x0c, 0x7d, 0x00, 0x57, 0x84, 0xa3, 0xc8, 0xc2, 0x28, 0xaf, 0xb1, 0xd4, 0xc7, 0xc1,
-	0x90, 0x8e, 0xe6, 0x7f, 0x1a, 0x10, 0x9d, 0x11, 0x6c, 0xb6, 0x5a, 0x24, 0x08, 0x9c, 0x23, 0xc7,
-	0x75, 0xf8, 0xe9, 0x0e, 0x09, 0x5a, 0xbe, 0xe3, 0x8d, 0xbe, 0x0e, 0x3e, 0x81, 0xab, 0x38, 0x4e,
-	0x6c, 0xd9, 0x03, 0x66, 0x9d, 0x1d, 0xd6, 0x70, 0x4e, 0xcb, 0x68, 0x4b, 0x5e, 0x34, 0x59, 0xf9,
-	0x04, 0x2a, 0x67, 0x14, 0xa1, 0x66, 0x9e, 0xf6, 0xe6, 0x7f, 0x18, 0x50, 0x3b, 0xc0, 0x01, 0x27,
-	0xbf, 0x42, 0xaf, 0xc2, 0xc6, 0xcf, 0xf1, 0xa2, 0x0a, 0xdd, 0x83, 0x2a, 0x17, 0x3b, 0x23, 0xa1,
-	0xb6, 0xc8, 0xc3, 0x5c, 0x72, 0xcc, 0x75, 0xe6, 0x57, 0x11, 0xe5, 0x4f, 0xa8, 0xbd, 0x4f, 0x5f,
-	0x90, 0x63, 0x6e, 0xfe, 0xff, 0x18, 0xdc, 0x93, 0x7b, 0x9f, 0x18, 0x85, 0x68, 0xb6, 0xff, 0x52,
-	0x9e, 0x13, 0x6f, 0x01, 0x1a, 0xe4, 0x62, 0xed, 0xf3, 0xbc, 0x2a, 0xae, 0x86, 0x19, 0x59, 0x14,
-	0x8f, 0x6e, 0xe9, 0x23, 0xbe, 0x24, 0x47, 0xd1, 0x0b, 0xe3, 0x6a, 0x18, 0xb1, 0x45, 0x1c, 0x8f,
-	0xe5, 0x03, 0xc7, 0x54, 0x6c, 0x3c, 0x56, 0x40, 0x31, 0xaf, 0xaf, 0x10, 0xe2, 0x0c, 0x42, 0x8b,
-	0x24, 0xc3, 0x78, 0x11, 0x83, 0xbe, 0x52, 0x88, 0x18, 0x9e, 0xca, 0x3b, 0x7d, 0xc5, 0x10, 0x7f,
-	0x5f, 0x3b, 0x51, 0xf8, 0xbe, 0x76, 0x41, 0x2b, 0x12, 0x7b, 0xa3, 0xfb, 0x54, 0x5e, 0x9e, 0x0f,
-	0x13, 0x4d, 0x16, 0x13, 0x69, 0x7d, 0x62, 0x44, 0x8f, 0x55, 0xbe, 0xab, 0x2c, 0x1b, 0x25, 0x9c,
-	0x32, 0x7e, 0xc9, 0x48, 0xd3, 0xf4, 0xb8, 0x24, 0xae, 0xb2, 0x1e, 0xab, 0xd8, 0x35, 0x8b, 0x61,
-	0x28, 0x45, 0x5b, 0x0a, 0x47, 0x25, 0x71, 0xaf, 0x45, 0xe0, 0x56, 0x34, 0xf7, 0x72, 0xe6, 0xdc,
-	0x56, 0x72, 0xce, 0xdd, 0x1f, 0x44, 0xeb, 0x67, 0x4f, 0xd8, 0xf0, 0x99, 0x9e, 0x03, 0x77, 0x22,
-	0x44, 0x7c, 0x54, 0xbe, 0x83, 0xa6, 0x18, 0x3c, 0x50, 0x0b, 0xc2, 0xd5, 0xa7, 0x44, 0xd1, 0x71,
-	0x51, 0xd3, 0xc7, 0x34, 0x38, 0x66, 0x7e, 0x97, 0xf8, 0xcf, 0x88, 0xeb, 0x91, 0xe8, 0xb0, 0xe9,
-	0x11, 0x2c, 0xca, 0x7f, 0x4b, 0xf4, 0x7a, 0x7a, 0xfb, 0x50, 0xff, 0x7b, 0x51, 0x7f, 0x3b, 0x4c,
-	0xed, 0x21, 0x55, 0x21, 0x79, 0xd8, 0x73, 0xe4, 0x16, 0x22, 0xff, 0xef, 0xf2, 0x5f, 0x06, 0xdc,
-	0x09, 0x9d, 0x70, 0x56, 0x5b, 0x61, 0x2b, 0x2d, 0x40, 0x7c, 0x50, 0x6a, 0x75, 0xa4, 0x0a, 0xba,
-	0xa7, 0xef, 0xc7, 0x16, 0xf2, 0xb9, 0xf5, 0xae, 0x2f, 0xf0, 0x74, 0x0d, 0xfa, 0x09, 0xac, 0xf5,
-	0xe8, 0xa0, 0xd8, 0xb6, 0xc2, 0x3f, 0x19, 0x25, 0x8e, 0xbe, 0x4b, 0x19, 0xee, 0xeb, 0x66, 0x02,
-	0x37, 0xd4, 0x21, 0xf3, 0x77, 0x0d, 0xb8, 0x9d, 0x3a, 0x28, 0xff, 0x9e, 0x3a, 0x69, 0xde, 0x86,
-	0x5b, 0x72, 0x19, 0xe5, 0xeb, 0x61, 0x1e, 0x85, 0xcf, 0x42, 0x0b, 0x74, 0xfd, 0x34, 0x39, 0xdb,
-	0xd6, 0x13, 0xe7, 0xf1, 0x05, 0xc0, 0x70, 0xa6, 0x1d, 0xc1, 0x9a, 0x3c, 0x15, 0xff, 0x2e, 0xdb,
-	0xa0, 0xf0, 0x4e, 0x3a, 0xb0, 0x2d, 0x6a, 0xee, 0xc7, 0xb0, 0x32, 0x1c, 0x6d, 0x8a, 0x69, 0xad,
-	0xdb, 0x8f, 0xfd, 0x99, 0x65, 0x29, 0x1d, 0x63, 0x8a, 0x49, 0x6d, 0xfe, 0x9e, 0x01, 0x6f, 0xee,
-	0xfa, 0x84, 0x74, 0x30, 0x95, 0x73, 0xc0, 0xa1, 0xed, 0x7d, 0x0f, 0xb7, 0x1c, 0x3e, 0xe2, 0x4e,
-	0x54, 0x83, 0x49, 0xa6, 0x78, 0xc2, 0x37, 0x88, 0xfa, 0x13, 0xdd, 0x52, 0xf9, 0x4a, 0x58, 0xab,
-	0x1f, 0x21, 0x32, 0xd7, 0xd6, 0xed, 0x9a, 0xff, 0x6d, 0xc0, 0x5b, 0x29, 0x95, 0xa2, 0x3f, 0x7b,
-	0x8c, 0xba, 0x3d, 0x4e, 0xe3, 0xe8, 0x7f, 0x25, 0x6a, 0x57, 0x54, 0xcf, 0xf3, 0xf2, 0x9a, 0x8b,
-	0x62, 0xd9, 0x08, 0x86, 0xf6, 0xa0, 0x22, 0x63, 0x9c, 0x88, 0xa7, 0x7c, 0x01, 0x9e, 0x59, 0x11,
-	0xf9, 0x84, 0x85, 0x6f, 0x7f, 0x0e, 0xcb, 0x99, 0x69, 0x0f, 0x9a, 0x87, 0x99, 0x2d, 0x1c, 0x10,
-	0x5d, 0x59, 0x7d, 0x03, 0xcd, 0xc2, 0xd4, 0xa6, 0x6d, 0xd7, 0x89, 0xe7, 0x9e, 0x56, 0x0d, 0x54,
-	0x81, 0xe9, 0x27, 0xb6, 0xc3, 0xd5, 0x67, 0x49, 0xdd, 0xc6, 0xb8, 0x84, 0x13, 0x55, 0x50, 0xde,
-	0xba, 0xf7, 0xe5, 0xdd, 0xb6, 0xc3, 0x3b, 0xbd, 0xa3, 0x8d, 0x16, 0xeb, 0x3e, 0xf8, 0xc6, 0xe9,
-	0x1e, 0xe1, 0x23, 0xcc, 0x1e, 0xd8, 0xac, 0xd5, 0x62, 0xf4, 0xe4, 0x81, 0xf3, 0x05, 0xf3, 0x5f,
-	0x3f, 0x68, 0x36, 0x76, 0x7e, 0x11, 0x00, 0x00, 0xff, 0xff, 0xc8, 0xf3, 0x8b, 0xb6, 0x3b, 0x3e,
-	0x00, 0x00,
+	// 2455 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xdc, 0x5a, 0xcf, 0x6f, 0x24, 0x47,
+	0xf5, 0xff, 0xf6, 0xfc, 0xf0, 0x8f, 0x37, 0xfe, 0x31, 0x5b, 0x76, 0xf6, 0x3b, 0x71, 0x9c, 0x8d,
+	0xb7, 0x93, 0x10, 0x87, 0x2c, 0x93, 0x64, 0x89, 0x42, 0x50, 0x12, 0x84, 0xe3, 0x59, 0xef, 0x7a,
+	0x7f, 0x78, 0xad, 0x1e, 0x6f, 0x38, 0x70, 0x68, 0xd5, 0x76, 0x97, 0x3d, 0x9d, 0xad, 0xa9, 0x6a,
+	0x55, 0xd7, 0x78, 0xd6, 0x91, 0x50, 0xfe, 0x8c, 0x48, 0xfc, 0x10, 0x12, 0x48, 0xc0, 0x81, 0x03,
+	0x37, 0x2e, 0x9c, 0x38, 0x80, 0x90, 0x10, 0x12, 0x12, 0x70, 0x00, 0xce, 0x70, 0xe2, 0xc8, 0x1d,
+	0x55, 0x75, 0x57, 0x77, 0xcf, 0x4c, 0xf7, 0xec, 0xc6, 0x66, 0xa4, 0x15, 0xb7, 0xa9, 0x7a, 0x9f,
+	0xcf, 0x7b, 0xaf, 0x5e, 0xbd, 0xf7, 0xba, 0xba, 0x6b, 0xa0, 0x75, 0xd4, 0xed, 0xec, 0xf2, 0x7e,
+	0x1f, 0x33, 0x7f, 0x47, 0x78, 0xbd, 0xe0, 0x94, 0x44, 0xed, 0x50, 0x70, 0xc9, 0x51, 0xf5, 0xa8,
+	0xdb, 0xd9, 0xb8, 0x74, 0xd4, 0x3d, 0xbc, 0x47, 0xa2, 0x08, 0x9f, 0x98, 0x79, 0x35, 0x75, 0x67,
+	0x14, 0xaa, 0xa6, 0xba, 0x93, 0x53, 0x9d, 0xd1, 0x29, 0xfb, 0x6f, 0x15, 0x78, 0x79, 0x97, 0x33,
+	0x46, 0x3c, 0x19, 0x70, 0x76, 0x37, 0x60, 0x24, 0x19, 0x8d, 0xda, 0x47, 0xaf, 0x43, 0x3d, 0x1a,
+	0x84, 0x44, 0xb4, 0xac, 0xad, 0xca, 0x76, 0xe3, 0xfa, 0x5a, 0xfb, 0xa8, 0x7b, 0xa7, 0x3d, 0x8a,
+	0x71, 0x62, 0x04, 0xfa, 0x1a, 0xac, 0x7a, 0xa9, 0x46, 0x97, 0x06, 0x8c, 0xb4, 0x2a, 0x9a, 0xb4,
+	0xd2, 0x3e, 0xea, 0x1e, 0xb6, 0x1d, 0x72, 0x4c, 0x04, 0x61, 0x1e, 0x71, 0x56, 0xbc, 0x11, 0xc3,
+	0xe8, 0x2b, 0x00, 0xc9, 0x8c, 0x2b, 0x79, 0xab, 0xba, 0x65, 0x15, 0x70, 0x16, 0x13, 0xc4, 0x11,
+	0x47, 0x6f, 0xc3, 0x92, 0x81, 0x1f, 0x0b, 0xde, 0x6f, 0xd5, 0x0a, 0x09, 0x8d, 0x04, 0xb3, 0x27,
+	0x78, 0x1f, 0xbd, 0x03, 0x2b, 0x9c, 0xfa, 0x6e, 0xce, 0x4a, 0xbd, 0x90, 0xb4, 0xc4, 0xa9, 0xbf,
+	0x9b, 0x1a, 0x7a, 0x0f, 0x9a, 0x79, 0x96, 0x36, 0x36, 0x57, 0xc8, 0x5b, 0xc9, 0x78, 0xca, 0x9e,
+	0xfd, 0x03, 0x0b, 0x36, 0x6f, 0x0a, 0x3e, 0x08, 0x3b, 0x02, 0x0f, 0xf1, 0x43, 0x4a, 0xa2, 0xf3,
+	0x87, 0xf5, 0x1a, 0x2c, 0xfa, 0x46, 0x4b, 0xab, 0xb2, 0x55, 0x2d, 0x0a, 0x4e, 0x0a, 0x40, 0xaf,
+	0x40, 0xfd, 0x44, 0x19, 0x2e, 0x09, 0x63, 0x2c, 0xb4, 0xbf, 0x67, 0xc1, 0xc6, 0x03, 0xa6, 0x7f,
+	0x6b, 0x37, 0x9f, 0x2d, 0xef, 0xfe, 0x61, 0xc1, 0xab, 0xbb, 0x9c, 0x49, 0x1c, 0x30, 0x22, 0x1c,
+	0xd2, 0xe7, 0xa7, 0x64, 0xb7, 0x17, 0x50, 0x5f, 0x10, 0x76, 0x21, 0x47, 0x3d, 0xa3, 0xb3, 0x55,
+	0x29, 0xcd, 0xb1, 0x18, 0x80, 0xbe, 0x0c, 0x0b, 0x5e, 0x62, 0xb2, 0x55, 0x2d, 0x5c, 0x55, 0x2a,
+	0x57, 0x69, 0x62, 0x7e, 0xbb, 0x01, 0xf3, 0x03, 0x8f, 0x44, 0x49, 0x4e, 0x2e, 0x6b, 0xce, 0x3e,
+	0xf3, 0xc9, 0xe3, 0x2e, 0x91, 0xce, 0xaa, 0x81, 0xed, 0xc7, 0x28, 0xfb, 0xd7, 0xf9, 0x85, 0xee,
+	0xb3, 0x88, 0x08, 0xf9, 0x2c, 0x2f, 0x74, 0x1d, 0xea, 0x81, 0x5a, 0x8b, 0x5e, 0x5d, 0xcd, 0x89,
+	0x07, 0xf6, 0x3f, 0x2d, 0xf8, 0x52, 0x6e, 0xb7, 0xb8, 0xf0, 0x89, 0xf8, 0xdf, 0xdc, 0xae, 0x7f,
+	0x57, 0x60, 0x63, 0x9f, 0x1d, 0xf3, 0x9b, 0x84, 0xf7, 0x89, 0x14, 0x67, 0xe7, 0x5f, 0x9d, 0x0d,
+	0xb5, 0x80, 0x1d, 0xf3, 0x92, 0x85, 0x69, 0x19, 0x7a, 0x17, 0x1a, 0x8c, 0x0c, 0x8d, 0xad, 0xa4,
+	0x62, 0xd6, 0xdb, 0x47, 0xdd, 0x4e, 0xdb, 0x4c, 0x1a, 0xad, 0x79, 0xa0, 0xe2, 0x71, 0xea, 0xa7,
+	0xbc, 0xda, 0x34, 0x5e, 0x0e, 0x88, 0x6e, 0xc3, 0x56, 0xd4, 0xe3, 0x03, 0xea, 0xef, 0x52, 0x82,
+	0xc5, 0xfd, 0x87, 0x9f, 0x10, 0x4f, 0x1e, 0x52, 0xec, 0x91, 0x1e, 0xa7, 0x3e, 0x11, 0x7b, 0x14,
+	0x9f, 0xe8, 0xae, 0xb9, 0xe0, 0x3c, 0x11, 0x87, 0xee, 0xc2, 0x55, 0x3f, 0xf0, 0xef, 0x61, 0xe9,
+	0xf5, 0x26, 0x00, 0xa9, 0x67, 0x73, 0x5a, 0xd9, 0x93, 0x81, 0xf6, 0xbf, 0x2c, 0xd8, 0x32, 0x8d,
+	0xf4, 0x10, 0xcb, 0x5e, 0x97, 0x0f, 0x84, 0x47, 0x66, 0x1b, 0xfd, 0x0f, 0x60, 0x99, 0x53, 0x3f,
+	0xc4, 0xb2, 0x17, 0x69, 0x6b, 0x49, 0xfc, 0x2f, 0xeb, 0x38, 0x66, 0x4e, 0x18, 0xcd, 0xa3, 0x60,
+	0xc5, 0x66, 0x64, 0x98, 0x63, 0xd7, 0xa6, 0xb3, 0x47, 0xc0, 0xf6, 0x2f, 0x2d, 0x95, 0x67, 0x91,
+	0xc4, 0x4c, 0xee, 0xd0, 0xb0, 0x87, 0xcf, 0xbf, 0xd2, 0x57, 0xa0, 0x1e, 0xf4, 0xf1, 0x09, 0x29,
+	0x59, 0x6a, 0x2c, 0x44, 0x2f, 0xc3, 0x7c, 0xe2, 0x7e, 0xb2, 0xca, 0x45, 0x8d, 0x53, 0x7e, 0x3a,
+	0x46, 0xa2, 0x40, 0x89, 0x97, 0xc9, 0x62, 0xf2, 0xa0, 0x44, 0x62, 0xff, 0xd1, 0x82, 0x4d, 0xb3,
+	0x53, 0xdd, 0x1e, 0xf6, 0xf9, 0x70, 0xb6, 0xbb, 0xf4, 0x16, 0x2c, 0x72, 0xea, 0x47, 0xda, 0x52,
+	0xe2, 0x3b, 0xd2, 0x31, 0x8e, 0x8d, 0x1b, 0x8d, 0x19, 0x48, 0x31, 0x18, 0x19, 0x26, 0x8c, 0x5a,
+	0x39, 0x23, 0x05, 0xd9, 0x3f, 0xc9, 0x65, 0xdf, 0x4e, 0x18, 0xd2, 0xb3, 0xa3, 0x1e, 0xe9, 0x8f,
+	0x67, 0xdf, 0x7b, 0xa3, 0xeb, 0xb2, 0xdb, 0x47, 0xdd, 0x6e, 0x3b, 0x87, 0x56, 0x9d, 0xe4, 0xfc,
+	0xcb, 0x7c, 0x05, 0xea, 0x91, 0x3c, 0xa3, 0xa4, 0xec, 0xb1, 0xa9, 0x85, 0xf6, 0xe7, 0x16, 0x6c,
+	0x75, 0xd5, 0x2f, 0x5f, 0x35, 0xa9, 0x2e, 0x91, 0x7a, 0x30, 0xdb, 0x0d, 0x78, 0x3a, 0xcf, 0x7e,
+	0x54, 0x81, 0xab, 0xdd, 0x1e, 0x0e, 0x73, 0xd5, 0xbb, 0x47, 0x83, 0x70, 0xb6, 0xae, 0x5d, 0x83,
+	0x4b, 0x8c, 0x0c, 0x6f, 0x71, 0x11, 0x7c, 0xaa, 0x9e, 0x13, 0x54, 0x59, 0xd4, 0x6e, 0x2e, 0x38,
+	0x93, 0x02, 0xb4, 0x0d, 0xab, 0x8c, 0x0c, 0x3f, 0x26, 0x42, 0x06, 0x5e, 0x82, 0xad, 0x69, 0xec,
+	0xf8, 0xb4, 0xd2, 0xcb, 0xa9, 0x3f, 0xa6, 0x37, 0x6e, 0x8c, 0x93, 0x02, 0xa5, 0x97, 0x53, 0x7f,
+	0x44, 0x6f, 0xdc, 0xf7, 0xc6, 0xa7, 0xed, 0x9f, 0xab, 0xed, 0x53, 0x41, 0xd2, 0xdb, 0xd6, 0x25,
+	0xf2, 0x63, 0x4c, 0x07, 0xe3, 0xdb, 0xf7, 0xfe, 0x68, 0x8c, 0x5e, 0x8d, 0x53, 0xf7, 0x09, 0x9b,
+	0x6e, 0xa2, 0x76, 0x07, 0x9a, 0x91, 0x32, 0xe0, 0x86, 0x82, 0x87, 0xca, 0x74, 0xfa, 0xe4, 0xdb,
+	0x32, 0x25, 0x90, 0x58, 0x3f, 0x4c, 0x01, 0x46, 0xc5, 0xaa, 0x66, 0x66, 0xf3, 0xf6, 0x4f, 0x2b,
+	0x70, 0x45, 0x13, 0x74, 0x96, 0x1f, 0x0a, 0x12, 0x11, 0xf9, 0xdf, 0x74, 0xf6, 0x2d, 0x68, 0xe8,
+	0xe4, 0x09, 0xb5, 0xe6, 0x16, 0x14, 0x1f, 0xf2, 0x73, 0x10, 0x74, 0x0d, 0x1a, 0x1e, 0xa7, 0x5c,
+	0x24, 0x8c, 0x86, 0x66, 0x80, 0x66, 0xec, 0xaa, 0x79, 0x27, 0x2f, 0x46, 0x6f, 0x01, 0x1c, 0x07,
+	0x94, 0x26, 0xe0, 0x25, 0x0d, 0x6e, 0x6a, 0x0f, 0xf7, 0x02, 0x4a, 0x8d, 0x33, 0x39, 0x0c, 0x7a,
+	0x17, 0x96, 0xe2, 0x96, 0x90, 0x70, 0x96, 0x4b, 0xbb, 0xc7, 0x08, 0xce, 0xfe, 0x9d, 0x05, 0x2f,
+	0xc6, 0xa1, 0x25, 0x52, 0xbd, 0xef, 0xdc, 0x60, 0xfe, 0x85, 0x3a, 0xba, 0xde, 0x89, 0xb2, 0x8e,
+	0xae, 0x85, 0xa8, 0x0d, 0x0b, 0xea, 0xfd, 0xcb, 0x25, 0xcc, 0x4f, 0x2a, 0x73, 0x4d, 0xbb, 0x99,
+	0x98, 0x37, 0x3a, 0xe7, 0x69, 0x3c, 0x46, 0xaf, 0x41, 0x33, 0x88, 0xdc, 0x1e, 0xc1, 0xbe, 0x9b,
+	0xf2, 0xe2, 0xf4, 0x5f, 0x0e, 0xa2, 0x5b, 0x04, 0xfb, 0x09, 0xd1, 0xfe, 0x4b, 0x1d, 0x5e, 0xb8,
+	0xc7, 0x4f, 0x83, 0xb2, 0xfc, 0xfc, 0x62, 0x2b, 0xe9, 0x2b, 0x4d, 0x65, 0x2b, 0xd1, 0x42, 0xf4,
+	0x26, 0xac, 0xf9, 0x6a, 0x83, 0x3d, 0x2c, 0x89, 0x6f, 0x12, 0x37, 0x3e, 0x0d, 0x2d, 0x3a, 0x28,
+	0x13, 0x25, 0x99, 0x79, 0x86, 0x36, 0x60, 0x21, 0x45, 0xa9, 0x25, 0xd4, 0x9d, 0x74, 0x8c, 0x3a,
+	0x50, 0x3f, 0x55, 0x4e, 0x27, 0x6f, 0x7f, 0x6d, 0x1d, 0x93, 0x29, 0xcb, 0x69, 0x1b, 0xad, 0x5a,
+	0xe6, 0xc4, 0xe4, 0x8d, 0xef, 0x57, 0x61, 0x79, 0x44, 0x80, 0x36, 0x61, 0x31, 0x92, 0x58, 0x48,
+	0x19, 0xf4, 0x49, 0xcb, 0xda, 0xb2, 0xb6, 0x2d, 0x27, 0x9b, 0x40, 0x2d, 0x98, 0x27, 0xcc, 0xd7,
+	0xb2, 0x8a, 0x96, 0x99, 0x21, 0xba, 0x02, 0x10, 0xf2, 0x48, 0xaa, 0x8a, 0xea, 0xc7, 0x2d, 0xd4,
+	0x72, 0x72, 0x33, 0xe8, 0x03, 0x58, 0x8d, 0x47, 0xfa, 0x39, 0xed, 0x63, 0x89, 0x73, 0x8f, 0xac,
+	0xc3, 0x76, 0x07, 0x4b, 0x9c, 0x05, 0x6c, 0x1c, 0xaa, 0x22, 0x81, 0x07, 0x92, 0x87, 0x14, 0x9f,
+	0x25, 0xfd, 0x29, 0x1d, 0xa3, 0x3b, 0x00, 0x94, 0xf3, 0xf0, 0x7e, 0xa8, 0x5e, 0xc2, 0x75, 0x47,
+	0x5a, 0xb9, 0xfe, 0xc6, 0x13, 0xc3, 0x71, 0x37, 0xa5, 0x38, 0x39, 0x3a, 0xba, 0x0c, 0x73, 0xa7,
+	0x9c, 0x0e, 0xfa, 0xa4, 0x35, 0xbf, 0x65, 0x6d, 0x57, 0x9c, 0x64, 0x84, 0xb6, 0xa1, 0xde, 0x27,
+	0x7e, 0x80, 0x5b, 0x0b, 0xa5, 0x4e, 0xc7, 0x00, 0x74, 0x1b, 0x2e, 0x07, 0xfd, 0x90, 0x0b, 0x49,
+	0x7c, 0x3c, 0x78, 0x1c, 0xd0, 0x00, 0x8b, 0xb3, 0x98, 0xba, 0x58, 0x4a, 0x2d, 0x61, 0xd8, 0xef,
+	0x00, 0x64, 0x7e, 0xa2, 0x05, 0xa8, 0x1d, 0x70, 0x46, 0x9a, 0xff, 0x87, 0x00, 0xe6, 0x1c, 0x12,
+	0x12, 0x2c, 0x9b, 0x16, 0x6a, 0xc2, 0xd2, 0x47, 0xd8, 0x7b, 0xb4, 0xc3, 0xfc, 0x3d, 0x2e, 0x64,
+	0xaf, 0x59, 0xd1, 0xdd, 0xf7, 0x9e, 0xe2, 0xcf, 0xb2, 0xfb, 0x6a, 0x07, 0xcb, 0xba, 0x6f, 0x66,
+	0xbd, 0xa0, 0xfb, 0x6a, 0x66, 0xae, 0xfb, 0xfe, 0x62, 0x1e, 0x5a, 0xfb, 0x6a, 0xa7, 0x35, 0x6b,
+	0xd6, 0x2f, 0x22, 0x4b, 0x8c, 0x0c, 0xb5, 0x35, 0xb5, 0x03, 0x53, 0x76, 0x73, 0x04, 0xa7, 0x78,
+	0x9c, 0xfa, 0x19, 0xaf, 0x7c, 0x2b, 0x47, 0x70, 0x68, 0x0f, 0xd6, 0x39, 0xf5, 0xef, 0x8b, 0xe0,
+	0x24, 0x60, 0x98, 0x66, 0x7c, 0x28, 0xe5, 0x17, 0xe2, 0xd1, 0xdb, 0xfa, 0xa3, 0xcf, 0x01, 0x96,
+	0x03, 0x81, 0x69, 0x37, 0xf8, 0x94, 0x24, 0x1f, 0x6f, 0xe2, 0x83, 0xab, 0x9a, 0x70, 0xc6, 0x00,
+	0xca, 0x34, 0x23, 0xc3, 0x49, 0xd3, 0x8d, 0x72, 0xd3, 0x45, 0x78, 0x74, 0x00, 0x6b, 0x66, 0x49,
+	0x3b, 0xfe, 0x27, 0x83, 0x48, 0xf6, 0x09, 0x93, 0x51, 0xf2, 0x94, 0xd9, 0xd4, 0xdb, 0x3d, 0x2e,
+	0x34, 0x1b, 0x53, 0x44, 0x4c, 0x42, 0x12, 0xcf, 0x90, 0x5c, 0x48, 0x97, 0xa7, 0x86, 0x64, 0x02,
+	0x9f, 0xe8, 0xb9, 0xc1, 0x7a, 0x98, 0x79, 0x79, 0x3d, 0x2b, 0x53, 0xf5, 0x4c, 0xe0, 0xd1, 0x2e,
+	0x3c, 0xa7, 0x5a, 0xcc, 0x43, 0x1c, 0x11, 0x77, 0x24, 0x37, 0x8a, 0x8f, 0x81, 0xeb, 0x06, 0x7c,
+	0x90, 0xcf, 0x8f, 0xbc, 0x92, 0x91, 0x44, 0xa9, 0x4d, 0x57, 0x72, 0x3f, 0x9f, 0x2c, 0x5d, 0x78,
+	0x31, 0xaf, 0x64, 0x72, 0xeb, 0x8a, 0x3f, 0xf4, 0x6d, 0xe6, 0x94, 0x4d, 0x6e, 0x5f, 0x5e, 0x69,
+	0x61, 0x3e, 0xcc, 0x4f, 0x57, 0x7a, 0x50, 0xc0, 0xb1, 0xff, 0x6a, 0xc1, 0x4b, 0xba, 0x5a, 0x8d,
+	0x48, 0x65, 0xdc, 0x6c, 0x2b, 0xf7, 0xab, 0xfa, 0x50, 0x9b, 0xb7, 0x37, 0xf2, 0x82, 0xa7, 0x4b,
+	0x60, 0x1c, 0xa1, 0x48, 0xb9, 0x40, 0x6a, 0x52, 0x6d, 0x82, 0x34, 0x86, 0xb0, 0x7f, 0x6f, 0xc1,
+	0xff, 0xc7, 0xfd, 0x08, 0x47, 0x8f, 0x66, 0xfd, 0xce, 0xd7, 0x60, 0x64, 0xa8, 0xec, 0xa8, 0x9e,
+	0x5b, 0x92, 0x71, 0x79, 0x88, 0x62, 0x70, 0xea, 0xa7, 0x8c, 0x92, 0xef, 0xc5, 0x39, 0x88, 0xfd,
+	0x5b, 0x0b, 0xae, 0xe8, 0xbd, 0x7a, 0x66, 0x0e, 0xb7, 0xe3, 0x87, 0xcf, 0xc6, 0x53, 0x1e, 0x3e,
+	0x3f, 0xaf, 0xc1, 0x95, 0xf1, 0x76, 0x72, 0xfe, 0xfd, 0x39, 0x84, 0xe7, 0x38, 0xf5, 0x5d, 0x7d,
+	0xc6, 0x70, 0x71, 0xae, 0xb3, 0x55, 0xce, 0xdb, 0xd9, 0x0e, 0xe1, 0x39, 0x46, 0x86, 0x05, 0x1a,
+	0xab, 0x4f, 0xa3, 0xd1, 0xf4, 0x9e, 0xbc, 0xc6, 0x6f, 0xc2, 0x25, 0x3c, 0xd1, 0x28, 0xcb, 0x8f,
+	0x4d, 0x93, 0x60, 0x74, 0x08, 0xcf, 0x0b, 0x12, 0x52, 0xec, 0x91, 0x82, 0x96, 0x5b, 0x2f, 0xd5,
+	0x54, 0x4e, 0x52, 0x3e, 0x91, 0x89, 0xa6, 0x3b, 0x57, 0xee, 0xd3, 0x04, 0x38, 0xef, 0xd3, 0x64,
+	0xfb, 0x9e, 0x7f, 0xb2, 0x4f, 0x13, 0x24, 0xfb, 0x33, 0x68, 0xe9, 0x14, 0xdf, 0xa3, 0xf8, 0x24,
+	0x9a, 0x6d, 0xc9, 0xae, 0x43, 0xfd, 0x58, 0x59, 0xd1, 0x9b, 0xba, 0xec, 0xc4, 0x03, 0xfb, 0x0f,
+	0xd5, 0xec, 0x63, 0x91, 0x71, 0x40, 0xdf, 0x46, 0x18, 0x2f, 0xda, 0xa3, 0x5e, 0xb4, 0xf2, 0x5e,
+	0xe4, 0x81, 0xc6, 0x95, 0xdb, 0x80, 0xf8, 0xc3, 0x88, 0x53, 0x22, 0x89, 0x1b, 0x11, 0x1a, 0xdf,
+	0x30, 0x25, 0x8e, 0xbd, 0xa0, 0x13, 0x69, 0x17, 0xb3, 0x53, 0x1c, 0x75, 0x8d, 0xcc, 0xf0, 0x2f,
+	0x19, 0x5a, 0x2a, 0x41, 0x1f, 0xc0, 0xa5, 0x3e, 0xf7, 0x09, 0x3d, 0xe6, 0x22, 0x53, 0x55, 0xdc,
+	0x6b, 0x26, 0x81, 0xe8, 0x3e, 0xd4, 0xe4, 0x59, 0x18, 0x37, 0xce, 0x95, 0xeb, 0xef, 0x6b, 0xdb,
+	0xd3, 0x96, 0x5a, 0x2c, 0x3c, 0x3a, 0x0b, 0x89, 0xa3, 0x15, 0xa9, 0x77, 0x88, 0x63, 0x2e, 0x3a,
+	0x22, 0xfd, 0x06, 0x6b, 0x86, 0xca, 0x51, 0x1c, 0x2b, 0xf1, 0x33, 0x47, 0x8b, 0x6f, 0xa9, 0x26,
+	0x81, 0xf6, 0x1d, 0x78, 0xbe, 0xd4, 0xb4, 0x3a, 0x25, 0xef, 0x72, 0x16, 0x49, 0x31, 0xf0, 0x64,
+	0x70, 0x4a, 0x9a, 0x16, 0x5a, 0x85, 0x46, 0x87, 0x64, 0x13, 0x15, 0xd4, 0x80, 0xf9, 0x7d, 0xa6,
+	0xbf, 0xd9, 0x36, 0xab, 0xf6, 0x0f, 0x2b, 0x70, 0xe5, 0xc6, 0x63, 0xf5, 0x0e, 0xc2, 0xc5, 0x11,
+	0x79, 0x2c, 0xbf, 0x25, 0xf0, 0x05, 0xbe, 0xf1, 0x74, 0x61, 0x59, 0x25, 0x8f, 0x8b, 0x99, 0xef,
+	0x0e, 0x05, 0x0e, 0x93, 0xdb, 0xa5, 0x37, 0x75, 0x30, 0xa7, 0x9b, 0x69, 0xab, 0x0e, 0xbc, 0xc3,
+	0x7c, 0x25, 0x71, 0x1a, 0x41, 0x36, 0xd8, 0xf8, 0x0e, 0x34, 0x72, 0xb2, 0x34, 0x79, 0xad, 0x29,
+	0xc9, 0x7b, 0x1b, 0x10, 0x49, 0xac, 0xb9, 0x92, 0x3c, 0x96, 0xc6, 0x99, 0xac, 0x3d, 0x8d, 0x3b,
+	0x63, 0x16, 0xd2, 0x24, 0x63, 0x02, 0xfb, 0x37, 0x16, 0xbc, 0x64, 0xe2, 0x7d, 0xeb, 0x2c, 0x24,
+	0x82, 0x06, 0x6c, 0xc6, 0x8f, 0xcb, 0xd7, 0xf5, 0x25, 0x66, 0xcf, 0x18, 0x73, 0x07, 0x82, 0x26,
+	0x6f, 0xcf, 0xab, 0xf9, 0xf9, 0x07, 0x82, 0x2a, 0x28, 0x23, 0xc3, 0x51, 0x68, 0x2d, 0x86, 0xe6,
+	0xe7, 0x1f, 0x08, 0x6a, 0x7f, 0xb7, 0x0a, 0x2f, 0x25, 0x3e, 0xa5, 0x35, 0xf3, 0x11, 0xe9, 0xe1,
+	0xd3, 0x80, 0x0b, 0xb3, 0x90, 0x6f, 0xc0, 0x9a, 0xae, 0x0c, 0xf7, 0x98, 0x8b, 0x89, 0x7a, 0x2c,
+	0x2e, 0xa2, 0x3d, 0x2e, 0xb2, 0x12, 0x7c, 0x90, 0x14, 0x51, 0x55, 0x17, 0xd1, 0x4e, 0x5c, 0xc0,
+	0xd3, 0x6d, 0x96, 0xca, 0x73, 0xa5, 0xf4, 0x21, 0x20, 0x53, 0x07, 0x39, 0xaf, 0x6a, 0xd3, 0x2b,
+	0x26, 0xf3, 0xaa, 0x03, 0x97, 0x53, 0xba, 0x7a, 0x72, 0x65, 0x2a, 0x8a, 0x4f, 0x9a, 0xeb, 0x06,
+	0x7d, 0x40, 0x86, 0xa9, 0x16, 0xfb, 0xdb, 0xb0, 0x39, 0xcd, 0xd5, 0x2f, 0x5a, 0x7a, 0x6a, 0xe0,
+	0xc4, 0x9d, 0xbe, 0x59, 0xb3, 0x6f, 0xc2, 0x86, 0x6e, 0xf3, 0xc9, 0xcc, 0xb9, 0xf3, 0xcb, 0xfe,
+	0x0c, 0x36, 0x4c, 0xb6, 0xde, 0xe5, 0xde, 0x8c, 0x13, 0x15, 0x41, 0x8d, 0x72, 0xef, 0x51, 0xf2,
+	0x89, 0x56, 0xff, 0xb6, 0xff, 0x64, 0xc1, 0x55, 0xe3, 0x81, 0xaa, 0x5b, 0xa5, 0x9d, 0x30, 0x39,
+	0x5b, 0x47, 0xde, 0xd4, 0xc7, 0x45, 0xd7, 0x8b, 0x6d, 0x95, 0x34, 0x7d, 0xe0, 0xf1, 0x07, 0x7d,
+	0xc2, 0xa4, 0x22, 0xa8, 0x4c, 0x30, 0x84, 0xe2, 0x54, 0x02, 0x46, 0x86, 0x09, 0xc1, 0xfe, 0xbb,
+	0x05, 0x57, 0x93, 0xdf, 0x5d, 0xc9, 0x85, 0x3a, 0xc0, 0xa8, 0x73, 0xe6, 0x05, 0xff, 0x7a, 0xa1,
+	0xf5, 0xb9, 0x51, 0xac, 0xb0, 0xfc, 0xaf, 0x17, 0x79, 0xb3, 0xe8, 0x55, 0x58, 0xc9, 0x88, 0x22,
+	0x60, 0x27, 0xad, 0xea, 0x56, 0x65, 0x7b, 0xd1, 0x59, 0x4e, 0x71, 0x6a, 0x12, 0x5d, 0x03, 0x94,
+	0x0b, 0x89, 0x81, 0xd6, 0x34, 0xb4, 0x99, 0x45, 0x22, 0x46, 0xdb, 0x7f, 0xae, 0xc0, 0xda, 0xcd,
+	0x41, 0xe0, 0x5f, 0xe0, 0xed, 0x66, 0x1b, 0xe6, 0xb3, 0x85, 0x14, 0x85, 0xd3, 0x88, 0xd1, 0xd7,
+	0xf5, 0x15, 0x90, 0x7b, 0xa2, 0xec, 0x8d, 0x1c, 0x1a, 0x1f, 0x44, 0x44, 0x74, 0xc8, 0x71, 0xc0,
+	0x88, 0xaf, 0x9d, 0x31, 0x16, 0x16, 0x38, 0x8d, 0x27, 0x14, 0x55, 0xed, 0x5b, 0x4c, 0xad, 0x3d,
+	0x0d, 0x95, 0x91, 0x61, 0x4c, 0xfd, 0x10, 0x6a, 0xaa, 0x61, 0xe9, 0x9a, 0x5f, 0xb9, 0xfe, 0x7a,
+	0x7c, 0xbb, 0x3a, 0xb9, 0xe4, 0x91, 0xb9, 0x7b, 0xdc, 0x27, 0x8e, 0xa6, 0xd9, 0xef, 0x40, 0x73,
+	0x5c, 0x82, 0xe6, 0xa1, 0xba, 0xe3, 0xfb, 0x4d, 0x2b, 0x5f, 0xcb, 0x15, 0x04, 0x30, 0xd7, 0x21,
+	0xea, 0x68, 0xd2, 0xac, 0xda, 0x3f, 0xb3, 0xe0, 0xb5, 0xf4, 0x26, 0x2a, 0x0a, 0x89, 0x27, 0x1d,
+	0x2c, 0x03, 0xae, 0x4a, 0x93, 0xf8, 0xb3, 0xad, 0x89, 0x36, 0xac, 0x61, 0x6d, 0xd1, 0x15, 0xca,
+	0xa4, 0x4b, 0xb5, 0x4d, 0x73, 0x9d, 0x82, 0xc7, 0x9d, 0xb1, 0x7f, 0x65, 0x41, 0x7a, 0xa6, 0xd9,
+	0xf1, 0x3c, 0x12, 0x45, 0xc1, 0xc3, 0x80, 0x06, 0xf2, 0xac, 0x43, 0x22, 0x4f, 0x04, 0xfa, 0xdb,
+	0xdc, 0x6c, 0x3d, 0x7e, 0x1f, 0x9e, 0xc7, 0x79, 0xc3, 0xae, 0x9f, 0x59, 0x4e, 0x1e, 0x80, 0x2d,
+	0x5c, 0xe2, 0x99, 0xfd, 0x63, 0x0b, 0x5a, 0x87, 0x38, 0x92, 0xe4, 0x82, 0x57, 0x68, 0x6f, 0xc0,
+	0xa2, 0x4f, 0x22, 0xe9, 0x26, 0xde, 0x16, 0x55, 0xe4, 0x82, 0x02, 0xec, 0x27, 0x7d, 0x27, 0xbe,
+	0x9e, 0x99, 0x76, 0xa3, 0x06, 0x51, 0x7a, 0x49, 0xf3, 0x9f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x1e,
+	0xc9, 0xc1, 0x6d, 0x2f, 0x26, 0x00, 0x00,
 }

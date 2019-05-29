@@ -1,8 +1,6 @@
 syntax = "proto2";
 
 import "TSPMessages.proto";
-
-option go_package = "github.com/zimbabao/docconv/iWork/TSP";
 package TSP;
 
 message DatabaseData {

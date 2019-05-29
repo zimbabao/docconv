@@ -6,13 +6,6 @@ package KN
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	_ "github.com/zimbabao/docconv/iWork/TSA"
-	TSD "github.com/zimbabao/docconv/iWork/TSD"
-	TSK "github.com/zimbabao/docconv/iWork/TSK"
-	TSP "github.com/zimbabao/docconv/iWork/TSP"
-	TSS "github.com/zimbabao/docconv/iWork/TSS"
-	_ "github.com/zimbabao/docconv/iWork/TST"
-	_ "github.com/zimbabao/docconv/iWork/TSWP"
 	math "math"
 )
 
@@ -26,46 +19,6 @@ var _ = math.Inf
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
-
-type AnimationReferent int32
-
-const (
-	AnimationReferent_kRelativeToStart AnimationReferent = 1
-	AnimationReferent_kRelativeToEnd   AnimationReferent = 2
-)
-
-var AnimationReferent_name = map[int32]string{
-	1: "kRelativeToStart",
-	2: "kRelativeToEnd",
-}
-
-var AnimationReferent_value = map[string]int32{
-	"kRelativeToStart": 1,
-	"kRelativeToEnd":   2,
-}
-
-func (x AnimationReferent) Enum() *AnimationReferent {
-	p := new(AnimationReferent)
-	*p = x
-	return p
-}
-
-func (x AnimationReferent) String() string {
-	return proto.EnumName(AnimationReferent_name, int32(x))
-}
-
-func (x *AnimationReferent) UnmarshalJSON(data []byte) error {
-	value, err := proto.UnmarshalJSONEnum(AnimationReferent_value, data, "AnimationReferent")
-	if err != nil {
-		return err
-	}
-	*x = AnimationReferent(value)
-	return nil
-}
-
-func (AnimationReferent) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{0}
-}
 
 type CommandShowInsertSlideArchive_Kind int32
 
@@ -107,21 +60,67 @@ func (x *CommandShowInsertSlideArchive_Kind) UnmarshalJSON(data []byte) error {
 }
 
 func (CommandShowInsertSlideArchive_Kind) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{14, 0}
+	return fileDescriptor_fc506070cd6467a6, []int{13, 0}
+}
+
+type SlideCollectionCommandSelectionBehaviorArchive_Type int32
+
+const (
+	SlideCollectionCommandSelectionBehaviorArchive_kKindSlideSelectionBehaviorTypeGeneral   SlideCollectionCommandSelectionBehaviorArchive_Type = 0
+	SlideCollectionCommandSelectionBehaviorArchive_kKindSlideSelectionBehaviorTypeInsertion SlideCollectionCommandSelectionBehaviorArchive_Type = 1
+	SlideCollectionCommandSelectionBehaviorArchive_kKindSlideSelectionBehaviorTypeDeletion  SlideCollectionCommandSelectionBehaviorArchive_Type = 2
+	SlideCollectionCommandSelectionBehaviorArchive_kKindSlideSelectionBehaviorTypeMove      SlideCollectionCommandSelectionBehaviorArchive_Type = 3
+)
+
+var SlideCollectionCommandSelectionBehaviorArchive_Type_name = map[int32]string{
+	0: "kKindSlideSelectionBehaviorTypeGeneral",
+	1: "kKindSlideSelectionBehaviorTypeInsertion",
+	2: "kKindSlideSelectionBehaviorTypeDeletion",
+	3: "kKindSlideSelectionBehaviorTypeMove",
+}
+
+var SlideCollectionCommandSelectionBehaviorArchive_Type_value = map[string]int32{
+	"kKindSlideSelectionBehaviorTypeGeneral":   0,
+	"kKindSlideSelectionBehaviorTypeInsertion": 1,
+	"kKindSlideSelectionBehaviorTypeDeletion":  2,
+	"kKindSlideSelectionBehaviorTypeMove":      3,
+}
+
+func (x SlideCollectionCommandSelectionBehaviorArchive_Type) Enum() *SlideCollectionCommandSelectionBehaviorArchive_Type {
+	p := new(SlideCollectionCommandSelectionBehaviorArchive_Type)
+	*p = x
+	return p
+}
+
+func (x SlideCollectionCommandSelectionBehaviorArchive_Type) String() string {
+	return proto.EnumName(SlideCollectionCommandSelectionBehaviorArchive_Type_name, int32(x))
+}
+
+func (x *SlideCollectionCommandSelectionBehaviorArchive_Type) UnmarshalJSON(data []byte) error {
+	value, err := proto.UnmarshalJSONEnum(SlideCollectionCommandSelectionBehaviorArchive_Type_value, data, "SlideCollectionCommandSelectionBehaviorArchive_Type")
+	if err != nil {
+		return err
+	}
+	*x = SlideCollectionCommandSelectionBehaviorArchive_Type(value)
+	return nil
+}
+
+func (SlideCollectionCommandSelectionBehaviorArchive_Type) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{42, 0}
 }
 
 type UIStateCommandGroupArchive struct {
-	Super                     *TSK.CommandGroupArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	UiState                   *TSP.Reference           `protobuf:"bytes,2,req,name=uiState" json:"uiState,omitempty"`
-	Property                  *string                  `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
-	SlideNodesToEdit          []*TSP.Reference         `protobuf:"bytes,4,rep,name=slideNodesToEdit" json:"slideNodesToEdit,omitempty"`
-	MasterSlideNodesToApply   []*TSP.Reference         `protobuf:"bytes,5,rep,name=masterSlideNodesToApply" json:"masterSlideNodesToApply,omitempty"`
-	ThumbnailSizes            []*TSP.Size              `protobuf:"bytes,6,rep,name=thumbnailSizes" json:"thumbnailSizes,omitempty"`
-	SelectedSlideNodes        []*TSP.Reference         `protobuf:"bytes,7,rep,name=selectedSlideNodes" json:"selectedSlideNodes,omitempty"`
-	RestoreSelectedSlideNodes []*TSP.Reference         `protobuf:"bytes,8,rep,name=restoreSelectedSlideNodes" json:"restoreSelectedSlideNodes,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}                 `json:"-"`
-	XXX_unrecognized          []byte                   `json:"-"`
-	XXX_sizecache             int32                    `json:"-"`
+	Super                     *CommandGroupArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UiState                   *Reference           `protobuf:"bytes,2,req,name=uiState" json:"uiState,omitempty"`
+	Property                  *string              `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
+	SlideNodesToEdit          []*Reference         `protobuf:"bytes,4,rep,name=slideNodesToEdit" json:"slideNodesToEdit,omitempty"`
+	MasterSlideNodesToApply   []*Reference         `protobuf:"bytes,5,rep,name=masterSlideNodesToApply" json:"masterSlideNodesToApply,omitempty"`
+	ThumbnailSizes            []*Size              `protobuf:"bytes,6,rep,name=thumbnailSizes" json:"thumbnailSizes,omitempty"`
+	SelectedSlideNodes        []*Reference         `protobuf:"bytes,7,rep,name=selectedSlideNodes" json:"selectedSlideNodes,omitempty"`
+	RestoreSelectedSlideNodes []*Reference         `protobuf:"bytes,8,rep,name=restoreSelectedSlideNodes" json:"restoreSelectedSlideNodes,omitempty"`
+	XXX_NoUnkeyedLiteral      struct{}             `json:"-"`
+	XXX_unrecognized          []byte               `json:"-"`
+	XXX_sizecache             int32                `json:"-"`
 }
 
 func (m *UIStateCommandGroupArchive) Reset()         { *m = UIStateCommandGroupArchive{} }
@@ -149,14 +148,14 @@ func (m *UIStateCommandGroupArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_UIStateCommandGroupArchive proto.InternalMessageInfo
 
-func (m *UIStateCommandGroupArchive) GetSuper() *TSK.CommandGroupArchive {
+func (m *UIStateCommandGroupArchive) GetSuper() *CommandGroupArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *UIStateCommandGroupArchive) GetUiState() *TSP.Reference {
+func (m *UIStateCommandGroupArchive) GetUiState() *Reference {
 	if m != nil {
 		return m.UiState
 	}
@@ -170,35 +169,35 @@ func (m *UIStateCommandGroupArchive) GetProperty() string {
 	return ""
 }
 
-func (m *UIStateCommandGroupArchive) GetSlideNodesToEdit() []*TSP.Reference {
+func (m *UIStateCommandGroupArchive) GetSlideNodesToEdit() []*Reference {
 	if m != nil {
 		return m.SlideNodesToEdit
 	}
 	return nil
 }
 
-func (m *UIStateCommandGroupArchive) GetMasterSlideNodesToApply() []*TSP.Reference {
+func (m *UIStateCommandGroupArchive) GetMasterSlideNodesToApply() []*Reference {
 	if m != nil {
 		return m.MasterSlideNodesToApply
 	}
 	return nil
 }
 
-func (m *UIStateCommandGroupArchive) GetThumbnailSizes() []*TSP.Size {
+func (m *UIStateCommandGroupArchive) GetThumbnailSizes() []*Size {
 	if m != nil {
 		return m.ThumbnailSizes
 	}
 	return nil
 }
 
-func (m *UIStateCommandGroupArchive) GetSelectedSlideNodes() []*TSP.Reference {
+func (m *UIStateCommandGroupArchive) GetSelectedSlideNodes() []*Reference {
 	if m != nil {
 		return m.SelectedSlideNodes
 	}
 	return nil
 }
 
-func (m *UIStateCommandGroupArchive) GetRestoreSelectedSlideNodes() []*TSP.Reference {
+func (m *UIStateCommandGroupArchive) GetRestoreSelectedSlideNodes() []*Reference {
 	if m != nil {
 		return m.RestoreSelectedSlideNodes
 	}
@@ -206,26 +205,15 @@ func (m *UIStateCommandGroupArchive) GetRestoreSelectedSlideNodes() []*TSP.Refer
 }
 
 type CommandSlideInsertDrawablesArchive struct {
-	Super                                                 *TSK.CommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideId                                               *TSP.UUID             `protobuf:"bytes,2,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	Drawables                                             []*TSP.Reference      `protobuf:"bytes,3,rep,name=drawables" json:"drawables,omitempty"`
-	WorkingDrawables                                      []*TSP.Reference      `protobuf:"bytes,18,rep,name=working_drawables,json=workingDrawables" json:"working_drawables,omitempty"`
-	ArgsList                                              *MixedIdOperationArgs `protobuf:"bytes,4,opt,name=args_list,json=argsList" json:"args_list,omitempty"`
-	UpdateGeometryToMatchObjectPlaceholder                *bool                 `protobuf:"varint,5,req,name=update_geometry_to_match_object_placeholder,json=updateGeometryToMatchObjectPlaceholder" json:"update_geometry_to_match_object_placeholder,omitempty"`
-	IdsOfDrawablesUsingObjectPlaceholderGeometry          []*TSP.UUID           `protobuf:"bytes,6,rep,name=ids_of_drawables_using_object_placeholder_geometry,json=idsOfDrawablesUsingObjectPlaceholderGeometry" json:"ids_of_drawables_using_object_placeholder_geometry,omitempty"`
-	SagePlaceholderTagsList                               []string              `protobuf:"bytes,7,rep,name=sage_placeholder_tags_list,json=sagePlaceholderTagsList" json:"sage_placeholder_tags_list,omitempty"`
-	UndoArchive                                           *TSP.Reference        `protobuf:"bytes,8,opt,name=undo_archive,json=undoArchive" json:"undo_archive,omitempty"`
-	IsPasting                                             *bool                 `protobuf:"varint,9,opt,name=is_pasting,json=isPasting" json:"is_pasting,omitempty"`
-	InsertBuildDescriptions                               []*TSP.Reference      `protobuf:"bytes,10,rep,name=insert_build_descriptions,json=insertBuildDescriptions" json:"insert_build_descriptions,omitempty"`
-	WorkingInsertBuildDescriptions                        []*TSP.Reference      `protobuf:"bytes,19,rep,name=working_insert_build_descriptions,json=workingInsertBuildDescriptions" json:"working_insert_build_descriptions,omitempty"`
-	RemoveBuildDescriptions                               []*TSP.Reference      `protobuf:"bytes,11,rep,name=remove_build_descriptions,json=removeBuildDescriptions" json:"remove_build_descriptions,omitempty"`
-	RemoveSlideSpecificHyperlinks                         *bool                 `protobuf:"varint,12,opt,name=remove_slide_specific_hyperlinks,json=removeSlideSpecificHyperlinks" json:"remove_slide_specific_hyperlinks,omitempty"`
-	CustomFormatKeys                                      []*TSP.UUID           `protobuf:"bytes,13,rep,name=custom_format_keys,json=customFormatKeys" json:"custom_format_keys,omitempty"`
-	SavedNextUntitledResolverIndex                        *uint32               `protobuf:"varint,16,opt,name=saved_next_untitled_resolver_index,json=savedNextUntitledResolverIndex" json:"saved_next_untitled_resolver_index,omitempty"`
-	GeometryOfObjectPlaceholderForComparisonToRestoreLink *TSD.GeometryArchive  `protobuf:"bytes,17,opt,name=geometry_of_object_placeholder_for_comparison_to_restore_link,json=geometryOfObjectPlaceholderForComparisonToRestoreLink" json:"geometry_of_object_placeholder_for_comparison_to_restore_link,omitempty"`
-	XXX_NoUnkeyedLiteral                                  struct{}              `json:"-"`
-	XXX_unrecognized                                      []byte                `json:"-"`
-	XXX_sizecache                                         int32                 `json:"-"`
+	Super                        *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SlideNode                    *Reference      `protobuf:"bytes,2,req,name=slideNode" json:"slideNode,omitempty"`
+	Drawables                    []*Reference    `protobuf:"bytes,3,rep,name=drawables" json:"drawables,omitempty"`
+	ForDrag                      *bool           `protobuf:"varint,4,opt,name=forDrag" json:"forDrag,omitempty"`
+	AtIndex                      *int32          `protobuf:"varint,5,opt,name=atIndex" json:"atIndex,omitempty"`
+	UseObjectPlaceholderGeometry *bool           `protobuf:"varint,6,req,name=use_object_placeholder_geometry,json=useObjectPlaceholderGeometry" json:"use_object_placeholder_geometry,omitempty"`
+	XXX_NoUnkeyedLiteral         struct{}        `json:"-"`
+	XXX_unrecognized             []byte          `json:"-"`
+	XXX_sizecache                int32           `json:"-"`
 }
 
 func (m *CommandSlideInsertDrawablesArchive) Reset()         { *m = CommandSlideInsertDrawablesArchive{} }
@@ -253,135 +241,58 @@ func (m *CommandSlideInsertDrawablesArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideInsertDrawablesArchive proto.InternalMessageInfo
 
-func (m *CommandSlideInsertDrawablesArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideInsertDrawablesArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideInsertDrawablesArchive) GetSlideId() *TSP.UUID {
+func (m *CommandSlideInsertDrawablesArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.SlideId
+		return m.SlideNode
 	}
 	return nil
 }
 
-func (m *CommandSlideInsertDrawablesArchive) GetDrawables() []*TSP.Reference {
+func (m *CommandSlideInsertDrawablesArchive) GetDrawables() []*Reference {
 	if m != nil {
 		return m.Drawables
 	}
 	return nil
 }
 
-func (m *CommandSlideInsertDrawablesArchive) GetWorkingDrawables() []*TSP.Reference {
-	if m != nil {
-		return m.WorkingDrawables
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetArgsList() *MixedIdOperationArgs {
-	if m != nil {
-		return m.ArgsList
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetUpdateGeometryToMatchObjectPlaceholder() bool {
-	if m != nil && m.UpdateGeometryToMatchObjectPlaceholder != nil {
-		return *m.UpdateGeometryToMatchObjectPlaceholder
+func (m *CommandSlideInsertDrawablesArchive) GetForDrag() bool {
+	if m != nil && m.ForDrag != nil {
+		return *m.ForDrag
 	}
 	return false
 }
 
-func (m *CommandSlideInsertDrawablesArchive) GetIdsOfDrawablesUsingObjectPlaceholderGeometry() []*TSP.UUID {
-	if m != nil {
-		return m.IdsOfDrawablesUsingObjectPlaceholderGeometry
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetSagePlaceholderTagsList() []string {
-	if m != nil {
-		return m.SagePlaceholderTagsList
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetUndoArchive() *TSP.Reference {
-	if m != nil {
-		return m.UndoArchive
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetIsPasting() bool {
-	if m != nil && m.IsPasting != nil {
-		return *m.IsPasting
-	}
-	return false
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetInsertBuildDescriptions() []*TSP.Reference {
-	if m != nil {
-		return m.InsertBuildDescriptions
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetWorkingInsertBuildDescriptions() []*TSP.Reference {
-	if m != nil {
-		return m.WorkingInsertBuildDescriptions
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetRemoveBuildDescriptions() []*TSP.Reference {
-	if m != nil {
-		return m.RemoveBuildDescriptions
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetRemoveSlideSpecificHyperlinks() bool {
-	if m != nil && m.RemoveSlideSpecificHyperlinks != nil {
-		return *m.RemoveSlideSpecificHyperlinks
-	}
-	return false
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetCustomFormatKeys() []*TSP.UUID {
-	if m != nil {
-		return m.CustomFormatKeys
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertDrawablesArchive) GetSavedNextUntitledResolverIndex() uint32 {
-	if m != nil && m.SavedNextUntitledResolverIndex != nil {
-		return *m.SavedNextUntitledResolverIndex
+func (m *CommandSlideInsertDrawablesArchive) GetAtIndex() int32 {
+	if m != nil && m.AtIndex != nil {
+		return *m.AtIndex
 	}
 	return 0
 }
 
-func (m *CommandSlideInsertDrawablesArchive) GetGeometryOfObjectPlaceholderForComparisonToRestoreLink() *TSD.GeometryArchive {
-	if m != nil {
-		return m.GeometryOfObjectPlaceholderForComparisonToRestoreLink
+func (m *CommandSlideInsertDrawablesArchive) GetUseObjectPlaceholderGeometry() bool {
+	if m != nil && m.UseObjectPlaceholderGeometry != nil {
+		return *m.UseObjectPlaceholderGeometry
 	}
-	return nil
+	return false
 }
 
 type CommandSlideSetPlaceholdersForTagsArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideId              *TSP.UUID           `protobuf:"bytes,2,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	Infos                []*TSP.Reference    `protobuf:"bytes,3,rep,name=infos" json:"infos,omitempty"`
-	Tags                 []string            `protobuf:"bytes,4,rep,name=tags" json:"tags,omitempty"`
-	OldInfos             []*TSP.Reference    `protobuf:"bytes,6,rep,name=old_infos,json=oldInfos" json:"old_infos,omitempty"`
-	OldTags              []string            `protobuf:"bytes,5,rep,name=old_tags,json=oldTags" json:"old_tags,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Slide                *Reference      `protobuf:"bytes,2,req,name=slide" json:"slide,omitempty"`
+	Infos                []*Reference    `protobuf:"bytes,3,rep,name=infos" json:"infos,omitempty"`
+	Tags                 []string        `protobuf:"bytes,4,rep,name=tags" json:"tags,omitempty"`
+	OldInfos             []*Reference    `protobuf:"bytes,6,rep,name=old_infos,json=oldInfos" json:"old_infos,omitempty"`
+	OldTags              []string        `protobuf:"bytes,5,rep,name=old_tags,json=oldTags" json:"old_tags,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandSlideSetPlaceholdersForTagsArchive) Reset() {
@@ -411,21 +322,21 @@ func (m *CommandSlideSetPlaceholdersForTagsArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideSetPlaceholdersForTagsArchive proto.InternalMessageInfo
 
-func (m *CommandSlideSetPlaceholdersForTagsArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideSetPlaceholdersForTagsArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideSetPlaceholdersForTagsArchive) GetSlideId() *TSP.UUID {
+func (m *CommandSlideSetPlaceholdersForTagsArchive) GetSlide() *Reference {
 	if m != nil {
-		return m.SlideId
+		return m.Slide
 	}
 	return nil
 }
 
-func (m *CommandSlideSetPlaceholdersForTagsArchive) GetInfos() []*TSP.Reference {
+func (m *CommandSlideSetPlaceholdersForTagsArchive) GetInfos() []*Reference {
 	if m != nil {
 		return m.Infos
 	}
@@ -439,7 +350,7 @@ func (m *CommandSlideSetPlaceholdersForTagsArchive) GetTags() []string {
 	return nil
 }
 
-func (m *CommandSlideSetPlaceholdersForTagsArchive) GetOldInfos() []*TSP.Reference {
+func (m *CommandSlideSetPlaceholdersForTagsArchive) GetOldInfos() []*Reference {
 	if m != nil {
 		return m.OldInfos
 	}
@@ -454,19 +365,16 @@ func (m *CommandSlideSetPlaceholdersForTagsArchive) GetOldTags() []string {
 }
 
 type CommandSlideRemoveDrawableArchive struct {
-	Super                                   *TSK.CommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideId                                 *TSP.UUID             `protobuf:"bytes,2,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	SortedDrawables                         []*TSP.Reference      `protobuf:"bytes,3,rep,name=sortedDrawables" json:"sortedDrawables,omitempty"`
-	ArgsList                                *MixedIdOperationArgs `protobuf:"bytes,4,req,name=args_list,json=argsList" json:"args_list,omitempty"`
-	DrawableIndexesForUndo                  []uint32              `protobuf:"varint,10,rep,name=drawable_indexes_for_undo,json=drawableIndexesForUndo" json:"drawable_indexes_for_undo,omitempty"`
-	PlaceholderTags                         []string              `protobuf:"bytes,5,rep,name=placeholderTags" json:"placeholderTags,omitempty"`
-	InsertBuildDescriptions                 []*TSP.Reference      `protobuf:"bytes,6,rep,name=insert_build_descriptions,json=insertBuildDescriptions" json:"insert_build_descriptions,omitempty"`
-	RemoveBuildDescriptions                 []*TSP.Reference      `protobuf:"bytes,7,rep,name=remove_build_descriptions,json=removeBuildDescriptions" json:"remove_build_descriptions,omitempty"`
-	DrawablesUsingObjectPlaceholderGeometry []*TSP.Reference      `protobuf:"bytes,8,rep,name=drawables_using_object_placeholder_geometry,json=drawablesUsingObjectPlaceholderGeometry" json:"drawables_using_object_placeholder_geometry,omitempty"`
-	InverseInsertHyperlinkCommands          []*TSP.Reference      `protobuf:"bytes,9,rep,name=inverse_insert_hyperlink_commands,json=inverseInsertHyperlinkCommands" json:"inverse_insert_hyperlink_commands,omitempty"`
-	XXX_NoUnkeyedLiteral                    struct{}              `json:"-"`
-	XXX_unrecognized                        []byte                `json:"-"`
-	XXX_sizecache                           int32                 `json:"-"`
+	Super                              *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SlideNode                          *Reference      `protobuf:"bytes,2,req,name=slideNode" json:"slideNode,omitempty"`
+	SortedDrawables                    []*Reference    `protobuf:"bytes,3,rep,name=sortedDrawables" json:"sortedDrawables,omitempty"`
+	DrawableIndices                    *IndexSet       `protobuf:"bytes,4,req,name=drawableIndices" json:"drawableIndices,omitempty"`
+	PlaceholderTags                    []string        `protobuf:"bytes,5,rep,name=placeholderTags" json:"placeholderTags,omitempty"`
+	InfoUsingObjectPlaceholderGeometry *Reference      `protobuf:"bytes,6,opt,name=info_using_object_placeholder_geometry,json=infoUsingObjectPlaceholderGeometry" json:"info_using_object_placeholder_geometry,omitempty"`
+	DidMatchObjectPlaceholderGeometry  *bool           `protobuf:"varint,7,opt,name=did_match_object_placeholder_geometry,json=didMatchObjectPlaceholderGeometry" json:"did_match_object_placeholder_geometry,omitempty"`
+	XXX_NoUnkeyedLiteral               struct{}        `json:"-"`
+	XXX_unrecognized                   []byte          `json:"-"`
+	XXX_sizecache                      int32           `json:"-"`
 }
 
 func (m *CommandSlideRemoveDrawableArchive) Reset()         { *m = CommandSlideRemoveDrawableArchive{} }
@@ -494,37 +402,30 @@ func (m *CommandSlideRemoveDrawableArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideRemoveDrawableArchive proto.InternalMessageInfo
 
-func (m *CommandSlideRemoveDrawableArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideRemoveDrawableArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveDrawableArchive) GetSlideId() *TSP.UUID {
+func (m *CommandSlideRemoveDrawableArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.SlideId
+		return m.SlideNode
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveDrawableArchive) GetSortedDrawables() []*TSP.Reference {
+func (m *CommandSlideRemoveDrawableArchive) GetSortedDrawables() []*Reference {
 	if m != nil {
 		return m.SortedDrawables
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveDrawableArchive) GetArgsList() *MixedIdOperationArgs {
+func (m *CommandSlideRemoveDrawableArchive) GetDrawableIndices() *IndexSet {
 	if m != nil {
-		return m.ArgsList
-	}
-	return nil
-}
-
-func (m *CommandSlideRemoveDrawableArchive) GetDrawableIndexesForUndo() []uint32 {
-	if m != nil {
-		return m.DrawableIndexesForUndo
+		return m.DrawableIndices
 	}
 	return nil
 }
@@ -536,43 +437,29 @@ func (m *CommandSlideRemoveDrawableArchive) GetPlaceholderTags() []string {
 	return nil
 }
 
-func (m *CommandSlideRemoveDrawableArchive) GetInsertBuildDescriptions() []*TSP.Reference {
+func (m *CommandSlideRemoveDrawableArchive) GetInfoUsingObjectPlaceholderGeometry() *Reference {
 	if m != nil {
-		return m.InsertBuildDescriptions
+		return m.InfoUsingObjectPlaceholderGeometry
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveDrawableArchive) GetRemoveBuildDescriptions() []*TSP.Reference {
-	if m != nil {
-		return m.RemoveBuildDescriptions
+func (m *CommandSlideRemoveDrawableArchive) GetDidMatchObjectPlaceholderGeometry() bool {
+	if m != nil && m.DidMatchObjectPlaceholderGeometry != nil {
+		return *m.DidMatchObjectPlaceholderGeometry
 	}
-	return nil
-}
-
-func (m *CommandSlideRemoveDrawableArchive) GetDrawablesUsingObjectPlaceholderGeometry() []*TSP.Reference {
-	if m != nil {
-		return m.DrawablesUsingObjectPlaceholderGeometry
-	}
-	return nil
-}
-
-func (m *CommandSlideRemoveDrawableArchive) GetInverseInsertHyperlinkCommands() []*TSP.Reference {
-	if m != nil {
-		return m.InverseInsertHyperlinkCommands
-	}
-	return nil
+	return false
 }
 
 type CommandSlideMoveDrawableZOrderArchive struct {
-	Super                         *TSK.CommandArchive             `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldOrderedInfos               []*TSP.Reference                `protobuf:"bytes,4,rep,name=old_ordered_infos,json=oldOrderedInfos" json:"old_ordered_infos,omitempty"`
-	ArgsList                      []*TSK.RearrangeIdOperationArgs `protobuf:"bytes,6,rep,name=args_list,json=argsList" json:"args_list,omitempty"`
-	SlideId                       *TSP.UUID                       `protobuf:"bytes,7,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	OldOrderedInfosOnSlideForUndo []*TSP.Reference                `protobuf:"bytes,8,rep,name=old_ordered_infos_on_slide_for_undo,json=oldOrderedInfosOnSlideForUndo" json:"old_ordered_infos_on_slide_for_undo,omitempty"`
-	XXX_NoUnkeyedLiteral          struct{}                        `json:"-"`
-	XXX_unrecognized              []byte                          `json:"-"`
-	XXX_sizecache                 int32                           `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SlideNode            *Reference      `protobuf:"bytes,2,req,name=slideNode" json:"slideNode,omitempty"`
+	Infos                []*Reference    `protobuf:"bytes,3,rep,name=infos" json:"infos,omitempty"`
+	OldOrderedInfos      []*Reference    `protobuf:"bytes,4,rep,name=old_ordered_infos,json=oldOrderedInfos" json:"old_ordered_infos,omitempty"`
+	Indexes              *IndexSet       `protobuf:"bytes,5,req,name=indexes" json:"indexes,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandSlideMoveDrawableZOrderArchive) Reset()         { *m = CommandSlideMoveDrawableZOrderArchive{} }
@@ -600,57 +487,130 @@ func (m *CommandSlideMoveDrawableZOrderArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideMoveDrawableZOrderArchive proto.InternalMessageInfo
 
-func (m *CommandSlideMoveDrawableZOrderArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideMoveDrawableZOrderArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideMoveDrawableZOrderArchive) GetOldOrderedInfos() []*TSP.Reference {
+func (m *CommandSlideMoveDrawableZOrderArchive) GetSlideNode() *Reference {
+	if m != nil {
+		return m.SlideNode
+	}
+	return nil
+}
+
+func (m *CommandSlideMoveDrawableZOrderArchive) GetInfos() []*Reference {
+	if m != nil {
+		return m.Infos
+	}
+	return nil
+}
+
+func (m *CommandSlideMoveDrawableZOrderArchive) GetOldOrderedInfos() []*Reference {
 	if m != nil {
 		return m.OldOrderedInfos
 	}
 	return nil
 }
 
-func (m *CommandSlideMoveDrawableZOrderArchive) GetArgsList() []*TSK.RearrangeIdOperationArgs {
+func (m *CommandSlideMoveDrawableZOrderArchive) GetIndexes() *IndexSet {
 	if m != nil {
-		return m.ArgsList
+		return m.Indexes
 	}
 	return nil
 }
 
-func (m *CommandSlideMoveDrawableZOrderArchive) GetSlideId() *TSP.UUID {
+type CommandSlidePasteDrawablesArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Commands             []*Reference    `protobuf:"bytes,2,rep,name=commands" json:"commands,omitempty"`
+	Slide                *Reference      `protobuf:"bytes,3,req,name=slide" json:"slide,omitempty"`
+	Drawables            []*Reference    `protobuf:"bytes,4,rep,name=drawables" json:"drawables,omitempty"`
+	HasBuilds            *bool           `protobuf:"varint,5,opt,name=has_builds,json=hasBuilds,def=0" json:"has_builds,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *CommandSlidePasteDrawablesArchive) Reset()         { *m = CommandSlidePasteDrawablesArchive{} }
+func (m *CommandSlidePasteDrawablesArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSlidePasteDrawablesArchive) ProtoMessage()    {}
+func (*CommandSlidePasteDrawablesArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{5}
+}
+
+func (m *CommandSlidePasteDrawablesArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSlidePasteDrawablesArchive.Unmarshal(m, b)
+}
+func (m *CommandSlidePasteDrawablesArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSlidePasteDrawablesArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSlidePasteDrawablesArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSlidePasteDrawablesArchive.Merge(m, src)
+}
+func (m *CommandSlidePasteDrawablesArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSlidePasteDrawablesArchive.Size(m)
+}
+func (m *CommandSlidePasteDrawablesArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSlidePasteDrawablesArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSlidePasteDrawablesArchive proto.InternalMessageInfo
+
+const Default_CommandSlidePasteDrawablesArchive_HasBuilds bool = false
+
+func (m *CommandSlidePasteDrawablesArchive) GetSuper() *CommandArchive {
 	if m != nil {
-		return m.SlideId
+		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideMoveDrawableZOrderArchive) GetOldOrderedInfosOnSlideForUndo() []*TSP.Reference {
+func (m *CommandSlidePasteDrawablesArchive) GetCommands() []*Reference {
 	if m != nil {
-		return m.OldOrderedInfosOnSlideForUndo
+		return m.Commands
 	}
 	return nil
+}
+
+func (m *CommandSlidePasteDrawablesArchive) GetSlide() *Reference {
+	if m != nil {
+		return m.Slide
+	}
+	return nil
+}
+
+func (m *CommandSlidePasteDrawablesArchive) GetDrawables() []*Reference {
+	if m != nil {
+		return m.Drawables
+	}
+	return nil
+}
+
+func (m *CommandSlidePasteDrawablesArchive) GetHasBuilds() bool {
+	if m != nil && m.HasBuilds != nil {
+		return *m.HasBuilds
+	}
+	return Default_CommandSlidePasteDrawablesArchive_HasBuilds
 }
 
 type CommandSlideNodeSetPropertyArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideNodeIdPath      *TSP.UUIDPath       `protobuf:"bytes,2,req,name=slide_node_id_path,json=slideNodeIdPath" json:"slide_node_id_path,omitempty"`
-	Property             *string             `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
-	OldValue             *bool               `protobuf:"varint,4,req,name=old_value,json=oldValue" json:"old_value,omitempty"`
-	Value                *bool               `protobuf:"varint,5,req,name=value" json:"value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive                                   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SlideNode            *Reference                                        `protobuf:"bytes,2,req,name=slideNode" json:"slideNode,omitempty"`
+	Property             *string                                           `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
+	OldValue             *CommandSlideNodeSetPropertyArchive_PropertyValue `protobuf:"bytes,4,req,name=oldValue" json:"oldValue,omitempty"`
+	NewValue             *CommandSlideNodeSetPropertyArchive_PropertyValue `protobuf:"bytes,5,req,name=newValue" json:"newValue,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                          `json:"-"`
+	XXX_unrecognized     []byte                                            `json:"-"`
+	XXX_sizecache        int32                                             `json:"-"`
 }
 
 func (m *CommandSlideNodeSetPropertyArchive) Reset()         { *m = CommandSlideNodeSetPropertyArchive{} }
 func (m *CommandSlideNodeSetPropertyArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSlideNodeSetPropertyArchive) ProtoMessage()    {}
 func (*CommandSlideNodeSetPropertyArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{5}
+	return fileDescriptor_fc506070cd6467a6, []int{6}
 }
 
 func (m *CommandSlideNodeSetPropertyArchive) XXX_Unmarshal(b []byte) error {
@@ -671,16 +631,16 @@ func (m *CommandSlideNodeSetPropertyArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideNodeSetPropertyArchive proto.InternalMessageInfo
 
-func (m *CommandSlideNodeSetPropertyArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideNodeSetPropertyArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideNodeSetPropertyArchive) GetSlideNodeIdPath() *TSP.UUIDPath {
+func (m *CommandSlideNodeSetPropertyArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.SlideNodeIdPath
+		return m.SlideNode
 	}
 	return nil
 }
@@ -692,166 +652,223 @@ func (m *CommandSlideNodeSetPropertyArchive) GetProperty() string {
 	return ""
 }
 
-func (m *CommandSlideNodeSetPropertyArchive) GetOldValue() bool {
-	if m != nil && m.OldValue != nil {
-		return *m.OldValue
+func (m *CommandSlideNodeSetPropertyArchive) GetOldValue() *CommandSlideNodeSetPropertyArchive_PropertyValue {
+	if m != nil {
+		return m.OldValue
 	}
-	return false
+	return nil
 }
 
-func (m *CommandSlideNodeSetPropertyArchive) GetValue() bool {
-	if m != nil && m.Value != nil {
-		return *m.Value
+func (m *CommandSlideNodeSetPropertyArchive) GetNewValue() *CommandSlideNodeSetPropertyArchive_PropertyValue {
+	if m != nil {
+		return m.NewValue
 	}
-	return false
+	return nil
 }
 
-type CommandSlideNodeSetViewStatePropertyArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideNodeIdPath      *TSP.UUIDPath       `protobuf:"bytes,2,req,name=slide_node_id_path,json=slideNodeIdPath" json:"slide_node_id_path,omitempty"`
-	Property             *string             `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
-	OldValue             *bool               `protobuf:"varint,4,req,name=old_value,json=oldValue" json:"old_value,omitempty"`
-	Value                *bool               `protobuf:"varint,5,req,name=value" json:"value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+type CommandSlideNodeSetPropertyArchive_PropertyValue struct {
+	BoolValue            *bool          `protobuf:"varint,1,opt,name=boolValue" json:"boolValue,omitempty"`
+	Image                *DataReference `protobuf:"bytes,3,opt,name=image" json:"image,omitempty"`
+	DatabaseImage        *Reference     `protobuf:"bytes,2,opt,name=database_image,json=databaseImage" json:"database_image,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
-func (m *CommandSlideNodeSetViewStatePropertyArchive) Reset() {
-	*m = CommandSlideNodeSetViewStatePropertyArchive{}
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) Reset() {
+	*m = CommandSlideNodeSetPropertyArchive_PropertyValue{}
 }
-func (m *CommandSlideNodeSetViewStatePropertyArchive) String() string {
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) String() string {
 	return proto.CompactTextString(m)
 }
-func (*CommandSlideNodeSetViewStatePropertyArchive) ProtoMessage() {}
-func (*CommandSlideNodeSetViewStatePropertyArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{6}
+func (*CommandSlideNodeSetPropertyArchive_PropertyValue) ProtoMessage() {}
+func (*CommandSlideNodeSetPropertyArchive_PropertyValue) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{6, 0}
 }
 
-func (m *CommandSlideNodeSetViewStatePropertyArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSlideNodeSetViewStatePropertyArchive.Unmarshal(m, b)
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSlideNodeSetPropertyArchive_PropertyValue.Unmarshal(m, b)
 }
-func (m *CommandSlideNodeSetViewStatePropertyArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSlideNodeSetViewStatePropertyArchive.Marshal(b, m, deterministic)
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSlideNodeSetPropertyArchive_PropertyValue.Marshal(b, m, deterministic)
 }
-func (m *CommandSlideNodeSetViewStatePropertyArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSlideNodeSetViewStatePropertyArchive.Merge(m, src)
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSlideNodeSetPropertyArchive_PropertyValue.Merge(m, src)
 }
-func (m *CommandSlideNodeSetViewStatePropertyArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSlideNodeSetViewStatePropertyArchive.Size(m)
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) XXX_Size() int {
+	return xxx_messageInfo_CommandSlideNodeSetPropertyArchive_PropertyValue.Size(m)
 }
-func (m *CommandSlideNodeSetViewStatePropertyArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSlideNodeSetViewStatePropertyArchive.DiscardUnknown(m)
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSlideNodeSetPropertyArchive_PropertyValue.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandSlideNodeSetViewStatePropertyArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandSlideNodeSetPropertyArchive_PropertyValue proto.InternalMessageInfo
 
-func (m *CommandSlideNodeSetViewStatePropertyArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) GetBoolValue() bool {
+	if m != nil && m.BoolValue != nil {
+		return *m.BoolValue
+	}
+	return false
+}
+
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) GetImage() *DataReference {
+	if m != nil {
+		return m.Image
+	}
+	return nil
+}
+
+func (m *CommandSlideNodeSetPropertyArchive_PropertyValue) GetDatabaseImage() *Reference {
+	if m != nil {
+		return m.DatabaseImage
+	}
+	return nil
+}
+
+type CommandSlideSetValueArchive struct {
+	Super                *CommandArchive                            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Slide                *Reference                                 `protobuf:"bytes,2,req,name=slide" json:"slide,omitempty"`
+	Property             *string                                    `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
+	OldValue             *CommandSlideSetValueArchive_PropertyValue `protobuf:"bytes,4,req,name=oldValue" json:"oldValue,omitempty"`
+	NewValue             *CommandSlideSetValueArchive_PropertyValue `protobuf:"bytes,5,req,name=newValue" json:"newValue,omitempty"`
+	OldSlideStyle        *Reference                                 `protobuf:"bytes,6,req,name=oldSlideStyle" json:"oldSlideStyle,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                   `json:"-"`
+	XXX_unrecognized     []byte                                     `json:"-"`
+	XXX_sizecache        int32                                      `json:"-"`
+}
+
+func (m *CommandSlideSetValueArchive) Reset()         { *m = CommandSlideSetValueArchive{} }
+func (m *CommandSlideSetValueArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSlideSetValueArchive) ProtoMessage()    {}
+func (*CommandSlideSetValueArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{7}
+}
+
+func (m *CommandSlideSetValueArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSlideSetValueArchive.Unmarshal(m, b)
+}
+func (m *CommandSlideSetValueArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSlideSetValueArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSlideSetValueArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSlideSetValueArchive.Merge(m, src)
+}
+func (m *CommandSlideSetValueArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSlideSetValueArchive.Size(m)
+}
+func (m *CommandSlideSetValueArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSlideSetValueArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSlideSetValueArchive proto.InternalMessageInfo
+
+func (m *CommandSlideSetValueArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideNodeSetViewStatePropertyArchive) GetSlideNodeIdPath() *TSP.UUIDPath {
+func (m *CommandSlideSetValueArchive) GetSlide() *Reference {
 	if m != nil {
-		return m.SlideNodeIdPath
+		return m.Slide
 	}
 	return nil
 }
 
-func (m *CommandSlideNodeSetViewStatePropertyArchive) GetProperty() string {
+func (m *CommandSlideSetValueArchive) GetProperty() string {
 	if m != nil && m.Property != nil {
 		return *m.Property
 	}
 	return ""
 }
 
-func (m *CommandSlideNodeSetViewStatePropertyArchive) GetOldValue() bool {
-	if m != nil && m.OldValue != nil {
-		return *m.OldValue
+func (m *CommandSlideSetValueArchive) GetOldValue() *CommandSlideSetValueArchive_PropertyValue {
+	if m != nil {
+		return m.OldValue
+	}
+	return nil
+}
+
+func (m *CommandSlideSetValueArchive) GetNewValue() *CommandSlideSetValueArchive_PropertyValue {
+	if m != nil {
+		return m.NewValue
+	}
+	return nil
+}
+
+func (m *CommandSlideSetValueArchive) GetOldSlideStyle() *Reference {
+	if m != nil {
+		return m.OldSlideStyle
+	}
+	return nil
+}
+
+type CommandSlideSetValueArchive_PropertyValue struct {
+	BoolValue            *bool        `protobuf:"varint,1,opt,name=boolValue" json:"boolValue,omitempty"`
+	ObjectValue          *Reference   `protobuf:"bytes,2,opt,name=objectValue" json:"objectValue,omitempty"`
+	Fill                 *FillArchive `protobuf:"bytes,3,opt,name=fill" json:"fill,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
+	XXX_unrecognized     []byte       `json:"-"`
+	XXX_sizecache        int32        `json:"-"`
+}
+
+func (m *CommandSlideSetValueArchive_PropertyValue) Reset() {
+	*m = CommandSlideSetValueArchive_PropertyValue{}
+}
+func (m *CommandSlideSetValueArchive_PropertyValue) String() string { return proto.CompactTextString(m) }
+func (*CommandSlideSetValueArchive_PropertyValue) ProtoMessage()    {}
+func (*CommandSlideSetValueArchive_PropertyValue) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{7, 0}
+}
+
+func (m *CommandSlideSetValueArchive_PropertyValue) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSlideSetValueArchive_PropertyValue.Unmarshal(m, b)
+}
+func (m *CommandSlideSetValueArchive_PropertyValue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSlideSetValueArchive_PropertyValue.Marshal(b, m, deterministic)
+}
+func (m *CommandSlideSetValueArchive_PropertyValue) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSlideSetValueArchive_PropertyValue.Merge(m, src)
+}
+func (m *CommandSlideSetValueArchive_PropertyValue) XXX_Size() int {
+	return xxx_messageInfo_CommandSlideSetValueArchive_PropertyValue.Size(m)
+}
+func (m *CommandSlideSetValueArchive_PropertyValue) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSlideSetValueArchive_PropertyValue.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSlideSetValueArchive_PropertyValue proto.InternalMessageInfo
+
+func (m *CommandSlideSetValueArchive_PropertyValue) GetBoolValue() bool {
+	if m != nil && m.BoolValue != nil {
+		return *m.BoolValue
 	}
 	return false
 }
 
-func (m *CommandSlideNodeSetViewStatePropertyArchive) GetValue() bool {
-	if m != nil && m.Value != nil {
-		return *m.Value
-	}
-	return false
-}
-
-type CommandSlideSetBackgroundFillArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideIdPath          *TSP.UUIDPath       `protobuf:"bytes,2,req,name=slide_id_path,json=slideIdPath" json:"slide_id_path,omitempty"`
-	OldFill              *TSD.FillArchive    `protobuf:"bytes,3,opt,name=old_fill,json=oldFill" json:"old_fill,omitempty"`
-	NewFill              *TSD.FillArchive    `protobuf:"bytes,4,req,name=new_fill,json=newFill" json:"new_fill,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *CommandSlideSetBackgroundFillArchive) Reset()         { *m = CommandSlideSetBackgroundFillArchive{} }
-func (m *CommandSlideSetBackgroundFillArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSlideSetBackgroundFillArchive) ProtoMessage()    {}
-func (*CommandSlideSetBackgroundFillArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{7}
-}
-
-func (m *CommandSlideSetBackgroundFillArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSlideSetBackgroundFillArchive.Unmarshal(m, b)
-}
-func (m *CommandSlideSetBackgroundFillArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSlideSetBackgroundFillArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSlideSetBackgroundFillArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSlideSetBackgroundFillArchive.Merge(m, src)
-}
-func (m *CommandSlideSetBackgroundFillArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSlideSetBackgroundFillArchive.Size(m)
-}
-func (m *CommandSlideSetBackgroundFillArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSlideSetBackgroundFillArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSlideSetBackgroundFillArchive proto.InternalMessageInfo
-
-func (m *CommandSlideSetBackgroundFillArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideSetValueArchive_PropertyValue) GetObjectValue() *Reference {
 	if m != nil {
-		return m.Super
+		return m.ObjectValue
 	}
 	return nil
 }
 
-func (m *CommandSlideSetBackgroundFillArchive) GetSlideIdPath() *TSP.UUIDPath {
+func (m *CommandSlideSetValueArchive_PropertyValue) GetFill() *FillArchive {
 	if m != nil {
-		return m.SlideIdPath
-	}
-	return nil
-}
-
-func (m *CommandSlideSetBackgroundFillArchive) GetOldFill() *TSD.FillArchive {
-	if m != nil {
-		return m.OldFill
-	}
-	return nil
-}
-
-func (m *CommandSlideSetBackgroundFillArchive) GetNewFill() *TSD.FillArchive {
-	if m != nil {
-		return m.NewFill
+		return m.Fill
 	}
 	return nil
 }
 
 type CommandSlideSetStyleArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideIdPath          *TSP.UUIDPath       `protobuf:"bytes,2,req,name=slide_id_path,json=slideIdPath" json:"slide_id_path,omitempty"`
-	SlideStyle           *TSP.Reference      `protobuf:"bytes,3,req,name=slide_style,json=slideStyle" json:"slide_style,omitempty"`
-	OldSlideStyle        *TSP.Reference      `protobuf:"bytes,4,opt,name=old_slide_style,json=oldSlideStyle" json:"old_slide_style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Slide                *Reference      `protobuf:"bytes,2,req,name=slide" json:"slide,omitempty"`
+	SlideStyle           *Reference      `protobuf:"bytes,3,req,name=slide_style,json=slideStyle" json:"slide_style,omitempty"`
+	OldSlideStyle        *Reference      `protobuf:"bytes,4,req,name=old_slide_style,json=oldSlideStyle" json:"old_slide_style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandSlideSetStyleArchive) Reset()         { *m = CommandSlideSetStyleArchive{} }
@@ -879,28 +896,28 @@ func (m *CommandSlideSetStyleArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideSetStyleArchive proto.InternalMessageInfo
 
-func (m *CommandSlideSetStyleArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideSetStyleArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideSetStyleArchive) GetSlideIdPath() *TSP.UUIDPath {
+func (m *CommandSlideSetStyleArchive) GetSlide() *Reference {
 	if m != nil {
-		return m.SlideIdPath
+		return m.Slide
 	}
 	return nil
 }
 
-func (m *CommandSlideSetStyleArchive) GetSlideStyle() *TSP.Reference {
+func (m *CommandSlideSetStyleArchive) GetSlideStyle() *Reference {
 	if m != nil {
 		return m.SlideStyle
 	}
 	return nil
 }
 
-func (m *CommandSlideSetStyleArchive) GetOldSlideStyle() *TSP.Reference {
+func (m *CommandSlideSetStyleArchive) GetOldSlideStyle() *Reference {
 	if m != nil {
 		return m.OldSlideStyle
 	}
@@ -908,16 +925,12 @@ func (m *CommandSlideSetStyleArchive) GetOldSlideStyle() *TSP.Reference {
 }
 
 type CommandShowMarkOutOfSyncRecordingArchive struct {
-	Super                   *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Show                    *TSP.Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
-	OldRecording            *TSP.Reference      `protobuf:"bytes,3,opt,name=old_recording,json=oldRecording" json:"old_recording,omitempty"`
-	OldIsRecordingOutOfSync *bool               `protobuf:"varint,4,opt,name=old_is_recording_out_of_sync,json=oldIsRecordingOutOfSync,def=0" json:"old_is_recording_out_of_sync,omitempty"`
-	NewIsRecordingOutOfSync *bool               `protobuf:"varint,5,opt,name=new_is_recording_out_of_sync,json=newIsRecordingOutOfSync,def=0" json:"new_is_recording_out_of_sync,omitempty"`
-	OldModificationDate     *TSP.Date           `protobuf:"bytes,6,opt,name=old_modification_date,json=oldModificationDate" json:"old_modification_date,omitempty"`
-	NewModificationDate     *TSP.Date           `protobuf:"bytes,7,opt,name=new_modification_date,json=newModificationDate" json:"new_modification_date,omitempty"`
-	XXX_NoUnkeyedLiteral    struct{}            `json:"-"`
-	XXX_unrecognized        []byte              `json:"-"`
-	XXX_sizecache           int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	OldRecording         *Reference      `protobuf:"bytes,3,opt,name=old_recording,json=oldRecording" json:"old_recording,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandShowMarkOutOfSyncRecordingArchive) Reset() {
@@ -947,123 +960,41 @@ func (m *CommandShowMarkOutOfSyncRecordingArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowMarkOutOfSyncRecordingArchive proto.InternalMessageInfo
 
-const Default_CommandShowMarkOutOfSyncRecordingArchive_OldIsRecordingOutOfSync bool = false
-const Default_CommandShowMarkOutOfSyncRecordingArchive_NewIsRecordingOutOfSync bool = false
-
-func (m *CommandShowMarkOutOfSyncRecordingArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowMarkOutOfSyncRecordingArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowMarkOutOfSyncRecordingArchive) GetShow() *TSP.Reference {
+func (m *CommandShowMarkOutOfSyncRecordingArchive) GetShow() *Reference {
 	if m != nil {
 		return m.Show
 	}
 	return nil
 }
 
-func (m *CommandShowMarkOutOfSyncRecordingArchive) GetOldRecording() *TSP.Reference {
+func (m *CommandShowMarkOutOfSyncRecordingArchive) GetOldRecording() *Reference {
 	if m != nil {
 		return m.OldRecording
 	}
 	return nil
 }
 
-func (m *CommandShowMarkOutOfSyncRecordingArchive) GetOldIsRecordingOutOfSync() bool {
-	if m != nil && m.OldIsRecordingOutOfSync != nil {
-		return *m.OldIsRecordingOutOfSync
-	}
-	return Default_CommandShowMarkOutOfSyncRecordingArchive_OldIsRecordingOutOfSync
-}
-
-func (m *CommandShowMarkOutOfSyncRecordingArchive) GetNewIsRecordingOutOfSync() bool {
-	if m != nil && m.NewIsRecordingOutOfSync != nil {
-		return *m.NewIsRecordingOutOfSync
-	}
-	return Default_CommandShowMarkOutOfSyncRecordingArchive_NewIsRecordingOutOfSync
-}
-
-func (m *CommandShowMarkOutOfSyncRecordingArchive) GetOldModificationDate() *TSP.Date {
-	if m != nil {
-		return m.OldModificationDate
-	}
-	return nil
-}
-
-func (m *CommandShowMarkOutOfSyncRecordingArchive) GetNewModificationDate() *TSP.Date {
-	if m != nil {
-		return m.NewModificationDate
-	}
-	return nil
-}
-
-type CommandShowMarkOutOfSyncRecordingIfNeededArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OutOfSyncToken       *TSP.UUID           `protobuf:"bytes,2,opt,name=out_of_sync_token,json=outOfSyncToken" json:"out_of_sync_token,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) Reset() {
-	*m = CommandShowMarkOutOfSyncRecordingIfNeededArchive{}
-}
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandShowMarkOutOfSyncRecordingIfNeededArchive) ProtoMessage() {}
-func (*CommandShowMarkOutOfSyncRecordingIfNeededArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{10}
-}
-
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandShowMarkOutOfSyncRecordingIfNeededArchive.Unmarshal(m, b)
-}
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandShowMarkOutOfSyncRecordingIfNeededArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandShowMarkOutOfSyncRecordingIfNeededArchive.Merge(m, src)
-}
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandShowMarkOutOfSyncRecordingIfNeededArchive.Size(m)
-}
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandShowMarkOutOfSyncRecordingIfNeededArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandShowMarkOutOfSyncRecordingIfNeededArchive proto.InternalMessageInfo
-
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandShowMarkOutOfSyncRecordingIfNeededArchive) GetOutOfSyncToken() *TSP.UUID {
-	if m != nil {
-		return m.OutOfSyncToken
-	}
-	return nil
-}
-
 type CommandShowRemoveRecordingArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Show                 *TSP.Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
-	OldRecording         *TSP.Reference      `protobuf:"bytes,3,opt,name=old_recording,json=oldRecording" json:"old_recording,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	OldRecording         *Reference      `protobuf:"bytes,3,opt,name=old_recording,json=oldRecording" json:"old_recording,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandShowRemoveRecordingArchive) Reset()         { *m = CommandShowRemoveRecordingArchive{} }
 func (m *CommandShowRemoveRecordingArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandShowRemoveRecordingArchive) ProtoMessage()    {}
 func (*CommandShowRemoveRecordingArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{11}
+	return fileDescriptor_fc506070cd6467a6, []int{10}
 }
 
 func (m *CommandShowRemoveRecordingArchive) XXX_Unmarshal(b []byte) error {
@@ -1084,21 +1015,21 @@ func (m *CommandShowRemoveRecordingArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowRemoveRecordingArchive proto.InternalMessageInfo
 
-func (m *CommandShowRemoveRecordingArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowRemoveRecordingArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowRemoveRecordingArchive) GetShow() *TSP.Reference {
+func (m *CommandShowRemoveRecordingArchive) GetShow() *Reference {
 	if m != nil {
 		return m.Show
 	}
 	return nil
 }
 
-func (m *CommandShowRemoveRecordingArchive) GetOldRecording() *TSP.Reference {
+func (m *CommandShowRemoveRecordingArchive) GetOldRecording() *Reference {
 	if m != nil {
 		return m.OldRecording
 	}
@@ -1106,20 +1037,21 @@ func (m *CommandShowRemoveRecordingArchive) GetOldRecording() *TSP.Reference {
 }
 
 type CommandShowReplaceRecordingArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Show                 *TSP.Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
-	ReplacementRecording *TSP.Reference      `protobuf:"bytes,3,req,name=replacement_recording,json=replacementRecording" json:"replacement_recording,omitempty"`
-	OldRecording         *TSP.Reference      `protobuf:"bytes,5,opt,name=old_recording,json=oldRecording" json:"old_recording,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	ReplacementRecording *Reference      `protobuf:"bytes,3,req,name=replacement_recording,json=replacementRecording" json:"replacement_recording,omitempty"`
+	ReplacementStartTime *float64        `protobuf:"fixed64,4,req,name=replacement_start_time,json=replacementStartTime" json:"replacement_start_time,omitempty"`
+	OldRecording         *Reference      `protobuf:"bytes,5,opt,name=old_recording,json=oldRecording" json:"old_recording,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandShowReplaceRecordingArchive) Reset()         { *m = CommandShowReplaceRecordingArchive{} }
 func (m *CommandShowReplaceRecordingArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandShowReplaceRecordingArchive) ProtoMessage()    {}
 func (*CommandShowReplaceRecordingArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{12}
+	return fileDescriptor_fc506070cd6467a6, []int{11}
 }
 
 func (m *CommandShowReplaceRecordingArchive) XXX_Unmarshal(b []byte) error {
@@ -1140,28 +1072,35 @@ func (m *CommandShowReplaceRecordingArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowReplaceRecordingArchive proto.InternalMessageInfo
 
-func (m *CommandShowReplaceRecordingArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowReplaceRecordingArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowReplaceRecordingArchive) GetShow() *TSP.Reference {
+func (m *CommandShowReplaceRecordingArchive) GetShow() *Reference {
 	if m != nil {
 		return m.Show
 	}
 	return nil
 }
 
-func (m *CommandShowReplaceRecordingArchive) GetReplacementRecording() *TSP.Reference {
+func (m *CommandShowReplaceRecordingArchive) GetReplacementRecording() *Reference {
 	if m != nil {
 		return m.ReplacementRecording
 	}
 	return nil
 }
 
-func (m *CommandShowReplaceRecordingArchive) GetOldRecording() *TSP.Reference {
+func (m *CommandShowReplaceRecordingArchive) GetReplacementStartTime() float64 {
+	if m != nil && m.ReplacementStartTime != nil {
+		return *m.ReplacementStartTime
+	}
+	return 0
+}
+
+func (m *CommandShowReplaceRecordingArchive) GetOldRecording() *Reference {
 	if m != nil {
 		return m.OldRecording
 	}
@@ -1169,8 +1108,8 @@ func (m *CommandShowReplaceRecordingArchive) GetOldRecording() *TSP.Reference {
 }
 
 type CommandShowSetValueArchive struct {
-	Super                *TSK.CommandArchive                       `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Show                 *TSP.Reference                            `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	Super                *CommandArchive                           `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference                                `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
 	Property             *string                                   `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
 	OldValue             *CommandShowSetValueArchive_PropertyValue `protobuf:"bytes,4,req,name=old_value,json=oldValue" json:"old_value,omitempty"`
 	NewValue             *CommandShowSetValueArchive_PropertyValue `protobuf:"bytes,5,req,name=new_value,json=newValue" json:"new_value,omitempty"`
@@ -1183,7 +1122,7 @@ func (m *CommandShowSetValueArchive) Reset()         { *m = CommandShowSetValueA
 func (m *CommandShowSetValueArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandShowSetValueArchive) ProtoMessage()    {}
 func (*CommandShowSetValueArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{13}
+	return fileDescriptor_fc506070cd6467a6, []int{12}
 }
 
 func (m *CommandShowSetValueArchive) XXX_Unmarshal(b []byte) error {
@@ -1204,14 +1143,14 @@ func (m *CommandShowSetValueArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowSetValueArchive proto.InternalMessageInfo
 
-func (m *CommandShowSetValueArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowSetValueArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowSetValueArchive) GetShow() *TSP.Reference {
+func (m *CommandShowSetValueArchive) GetShow() *Reference {
 	if m != nil {
 		return m.Show
 	}
@@ -1243,7 +1182,7 @@ type CommandShowSetValueArchive_PropertyValue struct {
 	BoolValue            *bool                   `protobuf:"varint,1,opt,name=bool_value,json=boolValue" json:"bool_value,omitempty"`
 	DoubleValue          *float64                `protobuf:"fixed64,2,opt,name=double_value,json=doubleValue" json:"double_value,omitempty"`
 	ShowModeValue        *ShowArchive_KNShowMode `protobuf:"varint,3,opt,name=show_mode_value,json=showModeValue,enum=KN.ShowArchive_KNShowMode" json:"show_mode_value,omitempty"`
-	SizeValue            *TSP.Size               `protobuf:"bytes,4,opt,name=size_value,json=sizeValue" json:"size_value,omitempty"`
+	SizeValue            *Size                   `protobuf:"bytes,4,opt,name=size_value,json=sizeValue" json:"size_value,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
 	XXX_unrecognized     []byte                  `json:"-"`
 	XXX_sizecache        int32                   `json:"-"`
@@ -1255,7 +1194,7 @@ func (m *CommandShowSetValueArchive_PropertyValue) Reset() {
 func (m *CommandShowSetValueArchive_PropertyValue) String() string { return proto.CompactTextString(m) }
 func (*CommandShowSetValueArchive_PropertyValue) ProtoMessage()    {}
 func (*CommandShowSetValueArchive_PropertyValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{13, 0}
+	return fileDescriptor_fc506070cd6467a6, []int{12, 0}
 }
 
 func (m *CommandShowSetValueArchive_PropertyValue) XXX_Unmarshal(b []byte) error {
@@ -1297,7 +1236,7 @@ func (m *CommandShowSetValueArchive_PropertyValue) GetShowModeValue() ShowArchiv
 	return ShowArchive_kKNShowModeNormal
 }
 
-func (m *CommandShowSetValueArchive_PropertyValue) GetSizeValue() *TSP.Size {
+func (m *CommandShowSetValueArchive_PropertyValue) GetSizeValue() *Size {
 	if m != nil {
 		return m.SizeValue
 	}
@@ -1305,31 +1244,22 @@ func (m *CommandShowSetValueArchive_PropertyValue) GetSizeValue() *TSP.Size {
 }
 
 type CommandShowInsertSlideArchive struct {
-	Super                                   *TSK.CommandArchive                 `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideNodesBeingInserted                 []*TSP.Reference                    `protobuf:"bytes,2,rep,name=slide_nodes_being_inserted,json=slideNodesBeingInserted" json:"slide_nodes_being_inserted,omitempty"`
-	WorkingSlideNodesBeingInserted          []*TSP.Reference                    `protobuf:"bytes,14,rep,name=working_slide_nodes_being_inserted,json=workingSlideNodesBeingInserted" json:"working_slide_nodes_being_inserted,omitempty"`
-	InsertedArgsList                        []*TSK.AddIdOperationArgs           `protobuf:"bytes,3,rep,name=inserted_args_list,json=insertedArgsList" json:"inserted_args_list,omitempty"`
-	IdsOfSlideNodesWithDepthChanges         []*TSP.UUID                         `protobuf:"bytes,4,rep,name=ids_of_slide_nodes_with_depth_changes,json=idsOfSlideNodesWithDepthChanges" json:"ids_of_slide_nodes_with_depth_changes,omitempty"`
-	DepthsOfSlideNodesWithDepthChanges      []uint32                            `protobuf:"varint,5,rep,name=depths_of_slide_nodes_with_depth_changes,json=depthsOfSlideNodesWithDepthChanges" json:"depths_of_slide_nodes_with_depth_changes,omitempty"`
-	OldDepthsOfSlideNodesWithDepthChanges   []uint32                            `protobuf:"varint,6,rep,name=old_depths_of_slide_nodes_with_depth_changes,json=oldDepthsOfSlideNodesWithDepthChanges" json:"old_depths_of_slide_nodes_with_depth_changes,omitempty"`
-	SlideNodesForDepthFixUp                 []*TSP.Reference                    `protobuf:"bytes,7,rep,name=slide_nodes_for_depth_fix_up,json=slideNodesForDepthFixUp" json:"slide_nodes_for_depth_fix_up,omitempty"`
-	DepthsOfSlideNodesForDepthFixUp         []uint32                            `protobuf:"varint,8,rep,name=depths_of_slide_nodes_for_depth_fix_up,json=depthsOfSlideNodesForDepthFixUp" json:"depths_of_slide_nodes_for_depth_fix_up,omitempty"`
-	OldDepthsOfSlideNodesForDepthFixUp      []uint32                            `protobuf:"varint,9,rep,name=old_depths_of_slide_nodes_for_depth_fix_up,json=oldDepthsOfSlideNodesForDepthFixUp" json:"old_depths_of_slide_nodes_for_depth_fix_up,omitempty"`
-	Kind                                    *CommandShowInsertSlideArchive_Kind `protobuf:"varint,10,opt,name=kind,enum=KN.CommandShowInsertSlideArchive_Kind,def=0" json:"kind,omitempty"`
-	MasterNodesBeingInserted                []*TSP.Reference                    `protobuf:"bytes,11,rep,name=master_nodes_being_inserted,json=masterNodesBeingInserted" json:"master_nodes_being_inserted,omitempty"`
-	CustomFormatKeys                        []*TSP.UUID                         `protobuf:"bytes,12,rep,name=custom_format_keys,json=customFormatKeys" json:"custom_format_keys,omitempty"`
-	CollapsedStateOfSlideNodesBeingInserted []bool                              `protobuf:"varint,13,rep,name=collapsed_state_of_slide_nodes_being_inserted,json=collapsedStateOfSlideNodesBeingInserted" json:"collapsed_state_of_slide_nodes_being_inserted,omitempty"`
-	UndoArchive                             *TSP.Reference                      `protobuf:"bytes,15,opt,name=undo_archive,json=undoArchive" json:"undo_archive,omitempty"`
-	XXX_NoUnkeyedLiteral                    struct{}                            `json:"-"`
-	XXX_unrecognized                        []byte                              `json:"-"`
-	XXX_sizecache                           int32                               `json:"-"`
+	Super                *CommandArchive                     `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference                          `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	SlideNode            *Reference                          `protobuf:"bytes,3,req,name=slideNode" json:"slideNode,omitempty"`
+	ChildIndex           *uint32                             `protobuf:"varint,4,req,name=childIndex" json:"childIndex,omitempty"`
+	ParentSlideNode      *Reference                          `protobuf:"bytes,5,req,name=parentSlideNode" json:"parentSlideNode,omitempty"`
+	Kind                 *CommandShowInsertSlideArchive_Kind `protobuf:"varint,6,opt,name=kind,enum=KN.CommandShowInsertSlideArchive_Kind,def=0" json:"kind,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
+	XXX_unrecognized     []byte                              `json:"-"`
+	XXX_sizecache        int32                               `json:"-"`
 }
 
 func (m *CommandShowInsertSlideArchive) Reset()         { *m = CommandShowInsertSlideArchive{} }
 func (m *CommandShowInsertSlideArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandShowInsertSlideArchive) ProtoMessage()    {}
 func (*CommandShowInsertSlideArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{14}
+	return fileDescriptor_fc506070cd6467a6, []int{13}
 }
 
 func (m *CommandShowInsertSlideArchive) XXX_Unmarshal(b []byte) error {
@@ -1352,72 +1282,37 @@ var xxx_messageInfo_CommandShowInsertSlideArchive proto.InternalMessageInfo
 
 const Default_CommandShowInsertSlideArchive_Kind CommandShowInsertSlideArchive_Kind = CommandShowInsertSlideArchive_kKindInsertSlide
 
-func (m *CommandShowInsertSlideArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowInsertSlideArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowInsertSlideArchive) GetSlideNodesBeingInserted() []*TSP.Reference {
+func (m *CommandShowInsertSlideArchive) GetShow() *Reference {
 	if m != nil {
-		return m.SlideNodesBeingInserted
+		return m.Show
 	}
 	return nil
 }
 
-func (m *CommandShowInsertSlideArchive) GetWorkingSlideNodesBeingInserted() []*TSP.Reference {
+func (m *CommandShowInsertSlideArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.WorkingSlideNodesBeingInserted
+		return m.SlideNode
 	}
 	return nil
 }
 
-func (m *CommandShowInsertSlideArchive) GetInsertedArgsList() []*TSK.AddIdOperationArgs {
-	if m != nil {
-		return m.InsertedArgsList
+func (m *CommandShowInsertSlideArchive) GetChildIndex() uint32 {
+	if m != nil && m.ChildIndex != nil {
+		return *m.ChildIndex
 	}
-	return nil
+	return 0
 }
 
-func (m *CommandShowInsertSlideArchive) GetIdsOfSlideNodesWithDepthChanges() []*TSP.UUID {
+func (m *CommandShowInsertSlideArchive) GetParentSlideNode() *Reference {
 	if m != nil {
-		return m.IdsOfSlideNodesWithDepthChanges
-	}
-	return nil
-}
-
-func (m *CommandShowInsertSlideArchive) GetDepthsOfSlideNodesWithDepthChanges() []uint32 {
-	if m != nil {
-		return m.DepthsOfSlideNodesWithDepthChanges
-	}
-	return nil
-}
-
-func (m *CommandShowInsertSlideArchive) GetOldDepthsOfSlideNodesWithDepthChanges() []uint32 {
-	if m != nil {
-		return m.OldDepthsOfSlideNodesWithDepthChanges
-	}
-	return nil
-}
-
-func (m *CommandShowInsertSlideArchive) GetSlideNodesForDepthFixUp() []*TSP.Reference {
-	if m != nil {
-		return m.SlideNodesForDepthFixUp
-	}
-	return nil
-}
-
-func (m *CommandShowInsertSlideArchive) GetDepthsOfSlideNodesForDepthFixUp() []uint32 {
-	if m != nil {
-		return m.DepthsOfSlideNodesForDepthFixUp
-	}
-	return nil
-}
-
-func (m *CommandShowInsertSlideArchive) GetOldDepthsOfSlideNodesForDepthFixUp() []uint32 {
-	if m != nil {
-		return m.OldDepthsOfSlideNodesForDepthFixUp
+		return m.ParentSlideNode
 	}
 	return nil
 }
@@ -1429,54 +1324,22 @@ func (m *CommandShowInsertSlideArchive) GetKind() CommandShowInsertSlideArchive_
 	return Default_CommandShowInsertSlideArchive_Kind
 }
 
-func (m *CommandShowInsertSlideArchive) GetMasterNodesBeingInserted() []*TSP.Reference {
-	if m != nil {
-		return m.MasterNodesBeingInserted
-	}
-	return nil
-}
-
-func (m *CommandShowInsertSlideArchive) GetCustomFormatKeys() []*TSP.UUID {
-	if m != nil {
-		return m.CustomFormatKeys
-	}
-	return nil
-}
-
-func (m *CommandShowInsertSlideArchive) GetCollapsedStateOfSlideNodesBeingInserted() []bool {
-	if m != nil {
-		return m.CollapsedStateOfSlideNodesBeingInserted
-	}
-	return nil
-}
-
-func (m *CommandShowInsertSlideArchive) GetUndoArchive() *TSP.Reference {
-	if m != nil {
-		return m.UndoArchive
-	}
-	return nil
-}
-
 type CommandShowMoveSlideArchive struct {
-	Super                                 *TSK.CommandArchive             `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideNodesBeingMovedLinearly          []*TSP.Reference                `protobuf:"bytes,2,rep,name=slide_nodes_being_moved_linearly,json=slideNodesBeingMovedLinearly" json:"slide_nodes_being_moved_linearly,omitempty"`
-	RearrangedArgsList                    []*TSK.RearrangeIdOperationArgs `protobuf:"bytes,3,rep,name=rearranged_args_list,json=rearrangedArgsList" json:"rearranged_args_list,omitempty"`
-	IdsOfSlideNodesWithDepthChanges       []*TSP.UUID                     `protobuf:"bytes,4,rep,name=ids_of_slide_nodes_with_depth_changes,json=idsOfSlideNodesWithDepthChanges" json:"ids_of_slide_nodes_with_depth_changes,omitempty"`
-	DepthsOfSlideNodesWithDepthChanges    []uint32                        `protobuf:"varint,5,rep,name=depths_of_slide_nodes_with_depth_changes,json=depthsOfSlideNodesWithDepthChanges" json:"depths_of_slide_nodes_with_depth_changes,omitempty"`
-	OldDepthsOfSlideNodesWithDepthChanges []uint32                        `protobuf:"varint,6,rep,name=old_depths_of_slide_nodes_with_depth_changes,json=oldDepthsOfSlideNodesWithDepthChanges" json:"old_depths_of_slide_nodes_with_depth_changes,omitempty"`
-	SlideNodesForDepthFixUp               []*TSP.Reference                `protobuf:"bytes,7,rep,name=slide_nodes_for_depth_fix_up,json=slideNodesForDepthFixUp" json:"slide_nodes_for_depth_fix_up,omitempty"`
-	DepthsOfSlideNodesForDepthFixUp       []uint32                        `protobuf:"varint,8,rep,name=depths_of_slide_nodes_for_depth_fix_up,json=depthsOfSlideNodesForDepthFixUp" json:"depths_of_slide_nodes_for_depth_fix_up,omitempty"`
-	OldDepthsOfSlideNodesForDepthFixUp    []uint32                        `protobuf:"varint,9,rep,name=old_depths_of_slide_nodes_for_depth_fix_up,json=oldDepthsOfSlideNodesForDepthFixUp" json:"old_depths_of_slide_nodes_for_depth_fix_up,omitempty"`
-	XXX_NoUnkeyedLiteral                  struct{}                        `json:"-"`
-	XXX_unrecognized                      []byte                          `json:"-"`
-	XXX_sizecache                         int32                           `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	SlideNode            *Reference      `protobuf:"bytes,3,req,name=slideNode" json:"slideNode,omitempty"`
+	ParentSlideNodes     []*Reference    `protobuf:"bytes,4,rep,name=parentSlideNodes" json:"parentSlideNodes,omitempty"`
+	ChildIndices         []uint32        `protobuf:"varint,5,rep,name=childIndices" json:"childIndices,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandShowMoveSlideArchive) Reset()         { *m = CommandShowMoveSlideArchive{} }
 func (m *CommandShowMoveSlideArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandShowMoveSlideArchive) ProtoMessage()    {}
 func (*CommandShowMoveSlideArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{15}
+	return fileDescriptor_fc506070cd6467a6, []int{14}
 }
 
 func (m *CommandShowMoveSlideArchive) XXX_Unmarshal(b []byte) error {
@@ -1497,91 +1360,57 @@ func (m *CommandShowMoveSlideArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowMoveSlideArchive proto.InternalMessageInfo
 
-func (m *CommandShowMoveSlideArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowMoveSlideArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowMoveSlideArchive) GetSlideNodesBeingMovedLinearly() []*TSP.Reference {
+func (m *CommandShowMoveSlideArchive) GetShow() *Reference {
 	if m != nil {
-		return m.SlideNodesBeingMovedLinearly
+		return m.Show
 	}
 	return nil
 }
 
-func (m *CommandShowMoveSlideArchive) GetRearrangedArgsList() []*TSK.RearrangeIdOperationArgs {
+func (m *CommandShowMoveSlideArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.RearrangedArgsList
+		return m.SlideNode
 	}
 	return nil
 }
 
-func (m *CommandShowMoveSlideArchive) GetIdsOfSlideNodesWithDepthChanges() []*TSP.UUID {
+func (m *CommandShowMoveSlideArchive) GetParentSlideNodes() []*Reference {
 	if m != nil {
-		return m.IdsOfSlideNodesWithDepthChanges
+		return m.ParentSlideNodes
 	}
 	return nil
 }
 
-func (m *CommandShowMoveSlideArchive) GetDepthsOfSlideNodesWithDepthChanges() []uint32 {
+func (m *CommandShowMoveSlideArchive) GetChildIndices() []uint32 {
 	if m != nil {
-		return m.DepthsOfSlideNodesWithDepthChanges
-	}
-	return nil
-}
-
-func (m *CommandShowMoveSlideArchive) GetOldDepthsOfSlideNodesWithDepthChanges() []uint32 {
-	if m != nil {
-		return m.OldDepthsOfSlideNodesWithDepthChanges
-	}
-	return nil
-}
-
-func (m *CommandShowMoveSlideArchive) GetSlideNodesForDepthFixUp() []*TSP.Reference {
-	if m != nil {
-		return m.SlideNodesForDepthFixUp
-	}
-	return nil
-}
-
-func (m *CommandShowMoveSlideArchive) GetDepthsOfSlideNodesForDepthFixUp() []uint32 {
-	if m != nil {
-		return m.DepthsOfSlideNodesForDepthFixUp
-	}
-	return nil
-}
-
-func (m *CommandShowMoveSlideArchive) GetOldDepthsOfSlideNodesForDepthFixUp() []uint32 {
-	if m != nil {
-		return m.OldDepthsOfSlideNodesForDepthFixUp
+		return m.ChildIndices
 	}
 	return nil
 }
 
 type CommandShowRemoveSlideArchive struct {
-	Super                                  *TSK.CommandArchive          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideNodesBeingRemoved                 []*TSP.Reference             `protobuf:"bytes,2,rep,name=slide_nodes_being_removed,json=slideNodesBeingRemoved" json:"slide_nodes_being_removed,omitempty"`
-	RemovedArgsList                        []*TSK.RemoveIdOperationArgs `protobuf:"bytes,3,rep,name=removed_args_list,json=removedArgsList" json:"removed_args_list,omitempty"`
-	IdsOfSlideNodesWithDepthChanges        []*TSP.UUID                  `protobuf:"bytes,4,rep,name=ids_of_slide_nodes_with_depth_changes,json=idsOfSlideNodesWithDepthChanges" json:"ids_of_slide_nodes_with_depth_changes,omitempty"`
-	DepthsOfSlideNodesWithDepthChanges     []uint32                     `protobuf:"varint,5,rep,name=depths_of_slide_nodes_with_depth_changes,json=depthsOfSlideNodesWithDepthChanges" json:"depths_of_slide_nodes_with_depth_changes,omitempty"`
-	OldDepthsOfSlideNodesWithDepthChanges  []uint32                     `protobuf:"varint,6,rep,name=old_depths_of_slide_nodes_with_depth_changes,json=oldDepthsOfSlideNodesWithDepthChanges" json:"old_depths_of_slide_nodes_with_depth_changes,omitempty"`
-	SlideNodesForDepthFixUp                []*TSP.Reference             `protobuf:"bytes,7,rep,name=slide_nodes_for_depth_fix_up,json=slideNodesForDepthFixUp" json:"slide_nodes_for_depth_fix_up,omitempty"`
-	DepthsOfSlideNodesForDepthFixUp        []uint32                     `protobuf:"varint,8,rep,name=depths_of_slide_nodes_for_depth_fix_up,json=depthsOfSlideNodesForDepthFixUp" json:"depths_of_slide_nodes_for_depth_fix_up,omitempty"`
-	OldDepthsOfSlideNodesForDepthFixUp     []uint32                     `protobuf:"varint,9,rep,name=old_depths_of_slide_nodes_for_depth_fix_up,json=oldDepthsOfSlideNodesForDepthFixUp" json:"old_depths_of_slide_nodes_for_depth_fix_up,omitempty"`
-	IdsOfMasterSlidesBeingRemovedIfUnused  []*TSP.UUID                  `protobuf:"bytes,10,rep,name=ids_of_master_slides_being_removed_if_unused,json=idsOfMasterSlidesBeingRemovedIfUnused" json:"ids_of_master_slides_being_removed_if_unused,omitempty"`
-	CollapsedStateOfSlideNodesBeingRemoved []bool                       `protobuf:"varint,11,rep,name=collapsed_state_of_slide_nodes_being_removed,json=collapsedStateOfSlideNodesBeingRemoved" json:"collapsed_state_of_slide_nodes_being_removed,omitempty"`
-	XXX_NoUnkeyedLiteral                   struct{}                     `json:"-"`
-	XXX_unrecognized                       []byte                       `json:"-"`
-	XXX_sizecache                          int32                        `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	SlideNode            *Reference      `protobuf:"bytes,3,req,name=slideNode" json:"slideNode,omitempty"`
+	ParentSlideNode      *Reference      `protobuf:"bytes,4,req,name=parentSlideNode" json:"parentSlideNode,omitempty"`
+	ChildIndex           *uint32         `protobuf:"varint,5,req,name=childIndex" json:"childIndex,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandShowRemoveSlideArchive) Reset()         { *m = CommandShowRemoveSlideArchive{} }
 func (m *CommandShowRemoveSlideArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandShowRemoveSlideArchive) ProtoMessage()    {}
 func (*CommandShowRemoveSlideArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{16}
+	return fileDescriptor_fc506070cd6467a6, []int{15}
 }
 
 func (m *CommandShowRemoveSlideArchive) XXX_Unmarshal(b []byte) error {
@@ -1602,102 +1431,58 @@ func (m *CommandShowRemoveSlideArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowRemoveSlideArchive proto.InternalMessageInfo
 
-func (m *CommandShowRemoveSlideArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowRemoveSlideArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowRemoveSlideArchive) GetSlideNodesBeingRemoved() []*TSP.Reference {
+func (m *CommandShowRemoveSlideArchive) GetShow() *Reference {
 	if m != nil {
-		return m.SlideNodesBeingRemoved
+		return m.Show
 	}
 	return nil
 }
 
-func (m *CommandShowRemoveSlideArchive) GetRemovedArgsList() []*TSK.RemoveIdOperationArgs {
+func (m *CommandShowRemoveSlideArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.RemovedArgsList
+		return m.SlideNode
 	}
 	return nil
 }
 
-func (m *CommandShowRemoveSlideArchive) GetIdsOfSlideNodesWithDepthChanges() []*TSP.UUID {
+func (m *CommandShowRemoveSlideArchive) GetParentSlideNode() *Reference {
 	if m != nil {
-		return m.IdsOfSlideNodesWithDepthChanges
+		return m.ParentSlideNode
 	}
 	return nil
 }
 
-func (m *CommandShowRemoveSlideArchive) GetDepthsOfSlideNodesWithDepthChanges() []uint32 {
-	if m != nil {
-		return m.DepthsOfSlideNodesWithDepthChanges
+func (m *CommandShowRemoveSlideArchive) GetChildIndex() uint32 {
+	if m != nil && m.ChildIndex != nil {
+		return *m.ChildIndex
 	}
-	return nil
-}
-
-func (m *CommandShowRemoveSlideArchive) GetOldDepthsOfSlideNodesWithDepthChanges() []uint32 {
-	if m != nil {
-		return m.OldDepthsOfSlideNodesWithDepthChanges
-	}
-	return nil
-}
-
-func (m *CommandShowRemoveSlideArchive) GetSlideNodesForDepthFixUp() []*TSP.Reference {
-	if m != nil {
-		return m.SlideNodesForDepthFixUp
-	}
-	return nil
-}
-
-func (m *CommandShowRemoveSlideArchive) GetDepthsOfSlideNodesForDepthFixUp() []uint32 {
-	if m != nil {
-		return m.DepthsOfSlideNodesForDepthFixUp
-	}
-	return nil
-}
-
-func (m *CommandShowRemoveSlideArchive) GetOldDepthsOfSlideNodesForDepthFixUp() []uint32 {
-	if m != nil {
-		return m.OldDepthsOfSlideNodesForDepthFixUp
-	}
-	return nil
-}
-
-func (m *CommandShowRemoveSlideArchive) GetIdsOfMasterSlidesBeingRemovedIfUnused() []*TSP.UUID {
-	if m != nil {
-		return m.IdsOfMasterSlidesBeingRemovedIfUnused
-	}
-	return nil
-}
-
-func (m *CommandShowRemoveSlideArchive) GetCollapsedStateOfSlideNodesBeingRemoved() []bool {
-	if m != nil {
-		return m.CollapsedStateOfSlideNodesBeingRemoved
-	}
-	return nil
+	return 0
 }
 
 type CommandShowChangeThemeArchive struct {
-	Super                   *TSK.CommandArchive                                 `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Show                    *TSP.Reference                                      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
-	Theme                   *TSP.Reference                                      `protobuf:"bytes,3,req,name=theme" json:"theme,omitempty"`
-	OldTheme                *TSP.Reference                                      `protobuf:"bytes,4,opt,name=old_theme,json=oldTheme" json:"old_theme,omitempty"`
-	TemplateIdentifier      *string                                             `protobuf:"bytes,5,opt,name=template_identifier,json=templateIdentifier" json:"template_identifier,omitempty"`
-	OldTemplateIdentifier   *string                                             `protobuf:"bytes,6,opt,name=old_template_identifier,json=oldTemplateIdentifier" json:"old_template_identifier,omitempty"`
-	IdentifierToStyleMap    *CommandShowChangeThemeArchive_IdentifierToStyleMap `protobuf:"bytes,7,opt,name=identifier_to_style_map,json=identifierToStyleMap" json:"identifier_to_style_map,omitempty"`
-	OldIdentifierToStyleMap *CommandShowChangeThemeArchive_IdentifierToStyleMap `protobuf:"bytes,8,opt,name=old_identifier_to_style_map,json=oldIdentifierToStyleMap" json:"old_identifier_to_style_map,omitempty"`
-	XXX_NoUnkeyedLiteral    struct{}                                            `json:"-"`
-	XXX_unrecognized        []byte                                              `json:"-"`
-	XXX_sizecache           int32                                               `json:"-"`
+	Super                 *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                  *Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	Theme                 *Reference      `protobuf:"bytes,3,req,name=theme" json:"theme,omitempty"`
+	OldTheme              *Reference      `protobuf:"bytes,4,req,name=old_theme,json=oldTheme" json:"old_theme,omitempty"`
+	TemplateIdentifier    *string         `protobuf:"bytes,5,opt,name=template_identifier,json=templateIdentifier" json:"template_identifier,omitempty"`
+	OldTemplateIdentifier *string         `protobuf:"bytes,6,opt,name=old_template_identifier,json=oldTemplateIdentifier" json:"old_template_identifier,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{}        `json:"-"`
+	XXX_unrecognized      []byte          `json:"-"`
+	XXX_sizecache         int32           `json:"-"`
 }
 
 func (m *CommandShowChangeThemeArchive) Reset()         { *m = CommandShowChangeThemeArchive{} }
 func (m *CommandShowChangeThemeArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandShowChangeThemeArchive) ProtoMessage()    {}
 func (*CommandShowChangeThemeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{17}
+	return fileDescriptor_fc506070cd6467a6, []int{16}
 }
 
 func (m *CommandShowChangeThemeArchive) XXX_Unmarshal(b []byte) error {
@@ -1718,28 +1503,28 @@ func (m *CommandShowChangeThemeArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowChangeThemeArchive proto.InternalMessageInfo
 
-func (m *CommandShowChangeThemeArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowChangeThemeArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowChangeThemeArchive) GetShow() *TSP.Reference {
+func (m *CommandShowChangeThemeArchive) GetShow() *Reference {
 	if m != nil {
 		return m.Show
 	}
 	return nil
 }
 
-func (m *CommandShowChangeThemeArchive) GetTheme() *TSP.Reference {
+func (m *CommandShowChangeThemeArchive) GetTheme() *Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *CommandShowChangeThemeArchive) GetOldTheme() *TSP.Reference {
+func (m *CommandShowChangeThemeArchive) GetOldTheme() *Reference {
 	if m != nil {
 		return m.OldTheme
 	}
@@ -1760,194 +1545,23 @@ func (m *CommandShowChangeThemeArchive) GetOldTemplateIdentifier() string {
 	return ""
 }
 
-func (m *CommandShowChangeThemeArchive) GetIdentifierToStyleMap() *CommandShowChangeThemeArchive_IdentifierToStyleMap {
-	if m != nil {
-		return m.IdentifierToStyleMap
-	}
-	return nil
-}
-
-func (m *CommandShowChangeThemeArchive) GetOldIdentifierToStyleMap() *CommandShowChangeThemeArchive_IdentifierToStyleMap {
-	if m != nil {
-		return m.OldIdentifierToStyleMap
-	}
-	return nil
-}
-
-type CommandShowChangeThemeArchive_IdentifierToStyleMap struct {
-	Styles               []*TSS.StylesheetArchive_IdentifiedStyleEntry `protobuf:"bytes,1,rep,name=styles" json:"styles,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
-	XXX_unrecognized     []byte                                        `json:"-"`
-	XXX_sizecache        int32                                         `json:"-"`
-}
-
-func (m *CommandShowChangeThemeArchive_IdentifierToStyleMap) Reset() {
-	*m = CommandShowChangeThemeArchive_IdentifierToStyleMap{}
-}
-func (m *CommandShowChangeThemeArchive_IdentifierToStyleMap) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandShowChangeThemeArchive_IdentifierToStyleMap) ProtoMessage() {}
-func (*CommandShowChangeThemeArchive_IdentifierToStyleMap) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{17, 0}
-}
-
-func (m *CommandShowChangeThemeArchive_IdentifierToStyleMap) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandShowChangeThemeArchive_IdentifierToStyleMap.Unmarshal(m, b)
-}
-func (m *CommandShowChangeThemeArchive_IdentifierToStyleMap) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandShowChangeThemeArchive_IdentifierToStyleMap.Marshal(b, m, deterministic)
-}
-func (m *CommandShowChangeThemeArchive_IdentifierToStyleMap) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandShowChangeThemeArchive_IdentifierToStyleMap.Merge(m, src)
-}
-func (m *CommandShowChangeThemeArchive_IdentifierToStyleMap) XXX_Size() int {
-	return xxx_messageInfo_CommandShowChangeThemeArchive_IdentifierToStyleMap.Size(m)
-}
-func (m *CommandShowChangeThemeArchive_IdentifierToStyleMap) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandShowChangeThemeArchive_IdentifierToStyleMap.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandShowChangeThemeArchive_IdentifierToStyleMap proto.InternalMessageInfo
-
-func (m *CommandShowChangeThemeArchive_IdentifierToStyleMap) GetStyles() []*TSS.StylesheetArchive_IdentifiedStyleEntry {
-	if m != nil {
-		return m.Styles
-	}
-	return nil
-}
-
-type CommandShowChangeSlideSizeArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Size                 *TSP.Size           `protobuf:"bytes,2,req,name=size" json:"size,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *CommandShowChangeSlideSizeArchive) Reset()         { *m = CommandShowChangeSlideSizeArchive{} }
-func (m *CommandShowChangeSlideSizeArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandShowChangeSlideSizeArchive) ProtoMessage()    {}
-func (*CommandShowChangeSlideSizeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{18}
-}
-
-func (m *CommandShowChangeSlideSizeArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandShowChangeSlideSizeArchive.Unmarshal(m, b)
-}
-func (m *CommandShowChangeSlideSizeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandShowChangeSlideSizeArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandShowChangeSlideSizeArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandShowChangeSlideSizeArchive.Merge(m, src)
-}
-func (m *CommandShowChangeSlideSizeArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandShowChangeSlideSizeArchive.Size(m)
-}
-func (m *CommandShowChangeSlideSizeArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandShowChangeSlideSizeArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandShowChangeSlideSizeArchive proto.InternalMessageInfo
-
-func (m *CommandShowChangeSlideSizeArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandShowChangeSlideSizeArchive) GetSize() *TSP.Size {
-	if m != nil {
-		return m.Size
-	}
-	return nil
-}
-
-type CommandSetThemeCustomEffectTimingCurveArchive struct {
-	Super                *TSK.CommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Name                 *string                `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
-	PathSource           *TSD.PathSourceArchive `protobuf:"bytes,3,opt,name=path_source,json=pathSource" json:"path_source,omitempty"`
-	OldPathSource        *TSD.PathSourceArchive `protobuf:"bytes,4,opt,name=old_path_source,json=oldPathSource" json:"old_path_source,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
-}
-
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) Reset() {
-	*m = CommandSetThemeCustomEffectTimingCurveArchive{}
-}
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandSetThemeCustomEffectTimingCurveArchive) ProtoMessage() {}
-func (*CommandSetThemeCustomEffectTimingCurveArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{19}
-}
-
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetThemeCustomEffectTimingCurveArchive.Unmarshal(m, b)
-}
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetThemeCustomEffectTimingCurveArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetThemeCustomEffectTimingCurveArchive.Merge(m, src)
-}
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetThemeCustomEffectTimingCurveArchive.Size(m)
-}
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetThemeCustomEffectTimingCurveArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetThemeCustomEffectTimingCurveArchive proto.InternalMessageInfo
-
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) GetName() string {
-	if m != nil && m.Name != nil {
-		return *m.Name
-	}
-	return ""
-}
-
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) GetPathSource() *TSD.PathSourceArchive {
-	if m != nil {
-		return m.PathSource
-	}
-	return nil
-}
-
-func (m *CommandSetThemeCustomEffectTimingCurveArchive) GetOldPathSource() *TSD.PathSourceArchive {
-	if m != nil {
-		return m.OldPathSource
-	}
-	return nil
-}
-
 type CommandMoveMastersArchive struct {
-	Super                  *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                  *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	MasterSlides           []*TSP.Reference    `protobuf:"bytes,3,rep,name=master_slides,json=masterSlides" json:"master_slides,omitempty"`
-	PreviousIndexesKeys    []*TSP.Reference    `protobuf:"bytes,4,rep,name=previous_indexes_keys,json=previousIndexesKeys" json:"previous_indexes_keys,omitempty"`
-	PreviousIndexesValues  []uint32            `protobuf:"varint,5,rep,name=previous_indexes_values,json=previousIndexesValues" json:"previous_indexes_values,omitempty"`
-	FinalMasterArrangement []*TSP.Reference    `protobuf:"bytes,6,rep,name=final_master_arrangement,json=finalMasterArrangement" json:"final_master_arrangement,omitempty"`
-	XXX_NoUnkeyedLiteral   struct{}            `json:"-"`
-	XXX_unrecognized       []byte              `json:"-"`
-	XXX_sizecache          int32               `json:"-"`
+	Super                  *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Theme                  *Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
+	MasterSlides           []*Reference    `protobuf:"bytes,3,rep,name=master_slides,json=masterSlides" json:"master_slides,omitempty"`
+	PreviousIndexesKeys    []*Reference    `protobuf:"bytes,4,rep,name=previous_indexes_keys,json=previousIndexesKeys" json:"previous_indexes_keys,omitempty"`
+	PreviousIndexesValues  []uint32        `protobuf:"varint,5,rep,name=previous_indexes_values,json=previousIndexesValues" json:"previous_indexes_values,omitempty"`
+	FinalMasterArrangement []*Reference    `protobuf:"bytes,6,rep,name=final_master_arrangement,json=finalMasterArrangement" json:"final_master_arrangement,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{}        `json:"-"`
+	XXX_unrecognized       []byte          `json:"-"`
+	XXX_sizecache          int32           `json:"-"`
 }
 
 func (m *CommandMoveMastersArchive) Reset()         { *m = CommandMoveMastersArchive{} }
 func (m *CommandMoveMastersArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandMoveMastersArchive) ProtoMessage()    {}
 func (*CommandMoveMastersArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{20}
+	return fileDescriptor_fc506070cd6467a6, []int{17}
 }
 
 func (m *CommandMoveMastersArchive) XXX_Unmarshal(b []byte) error {
@@ -1968,28 +1582,28 @@ func (m *CommandMoveMastersArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandMoveMastersArchive proto.InternalMessageInfo
 
-func (m *CommandMoveMastersArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandMoveMastersArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandMoveMastersArchive) GetTheme() *TSP.Reference {
+func (m *CommandMoveMastersArchive) GetTheme() *Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *CommandMoveMastersArchive) GetMasterSlides() []*TSP.Reference {
+func (m *CommandMoveMastersArchive) GetMasterSlides() []*Reference {
 	if m != nil {
 		return m.MasterSlides
 	}
 	return nil
 }
 
-func (m *CommandMoveMastersArchive) GetPreviousIndexesKeys() []*TSP.Reference {
+func (m *CommandMoveMastersArchive) GetPreviousIndexesKeys() []*Reference {
 	if m != nil {
 		return m.PreviousIndexesKeys
 	}
@@ -2003,7 +1617,7 @@ func (m *CommandMoveMastersArchive) GetPreviousIndexesValues() []uint32 {
 	return nil
 }
 
-func (m *CommandMoveMastersArchive) GetFinalMasterArrangement() []*TSP.Reference {
+func (m *CommandMoveMastersArchive) GetFinalMasterArrangement() []*Reference {
 	if m != nil {
 		return m.FinalMasterArrangement
 	}
@@ -2011,22 +1625,21 @@ func (m *CommandMoveMastersArchive) GetFinalMasterArrangement() []*TSP.Reference
 }
 
 type CommandInsertMasterArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	MasterSlideNode      *TSP.Reference      `protobuf:"bytes,3,req,name=master_slide_node,json=masterSlideNode" json:"master_slide_node,omitempty"`
-	InsertionIndex       *uint32             `protobuf:"varint,4,req,name=insertion_index,json=insertionIndex" json:"insertion_index,omitempty"`
-	WasInsertedWithDrop  *bool               `protobuf:"varint,5,req,name=was_inserted_with_drop,json=wasInsertedWithDrop" json:"was_inserted_with_drop,omitempty"`
-	CustomFormatKeys     []*TSP.UUID         `protobuf:"bytes,6,rep,name=custom_format_keys,json=customFormatKeys" json:"custom_format_keys,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Theme                *Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
+	MasterSlideNode      *Reference      `protobuf:"bytes,3,req,name=master_slide_node,json=masterSlideNode" json:"master_slide_node,omitempty"`
+	InsertionIndex       *uint32         `protobuf:"varint,4,req,name=insertion_index,json=insertionIndex" json:"insertion_index,omitempty"`
+	WasInsertedWithDrop  *bool           `protobuf:"varint,5,req,name=was_inserted_with_drop,json=wasInsertedWithDrop" json:"was_inserted_with_drop,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandInsertMasterArchive) Reset()         { *m = CommandInsertMasterArchive{} }
 func (m *CommandInsertMasterArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandInsertMasterArchive) ProtoMessage()    {}
 func (*CommandInsertMasterArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{21}
+	return fileDescriptor_fc506070cd6467a6, []int{18}
 }
 
 func (m *CommandInsertMasterArchive) XXX_Unmarshal(b []byte) error {
@@ -2047,21 +1660,21 @@ func (m *CommandInsertMasterArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandInsertMasterArchive proto.InternalMessageInfo
 
-func (m *CommandInsertMasterArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandInsertMasterArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandInsertMasterArchive) GetTheme() *TSP.Reference {
+func (m *CommandInsertMasterArchive) GetTheme() *Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *CommandInsertMasterArchive) GetMasterSlideNode() *TSP.Reference {
+func (m *CommandInsertMasterArchive) GetMasterSlideNode() *Reference {
 	if m != nil {
 		return m.MasterSlideNode
 	}
@@ -2082,30 +1695,22 @@ func (m *CommandInsertMasterArchive) GetWasInsertedWithDrop() bool {
 	return false
 }
 
-func (m *CommandInsertMasterArchive) GetCustomFormatKeys() []*TSP.UUID {
-	if m != nil {
-		return m.CustomFormatKeys
-	}
-	return nil
-}
-
 type CommandRemoveMasterArchive struct {
-	Super                             *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                             *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	MasterSlideNode                   *TSP.Reference      `protobuf:"bytes,3,req,name=master_slide_node,json=masterSlideNode" json:"master_slide_node,omitempty"`
-	PreviousIndex                     *uint32             `protobuf:"varint,4,req,name=previous_index,json=previousIndex" json:"previous_index,omitempty"`
-	MasterChangeCommands              *TSP.Reference      `protobuf:"bytes,5,opt,name=master_change_commands,json=masterChangeCommands" json:"master_change_commands,omitempty"`
-	DefaultMasterSlideNodeWasReplaced *bool               `protobuf:"varint,6,opt,name=default_master_slide_node_was_replaced,json=defaultMasterSlideNodeWasReplaced" json:"default_master_slide_node_was_replaced,omitempty"`
-	XXX_NoUnkeyedLiteral              struct{}            `json:"-"`
-	XXX_unrecognized                  []byte              `json:"-"`
-	XXX_sizecache                     int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Theme                *Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
+	MasterSlideNode      *Reference      `protobuf:"bytes,3,req,name=master_slide_node,json=masterSlideNode" json:"master_slide_node,omitempty"`
+	PreviousIndex        *uint32         `protobuf:"varint,4,req,name=previous_index,json=previousIndex" json:"previous_index,omitempty"`
+	MasterChangeCommands *Reference      `protobuf:"bytes,5,opt,name=master_change_commands,json=masterChangeCommands" json:"master_change_commands,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandRemoveMasterArchive) Reset()         { *m = CommandRemoveMasterArchive{} }
 func (m *CommandRemoveMasterArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandRemoveMasterArchive) ProtoMessage()    {}
 func (*CommandRemoveMasterArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{22}
+	return fileDescriptor_fc506070cd6467a6, []int{19}
 }
 
 func (m *CommandRemoveMasterArchive) XXX_Unmarshal(b []byte) error {
@@ -2126,21 +1731,21 @@ func (m *CommandRemoveMasterArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandRemoveMasterArchive proto.InternalMessageInfo
 
-func (m *CommandRemoveMasterArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandRemoveMasterArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandRemoveMasterArchive) GetTheme() *TSP.Reference {
+func (m *CommandRemoveMasterArchive) GetTheme() *Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *CommandRemoveMasterArchive) GetMasterSlideNode() *TSP.Reference {
+func (m *CommandRemoveMasterArchive) GetMasterSlideNode() *Reference {
 	if m != nil {
 		return m.MasterSlideNode
 	}
@@ -2154,35 +1759,28 @@ func (m *CommandRemoveMasterArchive) GetPreviousIndex() uint32 {
 	return 0
 }
 
-func (m *CommandRemoveMasterArchive) GetMasterChangeCommands() *TSP.Reference {
+func (m *CommandRemoveMasterArchive) GetMasterChangeCommands() *Reference {
 	if m != nil {
 		return m.MasterChangeCommands
 	}
 	return nil
 }
 
-func (m *CommandRemoveMasterArchive) GetDefaultMasterSlideNodeWasReplaced() bool {
-	if m != nil && m.DefaultMasterSlideNodeWasReplaced != nil {
-		return *m.DefaultMasterSlideNodeWasReplaced
-	}
-	return false
-}
-
 type CommandRenameMasterArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	MasterSlide          *TSP.Reference      `protobuf:"bytes,2,req,name=master_slide,json=masterSlide" json:"master_slide,omitempty"`
-	MasterName           *string             `protobuf:"bytes,3,req,name=master_name,json=masterName" json:"master_name,omitempty"`
-	OldMasterName        *string             `protobuf:"bytes,4,opt,name=old_master_name,json=oldMasterName" json:"old_master_name,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	MasterSlide          *Reference      `protobuf:"bytes,2,req,name=master_slide,json=masterSlide" json:"master_slide,omitempty"`
+	MasterName           *string         `protobuf:"bytes,3,req,name=master_name,json=masterName" json:"master_name,omitempty"`
+	OldMasterName        *string         `protobuf:"bytes,4,req,name=old_master_name,json=oldMasterName" json:"old_master_name,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandRenameMasterArchive) Reset()         { *m = CommandRenameMasterArchive{} }
 func (m *CommandRenameMasterArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandRenameMasterArchive) ProtoMessage()    {}
 func (*CommandRenameMasterArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{23}
+	return fileDescriptor_fc506070cd6467a6, []int{20}
 }
 
 func (m *CommandRenameMasterArchive) XXX_Unmarshal(b []byte) error {
@@ -2203,14 +1801,14 @@ func (m *CommandRenameMasterArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandRenameMasterArchive proto.InternalMessageInfo
 
-func (m *CommandRenameMasterArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandRenameMasterArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandRenameMasterArchive) GetMasterSlide() *TSP.Reference {
+func (m *CommandRenameMasterArchive) GetMasterSlide() *Reference {
 	if m != nil {
 		return m.MasterSlide
 	}
@@ -2232,23 +1830,21 @@ func (m *CommandRenameMasterArchive) GetOldMasterName() string {
 }
 
 type CommandSlideInsertBuildArchive struct {
-	Super                           *TSK.CommandArchive          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	InsertBuildDescription          *TSP.Reference               `protobuf:"bytes,2,req,name=insert_build_description,json=insertBuildDescription" json:"insert_build_description,omitempty"`
-	IdentifierForChunkToInsertAfter *BuildChunkIdentifierArchive `protobuf:"bytes,3,opt,name=identifier_for_chunk_to_insert_after,json=identifierForChunkToInsertAfter" json:"identifier_for_chunk_to_insert_after,omitempty"`
-	ShouldCreateChunks              *bool                        `protobuf:"varint,4,opt,name=should_create_chunks,json=shouldCreateChunks" json:"should_create_chunks,omitempty"`
-	OldTuplesToUpdate               []*TSP.Reference             `protobuf:"bytes,5,rep,name=old_tuples_to_update,json=oldTuplesToUpdate" json:"old_tuples_to_update,omitempty"`
-	WasInitializedOverTheWire       *bool                        `protobuf:"varint,6,opt,name=was_initialized_over_the_wire,json=wasInitializedOverTheWire" json:"was_initialized_over_the_wire,omitempty"`
-	HasBeenCommitted                *bool                        `protobuf:"varint,7,opt,name=has_been_committed,json=hasBeenCommitted" json:"has_been_committed,omitempty"`
-	XXX_NoUnkeyedLiteral            struct{}                     `json:"-"`
-	XXX_unrecognized                []byte                       `json:"-"`
-	XXX_sizecache                   int32                        `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SlideNode            *Reference      `protobuf:"bytes,2,req,name=slideNode" json:"slideNode,omitempty"`
+	Build                *Reference      `protobuf:"bytes,3,req,name=build" json:"build,omitempty"`
+	Index                *uint32         `protobuf:"varint,4,req,name=index" json:"index,omitempty"`
+	ShouldCreateChunks   *bool           `protobuf:"varint,5,opt,name=shouldCreateChunks" json:"shouldCreateChunks,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandSlideInsertBuildArchive) Reset()         { *m = CommandSlideInsertBuildArchive{} }
 func (m *CommandSlideInsertBuildArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSlideInsertBuildArchive) ProtoMessage()    {}
 func (*CommandSlideInsertBuildArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{24}
+	return fileDescriptor_fc506070cd6467a6, []int{21}
 }
 
 func (m *CommandSlideInsertBuildArchive) XXX_Unmarshal(b []byte) error {
@@ -2269,25 +1865,32 @@ func (m *CommandSlideInsertBuildArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideInsertBuildArchive proto.InternalMessageInfo
 
-func (m *CommandSlideInsertBuildArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideInsertBuildArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideInsertBuildArchive) GetInsertBuildDescription() *TSP.Reference {
+func (m *CommandSlideInsertBuildArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.InsertBuildDescription
+		return m.SlideNode
 	}
 	return nil
 }
 
-func (m *CommandSlideInsertBuildArchive) GetIdentifierForChunkToInsertAfter() *BuildChunkIdentifierArchive {
+func (m *CommandSlideInsertBuildArchive) GetBuild() *Reference {
 	if m != nil {
-		return m.IdentifierForChunkToInsertAfter
+		return m.Build
 	}
 	return nil
+}
+
+func (m *CommandSlideInsertBuildArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
 }
 
 func (m *CommandSlideInsertBuildArchive) GetShouldCreateChunks() bool {
@@ -2297,179 +1900,21 @@ func (m *CommandSlideInsertBuildArchive) GetShouldCreateChunks() bool {
 	return false
 }
 
-func (m *CommandSlideInsertBuildArchive) GetOldTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.OldTuplesToUpdate
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertBuildArchive) GetWasInitializedOverTheWire() bool {
-	if m != nil && m.WasInitializedOverTheWire != nil {
-		return *m.WasInitializedOverTheWire
-	}
-	return false
-}
-
-func (m *CommandSlideInsertBuildArchive) GetHasBeenCommitted() bool {
-	if m != nil && m.HasBeenCommitted != nil {
-		return *m.HasBeenCommitted
-	}
-	return false
-}
-
-type InsertBuildDescriptionArchive struct {
-	SlideId                          *TSP.UUID                      `protobuf:"bytes,1,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	BuildToInsert                    *TSP.Reference                 `protobuf:"bytes,2,req,name=build_to_insert,json=buildToInsert" json:"build_to_insert,omitempty"`
-	ChunksToInsert                   []*TSP.Reference               `protobuf:"bytes,3,rep,name=chunks_to_insert,json=chunksToInsert" json:"chunks_to_insert,omitempty"`
-	ShouldAssignChunkIdentifiers     *bool                          `protobuf:"varint,4,req,name=should_assign_chunk_identifiers,json=shouldAssignChunkIdentifiers" json:"should_assign_chunk_identifiers,omitempty"`
-	IdentifersForChunksToInsertAfter []*BuildChunkIdentifierArchive `protobuf:"bytes,5,rep,name=identifers_for_chunks_to_insert_after,json=identifersForChunksToInsertAfter" json:"identifers_for_chunks_to_insert_after,omitempty"`
-	TuplesToUpdate                   []*TSP.Reference               `protobuf:"bytes,6,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	FallbackChunkIdentifiers         []*BuildChunkIdentifierArchive `protobuf:"bytes,7,rep,name=fallback_chunk_identifiers,json=fallbackChunkIdentifiers" json:"fallback_chunk_identifiers,omitempty"`
-	IsForPaste                       *bool                          `protobuf:"varint,8,req,name=is_for_paste,json=isForPaste" json:"is_for_paste,omitempty"`
-	XXX_NoUnkeyedLiteral             struct{}                       `json:"-"`
-	XXX_unrecognized                 []byte                         `json:"-"`
-	XXX_sizecache                    int32                          `json:"-"`
-}
-
-func (m *InsertBuildDescriptionArchive) Reset()         { *m = InsertBuildDescriptionArchive{} }
-func (m *InsertBuildDescriptionArchive) String() string { return proto.CompactTextString(m) }
-func (*InsertBuildDescriptionArchive) ProtoMessage()    {}
-func (*InsertBuildDescriptionArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{25}
-}
-
-func (m *InsertBuildDescriptionArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_InsertBuildDescriptionArchive.Unmarshal(m, b)
-}
-func (m *InsertBuildDescriptionArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_InsertBuildDescriptionArchive.Marshal(b, m, deterministic)
-}
-func (m *InsertBuildDescriptionArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_InsertBuildDescriptionArchive.Merge(m, src)
-}
-func (m *InsertBuildDescriptionArchive) XXX_Size() int {
-	return xxx_messageInfo_InsertBuildDescriptionArchive.Size(m)
-}
-func (m *InsertBuildDescriptionArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_InsertBuildDescriptionArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_InsertBuildDescriptionArchive proto.InternalMessageInfo
-
-func (m *InsertBuildDescriptionArchive) GetSlideId() *TSP.UUID {
-	if m != nil {
-		return m.SlideId
-	}
-	return nil
-}
-
-func (m *InsertBuildDescriptionArchive) GetBuildToInsert() *TSP.Reference {
-	if m != nil {
-		return m.BuildToInsert
-	}
-	return nil
-}
-
-func (m *InsertBuildDescriptionArchive) GetChunksToInsert() []*TSP.Reference {
-	if m != nil {
-		return m.ChunksToInsert
-	}
-	return nil
-}
-
-func (m *InsertBuildDescriptionArchive) GetShouldAssignChunkIdentifiers() bool {
-	if m != nil && m.ShouldAssignChunkIdentifiers != nil {
-		return *m.ShouldAssignChunkIdentifiers
-	}
-	return false
-}
-
-func (m *InsertBuildDescriptionArchive) GetIdentifersForChunksToInsertAfter() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifersForChunksToInsertAfter
-	}
-	return nil
-}
-
-func (m *InsertBuildDescriptionArchive) GetTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.TuplesToUpdate
-	}
-	return nil
-}
-
-func (m *InsertBuildDescriptionArchive) GetFallbackChunkIdentifiers() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.FallbackChunkIdentifiers
-	}
-	return nil
-}
-
-func (m *InsertBuildDescriptionArchive) GetIsForPaste() bool {
-	if m != nil && m.IsForPaste != nil {
-		return *m.IsForPaste
-	}
-	return false
-}
-
-type UndoObjectArchive struct {
-	Super                *TSD.UndoObjectArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
-}
-
-func (m *UndoObjectArchive) Reset()         { *m = UndoObjectArchive{} }
-func (m *UndoObjectArchive) String() string { return proto.CompactTextString(m) }
-func (*UndoObjectArchive) ProtoMessage()    {}
-func (*UndoObjectArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{26}
-}
-
-func (m *UndoObjectArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UndoObjectArchive.Unmarshal(m, b)
-}
-func (m *UndoObjectArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UndoObjectArchive.Marshal(b, m, deterministic)
-}
-func (m *UndoObjectArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UndoObjectArchive.Merge(m, src)
-}
-func (m *UndoObjectArchive) XXX_Size() int {
-	return xxx_messageInfo_UndoObjectArchive.Size(m)
-}
-func (m *UndoObjectArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_UndoObjectArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UndoObjectArchive proto.InternalMessageInfo
-
-func (m *UndoObjectArchive) GetSuper() *TSD.UndoObjectArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
 type CommandSlideRemoveBuildArchive struct {
-	Super                             *TSK.CommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RemoveBuildDescription            *TSP.Reference                 `protobuf:"bytes,2,req,name=remove_build_description,json=removeBuildDescription" json:"remove_build_description,omitempty"`
-	Build                             *TSP.Reference                 `protobuf:"bytes,3,opt,name=build" json:"build,omitempty"`
-	ChunksToInsert                    []*TSP.Reference               `protobuf:"bytes,4,rep,name=chunks_to_insert,json=chunksToInsert" json:"chunks_to_insert,omitempty"`
-	IdentifiersForChunksToInsertAfter []*BuildChunkIdentifierArchive `protobuf:"bytes,5,rep,name=identifiers_for_chunks_to_insert_after,json=identifiersForChunksToInsertAfter" json:"identifiers_for_chunks_to_insert_after,omitempty"`
-	OldTuplesToUpdate                 []*TSP.Reference               `protobuf:"bytes,6,rep,name=old_tuples_to_update,json=oldTuplesToUpdate" json:"old_tuples_to_update,omitempty"`
-	FallbackChunkIdentifiers          []*BuildChunkIdentifierArchive `protobuf:"bytes,7,rep,name=fallback_chunk_identifiers,json=fallbackChunkIdentifiers" json:"fallback_chunk_identifiers,omitempty"`
-	XXX_NoUnkeyedLiteral              struct{}                       `json:"-"`
-	XXX_unrecognized                  []byte                         `json:"-"`
-	XXX_sizecache                     int32                          `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SlideNode            *Reference      `protobuf:"bytes,2,req,name=slideNode" json:"slideNode,omitempty"`
+	Build                *Reference      `protobuf:"bytes,3,req,name=build" json:"build,omitempty"`
+	Index                *uint32         `protobuf:"varint,4,req,name=index" json:"index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandSlideRemoveBuildArchive) Reset()         { *m = CommandSlideRemoveBuildArchive{} }
 func (m *CommandSlideRemoveBuildArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSlideRemoveBuildArchive) ProtoMessage()    {}
 func (*CommandSlideRemoveBuildArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{27}
+	return fileDescriptor_fc506070cd6467a6, []int{22}
 }
 
 func (m *CommandSlideRemoveBuildArchive) XXX_Unmarshal(b []byte) error {
@@ -2490,145 +1935,171 @@ func (m *CommandSlideRemoveBuildArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideRemoveBuildArchive proto.InternalMessageInfo
 
-func (m *CommandSlideRemoveBuildArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideRemoveBuildArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildArchive) GetRemoveBuildDescription() *TSP.Reference {
+func (m *CommandSlideRemoveBuildArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.RemoveBuildDescription
+		return m.SlideNode
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildArchive) GetBuild() *TSP.Reference {
+func (m *CommandSlideRemoveBuildArchive) GetBuild() *Reference {
 	if m != nil {
 		return m.Build
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildArchive) GetChunksToInsert() []*TSP.Reference {
+func (m *CommandSlideRemoveBuildArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
+}
+
+type CommandSlideMoveBuildWithoutMovingChunksArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SlideNode            *Reference      `protobuf:"bytes,2,req,name=slideNode" json:"slideNode,omitempty"`
+	Index                *uint32         `protobuf:"varint,3,req,name=index" json:"index,omitempty"`
+	OldIndex             *uint32         `protobuf:"varint,4,req,name=oldIndex" json:"oldIndex,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) Reset() {
+	*m = CommandSlideMoveBuildWithoutMovingChunksArchive{}
+}
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandSlideMoveBuildWithoutMovingChunksArchive) ProtoMessage() {}
+func (*CommandSlideMoveBuildWithoutMovingChunksArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{23}
+}
+
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSlideMoveBuildWithoutMovingChunksArchive.Unmarshal(m, b)
+}
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSlideMoveBuildWithoutMovingChunksArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSlideMoveBuildWithoutMovingChunksArchive.Merge(m, src)
+}
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSlideMoveBuildWithoutMovingChunksArchive.Size(m)
+}
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSlideMoveBuildWithoutMovingChunksArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSlideMoveBuildWithoutMovingChunksArchive proto.InternalMessageInfo
+
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) GetSuper() *CommandArchive {
 	if m != nil {
-		return m.ChunksToInsert
+		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildArchive) GetIdentifiersForChunksToInsertAfter() []*BuildChunkIdentifierArchive {
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.IdentifiersForChunksToInsertAfter
+		return m.SlideNode
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildArchive) GetOldTuplesToUpdate() []*TSP.Reference {
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
+}
+
+func (m *CommandSlideMoveBuildWithoutMovingChunksArchive) GetOldIndex() uint32 {
+	if m != nil && m.OldIndex != nil {
+		return *m.OldIndex
+	}
+	return 0
+}
+
+type CommandSlideMoveBuildsArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Builds               []*Reference    `protobuf:"bytes,2,rep,name=builds" json:"builds,omitempty"`
+	ToIndex              *uint32         `protobuf:"varint,3,opt,name=toIndex" json:"toIndex,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *CommandSlideMoveBuildsArchive) Reset()         { *m = CommandSlideMoveBuildsArchive{} }
+func (m *CommandSlideMoveBuildsArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSlideMoveBuildsArchive) ProtoMessage()    {}
+func (*CommandSlideMoveBuildsArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{24}
+}
+
+func (m *CommandSlideMoveBuildsArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSlideMoveBuildsArchive.Unmarshal(m, b)
+}
+func (m *CommandSlideMoveBuildsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSlideMoveBuildsArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSlideMoveBuildsArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSlideMoveBuildsArchive.Merge(m, src)
+}
+func (m *CommandSlideMoveBuildsArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSlideMoveBuildsArchive.Size(m)
+}
+func (m *CommandSlideMoveBuildsArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSlideMoveBuildsArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSlideMoveBuildsArchive proto.InternalMessageInfo
+
+func (m *CommandSlideMoveBuildsArchive) GetSuper() *CommandArchive {
 	if m != nil {
-		return m.OldTuplesToUpdate
+		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildArchive) GetFallbackChunkIdentifiers() []*BuildChunkIdentifierArchive {
+func (m *CommandSlideMoveBuildsArchive) GetBuilds() []*Reference {
 	if m != nil {
-		return m.FallbackChunkIdentifiers
+		return m.Builds
 	}
 	return nil
 }
 
-type RemoveBuildDescriptionArchive struct {
-	SlideId                      *TSP.UUID        `protobuf:"bytes,1,opt,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	BuildId                      *TSP.UUID        `protobuf:"bytes,2,opt,name=build_id,json=buildId" json:"build_id,omitempty"`
-	ShouldRemoveChunks           *bool            `protobuf:"varint,3,opt,name=should_remove_chunks,json=shouldRemoveChunks" json:"should_remove_chunks,omitempty"`
-	ShouldRemoveChunkIdentifiers *bool            `protobuf:"varint,4,opt,name=should_remove_chunk_identifiers,json=shouldRemoveChunkIdentifiers" json:"should_remove_chunk_identifiers,omitempty"`
-	TuplesToUpdate               []*TSP.Reference `protobuf:"bytes,5,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	XXX_NoUnkeyedLiteral         struct{}         `json:"-"`
-	XXX_unrecognized             []byte           `json:"-"`
-	XXX_sizecache                int32            `json:"-"`
-}
-
-func (m *RemoveBuildDescriptionArchive) Reset()         { *m = RemoveBuildDescriptionArchive{} }
-func (m *RemoveBuildDescriptionArchive) String() string { return proto.CompactTextString(m) }
-func (*RemoveBuildDescriptionArchive) ProtoMessage()    {}
-func (*RemoveBuildDescriptionArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{28}
-}
-
-func (m *RemoveBuildDescriptionArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RemoveBuildDescriptionArchive.Unmarshal(m, b)
-}
-func (m *RemoveBuildDescriptionArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RemoveBuildDescriptionArchive.Marshal(b, m, deterministic)
-}
-func (m *RemoveBuildDescriptionArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RemoveBuildDescriptionArchive.Merge(m, src)
-}
-func (m *RemoveBuildDescriptionArchive) XXX_Size() int {
-	return xxx_messageInfo_RemoveBuildDescriptionArchive.Size(m)
-}
-func (m *RemoveBuildDescriptionArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_RemoveBuildDescriptionArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RemoveBuildDescriptionArchive proto.InternalMessageInfo
-
-func (m *RemoveBuildDescriptionArchive) GetSlideId() *TSP.UUID {
-	if m != nil {
-		return m.SlideId
+func (m *CommandSlideMoveBuildsArchive) GetToIndex() uint32 {
+	if m != nil && m.ToIndex != nil {
+		return *m.ToIndex
 	}
-	return nil
-}
-
-func (m *RemoveBuildDescriptionArchive) GetBuildId() *TSP.UUID {
-	if m != nil {
-		return m.BuildId
-	}
-	return nil
-}
-
-func (m *RemoveBuildDescriptionArchive) GetShouldRemoveChunks() bool {
-	if m != nil && m.ShouldRemoveChunks != nil {
-		return *m.ShouldRemoveChunks
-	}
-	return false
-}
-
-func (m *RemoveBuildDescriptionArchive) GetShouldRemoveChunkIdentifiers() bool {
-	if m != nil && m.ShouldRemoveChunkIdentifiers != nil {
-		return *m.ShouldRemoveChunkIdentifiers
-	}
-	return false
-}
-
-func (m *RemoveBuildDescriptionArchive) GetTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.TuplesToUpdate
-	}
-	return nil
+	return 0
 }
 
 type CommandSlideInsertBuildChunkArchive struct {
-	Super                           *TSK.CommandArchive          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideId                         *TSP.UUID                    `protobuf:"bytes,2,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	ChunkToInsert                   *TSP.Reference               `protobuf:"bytes,3,req,name=chunk_to_insert,json=chunkToInsert" json:"chunk_to_insert,omitempty"`
-	IdentifierForChunkToInsertAfter *BuildChunkIdentifierArchive `protobuf:"bytes,4,opt,name=identifier_for_chunk_to_insert_after,json=identifierForChunkToInsertAfter" json:"identifier_for_chunk_to_insert_after,omitempty"`
-	TuplesToUpdate                  []*TSP.Reference             `protobuf:"bytes,5,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	OldTuplesToUpdate               []*TSP.Reference             `protobuf:"bytes,6,rep,name=old_tuples_to_update,json=oldTuplesToUpdate" json:"old_tuples_to_update,omitempty"`
-	NeedsSelectionUpdate            *bool                        `protobuf:"varint,7,opt,name=needs_selection_update,json=needsSelectionUpdate" json:"needs_selection_update,omitempty"`
-	ShouldAssignChunkIdentifier     *bool                        `protobuf:"varint,8,opt,name=should_assign_chunk_identifier,json=shouldAssignChunkIdentifier" json:"should_assign_chunk_identifier,omitempty"`
-	XXX_NoUnkeyedLiteral            struct{}                     `json:"-"`
-	XXX_unrecognized                []byte                       `json:"-"`
-	XXX_sizecache                   int32                        `json:"-"`
+	Super                *CommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Slide                *Reference         `protobuf:"bytes,2,req,name=slide" json:"slide,omitempty"`
+	BuildChunk           *BuildChunkArchive `protobuf:"bytes,3,req,name=buildChunk" json:"buildChunk,omitempty"`
+	Index                *uint32            `protobuf:"varint,4,req,name=index" json:"index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
 }
 
 func (m *CommandSlideInsertBuildChunkArchive) Reset()         { *m = CommandSlideInsertBuildChunkArchive{} }
 func (m *CommandSlideInsertBuildChunkArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSlideInsertBuildChunkArchive) ProtoMessage()    {}
 func (*CommandSlideInsertBuildChunkArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{29}
+	return fileDescriptor_fc506070cd6467a6, []int{25}
 }
 
 func (m *CommandSlideInsertBuildChunkArchive) XXX_Unmarshal(b []byte) error {
@@ -2649,81 +2120,49 @@ func (m *CommandSlideInsertBuildChunkArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideInsertBuildChunkArchive proto.InternalMessageInfo
 
-func (m *CommandSlideInsertBuildChunkArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideInsertBuildChunkArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideInsertBuildChunkArchive) GetSlideId() *TSP.UUID {
+func (m *CommandSlideInsertBuildChunkArchive) GetSlide() *Reference {
 	if m != nil {
-		return m.SlideId
+		return m.Slide
 	}
 	return nil
 }
 
-func (m *CommandSlideInsertBuildChunkArchive) GetChunkToInsert() *TSP.Reference {
+func (m *CommandSlideInsertBuildChunkArchive) GetBuildChunk() *BuildChunkArchive {
 	if m != nil {
-		return m.ChunkToInsert
+		return m.BuildChunk
 	}
 	return nil
 }
 
-func (m *CommandSlideInsertBuildChunkArchive) GetIdentifierForChunkToInsertAfter() *BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifierForChunkToInsertAfter
+func (m *CommandSlideInsertBuildChunkArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
 	}
-	return nil
-}
-
-func (m *CommandSlideInsertBuildChunkArchive) GetTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.TuplesToUpdate
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertBuildChunkArchive) GetOldTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.OldTuplesToUpdate
-	}
-	return nil
-}
-
-func (m *CommandSlideInsertBuildChunkArchive) GetNeedsSelectionUpdate() bool {
-	if m != nil && m.NeedsSelectionUpdate != nil {
-		return *m.NeedsSelectionUpdate
-	}
-	return false
-}
-
-func (m *CommandSlideInsertBuildChunkArchive) GetShouldAssignChunkIdentifier() bool {
-	if m != nil && m.ShouldAssignChunkIdentifier != nil {
-		return *m.ShouldAssignChunkIdentifier
-	}
-	return false
+	return 0
 }
 
 type CommandSlideRemoveBuildChunkArchive struct {
-	Super                           *TSK.CommandArchive          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideId                         *TSP.UUID                    `protobuf:"bytes,2,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	RemovedChunk                    *TSP.Reference               `protobuf:"bytes,3,opt,name=removed_chunk,json=removedChunk" json:"removed_chunk,omitempty"`
-	IdentifierForChunkToRemove      *BuildChunkIdentifierArchive `protobuf:"bytes,4,opt,name=identifier_for_chunk_to_remove,json=identifierForChunkToRemove" json:"identifier_for_chunk_to_remove,omitempty"`
-	IdentifierForChunkToInsertAfter *BuildChunkIdentifierArchive `protobuf:"bytes,5,opt,name=identifier_for_chunk_to_insert_after,json=identifierForChunkToInsertAfter" json:"identifier_for_chunk_to_insert_after,omitempty"`
-	TuplesToUpdate                  []*TSP.Reference             `protobuf:"bytes,6,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	OldTuplesToUpdate               []*TSP.Reference             `protobuf:"bytes,7,rep,name=old_tuples_to_update,json=oldTuplesToUpdate" json:"old_tuples_to_update,omitempty"`
-	NeedsSelectionUpdate            *bool                        `protobuf:"varint,8,opt,name=needs_selection_update,json=needsSelectionUpdate" json:"needs_selection_update,omitempty"`
-	XXX_NoUnkeyedLiteral            struct{}                     `json:"-"`
-	XXX_unrecognized                []byte                       `json:"-"`
-	XXX_sizecache                   int32                        `json:"-"`
+	Super                *CommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Slide                *Reference         `protobuf:"bytes,2,req,name=slide" json:"slide,omitempty"`
+	BuildChunk           *BuildChunkArchive `protobuf:"bytes,3,req,name=buildChunk" json:"buildChunk,omitempty"`
+	Index                *uint32            `protobuf:"varint,4,req,name=index" json:"index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
 }
 
 func (m *CommandSlideRemoveBuildChunkArchive) Reset()         { *m = CommandSlideRemoveBuildChunkArchive{} }
 func (m *CommandSlideRemoveBuildChunkArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSlideRemoveBuildChunkArchive) ProtoMessage()    {}
 func (*CommandSlideRemoveBuildChunkArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{30}
+	return fileDescriptor_fc506070cd6467a6, []int{26}
 }
 
 func (m *CommandSlideRemoveBuildChunkArchive) XXX_Unmarshal(b []byte) error {
@@ -2744,80 +2183,111 @@ func (m *CommandSlideRemoveBuildChunkArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideRemoveBuildChunkArchive proto.InternalMessageInfo
 
-func (m *CommandSlideRemoveBuildChunkArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideRemoveBuildChunkArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildChunkArchive) GetSlideId() *TSP.UUID {
+func (m *CommandSlideRemoveBuildChunkArchive) GetSlide() *Reference {
 	if m != nil {
-		return m.SlideId
+		return m.Slide
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildChunkArchive) GetRemovedChunk() *TSP.Reference {
+func (m *CommandSlideRemoveBuildChunkArchive) GetBuildChunk() *BuildChunkArchive {
 	if m != nil {
-		return m.RemovedChunk
+		return m.BuildChunk
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildChunkArchive) GetIdentifierForChunkToRemove() *BuildChunkIdentifierArchive {
+func (m *CommandSlideRemoveBuildChunkArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
+}
+
+type CommandSlideMoveBuildChunkArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Slide                *Reference      `protobuf:"bytes,2,req,name=slide" json:"slide,omitempty"`
+	Index                *uint32         `protobuf:"varint,3,req,name=index" json:"index,omitempty"`
+	OldIndex             *uint32         `protobuf:"varint,4,req,name=oldIndex" json:"oldIndex,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *CommandSlideMoveBuildChunkArchive) Reset()         { *m = CommandSlideMoveBuildChunkArchive{} }
+func (m *CommandSlideMoveBuildChunkArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSlideMoveBuildChunkArchive) ProtoMessage()    {}
+func (*CommandSlideMoveBuildChunkArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{27}
+}
+
+func (m *CommandSlideMoveBuildChunkArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSlideMoveBuildChunkArchive.Unmarshal(m, b)
+}
+func (m *CommandSlideMoveBuildChunkArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSlideMoveBuildChunkArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSlideMoveBuildChunkArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSlideMoveBuildChunkArchive.Merge(m, src)
+}
+func (m *CommandSlideMoveBuildChunkArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSlideMoveBuildChunkArchive.Size(m)
+}
+func (m *CommandSlideMoveBuildChunkArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSlideMoveBuildChunkArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSlideMoveBuildChunkArchive proto.InternalMessageInfo
+
+func (m *CommandSlideMoveBuildChunkArchive) GetSuper() *CommandArchive {
 	if m != nil {
-		return m.IdentifierForChunkToRemove
+		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildChunkArchive) GetIdentifierForChunkToInsertAfter() *BuildChunkIdentifierArchive {
+func (m *CommandSlideMoveBuildChunkArchive) GetSlide() *Reference {
 	if m != nil {
-		return m.IdentifierForChunkToInsertAfter
+		return m.Slide
 	}
 	return nil
 }
 
-func (m *CommandSlideRemoveBuildChunkArchive) GetTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.TuplesToUpdate
+func (m *CommandSlideMoveBuildChunkArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
 	}
-	return nil
+	return 0
 }
 
-func (m *CommandSlideRemoveBuildChunkArchive) GetOldTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.OldTuplesToUpdate
+func (m *CommandSlideMoveBuildChunkArchive) GetOldIndex() uint32 {
+	if m != nil && m.OldIndex != nil {
+		return *m.OldIndex
 	}
-	return nil
-}
-
-func (m *CommandSlideRemoveBuildChunkArchive) GetNeedsSelectionUpdate() bool {
-	if m != nil && m.NeedsSelectionUpdate != nil {
-		return *m.NeedsSelectionUpdate
-	}
-	return false
+	return 0
 }
 
 type CommandSlideMoveBuildChunksArchive struct {
-	Super                                                      *TSK.CommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	IdentifiersForChunksToMove                                 []*BuildChunkIdentifierArchive `protobuf:"bytes,2,rep,name=identifiers_for_chunks_to_move,json=identifiersForChunksToMove" json:"identifiers_for_chunks_to_move,omitempty"`
-	IdentifiersForChunksToMoveAfter                            []*BuildChunkIdentifierArchive `protobuf:"bytes,3,rep,name=identifiers_for_chunks_to_move_after,json=identifiersForChunksToMoveAfter" json:"identifiers_for_chunks_to_move_after,omitempty"`
-	IdentifiersForChunksToMoveAfterForUndo                     []*BuildChunkIdentifierArchive `protobuf:"bytes,4,rep,name=identifiers_for_chunks_to_move_after_for_undo,json=identifiersForChunksToMoveAfterForUndo" json:"identifiers_for_chunks_to_move_after_for_undo,omitempty"`
-	TuplesToUpdate                                             []*TSP.Reference               `protobuf:"bytes,5,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	OldTuplesToUpdate                                          []*TSP.Reference               `protobuf:"bytes,6,rep,name=old_tuples_to_update,json=oldTuplesToUpdate" json:"old_tuples_to_update,omitempty"`
-	IdentifiersForChunksToMoveIncludingClusteredInactiveChunks []*BuildChunkIdentifierArchive `protobuf:"bytes,7,rep,name=identifiers_for_chunks_to_move_including_clustered_inactive_chunks,json=identifiersForChunksToMoveIncludingClusteredInactiveChunks" json:"identifiers_for_chunks_to_move_including_clustered_inactive_chunks,omitempty"`
-	XXX_NoUnkeyedLiteral                                       struct{}                       `json:"-"`
-	XXX_unrecognized                                           []byte                         `json:"-"`
-	XXX_sizecache                                              int32                          `json:"-"`
+	Super                *CommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	BuildChunks          []*BuildChunkArchive `protobuf:"bytes,2,rep,name=buildChunks" json:"buildChunks,omitempty"`
+	ToIndex              *uint32              `protobuf:"varint,3,opt,name=toIndex" json:"toIndex,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *CommandSlideMoveBuildChunksArchive) Reset()         { *m = CommandSlideMoveBuildChunksArchive{} }
 func (m *CommandSlideMoveBuildChunksArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSlideMoveBuildChunksArchive) ProtoMessage()    {}
 func (*CommandSlideMoveBuildChunksArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{31}
+	return fileDescriptor_fc506070cd6467a6, []int{28}
 }
 
 func (m *CommandSlideMoveBuildChunksArchive) XXX_Unmarshal(b []byte) error {
@@ -2838,81 +2308,50 @@ func (m *CommandSlideMoveBuildChunksArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideMoveBuildChunksArchive proto.InternalMessageInfo
 
-func (m *CommandSlideMoveBuildChunksArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideMoveBuildChunksArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideMoveBuildChunksArchive) GetIdentifiersForChunksToMove() []*BuildChunkIdentifierArchive {
+func (m *CommandSlideMoveBuildChunksArchive) GetBuildChunks() []*BuildChunkArchive {
 	if m != nil {
-		return m.IdentifiersForChunksToMove
+		return m.BuildChunks
 	}
 	return nil
 }
 
-func (m *CommandSlideMoveBuildChunksArchive) GetIdentifiersForChunksToMoveAfter() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifiersForChunksToMoveAfter
+func (m *CommandSlideMoveBuildChunksArchive) GetToIndex() uint32 {
+	if m != nil && m.ToIndex != nil {
+		return *m.ToIndex
 	}
-	return nil
-}
-
-func (m *CommandSlideMoveBuildChunksArchive) GetIdentifiersForChunksToMoveAfterForUndo() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifiersForChunksToMoveAfterForUndo
-	}
-	return nil
-}
-
-func (m *CommandSlideMoveBuildChunksArchive) GetTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.TuplesToUpdate
-	}
-	return nil
-}
-
-func (m *CommandSlideMoveBuildChunksArchive) GetOldTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.OldTuplesToUpdate
-	}
-	return nil
-}
-
-func (m *CommandSlideMoveBuildChunksArchive) GetIdentifiersForChunksToMoveIncludingClusteredInactiveChunks() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifiersForChunksToMoveIncludingClusteredInactiveChunks
-	}
-	return nil
+	return 0
 }
 
 type CommandBuildSetValueArchive struct {
-	Super                                    *TSK.CommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Tuple                                    *TSP.Reference                 `protobuf:"bytes,2,opt,name=tuple" json:"tuple,omitempty"`
-	ChunksToAdd                              []*TSP.Reference               `protobuf:"bytes,3,rep,name=chunks_to_add,json=chunksToAdd" json:"chunks_to_add,omitempty"`
-	IdentifiersForChunksToInsertAfter        []*BuildChunkIdentifierArchive `protobuf:"bytes,4,rep,name=identifiers_for_chunks_to_insert_after,json=identifiersForChunksToInsertAfter" json:"identifiers_for_chunks_to_insert_after,omitempty"`
-	IdentifiersForChunksToRemove             []*BuildChunkIdentifierArchive `protobuf:"bytes,5,rep,name=identifiers_for_chunks_to_remove,json=identifiersForChunksToRemove" json:"identifiers_for_chunks_to_remove,omitempty"`
-	TuplesToUpdate                           []*TSP.Reference               `protobuf:"bytes,6,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	OldTupleForMainProperty                  *TSP.Reference                 `protobuf:"bytes,7,opt,name=old_tuple_for_main_property,json=oldTupleForMainProperty" json:"old_tuple_for_main_property,omitempty"`
-	OldTuplesToUpdateForSubCommands          []*TSP.Reference               `protobuf:"bytes,8,rep,name=old_tuples_to_update_for_sub_commands,json=oldTuplesToUpdateForSubCommands" json:"old_tuples_to_update_for_sub_commands,omitempty"`
-	IdentifiersForAddedChunks                []*BuildChunkIdentifierArchive `protobuf:"bytes,9,rep,name=identifiers_for_added_chunks,json=identifiersForAddedChunks" json:"identifiers_for_added_chunks,omitempty"`
-	GeneratedIdentifiers                     []*BuildChunkIdentifierArchive `protobuf:"bytes,10,rep,name=generated_identifiers,json=generatedIdentifiers" json:"generated_identifiers,omitempty"`
-	RemovedChunks                            []*TSP.Reference               `protobuf:"bytes,11,rep,name=removed_chunks,json=removedChunks" json:"removed_chunks,omitempty"`
-	IdentifiersForChunksPriorToRemovedChunks []*BuildChunkIdentifierArchive `protobuf:"bytes,12,rep,name=identifiers_for_chunks_prior_to_removed_chunks,json=identifiersForChunksPriorToRemovedChunks" json:"identifiers_for_chunks_prior_to_removed_chunks,omitempty"`
-	OldChunk_IDSeed                          *uint32                        `protobuf:"varint,13,opt,name=old_chunk_ID_seed,json=oldChunkIDSeed" json:"old_chunk_ID_seed,omitempty"`
-	OldChunkIdentifiers                      []*BuildChunkIdentifierArchive `protobuf:"bytes,14,rep,name=old_chunk_identifiers,json=oldChunkIdentifiers" json:"old_chunk_identifiers,omitempty"`
-	ChunksRemovedDuringUndo                  []*TSP.Reference               `protobuf:"bytes,15,rep,name=chunks_removed_during_undo,json=chunksRemovedDuringUndo" json:"chunks_removed_during_undo,omitempty"`
-	XXX_NoUnkeyedLiteral                     struct{}                       `json:"-"`
-	XXX_unrecognized                         []byte                         `json:"-"`
-	XXX_sizecache                            int32                          `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Build                *Reference      `protobuf:"bytes,2,req,name=build" json:"build,omitempty"`
+	Property             *string         `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
+	Effects              []string        `protobuf:"bytes,4,rep,name=effects" json:"effects,omitempty"`
+	Types                []string        `protobuf:"bytes,5,rep,name=types" json:"types,omitempty"`
+	Deliveries           []string        `protobuf:"bytes,6,rep,name=deliveries" json:"deliveries,omitempty"`
+	Directions           []uint32        `protobuf:"varint,7,rep,name=directions" json:"directions,omitempty"`
+	Durations            []float64       `protobuf:"fixed64,8,rep,name=durations" json:"durations,omitempty"`
+	Delays               []float64       `protobuf:"fixed64,9,rep,name=delays" json:"delays,omitempty"`
+	DelayAutomaticAfters []float64       `protobuf:"fixed64,10,rep,name=delayAutomaticAfters" json:"delayAutomaticAfters,omitempty"`
+	DelayAutomaticWiths  []float64       `protobuf:"fixed64,11,rep,name=delayAutomaticWiths" json:"delayAutomaticWiths,omitempty"`
+	EventTriggers        []bool          `protobuf:"varint,12,rep,name=eventTriggers" json:"eventTriggers,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandBuildSetValueArchive) Reset()         { *m = CommandBuildSetValueArchive{} }
 func (m *CommandBuildSetValueArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandBuildSetValueArchive) ProtoMessage()    {}
 func (*CommandBuildSetValueArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{32}
+	return fileDescriptor_fc506070cd6467a6, []int{29}
 }
 
 func (m *CommandBuildSetValueArchive) XXX_Unmarshal(b []byte) error {
@@ -2933,381 +2372,109 @@ func (m *CommandBuildSetValueArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandBuildSetValueArchive proto.InternalMessageInfo
 
-func (m *CommandBuildSetValueArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandBuildSetValueArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetTuple() *TSP.Reference {
+func (m *CommandBuildSetValueArchive) GetBuild() *Reference {
 	if m != nil {
-		return m.Tuple
+		return m.Build
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetChunksToAdd() []*TSP.Reference {
+func (m *CommandBuildSetValueArchive) GetProperty() string {
+	if m != nil && m.Property != nil {
+		return *m.Property
+	}
+	return ""
+}
+
+func (m *CommandBuildSetValueArchive) GetEffects() []string {
 	if m != nil {
-		return m.ChunksToAdd
+		return m.Effects
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetIdentifiersForChunksToInsertAfter() []*BuildChunkIdentifierArchive {
+func (m *CommandBuildSetValueArchive) GetTypes() []string {
 	if m != nil {
-		return m.IdentifiersForChunksToInsertAfter
+		return m.Types
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetIdentifiersForChunksToRemove() []*BuildChunkIdentifierArchive {
+func (m *CommandBuildSetValueArchive) GetDeliveries() []string {
 	if m != nil {
-		return m.IdentifiersForChunksToRemove
+		return m.Deliveries
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetTuplesToUpdate() []*TSP.Reference {
+func (m *CommandBuildSetValueArchive) GetDirections() []uint32 {
 	if m != nil {
-		return m.TuplesToUpdate
+		return m.Directions
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetOldTupleForMainProperty() *TSP.Reference {
+func (m *CommandBuildSetValueArchive) GetDurations() []float64 {
 	if m != nil {
-		return m.OldTupleForMainProperty
+		return m.Durations
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetOldTuplesToUpdateForSubCommands() []*TSP.Reference {
+func (m *CommandBuildSetValueArchive) GetDelays() []float64 {
 	if m != nil {
-		return m.OldTuplesToUpdateForSubCommands
+		return m.Delays
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetIdentifiersForAddedChunks() []*BuildChunkIdentifierArchive {
+func (m *CommandBuildSetValueArchive) GetDelayAutomaticAfters() []float64 {
 	if m != nil {
-		return m.IdentifiersForAddedChunks
+		return m.DelayAutomaticAfters
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetGeneratedIdentifiers() []*BuildChunkIdentifierArchive {
+func (m *CommandBuildSetValueArchive) GetDelayAutomaticWiths() []float64 {
 	if m != nil {
-		return m.GeneratedIdentifiers
+		return m.DelayAutomaticWiths
 	}
 	return nil
 }
 
-func (m *CommandBuildSetValueArchive) GetRemovedChunks() []*TSP.Reference {
+func (m *CommandBuildSetValueArchive) GetEventTriggers() []bool {
 	if m != nil {
-		return m.RemovedChunks
-	}
-	return nil
-}
-
-func (m *CommandBuildSetValueArchive) GetIdentifiersForChunksPriorToRemovedChunks() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifiersForChunksPriorToRemovedChunks
-	}
-	return nil
-}
-
-func (m *CommandBuildSetValueArchive) GetOldChunk_IDSeed() uint32 {
-	if m != nil && m.OldChunk_IDSeed != nil {
-		return *m.OldChunk_IDSeed
-	}
-	return 0
-}
-
-func (m *CommandBuildSetValueArchive) GetOldChunkIdentifiers() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.OldChunkIdentifiers
-	}
-	return nil
-}
-
-func (m *CommandBuildSetValueArchive) GetChunksRemovedDuringUndo() []*TSP.Reference {
-	if m != nil {
-		return m.ChunksRemovedDuringUndo
-	}
-	return nil
-}
-
-type CommandBuildUpdateChunkReferentsArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	BuildId              *TSP.UUID           `protobuf:"bytes,2,req,name=build_id,json=buildId" json:"build_id,omitempty"`
-	TuplesToUpdate       []*TSP.Reference    `protobuf:"bytes,3,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	OldTuplesToUpdate    []*TSP.Reference    `protobuf:"bytes,4,rep,name=old_tuples_to_update,json=oldTuplesToUpdate" json:"old_tuples_to_update,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *CommandBuildUpdateChunkReferentsArchive) Reset() {
-	*m = CommandBuildUpdateChunkReferentsArchive{}
-}
-func (m *CommandBuildUpdateChunkReferentsArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandBuildUpdateChunkReferentsArchive) ProtoMessage()    {}
-func (*CommandBuildUpdateChunkReferentsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{33}
-}
-
-func (m *CommandBuildUpdateChunkReferentsArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandBuildUpdateChunkReferentsArchive.Unmarshal(m, b)
-}
-func (m *CommandBuildUpdateChunkReferentsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandBuildUpdateChunkReferentsArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandBuildUpdateChunkReferentsArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandBuildUpdateChunkReferentsArchive.Merge(m, src)
-}
-func (m *CommandBuildUpdateChunkReferentsArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandBuildUpdateChunkReferentsArchive.Size(m)
-}
-func (m *CommandBuildUpdateChunkReferentsArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandBuildUpdateChunkReferentsArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandBuildUpdateChunkReferentsArchive proto.InternalMessageInfo
-
-func (m *CommandBuildUpdateChunkReferentsArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkReferentsArchive) GetBuildId() *TSP.UUID {
-	if m != nil {
-		return m.BuildId
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkReferentsArchive) GetTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.TuplesToUpdate
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkReferentsArchive) GetOldTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.OldTuplesToUpdate
-	}
-	return nil
-}
-
-type CommandBuildUpdateChunkCountArchive struct {
-	Super                                    *TSK.CommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideId                                  *TSP.UUID                      `protobuf:"bytes,2,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	DrawableIds                              []*TSP.UUID                    `protobuf:"bytes,3,rep,name=drawable_ids,json=drawableIds" json:"drawable_ids,omitempty"`
-	ExpectedDeliveryStyleTuples              []*TSP.Reference               `protobuf:"bytes,4,rep,name=expected_delivery_style_tuples,json=expectedDeliveryStyleTuples" json:"expected_delivery_style_tuples,omitempty"`
-	ChunksToAdd                              []*TSP.Reference               `protobuf:"bytes,5,rep,name=chunks_to_add,json=chunksToAdd" json:"chunks_to_add,omitempty"`
-	IdentifiersForChunksToInsertAfter        []*BuildChunkIdentifierArchive `protobuf:"bytes,6,rep,name=identifiers_for_chunks_to_insert_after,json=identifiersForChunksToInsertAfter" json:"identifiers_for_chunks_to_insert_after,omitempty"`
-	IdentifiersForChunksToRemove             []*BuildChunkIdentifierArchive `protobuf:"bytes,7,rep,name=identifiers_for_chunks_to_remove,json=identifiersForChunksToRemove" json:"identifiers_for_chunks_to_remove,omitempty"`
-	TuplesToUpdate                           []*TSP.Reference               `protobuf:"bytes,8,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	NeedsAsyncProcessChangesSelectionUpdate  *bool                          `protobuf:"varint,9,opt,name=needs_async_process_changes_selection_update,json=needsAsyncProcessChangesSelectionUpdate" json:"needs_async_process_changes_selection_update,omitempty"`
-	OldTuplesToUpdate                        []*TSP.Reference               `protobuf:"bytes,10,rep,name=old_tuples_to_update,json=oldTuplesToUpdate" json:"old_tuples_to_update,omitempty"`
-	IdentifiersForAddedChunks                []*BuildChunkIdentifierArchive `protobuf:"bytes,11,rep,name=identifiers_for_added_chunks,json=identifiersForAddedChunks" json:"identifiers_for_added_chunks,omitempty"`
-	GeneratedIdentifiers                     []*BuildChunkIdentifierArchive `protobuf:"bytes,12,rep,name=generated_identifiers,json=generatedIdentifiers" json:"generated_identifiers,omitempty"`
-	RemovedChunks                            []*TSP.Reference               `protobuf:"bytes,13,rep,name=removed_chunks,json=removedChunks" json:"removed_chunks,omitempty"`
-	IdentifiersForChunksPriorToRemovedChunks []*BuildChunkIdentifierArchive `protobuf:"bytes,14,rep,name=identifiers_for_chunks_prior_to_removed_chunks,json=identifiersForChunksPriorToRemovedChunks" json:"identifiers_for_chunks_prior_to_removed_chunks,omitempty"`
-	OldDeliveryStyleTuples                   []*TSP.Reference               `protobuf:"bytes,15,rep,name=old_delivery_style_tuples,json=oldDeliveryStyleTuples" json:"old_delivery_style_tuples,omitempty"`
-	OldChunk_IDSeeds                         []uint32                       `protobuf:"varint,16,rep,name=old_chunk_ID_seeds,json=oldChunkIDSeeds" json:"old_chunk_ID_seeds,omitempty"`
-	OldChunkIdentifiers                      []*BuildChunkIdentifierArchive `protobuf:"bytes,17,rep,name=old_chunk_identifiers,json=oldChunkIdentifiers" json:"old_chunk_identifiers,omitempty"`
-	WorkingBuilds                            []*TSP.Reference               `protobuf:"bytes,18,rep,name=working_builds,json=workingBuilds" json:"working_builds,omitempty"`
-	ChunksRemovedDuringUndo                  []*TSP.Reference               `protobuf:"bytes,19,rep,name=chunks_removed_during_undo,json=chunksRemovedDuringUndo" json:"chunks_removed_during_undo,omitempty"`
-	ChunksAddedDuringUndo                    []*TSP.Reference               `protobuf:"bytes,20,rep,name=chunks_added_during_undo,json=chunksAddedDuringUndo" json:"chunks_added_during_undo,omitempty"`
-	XXX_NoUnkeyedLiteral                     struct{}                       `json:"-"`
-	XXX_unrecognized                         []byte                         `json:"-"`
-	XXX_sizecache                            int32                          `json:"-"`
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) Reset()         { *m = CommandBuildUpdateChunkCountArchive{} }
-func (m *CommandBuildUpdateChunkCountArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandBuildUpdateChunkCountArchive) ProtoMessage()    {}
-func (*CommandBuildUpdateChunkCountArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{34}
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandBuildUpdateChunkCountArchive.Unmarshal(m, b)
-}
-func (m *CommandBuildUpdateChunkCountArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandBuildUpdateChunkCountArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandBuildUpdateChunkCountArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandBuildUpdateChunkCountArchive.Merge(m, src)
-}
-func (m *CommandBuildUpdateChunkCountArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandBuildUpdateChunkCountArchive.Size(m)
-}
-func (m *CommandBuildUpdateChunkCountArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandBuildUpdateChunkCountArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandBuildUpdateChunkCountArchive proto.InternalMessageInfo
-
-func (m *CommandBuildUpdateChunkCountArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetSlideId() *TSP.UUID {
-	if m != nil {
-		return m.SlideId
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetDrawableIds() []*TSP.UUID {
-	if m != nil {
-		return m.DrawableIds
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetExpectedDeliveryStyleTuples() []*TSP.Reference {
-	if m != nil {
-		return m.ExpectedDeliveryStyleTuples
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetChunksToAdd() []*TSP.Reference {
-	if m != nil {
-		return m.ChunksToAdd
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetIdentifiersForChunksToInsertAfter() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifiersForChunksToInsertAfter
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetIdentifiersForChunksToRemove() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifiersForChunksToRemove
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.TuplesToUpdate
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetNeedsAsyncProcessChangesSelectionUpdate() bool {
-	if m != nil && m.NeedsAsyncProcessChangesSelectionUpdate != nil {
-		return *m.NeedsAsyncProcessChangesSelectionUpdate
-	}
-	return false
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetOldTuplesToUpdate() []*TSP.Reference {
-	if m != nil {
-		return m.OldTuplesToUpdate
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetIdentifiersForAddedChunks() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifiersForAddedChunks
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetGeneratedIdentifiers() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.GeneratedIdentifiers
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetRemovedChunks() []*TSP.Reference {
-	if m != nil {
-		return m.RemovedChunks
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetIdentifiersForChunksPriorToRemovedChunks() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.IdentifiersForChunksPriorToRemovedChunks
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetOldDeliveryStyleTuples() []*TSP.Reference {
-	if m != nil {
-		return m.OldDeliveryStyleTuples
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetOldChunk_IDSeeds() []uint32 {
-	if m != nil {
-		return m.OldChunk_IDSeeds
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetOldChunkIdentifiers() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.OldChunkIdentifiers
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetWorkingBuilds() []*TSP.Reference {
-	if m != nil {
-		return m.WorkingBuilds
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetChunksRemovedDuringUndo() []*TSP.Reference {
-	if m != nil {
-		return m.ChunksRemovedDuringUndo
-	}
-	return nil
-}
-
-func (m *CommandBuildUpdateChunkCountArchive) GetChunksAddedDuringUndo() []*TSP.Reference {
-	if m != nil {
-		return m.ChunksAddedDuringUndo
+		return m.EventTriggers
 	}
 	return nil
 }
 
 type CommandBuildChunkSetValueArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	TuplesToUpdate       []*TSP.Reference    `protobuf:"bytes,2,rep,name=tuples_to_update,json=tuplesToUpdate" json:"tuples_to_update,omitempty"`
-	OldTuplesToUpdate    []*TSP.Reference    `protobuf:"bytes,3,rep,name=old_tuples_to_update,json=oldTuplesToUpdate" json:"old_tuples_to_update,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	BuildChunk           *BuildChunkArchive `protobuf:"bytes,2,req,name=buildChunk" json:"buildChunk,omitempty"`
+	Property             *string            `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
+	Referents            []uint32           `protobuf:"varint,4,rep,name=referents" json:"referents,omitempty"`
+	Automatics           []bool             `protobuf:"varint,5,rep,name=automatics" json:"automatics,omitempty"`
+	Durations            []float64          `protobuf:"fixed64,6,rep,name=durations" json:"durations,omitempty"`
+	Delays               []float64          `protobuf:"fixed64,7,rep,name=delays" json:"delays,omitempty"`
+	OldOwnsValue         *bool              `protobuf:"varint,8,opt,name=oldOwnsValue" json:"oldOwnsValue,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
 }
 
 func (m *CommandBuildChunkSetValueArchive) Reset()         { *m = CommandBuildChunkSetValueArchive{} }
 func (m *CommandBuildChunkSetValueArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandBuildChunkSetValueArchive) ProtoMessage()    {}
 func (*CommandBuildChunkSetValueArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{35}
+	return fileDescriptor_fc506070cd6467a6, []int{30}
 }
 
 func (m *CommandBuildChunkSetValueArchive) XXX_Unmarshal(b []byte) error {
@@ -3328,43 +2495,84 @@ func (m *CommandBuildChunkSetValueArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandBuildChunkSetValueArchive proto.InternalMessageInfo
 
-func (m *CommandBuildChunkSetValueArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandBuildChunkSetValueArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandBuildChunkSetValueArchive) GetTuplesToUpdate() []*TSP.Reference {
+func (m *CommandBuildChunkSetValueArchive) GetBuildChunk() *BuildChunkArchive {
 	if m != nil {
-		return m.TuplesToUpdate
+		return m.BuildChunk
 	}
 	return nil
 }
 
-func (m *CommandBuildChunkSetValueArchive) GetOldTuplesToUpdate() []*TSP.Reference {
+func (m *CommandBuildChunkSetValueArchive) GetProperty() string {
+	if m != nil && m.Property != nil {
+		return *m.Property
+	}
+	return ""
+}
+
+func (m *CommandBuildChunkSetValueArchive) GetReferents() []uint32 {
 	if m != nil {
-		return m.OldTuplesToUpdate
+		return m.Referents
 	}
 	return nil
+}
+
+func (m *CommandBuildChunkSetValueArchive) GetAutomatics() []bool {
+	if m != nil {
+		return m.Automatics
+	}
+	return nil
+}
+
+func (m *CommandBuildChunkSetValueArchive) GetDurations() []float64 {
+	if m != nil {
+		return m.Durations
+	}
+	return nil
+}
+
+func (m *CommandBuildChunkSetValueArchive) GetDelays() []float64 {
+	if m != nil {
+		return m.Delays
+	}
+	return nil
+}
+
+func (m *CommandBuildChunkSetValueArchive) GetOldOwnsValue() bool {
+	if m != nil && m.OldOwnsValue != nil {
+		return *m.OldOwnsValue
+	}
+	return false
 }
 
 type CommandTransitionSetValueArchive struct {
-	Super                *TSK.CommandArchive          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideNodeIdPath      *TSP.UUIDPath                `protobuf:"bytes,2,req,name=slide_node_id_path,json=slideNodeIdPath" json:"slide_node_id_path,omitempty"`
-	OldAttributes        *TransitionAttributesArchive `protobuf:"bytes,3,opt,name=old_attributes,json=oldAttributes" json:"old_attributes,omitempty"`
-	Attributes           *TransitionAttributesArchive `protobuf:"bytes,4,opt,name=attributes" json:"attributes,omitempty"`
-	Property             *string                      `protobuf:"bytes,5,opt,name=property" json:"property,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                     `json:"-"`
-	XXX_unrecognized     []byte                       `json:"-"`
-	XXX_sizecache        int32                        `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SlideNode            *Reference      `protobuf:"bytes,2,req,name=slideNode" json:"slideNode,omitempty"`
+	Property             *string         `protobuf:"bytes,3,req,name=property" json:"property,omitempty"`
+	Effects              []string        `protobuf:"bytes,4,rep,name=effects" json:"effects,omitempty"`
+	Unused               []string        `protobuf:"bytes,5,rep,name=unused" json:"unused,omitempty"`
+	Unused2              []string        `protobuf:"bytes,6,rep,name=unused2" json:"unused2,omitempty"`
+	Unused3              []string        `protobuf:"bytes,7,rep,name=unused3" json:"unused3,omitempty"`
+	Durations            []float64       `protobuf:"fixed64,8,rep,name=durations" json:"durations,omitempty"`
+	Directions           []uint32        `protobuf:"varint,9,rep,name=directions" json:"directions,omitempty"`
+	IsAutomatics         []bool          `protobuf:"varint,10,rep,name=isAutomatics" json:"isAutomatics,omitempty"`
+	Delays               []float64       `protobuf:"fixed64,11,rep,name=delays" json:"delays,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandTransitionSetValueArchive) Reset()         { *m = CommandTransitionSetValueArchive{} }
 func (m *CommandTransitionSetValueArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandTransitionSetValueArchive) ProtoMessage()    {}
 func (*CommandTransitionSetValueArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{36}
+	return fileDescriptor_fc506070cd6467a6, []int{31}
 }
 
 func (m *CommandTransitionSetValueArchive) XXX_Unmarshal(b []byte) error {
@@ -3385,30 +2593,16 @@ func (m *CommandTransitionSetValueArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandTransitionSetValueArchive proto.InternalMessageInfo
 
-func (m *CommandTransitionSetValueArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandTransitionSetValueArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandTransitionSetValueArchive) GetSlideNodeIdPath() *TSP.UUIDPath {
+func (m *CommandTransitionSetValueArchive) GetSlideNode() *Reference {
 	if m != nil {
-		return m.SlideNodeIdPath
-	}
-	return nil
-}
-
-func (m *CommandTransitionSetValueArchive) GetOldAttributes() *TransitionAttributesArchive {
-	if m != nil {
-		return m.OldAttributes
-	}
-	return nil
-}
-
-func (m *CommandTransitionSetValueArchive) GetAttributes() *TransitionAttributesArchive {
-	if m != nil {
-		return m.Attributes
+		return m.SlideNode
 	}
 	return nil
 }
@@ -3420,15 +2614,70 @@ func (m *CommandTransitionSetValueArchive) GetProperty() string {
 	return ""
 }
 
+func (m *CommandTransitionSetValueArchive) GetEffects() []string {
+	if m != nil {
+		return m.Effects
+	}
+	return nil
+}
+
+func (m *CommandTransitionSetValueArchive) GetUnused() []string {
+	if m != nil {
+		return m.Unused
+	}
+	return nil
+}
+
+func (m *CommandTransitionSetValueArchive) GetUnused2() []string {
+	if m != nil {
+		return m.Unused2
+	}
+	return nil
+}
+
+func (m *CommandTransitionSetValueArchive) GetUnused3() []string {
+	if m != nil {
+		return m.Unused3
+	}
+	return nil
+}
+
+func (m *CommandTransitionSetValueArchive) GetDurations() []float64 {
+	if m != nil {
+		return m.Durations
+	}
+	return nil
+}
+
+func (m *CommandTransitionSetValueArchive) GetDirections() []uint32 {
+	if m != nil {
+		return m.Directions
+	}
+	return nil
+}
+
+func (m *CommandTransitionSetValueArchive) GetIsAutomatics() []bool {
+	if m != nil {
+		return m.IsAutomatics
+	}
+	return nil
+}
+
+func (m *CommandTransitionSetValueArchive) GetDelays() []float64 {
+	if m != nil {
+		return m.Delays
+	}
+	return nil
+}
+
 type CommandShowSetSlideNumberVisibilityArchive struct {
-	Super                         *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideNumbersVisible           *bool               `protobuf:"varint,3,req,name=slide_numbers_visible,json=slideNumbersVisible" json:"slide_numbers_visible,omitempty"`
-	IdsOfSlideNodesToSkip         []*TSP.UUID         `protobuf:"bytes,4,rep,name=ids_of_slide_nodes_to_skip,json=idsOfSlideNodesToSkip" json:"ids_of_slide_nodes_to_skip,omitempty"`
-	IdsOfSlideNodesAlreadyCorrect []*TSP.UUID         `protobuf:"bytes,5,rep,name=ids_of_slide_nodes_already_correct,json=idsOfSlideNodesAlreadyCorrect" json:"ids_of_slide_nodes_already_correct,omitempty"`
-	IsUndo                        *bool               `protobuf:"varint,6,req,name=is_undo,json=isUndo" json:"is_undo,omitempty"`
-	XXX_NoUnkeyedLiteral          struct{}            `json:"-"`
-	XXX_unrecognized              []byte              `json:"-"`
-	XXX_sizecache                 int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference      `protobuf:"bytes,2,req,name=show" json:"show,omitempty"`
+	SlideNumbersVisible  *bool           `protobuf:"varint,3,req,name=slideNumbersVisible" json:"slideNumbersVisible,omitempty"`
+	ProviderUndo         *Reference      `protobuf:"bytes,4,opt,name=providerUndo" json:"providerUndo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandShowSetSlideNumberVisibilityArchive) Reset() {
@@ -3439,7 +2688,7 @@ func (m *CommandShowSetSlideNumberVisibilityArchive) String() string {
 }
 func (*CommandShowSetSlideNumberVisibilityArchive) ProtoMessage() {}
 func (*CommandShowSetSlideNumberVisibilityArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{37}
+	return fileDescriptor_fc506070cd6467a6, []int{32}
 }
 
 func (m *CommandShowSetSlideNumberVisibilityArchive) XXX_Unmarshal(b []byte) error {
@@ -3460,9 +2709,16 @@ func (m *CommandShowSetSlideNumberVisibilityArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowSetSlideNumberVisibilityArchive proto.InternalMessageInfo
 
-func (m *CommandShowSetSlideNumberVisibilityArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowSetSlideNumberVisibilityArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandShowSetSlideNumberVisibilityArchive) GetShow() *Reference {
+	if m != nil {
+		return m.Show
 	}
 	return nil
 }
@@ -3474,43 +2730,76 @@ func (m *CommandShowSetSlideNumberVisibilityArchive) GetSlideNumbersVisible() bo
 	return false
 }
 
-func (m *CommandShowSetSlideNumberVisibilityArchive) GetIdsOfSlideNodesToSkip() []*TSP.UUID {
+func (m *CommandShowSetSlideNumberVisibilityArchive) GetProviderUndo() *Reference {
 	if m != nil {
-		return m.IdsOfSlideNodesToSkip
+		return m.ProviderUndo
 	}
 	return nil
 }
 
-func (m *CommandShowSetSlideNumberVisibilityArchive) GetIdsOfSlideNodesAlreadyCorrect() []*TSP.UUID {
+type CommandMasterRescaleArchive struct {
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Master               *Reference      `protobuf:"bytes,2,req,name=master" json:"master,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *CommandMasterRescaleArchive) Reset()         { *m = CommandMasterRescaleArchive{} }
+func (m *CommandMasterRescaleArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandMasterRescaleArchive) ProtoMessage()    {}
+func (*CommandMasterRescaleArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{33}
+}
+
+func (m *CommandMasterRescaleArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandMasterRescaleArchive.Unmarshal(m, b)
+}
+func (m *CommandMasterRescaleArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandMasterRescaleArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandMasterRescaleArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandMasterRescaleArchive.Merge(m, src)
+}
+func (m *CommandMasterRescaleArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandMasterRescaleArchive.Size(m)
+}
+func (m *CommandMasterRescaleArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandMasterRescaleArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandMasterRescaleArchive proto.InternalMessageInfo
+
+func (m *CommandMasterRescaleArchive) GetSuper() *CommandArchive {
 	if m != nil {
-		return m.IdsOfSlideNodesAlreadyCorrect
+		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowSetSlideNumberVisibilityArchive) GetIsUndo() bool {
-	if m != nil && m.IsUndo != nil {
-		return *m.IsUndo
+func (m *CommandMasterRescaleArchive) GetMaster() *Reference {
+	if m != nil {
+		return m.Master
 	}
-	return false
+	return nil
 }
 
 type CommandMasterSetThumbnailTextArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	MasterId             *TSP.UUID           `protobuf:"bytes,2,req,name=master_id,json=masterId" json:"master_id,omitempty"`
-	IsBody               *bool               `protobuf:"varint,3,req,name=is_body,json=isBody" json:"is_body,omitempty"`
-	NewText              *string             `protobuf:"bytes,4,opt,name=new_text,json=newText" json:"new_text,omitempty"`
-	OldText              *string             `protobuf:"bytes,5,opt,name=old_text,json=oldText" json:"old_text,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Master               *Reference      `protobuf:"bytes,2,req,name=master" json:"master,omitempty"`
+	IsBody               *bool           `protobuf:"varint,3,req,name=is_body,json=isBody" json:"is_body,omitempty"`
+	NewText              *string         `protobuf:"bytes,4,opt,name=new_text,json=newText" json:"new_text,omitempty"`
+	OldText              *string         `protobuf:"bytes,5,opt,name=old_text,json=oldText" json:"old_text,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandMasterSetThumbnailTextArchive) Reset()         { *m = CommandMasterSetThumbnailTextArchive{} }
 func (m *CommandMasterSetThumbnailTextArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandMasterSetThumbnailTextArchive) ProtoMessage()    {}
 func (*CommandMasterSetThumbnailTextArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{38}
+	return fileDescriptor_fc506070cd6467a6, []int{34}
 }
 
 func (m *CommandMasterSetThumbnailTextArchive) XXX_Unmarshal(b []byte) error {
@@ -3531,16 +2820,16 @@ func (m *CommandMasterSetThumbnailTextArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandMasterSetThumbnailTextArchive proto.InternalMessageInfo
 
-func (m *CommandMasterSetThumbnailTextArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandMasterSetThumbnailTextArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandMasterSetThumbnailTextArchive) GetMasterId() *TSP.UUID {
+func (m *CommandMasterSetThumbnailTextArchive) GetMaster() *Reference {
 	if m != nil {
-		return m.MasterId
+		return m.Master
 	}
 	return nil
 }
@@ -3567,22 +2856,22 @@ func (m *CommandMasterSetThumbnailTextArchive) GetOldText() string {
 }
 
 type CommandMasterSetBodyStylesArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	MasterId             *TSP.UUID           `protobuf:"bytes,2,req,name=master_id,json=masterId" json:"master_id,omitempty"`
-	NewParagraphStyles   []*TSP.Reference    `protobuf:"bytes,3,rep,name=new_paragraph_styles,json=newParagraphStyles" json:"new_paragraph_styles,omitempty"`
-	NewListStyles        []*TSP.Reference    `protobuf:"bytes,4,rep,name=new_list_styles,json=newListStyles" json:"new_list_styles,omitempty"`
-	OldParagraphStyles   []*TSP.Reference    `protobuf:"bytes,5,rep,name=old_paragraph_styles,json=oldParagraphStyles" json:"old_paragraph_styles,omitempty"`
-	OldListStyles        []*TSP.Reference    `protobuf:"bytes,6,rep,name=old_list_styles,json=oldListStyles" json:"old_list_styles,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Master               *Reference      `protobuf:"bytes,2,req,name=master" json:"master,omitempty"`
+	NewParagraphStyles   []*Reference    `protobuf:"bytes,3,rep,name=new_paragraph_styles,json=newParagraphStyles" json:"new_paragraph_styles,omitempty"`
+	NewListStyles        []*Reference    `protobuf:"bytes,4,rep,name=new_list_styles,json=newListStyles" json:"new_list_styles,omitempty"`
+	OldParagraphStyles   []*Reference    `protobuf:"bytes,5,rep,name=old_paragraph_styles,json=oldParagraphStyles" json:"old_paragraph_styles,omitempty"`
+	OldListStyles        []*Reference    `protobuf:"bytes,6,rep,name=old_list_styles,json=oldListStyles" json:"old_list_styles,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandMasterSetBodyStylesArchive) Reset()         { *m = CommandMasterSetBodyStylesArchive{} }
 func (m *CommandMasterSetBodyStylesArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandMasterSetBodyStylesArchive) ProtoMessage()    {}
 func (*CommandMasterSetBodyStylesArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{39}
+	return fileDescriptor_fc506070cd6467a6, []int{35}
 }
 
 func (m *CommandMasterSetBodyStylesArchive) XXX_Unmarshal(b []byte) error {
@@ -3603,132 +2892,110 @@ func (m *CommandMasterSetBodyStylesArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandMasterSetBodyStylesArchive proto.InternalMessageInfo
 
-func (m *CommandMasterSetBodyStylesArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandMasterSetBodyStylesArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandMasterSetBodyStylesArchive) GetMasterId() *TSP.UUID {
-	if m != nil {
-		return m.MasterId
-	}
-	return nil
-}
-
-func (m *CommandMasterSetBodyStylesArchive) GetNewParagraphStyles() []*TSP.Reference {
-	if m != nil {
-		return m.NewParagraphStyles
-	}
-	return nil
-}
-
-func (m *CommandMasterSetBodyStylesArchive) GetNewListStyles() []*TSP.Reference {
-	if m != nil {
-		return m.NewListStyles
-	}
-	return nil
-}
-
-func (m *CommandMasterSetBodyStylesArchive) GetOldParagraphStyles() []*TSP.Reference {
-	if m != nil {
-		return m.OldParagraphStyles
-	}
-	return nil
-}
-
-func (m *CommandMasterSetBodyStylesArchive) GetOldListStyles() []*TSP.Reference {
-	if m != nil {
-		return m.OldListStyles
-	}
-	return nil
-}
-
-type CommandMasterSetSlideObjectsLayerWithMasterArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Master               *TSP.Reference      `protobuf:"bytes,2,req,name=master" json:"master,omitempty"`
-	NewValue             *bool               `protobuf:"varint,3,req,name=new_value,json=newValue" json:"new_value,omitempty"`
-	OldValue             *bool               `protobuf:"varint,4,req,name=old_value,json=oldValue" json:"old_value,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) Reset() {
-	*m = CommandMasterSetSlideObjectsLayerWithMasterArchive{}
-}
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandMasterSetSlideObjectsLayerWithMasterArchive) ProtoMessage() {}
-func (*CommandMasterSetSlideObjectsLayerWithMasterArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{40}
-}
-
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandMasterSetSlideObjectsLayerWithMasterArchive.Unmarshal(m, b)
-}
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandMasterSetSlideObjectsLayerWithMasterArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandMasterSetSlideObjectsLayerWithMasterArchive.Merge(m, src)
-}
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandMasterSetSlideObjectsLayerWithMasterArchive.Size(m)
-}
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandMasterSetSlideObjectsLayerWithMasterArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandMasterSetSlideObjectsLayerWithMasterArchive proto.InternalMessageInfo
-
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) GetMaster() *TSP.Reference {
+func (m *CommandMasterSetBodyStylesArchive) GetMaster() *Reference {
 	if m != nil {
 		return m.Master
 	}
 	return nil
 }
 
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) GetNewValue() bool {
-	if m != nil && m.NewValue != nil {
-		return *m.NewValue
+func (m *CommandMasterSetBodyStylesArchive) GetNewParagraphStyles() []*Reference {
+	if m != nil {
+		return m.NewParagraphStyles
 	}
-	return false
+	return nil
 }
 
-func (m *CommandMasterSetSlideObjectsLayerWithMasterArchive) GetOldValue() bool {
-	if m != nil && m.OldValue != nil {
-		return *m.OldValue
+func (m *CommandMasterSetBodyStylesArchive) GetNewListStyles() []*Reference {
+	if m != nil {
+		return m.NewListStyles
 	}
-	return false
+	return nil
+}
+
+func (m *CommandMasterSetBodyStylesArchive) GetOldParagraphStyles() []*Reference {
+	if m != nil {
+		return m.OldParagraphStyles
+	}
+	return nil
+}
+
+func (m *CommandMasterSetBodyStylesArchive) GetOldListStyles() []*Reference {
+	if m != nil {
+		return m.OldListStyles
+	}
+	return nil
+}
+
+type CommandSlideApplyThemeArchive struct {
+	Super                *ApplyThemeChildCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Blob                 *MasterChangeBlobArchive       `protobuf:"bytes,2,req,name=blob" json:"blob,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
+	XXX_unrecognized     []byte                         `json:"-"`
+	XXX_sizecache        int32                          `json:"-"`
+}
+
+func (m *CommandSlideApplyThemeArchive) Reset()         { *m = CommandSlideApplyThemeArchive{} }
+func (m *CommandSlideApplyThemeArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSlideApplyThemeArchive) ProtoMessage()    {}
+func (*CommandSlideApplyThemeArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{36}
+}
+
+func (m *CommandSlideApplyThemeArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSlideApplyThemeArchive.Unmarshal(m, b)
+}
+func (m *CommandSlideApplyThemeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSlideApplyThemeArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSlideApplyThemeArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSlideApplyThemeArchive.Merge(m, src)
+}
+func (m *CommandSlideApplyThemeArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSlideApplyThemeArchive.Size(m)
+}
+func (m *CommandSlideApplyThemeArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSlideApplyThemeArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSlideApplyThemeArchive proto.InternalMessageInfo
+
+func (m *CommandSlideApplyThemeArchive) GetSuper() *ApplyThemeChildCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSlideApplyThemeArchive) GetBlob() *MasterChangeBlobArchive {
+	if m != nil {
+		return m.Blob
+	}
+	return nil
 }
 
 type CommandChangeMasterSlideArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideIdPath          *TSP.UUIDPath       `protobuf:"bytes,2,req,name=slide_id_path,json=slideIdPath" json:"slide_id_path,omitempty"`
-	MasterNode           *TSP.Reference      `protobuf:"bytes,3,req,name=master_node,json=masterNode" json:"master_node,omitempty"`
-	OldMasterNode        *TSP.Reference      `protobuf:"bytes,4,opt,name=old_master_node,json=oldMasterNode" json:"old_master_node,omitempty"`
-	IsUndoRedo           *bool               `protobuf:"varint,5,req,name=is_undo_redo,json=isUndoRedo" json:"is_undo_redo,omitempty"`
-	TargetPrototype      *TSP.Reference      `protobuf:"bytes,6,opt,name=target_prototype,json=targetPrototype" json:"target_prototype,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Slide                *Reference      `protobuf:"bytes,2,req,name=slide" json:"slide,omitempty"`
+	Master               *Reference      `protobuf:"bytes,3,req,name=master" json:"master,omitempty"`
+	PlaceholderCommands  *Reference      `protobuf:"bytes,4,req,name=placeholder_commands,json=placeholderCommands" json:"placeholder_commands,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandChangeMasterSlideArchive) Reset()         { *m = CommandChangeMasterSlideArchive{} }
 func (m *CommandChangeMasterSlideArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandChangeMasterSlideArchive) ProtoMessage()    {}
 func (*CommandChangeMasterSlideArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{41}
+	return fileDescriptor_fc506070cd6467a6, []int{37}
 }
 
 func (m *CommandChangeMasterSlideArchive) XXX_Unmarshal(b []byte) error {
@@ -3749,63 +3016,49 @@ func (m *CommandChangeMasterSlideArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandChangeMasterSlideArchive proto.InternalMessageInfo
 
-func (m *CommandChangeMasterSlideArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandChangeMasterSlideArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandChangeMasterSlideArchive) GetSlideIdPath() *TSP.UUIDPath {
+func (m *CommandChangeMasterSlideArchive) GetSlide() *Reference {
 	if m != nil {
-		return m.SlideIdPath
+		return m.Slide
 	}
 	return nil
 }
 
-func (m *CommandChangeMasterSlideArchive) GetMasterNode() *TSP.Reference {
+func (m *CommandChangeMasterSlideArchive) GetMaster() *Reference {
 	if m != nil {
-		return m.MasterNode
+		return m.Master
 	}
 	return nil
 }
 
-func (m *CommandChangeMasterSlideArchive) GetOldMasterNode() *TSP.Reference {
+func (m *CommandChangeMasterSlideArchive) GetPlaceholderCommands() *Reference {
 	if m != nil {
-		return m.OldMasterNode
-	}
-	return nil
-}
-
-func (m *CommandChangeMasterSlideArchive) GetIsUndoRedo() bool {
-	if m != nil && m.IsUndoRedo != nil {
-		return *m.IsUndoRedo
-	}
-	return false
-}
-
-func (m *CommandChangeMasterSlideArchive) GetTargetPrototype() *TSP.Reference {
-	if m != nil {
-		return m.TargetPrototype
+		return m.PlaceholderCommands
 	}
 	return nil
 }
 
 type CommandSlidePrimitiveSetMasterArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideIdPath          *TSP.UUIDPath       `protobuf:"bytes,2,req,name=slide_id_path,json=slideIdPath" json:"slide_id_path,omitempty"`
-	MasterId             *TSP.UUID           `protobuf:"bytes,3,req,name=master_id,json=masterId" json:"master_id,omitempty"`
-	OldMasterNode        *TSP.Reference      `protobuf:"bytes,4,opt,name=old_master_node,json=oldMasterNode" json:"old_master_node,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Slide                *Reference      `protobuf:"bytes,2,req,name=slide" json:"slide,omitempty"`
+	Master               *Reference      `protobuf:"bytes,3,req,name=master" json:"master,omitempty"`
+	OldMaster            *Reference      `protobuf:"bytes,4,req,name=old_master,json=oldMaster" json:"old_master,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandSlidePrimitiveSetMasterArchive) Reset()         { *m = CommandSlidePrimitiveSetMasterArchive{} }
 func (m *CommandSlidePrimitiveSetMasterArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSlidePrimitiveSetMasterArchive) ProtoMessage()    {}
 func (*CommandSlidePrimitiveSetMasterArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{42}
+	return fileDescriptor_fc506070cd6467a6, []int{38}
 }
 
 func (m *CommandSlidePrimitiveSetMasterArchive) XXX_Unmarshal(b []byte) error {
@@ -3826,47 +3079,47 @@ func (m *CommandSlidePrimitiveSetMasterArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlidePrimitiveSetMasterArchive proto.InternalMessageInfo
 
-func (m *CommandSlidePrimitiveSetMasterArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlidePrimitiveSetMasterArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlidePrimitiveSetMasterArchive) GetSlideIdPath() *TSP.UUIDPath {
+func (m *CommandSlidePrimitiveSetMasterArchive) GetSlide() *Reference {
 	if m != nil {
-		return m.SlideIdPath
+		return m.Slide
 	}
 	return nil
 }
 
-func (m *CommandSlidePrimitiveSetMasterArchive) GetMasterId() *TSP.UUID {
+func (m *CommandSlidePrimitiveSetMasterArchive) GetMaster() *Reference {
 	if m != nil {
-		return m.MasterId
+		return m.Master
 	}
 	return nil
 }
 
-func (m *CommandSlidePrimitiveSetMasterArchive) GetOldMasterNode() *TSP.Reference {
+func (m *CommandSlidePrimitiveSetMasterArchive) GetOldMaster() *Reference {
 	if m != nil {
-		return m.OldMasterNode
+		return m.OldMaster
 	}
 	return nil
 }
 
 type CommandSlideReapplyMasterArchive struct {
-	Super                     *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ReapplyAccumulatedCommand *TSP.Reference      `protobuf:"bytes,2,req,name=reapply_accumulated_command,json=reapplyAccumulatedCommand" json:"reapply_accumulated_command,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}            `json:"-"`
-	XXX_unrecognized          []byte              `json:"-"`
-	XXX_sizecache             int32               `json:"-"`
+	Super                     *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ReapplyAccumulatedCommand *Reference      `protobuf:"bytes,2,req,name=reapply_accumulated_command,json=reapplyAccumulatedCommand" json:"reapply_accumulated_command,omitempty"`
+	XXX_NoUnkeyedLiteral      struct{}        `json:"-"`
+	XXX_unrecognized          []byte          `json:"-"`
+	XXX_sizecache             int32           `json:"-"`
 }
 
 func (m *CommandSlideReapplyMasterArchive) Reset()         { *m = CommandSlideReapplyMasterArchive{} }
 func (m *CommandSlideReapplyMasterArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSlideReapplyMasterArchive) ProtoMessage()    {}
 func (*CommandSlideReapplyMasterArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{43}
+	return fileDescriptor_fc506070cd6467a6, []int{39}
 }
 
 func (m *CommandSlideReapplyMasterArchive) XXX_Unmarshal(b []byte) error {
@@ -3887,14 +3140,14 @@ func (m *CommandSlideReapplyMasterArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSlideReapplyMasterArchive proto.InternalMessageInfo
 
-func (m *CommandSlideReapplyMasterArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSlideReapplyMasterArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSlideReapplyMasterArchive) GetReapplyAccumulatedCommand() *TSP.Reference {
+func (m *CommandSlideReapplyMasterArchive) GetReapplyAccumulatedCommand() *Reference {
 	if m != nil {
 		return m.ReapplyAccumulatedCommand
 	}
@@ -3902,20 +3155,20 @@ func (m *CommandSlideReapplyMasterArchive) GetReapplyAccumulatedCommand() *TSP.R
 }
 
 type CommandShowSetSoundtrack struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Show                 *TSP.Reference      `protobuf:"bytes,2,opt,name=show" json:"show,omitempty"`
-	Soundtrack           *TSP.Reference      `protobuf:"bytes,3,opt,name=soundtrack" json:"soundtrack,omitempty"`
-	OldSoundtrack        *TSP.Reference      `protobuf:"bytes,4,opt,name=old_soundtrack,json=oldSoundtrack" json:"old_soundtrack,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Show                 *Reference      `protobuf:"bytes,2,opt,name=show" json:"show,omitempty"`
+	Soundtrack           *Reference      `protobuf:"bytes,3,opt,name=soundtrack" json:"soundtrack,omitempty"`
+	OldSoundtrack        *Reference      `protobuf:"bytes,4,opt,name=old_soundtrack,json=oldSoundtrack" json:"old_soundtrack,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandShowSetSoundtrack) Reset()         { *m = CommandShowSetSoundtrack{} }
 func (m *CommandShowSetSoundtrack) String() string { return proto.CompactTextString(m) }
 func (*CommandShowSetSoundtrack) ProtoMessage()    {}
 func (*CommandShowSetSoundtrack) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{44}
+	return fileDescriptor_fc506070cd6467a6, []int{40}
 }
 
 func (m *CommandShowSetSoundtrack) XXX_Unmarshal(b []byte) error {
@@ -3936,28 +3189,28 @@ func (m *CommandShowSetSoundtrack) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandShowSetSoundtrack proto.InternalMessageInfo
 
-func (m *CommandShowSetSoundtrack) GetSuper() *TSK.CommandArchive {
+func (m *CommandShowSetSoundtrack) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandShowSetSoundtrack) GetShow() *TSP.Reference {
+func (m *CommandShowSetSoundtrack) GetShow() *Reference {
 	if m != nil {
 		return m.Show
 	}
 	return nil
 }
 
-func (m *CommandShowSetSoundtrack) GetSoundtrack() *TSP.Reference {
+func (m *CommandShowSetSoundtrack) GetSoundtrack() *Reference {
 	if m != nil {
 		return m.Soundtrack
 	}
 	return nil
 }
 
-func (m *CommandShowSetSoundtrack) GetOldSoundtrack() *TSP.Reference {
+func (m *CommandShowSetSoundtrack) GetOldSoundtrack() *Reference {
 	if m != nil {
 		return m.OldSoundtrack
 	}
@@ -3965,8 +3218,8 @@ func (m *CommandShowSetSoundtrack) GetOldSoundtrack() *TSP.Reference {
 }
 
 type CommandSoundtrackSetValue struct {
-	Super                *TSK.CommandArchive                      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SoundtrackId         *TSP.UUID                                `protobuf:"bytes,2,opt,name=soundtrack_id,json=soundtrackId" json:"soundtrack_id,omitempty"`
+	Super                *CommandArchive                          `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Soundtrack           *Reference                               `protobuf:"bytes,2,opt,name=soundtrack" json:"soundtrack,omitempty"`
 	Property             *string                                  `protobuf:"bytes,3,opt,name=property" json:"property,omitempty"`
 	OldValue             *CommandSoundtrackSetValue_PropertyValue `protobuf:"bytes,4,opt,name=old_value,json=oldValue" json:"old_value,omitempty"`
 	NewValue             *CommandSoundtrackSetValue_PropertyValue `protobuf:"bytes,5,opt,name=new_value,json=newValue" json:"new_value,omitempty"`
@@ -3979,7 +3232,7 @@ func (m *CommandSoundtrackSetValue) Reset()         { *m = CommandSoundtrackSetV
 func (m *CommandSoundtrackSetValue) String() string { return proto.CompactTextString(m) }
 func (*CommandSoundtrackSetValue) ProtoMessage()    {}
 func (*CommandSoundtrackSetValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{45}
+	return fileDescriptor_fc506070cd6467a6, []int{41}
 }
 
 func (m *CommandSoundtrackSetValue) XXX_Unmarshal(b []byte) error {
@@ -4000,16 +3253,16 @@ func (m *CommandSoundtrackSetValue) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSoundtrackSetValue proto.InternalMessageInfo
 
-func (m *CommandSoundtrackSetValue) GetSuper() *TSK.CommandArchive {
+func (m *CommandSoundtrackSetValue) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSoundtrackSetValue) GetSoundtrackId() *TSP.UUID {
+func (m *CommandSoundtrackSetValue) GetSoundtrack() *Reference {
 	if m != nil {
-		return m.SoundtrackId
+		return m.Soundtrack
 	}
 	return nil
 }
@@ -4038,7 +3291,7 @@ func (m *CommandSoundtrackSetValue) GetNewValue() *CommandSoundtrackSetValue_Pro
 type CommandSoundtrackSetValue_PropertyValue struct {
 	DoubleValue          *float64                   `protobuf:"fixed64,1,opt,name=double_value,json=doubleValue" json:"double_value,omitempty"`
 	ModeValue            *Soundtrack_SoundtrackMode `protobuf:"varint,2,opt,name=mode_value,json=modeValue,enum=KN.Soundtrack_SoundtrackMode" json:"mode_value,omitempty"`
-	MediaReferenceValues []*TSP.DataReference       `protobuf:"bytes,3,rep,name=media_reference_values,json=mediaReferenceValues" json:"media_reference_values,omitempty"`
+	MediaReferenceValues []*DataReference           `protobuf:"bytes,3,rep,name=media_reference_values,json=mediaReferenceValues" json:"media_reference_values,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
 	XXX_unrecognized     []byte                     `json:"-"`
 	XXX_sizecache        int32                      `json:"-"`
@@ -4050,7 +3303,7 @@ func (m *CommandSoundtrackSetValue_PropertyValue) Reset() {
 func (m *CommandSoundtrackSetValue_PropertyValue) String() string { return proto.CompactTextString(m) }
 func (*CommandSoundtrackSetValue_PropertyValue) ProtoMessage()    {}
 func (*CommandSoundtrackSetValue_PropertyValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{45, 0}
+	return fileDescriptor_fc506070cd6467a6, []int{41, 0}
 }
 
 func (m *CommandSoundtrackSetValue_PropertyValue) XXX_Unmarshal(b []byte) error {
@@ -4085,92 +3338,86 @@ func (m *CommandSoundtrackSetValue_PropertyValue) GetModeValue() Soundtrack_Soun
 	return Soundtrack_kKNSoundtrackModePlayOnce
 }
 
-func (m *CommandSoundtrackSetValue_PropertyValue) GetMediaReferenceValues() []*TSP.DataReference {
+func (m *CommandSoundtrackSetValue_PropertyValue) GetMediaReferenceValues() []*DataReference {
 	if m != nil {
 		return m.MediaReferenceValues
 	}
 	return nil
 }
 
-type CommandSlideUpdateMasterDrawables struct {
-	Super                    *TSK.CommandArchive             `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SlideId                  *TSP.UUID                       `protobuf:"bytes,2,req,name=slide_id,json=slideId" json:"slide_id,omitempty"`
-	IdPlacementOperationArgs []*TSK.IdPlacementOperationArgs `protobuf:"bytes,3,rep,name=id_placement_operation_args,json=idPlacementOperationArgs" json:"id_placement_operation_args,omitempty"`
-	OldChildInfosForUndo     []*TSP.Reference                `protobuf:"bytes,4,rep,name=old_child_infos_for_undo,json=oldChildInfosForUndo" json:"old_child_infos_for_undo,omitempty"`
-	XXX_NoUnkeyedLiteral     struct{}                        `json:"-"`
-	XXX_unrecognized         []byte                          `json:"-"`
-	XXX_sizecache            int32                           `json:"-"`
+type SlideCollectionCommandSelectionBehaviorArchive struct {
+	ArchivedNewSelection *Reference                                           `protobuf:"bytes,1,opt,name=archived_new_selection,json=archivedNewSelection" json:"archived_new_selection,omitempty"`
+	ArchivedOldSelection *Reference                                           `protobuf:"bytes,2,opt,name=archived_old_selection,json=archivedOldSelection" json:"archived_old_selection,omitempty"`
+	Type                 *SlideCollectionCommandSelectionBehaviorArchive_Type `protobuf:"varint,3,opt,name=type,enum=KN.SlideCollectionCommandSelectionBehaviorArchive_Type,def=0" json:"type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                             `json:"-"`
+	XXX_unrecognized     []byte                                               `json:"-"`
+	XXX_sizecache        int32                                                `json:"-"`
 }
 
-func (m *CommandSlideUpdateMasterDrawables) Reset()         { *m = CommandSlideUpdateMasterDrawables{} }
-func (m *CommandSlideUpdateMasterDrawables) String() string { return proto.CompactTextString(m) }
-func (*CommandSlideUpdateMasterDrawables) ProtoMessage()    {}
-func (*CommandSlideUpdateMasterDrawables) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{46}
+func (m *SlideCollectionCommandSelectionBehaviorArchive) Reset() {
+	*m = SlideCollectionCommandSelectionBehaviorArchive{}
+}
+func (m *SlideCollectionCommandSelectionBehaviorArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*SlideCollectionCommandSelectionBehaviorArchive) ProtoMessage() {}
+func (*SlideCollectionCommandSelectionBehaviorArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_fc506070cd6467a6, []int{42}
 }
 
-func (m *CommandSlideUpdateMasterDrawables) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSlideUpdateMasterDrawables.Unmarshal(m, b)
+func (m *SlideCollectionCommandSelectionBehaviorArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SlideCollectionCommandSelectionBehaviorArchive.Unmarshal(m, b)
 }
-func (m *CommandSlideUpdateMasterDrawables) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSlideUpdateMasterDrawables.Marshal(b, m, deterministic)
+func (m *SlideCollectionCommandSelectionBehaviorArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SlideCollectionCommandSelectionBehaviorArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandSlideUpdateMasterDrawables) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSlideUpdateMasterDrawables.Merge(m, src)
+func (m *SlideCollectionCommandSelectionBehaviorArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SlideCollectionCommandSelectionBehaviorArchive.Merge(m, src)
 }
-func (m *CommandSlideUpdateMasterDrawables) XXX_Size() int {
-	return xxx_messageInfo_CommandSlideUpdateMasterDrawables.Size(m)
+func (m *SlideCollectionCommandSelectionBehaviorArchive) XXX_Size() int {
+	return xxx_messageInfo_SlideCollectionCommandSelectionBehaviorArchive.Size(m)
 }
-func (m *CommandSlideUpdateMasterDrawables) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSlideUpdateMasterDrawables.DiscardUnknown(m)
+func (m *SlideCollectionCommandSelectionBehaviorArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_SlideCollectionCommandSelectionBehaviorArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandSlideUpdateMasterDrawables proto.InternalMessageInfo
+var xxx_messageInfo_SlideCollectionCommandSelectionBehaviorArchive proto.InternalMessageInfo
 
-func (m *CommandSlideUpdateMasterDrawables) GetSuper() *TSK.CommandArchive {
+const Default_SlideCollectionCommandSelectionBehaviorArchive_Type SlideCollectionCommandSelectionBehaviorArchive_Type = SlideCollectionCommandSelectionBehaviorArchive_kKindSlideSelectionBehaviorTypeGeneral
+
+func (m *SlideCollectionCommandSelectionBehaviorArchive) GetArchivedNewSelection() *Reference {
 	if m != nil {
-		return m.Super
+		return m.ArchivedNewSelection
 	}
 	return nil
 }
 
-func (m *CommandSlideUpdateMasterDrawables) GetSlideId() *TSP.UUID {
+func (m *SlideCollectionCommandSelectionBehaviorArchive) GetArchivedOldSelection() *Reference {
 	if m != nil {
-		return m.SlideId
+		return m.ArchivedOldSelection
 	}
 	return nil
 }
 
-func (m *CommandSlideUpdateMasterDrawables) GetIdPlacementOperationArgs() []*TSK.IdPlacementOperationArgs {
-	if m != nil {
-		return m.IdPlacementOperationArgs
+func (m *SlideCollectionCommandSelectionBehaviorArchive) GetType() SlideCollectionCommandSelectionBehaviorArchive_Type {
+	if m != nil && m.Type != nil {
+		return *m.Type
 	}
-	return nil
-}
-
-func (m *CommandSlideUpdateMasterDrawables) GetOldChildInfosForUndo() []*TSP.Reference {
-	if m != nil {
-		return m.OldChildInfosForUndo
-	}
-	return nil
+	return Default_SlideCollectionCommandSelectionBehaviorArchive_Type
 }
 
 type ChartInfoGeometryCommandArchive struct {
-	Super                *TSD.InfoGeometryCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	PreviousLegendOffset *TSP.Point                      `protobuf:"bytes,2,req,name=previous_legend_offset,json=previousLegendOffset" json:"previous_legend_offset,omitempty"`
-	PreviousLegendSize   *TSP.Size                       `protobuf:"bytes,3,req,name=previous_legend_size,json=previousLegendSize" json:"previous_legend_size,omitempty"`
-	AdjustedLegendOffset *TSP.Point                      `protobuf:"bytes,4,req,name=adjusted_legend_offset,json=adjustedLegendOffset" json:"adjusted_legend_offset,omitempty"`
-	AdjustedLegendSize   *TSP.Size                       `protobuf:"bytes,5,req,name=adjusted_legend_size,json=adjustedLegendSize" json:"adjusted_legend_size,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *ChartInfoGeometryCommandArchive) Reset()         { *m = ChartInfoGeometryCommandArchive{} }
 func (m *ChartInfoGeometryCommandArchive) String() string { return proto.CompactTextString(m) }
 func (*ChartInfoGeometryCommandArchive) ProtoMessage()    {}
 func (*ChartInfoGeometryCommandArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{47}
+	return fileDescriptor_fc506070cd6467a6, []int{43}
 }
 
 func (m *ChartInfoGeometryCommandArchive) XXX_Unmarshal(b []byte) error {
@@ -4191,463 +3438,28 @@ func (m *ChartInfoGeometryCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ChartInfoGeometryCommandArchive proto.InternalMessageInfo
 
-func (m *ChartInfoGeometryCommandArchive) GetSuper() *TSD.InfoGeometryCommandArchive {
+func (m *ChartInfoGeometryCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
-	}
-	return nil
-}
-
-func (m *ChartInfoGeometryCommandArchive) GetPreviousLegendOffset() *TSP.Point {
-	if m != nil {
-		return m.PreviousLegendOffset
-	}
-	return nil
-}
-
-func (m *ChartInfoGeometryCommandArchive) GetPreviousLegendSize() *TSP.Size {
-	if m != nil {
-		return m.PreviousLegendSize
-	}
-	return nil
-}
-
-func (m *ChartInfoGeometryCommandArchive) GetAdjustedLegendOffset() *TSP.Point {
-	if m != nil {
-		return m.AdjustedLegendOffset
-	}
-	return nil
-}
-
-func (m *ChartInfoGeometryCommandArchive) GetAdjustedLegendSize() *TSP.Size {
-	if m != nil {
-		return m.AdjustedLegendSize
-	}
-	return nil
-}
-
-type CanvasSelectionTransformerArchive struct {
-	TransformerHelper               *TSD.InfoCollectionSelectionTransformerHelperArchive `protobuf:"bytes,1,req,name=transformer_helper,json=transformerHelper" json:"transformer_helper,omitempty"`
-	BuildChunkIds                   []*BuildChunkIdentifierArchive                       `protobuf:"bytes,2,rep,name=build_chunk_ids,json=buildChunkIds" json:"build_chunk_ids,omitempty"`
-	ActionBuildIds                  []*TSP.UUID                                          `protobuf:"bytes,3,rep,name=action_build_ids,json=actionBuildIds" json:"action_build_ids,omitempty"`
-	OriginallySelectedDrawableUuids []*TSP.UUID                                          `protobuf:"bytes,4,rep,name=originally_selected_drawable_uuids,json=originallySelectedDrawableUuids" json:"originally_selected_drawable_uuids,omitempty"`
-	XXX_NoUnkeyedLiteral            struct{}                                             `json:"-"`
-	XXX_unrecognized                []byte                                               `json:"-"`
-	XXX_sizecache                   int32                                                `json:"-"`
-}
-
-func (m *CanvasSelectionTransformerArchive) Reset()         { *m = CanvasSelectionTransformerArchive{} }
-func (m *CanvasSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*CanvasSelectionTransformerArchive) ProtoMessage()    {}
-func (*CanvasSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{48}
-}
-
-func (m *CanvasSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CanvasSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *CanvasSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CanvasSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *CanvasSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CanvasSelectionTransformerArchive.Merge(m, src)
-}
-func (m *CanvasSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_CanvasSelectionTransformerArchive.Size(m)
-}
-func (m *CanvasSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CanvasSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CanvasSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *CanvasSelectionTransformerArchive) GetTransformerHelper() *TSD.InfoCollectionSelectionTransformerHelperArchive {
-	if m != nil {
-		return m.TransformerHelper
-	}
-	return nil
-}
-
-func (m *CanvasSelectionTransformerArchive) GetBuildChunkIds() []*BuildChunkIdentifierArchive {
-	if m != nil {
-		return m.BuildChunkIds
-	}
-	return nil
-}
-
-func (m *CanvasSelectionTransformerArchive) GetActionBuildIds() []*TSP.UUID {
-	if m != nil {
-		return m.ActionBuildIds
-	}
-	return nil
-}
-
-func (m *CanvasSelectionTransformerArchive) GetOriginallySelectedDrawableUuids() []*TSP.UUID {
-	if m != nil {
-		return m.OriginallySelectedDrawableUuids
-	}
-	return nil
-}
-
-type ActionGhostSelectionTransformerArchive struct {
-	Super                                  *TSD.DrawableSelectionTransformerArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	UntransformedActionBuildUuidsForGhosts []*TSP.UUID                              `protobuf:"bytes,2,rep,name=untransformed_action_build_uuids_for_ghosts,json=untransformedActionBuildUuidsForGhosts" json:"untransformed_action_build_uuids_for_ghosts,omitempty"`
-	XXX_NoUnkeyedLiteral                   struct{}                                 `json:"-"`
-	XXX_unrecognized                       []byte                                   `json:"-"`
-	XXX_sizecache                          int32                                    `json:"-"`
-}
-
-func (m *ActionGhostSelectionTransformerArchive) Reset() {
-	*m = ActionGhostSelectionTransformerArchive{}
-}
-func (m *ActionGhostSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*ActionGhostSelectionTransformerArchive) ProtoMessage()    {}
-func (*ActionGhostSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{49}
-}
-
-func (m *ActionGhostSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ActionGhostSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *ActionGhostSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ActionGhostSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *ActionGhostSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ActionGhostSelectionTransformerArchive.Merge(m, src)
-}
-func (m *ActionGhostSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_ActionGhostSelectionTransformerArchive.Size(m)
-}
-func (m *ActionGhostSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ActionGhostSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ActionGhostSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *ActionGhostSelectionTransformerArchive) GetSuper() *TSD.DrawableSelectionTransformerArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *ActionGhostSelectionTransformerArchive) GetUntransformedActionBuildUuidsForGhosts() []*TSP.UUID {
-	if m != nil {
-		return m.UntransformedActionBuildUuidsForGhosts
-	}
-	return nil
-}
-
-type DocumentSelectionTransformerArchive struct {
-	DocumentSelection    *TSP.Reference `protobuf:"bytes,1,req,name=document_selection,json=documentSelection" json:"document_selection,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
-}
-
-func (m *DocumentSelectionTransformerArchive) Reset()         { *m = DocumentSelectionTransformerArchive{} }
-func (m *DocumentSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*DocumentSelectionTransformerArchive) ProtoMessage()    {}
-func (*DocumentSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{50}
-}
-
-func (m *DocumentSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DocumentSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *DocumentSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DocumentSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *DocumentSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DocumentSelectionTransformerArchive.Merge(m, src)
-}
-func (m *DocumentSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_DocumentSelectionTransformerArchive.Size(m)
-}
-func (m *DocumentSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_DocumentSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DocumentSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *DocumentSelectionTransformerArchive) GetDocumentSelection() *TSP.Reference {
-	if m != nil {
-		return m.DocumentSelection
-	}
-	return nil
-}
-
-type NoteCanvasSelectionTransformerArchive struct {
-	TransformerHelper    *TSD.InfoCollectionSelectionTransformerHelperArchive `protobuf:"bytes,1,req,name=transformer_helper,json=transformerHelper" json:"transformer_helper,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                             `json:"-"`
-	XXX_unrecognized     []byte                                               `json:"-"`
-	XXX_sizecache        int32                                                `json:"-"`
-}
-
-func (m *NoteCanvasSelectionTransformerArchive) Reset()         { *m = NoteCanvasSelectionTransformerArchive{} }
-func (m *NoteCanvasSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*NoteCanvasSelectionTransformerArchive) ProtoMessage()    {}
-func (*NoteCanvasSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{51}
-}
-
-func (m *NoteCanvasSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_NoteCanvasSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *NoteCanvasSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_NoteCanvasSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *NoteCanvasSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_NoteCanvasSelectionTransformerArchive.Merge(m, src)
-}
-func (m *NoteCanvasSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_NoteCanvasSelectionTransformerArchive.Size(m)
-}
-func (m *NoteCanvasSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_NoteCanvasSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_NoteCanvasSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *NoteCanvasSelectionTransformerArchive) GetTransformerHelper() *TSD.InfoCollectionSelectionTransformerHelperArchive {
-	if m != nil {
-		return m.TransformerHelper
-	}
-	return nil
-}
-
-type OutlineCanvasSelectionTransformerArchive struct {
-	CanvasSelectionTransformer *TSP.Reference `protobuf:"bytes,1,req,name=canvas_selection_transformer,json=canvasSelectionTransformer" json:"canvas_selection_transformer,omitempty"`
-	StorageUuidPath            *TSP.UUIDPath  `protobuf:"bytes,2,opt,name=storage_uuid_path,json=storageUuidPath" json:"storage_uuid_path,omitempty"`
-	XXX_NoUnkeyedLiteral       struct{}       `json:"-"`
-	XXX_unrecognized           []byte         `json:"-"`
-	XXX_sizecache              int32          `json:"-"`
-}
-
-func (m *OutlineCanvasSelectionTransformerArchive) Reset() {
-	*m = OutlineCanvasSelectionTransformerArchive{}
-}
-func (m *OutlineCanvasSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*OutlineCanvasSelectionTransformerArchive) ProtoMessage()    {}
-func (*OutlineCanvasSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{52}
-}
-
-func (m *OutlineCanvasSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_OutlineCanvasSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *OutlineCanvasSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_OutlineCanvasSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *OutlineCanvasSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_OutlineCanvasSelectionTransformerArchive.Merge(m, src)
-}
-func (m *OutlineCanvasSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_OutlineCanvasSelectionTransformerArchive.Size(m)
-}
-func (m *OutlineCanvasSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_OutlineCanvasSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_OutlineCanvasSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *OutlineCanvasSelectionTransformerArchive) GetCanvasSelectionTransformer() *TSP.Reference {
-	if m != nil {
-		return m.CanvasSelectionTransformer
-	}
-	return nil
-}
-
-func (m *OutlineCanvasSelectionTransformerArchive) GetStorageUuidPath() *TSP.UUIDPath {
-	if m != nil {
-		return m.StorageUuidPath
-	}
-	return nil
-}
-
-type SlideCollectionSelectionTransformerHelperArchive struct {
-	SlideNodes                   []*TSP.UUIDPath `protobuf:"bytes,1,rep,name=slide_nodes,json=slideNodes" json:"slide_nodes,omitempty"`
-	SlideNodeToEdit              *TSP.UUIDPath   `protobuf:"bytes,2,opt,name=slide_node_to_edit,json=slideNodeToEdit" json:"slide_node_to_edit,omitempty"`
-	SlideCollectionIsTheme       *bool           `protobuf:"varint,3,opt,name=slide_collection_is_theme,json=slideCollectionIsTheme,def=0" json:"slide_collection_is_theme,omitempty"`
-	PreviousPrimarySelectedIndex *uint32         `protobuf:"varint,4,opt,name=previous_primary_selected_index,json=previousPrimarySelectedIndex" json:"previous_primary_selected_index,omitempty"`
-	XXX_NoUnkeyedLiteral         struct{}        `json:"-"`
-	XXX_unrecognized             []byte          `json:"-"`
-	XXX_sizecache                int32           `json:"-"`
-}
-
-func (m *SlideCollectionSelectionTransformerHelperArchive) Reset() {
-	*m = SlideCollectionSelectionTransformerHelperArchive{}
-}
-func (m *SlideCollectionSelectionTransformerHelperArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*SlideCollectionSelectionTransformerHelperArchive) ProtoMessage() {}
-func (*SlideCollectionSelectionTransformerHelperArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{53}
-}
-
-func (m *SlideCollectionSelectionTransformerHelperArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SlideCollectionSelectionTransformerHelperArchive.Unmarshal(m, b)
-}
-func (m *SlideCollectionSelectionTransformerHelperArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SlideCollectionSelectionTransformerHelperArchive.Marshal(b, m, deterministic)
-}
-func (m *SlideCollectionSelectionTransformerHelperArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SlideCollectionSelectionTransformerHelperArchive.Merge(m, src)
-}
-func (m *SlideCollectionSelectionTransformerHelperArchive) XXX_Size() int {
-	return xxx_messageInfo_SlideCollectionSelectionTransformerHelperArchive.Size(m)
-}
-func (m *SlideCollectionSelectionTransformerHelperArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_SlideCollectionSelectionTransformerHelperArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SlideCollectionSelectionTransformerHelperArchive proto.InternalMessageInfo
-
-const Default_SlideCollectionSelectionTransformerHelperArchive_SlideCollectionIsTheme bool = false
-
-func (m *SlideCollectionSelectionTransformerHelperArchive) GetSlideNodes() []*TSP.UUIDPath {
-	if m != nil {
-		return m.SlideNodes
-	}
-	return nil
-}
-
-func (m *SlideCollectionSelectionTransformerHelperArchive) GetSlideNodeToEdit() *TSP.UUIDPath {
-	if m != nil {
-		return m.SlideNodeToEdit
-	}
-	return nil
-}
-
-func (m *SlideCollectionSelectionTransformerHelperArchive) GetSlideCollectionIsTheme() bool {
-	if m != nil && m.SlideCollectionIsTheme != nil {
-		return *m.SlideCollectionIsTheme
-	}
-	return Default_SlideCollectionSelectionTransformerHelperArchive_SlideCollectionIsTheme
-}
-
-func (m *SlideCollectionSelectionTransformerHelperArchive) GetPreviousPrimarySelectedIndex() uint32 {
-	if m != nil && m.PreviousPrimarySelectedIndex != nil {
-		return *m.PreviousPrimarySelectedIndex
-	}
-	return 0
-}
-
-type SlideCollectionSelectionTransformerArchive struct {
-	TransformerHelper    *SlideCollectionSelectionTransformerHelperArchive `protobuf:"bytes,1,req,name=transformer_helper,json=transformerHelper" json:"transformer_helper,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                          `json:"-"`
-	XXX_unrecognized     []byte                                            `json:"-"`
-	XXX_sizecache        int32                                             `json:"-"`
-}
-
-func (m *SlideCollectionSelectionTransformerArchive) Reset() {
-	*m = SlideCollectionSelectionTransformerArchive{}
-}
-func (m *SlideCollectionSelectionTransformerArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*SlideCollectionSelectionTransformerArchive) ProtoMessage() {}
-func (*SlideCollectionSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{54}
-}
-
-func (m *SlideCollectionSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SlideCollectionSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *SlideCollectionSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SlideCollectionSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *SlideCollectionSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SlideCollectionSelectionTransformerArchive.Merge(m, src)
-}
-func (m *SlideCollectionSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_SlideCollectionSelectionTransformerArchive.Size(m)
-}
-func (m *SlideCollectionSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_SlideCollectionSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SlideCollectionSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *SlideCollectionSelectionTransformerArchive) GetTransformerHelper() *SlideCollectionSelectionTransformerHelperArchive {
-	if m != nil {
-		return m.TransformerHelper
-	}
-	return nil
-}
-
-type OutlineSelectionTransformerArchive struct {
-	TransformerHelper               *SlideCollectionSelectionTransformerHelperArchive `protobuf:"bytes,1,req,name=transformer_helper,json=transformerHelper" json:"transformer_helper,omitempty"`
-	CanHaveRangeInSelectedParagraph *bool                                             `protobuf:"varint,2,opt,name=can_have_range_in_selected_paragraph,json=canHaveRangeInSelectedParagraph,def=0" json:"can_have_range_in_selected_paragraph,omitempty"`
-	SelectionRangeAddresses         []*TSK.Address                                    `protobuf:"bytes,3,rep,name=selection_range_addresses,json=selectionRangeAddresses" json:"selection_range_addresses,omitempty"`
-	XXX_NoUnkeyedLiteral            struct{}                                          `json:"-"`
-	XXX_unrecognized                []byte                                            `json:"-"`
-	XXX_sizecache                   int32                                             `json:"-"`
-}
-
-func (m *OutlineSelectionTransformerArchive) Reset()         { *m = OutlineSelectionTransformerArchive{} }
-func (m *OutlineSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*OutlineSelectionTransformerArchive) ProtoMessage()    {}
-func (*OutlineSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_fc506070cd6467a6, []int{55}
-}
-
-func (m *OutlineSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_OutlineSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *OutlineSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_OutlineSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *OutlineSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_OutlineSelectionTransformerArchive.Merge(m, src)
-}
-func (m *OutlineSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_OutlineSelectionTransformerArchive.Size(m)
-}
-func (m *OutlineSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_OutlineSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_OutlineSelectionTransformerArchive proto.InternalMessageInfo
-
-const Default_OutlineSelectionTransformerArchive_CanHaveRangeInSelectedParagraph bool = false
-
-func (m *OutlineSelectionTransformerArchive) GetTransformerHelper() *SlideCollectionSelectionTransformerHelperArchive {
-	if m != nil {
-		return m.TransformerHelper
-	}
-	return nil
-}
-
-func (m *OutlineSelectionTransformerArchive) GetCanHaveRangeInSelectedParagraph() bool {
-	if m != nil && m.CanHaveRangeInSelectedParagraph != nil {
-		return *m.CanHaveRangeInSelectedParagraph
-	}
-	return Default_OutlineSelectionTransformerArchive_CanHaveRangeInSelectedParagraph
-}
-
-func (m *OutlineSelectionTransformerArchive) GetSelectionRangeAddresses() []*TSK.Address {
-	if m != nil {
-		return m.SelectionRangeAddresses
 	}
 	return nil
 }
 
 func init() {
-	proto.RegisterEnum("KN.AnimationReferent", AnimationReferent_name, AnimationReferent_value)
 	proto.RegisterEnum("KN.CommandShowInsertSlideArchive_Kind", CommandShowInsertSlideArchive_Kind_name, CommandShowInsertSlideArchive_Kind_value)
+	proto.RegisterEnum("KN.SlideCollectionCommandSelectionBehaviorArchive_Type", SlideCollectionCommandSelectionBehaviorArchive_Type_name, SlideCollectionCommandSelectionBehaviorArchive_Type_value)
 	proto.RegisterType((*UIStateCommandGroupArchive)(nil), "KN.UIStateCommandGroupArchive")
 	proto.RegisterType((*CommandSlideInsertDrawablesArchive)(nil), "KN.CommandSlideInsertDrawablesArchive")
 	proto.RegisterType((*CommandSlideSetPlaceholdersForTagsArchive)(nil), "KN.CommandSlideSetPlaceholdersForTagsArchive")
 	proto.RegisterType((*CommandSlideRemoveDrawableArchive)(nil), "KN.CommandSlideRemoveDrawableArchive")
 	proto.RegisterType((*CommandSlideMoveDrawableZOrderArchive)(nil), "KN.CommandSlideMoveDrawableZOrderArchive")
+	proto.RegisterType((*CommandSlidePasteDrawablesArchive)(nil), "KN.CommandSlidePasteDrawablesArchive")
 	proto.RegisterType((*CommandSlideNodeSetPropertyArchive)(nil), "KN.CommandSlideNodeSetPropertyArchive")
-	proto.RegisterType((*CommandSlideNodeSetViewStatePropertyArchive)(nil), "KN.CommandSlideNodeSetViewStatePropertyArchive")
-	proto.RegisterType((*CommandSlideSetBackgroundFillArchive)(nil), "KN.CommandSlideSetBackgroundFillArchive")
+	proto.RegisterType((*CommandSlideNodeSetPropertyArchive_PropertyValue)(nil), "KN.CommandSlideNodeSetPropertyArchive.PropertyValue")
+	proto.RegisterType((*CommandSlideSetValueArchive)(nil), "KN.CommandSlideSetValueArchive")
+	proto.RegisterType((*CommandSlideSetValueArchive_PropertyValue)(nil), "KN.CommandSlideSetValueArchive.PropertyValue")
 	proto.RegisterType((*CommandSlideSetStyleArchive)(nil), "KN.CommandSlideSetStyleArchive")
 	proto.RegisterType((*CommandShowMarkOutOfSyncRecordingArchive)(nil), "KN.CommandShowMarkOutOfSyncRecordingArchive")
-	proto.RegisterType((*CommandShowMarkOutOfSyncRecordingIfNeededArchive)(nil), "KN.CommandShowMarkOutOfSyncRecordingIfNeededArchive")
 	proto.RegisterType((*CommandShowRemoveRecordingArchive)(nil), "KN.CommandShowRemoveRecordingArchive")
 	proto.RegisterType((*CommandShowReplaceRecordingArchive)(nil), "KN.CommandShowReplaceRecordingArchive")
 	proto.RegisterType((*CommandShowSetValueArchive)(nil), "KN.CommandShowSetValueArchive")
@@ -4656,394 +3468,225 @@ func init() {
 	proto.RegisterType((*CommandShowMoveSlideArchive)(nil), "KN.CommandShowMoveSlideArchive")
 	proto.RegisterType((*CommandShowRemoveSlideArchive)(nil), "KN.CommandShowRemoveSlideArchive")
 	proto.RegisterType((*CommandShowChangeThemeArchive)(nil), "KN.CommandShowChangeThemeArchive")
-	proto.RegisterType((*CommandShowChangeThemeArchive_IdentifierToStyleMap)(nil), "KN.CommandShowChangeThemeArchive.IdentifierToStyleMap")
-	proto.RegisterType((*CommandShowChangeSlideSizeArchive)(nil), "KN.CommandShowChangeSlideSizeArchive")
-	proto.RegisterType((*CommandSetThemeCustomEffectTimingCurveArchive)(nil), "KN.CommandSetThemeCustomEffectTimingCurveArchive")
 	proto.RegisterType((*CommandMoveMastersArchive)(nil), "KN.CommandMoveMastersArchive")
 	proto.RegisterType((*CommandInsertMasterArchive)(nil), "KN.CommandInsertMasterArchive")
 	proto.RegisterType((*CommandRemoveMasterArchive)(nil), "KN.CommandRemoveMasterArchive")
 	proto.RegisterType((*CommandRenameMasterArchive)(nil), "KN.CommandRenameMasterArchive")
 	proto.RegisterType((*CommandSlideInsertBuildArchive)(nil), "KN.CommandSlideInsertBuildArchive")
-	proto.RegisterType((*InsertBuildDescriptionArchive)(nil), "KN.InsertBuildDescriptionArchive")
-	proto.RegisterType((*UndoObjectArchive)(nil), "KN.UndoObjectArchive")
 	proto.RegisterType((*CommandSlideRemoveBuildArchive)(nil), "KN.CommandSlideRemoveBuildArchive")
-	proto.RegisterType((*RemoveBuildDescriptionArchive)(nil), "KN.RemoveBuildDescriptionArchive")
+	proto.RegisterType((*CommandSlideMoveBuildWithoutMovingChunksArchive)(nil), "KN.CommandSlideMoveBuildWithoutMovingChunksArchive")
+	proto.RegisterType((*CommandSlideMoveBuildsArchive)(nil), "KN.CommandSlideMoveBuildsArchive")
 	proto.RegisterType((*CommandSlideInsertBuildChunkArchive)(nil), "KN.CommandSlideInsertBuildChunkArchive")
 	proto.RegisterType((*CommandSlideRemoveBuildChunkArchive)(nil), "KN.CommandSlideRemoveBuildChunkArchive")
+	proto.RegisterType((*CommandSlideMoveBuildChunkArchive)(nil), "KN.CommandSlideMoveBuildChunkArchive")
 	proto.RegisterType((*CommandSlideMoveBuildChunksArchive)(nil), "KN.CommandSlideMoveBuildChunksArchive")
 	proto.RegisterType((*CommandBuildSetValueArchive)(nil), "KN.CommandBuildSetValueArchive")
-	proto.RegisterType((*CommandBuildUpdateChunkReferentsArchive)(nil), "KN.CommandBuildUpdateChunkReferentsArchive")
-	proto.RegisterType((*CommandBuildUpdateChunkCountArchive)(nil), "KN.CommandBuildUpdateChunkCountArchive")
 	proto.RegisterType((*CommandBuildChunkSetValueArchive)(nil), "KN.CommandBuildChunkSetValueArchive")
 	proto.RegisterType((*CommandTransitionSetValueArchive)(nil), "KN.CommandTransitionSetValueArchive")
 	proto.RegisterType((*CommandShowSetSlideNumberVisibilityArchive)(nil), "KN.CommandShowSetSlideNumberVisibilityArchive")
+	proto.RegisterType((*CommandMasterRescaleArchive)(nil), "KN.CommandMasterRescaleArchive")
 	proto.RegisterType((*CommandMasterSetThumbnailTextArchive)(nil), "KN.CommandMasterSetThumbnailTextArchive")
 	proto.RegisterType((*CommandMasterSetBodyStylesArchive)(nil), "KN.CommandMasterSetBodyStylesArchive")
-	proto.RegisterType((*CommandMasterSetSlideObjectsLayerWithMasterArchive)(nil), "KN.CommandMasterSetSlideObjectsLayerWithMasterArchive")
+	proto.RegisterType((*CommandSlideApplyThemeArchive)(nil), "KN.CommandSlideApplyThemeArchive")
 	proto.RegisterType((*CommandChangeMasterSlideArchive)(nil), "KN.CommandChangeMasterSlideArchive")
 	proto.RegisterType((*CommandSlidePrimitiveSetMasterArchive)(nil), "KN.CommandSlidePrimitiveSetMasterArchive")
 	proto.RegisterType((*CommandSlideReapplyMasterArchive)(nil), "KN.CommandSlideReapplyMasterArchive")
 	proto.RegisterType((*CommandShowSetSoundtrack)(nil), "KN.CommandShowSetSoundtrack")
 	proto.RegisterType((*CommandSoundtrackSetValue)(nil), "KN.CommandSoundtrackSetValue")
 	proto.RegisterType((*CommandSoundtrackSetValue_PropertyValue)(nil), "KN.CommandSoundtrackSetValue.PropertyValue")
-	proto.RegisterType((*CommandSlideUpdateMasterDrawables)(nil), "KN.CommandSlideUpdateMasterDrawables")
+	proto.RegisterType((*SlideCollectionCommandSelectionBehaviorArchive)(nil), "KN.SlideCollectionCommandSelectionBehaviorArchive")
 	proto.RegisterType((*ChartInfoGeometryCommandArchive)(nil), "KN.ChartInfoGeometryCommandArchive")
-	proto.RegisterType((*CanvasSelectionTransformerArchive)(nil), "KN.CanvasSelectionTransformerArchive")
-	proto.RegisterType((*ActionGhostSelectionTransformerArchive)(nil), "KN.ActionGhostSelectionTransformerArchive")
-	proto.RegisterType((*DocumentSelectionTransformerArchive)(nil), "KN.DocumentSelectionTransformerArchive")
-	proto.RegisterType((*NoteCanvasSelectionTransformerArchive)(nil), "KN.NoteCanvasSelectionTransformerArchive")
-	proto.RegisterType((*OutlineCanvasSelectionTransformerArchive)(nil), "KN.OutlineCanvasSelectionTransformerArchive")
-	proto.RegisterType((*SlideCollectionSelectionTransformerHelperArchive)(nil), "KN.SlideCollectionSelectionTransformerHelperArchive")
-	proto.RegisterType((*SlideCollectionSelectionTransformerArchive)(nil), "KN.SlideCollectionSelectionTransformerArchive")
-	proto.RegisterType((*OutlineSelectionTransformerArchive)(nil), "KN.OutlineSelectionTransformerArchive")
 }
 
 func init() { proto.RegisterFile("KNCommandArchives.proto", fileDescriptor_fc506070cd6467a6) }
 
 var fileDescriptor_fc506070cd6467a6 = []byte{
-	// 5498 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x3c, 0x5b, 0x6c, 0x5c, 0x49,
-	0x56, 0x74, 0xfb, 0x7d, 0xec, 0xf6, 0xa3, 0xe2, 0x24, 0x6d, 0x27, 0x4e, 0x9c, 0xbb, 0x89, 0xc7,
-	0x3b, 0xc9, 0x3a, 0x3b, 0x99, 0x9d, 0xec, 0x4c, 0x86, 0x99, 0x1d, 0xc7, 0x8e, 0x93, 0x5e, 0xc7,
-	0xb1, 0xe9, 0xee, 0x24, 0x9a, 0x07, 0x7b, 0xb9, 0xee, 0x5b, 0xed, 0xae, 0xf5, 0xed, 0x5b, 0xad,
-	0x5b, 0xb7, 0xed, 0x78, 0x3e, 0x90, 0xf8, 0x42, 0x48, 0xfc, 0xf0, 0xf8, 0x42, 0x82, 0xdf, 0xd1,
-	0x6a, 0x25, 0x24, 0xbe, 0x40, 0xfc, 0xb0, 0x08, 0x21, 0x81, 0x84, 0x10, 0x5f, 0x48, 0xf0, 0xb1,
-	0x7c, 0x2c, 0x68, 0x01, 0xc1, 0x07, 0x1f, 0x88, 0x3f, 0x84, 0xea, 0x75, 0xdf, 0xd7, 0x6e, 0xb7,
-	0xe3, 0xdd, 0x11, 0x9a, 0x2f, 0xbb, 0xab, 0xce, 0x39, 0x55, 0xe7, 0xd4, 0xa9, 0x73, 0x4e, 0x55,
-	0x9d, 0x73, 0xe1, 0xf2, 0xe6, 0xb3, 0x35, 0xda, 0x6e, 0x5b, 0xae, 0xbd, 0xea, 0x35, 0x5a, 0xe4,
-	0x00, 0xb3, 0x95, 0x8e, 0x47, 0x7d, 0x8a, 0x8a, 0x9b, 0xcf, 0xe6, 0x67, 0xea, 0xb5, 0x9d, 0x2d,
-	0xcc, 0x98, 0xb5, 0xa7, 0x9b, 0x79, 0xd3, 0x66, 0x1c, 0x92, 0x37, 0xd5, 0xd2, 0x4d, 0xeb, 0x89,
-	0xa6, 0x72, 0xbd, 0xb6, 0x9e, 0x39, 0xd2, 0x3c, 0xaa, 0xd7, 0x5e, 0xee, 0xa4, 0x09, 0xac, 0xa6,
-	0x9b, 0xea, 0x89, 0xa6, 0xe9, 0xcd, 0x67, 0xf1, 0x16, 0xe3, 0x1f, 0x06, 0x60, 0xfe, 0x79, 0xa5,
-	0xe6, 0x5b, 0x3e, 0x56, 0x83, 0x3d, 0xf6, 0x68, 0xb7, 0xa3, 0xa0, 0xd0, 0x0a, 0x0c, 0xb1, 0x6e,
-	0x07, 0x7b, 0xe5, 0xc2, 0x62, 0x71, 0x79, 0xfc, 0x5e, 0x79, 0xa5, 0x5e, 0xdb, 0x5c, 0xc9, 0x00,
-	0xac, 0x4a, 0x30, 0xb4, 0x0c, 0x23, 0x5d, 0x22, 0xa8, 0x95, 0x8b, 0x02, 0x63, 0x72, 0xa5, 0x5e,
-	0xdb, 0x59, 0xa9, 0xe2, 0x26, 0xf6, 0xb0, 0xdb, 0xc0, 0x55, 0xdd, 0x8d, 0xe6, 0x61, 0xb4, 0xe3,
-	0xd1, 0x0e, 0xf6, 0xfc, 0xa3, 0xf2, 0xc0, 0x62, 0x71, 0x79, 0xac, 0x1a, 0xfc, 0x46, 0x0f, 0x60,
-	0x9a, 0x39, 0xc4, 0xc6, 0xcf, 0xa8, 0x8d, 0x59, 0x9d, 0x3e, 0xb2, 0x89, 0x5f, 0x1e, 0x5c, 0x1c,
-	0xc8, 0x20, 0x97, 0x82, 0x43, 0x4f, 0xe0, 0x72, 0xdb, 0x62, 0x3e, 0xf6, 0x6a, 0x91, 0x9e, 0xd5,
-	0x4e, 0xc7, 0x39, 0x2a, 0x0f, 0x65, 0x92, 0xc8, 0x03, 0x47, 0x6f, 0xc1, 0xa4, 0xdf, 0xea, 0xb6,
-	0x77, 0x5d, 0x8b, 0x38, 0x35, 0xf2, 0x39, 0x66, 0xe5, 0x61, 0x41, 0x60, 0x4c, 0x10, 0xe0, 0x2d,
-	0xd5, 0x04, 0x00, 0xfa, 0x10, 0x10, 0xc3, 0x0e, 0x6e, 0xf8, 0xd8, 0x0e, 0xe9, 0x95, 0x47, 0x32,
-	0xc7, 0xcd, 0x80, 0x44, 0x4f, 0x61, 0xce, 0xc3, 0xcc, 0xa7, 0x1e, 0xae, 0xa5, 0xc9, 0x8c, 0x66,
-	0x92, 0xc9, 0x47, 0x30, 0xfe, 0x76, 0x0c, 0x0c, 0xb5, 0x56, 0xa2, 0xb5, 0xe2, 0x32, 0xec, 0xf9,
-	0xeb, 0x9e, 0x75, 0x68, 0xed, 0x3a, 0x98, 0xe9, 0x35, 0xfe, 0x7a, 0x7c, 0x8d, 0x2f, 0x44, 0xd7,
-	0x38, 0xb1, 0xbc, 0x37, 0x61, 0x54, 0x08, 0xdc, 0x24, 0xb6, 0x5a, 0x5f, 0x29, 0x8c, 0xe7, 0xcf,
-	0x2b, 0xeb, 0xd5, 0x11, 0xd1, 0x55, 0xb1, 0xd1, 0x1d, 0x18, 0xb3, 0xf5, 0x20, 0xe5, 0x81, 0xcc,
-	0x59, 0x87, 0x00, 0xe8, 0x7d, 0x98, 0x39, 0xa4, 0xde, 0x3e, 0x71, 0xf7, 0xcc, 0x10, 0x0b, 0x65,
-	0xaf, 0xb6, 0x02, 0x0c, 0x58, 0x40, 0xef, 0xc0, 0x98, 0xe5, 0xed, 0x31, 0xd3, 0x21, 0x8c, 0xab,
-	0x48, 0x41, 0xe8, 0xe8, 0xe6, 0xb3, 0x95, 0x2d, 0xf2, 0x0a, 0xdb, 0x15, 0x7b, 0xbb, 0x83, 0x3d,
-	0xcb, 0x27, 0xd4, 0x5d, 0xf5, 0xf6, 0x58, 0x75, 0x94, 0x83, 0x3e, 0x25, 0xcc, 0x47, 0x9f, 0xc2,
-	0xed, 0x6e, 0xc7, 0xb6, 0x7c, 0x6c, 0xee, 0x61, 0xda, 0xc6, 0xbe, 0x77, 0x64, 0xfa, 0xd4, 0x6c,
-	0x5b, 0x7e, 0xa3, 0x65, 0xd2, 0xdd, 0xef, 0xe3, 0x86, 0x6f, 0x76, 0x1c, 0xab, 0x81, 0x5b, 0xd4,
-	0xb1, 0xb1, 0x57, 0x1e, 0x5a, 0x2c, 0x2e, 0x8f, 0x56, 0x97, 0x24, 0xca, 0x63, 0x85, 0x51, 0xa7,
-	0x5b, 0x1c, 0x7e, 0x5b, 0x80, 0xef, 0x84, 0xd0, 0x88, 0xc1, 0x3d, 0x62, 0x33, 0x93, 0x36, 0x43,
-	0x7e, 0xcc, 0x2e, 0xe3, 0xfc, 0xa5, 0x49, 0x07, 0xe3, 0xc7, 0x74, 0x4b, 0x88, 0xf3, 0x0e, 0xb1,
-	0xd9, 0x76, 0x33, 0x60, 0xf5, 0x39, 0xa7, 0x90, 0x1a, 0x4c, 0x4f, 0x06, 0xbd, 0x0f, 0xf3, 0xdc,
-	0xea, 0xc4, 0x68, 0xfb, 0x96, 0x96, 0x0c, 0xd7, 0xc0, 0xb1, 0xea, 0x65, 0x0e, 0x11, 0x41, 0xae,
-	0x5b, 0x4a, 0x1c, 0x6f, 0xc1, 0x44, 0xd7, 0xb5, 0xa9, 0x69, 0xc9, 0xd5, 0x2e, 0x8f, 0x0a, 0x41,
-	0x26, 0xa5, 0x3f, 0xce, 0x61, 0xb4, 0xd2, 0x2c, 0x00, 0x10, 0x66, 0x76, 0x2c, 0xe6, 0x13, 0x77,
-	0xaf, 0x3c, 0xb6, 0x58, 0x58, 0x1e, 0xad, 0x8e, 0x11, 0xb6, 0x23, 0x1b, 0xd0, 0x77, 0x61, 0x8e,
-	0x08, 0x6d, 0x33, 0x77, 0xbb, 0xc4, 0xb1, 0x4d, 0x1b, 0xb3, 0x86, 0x47, 0x3a, 0x7c, 0x29, 0x58,
-	0x19, 0xb2, 0xf7, 0xa1, 0x44, 0x78, 0xc8, 0xe1, 0xd7, 0x23, 0xe0, 0xe8, 0x63, 0xb8, 0xa1, 0x15,
-	0x24, 0x9f, 0xe6, 0x85, 0x4c, 0x9a, 0xd7, 0x14, 0x62, 0x25, 0x87, 0xf4, 0x77, 0xf9, 0x7e, 0x6b,
-	0xd3, 0x03, 0x9c, 0x45, 0x72, 0x3c, 0x7b, 0x9a, 0x12, 0x21, 0x4d, 0xeb, 0x31, 0x2c, 0x2a, 0x5a,
-	0x72, 0x8b, 0xb0, 0x0e, 0x6e, 0x90, 0x26, 0x69, 0x98, 0xad, 0xa3, 0x0e, 0xf6, 0x1c, 0xe2, 0xee,
-	0xb3, 0xf2, 0x84, 0x90, 0xd3, 0x82, 0x84, 0x13, 0x7b, 0xb2, 0xa6, 0xa0, 0x9e, 0x04, 0x40, 0xe8,
-	0xdb, 0x80, 0x1a, 0x5d, 0xe6, 0xd3, 0xb6, 0xd9, 0xa4, 0x5e, 0xdb, 0xf2, 0xcd, 0x7d, 0x7c, 0xc4,
-	0xca, 0xa5, 0xa4, 0x7e, 0x4c, 0x4b, 0xa0, 0x0d, 0x01, 0xb3, 0x89, 0x8f, 0x38, 0x37, 0x06, 0xb3,
-	0x0e, 0xb0, 0x6d, 0xba, 0xf8, 0x95, 0x6f, 0x76, 0x5d, 0x9f, 0xf8, 0x0e, 0xb6, 0x4d, 0x0f, 0x33,
-	0xea, 0x1c, 0x60, 0xcf, 0x24, 0xae, 0x8d, 0x5f, 0x95, 0xa7, 0x17, 0x0b, 0xcb, 0xa5, 0xea, 0x35,
-	0x01, 0xf9, 0x0c, 0xbf, 0xf2, 0x9f, 0x2b, 0xb8, 0xaa, 0x02, 0xab, 0x70, 0x28, 0xf4, 0xdb, 0x05,
-	0xf8, 0x20, 0xd8, 0x1b, 0xb4, 0x99, 0xa5, 0xba, 0x4d, 0xea, 0x99, 0x0d, 0xda, 0xee, 0x58, 0x1e,
-	0x61, 0xd4, 0xe5, 0x1b, 0x48, 0x99, 0x22, 0x93, 0xf3, 0x51, 0x9e, 0x11, 0x4a, 0x34, 0xbb, 0x52,
-	0xaf, 0xad, 0xaf, 0x68, 0x35, 0xd5, 0xe6, 0xe4, 0x1d, 0x4d, 0x7a, 0xbb, 0x99, 0x52, 0xe9, 0x0d,
-	0xea, 0xad, 0x05, 0x54, 0xeb, 0xb4, 0x2a, 0x69, 0x3e, 0x25, 0xee, 0xbe, 0xf1, 0xbf, 0x05, 0xf8,
-	0x7a, 0xd4, 0xa0, 0xd5, 0x70, 0x14, 0x91, 0x6d, 0x50, 0xa1, 0xd2, 0xe7, 0x66, 0xd7, 0x6e, 0xc2,
-	0x10, 0x71, 0x9b, 0x34, 0xcf, 0xa6, 0xc9, 0x4e, 0x84, 0x60, 0x90, 0x6f, 0x3c, 0xe1, 0xb0, 0xc6,
-	0xaa, 0xe2, 0x7f, 0x74, 0x1b, 0xc6, 0xa8, 0x63, 0x9b, 0x12, 0x7b, 0x38, 0x13, 0x7b, 0x94, 0x3a,
-	0x76, 0x45, 0x10, 0x98, 0x03, 0xfe, 0xbf, 0xd8, 0xbd, 0xc2, 0x65, 0x8d, 0x55, 0x47, 0xa8, 0x63,
-	0x73, 0xce, 0x8c, 0x1f, 0x0e, 0xc1, 0x8d, 0xa8, 0x00, 0xaa, 0x42, 0x91, 0xb4, 0x8d, 0x38, 0x37,
-	0xc6, 0xdf, 0x85, 0x29, 0x46, 0x3d, 0x1f, 0xdb, 0xeb, 0x27, 0x98, 0xf5, 0x24, 0x58, 0xd2, 0x3e,
-	0x17, 0x7b, 0xb4, 0xcf, 0xef, 0xc1, 0x9c, 0xb6, 0x9d, 0x52, 0x6b, 0x31, 0x13, 0xea, 0xc6, 0x2d,
-	0x90, 0x30, 0x1f, 0xa5, 0xea, 0x25, 0x0d, 0x50, 0x91, 0xfd, 0x1b, 0xd4, 0x7b, 0xee, 0xda, 0x14,
-	0x2d, 0xc3, 0x54, 0x27, 0x6e, 0xe2, 0x94, 0x10, 0x93, 0xcd, 0xc7, 0xdb, 0xa8, 0xe1, 0xd3, 0xd9,
-	0xa8, 0x63, 0x0d, 0xc9, 0xc8, 0xe9, 0x0c, 0x89, 0x03, 0xb7, 0x4f, 0xe3, 0x38, 0xb2, 0xc3, 0x82,
-	0x37, 0xec, 0x1e, 0x1d, 0xc7, 0xc7, 0x70, 0x83, 0xb8, 0x07, 0xd8, 0x63, 0x58, 0x5b, 0xd7, 0xc0,
-	0x5e, 0xf1, 0xdd, 0xcd, 0x75, 0x86, 0x95, 0xc7, 0xb2, 0xad, 0xab, 0x42, 0x94, 0xd6, 0x35, 0xb0,
-	0x60, 0x4a, 0xd3, 0x98, 0xf1, 0x37, 0x45, 0xb8, 0x15, 0xd5, 0xd6, 0xad, 0x88, 0xae, 0x7e, 0xb2,
-	0xed, 0xd9, 0xd8, 0xeb, 0x43, 0x63, 0x1f, 0xc0, 0x0c, 0xdf, 0x1d, 0x94, 0xa3, 0x63, 0xbd, 0xa5,
-	0xb2, 0x83, 0xc3, 0x29, 0xea, 0xd8, 0xdb, 0x12, 0x4e, 0xee, 0xac, 0x07, 0x51, 0x6d, 0x94, 0x2b,
-	0xbc, 0x20, 0x86, 0xaa, 0x62, 0xcb, 0xf3, 0x2c, 0x77, 0x0f, 0xe7, 0xab, 0x64, 0x74, 0xa7, 0x8c,
-	0xe4, 0xee, 0x94, 0x4f, 0xe0, 0x6b, 0xa9, 0xd9, 0x99, 0xd4, 0x55, 0x2e, 0x21, 0x50, 0xe1, 0xec,
-	0x35, 0x5b, 0x48, 0xcc, 0x77, 0xdb, 0x15, 0x62, 0x53, 0x9a, 0x6d, 0xfc, 0x63, 0x21, 0x1e, 0xce,
-	0xf1, 0x20, 0x8f, 0x5b, 0x40, 0x15, 0x35, 0xf7, 0x25, 0x4b, 0x24, 0x27, 0xe6, 0x52, 0xc1, 0x98,
-	0xd9, 0xb1, 0xfc, 0x96, 0xb2, 0x03, 0xa5, 0x80, 0xbb, 0x1d, 0xcb, 0x6f, 0x55, 0xa7, 0x82, 0x40,
-	0xbb, 0x62, 0xf3, 0x86, 0x63, 0xe3, 0xf7, 0x2b, 0xd2, 0xdc, 0x1d, 0x58, 0x4e, 0x17, 0x8b, 0x5d,
-	0x3f, 0x2a, 0xcc, 0xdb, 0x0b, 0xfe, 0x1b, 0xcd, 0xc2, 0x90, 0xec, 0x90, 0x51, 0x95, 0xfc, 0x61,
-	0xfc, 0xa4, 0x00, 0xb7, 0x33, 0x98, 0x7b, 0x41, 0xf0, 0xa1, 0x38, 0x2f, 0xfc, 0xff, 0xe0, 0xf2,
-	0xc7, 0x05, 0xb8, 0x99, 0x70, 0x60, 0x0f, 0xad, 0xc6, 0xfe, 0x9e, 0x47, 0xbb, 0xae, 0xbd, 0x41,
-	0x1c, 0xa7, 0x0f, 0xf6, 0xde, 0x82, 0x92, 0x56, 0xcc, 0x63, 0x38, 0x1b, 0x57, 0x1a, 0x2a, 0xb8,
-	0xba, 0x2d, 0x3d, 0x4c, 0x93, 0x38, 0x4e, 0x79, 0x40, 0xb8, 0xe9, 0x69, 0xe1, 0xa6, 0x23, 0x33,
-	0x10, 0x3e, 0x87, 0xff, 0xe6, 0xc0, 0x2e, 0x3e, 0x94, 0xc0, 0xd2, 0x82, 0x67, 0x00, 0xbb, 0xf8,
-	0x90, 0xff, 0x36, 0xfe, 0xb9, 0x00, 0x57, 0x12, 0x0c, 0xd6, 0xfc, 0xa3, 0xbe, 0x5c, 0x53, 0x1f,
-	0x7c, 0xdd, 0x85, 0x71, 0x15, 0x7b, 0xf1, 0x31, 0xc5, 0x82, 0xa5, 0x77, 0x19, 0x08, 0x10, 0x31,
-	0x2b, 0x74, 0x1f, 0xb8, 0x8d, 0x30, 0xa3, 0x48, 0x83, 0x99, 0xb1, 0x6f, 0x89, 0x3a, 0x8a, 0x21,
-	0x0e, 0x64, 0xfc, 0xc9, 0x00, 0x2c, 0x6b, 0x36, 0x5b, 0xf4, 0x70, 0xcb, 0xf2, 0xf6, 0xb7, 0xbb,
-	0xfe, 0x76, 0xb3, 0x76, 0xe4, 0x36, 0xaa, 0xb8, 0x41, 0x3d, 0x9b, 0xb8, 0x7b, 0x7d, 0xf0, 0x6c,
-	0xc0, 0x20, 0x6b, 0xd1, 0xc3, 0x9c, 0xb3, 0xb3, 0xe8, 0x43, 0x6f, 0x03, 0x9f, 0x8c, 0xe9, 0xe9,
-	0x61, 0xd4, 0x0a, 0x26, 0x81, 0x27, 0xa8, 0x63, 0x07, 0x53, 0x41, 0xeb, 0x70, 0x55, 0x04, 0x20,
-	0x2c, 0xc4, 0x33, 0x69, 0xd7, 0xe7, 0x91, 0x1d, 0x3b, 0x72, 0x1b, 0x82, 0xeb, 0xd1, 0x07, 0x43,
-	0x4d, 0xcb, 0x61, 0xb8, 0x7a, 0x99, 0x87, 0x22, 0x2c, 0x40, 0x0e, 0x38, 0xe3, 0x54, 0xb8, 0x2a,
-	0xe4, 0x52, 0x19, 0x8a, 0x51, 0x71, 0xf1, 0x61, 0x26, 0x95, 0x0f, 0xe0, 0x22, 0x9f, 0x4b, 0x9b,
-	0xda, 0x3c, 0xf0, 0x15, 0xb6, 0xd6, 0xe4, 0x07, 0xab, 0xf2, 0xb0, 0x60, 0x44, 0x9a, 0xd5, 0x75,
-	0xcb, 0xc7, 0xd5, 0x0b, 0xd4, 0xb1, 0xb7, 0x22, 0x60, 0xbc, 0x91, 0xa3, 0xf3, 0x49, 0xa4, 0xd1,
-	0x47, 0x52, 0xe8, 0x2e, 0x3e, 0x4c, 0xa2, 0x1b, 0xbf, 0x53, 0x80, 0x6f, 0x9e, 0xb8, 0x74, 0x95,
-	0xe6, 0x33, 0x8c, 0x6d, 0x6c, 0xf7, 0xb1, 0x84, 0xdf, 0x82, 0x99, 0x88, 0x48, 0x4c, 0x9f, 0xee,
-	0x63, 0xb7, 0x5c, 0x8c, 0x4c, 0x4d, 0x38, 0x8c, 0x49, 0xaa, 0xc7, 0xac, 0x73, 0x00, 0xe3, 0x8b,
-	0x42, 0x18, 0xd8, 0xb5, 0xe8, 0xa1, 0x8c, 0xeb, 0xbe, 0x8c, 0x9a, 0x64, 0xfc, 0x67, 0xc4, 0x0b,
-	0x89, 0x99, 0x8a, 0xa0, 0xe4, 0xbc, 0xa7, 0xba, 0x06, 0x17, 0x3d, 0x39, 0x52, 0x1b, 0xbb, 0x7e,
-	0x6c, 0xca, 0x59, 0x48, 0xb3, 0x11, 0xe0, 0x70, 0x13, 0xa4, 0xf8, 0x1d, 0xea, 0x81, 0xdf, 0x7f,
-	0x1a, 0x80, 0xf9, 0x08, 0xbf, 0xdc, 0x27, 0x71, 0x53, 0x7e, 0x4e, 0x7c, 0x1e, 0xe7, 0x6f, 0x2a,
-	0x49, 0x7f, 0x33, 0x7e, 0xef, 0x0e, 0x8f, 0xa5, 0xf3, 0x67, 0xb7, 0xa2, 0xbd, 0xa6, 0x68, 0x8c,
-	0x78, 0xa7, 0x0a, 0x8c, 0xf1, 0x3d, 0x14, 0x7a, 0xa8, 0x53, 0x93, 0x72, 0xf1, 0xa1, 0xf8, 0x6f,
-	0xfe, 0xcf, 0x0a, 0x50, 0x8a, 0xf5, 0xa1, 0x05, 0x80, 0x5d, 0x4a, 0x1d, 0x45, 0xbd, 0x20, 0xaf,
-	0x06, 0x78, 0x8b, 0xec, 0xbe, 0x01, 0x13, 0x36, 0xed, 0xf2, 0xc8, 0x5e, 0x02, 0xf0, 0xbd, 0x51,
-	0xa8, 0x8e, 0xcb, 0x36, 0x09, 0xf2, 0x10, 0xa6, 0xb8, 0x34, 0xf8, 0x1e, 0xd7, 0x50, 0x5c, 0x35,
-	0x27, 0xef, 0xcd, 0xf3, 0x49, 0xf2, 0xd9, 0xe9, 0x59, 0x6d, 0x3e, 0x13, 0x9b, 0x98, 0xda, 0xb8,
-	0x5a, 0x62, 0xea, 0x3f, 0x49, 0x63, 0x19, 0x80, 0x91, 0xcf, 0x71, 0x20, 0xae, 0x42, 0xfc, 0xe6,
-	0x6e, 0x8c, 0x77, 0x0a, 0x48, 0xe3, 0xd7, 0x01, 0x16, 0x22, 0x8c, 0xcb, 0x68, 0x56, 0x18, 0xfb,
-	0x3e, 0x16, 0x79, 0x13, 0xe6, 0xc3, 0x60, 0x83, 0x99, 0xbb, 0x38, 0xbc, 0xb6, 0xc0, 0xfc, 0x88,
-	0x95, 0x79, 0x12, 0x08, 0x2f, 0x31, 0x1f, 0xe2, 0xe0, 0xb6, 0x02, 0xf3, 0x68, 0xd2, 0xd0, 0x37,
-	0x1f, 0xc7, 0x10, 0x9d, 0x3c, 0xf6, 0xea, 0xa3, 0x96, 0x43, 0xfb, 0x11, 0x20, 0x4d, 0xc1, 0x0c,
-	0x83, 0x62, 0x79, 0xac, 0xbb, 0x2c, 0x18, 0x5c, 0xb5, 0x53, 0x27, 0xb4, 0x69, 0x8d, 0xb2, 0xaa,
-	0xc3, 0xe2, 0x8f, 0xe1, 0x96, 0xba, 0xec, 0x8a, 0xce, 0xf0, 0x90, 0xf8, 0x2d, 0xd3, 0xc6, 0x1d,
-	0xbf, 0x65, 0x36, 0x5a, 0x3c, 0xae, 0xd6, 0x21, 0x7a, 0xc4, 0x04, 0x5e, 0x17, 0xf7, 0x5b, 0xe1,
-	0xf4, 0x5e, 0x12, 0xbf, 0xb5, 0xce, 0x51, 0xd6, 0x24, 0x06, 0xaa, 0xc3, 0xb2, 0x20, 0xd1, 0x0b,
-	0xf5, 0x21, 0x71, 0x26, 0x34, 0x24, 0xfc, 0xb1, 0x54, 0x3f, 0x85, 0x3b, 0x54, 0x1c, 0xd0, 0x7a,
-	0xa4, 0x3c, 0x2c, 0x28, 0xdf, 0xa2, 0xfc, 0x90, 0x76, 0x22, 0xf1, 0x2d, 0xb8, 0x1a, 0x25, 0xc7,
-	0xe3, 0x7d, 0x49, 0xad, 0x49, 0x5e, 0x99, 0xdd, 0x4e, 0xde, 0x49, 0x30, 0x5c, 0xff, 0x0d, 0xea,
-	0x09, 0x82, 0x1b, 0xe4, 0xd5, 0xf3, 0x0e, 0xda, 0x86, 0xa5, 0xec, 0x79, 0xa6, 0x08, 0x8f, 0x8a,
-	0x59, 0x5e, 0x4f, 0xf3, 0x1f, 0x27, 0xf8, 0x02, 0xde, 0xcc, 0x67, 0x3e, 0x45, 0x74, 0x4c, 0x0a,
-	0x35, 0x93, 0xf5, 0x38, 0xdd, 0xa7, 0x30, 0xb8, 0x4f, 0x5c, 0xbb, 0x0c, 0x62, 0x97, 0x2e, 0x25,
-	0x4c, 0x49, 0x7a, 0x47, 0xad, 0x6c, 0x12, 0xd7, 0x7e, 0x30, 0xbd, 0xcf, 0xff, 0x44, 0x7a, 0xab,
-	0x82, 0x0a, 0xda, 0x82, 0x2b, 0xf2, 0x4e, 0x3e, 0x5b, 0xdf, 0xb3, 0xef, 0xe5, 0xca, 0x12, 0x25,
-	0x43, 0xd3, 0xb3, 0xef, 0xd3, 0x26, 0x4e, 0xbe, 0x4f, 0xfb, 0x1e, 0x7c, 0xa3, 0x41, 0x1d, 0xc7,
-	0xea, 0x30, 0x6c, 0x9b, 0x8c, 0x9f, 0x42, 0x92, 0x22, 0x4b, 0xcc, 0xac, 0xb4, 0x38, 0xb0, 0x3c,
-	0x5a, 0x7d, 0x23, 0x40, 0x12, 0x27, 0x97, 0xa8, 0xd4, 0xe2, 0x13, 0x4b, 0x5e, 0xbb, 0x4e, 0x9d,
-	0x78, 0xed, 0x6a, 0x7c, 0x06, 0x83, 0x5c, 0x66, 0x68, 0x16, 0x52, 0xc2, 0x9b, 0xfe, 0x05, 0x74,
-	0x15, 0xca, 0xc9, 0xd6, 0x0d, 0xea, 0xed, 0x70, 0xc1, 0x4c, 0x17, 0xd0, 0x22, 0x5c, 0xcd, 0xe8,
-	0x5d, 0xef, 0x76, 0x1c, 0x1e, 0x1f, 0xe1, 0xe9, 0xa2, 0xf1, 0x3f, 0x43, 0x61, 0xf4, 0x2e, 0x8c,
-	0xa9, 0xba, 0xa4, 0xec, 0xc3, 0x0e, 0xbe, 0x80, 0xc5, 0xb4, 0xa0, 0x78, 0x50, 0x63, 0x9b, 0x0e,
-	0x71, 0xb1, 0xe5, 0x39, 0x47, 0x39, 0xd6, 0xf0, 0x6a, 0xc2, 0x1a, 0xf2, 0x59, 0xd8, 0x4f, 0x15,
-	0x0e, 0xda, 0x86, 0x59, 0x4f, 0x1f, 0xd6, 0xd3, 0x86, 0xeb, 0x84, 0xd3, 0x3c, 0x0a, 0x51, 0xbf,
-	0x32, 0x60, 0x5f, 0x19, 0xb0, 0x90, 0xae, 0xf1, 0x83, 0x91, 0x58, 0x0c, 0x50, 0x0d, 0x2f, 0xe8,
-	0xfb, 0xd0, 0xfd, 0x0a, 0xcc, 0xa5, 0x75, 0x5f, 0xde, 0xf6, 0xe5, 0x85, 0x00, 0x97, 0x12, 0x4a,
-	0x2f, 0x27, 0x60, 0xa3, 0x0d, 0x98, 0x51, 0x88, 0x29, 0x5d, 0x9f, 0x57, 0xba, 0xce, 0x7b, 0x93,
-	0x8a, 0x3e, 0xa5, 0x90, 0xbe, 0xd2, 0xf2, 0xaf, 0xb4, 0x3c, 0x42, 0xb7, 0x09, 0x77, 0x94, 0x16,
-	0x28, 0xff, 0x2a, 0xe8, 0x26, 0x34, 0xd4, 0x24, 0x4d, 0xb3, 0xeb, 0x76, 0x19, 0xb6, 0xd5, 0x43,
-	0x5d, 0x44, 0x19, 0x6e, 0x09, 0x65, 0xd8, 0x0a, 0x1f, 0xcc, 0x63, 0xda, 0x5a, 0x69, 0x3e, 0x17,
-	0x78, 0xe8, 0x33, 0xb8, 0xd3, 0x93, 0xe3, 0xd4, 0x7b, 0x62, 0x5c, 0xf8, 0xcd, 0xa5, 0x13, 0xfc,
-	0xa6, 0x1a, 0xc5, 0xf8, 0x8f, 0xc1, 0xd8, 0x5e, 0x95, 0x8b, 0x5a, 0x6f, 0xe1, 0xf6, 0x79, 0x1d,
-	0xca, 0x6e, 0xc2, 0x90, 0xcf, 0xc9, 0xe7, 0x1c, 0x36, 0x65, 0xa7, 0x7e, 0xe3, 0x91, 0x90, 0xd9,
-	0xb7, 0x48, 0xfc, 0x00, 0x26, 0x26, 0x8a, 0xee, 0xc2, 0x05, 0x1f, 0xb7, 0x3b, 0x0e, 0x17, 0x0d,
-	0xb1, 0xb1, 0xeb, 0x93, 0x26, 0x11, 0x0f, 0xcd, 0x85, 0xe5, 0xb1, 0x2a, 0xd2, 0x5d, 0x95, 0xa0,
-	0x07, 0xdd, 0x87, 0xcb, 0x82, 0x7a, 0x06, 0xd2, 0xb0, 0x40, 0xba, 0xc8, 0x69, 0xa7, 0xf1, 0xda,
-	0x70, 0x39, 0x04, 0x35, 0x7d, 0x2a, 0x6f, 0xb9, 0xcc, 0xb6, 0xd5, 0x51, 0xf7, 0x25, 0xf7, 0x13,
-	0xc1, 0x5a, 0x5a, 0x9c, 0x2b, 0x21, 0xb9, 0x3a, 0x15, 0xf7, 0x5f, 0x5b, 0x56, 0xa7, 0x3a, 0x4b,
-	0x32, 0x5a, 0x91, 0x0f, 0x57, 0xc4, 0x3d, 0x53, 0xce, 0x90, 0xa3, 0x67, 0x1a, 0x52, 0xdc, 0x4b,
-	0x65, 0x74, 0xcc, 0x7f, 0x0a, 0xb3, 0x59, 0xed, 0x68, 0x0d, 0x86, 0xc5, 0xd8, 0xac, 0x5c, 0x10,
-	0x9a, 0x7c, 0x7b, 0xa5, 0x5e, 0xab, 0xad, 0x88, 0x6e, 0xd6, 0xc2, 0xd8, 0x4f, 0x8d, 0x66, 0x8b,
-	0xbe, 0x47, 0xae, 0xef, 0x1d, 0x55, 0x15, 0xaa, 0xd1, 0x8e, 0xdd, 0xcc, 0xc8, 0xb9, 0xca, 0xab,
-	0x40, 0xf2, 0x79, 0x3f, 0x1a, 0xb7, 0x00, 0x83, 0xfc, 0xec, 0x19, 0x7b, 0x6e, 0x13, 0x47, 0x52,
-	0xd1, 0x6c, 0xfc, 0xb4, 0x00, 0xdf, 0xd0, 0xe3, 0x61, 0x5f, 0x08, 0x65, 0x4d, 0x04, 0xa6, 0x8f,
-	0x9a, 0x4d, 0xdc, 0xf0, 0xeb, 0xa4, 0x4d, 0xdc, 0xbd, 0xb5, 0xae, 0x77, 0xd0, 0xcf, 0xd8, 0x08,
-	0x06, 0x5d, 0xab, 0x2d, 0xcf, 0xdc, 0x63, 0x55, 0xf1, 0x3f, 0xfa, 0x36, 0x8c, 0x77, 0x2c, 0xbf,
-	0x65, 0x32, 0xda, 0xf5, 0x1a, 0x58, 0xdd, 0x01, 0x5d, 0x12, 0x57, 0xbc, 0x3b, 0x96, 0xdf, 0xaa,
-	0x89, 0x66, 0x4d, 0x07, 0x3a, 0x41, 0x13, 0xfa, 0x50, 0x5e, 0x9e, 0x46, 0x91, 0x07, 0x8f, 0x45,
-	0x2e, 0x51, 0xc7, 0x0e, 0x5b, 0x8d, 0x9f, 0x16, 0x61, 0x4e, 0x4d, 0x93, 0xc7, 0x78, 0xd2, 0xaa,
-	0xf4, 0xf7, 0x7a, 0xab, 0xf6, 0x67, 0xf1, 0xb8, 0xfd, 0xf9, 0x36, 0x94, 0x62, 0x56, 0x2f, 0xe7,
-	0x09, 0x73, 0x22, 0x92, 0x0e, 0xc4, 0xd0, 0x43, 0xb8, 0xd8, 0xf1, 0xf0, 0x01, 0xa1, 0x5d, 0x16,
-	0x3c, 0x44, 0x8a, 0xe3, 0x43, 0xf6, 0x8b, 0xd3, 0x05, 0x0d, 0xac, 0x1e, 0x25, 0xc5, 0x31, 0xe2,
-	0x3e, 0x5c, 0x4e, 0xd1, 0x10, 0xb7, 0x12, 0xda, 0x1f, 0x5e, 0x4c, 0x60, 0x89, 0x6b, 0x09, 0x86,
-	0x9e, 0x40, 0xb9, 0x49, 0x5c, 0xcb, 0xd1, 0xc6, 0x5a, 0x85, 0xae, 0x6d, 0xec, 0xfa, 0x39, 0xcf,
-	0x93, 0x97, 0x04, 0xbc, 0x14, 0xe4, 0x6a, 0x08, 0x6d, 0xfc, 0xa8, 0x18, 0xdc, 0x61, 0xc9, 0xe0,
-	0x5f, 0x83, 0x9c, 0x93, 0xa8, 0x1f, 0xc0, 0x4c, 0x54, 0xd4, 0xc2, 0xe6, 0xe7, 0x18, 0xcf, 0xa9,
-	0x44, 0xf6, 0x15, 0x7a, 0x03, 0xa6, 0xe4, 0x79, 0x8a, 0x50, 0x57, 0x65, 0x2c, 0x0c, 0x2e, 0x16,
-	0x97, 0x4b, 0xd5, 0xc9, 0xa0, 0x59, 0x66, 0x28, 0xbc, 0x0d, 0x97, 0x0e, 0x2d, 0x16, 0x1c, 0xbe,
-	0x54, 0x50, 0xe0, 0xd1, 0x8e, 0x7a, 0x72, 0xb9, 0x70, 0x68, 0x31, 0x7d, 0xd4, 0x12, 0x11, 0x80,
-	0x47, 0x3b, 0x39, 0x67, 0xc1, 0xe1, 0x13, 0xcf, 0x82, 0xc6, 0xbf, 0x85, 0x22, 0x94, 0x7e, 0xe8,
-	0x4b, 0x2c, 0xc2, 0x5b, 0x30, 0x19, 0x57, 0x38, 0x25, 0xc1, 0x52, 0x4c, 0xcf, 0xd0, 0x3a, 0x5c,
-	0x52, 0x43, 0xc8, 0x20, 0x2a, 0x7c, 0xee, 0xcd, 0xbe, 0x17, 0x9d, 0x95, 0xd0, 0xd2, 0x02, 0xea,
-	0x47, 0x5e, 0xf4, 0x4b, 0x3c, 0xf8, 0x69, 0x5a, 0x5d, 0xc7, 0x37, 0x53, 0x13, 0x36, 0xf9, 0x02,
-	0xa9, 0xab, 0x58, 0x5b, 0xf8, 0xa9, 0xd1, 0xea, 0x0d, 0x05, 0xbd, 0x15, 0x9f, 0xf4, 0x4b, 0x8b,
-	0xa9, 0xab, 0x64, 0xdb, 0xf8, 0x8b, 0x42, 0x44, 0xd6, 0xdc, 0x46, 0xf5, 0x2d, 0xeb, 0xb7, 0x60,
-	0x22, 0x3a, 0xa9, 0x1c, 0x91, 0x8f, 0x47, 0x04, 0x88, 0xae, 0xc3, 0xb8, 0xbe, 0x7c, 0xb0, 0x94,
-	0xcb, 0x1f, 0xab, 0x82, 0xba, 0x5c, 0xe0, 0xf6, 0x72, 0x49, 0x9a, 0xbd, 0x28, 0xd0, 0xa0, 0x30,
-	0xa7, 0xdc, 0xbc, 0x6d, 0x05, 0x70, 0xc6, 0xbf, 0x0e, 0xc0, 0xb5, 0x74, 0xf6, 0x9d, 0x78, 0xee,
-	0xef, 0x83, 0x93, 0x27, 0x50, 0xce, 0x4b, 0x56, 0xc8, 0xe1, 0xea, 0x52, 0x76, 0xae, 0x02, 0x72,
-	0xe1, 0x66, 0xc4, 0x3d, 0x8b, 0x24, 0x9e, 0x56, 0xd7, 0xdd, 0xe7, 0x8e, 0x5a, 0x8d, 0x60, 0x35,
-	0x7d, 0xec, 0x29, 0x47, 0x70, 0x9d, 0xfb, 0x6a, 0x41, 0x63, 0x8d, 0x43, 0x85, 0x6e, 0x56, 0xcf,
-	0xef, 0x7a, 0x48, 0x6c, 0x83, 0x7a, 0x02, 0xa8, 0x4e, 0x25, 0xaf, 0xab, 0x9c, 0x0e, 0xfa, 0x26,
-	0xcc, 0xb2, 0x16, 0xed, 0x3a, 0xb6, 0xd9, 0xf0, 0x30, 0x0f, 0x5d, 0xc4, 0x70, 0x4c, 0x3e, 0x39,
-	0x55, 0x91, 0xec, 0x5b, 0x13, 0x5d, 0x02, 0x9b, 0xa1, 0xef, 0xc0, 0xac, 0x88, 0x75, 0xba, 0x1d,
-	0x07, 0x33, 0x3e, 0x2f, 0x99, 0x78, 0x97, 0x93, 0xbf, 0x39, 0xc3, 0x03, 0x1f, 0x01, 0x5a, 0xa7,
-	0xcf, 0x05, 0x20, 0xfa, 0x08, 0x16, 0xa4, 0x69, 0x20, 0x3e, 0xb1, 0x1c, 0xf2, 0x39, 0xb6, 0x4d,
-	0x7a, 0xc0, 0x63, 0x91, 0x16, 0x36, 0x0f, 0x89, 0x87, 0x95, 0x2a, 0xce, 0x09, 0x0b, 0x11, 0xc0,
-	0x6c, 0x1f, 0x60, 0xaf, 0xde, 0xc2, 0x2f, 0x89, 0x87, 0xd1, 0x1d, 0x40, 0x2d, 0x8b, 0x87, 0xa9,
-	0xd8, 0x15, 0xdb, 0x82, 0xf8, 0x3e, 0xb6, 0x45, 0xc4, 0x34, 0x5a, 0x9d, 0x6e, 0x59, 0xec, 0x21,
-	0xc6, 0xee, 0x9a, 0x6e, 0x37, 0x7e, 0x38, 0x08, 0x0b, 0xd9, 0x29, 0x66, 0x7a, 0xa5, 0xa3, 0xd9,
-	0x03, 0x85, 0xdc, 0xec, 0x81, 0xfb, 0x30, 0x25, 0x57, 0x37, 0x58, 0x8b, 0x9c, 0xb5, 0x2d, 0x09,
-	0x30, 0x2d, 0x67, 0xf4, 0x2e, 0x4c, 0x4b, 0xa1, 0x46, 0x10, 0xb3, 0xbd, 0xdb, 0xa4, 0x84, 0x0b,
-	0x30, 0x1f, 0xc1, 0x75, 0xb5, 0x38, 0x16, 0x63, 0x64, 0xcf, 0x55, 0xba, 0x10, 0xae, 0x29, 0x53,
-	0x2f, 0xdb, 0x57, 0x25, 0xd8, 0xaa, 0x80, 0x4a, 0xa8, 0x02, 0x43, 0x1d, 0x7e, 0xbc, 0x14, 0x3f,
-	0xb1, 0xc7, 0x42, 0x9d, 0x62, 0x29, 0xa5, 0x92, 0x4b, 0x78, 0xa2, 0x52, 0x2d, 0x86, 0xd4, 0xb4,
-	0x52, 0xb1, 0xb8, 0x56, 0xbd, 0x0b, 0xd3, 0x29, 0xfd, 0xc8, 0x76, 0x8a, 0x93, 0x7e, 0x5c, 0x39,
-	0x7e, 0x19, 0xe6, 0x9b, 0x96, 0xe3, 0xec, 0x5a, 0x8d, 0xfd, 0x0c, 0x6e, 0x47, 0x7a, 0x9b, 0x60,
-	0x59, 0x93, 0x48, 0x89, 0x62, 0x11, 0x26, 0x88, 0x14, 0x41, 0x87, 0xdb, 0x82, 0xf2, 0xa8, 0x10,
-	0x1f, 0x10, 0xa6, 0x6f, 0xe2, 0x8c, 0x55, 0x98, 0x79, 0xee, 0xda, 0x54, 0xa6, 0xe4, 0x68, 0x05,
-	0xb9, 0x13, 0x37, 0x05, 0x32, 0x84, 0x4a, 0x81, 0x29, 0x6b, 0x60, 0xfc, 0xc6, 0x60, 0xdc, 0xb6,
-	0x54, 0xc3, 0x54, 0xa2, 0xfe, 0x6c, 0x4b, 0x5e, 0xf2, 0x52, 0x9e, 0x6d, 0xc9, 0xce, 0x5d, 0xe2,
-	0xbe, 0x4d, 0x90, 0xc8, 0x79, 0x49, 0x94, 0x9d, 0x99, 0xea, 0x3a, 0xd8, 0x93, 0xba, 0x7a, 0xb0,
-	0x14, 0x59, 0xac, 0xd7, 0xa0, 0x68, 0x37, 0x22, 0xe4, 0x72, 0x34, 0x2d, 0xcf, 0x1a, 0x0d, 0xf7,
-	0x6a, 0x8d, 0xce, 0x57, 0xe1, 0x8c, 0x3f, 0x28, 0xc2, 0x42, 0x35, 0x73, 0x39, 0xb2, 0x8d, 0x4f,
-	0x21, 0x37, 0xbb, 0x71, 0x54, 0x2e, 0xbf, 0x48, 0x05, 0x4c, 0x42, 0x89, 0xae, 0x8a, 0x1d, 0xb1,
-	0xe6, 0x4a, 0x65, 0x94, 0x35, 0x1f, 0x88, 0x5a, 0x73, 0x39, 0x1d, 0x65, 0xcd, 0x43, 0x13, 0x13,
-	0xc5, 0x48, 0x98, 0x98, 0x42, 0x68, 0x62, 0x22, 0xc8, 0xd1, 0x7d, 0x95, 0xb5, 0xe1, 0x87, 0x7a,
-	0xd9, 0xf0, 0xc6, 0xef, 0x0e, 0xc2, 0xd7, 0x72, 0x1c, 0xb1, 0x18, 0xe5, 0xdc, 0xd2, 0x26, 0xef,
-	0xc3, 0x54, 0xc2, 0xb5, 0xe6, 0x44, 0x70, 0xa5, 0x46, 0xd4, 0x6d, 0xf6, 0xec, 0xa1, 0x07, 0x5f,
-	0x93, 0x87, 0xee, 0x5b, 0xb4, 0x67, 0xdf, 0x1b, 0xdf, 0x82, 0x4b, 0x2e, 0xc6, 0x36, 0x33, 0x65,
-	0x31, 0x04, 0x8f, 0xf9, 0x15, 0x09, 0xe9, 0x6b, 0x67, 0x45, 0x6f, 0x4d, 0x77, 0x2a, 0xac, 0x35,
-	0xb8, 0x76, 0xbc, 0xd7, 0x12, 0x17, 0x0d, 0xa3, 0xd5, 0x2b, 0xc7, 0x38, 0x2d, 0xe3, 0x8f, 0x12,
-	0x6a, 0x11, 0xd9, 0x43, 0xe7, 0xab, 0x16, 0x6f, 0x43, 0x49, 0x5f, 0xb5, 0x89, 0x79, 0xe7, 0xa5,
-	0x5d, 0x28, 0x20, 0x31, 0x19, 0xd4, 0x80, 0x6b, 0x79, 0x3a, 0x21, 0xe1, 0x7a, 0xd5, 0x86, 0xf9,
-	0x2c, 0x6d, 0x90, 0xbc, 0xf7, 0xac, 0x78, 0x43, 0xe7, 0xa8, 0x78, 0xc3, 0x67, 0x52, 0xbc, 0x91,
-	0xb3, 0x2b, 0xde, 0x68, 0xbe, 0xe2, 0x19, 0x7f, 0x3d, 0x14, 0x4f, 0xc1, 0xdc, 0x8a, 0x69, 0x4c,
-	0x3f, 0x77, 0x17, 0xb1, 0x75, 0x4d, 0x7a, 0x34, 0xb1, 0xae, 0xc5, 0xde, 0x1c, 0xc4, 0x7c, 0xb6,
-	0x27, 0xdb, 0x4a, 0xad, 0x6b, 0xd6, 0x20, 0x41, 0xc8, 0x3f, 0x70, 0xca, 0x75, 0x4d, 0x0e, 0x25,
-	0xd7, 0xf5, 0x57, 0xe1, 0x1b, 0xbd, 0x8c, 0x17, 0xe6, 0xc3, 0x0e, 0xf6, 0x36, 0xf0, 0xd2, 0x09,
-	0x03, 0xeb, 0x1c, 0xf0, 0x9f, 0xa3, 0x41, 0xfb, 0xa2, 0x00, 0x0f, 0x4f, 0xe0, 0x9d, 0xb8, 0x0d,
-	0xa7, 0x2b, 0x72, 0xe7, 0x1a, 0x4e, 0x97, 0x1f, 0x17, 0x45, 0xa2, 0xb0, 0xd5, 0xf0, 0x49, 0xe8,
-	0x4e, 0x7b, 0x8c, 0x0a, 0x1e, 0xe4, 0x0b, 0xa4, 0xa2, 0x47, 0x59, 0xd3, 0x83, 0x54, 0xd4, 0x18,
-	0x12, 0xca, 0xf8, 0x62, 0x2c, 0x78, 0xec, 0x15, 0x43, 0x9c, 0x21, 0xb3, 0xe9, 0x26, 0x0c, 0x09,
-	0x89, 0xa9, 0xb8, 0x21, 0x7d, 0xa5, 0xc1, 0x3b, 0xd1, 0x3d, 0x28, 0x85, 0x92, 0xb0, 0x6c, 0x3b,
-	0xe7, 0x88, 0x32, 0xae, 0x63, 0xbe, 0x55, 0xdb, 0x3e, 0x45, 0xc0, 0x37, 0xf8, 0xda, 0x02, 0xbe,
-	0x3d, 0x58, 0xcc, 0x1f, 0x53, 0x19, 0xdb, 0x1e, 0xc3, 0xcb, 0xab, 0xd9, 0xa3, 0x29, 0x73, 0xdb,
-	0xbf, 0xf9, 0x7b, 0x2a, 0xaf, 0xd9, 0x45, 0xab, 0x98, 0x60, 0xdb, 0x22, 0xae, 0x19, 0x64, 0x8e,
-	0x8d, 0x64, 0x2e, 0xc3, 0x65, 0xad, 0xad, 0x1b, 0xd4, 0xdb, 0xb2, 0x88, 0xab, 0xb3, 0xb6, 0xd0,
-	0xf7, 0xe0, 0x56, 0x96, 0xd2, 0x0b, 0xc2, 0xac, 0xbb, 0x1b, 0xde, 0x0b, 0x65, 0xa7, 0xad, 0x5f,
-	0x4f, 0xed, 0x82, 0x0d, 0xea, 0xd5, 0xba, 0xbb, 0xc1, 0x15, 0xd1, 0xaf, 0xc0, 0xd5, 0xa4, 0x40,
-	0x2d, 0xdb, 0xd6, 0xee, 0x4f, 0x57, 0x17, 0x9c, 0x28, 0xcc, 0xb9, 0xb8, 0x30, 0x57, 0x39, 0x09,
-	0x15, 0x63, 0xd6, 0xe1, 0xe2, 0x1e, 0x76, 0xb1, 0x67, 0xf9, 0xd8, 0x8e, 0x45, 0x96, 0xd0, 0x1b,
-	0xe9, 0xd9, 0x00, 0x3b, 0x1a, 0x72, 0xbe, 0x03, 0x93, 0x31, 0x47, 0x9d, 0x57, 0x12, 0x56, 0x8a,
-	0x7a, 0x6a, 0x86, 0x7e, 0xad, 0x00, 0x2b, 0x39, 0x0a, 0xd4, 0xf1, 0x08, 0xf5, 0x42, 0x35, 0x0a,
-	0xe8, 0x4e, 0xf4, 0x36, 0xcd, 0xe5, 0x2c, 0x75, 0xda, 0xe1, 0x34, 0xb5, 0x4e, 0xe9, 0x39, 0x7c,
-	0x5d, 0x56, 0x49, 0x48, 0xf7, 0x5d, 0x59, 0x37, 0x19, 0x16, 0xe9, 0x29, 0x85, 0xe5, 0x52, 0x75,
-	0x92, 0x6a, 0xfa, 0xeb, 0x35, 0x8c, 0x6d, 0x54, 0x93, 0xe9, 0xb8, 0xe9, 0xa8, 0x7c, 0xb2, 0xb7,
-	0x49, 0x5d, 0xa0, 0xa9, 0x2e, 0x86, 0x36, 0x61, 0x5e, 0xb1, 0xac, 0x39, 0xb5, 0xbb, 0x1e, 0x37,
-	0x79, 0xc2, 0xdc, 0x4f, 0x65, 0xbf, 0xaf, 0x4a, 0x0c, 0xc5, 0xc8, 0xba, 0x80, 0x17, 0x85, 0x0f,
-	0xff, 0x5d, 0x80, 0x37, 0xa2, 0x96, 0x4a, 0x2a, 0x99, 0x18, 0x53, 0x61, 0xfb, 0x7d, 0x16, 0x7d,
-	0x45, 0x0e, 0x3c, 0xc5, 0x9c, 0x03, 0x4f, 0xd6, 0x26, 0x1d, 0x38, 0x93, 0x2f, 0x19, 0xec, 0xd1,
-	0x97, 0x18, 0xff, 0x35, 0x1e, 0x44, 0xa8, 0x49, 0xbe, 0xd7, 0x68, 0xd7, 0xf5, 0xcf, 0xb1, 0x80,
-	0x77, 0x22, 0x2c, 0xbf, 0xb2, 0xf5, 0x4b, 0x49, 0x04, 0x72, 0x3c, 0x28, 0xbe, 0xb2, 0x19, 0xaa,
-	0xc1, 0x35, 0xfc, 0xaa, 0x23, 0x8a, 0x8f, 0x4d, 0x1b, 0x3b, 0xe4, 0x00, 0x7b, 0x47, 0xea, 0xcd,
-	0x4f, 0xf2, 0x9e, 0xc3, 0xf1, 0x15, 0x8d, 0xb5, 0xae, 0x90, 0xc4, 0xe3, 0x9b, 0x94, 0x41, 0xda,
-	0x59, 0x0c, 0xbd, 0x4e, 0x67, 0x31, 0xfc, 0x33, 0x75, 0x16, 0x23, 0xe7, 0xe5, 0x2c, 0x46, 0x7b,
-	0xbc, 0xf0, 0xba, 0x23, 0x43, 0x5d, 0x4b, 0x64, 0xa4, 0x77, 0x3c, 0xda, 0xc0, 0x8c, 0xe9, 0xcc,
-	0x89, 0x74, 0x00, 0x2c, 0x8b, 0x79, 0xdf, 0x10, 0x38, 0xab, 0x1c, 0x65, 0x47, 0x62, 0xa8, 0xec,
-	0x89, 0xe4, 0x61, 0x2c, 0x4f, 0xcd, 0xa1, 0xd7, 0x90, 0xe9, 0x24, 0xf7, 0x30, 0x7e, 0x7e, 0xee,
-	0x61, 0xe2, 0xf5, 0xba, 0x87, 0xd2, 0x39, 0xb9, 0x87, 0xc9, 0xd7, 0xed, 0x1e, 0x2a, 0x30, 0x27,
-	0x13, 0x4c, 0xb2, 0x76, 0x6b, 0xb6, 0x75, 0xbe, 0x24, 0xf2, 0x4b, 0xd2, 0x1b, 0xf5, 0x36, 0xa0,
-	0x94, 0xa7, 0x61, 0xe5, 0x69, 0xf1, 0xb0, 0x39, 0x15, 0x77, 0x35, 0x2c, 0xdf, 0xd7, 0xcc, 0x9c,
-	0xc1, 0xd7, 0xbc, 0x03, 0x93, 0x3a, 0x4b, 0x5a, 0x18, 0xed, 0xbc, 0xaf, 0x07, 0x94, 0x14, 0x94,
-	0x18, 0xe0, 0x24, 0x17, 0x75, 0xe1, 0x54, 0x2e, 0x0a, 0x3d, 0x86, 0xb2, 0x22, 0x26, 0x55, 0x37,
-	0x4a, 0x6a, 0x36, 0x93, 0xd4, 0x45, 0x09, 0x2f, 0xd4, 0x34, 0xe2, 0xeb, 0xfe, 0xaa, 0x00, 0x8b,
-	0x51, 0x9b, 0x2f, 0xb8, 0x3d, 0x43, 0x68, 0x9e, 0x65, 0x36, 0x8a, 0x67, 0x72, 0x5f, 0x03, 0xbd,
-	0xba, 0xaf, 0x3f, 0x2c, 0x06, 0xac, 0xd4, 0x3d, 0xcb, 0x65, 0x84, 0x1b, 0x8d, 0x33, 0xb0, 0x72,
-	0x96, 0x3a, 0xbe, 0x0d, 0xe0, 0x61, 0x8f, 0x69, 0xf9, 0xbe, 0x47, 0x76, 0xbb, 0x3e, 0x66, 0xd1,
-	0xe7, 0xad, 0x70, 0x76, 0xab, 0x41, 0x7f, 0x34, 0x67, 0x21, 0x6c, 0x45, 0xdf, 0x01, 0x88, 0xd0,
-	0x18, 0xec, 0x8d, 0x46, 0x04, 0x25, 0x56, 0xe0, 0x21, 0xb3, 0x7d, 0x82, 0xdf, 0xc6, 0x8f, 0x8a,
-	0xf0, 0x66, 0xbc, 0x02, 0x43, 0x3e, 0x8f, 0x76, 0xdb, 0xbb, 0xd8, 0x7b, 0x41, 0x18, 0xd9, 0x25,
-	0x0e, 0xe9, 0xab, 0x04, 0xf2, 0x1e, 0x5c, 0x54, 0xa2, 0x13, 0xb4, 0x98, 0x79, 0xc0, 0xa9, 0xa9,
-	0x12, 0xb9, 0xd1, 0xea, 0x05, 0x16, 0x8e, 0xc3, 0x5e, 0xc8, 0x2e, 0xb4, 0x0e, 0xf3, 0x19, 0x29,
-	0x83, 0x3e, 0x35, 0xd9, 0x3e, 0xe9, 0xa4, 0xf3, 0x04, 0x2f, 0x26, 0xf2, 0x04, 0xeb, 0xb4, 0xb6,
-	0x4f, 0x3a, 0xa8, 0x0e, 0x46, 0x06, 0x15, 0xcb, 0xf1, 0xb0, 0x65, 0x1f, 0x99, 0x0d, 0xea, 0x79,
-	0xb8, 0xe1, 0x2b, 0xe7, 0x1e, 0xa1, 0xb6, 0x90, 0xa0, 0xb6, 0x2a, 0x11, 0xd6, 0x24, 0x3c, 0xba,
-	0x0c, 0x23, 0x84, 0xc9, 0xdd, 0x35, 0x2c, 0x38, 0x18, 0x26, 0x4c, 0x6f, 0x1f, 0x5d, 0x60, 0xa9,
-	0x1e, 0x98, 0xb1, 0x5f, 0xd7, 0xdf, 0x68, 0xa9, 0xe3, 0x57, 0xfd, 0xc4, 0x4c, 0x4b, 0x30, 0xa6,
-	0x1e, 0x7b, 0xb3, 0x82, 0xa6, 0x51, 0xd9, 0x57, 0xb1, 0xd5, 0xa4, 0x76, 0xa9, 0x7d, 0xa4, 0xc4,
-	0x3a, 0x4c, 0xd8, 0x43, 0x6a, 0x1f, 0xa1, 0x39, 0x59, 0x41, 0xe9, 0xe3, 0x57, 0xbe, 0x7a, 0x2a,
-	0x1e, 0x71, 0xf1, 0x21, 0x9f, 0x4d, 0x50, 0xeb, 0xcf, 0xbb, 0xa4, 0x3a, 0x88, 0x5a, 0x7f, 0xfc,
-	0xca, 0x37, 0xfe, 0xbd, 0x18, 0x24, 0x1e, 0x05, 0xac, 0x70, 0x72, 0x32, 0x7d, 0xe9, 0x1c, 0xf9,
-	0xf8, 0x08, 0x66, 0xf9, 0x74, 0x3b, 0x96, 0x67, 0xed, 0x79, 0x56, 0xa7, 0x65, 0xaa, 0x1c, 0xaa,
-	0xec, 0x8d, 0x8f, 0x5c, 0x7c, 0xb8, 0xa3, 0x41, 0xe5, 0xdc, 0xd0, 0x7d, 0x98, 0xe2, 0x14, 0x1c,
-	0xc2, 0x7c, 0x8d, 0x9c, 0x1d, 0x02, 0x96, 0x5c, 0x7c, 0xf8, 0x94, 0x30, 0x5f, 0xe1, 0x7d, 0x24,
-	0x4d, 0x4e, 0x6a, 0xe4, 0xec, 0xd8, 0x0f, 0x89, 0x74, 0xa2, 0xd4, 0xc8, 0x9c, 0x42, 0x74, 0xe4,
-	0xec, 0x13, 0x35, 0xdf, 0xd7, 0xe1, 0xc8, 0xc6, 0x9f, 0x17, 0xe0, 0x5e, 0x52, 0xd8, 0x42, 0xfb,
-	0xe4, 0xf3, 0x1b, 0x7b, 0x6a, 0x1d, 0x61, 0xef, 0x25, 0xf1, 0x5b, 0x7d, 0xa7, 0x22, 0x2c, 0xc1,
-	0xb0, 0x94, 0x70, 0xce, 0x93, 0x9a, 0xea, 0x45, 0x57, 0xa2, 0xa5, 0x59, 0x52, 0x8f, 0x82, 0x62,
-	0xab, 0x63, 0x4b, 0x8e, 0x8d, 0xbf, 0x2c, 0xc2, 0x75, 0x35, 0xb6, 0x0c, 0xd5, 0x22, 0x29, 0x16,
-	0x3f, 0xb3, 0xfa, 0xdb, 0x48, 0xe1, 0x46, 0x5e, 0xfd, 0x6d, 0x58, 0xa8, 0xa1, 0x97, 0x2b, 0x8a,
-	0x94, 0x5f, 0x7f, 0xbb, 0x15, 0xe2, 0xc9, 0x47, 0x56, 0x51, 0x3c, 0xe1, 0x61, 0x9b, 0xaa, 0x8c,
-	0x1f, 0x90, 0x46, 0xa0, 0x8a, 0x6d, 0x8a, 0xde, 0x83, 0x69, 0xdf, 0xf2, 0xf6, 0xb0, 0x6f, 0x8a,
-	0xef, 0x5c, 0xf9, 0x47, 0x1d, 0x5d, 0x5f, 0x9a, 0x4a, 0x9f, 0x91, 0x70, 0x3b, 0x1a, 0xcc, 0xf8,
-	0x97, 0x42, 0xfc, 0xb3, 0x05, 0x3b, 0x1e, 0x69, 0x13, 0x9f, 0x1c, 0xe0, 0x1a, 0xf6, 0xcf, 0x90,
-	0x89, 0x72, 0x6a, 0x69, 0xc6, 0xf6, 0xeb, 0x40, 0xfe, 0x7e, 0xed, 0x53, 0x88, 0xc6, 0xef, 0x87,
-	0xa1, 0x86, 0x7a, 0x00, 0xb1, 0x3a, 0x1d, 0xe7, 0xa8, 0x6f, 0x16, 0x9f, 0xc1, 0x15, 0x4f, 0x92,
-	0x30, 0xad, 0x46, 0xa3, 0xdb, 0xee, 0x3a, 0x22, 0xde, 0x56, 0xb7, 0x47, 0x39, 0x6a, 0x3f, 0xa7,
-	0x50, 0x56, 0x43, 0x0c, 0x45, 0xdd, 0xf8, 0xbb, 0x02, 0x94, 0x13, 0xee, 0x90, 0x76, 0x5d, 0xdb,
-	0xf7, 0xac, 0xc6, 0x7e, 0x7f, 0x29, 0xbe, 0x85, 0xdc, 0x14, 0xdf, 0x15, 0x00, 0x16, 0x10, 0xcf,
-	0x79, 0x90, 0x89, 0x40, 0xf0, 0x98, 0x53, 0x14, 0x8e, 0x87, 0x38, 0xc7, 0xd4, 0x8d, 0x07, 0x40,
-	0xc6, 0x4f, 0x06, 0x82, 0x94, 0xc7, 0xb0, 0x55, 0x87, 0x44, 0xa7, 0xe1, 0x69, 0x05, 0x4a, 0xe1,
-	0xd8, 0x99, 0x2f, 0xb6, 0x13, 0x61, 0x7f, 0xc5, 0x4e, 0xd4, 0x95, 0xc6, 0xc2, 0x0e, 0xf4, 0x24,
-	0x6e, 0x54, 0x0a, 0x22, 0x51, 0x36, 0x92, 0xa1, 0x9b, 0x9a, 0x68, 0x6e, 0x59, 0xe9, 0x93, 0x78,
-	0x59, 0xe9, 0xe9, 0x29, 0x05, 0x55, 0xa5, 0x7f, 0x9a, 0xaa, 0x2a, 0x4d, 0x96, 0x8d, 0x16, 0xd2,
-	0x65, 0xa3, 0xbf, 0x08, 0x10, 0xa9, 0x18, 0x2d, 0x8a, 0x5a, 0xb4, 0x05, 0x51, 0x31, 0x1a, 0x0c,
-	0x1c, 0xf9, 0x57, 0x14, 0x8d, 0x8e, 0xb5, 0x83, 0x82, 0xd1, 0x27, 0x70, 0xa9, 0x8d, 0x6d, 0x62,
-	0x99, 0x9e, 0x5e, 0x3d, 0x9d, 0xa5, 0x29, 0x1d, 0x1f, 0xd2, 0x85, 0xe5, 0x56, 0x34, 0x25, 0x8e,
-	0x63, 0x04, 0xbf, 0x65, 0xe2, 0xa6, 0xf1, 0x7b, 0xc5, 0xf8, 0x57, 0x7a, 0x64, 0x3c, 0x2c, 0xf7,
-	0x55, 0xf8, 0x69, 0x9c, 0xd7, 0x7e, 0x6b, 0xf3, 0x19, 0x5c, 0xe1, 0xc6, 0x25, 0x28, 0x92, 0xa6,
-	0xba, 0x24, 0x44, 0x94, 0x8e, 0xc4, 0x2a, 0xa4, 0x2a, 0xf6, 0x8e, 0x06, 0x8b, 0x17, 0x8e, 0x94,
-	0x49, 0x4e, 0x0f, 0xda, 0x80, 0xb2, 0x3c, 0xba, 0x11, 0xfd, 0x21, 0xa3, 0xe4, 0xf3, 0x4d, 0x2a,
-	0x5f, 0x50, 0x1c, 0xd6, 0x88, 0xfa, 0xac, 0x91, 0xfe, 0x8a, 0xc9, 0xdf, 0x73, 0x2f, 0xd5, 0xb2,
-	0x3c, 0x9f, 0xb7, 0xea, 0xaf, 0xd0, 0xc4, 0xd9, 0x46, 0xef, 0xc4, 0x45, 0x73, 0x5d, 0x24, 0xc3,
-	0xe4, 0xc3, 0x6b, 0x31, 0x7d, 0x04, 0x97, 0x82, 0xbc, 0x47, 0x07, 0xef, 0x61, 0xd7, 0x36, 0x69,
-	0xb3, 0xc9, 0xb0, 0xce, 0xa2, 0x02, 0x31, 0xc1, 0x1d, 0x4a, 0x5c, 0xbf, 0x3a, 0xab, 0x21, 0x9f,
-	0x0a, 0xc0, 0x6d, 0x01, 0x87, 0xde, 0x87, 0xd9, 0x24, 0x05, 0x91, 0xab, 0x3d, 0x90, 0xcc, 0xd5,
-	0x46, 0x71, 0x74, 0xde, 0xc6, 0x87, 0xb7, 0xec, 0xef, 0x77, 0x19, 0x37, 0x7a, 0xf1, 0xe1, 0x07,
-	0xd3, 0xc3, 0x6b, 0xc8, 0xe4, 0xf0, 0x49, 0x0a, 0x62, 0xf8, 0xa1, 0xd4, 0xf0, 0x71, 0x74, 0xde,
-	0x66, 0xfc, 0x98, 0x6b, 0x9d, 0xe5, 0x1e, 0x58, 0xe1, 0x0d, 0x8d, 0x38, 0x94, 0x34, 0xa9, 0xd7,
-	0x0e, 0xed, 0x79, 0x03, 0x90, 0x1f, 0xb6, 0x9a, 0x2d, 0xec, 0x84, 0x72, 0xfe, 0x56, 0x20, 0xe7,
-	0x35, 0xea, 0x28, 0x12, 0x59, 0xb4, 0x9e, 0x08, 0x24, 0x2d, 0xfc, 0x19, 0x3f, 0xd9, 0x83, 0x1e,
-	0xeb, 0x3c, 0x36, 0x7d, 0xd0, 0x67, 0xbd, 0xbe, 0x62, 0xca, 0xc4, 0x36, 0xd5, 0xc9, 0xd0, 0xdb,
-	0x30, 0x6d, 0xc9, 0xbb, 0x29, 0x7d, 0x53, 0x9b, 0x71, 0x19, 0x39, 0x29, 0x41, 0x1e, 0xca, 0x0b,
-	0x5b, 0x86, 0x5e, 0x80, 0x41, 0x3d, 0xb2, 0x47, 0x5c, 0xcb, 0x71, 0x8e, 0x4c, 0xfd, 0x95, 0xc5,
-	0xe0, 0x63, 0x7c, 0x66, 0xb7, 0xcb, 0xc9, 0xa4, 0x0b, 0x9d, 0x42, 0x24, 0xfd, 0x2d, 0x45, 0xbd,
-	0x59, 0x9f, 0x73, 0x0c, 0xee, 0x8f, 0x96, 0x56, 0xc5, 0x50, 0x8f, 0x5b, 0x94, 0xf9, 0xc7, 0x49,
-	0xf9, 0xc3, 0xb8, 0x02, 0x2f, 0x0b, 0xc1, 0x6a, 0x6a, 0xc7, 0x20, 0x6a, 0x4d, 0x6e, 0xc2, 0xed,
-	0xae, 0x1b, 0xca, 0xd5, 0x36, 0x63, 0x52, 0x10, 0x0c, 0x88, 0xdd, 0xb7, 0xc7, 0x27, 0xa2, 0x85,
-	0x1b, 0xe1, 0x65, 0x29, 0x86, 0xbd, 0x1a, 0xca, 0x47, 0x70, 0xb2, 0x41, 0x3d, 0xc1, 0x01, 0x33,
-	0x6c, 0xf8, 0xda, 0x3a, 0x6d, 0x74, 0xf9, 0x6e, 0x3f, 0x8e, 0x9d, 0x0f, 0x00, 0xd9, 0x0a, 0x2c,
-	0xbc, 0x2e, 0x54, 0xbc, 0xa5, 0x2e, 0x02, 0xec, 0x24, 0x41, 0xe3, 0x37, 0x0b, 0x70, 0xeb, 0x19,
-	0xf5, 0xf1, 0x97, 0x43, 0x3b, 0x8d, 0x3f, 0x2e, 0xc0, 0xf2, 0x76, 0xd7, 0x77, 0x88, 0xdb, 0xc3,
-	0x8c, 0x76, 0xe0, 0x6a, 0x43, 0x00, 0x45, 0xee, 0x49, 0x23, 0x24, 0x73, 0x84, 0x30, 0xdf, 0xc8,
-	0x25, 0x8c, 0xde, 0x83, 0x19, 0xe6, 0x53, 0xcf, 0xda, 0x93, 0x9a, 0xa8, 0xa3, 0xc1, 0x42, 0xd6,
-	0x2d, 0x86, 0x84, 0xe3, 0x8b, 0xc6, 0x1b, 0x8c, 0x2f, 0x8a, 0xf0, 0x4d, 0xe1, 0x51, 0x4e, 0x21,
-	0x01, 0xb4, 0xa2, 0x3f, 0x8a, 0x23, 0x8e, 0xde, 0xaa, 0x12, 0x26, 0x31, 0x12, 0x84, 0xa5, 0x6d,
-	0x89, 0x6b, 0x16, 0x9f, 0x9a, 0xd8, 0x26, 0x7e, 0xde, 0x04, 0x35, 0x9a, 0xfa, 0xf8, 0xea, 0x47,
-	0xba, 0xf2, 0xb1, 0x11, 0x4c, 0xd0, 0x24, 0xcc, 0xd4, 0xd5, 0x53, 0x91, 0xaf, 0xc3, 0xc8, 0x82,
-	0xc7, 0x90, 0x8f, 0x0a, 0x93, 0x85, 0x51, 0x8f, 0xe0, 0x7a, 0x60, 0x81, 0x3b, 0x1e, 0x69, 0x5b,
-	0x5e, 0x64, 0x0b, 0xeb, 0x64, 0xf6, 0xc2, 0x72, 0xa9, 0x7a, 0x55, 0x83, 0xed, 0x48, 0x28, 0xbd,
-	0x67, 0x45, 0x6e, 0xbb, 0xf1, 0x5b, 0x05, 0x78, 0xb3, 0x07, 0x49, 0xf5, 0xa6, 0x77, 0x3c, 0x82,
-	0x38, 0xa5, 0xd4, 0xb3, 0xf4, 0xee, 0x07, 0x45, 0x30, 0x94, 0xde, 0xfd, 0xbc, 0xe7, 0x82, 0xea,
-	0x70, 0xb3, 0x61, 0xb9, 0x66, 0xcb, 0x3a, 0xc0, 0xa6, 0xa8, 0x13, 0x31, 0x89, 0x1b, 0xca, 0x39,
-	0x38, 0x80, 0x8b, 0x65, 0x0f, 0xd6, 0xec, 0x7a, 0xc3, 0x72, 0x9f, 0x58, 0x07, 0xb8, 0x2a, 0x6a,
-	0xab, 0x5d, 0x2d, 0xf1, 0xe0, 0x0c, 0x8e, 0x9e, 0xc0, 0x5c, 0xb8, 0x4b, 0x24, 0x59, 0xcb, 0xb6,
-	0x3d, 0xcc, 0x58, 0x10, 0x45, 0x4d, 0xe8, 0x4f, 0x4b, 0xf0, 0xd6, 0xea, 0xe5, 0x00, 0x5c, 0xd0,
-	0x5c, 0xd5, 0xc0, 0x6f, 0x7e, 0x00, 0x33, 0xab, 0x2e, 0x69, 0x8b, 0xf0, 0x43, 0xbf, 0xf1, 0x89,
-	0xa2, 0xf7, 0x2a, 0x76, 0x2c, 0x7e, 0x16, 0xab, 0xd3, 0x9a, 0x6f, 0x79, 0xfe, 0x74, 0x01, 0x21,
-	0x98, 0x8c, 0xb4, 0x3e, 0x72, 0xed, 0xe9, 0xe2, 0xc3, 0xa5, 0x4f, 0x6e, 0xee, 0x11, 0xbf, 0xd5,
-	0xdd, 0x5d, 0x69, 0xd0, 0xf6, 0xdd, 0xcf, 0x49, 0x7b, 0xd7, 0xda, 0xb5, 0xe8, 0x5d, 0x9b, 0x36,
-	0x1a, 0xd4, 0x3d, 0xb8, 0x4b, 0x5e, 0x52, 0x6f, 0xff, 0xee, 0xe6, 0xb3, 0xff, 0x0b, 0x00, 0x00,
-	0xff, 0xff, 0x38, 0x9a, 0xab, 0xd8, 0xcd, 0x59, 0x00, 0x00,
+	// 2982 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xd4, 0x5a, 0x4b, 0x6c, 0x23, 0xc7,
+	0xd1, 0xf6, 0xf0, 0x21, 0x89, 0x25, 0x51, 0x92, 0x5b, 0x5a, 0x2d, 0x57, 0x5e, 0x7b, 0xe5, 0xf1,
+	0x7a, 0x97, 0x7e, 0x71, 0xed, 0x5d, 0xbf, 0x20, 0xfc, 0xf8, 0x61, 0xad, 0x64, 0x7b, 0x09, 0xad,
+	0x1e, 0x18, 0xd2, 0xfe, 0x81, 0x1f, 0x3f, 0x30, 0x68, 0x72, 0x5a, 0x64, 0xff, 0x3b, 0x9c, 0x26,
+	0xa6, 0x87, 0xe2, 0xca, 0xf7, 0x20, 0x40, 0x12, 0xe4, 0x98, 0x5b, 0x2e, 0x0e, 0xe0, 0x00, 0x39,
+	0xe4, 0x96, 0x20, 0x08, 0x0c, 0xe4, 0x90, 0x4b, 0x4e, 0x71, 0x6e, 0x41, 0x0e, 0x49, 0x10, 0x04,
+	0x41, 0x00, 0x9f, 0x83, 0x04, 0xc8, 0x21, 0x08, 0xba, 0x7b, 0x9e, 0xe4, 0x0c, 0xf5, 0x32, 0x8d,
+	0xcd, 0x89, 0xec, 0xae, 0xaf, 0xab, 0xab, 0xab, 0xaa, 0xab, 0xbb, 0xab, 0x06, 0xae, 0xee, 0xee,
+	0x6f, 0xb3, 0x5e, 0x0f, 0x3b, 0xd6, 0x96, 0xdb, 0xee, 0xd2, 0x63, 0xc2, 0x6b, 0x7d, 0x97, 0x79,
+	0x0c, 0xe5, 0x76, 0xf7, 0xd7, 0x9f, 0x6e, 0x36, 0x0e, 0xf7, 0x08, 0xe7, 0xb8, 0x13, 0x74, 0x8b,
+	0xae, 0xdd, 0x24, 0x52, 0x74, 0x35, 0xc6, 0xbb, 0x76, 0x46, 0xba, 0x96, 0x77, 0xf7, 0x93, 0x3d,
+	0xfa, 0xef, 0xf2, 0xb0, 0xfe, 0x51, 0xbd, 0xe1, 0x61, 0x8f, 0xf8, 0x22, 0x7c, 0xe8, 0xb2, 0x41,
+	0xdf, 0x47, 0xa1, 0x1a, 0x14, 0xf9, 0xa0, 0x4f, 0xdc, 0x8a, 0xb6, 0x91, 0xab, 0xce, 0xdf, 0xad,
+	0xd4, 0x9a, 0x8d, 0xdd, 0x5a, 0x0a, 0xd0, 0x50, 0x30, 0x54, 0x85, 0xd9, 0x01, 0x95, 0xdc, 0x2a,
+	0x39, 0x39, 0x62, 0xb1, 0xd6, 0x6c, 0x1c, 0xd6, 0x0c, 0x72, 0x44, 0x5c, 0xe2, 0xb4, 0x89, 0x11,
+	0x90, 0xd1, 0x3a, 0xcc, 0xf5, 0x5d, 0xd6, 0x27, 0xae, 0x77, 0x52, 0xc9, 0x6f, 0xe4, 0xaa, 0x25,
+	0x23, 0x6c, 0xa3, 0x4d, 0x58, 0xe6, 0x36, 0xb5, 0xc8, 0x3e, 0xb3, 0x08, 0x6f, 0xb2, 0xf7, 0x2d,
+	0xea, 0x55, 0x0a, 0x1b, 0xf9, 0x14, 0x76, 0x63, 0x38, 0xf4, 0x00, 0xae, 0xf6, 0x30, 0xf7, 0x88,
+	0xdb, 0x88, 0x51, 0xb6, 0xfa, 0x7d, 0xfb, 0xa4, 0x52, 0x4c, 0x65, 0x91, 0x05, 0x47, 0x6f, 0xc0,
+	0xa2, 0xd7, 0x1d, 0xf4, 0x5a, 0x0e, 0xa6, 0x76, 0x83, 0x7e, 0x42, 0x78, 0x65, 0x46, 0x32, 0x28,
+	0x49, 0x06, 0xa2, 0xc7, 0x18, 0x01, 0xa0, 0xff, 0x06, 0xc4, 0x89, 0x4d, 0xda, 0x1e, 0xb1, 0x22,
+	0x7e, 0x95, 0xd9, 0xd4, 0x79, 0x53, 0x90, 0xe8, 0x21, 0x5c, 0x73, 0x09, 0xf7, 0x98, 0x4b, 0x1a,
+	0xe3, 0x6c, 0xe6, 0x52, 0xd9, 0x64, 0x0f, 0xd0, 0x3f, 0xcb, 0x81, 0xee, 0xdb, 0x4a, 0xf6, 0xd6,
+	0x1d, 0x4e, 0x5c, 0x6f, 0xc7, 0xc5, 0x43, 0xdc, 0xb2, 0x09, 0x0f, 0x6c, 0xfc, 0x52, 0xd2, 0xc6,
+	0x2b, 0x71, 0x1b, 0x8f, 0x98, 0xf7, 0x55, 0x28, 0x85, 0x0a, 0xcf, 0x30, 0x70, 0x04, 0x10, 0x68,
+	0x2b, 0x98, 0xac, 0x92, 0x4f, 0x95, 0x3e, 0x02, 0xa0, 0x0a, 0xcc, 0x1e, 0x31, 0x77, 0xc7, 0xc5,
+	0x9d, 0x4a, 0x61, 0x43, 0xab, 0xce, 0x19, 0x41, 0x53, 0x50, 0xb0, 0x57, 0x77, 0x2c, 0xf2, 0xb8,
+	0x52, 0xdc, 0xd0, 0xaa, 0x45, 0x23, 0x68, 0xa2, 0xf7, 0xe1, 0xc6, 0x80, 0x13, 0x93, 0xb5, 0xfe,
+	0x9f, 0xb4, 0x3d, 0xb3, 0x6f, 0xe3, 0x36, 0xe9, 0x32, 0xdb, 0x22, 0xae, 0xd9, 0x21, 0xac, 0x47,
+	0x3c, 0xf7, 0xa4, 0x32, 0xb3, 0x91, 0xab, 0xce, 0x19, 0xd7, 0x07, 0x9c, 0x1c, 0x48, 0xd4, 0x61,
+	0x04, 0xfa, 0xd0, 0xc7, 0xe8, 0xff, 0xd2, 0xe0, 0xa5, 0xb8, 0xa2, 0x1a, 0x24, 0x0e, 0xe3, 0x1f,
+	0x30, 0xb7, 0x89, 0x3b, 0x17, 0xd1, 0xd7, 0x4d, 0x28, 0x4a, 0x75, 0x64, 0xe8, 0x4a, 0x11, 0x05,
+	0x8a, 0x3a, 0x47, 0x2c, 0x4b, 0x47, 0x8a, 0x88, 0x10, 0x14, 0x3c, 0xdc, 0xe1, 0x72, 0x23, 0x94,
+	0x0c, 0xf9, 0x1f, 0xbd, 0x02, 0x25, 0x66, 0x5b, 0xa6, 0x1a, 0x3d, 0x93, 0x3a, 0x7a, 0x8e, 0xd9,
+	0x56, 0x5d, 0x32, 0xb8, 0x06, 0xe2, 0xbf, 0x29, 0x99, 0x14, 0x25, 0x93, 0x59, 0x66, 0x5b, 0x62,
+	0x65, 0xfa, 0x17, 0x79, 0x78, 0x3e, 0xae, 0x00, 0x83, 0xf4, 0xd8, 0x31, 0x09, 0x3c, 0x65, 0xea,
+	0x8e, 0xf2, 0x2e, 0x2c, 0x71, 0xe6, 0x7a, 0xc4, 0xda, 0x39, 0xc5, 0x5d, 0x46, 0x61, 0xe8, 0x1d,
+	0x58, 0x0a, 0x3c, 0xa8, 0xee, 0x58, 0xb4, 0x4d, 0x84, 0x7e, 0xc4, 0x6c, 0x65, 0x39, 0x52, 0x7a,
+	0x49, 0x83, 0x78, 0xc6, 0x28, 0x0a, 0x55, 0x61, 0x29, 0xe6, 0x2e, 0xcd, 0x48, 0x27, 0xa3, 0xdd,
+	0xa8, 0x05, 0xb7, 0x84, 0x7e, 0xcd, 0x01, 0xa7, 0x4e, 0xe7, 0x14, 0x57, 0xd3, 0x52, 0x64, 0xd6,
+	0xc5, 0xe8, 0x8f, 0xc4, 0xe0, 0x4c, 0x07, 0x44, 0x87, 0xf0, 0xa2, 0x45, 0x2d, 0xb3, 0x87, 0xbd,
+	0x76, 0x77, 0xe2, 0x14, 0xb3, 0x72, 0x67, 0x3c, 0x6f, 0x51, 0x6b, 0x4f, 0x60, 0xb3, 0x5d, 0xfa,
+	0xdb, 0x39, 0x78, 0x31, 0x6e, 0xd1, 0xbd, 0x98, 0x3d, 0xff, 0xf7, 0xc0, 0xb5, 0x88, 0x3b, 0x75,
+	0xab, 0x9e, 0xcd, 0xad, 0x37, 0xe1, 0x69, 0xe1, 0x95, 0x4c, 0x88, 0x44, 0x02, 0x57, 0x4e, 0x0f,
+	0xf6, 0x4b, 0xcc, 0xb6, 0x0e, 0x14, 0x4e, 0x79, 0xf4, 0x6d, 0x98, 0xa5, 0xc2, 0xc2, 0x44, 0x18,
+	0x2f, 0xc5, 0xea, 0x01, 0x55, 0xff, 0x9b, 0x96, 0xf4, 0xef, 0x43, 0x11, 0xf2, 0x2f, 0x13, 0x08,
+	0x5f, 0x86, 0xb9, 0xb6, 0x22, 0xf0, 0x4a, 0x2e, 0x7d, 0xdf, 0x05, 0xf4, 0x28, 0x08, 0xe4, 0x27,
+	0x05, 0x81, 0x44, 0xb0, 0x2c, 0x9c, 0x16, 0x2c, 0x6f, 0x02, 0x74, 0x31, 0x37, 0x5b, 0x03, 0x6a,
+	0x5b, 0x5c, 0x46, 0xc5, 0xb9, 0xcd, 0xe2, 0x11, 0xb6, 0x39, 0x31, 0x4a, 0x5d, 0xcc, 0xef, 0xcb,
+	0x7e, 0xfd, 0xd7, 0xf9, 0xe4, 0x01, 0x20, 0xcc, 0x22, 0x62, 0x9b, 0x7f, 0xce, 0x4e, 0xdd, 0x03,
+	0x26, 0x9d, 0xf1, 0x87, 0x32, 0x1a, 0x7d, 0x8c, 0xed, 0x01, 0xf1, 0xb7, 0xec, 0x9b, 0xb5, 0xdd,
+	0xfd, 0xda, 0xe9, 0xe2, 0xd6, 0x82, 0xb6, 0x1c, 0x6b, 0x84, 0x5c, 0x04, 0x47, 0x87, 0x0c, 0x15,
+	0xc7, 0xe2, 0x65, 0x38, 0x06, 0x5c, 0xd6, 0xbf, 0xab, 0x41, 0x39, 0x41, 0x43, 0xd7, 0xa1, 0xd4,
+	0x62, 0xcc, 0x56, 0x93, 0x68, 0x72, 0x33, 0x46, 0x1d, 0xa8, 0x0a, 0x45, 0xda, 0xc3, 0x1d, 0x61,
+	0x69, 0x11, 0x09, 0x90, 0xd4, 0xcc, 0x0e, 0xf6, 0x70, 0xdc, 0xeb, 0x05, 0x00, 0xbd, 0x05, 0x8b,
+	0x16, 0xf6, 0x70, 0x0b, 0x73, 0x62, 0xaa, 0x21, 0xb9, 0xd4, 0xe0, 0x51, 0x0e, 0x50, 0x75, 0x01,
+	0xd2, 0xff, 0x90, 0x87, 0x67, 0x46, 0x0e, 0x2a, 0x39, 0xf3, 0xd4, 0x8e, 0xa6, 0x49, 0x16, 0xac,
+	0x8f, 0x59, 0xf0, 0xb5, 0x51, 0x7d, 0x8f, 0xc8, 0x97, 0x69, 0xba, 0xfa, 0x98, 0xe9, 0xce, 0xcb,
+	0x2a, 0x18, 0x8e, 0xde, 0x84, 0x32, 0xb3, 0xfd, 0x21, 0xde, 0x89, 0x4d, 0xe4, 0x05, 0x20, 0x45,
+	0xb1, 0x09, 0xd0, 0xfa, 0x37, 0xce, 0x69, 0xe9, 0xd7, 0x61, 0x5e, 0x85, 0x69, 0x45, 0x4f, 0x37,
+	0x5e, 0x1c, 0x82, 0x6e, 0x42, 0xe1, 0x88, 0xda, 0xb6, 0xef, 0x1a, 0xcb, 0xb5, 0x66, 0x63, 0xa7,
+	0xf6, 0x01, 0xb5, 0xed, 0xc0, 0x2c, 0x92, 0xaa, 0xff, 0x56, 0x1b, 0x33, 0xb0, 0x14, 0x70, 0x6a,
+	0x06, 0xbe, 0x03, 0xf3, 0xf2, 0x8f, 0xc9, 0xa5, 0xb2, 0xd2, 0x43, 0x14, 0xf0, 0x50, 0x53, 0xe8,
+	0x6d, 0x10, 0x61, 0xd8, 0x8c, 0x0f, 0x2a, 0x9c, 0x41, 0xc3, 0xfa, 0x8f, 0x35, 0xa8, 0x06, 0x2b,
+	0xeb, 0xb2, 0xe1, 0x1e, 0x76, 0x1f, 0x1d, 0x0c, 0xbc, 0x83, 0xa3, 0xc6, 0x89, 0xd3, 0x36, 0x48,
+	0x9b, 0xb9, 0x16, 0x75, 0x3a, 0x17, 0x58, 0xa6, 0x0e, 0x05, 0xde, 0x65, 0xc3, 0x8c, 0x55, 0x4a,
+	0x1a, 0xba, 0x27, 0x7d, 0xc2, 0x74, 0x83, 0x69, 0x7c, 0x23, 0x8c, 0x82, 0x17, 0x98, 0x6d, 0x85,
+	0xa2, 0xe8, 0x3f, 0x8c, 0x9d, 0x19, 0x5d, 0x36, 0x54, 0x57, 0xa2, 0x27, 0x52, 0xd2, 0x1f, 0xc4,
+	0xee, 0xf9, 0x52, 0x52, 0x79, 0x75, 0x98, 0xb6, 0xa8, 0xdb, 0x70, 0xc5, 0x55, 0x33, 0xf5, 0x88,
+	0xe3, 0x25, 0x44, 0x4e, 0x1b, 0xb4, 0x1a, 0x03, 0x87, 0xa2, 0xa1, 0x37, 0x61, 0x2d, 0xce, 0x84,
+	0x7b, 0xd8, 0xf5, 0x4c, 0x8f, 0xf6, 0x94, 0x53, 0x69, 0x89, 0x51, 0x0d, 0x41, 0x6c, 0xd2, 0x1e,
+	0x19, 0xd7, 0x52, 0xf1, 0x0c, 0x5a, 0xfa, 0x63, 0x1e, 0xd6, 0x63, 0x5a, 0xba, 0x44, 0xe8, 0x3c,
+	0x8b, 0x76, 0x26, 0x07, 0x4e, 0x79, 0x6b, 0x3f, 0x8e, 0x45, 0xce, 0x57, 0xe3, 0xe1, 0x6e, 0x5c,
+	0xba, 0x09, 0x81, 0xb3, 0xe4, 0x90, 0xa1, 0xcf, 0xaa, 0x78, 0x11, 0x56, 0xe1, 0x61, 0xf7, 0x8b,
+	0xb1, 0x10, 0xf8, 0x2c, 0x80, 0x88, 0x78, 0x3e, 0xf7, 0xb1, 0x18, 0xf8, 0x3c, 0x2c, 0x58, 0x6c,
+	0xd0, 0xb2, 0x89, 0x0f, 0x10, 0x41, 0x50, 0x33, 0xe6, 0x55, 0x9f, 0x82, 0xdc, 0x87, 0x25, 0xa1,
+	0x0d, 0xb3, 0xc7, 0xac, 0x00, 0x25, 0x1c, 0x7a, 0xf1, 0xee, 0xba, 0x10, 0x52, 0x48, 0x17, 0x48,
+	0xb5, 0xbb, 0x2f, 0xa3, 0x02, 0xb3, 0x88, 0x51, 0xe6, 0xfe, 0xbf, 0xe0, 0x50, 0x05, 0x4e, 0x3f,
+	0x21, 0xa1, 0xba, 0xb4, 0xe4, 0x13, 0xbc, 0x24, 0x88, 0x12, 0xa9, 0x7f, 0x9a, 0x87, 0x67, 0x63,
+	0x0b, 0x57, 0xcf, 0x5d, 0x19, 0x82, 0xa6, 0x64, 0xe4, 0xc4, 0x6d, 0x28, 0x7f, 0xda, 0x6d, 0xe8,
+	0x39, 0x80, 0x76, 0x97, 0x8a, 0xd7, 0x98, 0x78, 0xc9, 0x0a, 0xbb, 0x97, 0x8d, 0x58, 0x8f, 0x78,
+	0x05, 0xf5, 0xb1, 0x2b, 0x1c, 0x3d, 0xe4, 0x59, 0x4c, 0xe5, 0x39, 0x0a, 0x43, 0x0f, 0xa1, 0xf0,
+	0x88, 0x3a, 0x96, 0x7c, 0x80, 0x2c, 0xde, 0xbd, 0x35, 0xe2, 0x00, 0xe3, 0x7a, 0xa8, 0xed, 0x52,
+	0xc7, 0xda, 0x5c, 0x7e, 0x24, 0x7e, 0x62, 0x54, 0x43, 0x72, 0xd1, 0xff, 0x0f, 0x0a, 0x82, 0x80,
+	0x56, 0x61, 0x0c, 0xb1, 0xfc, 0x14, 0xba, 0x0e, 0x95, 0xd1, 0xde, 0x0f, 0x98, 0x2b, 0x2f, 0xd4,
+	0xcb, 0x1a, 0xda, 0x80, 0xeb, 0x29, 0xd4, 0x9d, 0x41, 0xdf, 0xa6, 0x6d, 0xec, 0x91, 0xe5, 0x9c,
+	0xfe, 0xcf, 0xd8, 0x09, 0x27, 0xed, 0x7c, 0x4c, 0x9e, 0x1c, 0x13, 0x6d, 0xc2, 0xf2, 0x88, 0x6e,
+	0xb3, 0xee, 0xe2, 0x63, 0x38, 0xa4, 0xc3, 0x42, 0x60, 0x4c, 0xf9, 0x0e, 0x15, 0xcf, 0xc9, 0xb2,
+	0x91, 0xe8, 0xd3, 0xff, 0xae, 0x25, 0x3c, 0x54, 0x9d, 0x29, 0x4f, 0xce, 0xf2, 0x53, 0x3c, 0xb0,
+	0x70, 0x36, 0x0f, 0x4c, 0xfa, 0x76, 0x71, 0xd4, 0xb7, 0xf5, 0x1f, 0xe5, 0x12, 0x0b, 0xdf, 0xee,
+	0x62, 0xa7, 0x43, 0x9a, 0x5d, 0xd2, 0x9b, 0xd6, 0xc2, 0x6f, 0x42, 0xd1, 0x13, 0xec, 0xb3, 0x1e,
+	0x5d, 0x92, 0x18, 0xe4, 0x4f, 0x14, 0x32, 0x7d, 0xa9, 0x22, 0xd6, 0x4a, 0x41, 0xd1, 0x1d, 0x58,
+	0xf1, 0x48, 0xaf, 0x6f, 0x63, 0x8f, 0x98, 0xd4, 0x22, 0x8e, 0x47, 0x8f, 0x28, 0x71, 0xe5, 0xd9,
+	0x53, 0x32, 0x50, 0x40, 0xaa, 0x87, 0x14, 0xf4, 0x36, 0x5c, 0x95, 0xdc, 0x53, 0x06, 0xcd, 0xc8,
+	0x41, 0x57, 0x04, 0xef, 0xb1, 0x71, 0xfa, 0x5f, 0x73, 0x70, 0xcd, 0x5f, 0xb9, 0xd8, 0x1e, 0x7b,
+	0x32, 0x3f, 0x79, 0xc1, 0xf4, 0x93, 0x5a, 0x5a, 0x6e, 0x92, 0x12, 0xee, 0x41, 0x59, 0xa5, 0x40,
+	0xd5, 0xa5, 0x2e, 0xeb, 0xbd, 0xbe, 0x10, 0xcb, 0x93, 0x72, 0x74, 0x1f, 0xae, 0xf4, 0x5d, 0x72,
+	0x4c, 0xd9, 0x80, 0x9b, 0xfe, 0x2b, 0xdb, 0x7c, 0x44, 0x4e, 0xb2, 0xb6, 0xcb, 0x4a, 0x00, 0xae,
+	0x2b, 0xec, 0x2e, 0x39, 0xe1, 0x42, 0x3f, 0x63, 0x3c, 0x64, 0x94, 0x0f, 0x36, 0xcf, 0x95, 0x91,
+	0x51, 0x32, 0xcc, 0x73, 0xf4, 0x00, 0x2a, 0x47, 0xd4, 0xc1, 0xb6, 0xe9, 0x8b, 0x8d, 0x5d, 0x57,
+	0xb8, 0x93, 0xb8, 0x23, 0x64, 0x24, 0xc1, 0xd6, 0x24, 0x5e, 0x29, 0x72, 0x2b, 0x42, 0xeb, 0xdf,
+	0xcc, 0x85, 0x77, 0x02, 0x15, 0xb1, 0x02, 0xc8, 0x94, 0x54, 0xbd, 0x09, 0x4f, 0xc7, 0x55, 0x6d,
+	0x3a, 0xd9, 0xdb, 0x72, 0x69, 0x24, 0x2d, 0x8d, 0x6e, 0xc3, 0x12, 0x95, 0x32, 0x52, 0xe6, 0x28,
+	0x75, 0xf9, 0x67, 0xc8, 0x62, 0xd8, 0xad, 0xce, 0x91, 0x7b, 0xb0, 0x36, 0xc4, 0x42, 0xa3, 0xa2,
+	0x97, 0x58, 0xe6, 0x90, 0x7a, 0x5d, 0xd3, 0x72, 0x59, 0x5f, 0xee, 0xcb, 0x39, 0x63, 0x65, 0x88,
+	0x79, 0xdd, 0x27, 0xfe, 0x0f, 0xf5, 0xba, 0x3b, 0x2e, 0xeb, 0xeb, 0xdf, 0x8b, 0x34, 0xa1, 0xa2,
+	0xd2, 0x13, 0xac, 0x89, 0x17, 0x61, 0x31, 0xe9, 0x37, 0xbe, 0x22, 0xca, 0x09, 0x77, 0x41, 0x3b,
+	0xb0, 0xe6, 0x4f, 0xd1, 0x96, 0xe1, 0xc6, 0x0c, 0x33, 0x36, 0xe9, 0xd7, 0xc5, 0x55, 0x85, 0x56,
+	0xb1, 0xc9, 0x5f, 0x1b, 0xd7, 0x7f, 0xa9, 0xc5, 0x14, 0xe3, 0xe0, 0xde, 0xc5, 0x15, 0xf3, 0x06,
+	0x2c, 0xc4, 0x97, 0x9c, 0xa1, 0x9f, 0xf9, 0xd8, 0x6a, 0xd1, 0x0d, 0xf0, 0x9b, 0xa6, 0x98, 0xd9,
+	0xbf, 0x48, 0x82, 0xea, 0xda, 0xc7, 0x3d, 0x82, 0x6e, 0xa9, 0xd7, 0x58, 0x1c, 0x54, 0x90, 0x20,
+	0x71, 0x41, 0xde, 0x0b, 0x71, 0xfa, 0x5f, 0x34, 0x78, 0x6e, 0xbc, 0x14, 0x20, 0xd3, 0x44, 0x5f,
+	0x47, 0x1e, 0x50, 0xe6, 0xa9, 0xb2, 0x42, 0xb1, 0x24, 0xa2, 0x55, 0x28, 0xc6, 0x6d, 0xa9, 0x1a,
+	0xa8, 0x06, 0x88, 0x77, 0xd9, 0xc0, 0xb6, 0xb6, 0x5d, 0x82, 0x3d, 0xb2, 0xdd, 0x1d, 0x38, 0x8f,
+	0xfc, 0x7c, 0x97, 0x91, 0x42, 0xd1, 0x7f, 0x32, 0xb2, 0x4e, 0xe5, 0xcb, 0x4f, 0xfc, 0x3a, 0xf5,
+	0xcf, 0x35, 0xb8, 0x33, 0x9a, 0xae, 0x95, 0x52, 0x8b, 0x0d, 0xca, 0x06, 0xde, 0x1e, 0x3b, 0xa6,
+	0x4e, 0x47, 0x2d, 0x72, 0xea, 0x0b, 0x09, 0x45, 0xcc, 0xc7, 0x4d, 0xb1, 0x0e, 0xaa, 0x94, 0x10,
+	0xc9, 0x1e, 0xb6, 0xf5, 0xef, 0xc4, 0xee, 0x35, 0x09, 0xf1, 0x2f, 0x22, 0xec, 0x2d, 0x98, 0xf1,
+	0xf3, 0x9a, 0xe9, 0x99, 0x55, 0x9f, 0x8a, 0x2a, 0x30, 0xeb, 0xb1, 0xba, 0x2f, 0xa8, 0x56, 0x2d,
+	0x1b, 0x41, 0x53, 0xec, 0xd9, 0x17, 0x32, 0xbc, 0x5d, 0xaa, 0x70, 0x6a, 0xd9, 0x94, 0xb7, 0x00,
+	0x5a, 0xe1, 0x2c, 0xbe, 0x1f, 0x5c, 0x11, 0xd7, 0xf1, 0xb1, 0xb9, 0x8d, 0x18, 0x30, 0xc3, 0x27,
+	0x46, 0x57, 0x11, 0xf3, 0xe5, 0xff, 0xa0, 0x55, 0x7c, 0x36, 0x92, 0x7a, 0xdf, 0xfb, 0x7a, 0xd6,
+	0x70, 0x7e, 0x1f, 0xfe, 0x54, 0x4b, 0x26, 0xcb, 0x93, 0x82, 0x5e, 0xc4, 0x91, 0xdf, 0x81, 0xf9,
+	0x48, 0x3d, 0x81, 0x37, 0x67, 0x28, 0x32, 0x8e, 0x9c, 0xe0, 0xd9, 0x9f, 0x47, 0x09, 0x60, 0xc9,
+	0xe3, 0x72, 0x09, 0x60, 0x15, 0xae, 0x72, 0x93, 0xc2, 0xd5, 0xa4, 0x3c, 0x46, 0x05, 0x66, 0xc9,
+	0xd1, 0x11, 0x69, 0x7b, 0x41, 0x51, 0x32, 0x68, 0x0a, 0xed, 0x7b, 0x27, 0x7d, 0x12, 0xd4, 0xd4,
+	0x54, 0x43, 0x3c, 0x12, 0x2c, 0x62, 0xd3, 0x63, 0xe2, 0x52, 0xbf, 0x98, 0x5e, 0x32, 0x62, 0x3d,
+	0x92, 0x4e, 0x5d, 0xd2, 0x16, 0x57, 0x19, 0x55, 0x35, 0x2f, 0x1b, 0xb1, 0x1e, 0x74, 0x1d, 0x4a,
+	0xd6, 0xc0, 0xc5, 0x8a, 0x3c, 0xb7, 0x91, 0xaf, 0x6a, 0x46, 0xd4, 0x81, 0xd6, 0x60, 0xc6, 0x22,
+	0x36, 0x3e, 0xe1, 0x95, 0x92, 0x24, 0xf9, 0x2d, 0x74, 0x17, 0x56, 0xe5, 0xbf, 0xad, 0x81, 0xc7,
+	0x7a, 0xd8, 0xa3, 0xed, 0xad, 0x23, 0x71, 0x9d, 0xae, 0x80, 0x44, 0xa5, 0xd2, 0xd0, 0xeb, 0xb0,
+	0x92, 0xec, 0x17, 0x61, 0x98, 0x57, 0xe6, 0xe5, 0x90, 0x34, 0x12, 0xba, 0x09, 0x65, 0x72, 0x4c,
+	0x1c, 0xaf, 0xe9, 0xd2, 0x4e, 0x47, 0xb0, 0x5f, 0xd8, 0xc8, 0x57, 0xe7, 0x8c, 0x64, 0xa7, 0xfe,
+	0xb3, 0x1c, 0x6c, 0xc4, 0xcd, 0x27, 0xed, 0x7d, 0x09, 0x1b, 0x26, 0x77, 0x6a, 0xee, 0xac, 0x3b,
+	0x75, 0x92, 0x51, 0xaf, 0x43, 0xc9, 0x55, 0x4e, 0xe0, 0x9b, 0xb5, 0x6c, 0x44, 0x1d, 0xc2, 0x44,
+	0x38, 0x58, 0xb8, 0xb2, 0xee, 0x9c, 0x11, 0xeb, 0x49, 0x9a, 0x68, 0x26, 0xdb, 0x44, 0xb3, 0x09,
+	0x13, 0xe9, 0xb0, 0xc0, 0x6c, 0xeb, 0x60, 0xe8, 0xa8, 0x1b, 0x7e, 0x65, 0x4e, 0x9e, 0xef, 0x89,
+	0x3e, 0xfd, 0x1f, 0x91, 0xea, 0x9a, 0x2e, 0x76, 0x38, 0x15, 0x2c, 0x2f, 0xa1, 0xba, 0xaf, 0xae,
+	0x92, 0x95, 0xbd, 0x0d, 0xd6, 0x60, 0x66, 0xe0, 0x0c, 0x38, 0xb1, 0xfc, 0x7d, 0xe0, 0xb7, 0xc4,
+	0x08, 0xf5, 0xef, 0xae, 0xbf, 0x0b, 0x82, 0x66, 0x44, 0xb9, 0x27, 0x55, 0x14, 0x52, 0xee, 0x9d,
+	0xe2, 0xfc, 0xc9, 0xad, 0x53, 0x1a, 0xdb, 0x3a, 0x3a, 0x2c, 0x50, 0xbe, 0x15, 0x59, 0x0e, 0xa4,
+	0xe5, 0x12, 0x7d, 0x31, 0xeb, 0xcc, 0xc7, 0xad, 0xa3, 0xff, 0x49, 0x83, 0x97, 0x93, 0xf9, 0x44,
+	0x75, 0x15, 0x1f, 0xf4, 0x5a, 0xc4, 0xfd, 0x98, 0x72, 0xda, 0xa2, 0x36, 0xbd, 0x50, 0x35, 0xf1,
+	0x2c, 0x0f, 0xf9, 0xd7, 0x61, 0x85, 0x47, 0xd3, 0x71, 0x39, 0x9f, 0x5f, 0xa8, 0x98, 0x33, 0xd2,
+	0x48, 0xe8, 0x2e, 0x2c, 0xf4, 0x5d, 0x76, 0x4c, 0x2d, 0xe2, 0x7e, 0xe4, 0x58, 0xcc, 0x4f, 0x19,
+	0x8e, 0x3d, 0x67, 0xe3, 0x18, 0xbd, 0x1f, 0x86, 0x55, 0x75, 0x69, 0x36, 0x08, 0x6f, 0xe3, 0x0b,
+	0x95, 0x5d, 0x6e, 0xc1, 0x8c, 0xba, 0x8d, 0x67, 0xac, 0xca, 0xa7, 0xea, 0xbf, 0xd2, 0xe0, 0x66,
+	0x62, 0xca, 0x06, 0xf1, 0x9a, 0xc1, 0xd7, 0x44, 0x4d, 0xf2, 0xd8, 0x9b, 0xde, 0xdc, 0xe8, 0x2a,
+	0xcc, 0x52, 0x6e, 0xb6, 0x98, 0x75, 0xe2, 0xeb, 0x71, 0x86, 0xf2, 0xfb, 0xcc, 0x3a, 0x41, 0xd7,
+	0x64, 0x1d, 0xce, 0xf4, 0xc8, 0x63, 0x4f, 0xaa, 0xad, 0x64, 0xcc, 0x3a, 0x64, 0x28, 0xa4, 0x09,
+	0xbf, 0x1e, 0x11, 0x24, 0x95, 0xf2, 0x90, 0x5f, 0x8f, 0x90, 0xc7, 0x9e, 0xfe, 0x65, 0x2e, 0x3c,
+	0xe2, 0xc3, 0xa5, 0x08, 0x76, 0xb2, 0xf0, 0xc3, 0xa7, 0xb8, 0x8e, 0xf7, 0x60, 0x55, 0x88, 0xdb,
+	0xc7, 0x2e, 0xee, 0xb8, 0xb8, 0xdf, 0x55, 0xf5, 0xa8, 0xac, 0x04, 0x06, 0x72, 0xc8, 0xf0, 0x30,
+	0x80, 0x2a, 0xd9, 0xd0, 0xdb, 0xb0, 0x24, 0x38, 0xd8, 0x94, 0x7b, 0xc1, 0xe0, 0xf4, 0x04, 0x46,
+	0xd9, 0x21, 0xc3, 0x87, 0x94, 0x7b, 0xfe, 0xb8, 0xf7, 0x60, 0x55, 0x68, 0x63, 0x6c, 0xe6, 0xf4,
+	0x4f, 0xcc, 0x10, 0xb3, 0xad, 0x94, 0x99, 0x05, 0x87, 0xf8, 0xcc, 0xe9, 0xb9, 0x0b, 0xf1, 0x92,
+	0x8b, 0x66, 0xd6, 0xbf, 0x35, 0x72, 0xd5, 0x96, 0xdf, 0xaa, 0x25, 0x32, 0x69, 0xef, 0x26, 0x15,
+	0xad, 0xd7, 0x9a, 0x8d, 0x46, 0x2d, 0x82, 0x6d, 0x77, 0xc5, 0x39, 0x90, 0xaa, 0xf7, 0x3b, 0x50,
+	0x68, 0xd9, 0xac, 0xe5, 0x6b, 0xfd, 0x19, 0x71, 0x90, 0xec, 0xc5, 0xde, 0xc4, 0xf7, 0x6d, 0xd6,
+	0x0a, 0xcb, 0x95, 0x02, 0xa8, 0xff, 0x5e, 0x83, 0x1b, 0x3e, 0x2b, 0x05, 0xd9, 0x8b, 0x1e, 0xaf,
+	0x53, 0xbb, 0xda, 0x45, 0xde, 0x91, 0x9f, 0xe8, 0x1d, 0x5b, 0xb0, 0x1a, 0xff, 0x86, 0x26, 0x7c,
+	0xfd, 0xa7, 0xe7, 0xf9, 0x56, 0x62, 0xd8, 0xf0, 0xf1, 0xff, 0x85, 0x96, 0xfc, 0x8a, 0xe6, 0xd0,
+	0xa5, 0x3d, 0xea, 0xd1, 0x63, 0xd2, 0x20, 0x97, 0x4a, 0x15, 0x7d, 0x85, 0xab, 0x7c, 0x0d, 0x20,
+	0xca, 0x00, 0x64, 0xac, 0xad, 0x14, 0x26, 0x03, 0xf4, 0xef, 0x6b, 0xe1, 0x31, 0xea, 0x3f, 0x2a,
+	0xb0, 0xf0, 0x8c, 0x0b, 0x2f, 0x66, 0x1f, 0x9e, 0x71, 0x15, 0x0b, 0x13, 0xb7, 0xdb, 0x83, 0xde,
+	0xc0, 0xc6, 0x1e, 0xb1, 0x02, 0x65, 0x67, 0x2c, 0xf1, 0x9a, 0x3f, 0x64, 0x2b, 0x1a, 0xe1, 0x73,
+	0xd7, 0x7f, 0xa3, 0x41, 0x65, 0xe4, 0xb0, 0x61, 0x03, 0xc7, 0xf2, 0x5c, 0xdc, 0x7e, 0x74, 0xb1,
+	0xa3, 0x45, 0xcb, 0x3c, 0x5a, 0x6a, 0x00, 0x3c, 0x64, 0x9e, 0x51, 0x69, 0x8d, 0x21, 0xd0, 0x5b,
+	0xb0, 0x28, 0x4b, 0xdf, 0xd1, 0x98, 0xf4, 0xa3, 0x45, 0x56, 0xbe, 0x43, 0x90, 0xfe, 0xe7, 0x7c,
+	0x98, 0xce, 0x8d, 0x7a, 0x83, 0x9b, 0xcb, 0x79, 0xd6, 0x94, 0x94, 0x37, 0x77, 0xaa, 0xbc, 0xc9,
+	0x4b, 0x8b, 0x96, 0xb8, 0xb4, 0x3c, 0x48, 0xd6, 0x20, 0x05, 0xab, 0x57, 0xe2, 0x75, 0xa3, 0x31,
+	0x41, 0x33, 0x4b, 0x90, 0x0f, 0x92, 0x25, 0xc8, 0xf3, 0x73, 0x0a, 0x2b, 0x90, 0x3f, 0x1f, 0xab,
+	0x40, 0x8e, 0x96, 0x18, 0xb5, 0xf1, 0x12, 0xe3, 0x7f, 0x01, 0xc4, 0xaa, 0x8b, 0x39, 0x59, 0x01,
+	0x7b, 0x56, 0x56, 0x17, 0xc3, 0x89, 0x63, 0x7f, 0x65, 0x81, 0xb1, 0xd4, 0x0b, 0x8b, 0x8b, 0x0f,
+	0x60, 0xad, 0x47, 0x2c, 0x8a, 0x4d, 0x37, 0xd0, 0x60, 0x90, 0x81, 0x56, 0x67, 0x48, 0xda, 0x27,
+	0x3c, 0xab, 0x72, 0x44, 0xd8, 0x56, 0x49, 0x69, 0xfd, 0xcb, 0x3c, 0xd4, 0xe4, 0x8e, 0xda, 0x66,
+	0xb6, 0xad, 0xae, 0x5d, 0x81, 0x06, 0x88, 0xdf, 0xbe, 0x4f, 0xba, 0xf8, 0x98, 0xb2, 0x70, 0x9b,
+	0xed, 0xc0, 0x1a, 0x56, 0x7f, 0x2d, 0x53, 0xa8, 0x90, 0x07, 0x40, 0xb9, 0xce, 0x94, 0x04, 0x65,
+	0x80, 0xde, 0x27, 0xc3, 0x90, 0x69, 0x82, 0x8b, 0x74, 0xcf, 0x90, 0x4b, 0x6e, 0x32, 0x97, 0x03,
+	0x3b, 0x12, 0x0d, 0x71, 0x28, 0x88, 0x47, 0x9a, 0x5f, 0x9e, 0x7d, 0x47, 0x2a, 0xf0, 0x5c, 0xab,
+	0xa9, 0x35, 0x4f, 0xfa, 0x64, 0xf3, 0x96, 0xac, 0xfe, 0xf9, 0x9f, 0xae, 0x8c, 0x00, 0x05, 0xe0,
+	0x43, 0xe2, 0x10, 0x17, 0xdb, 0x86, 0x9c, 0x4c, 0xff, 0xa9, 0x06, 0x05, 0xd1, 0x8b, 0x5e, 0x86,
+	0x33, 0x0e, 0x5c, 0x7e, 0x0a, 0xbd, 0x0a, 0xd5, 0x53, 0xb0, 0xf5, 0x20, 0x1f, 0xbe, 0xac, 0xa1,
+	0x57, 0xe0, 0xf6, 0x29, 0xe8, 0x1d, 0x62, 0x13, 0x09, 0xce, 0xa1, 0xdb, 0xf0, 0xc2, 0x29, 0xe0,
+	0x3d, 0x76, 0x4c, 0x96, 0xf3, 0xfa, 0x43, 0xb8, 0xb1, 0xdd, 0xc5, 0xae, 0x57, 0x77, 0x8e, 0x58,
+	0xf0, 0xc9, 0x65, 0x72, 0xcf, 0x9e, 0x63, 0x5f, 0xff, 0x3b, 0x00, 0x00, 0xff, 0xff, 0x62, 0xf0,
+	0x80, 0x70, 0xff, 0x2f, 0x00, 0x00,
 }

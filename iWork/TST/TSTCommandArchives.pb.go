@@ -6,12 +6,6 @@ package TST
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
-	TSCE "github.com/zimbabao/docconv/iWork/TSCE"
-	TSD "github.com/zimbabao/docconv/iWork/TSD"
-	TSK "github.com/zimbabao/docconv/iWork/TSK"
-	TSP "github.com/zimbabao/docconv/iWork/TSP"
-	_ "github.com/zimbabao/docconv/iWork/TSS"
-	TSWP "github.com/zimbabao/docconv/iWork/TSWP"
 	math "math"
 )
 
@@ -26,170 +20,100 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-type TableArea int32
+type CommandDirectionArchive int32
 
 const (
-	TableArea_TableAreaBody         TableArea = 1
-	TableArea_TableAreaHeaderRow    TableArea = 2
-	TableArea_TableAreaHeaderColumn TableArea = 3
-	TableArea_TableAreaFooterRow    TableArea = 4
+	CommandDirectionArchive_directionRow    CommandDirectionArchive = 0
+	CommandDirectionArchive_directionColumn CommandDirectionArchive = 1
 )
 
-var TableArea_name = map[int32]string{
-	1: "TableAreaBody",
-	2: "TableAreaHeaderRow",
-	3: "TableAreaHeaderColumn",
-	4: "TableAreaFooterRow",
+var CommandDirectionArchive_name = map[int32]string{
+	0: "directionRow",
+	1: "directionColumn",
 }
 
-var TableArea_value = map[string]int32{
-	"TableAreaBody":         1,
-	"TableAreaHeaderRow":    2,
-	"TableAreaHeaderColumn": 3,
-	"TableAreaFooterRow":    4,
+var CommandDirectionArchive_value = map[string]int32{
+	"directionRow":    0,
+	"directionColumn": 1,
 }
 
-func (x TableArea) Enum() *TableArea {
-	p := new(TableArea)
+func (x CommandDirectionArchive) Enum() *CommandDirectionArchive {
+	p := new(CommandDirectionArchive)
 	*p = x
 	return p
 }
 
-func (x TableArea) String() string {
-	return proto.EnumName(TableArea_name, int32(x))
+func (x CommandDirectionArchive) String() string {
+	return proto.EnumName(CommandDirectionArchive_name, int32(x))
 }
 
-func (x *TableArea) UnmarshalJSON(data []byte) error {
-	value, err := proto.UnmarshalJSONEnum(TableArea_value, data, "TableArea")
+func (x *CommandDirectionArchive) UnmarshalJSON(data []byte) error {
+	value, err := proto.UnmarshalJSONEnum(CommandDirectionArchive_value, data, "CommandDirectionArchive")
 	if err != nil {
 		return err
 	}
-	*x = TableArea(value)
+	*x = CommandDirectionArchive(value)
 	return nil
 }
 
-func (TableArea) EnumDescriptor() ([]byte, []int) {
+func (CommandDirectionArchive) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_5d102eeb586b2c5c, []int{0}
 }
 
-type TableAreaTransition int32
+type CommandRegionArchive int32
 
 const (
-	TableAreaTransition_TableAreaTransitionHeaderRowToBody    TableAreaTransition = 1
-	TableAreaTransition_TableAreaTransitionBodyToHeaderRow    TableAreaTransition = 2
-	TableAreaTransition_TableAreaTransitionFooterRowToBody    TableAreaTransition = 3
-	TableAreaTransition_TableAreaTransitionBodyToFooterRow    TableAreaTransition = 4
-	TableAreaTransition_TableAreaTransitionHeaderColumnToBody TableAreaTransition = 5
-	TableAreaTransition_TableAreaTransitionBodyToHeaderColumn TableAreaTransition = 6
+	CommandRegionArchive_bodyRegion         CommandRegionArchive = 0
+	CommandRegionArchive_headerRowRegion    CommandRegionArchive = 1
+	CommandRegionArchive_headerColumnRegion CommandRegionArchive = 2
+	CommandRegionArchive_footerRowRegion    CommandRegionArchive = 3
 )
 
-var TableAreaTransition_name = map[int32]string{
-	1: "TableAreaTransitionHeaderRowToBody",
-	2: "TableAreaTransitionBodyToHeaderRow",
-	3: "TableAreaTransitionFooterRowToBody",
-	4: "TableAreaTransitionBodyToFooterRow",
-	5: "TableAreaTransitionHeaderColumnToBody",
-	6: "TableAreaTransitionBodyToHeaderColumn",
+var CommandRegionArchive_name = map[int32]string{
+	0: "bodyRegion",
+	1: "headerRowRegion",
+	2: "headerColumnRegion",
+	3: "footerRowRegion",
 }
 
-var TableAreaTransition_value = map[string]int32{
-	"TableAreaTransitionHeaderRowToBody":    1,
-	"TableAreaTransitionBodyToHeaderRow":    2,
-	"TableAreaTransitionFooterRowToBody":    3,
-	"TableAreaTransitionBodyToFooterRow":    4,
-	"TableAreaTransitionHeaderColumnToBody": 5,
-	"TableAreaTransitionBodyToHeaderColumn": 6,
+var CommandRegionArchive_value = map[string]int32{
+	"bodyRegion":         0,
+	"headerRowRegion":    1,
+	"headerColumnRegion": 2,
+	"footerRowRegion":    3,
 }
 
-func (x TableAreaTransition) Enum() *TableAreaTransition {
-	p := new(TableAreaTransition)
+func (x CommandRegionArchive) Enum() *CommandRegionArchive {
+	p := new(CommandRegionArchive)
 	*p = x
 	return p
 }
 
-func (x TableAreaTransition) String() string {
-	return proto.EnumName(TableAreaTransition_name, int32(x))
+func (x CommandRegionArchive) String() string {
+	return proto.EnumName(CommandRegionArchive_name, int32(x))
 }
 
-func (x *TableAreaTransition) UnmarshalJSON(data []byte) error {
-	value, err := proto.UnmarshalJSONEnum(TableAreaTransition_value, data, "TableAreaTransition")
+func (x *CommandRegionArchive) UnmarshalJSON(data []byte) error {
+	value, err := proto.UnmarshalJSONEnum(CommandRegionArchive_value, data, "CommandRegionArchive")
 	if err != nil {
 		return err
 	}
-	*x = TableAreaTransition(value)
+	*x = CommandRegionArchive(value)
 	return nil
 }
 
-func (TableAreaTransition) EnumDescriptor() ([]byte, []int) {
+func (CommandRegionArchive) EnumDescriptor() ([]byte, []int) {
 	return fileDescriptor_5d102eeb586b2c5c, []int{1}
 }
 
-type ColumnRowTypeEnum int32
-
-const (
-	ColumnRowTypeEnum_ColumnRowTypeAnchor       ColumnRowTypeEnum = 0
-	ColumnRowTypeEnum_ColumnRowTypeHeaderRow    ColumnRowTypeEnum = 1
-	ColumnRowTypeEnum_ColumnRowTypeBodyRow      ColumnRowTypeEnum = 2
-	ColumnRowTypeEnum_ColumnRowTypeFooterRow    ColumnRowTypeEnum = 3
-	ColumnRowTypeEnum_ColumnRowTypeHeaderColumn ColumnRowTypeEnum = 4
-	ColumnRowTypeEnum_ColumnRowTypeBodyColumn   ColumnRowTypeEnum = 5
-)
-
-var ColumnRowTypeEnum_name = map[int32]string{
-	0: "ColumnRowTypeAnchor",
-	1: "ColumnRowTypeHeaderRow",
-	2: "ColumnRowTypeBodyRow",
-	3: "ColumnRowTypeFooterRow",
-	4: "ColumnRowTypeHeaderColumn",
-	5: "ColumnRowTypeBodyColumn",
-}
-
-var ColumnRowTypeEnum_value = map[string]int32{
-	"ColumnRowTypeAnchor":       0,
-	"ColumnRowTypeHeaderRow":    1,
-	"ColumnRowTypeBodyRow":      2,
-	"ColumnRowTypeFooterRow":    3,
-	"ColumnRowTypeHeaderColumn": 4,
-	"ColumnRowTypeBodyColumn":   5,
-}
-
-func (x ColumnRowTypeEnum) Enum() *ColumnRowTypeEnum {
-	p := new(ColumnRowTypeEnum)
-	*p = x
-	return p
-}
-
-func (x ColumnRowTypeEnum) String() string {
-	return proto.EnumName(ColumnRowTypeEnum_name, int32(x))
-}
-
-func (x *ColumnRowTypeEnum) UnmarshalJSON(data []byte) error {
-	value, err := proto.UnmarshalJSONEnum(ColumnRowTypeEnum_value, data, "ColumnRowTypeEnum")
-	if err != nil {
-		return err
-	}
-	*x = ColumnRowTypeEnum(value)
-	return nil
-}
-
-func (ColumnRowTypeEnum) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{2}
-}
-
 type TableCommandArchive struct {
-	Super                      *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	TableInfoIdPath            *TSP.UUIDPath       `protobuf:"bytes,2,req,name=table_info_id_path,json=tableInfoIdPath" json:"table_info_id_path,omitempty"`
-	Commandname                *string             `protobuf:"bytes,3,opt,name=commandname" json:"commandname,omitempty"`
-	DefaultCellStylesContainer *TSP.Reference      `protobuf:"bytes,4,opt,name=default_cell_styles_container,json=defaultCellStylesContainer" json:"default_cell_styles_container,omitempty"`
-	Timestamp                  *float64            `protobuf:"fixed64,5,opt,name=timestamp" json:"timestamp,omitempty"`
-	RandomSeedLo               *uint32             `protobuf:"varint,6,opt,name=random_seed_lo,json=randomSeedLo" json:"random_seed_lo,omitempty"`
-	RandomSeedHi               *uint32             `protobuf:"varint,7,opt,name=random_seed_hi,json=randomSeedHi" json:"random_seed_hi,omitempty"`
-	IsInverse                  *bool               `protobuf:"varint,8,opt,name=is_inverse,json=isInverse" json:"is_inverse,omitempty"`
-	OldTimestamp               *float64            `protobuf:"fixed64,9,opt,name=old_timestamp,json=oldTimestamp" json:"old_timestamp,omitempty"`
-	OldRandomSeed              *uint64             `protobuf:"varint,10,opt,name=old_random_seed,json=oldRandomSeed" json:"old_random_seed,omitempty"`
-	XXX_NoUnkeyedLiteral       struct{}            `json:"-"`
-	XXX_unrecognized           []byte              `json:"-"`
-	XXX_sizecache              int32               `json:"-"`
+	TableInfo            *Reference      `protobuf:"bytes,1,req,name=tableInfo" json:"tableInfo,omitempty"`
+	Commandname          *string         `protobuf:"bytes,2,opt,name=commandname" json:"commandname,omitempty"`
+	Super                *CommandArchive `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
+	EditingModeAtStart   *uint32         `protobuf:"varint,4,opt,name=editing_mode_at_start,json=editingModeAtStart" json:"editing_mode_at_start,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *TableCommandArchive) Reset()         { *m = TableCommandArchive{} }
@@ -217,16 +141,9 @@ func (m *TableCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_TableCommandArchive proto.InternalMessageInfo
 
-func (m *TableCommandArchive) GetSuper() *TSK.CommandArchive {
+func (m *TableCommandArchive) GetTableInfo() *Reference {
 	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *TableCommandArchive) GetTableInfoIdPath() *TSP.UUIDPath {
-	if m != nil {
-		return m.TableInfoIdPath
+		return m.TableInfo
 	}
 	return nil
 }
@@ -238,307 +155,34 @@ func (m *TableCommandArchive) GetCommandname() string {
 	return ""
 }
 
-func (m *TableCommandArchive) GetDefaultCellStylesContainer() *TSP.Reference {
-	if m != nil {
-		return m.DefaultCellStylesContainer
-	}
-	return nil
-}
-
-func (m *TableCommandArchive) GetTimestamp() float64 {
-	if m != nil && m.Timestamp != nil {
-		return *m.Timestamp
-	}
-	return 0
-}
-
-func (m *TableCommandArchive) GetRandomSeedLo() uint32 {
-	if m != nil && m.RandomSeedLo != nil {
-		return *m.RandomSeedLo
-	}
-	return 0
-}
-
-func (m *TableCommandArchive) GetRandomSeedHi() uint32 {
-	if m != nil && m.RandomSeedHi != nil {
-		return *m.RandomSeedHi
-	}
-	return 0
-}
-
-func (m *TableCommandArchive) GetIsInverse() bool {
-	if m != nil && m.IsInverse != nil {
-		return *m.IsInverse
-	}
-	return false
-}
-
-func (m *TableCommandArchive) GetOldTimestamp() float64 {
-	if m != nil && m.OldTimestamp != nil {
-		return *m.OldTimestamp
-	}
-	return 0
-}
-
-func (m *TableCommandArchive) GetOldRandomSeed() uint64 {
-	if m != nil && m.OldRandomSeed != nil {
-		return *m.OldRandomSeed
-	}
-	return 0
-}
-
-type CommandApplyCellContentsArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellDiffMap          *TSP.Reference       `protobuf:"bytes,2,req,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	RollbackCellDiffMap  *TSP.Reference       `protobuf:"bytes,3,opt,name=rollback_cell_diff_map,json=rollbackCellDiffMap" json:"rollback_cell_diff_map,omitempty"`
-	CustomFormatKeys     []*TSP.UUID          `protobuf:"bytes,4,rep,name=custom_format_keys,json=customFormatKeys" json:"custom_format_keys,omitempty"`
-	ActionString         *string              `protobuf:"bytes,5,opt,name=action_string,json=actionString" json:"action_string,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *CommandApplyCellContentsArchive) Reset()         { *m = CommandApplyCellContentsArchive{} }
-func (m *CommandApplyCellContentsArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandApplyCellContentsArchive) ProtoMessage()    {}
-func (*CommandApplyCellContentsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{1}
-}
-
-func (m *CommandApplyCellContentsArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandApplyCellContentsArchive.Unmarshal(m, b)
-}
-func (m *CommandApplyCellContentsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandApplyCellContentsArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandApplyCellContentsArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandApplyCellContentsArchive.Merge(m, src)
-}
-func (m *CommandApplyCellContentsArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandApplyCellContentsArchive.Size(m)
-}
-func (m *CommandApplyCellContentsArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandApplyCellContentsArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandApplyCellContentsArchive proto.InternalMessageInfo
-
-func (m *CommandApplyCellContentsArchive) GetSuper() *TableCommandArchive {
+func (m *TableCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandApplyCellContentsArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandApplyCellContentsArchive) GetRollbackCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.RollbackCellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandApplyCellContentsArchive) GetCustomFormatKeys() []*TSP.UUID {
-	if m != nil {
-		return m.CustomFormatKeys
-	}
-	return nil
-}
-
-func (m *CommandApplyCellContentsArchive) GetActionString() string {
-	if m != nil && m.ActionString != nil {
-		return *m.ActionString
-	}
-	return ""
-}
-
-type CommandApplyCellDiffMapArchive struct {
-	Super                     *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellDiffMap               *TSP.Reference       `protobuf:"bytes,2,req,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	ShouldAllowMergeFragments *bool                `protobuf:"varint,3,req,name=should_allow_merge_fragments,json=shouldAllowMergeFragments" json:"should_allow_merge_fragments,omitempty"`
-	InverseCellDiffMap        *TSP.Reference       `protobuf:"bytes,4,opt,name=inverse_cell_diff_map,json=inverseCellDiffMap" json:"inverse_cell_diff_map,omitempty"`
-	CustomFormatKeys          []*TSP.UUID          `protobuf:"bytes,5,rep,name=custom_format_keys,json=customFormatKeys" json:"custom_format_keys,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}             `json:"-"`
-	XXX_unrecognized          []byte               `json:"-"`
-	XXX_sizecache             int32                `json:"-"`
-}
-
-func (m *CommandApplyCellDiffMapArchive) Reset()         { *m = CommandApplyCellDiffMapArchive{} }
-func (m *CommandApplyCellDiffMapArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandApplyCellDiffMapArchive) ProtoMessage()    {}
-func (*CommandApplyCellDiffMapArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{2}
-}
-
-func (m *CommandApplyCellDiffMapArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandApplyCellDiffMapArchive.Unmarshal(m, b)
-}
-func (m *CommandApplyCellDiffMapArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandApplyCellDiffMapArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandApplyCellDiffMapArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandApplyCellDiffMapArchive.Merge(m, src)
-}
-func (m *CommandApplyCellDiffMapArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandApplyCellDiffMapArchive.Size(m)
-}
-func (m *CommandApplyCellDiffMapArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandApplyCellDiffMapArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandApplyCellDiffMapArchive proto.InternalMessageInfo
-
-func (m *CommandApplyCellDiffMapArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandApplyCellDiffMapArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandApplyCellDiffMapArchive) GetShouldAllowMergeFragments() bool {
-	if m != nil && m.ShouldAllowMergeFragments != nil {
-		return *m.ShouldAllowMergeFragments
-	}
-	return false
-}
-
-func (m *CommandApplyCellDiffMapArchive) GetInverseCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.InverseCellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandApplyCellDiffMapArchive) GetCustomFormatKeys() []*TSP.UUID {
-	if m != nil {
-		return m.CustomFormatKeys
-	}
-	return nil
-}
-
-type CommandApplyCellMapArchive struct {
-	Super                     *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RedoCellMap               *TSP.Reference       `protobuf:"bytes,2,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
-	UndoCellMap               *TSP.Reference       `protobuf:"bytes,3,opt,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
-	UndoFormulaRewriteCommand *TSP.Reference       `protobuf:"bytes,4,opt,name=undo_formula_rewrite_command,json=undoFormulaRewriteCommand" json:"undo_formula_rewrite_command,omitempty"`
-	CustomFormatKeys          []*TSP.UUID          `protobuf:"bytes,5,rep,name=custom_format_keys,json=customFormatKeys" json:"custom_format_keys,omitempty"`
-	MergeOwnerRollbackIndex   *uint32              `protobuf:"varint,6,opt,name=merge_owner_rollback_index,json=mergeOwnerRollbackIndex" json:"merge_owner_rollback_index,omitempty"`
-	IsFromPaste               *bool                `protobuf:"varint,7,req,name=is_from_paste,json=isFromPaste" json:"is_from_paste,omitempty"`
-	FormulaRewriteCommands    []*TSP.Reference     `protobuf:"bytes,8,rep,name=formula_rewrite_commands,json=formulaRewriteCommands" json:"formula_rewrite_commands,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}             `json:"-"`
-	XXX_unrecognized          []byte               `json:"-"`
-	XXX_sizecache             int32                `json:"-"`
-}
-
-func (m *CommandApplyCellMapArchive) Reset()         { *m = CommandApplyCellMapArchive{} }
-func (m *CommandApplyCellMapArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandApplyCellMapArchive) ProtoMessage()    {}
-func (*CommandApplyCellMapArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{3}
-}
-
-func (m *CommandApplyCellMapArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandApplyCellMapArchive.Unmarshal(m, b)
-}
-func (m *CommandApplyCellMapArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandApplyCellMapArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandApplyCellMapArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandApplyCellMapArchive.Merge(m, src)
-}
-func (m *CommandApplyCellMapArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandApplyCellMapArchive.Size(m)
-}
-func (m *CommandApplyCellMapArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandApplyCellMapArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandApplyCellMapArchive proto.InternalMessageInfo
-
-func (m *CommandApplyCellMapArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandApplyCellMapArchive) GetRedoCellMap() *TSP.Reference {
-	if m != nil {
-		return m.RedoCellMap
-	}
-	return nil
-}
-
-func (m *CommandApplyCellMapArchive) GetUndoCellMap() *TSP.Reference {
-	if m != nil {
-		return m.UndoCellMap
-	}
-	return nil
-}
-
-func (m *CommandApplyCellMapArchive) GetUndoFormulaRewriteCommand() *TSP.Reference {
-	if m != nil {
-		return m.UndoFormulaRewriteCommand
-	}
-	return nil
-}
-
-func (m *CommandApplyCellMapArchive) GetCustomFormatKeys() []*TSP.UUID {
-	if m != nil {
-		return m.CustomFormatKeys
-	}
-	return nil
-}
-
-func (m *CommandApplyCellMapArchive) GetMergeOwnerRollbackIndex() uint32 {
-	if m != nil && m.MergeOwnerRollbackIndex != nil {
-		return *m.MergeOwnerRollbackIndex
+func (m *TableCommandArchive) GetEditingModeAtStart() uint32 {
+	if m != nil && m.EditingModeAtStart != nil {
+		return *m.EditingModeAtStart
 	}
 	return 0
-}
-
-func (m *CommandApplyCellMapArchive) GetIsFromPaste() bool {
-	if m != nil && m.IsFromPaste != nil {
-		return *m.IsFromPaste
-	}
-	return false
-}
-
-func (m *CommandApplyCellMapArchive) GetFormulaRewriteCommands() []*TSP.Reference {
-	if m != nil {
-		return m.FormulaRewriteCommands
-	}
-	return nil
 }
 
 type CommandChangeFreezeHeaderStateArchive struct {
-	Super                *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Direction            *TableDimensionArchive `protobuf:"varint,2,req,name=direction,enum=TST.TableDimensionArchive" json:"direction,omitempty"`
-	NewFreezeState       *bool                  `protobuf:"varint,3,req,name=new_freeze_state,json=newFreezeState" json:"new_freeze_state,omitempty"`
-	PrevFreezeState      *bool                  `protobuf:"varint,4,req,name=prev_freeze_state,json=prevFreezeState" json:"prev_freeze_state,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
+	Direction            *CommandDirectionArchive `protobuf:"varint,1,req,name=direction,enum=TST.CommandDirectionArchive" json:"direction,omitempty"`
+	NewFreezeState       *bool                    `protobuf:"varint,2,req,name=new_freeze_state,json=newFreezeState" json:"new_freeze_state,omitempty"`
+	Super                *TableCommandArchive     `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
 }
 
 func (m *CommandChangeFreezeHeaderStateArchive) Reset()         { *m = CommandChangeFreezeHeaderStateArchive{} }
 func (m *CommandChangeFreezeHeaderStateArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandChangeFreezeHeaderStateArchive) ProtoMessage()    {}
 func (*CommandChangeFreezeHeaderStateArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{4}
+	return fileDescriptor_5d102eeb586b2c5c, []int{1}
 }
 
 func (m *CommandChangeFreezeHeaderStateArchive) XXX_Unmarshal(b []byte) error {
@@ -559,18 +203,11 @@ func (m *CommandChangeFreezeHeaderStateArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandChangeFreezeHeaderStateArchive proto.InternalMessageInfo
 
-func (m *CommandChangeFreezeHeaderStateArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandChangeFreezeHeaderStateArchive) GetDirection() TableDimensionArchive {
+func (m *CommandChangeFreezeHeaderStateArchive) GetDirection() CommandDirectionArchive {
 	if m != nil && m.Direction != nil {
 		return *m.Direction
 	}
-	return TableDimensionArchive_dimensionRow
+	return CommandDirectionArchive_directionRow
 }
 
 func (m *CommandChangeFreezeHeaderStateArchive) GetNewFreezeState() bool {
@@ -580,30 +217,29 @@ func (m *CommandChangeFreezeHeaderStateArchive) GetNewFreezeState() bool {
 	return false
 }
 
-func (m *CommandChangeFreezeHeaderStateArchive) GetPrevFreezeState() bool {
-	if m != nil && m.PrevFreezeState != nil {
-		return *m.PrevFreezeState
+func (m *CommandChangeFreezeHeaderStateArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
 	}
-	return false
+	return nil
 }
 
 type CommandDeleteCellsArchive struct {
-	Super                   *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellUidList             *CellUIDListArchive  `protobuf:"bytes,2,req,name=cell_uid_list,json=cellUidList" json:"cell_uid_list,omitempty"`
-	InverseCellMap          *TSP.Reference       `protobuf:"bytes,3,opt,name=inverse_cell_map,json=inverseCellMap" json:"inverse_cell_map,omitempty"`
-	UpdateBorderVisibility  *bool                `protobuf:"varint,4,opt,name=update_border_visibility,json=updateBorderVisibility" json:"update_border_visibility,omitempty"`
-	InvalidateComments      *bool                `protobuf:"varint,5,opt,name=invalidate_comments,json=invalidateComments" json:"invalidate_comments,omitempty"`
-	InvalidateCommentsValid *bool                `protobuf:"varint,6,opt,name=invalidate_comments_valid,json=invalidateCommentsValid" json:"invalidate_comments_valid,omitempty"`
-	XXX_NoUnkeyedLiteral    struct{}             `json:"-"`
-	XXX_unrecognized        []byte               `json:"-"`
-	XXX_sizecache           int32                `json:"-"`
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,4,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	InvalidateComments   *bool                `protobuf:"varint,5,req,name=invalidate_comments,json=invalidateComments" json:"invalidate_comments,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *CommandDeleteCellsArchive) Reset()         { *m = CommandDeleteCellsArchive{} }
 func (m *CommandDeleteCellsArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandDeleteCellsArchive) ProtoMessage()    {}
 func (*CommandDeleteCellsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{5}
+	return fileDescriptor_5d102eeb586b2c5c, []int{2}
 }
 
 func (m *CommandDeleteCellsArchive) XXX_Unmarshal(b []byte) error {
@@ -624,6 +260,20 @@ func (m *CommandDeleteCellsArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandDeleteCellsArchive proto.InternalMessageInfo
 
+func (m *CommandDeleteCellsArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandDeleteCellsArchive) GetUndoMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoMap
+	}
+	return nil
+}
+
 func (m *CommandDeleteCellsArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
@@ -631,25 +281,11 @@ func (m *CommandDeleteCellsArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandDeleteCellsArchive) GetCellUidList() *CellUIDListArchive {
+func (m *CommandDeleteCellsArchive) GetRedoMap() *CellMapArchive {
 	if m != nil {
-		return m.CellUidList
+		return m.RedoMap
 	}
 	return nil
-}
-
-func (m *CommandDeleteCellsArchive) GetInverseCellMap() *TSP.Reference {
-	if m != nil {
-		return m.InverseCellMap
-	}
-	return nil
-}
-
-func (m *CommandDeleteCellsArchive) GetUpdateBorderVisibility() bool {
-	if m != nil && m.UpdateBorderVisibility != nil {
-		return *m.UpdateBorderVisibility
-	}
-	return false
 }
 
 func (m *CommandDeleteCellsArchive) GetInvalidateComments() bool {
@@ -659,17 +295,12 @@ func (m *CommandDeleteCellsArchive) GetInvalidateComments() bool {
 	return false
 }
 
-func (m *CommandDeleteCellsArchive) GetInvalidateCommentsValid() bool {
-	if m != nil && m.InvalidateCommentsValid != nil {
-		return *m.InvalidateCommentsValid
-	}
-	return false
-}
-
 type CommandDeleteCellContentsArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellUidList          *CellUIDListArchive  `protobuf:"bytes,2,req,name=cell_uid_list,json=cellUidList" json:"cell_uid_list,omitempty"`
-	InverseCellDiffMap   *TSP.Reference       `protobuf:"bytes,3,opt,name=inverse_cell_diff_map,json=inverseCellDiffMap" json:"inverse_cell_diff_map,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,4,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	InvalidateComments   *bool                `protobuf:"varint,5,req,name=invalidate_comments,json=invalidateComments" json:"invalidate_comments,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -679,7 +310,7 @@ func (m *CommandDeleteCellContentsArchive) Reset()         { *m = CommandDeleteC
 func (m *CommandDeleteCellContentsArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandDeleteCellContentsArchive) ProtoMessage()    {}
 func (*CommandDeleteCellContentsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{6}
+	return fileDescriptor_5d102eeb586b2c5c, []int{3}
 }
 
 func (m *CommandDeleteCellContentsArchive) XXX_Unmarshal(b []byte) error {
@@ -700,6 +331,20 @@ func (m *CommandDeleteCellContentsArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandDeleteCellContentsArchive proto.InternalMessageInfo
 
+func (m *CommandDeleteCellContentsArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandDeleteCellContentsArchive) GetUndoMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoMap
+	}
+	return nil
+}
+
 func (m *CommandDeleteCellContentsArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
@@ -707,97 +352,447 @@ func (m *CommandDeleteCellContentsArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandDeleteCellContentsArchive) GetCellUidList() *CellUIDListArchive {
+func (m *CommandDeleteCellContentsArchive) GetRedoMap() *CellMapArchive {
 	if m != nil {
-		return m.CellUidList
+		return m.RedoMap
 	}
 	return nil
 }
 
-func (m *CommandDeleteCellContentsArchive) GetInverseCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.InverseCellDiffMap
+func (m *CommandDeleteCellContentsArchive) GetInvalidateComments() bool {
+	if m != nil && m.InvalidateComments != nil {
+		return *m.InvalidateComments
 	}
-	return nil
+	return false
 }
 
-type CommandMutateCellFormatArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellUidList          *CellUIDListArchive  `protobuf:"bytes,2,opt,name=cell_uid_list,json=cellUidList" json:"cell_uid_list,omitempty"`
-	InverseCellDiffMap   *TSP.Reference       `protobuf:"bytes,3,opt,name=inverse_cell_diff_map,json=inverseCellDiffMap" json:"inverse_cell_diff_map,omitempty"`
-	WholeFormatDiffMap   *TSP.Reference       `protobuf:"bytes,4,opt,name=whole_format_diff_map,json=wholeFormatDiffMap" json:"whole_format_diff_map,omitempty"`
-	IntendedFormatType   *uint32              `protobuf:"varint,5,req,name=intended_format_type,json=intendedFormatType" json:"intended_format_type,omitempty"`
+type CommandSetMultipleCellsArchive struct {
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,3,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	SourceCell           *Cell                `protobuf:"bytes,4,opt,name=source_cell,json=sourceCell" json:"source_cell,omitempty"`
+	OnlyIfFormatDiffers  *bool                `protobuf:"varint,6,opt,name=only_if_format_differs,json=onlyIfFormatDiffers" json:"only_if_format_differs,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,7,req,name=super" json:"super,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CommandMutateCellFormatArchive) Reset()         { *m = CommandMutateCellFormatArchive{} }
-func (m *CommandMutateCellFormatArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandMutateCellFormatArchive) ProtoMessage()    {}
-func (*CommandMutateCellFormatArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{7}
+func (m *CommandSetMultipleCellsArchive) Reset()         { *m = CommandSetMultipleCellsArchive{} }
+func (m *CommandSetMultipleCellsArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetMultipleCellsArchive) ProtoMessage()    {}
+func (*CommandSetMultipleCellsArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{4}
 }
 
-func (m *CommandMutateCellFormatArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandMutateCellFormatArchive.Unmarshal(m, b)
+func (m *CommandSetMultipleCellsArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetMultipleCellsArchive.Unmarshal(m, b)
 }
-func (m *CommandMutateCellFormatArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandMutateCellFormatArchive.Marshal(b, m, deterministic)
+func (m *CommandSetMultipleCellsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetMultipleCellsArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandMutateCellFormatArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandMutateCellFormatArchive.Merge(m, src)
+func (m *CommandSetMultipleCellsArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetMultipleCellsArchive.Merge(m, src)
 }
-func (m *CommandMutateCellFormatArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandMutateCellFormatArchive.Size(m)
+func (m *CommandSetMultipleCellsArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetMultipleCellsArchive.Size(m)
 }
-func (m *CommandMutateCellFormatArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandMutateCellFormatArchive.DiscardUnknown(m)
+func (m *CommandSetMultipleCellsArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetMultipleCellsArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandMutateCellFormatArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandSetMultipleCellsArchive proto.InternalMessageInfo
 
-func (m *CommandMutateCellFormatArchive) GetSuper() *TableCommandArchive {
+func (m *CommandSetMultipleCellsArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandSetMultipleCellsArchive) GetUndoMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoMap
+	}
+	return nil
+}
+
+func (m *CommandSetMultipleCellsArchive) GetRedoMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoMap
+	}
+	return nil
+}
+
+func (m *CommandSetMultipleCellsArchive) GetSourceCell() *Cell {
+	if m != nil {
+		return m.SourceCell
+	}
+	return nil
+}
+
+func (m *CommandSetMultipleCellsArchive) GetOnlyIfFormatDiffers() bool {
+	if m != nil && m.OnlyIfFormatDiffers != nil {
+		return *m.OnlyIfFormatDiffers
+	}
+	return false
+}
+
+func (m *CommandSetMultipleCellsArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandMutateCellFormatArchive) GetCellUidList() *CellUIDListArchive {
+type CommandSetMultipleCellsCustomArchive struct {
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,3,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	CellFormat           *FormatStructArchive `protobuf:"bytes,4,req,name=cell_format,json=cellFormat" json:"cell_format,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,7,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetMultipleCellsCustomArchive) Reset()         { *m = CommandSetMultipleCellsCustomArchive{} }
+func (m *CommandSetMultipleCellsCustomArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetMultipleCellsCustomArchive) ProtoMessage()    {}
+func (*CommandSetMultipleCellsCustomArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{5}
+}
+
+func (m *CommandSetMultipleCellsCustomArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetMultipleCellsCustomArchive.Unmarshal(m, b)
+}
+func (m *CommandSetMultipleCellsCustomArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetMultipleCellsCustomArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetMultipleCellsCustomArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetMultipleCellsCustomArchive.Merge(m, src)
+}
+func (m *CommandSetMultipleCellsCustomArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetMultipleCellsCustomArchive.Size(m)
+}
+func (m *CommandSetMultipleCellsCustomArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetMultipleCellsCustomArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetMultipleCellsCustomArchive proto.InternalMessageInfo
+
+func (m *CommandSetMultipleCellsCustomArchive) GetSelection() *SelectionArchive {
 	if m != nil {
-		return m.CellUidList
+		return m.Selection
 	}
 	return nil
 }
 
-func (m *CommandMutateCellFormatArchive) GetInverseCellDiffMap() *TSP.Reference {
+func (m *CommandSetMultipleCellsCustomArchive) GetUndoMap() *CellMapArchive {
 	if m != nil {
-		return m.InverseCellDiffMap
+		return m.UndoMap
 	}
 	return nil
 }
 
-func (m *CommandMutateCellFormatArchive) GetWholeFormatDiffMap() *TSP.Reference {
+func (m *CommandSetMultipleCellsCustomArchive) GetRedoMap() *CellMapArchive {
 	if m != nil {
-		return m.WholeFormatDiffMap
+		return m.RedoMap
 	}
 	return nil
 }
 
-func (m *CommandMutateCellFormatArchive) GetIntendedFormatType() uint32 {
-	if m != nil && m.IntendedFormatType != nil {
-		return *m.IntendedFormatType
+func (m *CommandSetMultipleCellsCustomArchive) GetCellFormat() *FormatStructArchive {
+	if m != nil {
+		return m.CellFormat
+	}
+	return nil
+}
+
+func (m *CommandSetMultipleCellsCustomArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+type CommandSetMultipleCellsMultipleChoiceListArchive struct {
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,3,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,5,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) Reset() {
+	*m = CommandSetMultipleCellsMultipleChoiceListArchive{}
+}
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandSetMultipleCellsMultipleChoiceListArchive) ProtoMessage() {}
+func (*CommandSetMultipleCellsMultipleChoiceListArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{6}
+}
+
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetMultipleCellsMultipleChoiceListArchive.Unmarshal(m, b)
+}
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetMultipleCellsMultipleChoiceListArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetMultipleCellsMultipleChoiceListArchive.Merge(m, src)
+}
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetMultipleCellsMultipleChoiceListArchive.Size(m)
+}
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetMultipleCellsMultipleChoiceListArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetMultipleCellsMultipleChoiceListArchive proto.InternalMessageInfo
+
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) GetUndoMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoMap
+	}
+	return nil
+}
+
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) GetRedoMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoMap
+	}
+	return nil
+}
+
+func (m *CommandSetMultipleCellsMultipleChoiceListArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+type CommandCoerceMultipleCellsArchive struct {
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,3,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	DesiredFormat        *int32               `protobuf:"varint,4,req,name=desired_format,json=desiredFormat" json:"desired_format,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,6,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandCoerceMultipleCellsArchive) Reset()         { *m = CommandCoerceMultipleCellsArchive{} }
+func (m *CommandCoerceMultipleCellsArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandCoerceMultipleCellsArchive) ProtoMessage()    {}
+func (*CommandCoerceMultipleCellsArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{7}
+}
+
+func (m *CommandCoerceMultipleCellsArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandCoerceMultipleCellsArchive.Unmarshal(m, b)
+}
+func (m *CommandCoerceMultipleCellsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandCoerceMultipleCellsArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandCoerceMultipleCellsArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandCoerceMultipleCellsArchive.Merge(m, src)
+}
+func (m *CommandCoerceMultipleCellsArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandCoerceMultipleCellsArchive.Size(m)
+}
+func (m *CommandCoerceMultipleCellsArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandCoerceMultipleCellsArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandCoerceMultipleCellsArchive proto.InternalMessageInfo
+
+func (m *CommandCoerceMultipleCellsArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandCoerceMultipleCellsArchive) GetUndoMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoMap
+	}
+	return nil
+}
+
+func (m *CommandCoerceMultipleCellsArchive) GetRedoMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoMap
+	}
+	return nil
+}
+
+func (m *CommandCoerceMultipleCellsArchive) GetDesiredFormat() int32 {
+	if m != nil && m.DesiredFormat != nil {
+		return *m.DesiredFormat
 	}
 	return 0
 }
 
+func (m *CommandCoerceMultipleCellsArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+type CommandSetControlCellsDisplayNumberFormatArchive struct {
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,3,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,6,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) Reset() {
+	*m = CommandSetControlCellsDisplayNumberFormatArchive{}
+}
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandSetControlCellsDisplayNumberFormatArchive) ProtoMessage() {}
+func (*CommandSetControlCellsDisplayNumberFormatArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{8}
+}
+
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetControlCellsDisplayNumberFormatArchive.Unmarshal(m, b)
+}
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetControlCellsDisplayNumberFormatArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetControlCellsDisplayNumberFormatArchive.Merge(m, src)
+}
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetControlCellsDisplayNumberFormatArchive.Size(m)
+}
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetControlCellsDisplayNumberFormatArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetControlCellsDisplayNumberFormatArchive proto.InternalMessageInfo
+
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) GetUndoMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoMap
+	}
+	return nil
+}
+
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) GetRedoMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoMap
+	}
+	return nil
+}
+
+func (m *CommandSetControlCellsDisplayNumberFormatArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+type CommandSetAutomaticFormatArchive struct {
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,3,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,6,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetAutomaticFormatArchive) Reset()         { *m = CommandSetAutomaticFormatArchive{} }
+func (m *CommandSetAutomaticFormatArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetAutomaticFormatArchive) ProtoMessage()    {}
+func (*CommandSetAutomaticFormatArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{9}
+}
+
+func (m *CommandSetAutomaticFormatArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetAutomaticFormatArchive.Unmarshal(m, b)
+}
+func (m *CommandSetAutomaticFormatArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetAutomaticFormatArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetAutomaticFormatArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetAutomaticFormatArchive.Merge(m, src)
+}
+func (m *CommandSetAutomaticFormatArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetAutomaticFormatArchive.Size(m)
+}
+func (m *CommandSetAutomaticFormatArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetAutomaticFormatArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetAutomaticFormatArchive proto.InternalMessageInfo
+
+func (m *CommandSetAutomaticFormatArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandSetAutomaticFormatArchive) GetUndoMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoMap
+	}
+	return nil
+}
+
+func (m *CommandSetAutomaticFormatArchive) GetRedoMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoMap
+	}
+	return nil
+}
+
+func (m *CommandSetAutomaticFormatArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
 type CommandSetAutomaticDurationUnitsArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	AutomaticUnits       *bool                           `protobuf:"varint,4,opt,name=automatic_units,json=automaticUnits" json:"automatic_units,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Selection            *SelectionArchive    `protobuf:"bytes,1,req,name=selection" json:"selection,omitempty"`
+	UndoMap              *CellMapArchive      `protobuf:"bytes,2,req,name=undo_map,json=undoMap" json:"undo_map,omitempty"`
+	RedoMap              *CellMapArchive      `protobuf:"bytes,3,req,name=redo_map,json=redoMap" json:"redo_map,omitempty"`
+	AutomaticUnits       *bool                `protobuf:"varint,4,opt,name=automatic_units,json=automaticUnits" json:"automatic_units,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,6,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *CommandSetAutomaticDurationUnitsArchive) Reset() {
@@ -806,7 +801,7 @@ func (m *CommandSetAutomaticDurationUnitsArchive) Reset() {
 func (m *CommandSetAutomaticDurationUnitsArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetAutomaticDurationUnitsArchive) ProtoMessage()    {}
 func (*CommandSetAutomaticDurationUnitsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{8}
+	return fileDescriptor_5d102eeb586b2c5c, []int{10}
 }
 
 func (m *CommandSetAutomaticDurationUnitsArchive) XXX_Unmarshal(b []byte) error {
@@ -827,9 +822,23 @@ func (m *CommandSetAutomaticDurationUnitsArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetAutomaticDurationUnitsArchive proto.InternalMessageInfo
 
-func (m *CommandSetAutomaticDurationUnitsArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetAutomaticDurationUnitsArchive) GetSelection() *SelectionArchive {
 	if m != nil {
-		return m.Super
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandSetAutomaticDurationUnitsArchive) GetUndoMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoMap
+	}
+	return nil
+}
+
+func (m *CommandSetAutomaticDurationUnitsArchive) GetRedoMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoMap
 	}
 	return nil
 }
@@ -841,411 +850,46 @@ func (m *CommandSetAutomaticDurationUnitsArchive) GetAutomaticUnits() bool {
 	return false
 }
 
-type CommandSetDurationStyleArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	DurationStyle        *uint32                         `protobuf:"varint,2,opt,name=duration_style,json=durationStyle" json:"duration_style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
-}
-
-func (m *CommandSetDurationStyleArchive) Reset()         { *m = CommandSetDurationStyleArchive{} }
-func (m *CommandSetDurationStyleArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSetDurationStyleArchive) ProtoMessage()    {}
-func (*CommandSetDurationStyleArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{9}
-}
-
-func (m *CommandSetDurationStyleArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetDurationStyleArchive.Unmarshal(m, b)
-}
-func (m *CommandSetDurationStyleArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetDurationStyleArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetDurationStyleArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetDurationStyleArchive.Merge(m, src)
-}
-func (m *CommandSetDurationStyleArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetDurationStyleArchive.Size(m)
-}
-func (m *CommandSetDurationStyleArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetDurationStyleArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetDurationStyleArchive proto.InternalMessageInfo
-
-func (m *CommandSetDurationStyleArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetAutomaticDurationUnitsArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandSetDurationStyleArchive) GetDurationStyle() uint32 {
-	if m != nil && m.DurationStyle != nil {
-		return *m.DurationStyle
-	}
-	return 0
-}
-
-type CommandSetDurationUnitSmallestLargestArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SmallestUnit         *uint32                         `protobuf:"varint,2,opt,name=smallest_unit,json=smallestUnit" json:"smallest_unit,omitempty"`
-	LargestUnit          *uint32                         `protobuf:"varint,3,opt,name=largest_unit,json=largestUnit" json:"largest_unit,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
-}
-
-func (m *CommandSetDurationUnitSmallestLargestArchive) Reset() {
-	*m = CommandSetDurationUnitSmallestLargestArchive{}
-}
-func (m *CommandSetDurationUnitSmallestLargestArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandSetDurationUnitSmallestLargestArchive) ProtoMessage() {}
-func (*CommandSetDurationUnitSmallestLargestArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{10}
-}
-
-func (m *CommandSetDurationUnitSmallestLargestArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetDurationUnitSmallestLargestArchive.Unmarshal(m, b)
-}
-func (m *CommandSetDurationUnitSmallestLargestArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetDurationUnitSmallestLargestArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetDurationUnitSmallestLargestArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetDurationUnitSmallestLargestArchive.Merge(m, src)
-}
-func (m *CommandSetDurationUnitSmallestLargestArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetDurationUnitSmallestLargestArchive.Size(m)
-}
-func (m *CommandSetDurationUnitSmallestLargestArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetDurationUnitSmallestLargestArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetDurationUnitSmallestLargestArchive proto.InternalMessageInfo
-
-func (m *CommandSetDurationUnitSmallestLargestArchive) GetSuper() *CommandMutateCellFormatArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandSetDurationUnitSmallestLargestArchive) GetSmallestUnit() uint32 {
-	if m != nil && m.SmallestUnit != nil {
-		return *m.SmallestUnit
-	}
-	return 0
-}
-
-func (m *CommandSetDurationUnitSmallestLargestArchive) GetLargestUnit() uint32 {
-	if m != nil && m.LargestUnit != nil {
-		return *m.LargestUnit
-	}
-	return 0
-}
-
-type CommandReplaceCustomFormatArchive struct {
-	UndoDiffMap          *TSP.Reference       `protobuf:"bytes,1,opt,name=undo_diff_map,json=undoDiffMap" json:"undo_diff_map,omitempty"`
-	CommitDiffMap        *TSP.Reference       `protobuf:"bytes,2,opt,name=commit_diff_map,json=commitDiffMap" json:"commit_diff_map,omitempty"`
-	Super                *TableCommandArchive `protobuf:"bytes,6,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *CommandReplaceCustomFormatArchive) Reset()         { *m = CommandReplaceCustomFormatArchive{} }
-func (m *CommandReplaceCustomFormatArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandReplaceCustomFormatArchive) ProtoMessage()    {}
-func (*CommandReplaceCustomFormatArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{11}
-}
-
-func (m *CommandReplaceCustomFormatArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandReplaceCustomFormatArchive.Unmarshal(m, b)
-}
-func (m *CommandReplaceCustomFormatArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandReplaceCustomFormatArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandReplaceCustomFormatArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandReplaceCustomFormatArchive.Merge(m, src)
-}
-func (m *CommandReplaceCustomFormatArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandReplaceCustomFormatArchive.Size(m)
-}
-func (m *CommandReplaceCustomFormatArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandReplaceCustomFormatArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandReplaceCustomFormatArchive proto.InternalMessageInfo
-
-func (m *CommandReplaceCustomFormatArchive) GetUndoDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.UndoDiffMap
-	}
-	return nil
-}
-
-func (m *CommandReplaceCustomFormatArchive) GetCommitDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CommitDiffMap
-	}
-	return nil
-}
-
-func (m *CommandReplaceCustomFormatArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type CommandMoveCellsArchive struct {
-	Super                      *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	DstTableInfoIdPath         *TSP.UUIDPath          `protobuf:"bytes,2,req,name=dst_table_info_id_path,json=dstTableInfoIdPath" json:"dst_table_info_id_path,omitempty"`
-	SrcUidRange                *TSP.UUIDRectArchive   `protobuf:"bytes,3,req,name=src_uid_range,json=srcUidRange" json:"src_uid_range,omitempty"`
-	DstUidRange                *TSP.UUIDRectArchive   `protobuf:"bytes,4,req,name=dst_uid_range,json=dstUidRange" json:"dst_uid_range,omitempty"`
-	TableDimension             *TableDimensionArchive `protobuf:"varint,5,opt,name=table_dimension,json=tableDimension,enum=TST.TableDimensionArchive" json:"table_dimension,omitempty"`
-	SrcCellMap                 *TSP.Reference         `protobuf:"bytes,6,req,name=src_cell_map,json=srcCellMap" json:"src_cell_map,omitempty"`
-	DstCellMap                 *TSP.Reference         `protobuf:"bytes,7,opt,name=dst_cell_map,json=dstCellMap" json:"dst_cell_map,omitempty"`
-	DstCellStylesContainer     *TSP.Reference         `protobuf:"bytes,8,opt,name=dst_cell_styles_container,json=dstCellStylesContainer" json:"dst_cell_styles_container,omitempty"`
-	SrcUndoCellMap             *TSP.Reference         `protobuf:"bytes,9,opt,name=src_undo_cell_map,json=srcUndoCellMap" json:"src_undo_cell_map,omitempty"`
-	DstUndoCellMap             *TSP.Reference         `protobuf:"bytes,10,opt,name=dst_undo_cell_map,json=dstUndoCellMap" json:"dst_undo_cell_map,omitempty"`
-	DstMergeOwnerRollbackIndex *uint32                `protobuf:"varint,11,req,name=dst_merge_owner_rollback_index,json=dstMergeOwnerRollbackIndex" json:"dst_merge_owner_rollback_index,omitempty"`
-	FormulaRewriteCommands     []*TSP.Reference       `protobuf:"bytes,12,rep,name=formula_rewrite_commands,json=formulaRewriteCommands" json:"formula_rewrite_commands,omitempty"`
-	MergeActionToRestore       *MergeOperationArchive `protobuf:"bytes,13,opt,name=merge_action_to_restore,json=mergeActionToRestore" json:"merge_action_to_restore,omitempty"`
-	CommentCellUidsToRestore   *CellUIDListArchive    `protobuf:"bytes,14,opt,name=comment_cell_uids_to_restore,json=commentCellUidsToRestore" json:"comment_cell_uids_to_restore,omitempty"`
-	CommentStoragesToRestore   []*TSP.Reference       `protobuf:"bytes,15,rep,name=comment_storages_to_restore,json=commentStoragesToRestore" json:"comment_storages_to_restore,omitempty"`
-	XXX_NoUnkeyedLiteral       struct{}               `json:"-"`
-	XXX_unrecognized           []byte                 `json:"-"`
-	XXX_sizecache              int32                  `json:"-"`
-}
-
-func (m *CommandMoveCellsArchive) Reset()         { *m = CommandMoveCellsArchive{} }
-func (m *CommandMoveCellsArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandMoveCellsArchive) ProtoMessage()    {}
-func (*CommandMoveCellsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{12}
-}
-
-func (m *CommandMoveCellsArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandMoveCellsArchive.Unmarshal(m, b)
-}
-func (m *CommandMoveCellsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandMoveCellsArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandMoveCellsArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandMoveCellsArchive.Merge(m, src)
-}
-func (m *CommandMoveCellsArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandMoveCellsArchive.Size(m)
-}
-func (m *CommandMoveCellsArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandMoveCellsArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandMoveCellsArchive proto.InternalMessageInfo
-
-func (m *CommandMoveCellsArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetDstTableInfoIdPath() *TSP.UUIDPath {
-	if m != nil {
-		return m.DstTableInfoIdPath
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetSrcUidRange() *TSP.UUIDRectArchive {
-	if m != nil {
-		return m.SrcUidRange
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetDstUidRange() *TSP.UUIDRectArchive {
-	if m != nil {
-		return m.DstUidRange
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetTableDimension() TableDimensionArchive {
-	if m != nil && m.TableDimension != nil {
-		return *m.TableDimension
-	}
-	return TableDimensionArchive_dimensionRow
-}
-
-func (m *CommandMoveCellsArchive) GetSrcCellMap() *TSP.Reference {
-	if m != nil {
-		return m.SrcCellMap
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetDstCellMap() *TSP.Reference {
-	if m != nil {
-		return m.DstCellMap
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetDstCellStylesContainer() *TSP.Reference {
-	if m != nil {
-		return m.DstCellStylesContainer
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetSrcUndoCellMap() *TSP.Reference {
-	if m != nil {
-		return m.SrcUndoCellMap
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetDstUndoCellMap() *TSP.Reference {
-	if m != nil {
-		return m.DstUndoCellMap
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetDstMergeOwnerRollbackIndex() uint32 {
-	if m != nil && m.DstMergeOwnerRollbackIndex != nil {
-		return *m.DstMergeOwnerRollbackIndex
-	}
-	return 0
-}
-
-func (m *CommandMoveCellsArchive) GetFormulaRewriteCommands() []*TSP.Reference {
-	if m != nil {
-		return m.FormulaRewriteCommands
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetMergeActionToRestore() *MergeOperationArchive {
-	if m != nil {
-		return m.MergeActionToRestore
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetCommentCellUidsToRestore() *CellUIDListArchive {
-	if m != nil {
-		return m.CommentCellUidsToRestore
-	}
-	return nil
-}
-
-func (m *CommandMoveCellsArchive) GetCommentStoragesToRestore() []*TSP.Reference {
-	if m != nil {
-		return m.CommentStoragesToRestore
-	}
-	return nil
-}
-
-type ColumnRowMetadataArchive struct {
-	Size                 *float64       `protobuf:"fixed64,1,req,name=size" json:"size,omitempty"`
-	HidingAction         *uint32        `protobuf:"varint,2,req,name=hiding_action,json=hidingAction" json:"hiding_action,omitempty"`
-	CellStyle            *TSP.Reference `protobuf:"bytes,3,opt,name=cell_style,json=cellStyle" json:"cell_style,omitempty"`
-	TextStyle            *TSP.Reference `protobuf:"bytes,4,opt,name=text_style,json=textStyle" json:"text_style,omitempty"`
-	Uuid                 *TSP.UUID      `protobuf:"bytes,5,opt,name=uuid" json:"uuid,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
-}
-
-func (m *ColumnRowMetadataArchive) Reset()         { *m = ColumnRowMetadataArchive{} }
-func (m *ColumnRowMetadataArchive) String() string { return proto.CompactTextString(m) }
-func (*ColumnRowMetadataArchive) ProtoMessage()    {}
-func (*ColumnRowMetadataArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{13}
-}
-
-func (m *ColumnRowMetadataArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ColumnRowMetadataArchive.Unmarshal(m, b)
-}
-func (m *ColumnRowMetadataArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ColumnRowMetadataArchive.Marshal(b, m, deterministic)
-}
-func (m *ColumnRowMetadataArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ColumnRowMetadataArchive.Merge(m, src)
-}
-func (m *ColumnRowMetadataArchive) XXX_Size() int {
-	return xxx_messageInfo_ColumnRowMetadataArchive.Size(m)
-}
-func (m *ColumnRowMetadataArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ColumnRowMetadataArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ColumnRowMetadataArchive proto.InternalMessageInfo
-
-func (m *ColumnRowMetadataArchive) GetSize() float64 {
-	if m != nil && m.Size != nil {
-		return *m.Size
-	}
-	return 0
-}
-
-func (m *ColumnRowMetadataArchive) GetHidingAction() uint32 {
-	if m != nil && m.HidingAction != nil {
-		return *m.HidingAction
-	}
-	return 0
-}
-
-func (m *ColumnRowMetadataArchive) GetCellStyle() *TSP.Reference {
-	if m != nil {
-		return m.CellStyle
-	}
-	return nil
-}
-
-func (m *ColumnRowMetadataArchive) GetTextStyle() *TSP.Reference {
-	if m != nil {
-		return m.TextStyle
-	}
-	return nil
-}
-
-func (m *ColumnRowMetadataArchive) GetUuid() *TSP.UUID {
-	if m != nil {
-		return m.Uuid
 	}
 	return nil
 }
 
 type CommandInsertColumnsOrRowsArchive struct {
-	Super                         *TableCommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Bundle                        *ColumnRowBundleArchive   `protobuf:"bytes,2,req,name=bundle" json:"bundle,omitempty"`
-	CellMap                       *TSP.Reference            `protobuf:"bytes,3,opt,name=cell_map,json=cellMap" json:"cell_map,omitempty"`
-	SrcRowColumnUid               *TSP.UUID                 `protobuf:"bytes,11,req,name=src_row_column_uid,json=srcRowColumnUid" json:"src_row_column_uid,omitempty"`
-	UndoCommands                  *TSP.Reference            `protobuf:"bytes,4,opt,name=undo_commands,json=undoCommands" json:"undo_commands,omitempty"`
-	UndoCellMap                   *TSP.Reference            `protobuf:"bytes,5,opt,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
-	SortOrder                     *TableSortOrderUIDArchive `protobuf:"bytes,6,opt,name=sort_order,json=sortOrder" json:"sort_order,omitempty"`
-	FilterSet                     *TSP.Reference            `protobuf:"bytes,7,opt,name=filter_set,json=filterSet" json:"filter_set,omitempty"`
-	ShouldEdgeExpandFormulaRanges *bool                     `protobuf:"varint,8,opt,name=should_edge_expand_formula_ranges,json=shouldEdgeExpandFormulaRanges" json:"should_edge_expand_formula_ranges,omitempty"`
-	WasCategorized                *bool                     `protobuf:"varint,9,opt,name=was_categorized,json=wasCategorized" json:"was_categorized,omitempty"`
-	UndoOrder                     []*TSP.UUID               `protobuf:"bytes,10,rep,name=undo_order,json=undoOrder" json:"undo_order,omitempty"`
-	XXX_NoUnkeyedLiteral          struct{}                  `json:"-"`
-	XXX_unrecognized              []byte                    `json:"-"`
-	XXX_sizecache                 int32                     `json:"-"`
+	Direction               *CommandDirectionArchive                            `protobuf:"varint,1,req,name=direction,enum=TST.CommandDirectionArchive" json:"direction,omitempty"`
+	Index                   *uint32                                             `protobuf:"varint,2,req,name=index" json:"index,omitempty"`
+	Count                   *uint32                                             `protobuf:"varint,3,req,name=count" json:"count,omitempty"`
+	Size                    *float32                                            `protobuf:"fixed32,4,req,name=size" json:"size,omitempty"`
+	Before                  *bool                                               `protobuf:"varint,5,req,name=before" json:"before,omitempty"`
+	HeaderCount             *uint32                                             `protobuf:"varint,11,req,name=header_count,json=headerCount" json:"header_count,omitempty"`
+	HeadersAdded            *uint32                                             `protobuf:"varint,12,req,name=headers_added,json=headersAdded" json:"headers_added,omitempty"`
+	FooterCount             *uint32                                             `protobuf:"varint,13,req,name=footer_count,json=footerCount" json:"footer_count,omitempty"`
+	FootersAdded            *uint32                                             `protobuf:"varint,14,req,name=footers_added,json=footersAdded" json:"footers_added,omitempty"`
+	RowColumnStyle          *Reference                                          `protobuf:"bytes,8,opt,name=row_column_style,json=rowColumnStyle" json:"row_column_style,omitempty"`
+	CellStyleRedo           *CellMapArchive                                     `protobuf:"bytes,9,opt,name=cell_style_redo,json=cellStyleRedo" json:"cell_style_redo,omitempty"`
+	Super                   *TableCommandArchive                                `protobuf:"bytes,10,req,name=super" json:"super,omitempty"`
+	FormulaRewriteCommand   *Reference                                          `protobuf:"bytes,15,opt,name=formula_rewrite_command,json=formulaRewriteCommand" json:"formula_rewrite_command,omitempty"`
+	WidthFactor             *float32                                            `protobuf:"fixed32,16,req,name=width_factor,json=widthFactor" json:"width_factor,omitempty"`
+	HeightFactor            *float32                                            `protobuf:"fixed32,17,req,name=height_factor,json=heightFactor" json:"height_factor,omitempty"`
+	AllowHorizontalAutosize *bool                                               `protobuf:"varint,18,opt,name=allow_horizontal_autosize,json=allowHorizontalAutosize" json:"allow_horizontal_autosize,omitempty"`
+	InheritStyles           *bool                                               `protobuf:"varint,19,opt,name=inherit_styles,json=inheritStyles" json:"inherit_styles,omitempty"`
+	InheritFormats          *bool                                               `protobuf:"varint,20,opt,name=inherit_formats,json=inheritFormats" json:"inherit_formats,omitempty"`
+	InheritFormulas         *bool                                               `protobuf:"varint,24,opt,name=inherit_formulas,json=inheritFormulas" json:"inherit_formulas,omitempty"`
+	CellStyleIndexPairs     []*CommandInsertColumnsOrRowsArchive_StyleIndexPair `protobuf:"bytes,21,rep,name=cell_style_index_pairs,json=cellStyleIndexPairs" json:"cell_style_index_pairs,omitempty"`
+	TextStyleIndexPairs     []*CommandInsertColumnsOrRowsArchive_StyleIndexPair `protobuf:"bytes,22,rep,name=text_style_index_pairs,json=textStyleIndexPairs" json:"text_style_index_pairs,omitempty"`
+	Sizes                   []float64                                           `protobuf:"fixed64,23,rep,name=sizes" json:"sizes,omitempty"`
+	XXX_NoUnkeyedLiteral    struct{}                                            `json:"-"`
+	XXX_unrecognized        []byte                                              `json:"-"`
+	XXX_sizecache           int32                                               `json:"-"`
 }
 
 func (m *CommandInsertColumnsOrRowsArchive) Reset()         { *m = CommandInsertColumnsOrRowsArchive{} }
 func (m *CommandInsertColumnsOrRowsArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandInsertColumnsOrRowsArchive) ProtoMessage()    {}
 func (*CommandInsertColumnsOrRowsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{14}
+	return fileDescriptor_5d102eeb586b2c5c, []int{11}
 }
 
 func (m *CommandInsertColumnsOrRowsArchive) XXX_Unmarshal(b []byte) error {
@@ -1266,6 +910,83 @@ func (m *CommandInsertColumnsOrRowsArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandInsertColumnsOrRowsArchive proto.InternalMessageInfo
 
+func (m *CommandInsertColumnsOrRowsArchive) GetDirection() CommandDirectionArchive {
+	if m != nil && m.Direction != nil {
+		return *m.Direction
+	}
+	return CommandDirectionArchive_directionRow
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetCount() uint32 {
+	if m != nil && m.Count != nil {
+		return *m.Count
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetSize() float32 {
+	if m != nil && m.Size != nil {
+		return *m.Size
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetBefore() bool {
+	if m != nil && m.Before != nil {
+		return *m.Before
+	}
+	return false
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetHeaderCount() uint32 {
+	if m != nil && m.HeaderCount != nil {
+		return *m.HeaderCount
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetHeadersAdded() uint32 {
+	if m != nil && m.HeadersAdded != nil {
+		return *m.HeadersAdded
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetFooterCount() uint32 {
+	if m != nil && m.FooterCount != nil {
+		return *m.FooterCount
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetFootersAdded() uint32 {
+	if m != nil && m.FootersAdded != nil {
+		return *m.FootersAdded
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetRowColumnStyle() *Reference {
+	if m != nil {
+		return m.RowColumnStyle
+	}
+	return nil
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetCellStyleRedo() *CellMapArchive {
+	if m != nil {
+		return m.CellStyleRedo
+	}
+	return nil
+}
+
 func (m *CommandInsertColumnsOrRowsArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
@@ -1273,191 +994,249 @@ func (m *CommandInsertColumnsOrRowsArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetBundle() *ColumnRowBundleArchive {
+func (m *CommandInsertColumnsOrRowsArchive) GetFormulaRewriteCommand() *Reference {
 	if m != nil {
-		return m.Bundle
+		return m.FormulaRewriteCommand
 	}
 	return nil
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetCellMap() *TSP.Reference {
+func (m *CommandInsertColumnsOrRowsArchive) GetWidthFactor() float32 {
+	if m != nil && m.WidthFactor != nil {
+		return *m.WidthFactor
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetHeightFactor() float32 {
+	if m != nil && m.HeightFactor != nil {
+		return *m.HeightFactor
+	}
+	return 0
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetAllowHorizontalAutosize() bool {
+	if m != nil && m.AllowHorizontalAutosize != nil {
+		return *m.AllowHorizontalAutosize
+	}
+	return false
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetInheritStyles() bool {
+	if m != nil && m.InheritStyles != nil {
+		return *m.InheritStyles
+	}
+	return false
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetInheritFormats() bool {
+	if m != nil && m.InheritFormats != nil {
+		return *m.InheritFormats
+	}
+	return false
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetInheritFormulas() bool {
+	if m != nil && m.InheritFormulas != nil {
+		return *m.InheritFormulas
+	}
+	return false
+}
+
+func (m *CommandInsertColumnsOrRowsArchive) GetCellStyleIndexPairs() []*CommandInsertColumnsOrRowsArchive_StyleIndexPair {
 	if m != nil {
-		return m.CellMap
+		return m.CellStyleIndexPairs
 	}
 	return nil
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetSrcRowColumnUid() *TSP.UUID {
+func (m *CommandInsertColumnsOrRowsArchive) GetTextStyleIndexPairs() []*CommandInsertColumnsOrRowsArchive_StyleIndexPair {
 	if m != nil {
-		return m.SrcRowColumnUid
+		return m.TextStyleIndexPairs
 	}
 	return nil
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetUndoCommands() *TSP.Reference {
+func (m *CommandInsertColumnsOrRowsArchive) GetSizes() []float64 {
 	if m != nil {
-		return m.UndoCommands
+		return m.Sizes
 	}
 	return nil
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetUndoCellMap() *TSP.Reference {
+type CommandInsertColumnsOrRowsArchive_StyleIndexPair struct {
+	Style                *Reference `protobuf:"bytes,1,req,name=style" json:"style,omitempty"`
+	Index                *uint32    `protobuf:"varint,2,req,name=index" json:"index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
+}
+
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) Reset() {
+	*m = CommandInsertColumnsOrRowsArchive_StyleIndexPair{}
+}
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandInsertColumnsOrRowsArchive_StyleIndexPair) ProtoMessage() {}
+func (*CommandInsertColumnsOrRowsArchive_StyleIndexPair) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{11, 0}
+}
+
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandInsertColumnsOrRowsArchive_StyleIndexPair.Unmarshal(m, b)
+}
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandInsertColumnsOrRowsArchive_StyleIndexPair.Marshal(b, m, deterministic)
+}
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandInsertColumnsOrRowsArchive_StyleIndexPair.Merge(m, src)
+}
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) XXX_Size() int {
+	return xxx_messageInfo_CommandInsertColumnsOrRowsArchive_StyleIndexPair.Size(m)
+}
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandInsertColumnsOrRowsArchive_StyleIndexPair.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandInsertColumnsOrRowsArchive_StyleIndexPair proto.InternalMessageInfo
+
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) GetStyle() *Reference {
+	if m != nil {
+		return m.Style
+	}
+	return nil
+}
+
+func (m *CommandInsertColumnsOrRowsArchive_StyleIndexPair) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
+}
+
+type CommandPasteArchive struct {
+	UserSelection          *SelectionArchive    `protobuf:"bytes,1,req,name=user_selection,json=userSelection" json:"user_selection,omitempty"`
+	FinalSelection         *SelectionArchive    `protobuf:"bytes,2,req,name=final_selection,json=finalSelection" json:"final_selection,omitempty"`
+	UndoCellMap            *CellMapArchive      `protobuf:"bytes,3,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap            *CellMapArchive      `protobuf:"bytes,4,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	CommandUndo            *Reference           `protobuf:"bytes,6,opt,name=command_undo,json=commandUndo" json:"command_undo,omitempty"`
+	InvalidateComments     *bool                `protobuf:"varint,7,req,name=invalidate_comments,json=invalidateComments" json:"invalidate_comments,omitempty"`
+	Super                  *TableCommandArchive `protobuf:"bytes,11,req,name=super" json:"super,omitempty"`
+	FormulaRewriteCommands []*Reference         `protobuf:"bytes,15,rep,name=formula_rewrite_commands,json=formulaRewriteCommands" json:"formula_rewrite_commands,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{}             `json:"-"`
+	XXX_unrecognized       []byte               `json:"-"`
+	XXX_sizecache          int32                `json:"-"`
+}
+
+func (m *CommandPasteArchive) Reset()         { *m = CommandPasteArchive{} }
+func (m *CommandPasteArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandPasteArchive) ProtoMessage()    {}
+func (*CommandPasteArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{12}
+}
+
+func (m *CommandPasteArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandPasteArchive.Unmarshal(m, b)
+}
+func (m *CommandPasteArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandPasteArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandPasteArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandPasteArchive.Merge(m, src)
+}
+func (m *CommandPasteArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandPasteArchive.Size(m)
+}
+func (m *CommandPasteArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandPasteArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandPasteArchive proto.InternalMessageInfo
+
+func (m *CommandPasteArchive) GetUserSelection() *SelectionArchive {
+	if m != nil {
+		return m.UserSelection
+	}
+	return nil
+}
+
+func (m *CommandPasteArchive) GetFinalSelection() *SelectionArchive {
+	if m != nil {
+		return m.FinalSelection
+	}
+	return nil
+}
+
+func (m *CommandPasteArchive) GetUndoCellMap() *CellMapArchive {
 	if m != nil {
 		return m.UndoCellMap
 	}
 	return nil
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetSortOrder() *TableSortOrderUIDArchive {
+func (m *CommandPasteArchive) GetRedoCellMap() *CellMapArchive {
 	if m != nil {
-		return m.SortOrder
+		return m.RedoCellMap
 	}
 	return nil
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetFilterSet() *TSP.Reference {
+func (m *CommandPasteArchive) GetCommandUndo() *Reference {
 	if m != nil {
-		return m.FilterSet
+		return m.CommandUndo
 	}
 	return nil
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetShouldEdgeExpandFormulaRanges() bool {
-	if m != nil && m.ShouldEdgeExpandFormulaRanges != nil {
-		return *m.ShouldEdgeExpandFormulaRanges
+func (m *CommandPasteArchive) GetInvalidateComments() bool {
+	if m != nil && m.InvalidateComments != nil {
+		return *m.InvalidateComments
 	}
 	return false
 }
 
-func (m *CommandInsertColumnsOrRowsArchive) GetWasCategorized() bool {
-	if m != nil && m.WasCategorized != nil {
-		return *m.WasCategorized
-	}
-	return false
-}
-
-func (m *CommandInsertColumnsOrRowsArchive) GetUndoOrder() []*TSP.UUID {
+func (m *CommandPasteArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
-		return m.UndoOrder
+		return m.Super
 	}
 	return nil
 }
 
-type ColumnRowBundleArchive struct {
-	IsRow                 *bool                       `protobuf:"varint,1,req,name=is_row,json=isRow" json:"is_row,omitempty"`
-	ViewUidList           []*TSP.UUID                 `protobuf:"bytes,2,rep,name=view_uid_list,json=viewUidList" json:"view_uid_list,omitempty"`
-	ViewTypeList          []ColumnRowTypeEnum         `protobuf:"varint,3,rep,name=view_type_list,json=viewTypeList,enum=TST.ColumnRowTypeEnum" json:"view_type_list,omitempty"`
-	BaseUidList           []*TSP.UUID                 `protobuf:"bytes,4,rep,name=base_uid_list,json=baseUidList" json:"base_uid_list,omitempty"`
-	BaseTypeList          []ColumnRowTypeEnum         `protobuf:"varint,5,rep,name=base_type_list,json=baseTypeList,enum=TST.ColumnRowTypeEnum" json:"base_type_list,omitempty"`
-	CategoryOrderUidList  []*TSP.UUID                 `protobuf:"bytes,6,rep,name=category_order_uid_list,json=categoryOrderUidList" json:"category_order_uid_list,omitempty"`
-	CategoryOrderTypeList []ColumnRowTypeEnum         `protobuf:"varint,7,rep,name=category_order_type_list,json=categoryOrderTypeList,enum=TST.ColumnRowTypeEnum" json:"category_order_type_list,omitempty"`
-	MetadataList          []*ColumnRowMetadataArchive `protobuf:"bytes,8,rep,name=metadata_list,json=metadataList" json:"metadata_list,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}                    `json:"-"`
-	XXX_unrecognized      []byte                      `json:"-"`
-	XXX_sizecache         int32                       `json:"-"`
-}
-
-func (m *ColumnRowBundleArchive) Reset()         { *m = ColumnRowBundleArchive{} }
-func (m *ColumnRowBundleArchive) String() string { return proto.CompactTextString(m) }
-func (*ColumnRowBundleArchive) ProtoMessage()    {}
-func (*ColumnRowBundleArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{15}
-}
-
-func (m *ColumnRowBundleArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ColumnRowBundleArchive.Unmarshal(m, b)
-}
-func (m *ColumnRowBundleArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ColumnRowBundleArchive.Marshal(b, m, deterministic)
-}
-func (m *ColumnRowBundleArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ColumnRowBundleArchive.Merge(m, src)
-}
-func (m *ColumnRowBundleArchive) XXX_Size() int {
-	return xxx_messageInfo_ColumnRowBundleArchive.Size(m)
-}
-func (m *ColumnRowBundleArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ColumnRowBundleArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ColumnRowBundleArchive proto.InternalMessageInfo
-
-func (m *ColumnRowBundleArchive) GetIsRow() bool {
-	if m != nil && m.IsRow != nil {
-		return *m.IsRow
-	}
-	return false
-}
-
-func (m *ColumnRowBundleArchive) GetViewUidList() []*TSP.UUID {
+func (m *CommandPasteArchive) GetFormulaRewriteCommands() []*Reference {
 	if m != nil {
-		return m.ViewUidList
-	}
-	return nil
-}
-
-func (m *ColumnRowBundleArchive) GetViewTypeList() []ColumnRowTypeEnum {
-	if m != nil {
-		return m.ViewTypeList
-	}
-	return nil
-}
-
-func (m *ColumnRowBundleArchive) GetBaseUidList() []*TSP.UUID {
-	if m != nil {
-		return m.BaseUidList
-	}
-	return nil
-}
-
-func (m *ColumnRowBundleArchive) GetBaseTypeList() []ColumnRowTypeEnum {
-	if m != nil {
-		return m.BaseTypeList
-	}
-	return nil
-}
-
-func (m *ColumnRowBundleArchive) GetCategoryOrderUidList() []*TSP.UUID {
-	if m != nil {
-		return m.CategoryOrderUidList
-	}
-	return nil
-}
-
-func (m *ColumnRowBundleArchive) GetCategoryOrderTypeList() []ColumnRowTypeEnum {
-	if m != nil {
-		return m.CategoryOrderTypeList
-	}
-	return nil
-}
-
-func (m *ColumnRowBundleArchive) GetMetadataList() []*ColumnRowMetadataArchive {
-	if m != nil {
-		return m.MetadataList
+		return m.FormulaRewriteCommands
 	}
 	return nil
 }
 
 type CommandRemoveColumnsOrRowsArchive struct {
-	Super                                *TableCommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Bundle                               *ColumnRowBundleArchive   `protobuf:"bytes,2,req,name=bundle" json:"bundle,omitempty"`
-	CellMap                              *TSP.Reference            `protobuf:"bytes,3,opt,name=cell_map,json=cellMap" json:"cell_map,omitempty"`
-	UndoCellMap                          *TSP.Reference            `protobuf:"bytes,4,opt,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
-	UndoFilterSet                        *TSP.Reference            `protobuf:"bytes,5,opt,name=undo_filter_set,json=undoFilterSet" json:"undo_filter_set,omitempty"`
-	UndoSortOrder                        *TableSortOrderUIDArchive `protobuf:"bytes,6,opt,name=undo_sort_order,json=undoSortOrder" json:"undo_sort_order,omitempty"`
-	FormulaRewriteCommandForUndo         *TSP.Reference            `protobuf:"bytes,7,opt,name=formula_rewrite_command_for_undo,json=formulaRewriteCommandForUndo" json:"formula_rewrite_command_for_undo,omitempty"`
-	InverseShouldEdgeExpandFormulaRanges *bool                     `protobuf:"varint,8,opt,name=inverse_should_edge_expand_formula_ranges,json=inverseShouldEdgeExpandFormulaRanges" json:"inverse_should_edge_expand_formula_ranges,omitempty"`
-	UndoOrder                            []*TSP.UUID               `protobuf:"bytes,9,rep,name=undo_order,json=undoOrder" json:"undo_order,omitempty"`
-	XXX_NoUnkeyedLiteral                 struct{}                  `json:"-"`
-	XXX_unrecognized                     []byte                    `json:"-"`
-	XXX_sizecache                        int32                     `json:"-"`
+	Super                   *TableCommandArchive     `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Direction               *CommandDirectionArchive `protobuf:"varint,2,req,name=direction,enum=TST.CommandDirectionArchive" json:"direction,omitempty"`
+	IndicesToRemove         *IndexSet                `protobuf:"bytes,3,req,name=indices_to_remove,json=indicesToRemove" json:"indices_to_remove,omitempty"`
+	CellMap                 *CellMapArchive          `protobuf:"bytes,4,opt,name=cellMap" json:"cellMap,omitempty"`
+	Oldgeom                 *GeometryArchive         `protobuf:"bytes,5,req,name=oldgeom" json:"oldgeom,omitempty"`
+	Newgeom                 *GeometryArchive         `protobuf:"bytes,6,req,name=newgeom" json:"newgeom,omitempty"`
+	Subsizes                []float32                `protobuf:"fixed32,7,rep,name=subsizes" json:"subsizes,omitempty"`
+	FormulaRewriteCommand   *Reference               `protobuf:"bytes,8,opt,name=formula_rewrite_command,json=formulaRewriteCommand" json:"formula_rewrite_command,omitempty"`
+	WidthFactor             *float32                 `protobuf:"fixed32,9,req,name=width_factor,json=widthFactor" json:"width_factor,omitempty"`
+	HeightFactor            *float32                 `protobuf:"fixed32,10,req,name=height_factor,json=heightFactor" json:"height_factor,omitempty"`
+	AllowHorizontalAutosize *bool                    `protobuf:"varint,11,opt,name=allow_horizontal_autosize,json=allowHorizontalAutosize" json:"allow_horizontal_autosize,omitempty"`
+	UndoMergeMap            *Reference               `protobuf:"bytes,12,opt,name=undo_merge_map,json=undoMergeMap" json:"undo_merge_map,omitempty"`
+	RedoMergeMap            *Reference               `protobuf:"bytes,13,opt,name=redo_merge_map,json=redoMergeMap" json:"redo_merge_map,omitempty"`
+	HidingActions           []uint32                 `protobuf:"varint,14,rep,name=hiding_actions,json=hidingActions" json:"hiding_actions,omitempty"`
+	OrigFilterSet           *Reference               `protobuf:"bytes,15,opt,name=orig_filter_set,json=origFilterSet" json:"orig_filter_set,omitempty"`
+	UndoCommandCollector    []*Reference             `protobuf:"bytes,16,rep,name=undo_command_collector,json=undoCommandCollector" json:"undo_command_collector,omitempty"`
+	XXX_NoUnkeyedLiteral    struct{}                 `json:"-"`
+	XXX_unrecognized        []byte                   `json:"-"`
+	XXX_sizecache           int32                    `json:"-"`
 }
 
 func (m *CommandRemoveColumnsOrRowsArchive) Reset()         { *m = CommandRemoveColumnsOrRowsArchive{} }
 func (m *CommandRemoveColumnsOrRowsArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandRemoveColumnsOrRowsArchive) ProtoMessage()    {}
 func (*CommandRemoveColumnsOrRowsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{16}
+	return fileDescriptor_5d102eeb586b2c5c, []int{13}
 }
 
 func (m *CommandRemoveColumnsOrRowsArchive) XXX_Unmarshal(b []byte) error {
@@ -1485,131 +1264,133 @@ func (m *CommandRemoveColumnsOrRowsArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandRemoveColumnsOrRowsArchive) GetBundle() *ColumnRowBundleArchive {
+func (m *CommandRemoveColumnsOrRowsArchive) GetDirection() CommandDirectionArchive {
+	if m != nil && m.Direction != nil {
+		return *m.Direction
+	}
+	return CommandDirectionArchive_directionRow
+}
+
+func (m *CommandRemoveColumnsOrRowsArchive) GetIndicesToRemove() *IndexSet {
 	if m != nil {
-		return m.Bundle
+		return m.IndicesToRemove
 	}
 	return nil
 }
 
-func (m *CommandRemoveColumnsOrRowsArchive) GetCellMap() *TSP.Reference {
+func (m *CommandRemoveColumnsOrRowsArchive) GetCellMap() *CellMapArchive {
 	if m != nil {
 		return m.CellMap
 	}
 	return nil
 }
 
-func (m *CommandRemoveColumnsOrRowsArchive) GetUndoCellMap() *TSP.Reference {
+func (m *CommandRemoveColumnsOrRowsArchive) GetOldgeom() *GeometryArchive {
 	if m != nil {
-		return m.UndoCellMap
+		return m.Oldgeom
 	}
 	return nil
 }
 
-func (m *CommandRemoveColumnsOrRowsArchive) GetUndoFilterSet() *TSP.Reference {
+func (m *CommandRemoveColumnsOrRowsArchive) GetNewgeom() *GeometryArchive {
 	if m != nil {
-		return m.UndoFilterSet
+		return m.Newgeom
 	}
 	return nil
 }
 
-func (m *CommandRemoveColumnsOrRowsArchive) GetUndoSortOrder() *TableSortOrderUIDArchive {
+func (m *CommandRemoveColumnsOrRowsArchive) GetSubsizes() []float32 {
 	if m != nil {
-		return m.UndoSortOrder
+		return m.Subsizes
 	}
 	return nil
 }
 
-func (m *CommandRemoveColumnsOrRowsArchive) GetFormulaRewriteCommandForUndo() *TSP.Reference {
+func (m *CommandRemoveColumnsOrRowsArchive) GetFormulaRewriteCommand() *Reference {
 	if m != nil {
-		return m.FormulaRewriteCommandForUndo
+		return m.FormulaRewriteCommand
 	}
 	return nil
 }
 
-func (m *CommandRemoveColumnsOrRowsArchive) GetInverseShouldEdgeExpandFormulaRanges() bool {
-	if m != nil && m.InverseShouldEdgeExpandFormulaRanges != nil {
-		return *m.InverseShouldEdgeExpandFormulaRanges
+func (m *CommandRemoveColumnsOrRowsArchive) GetWidthFactor() float32 {
+	if m != nil && m.WidthFactor != nil {
+		return *m.WidthFactor
+	}
+	return 0
+}
+
+func (m *CommandRemoveColumnsOrRowsArchive) GetHeightFactor() float32 {
+	if m != nil && m.HeightFactor != nil {
+		return *m.HeightFactor
+	}
+	return 0
+}
+
+func (m *CommandRemoveColumnsOrRowsArchive) GetAllowHorizontalAutosize() bool {
+	if m != nil && m.AllowHorizontalAutosize != nil {
+		return *m.AllowHorizontalAutosize
 	}
 	return false
 }
 
-func (m *CommandRemoveColumnsOrRowsArchive) GetUndoOrder() []*TSP.UUID {
+func (m *CommandRemoveColumnsOrRowsArchive) GetUndoMergeMap() *Reference {
 	if m != nil {
-		return m.UndoOrder
+		return m.UndoMergeMap
 	}
 	return nil
 }
 
-type CommandRowColumnRangeArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Uids                 []*TSP.UUID          `protobuf:"bytes,2,rep,name=uids" json:"uids,omitempty"`
-	IsRow                *bool                `protobuf:"varint,3,req,name=is_row,json=isRow" json:"is_row,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *CommandRowColumnRangeArchive) Reset()         { *m = CommandRowColumnRangeArchive{} }
-func (m *CommandRowColumnRangeArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandRowColumnRangeArchive) ProtoMessage()    {}
-func (*CommandRowColumnRangeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{17}
-}
-
-func (m *CommandRowColumnRangeArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRowColumnRangeArchive.Unmarshal(m, b)
-}
-func (m *CommandRowColumnRangeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRowColumnRangeArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandRowColumnRangeArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRowColumnRangeArchive.Merge(m, src)
-}
-func (m *CommandRowColumnRangeArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRowColumnRangeArchive.Size(m)
-}
-func (m *CommandRowColumnRangeArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRowColumnRangeArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandRowColumnRangeArchive proto.InternalMessageInfo
-
-func (m *CommandRowColumnRangeArchive) GetSuper() *TableCommandArchive {
+func (m *CommandRemoveColumnsOrRowsArchive) GetRedoMergeMap() *Reference {
 	if m != nil {
-		return m.Super
+		return m.RedoMergeMap
 	}
 	return nil
 }
 
-func (m *CommandRowColumnRangeArchive) GetUids() []*TSP.UUID {
+func (m *CommandRemoveColumnsOrRowsArchive) GetHidingActions() []uint32 {
 	if m != nil {
-		return m.Uids
+		return m.HidingActions
 	}
 	return nil
 }
 
-func (m *CommandRowColumnRangeArchive) GetIsRow() bool {
-	if m != nil && m.IsRow != nil {
-		return *m.IsRow
+func (m *CommandRemoveColumnsOrRowsArchive) GetOrigFilterSet() *Reference {
+	if m != nil {
+		return m.OrigFilterSet
 	}
-	return false
+	return nil
+}
+
+func (m *CommandRemoveColumnsOrRowsArchive) GetUndoCommandCollector() []*Reference {
+	if m != nil {
+		return m.UndoCommandCollector
+	}
+	return nil
 }
 
 type CommandResizeColumnOrRowArchive struct {
-	Super                *CommandRowColumnRangeArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Sizes                []float32                     `protobuf:"fixed32,2,rep,name=sizes" json:"sizes,omitempty"`
-	SizesForUndo         []float32                     `protobuf:"fixed32,3,rep,name=sizes_for_undo,json=sizesForUndo" json:"sizes_for_undo,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
-	XXX_unrecognized     []byte                        `json:"-"`
-	XXX_sizecache        int32                         `json:"-"`
+	Direction            *CommandDirectionArchive `protobuf:"varint,1,req,name=direction,enum=TST.CommandDirectionArchive" json:"direction,omitempty"`
+	Index                *uint32                  `protobuf:"varint,2,req,name=index" json:"index,omitempty"`
+	Count                *uint32                  `protobuf:"varint,3,req,name=count" json:"count,omitempty"`
+	Newsize              *float32                 `protobuf:"fixed32,4,req,name=newsize" json:"newsize,omitempty"`
+	Oldgeom              *GeometryArchive         `protobuf:"bytes,5,opt,name=oldgeom" json:"oldgeom,omitempty"`
+	Newgeom              *GeometryArchive         `protobuf:"bytes,6,opt,name=newgeom" json:"newgeom,omitempty"`
+	Subsizes             []float32                `protobuf:"fixed32,7,rep,name=subsizes" json:"subsizes,omitempty"`
+	OldDefault           *float32                 `protobuf:"fixed32,8,opt,name=old_default,json=oldDefault" json:"old_default,omitempty"`
+	Uniformsizes         *bool                    `protobuf:"varint,9,opt,name=uniformsizes" json:"uniformsizes,omitempty"`
+	Resizemode           *uint32                  `protobuf:"varint,10,opt,name=resizemode" json:"resizemode,omitempty"`
+	Super                *TableCommandArchive     `protobuf:"bytes,11,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
 }
 
 func (m *CommandResizeColumnOrRowArchive) Reset()         { *m = CommandResizeColumnOrRowArchive{} }
 func (m *CommandResizeColumnOrRowArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandResizeColumnOrRowArchive) ProtoMessage()    {}
 func (*CommandResizeColumnOrRowArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{18}
+	return fileDescriptor_5d102eeb586b2c5c, []int{14}
 }
 
 func (m *CommandResizeColumnOrRowArchive) XXX_Unmarshal(b []byte) error {
@@ -1630,199 +1411,173 @@ func (m *CommandResizeColumnOrRowArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandResizeColumnOrRowArchive proto.InternalMessageInfo
 
-func (m *CommandResizeColumnOrRowArchive) GetSuper() *CommandRowColumnRangeArchive {
+func (m *CommandResizeColumnOrRowArchive) GetDirection() CommandDirectionArchive {
+	if m != nil && m.Direction != nil {
+		return *m.Direction
+	}
+	return CommandDirectionArchive_directionRow
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetCount() uint32 {
+	if m != nil && m.Count != nil {
+		return *m.Count
+	}
+	return 0
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetNewsize() float32 {
+	if m != nil && m.Newsize != nil {
+		return *m.Newsize
+	}
+	return 0
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetOldgeom() *GeometryArchive {
+	if m != nil {
+		return m.Oldgeom
+	}
+	return nil
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetNewgeom() *GeometryArchive {
+	if m != nil {
+		return m.Newgeom
+	}
+	return nil
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetSubsizes() []float32 {
+	if m != nil {
+		return m.Subsizes
+	}
+	return nil
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetOldDefault() float32 {
+	if m != nil && m.OldDefault != nil {
+		return *m.OldDefault
+	}
+	return 0
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetUniformsizes() bool {
+	if m != nil && m.Uniformsizes != nil {
+		return *m.Uniformsizes
+	}
+	return false
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetResizemode() uint32 {
+	if m != nil && m.Resizemode != nil {
+		return *m.Resizemode
+	}
+	return 0
+}
+
+func (m *CommandResizeColumnOrRowArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandResizeColumnOrRowArchive) GetSizes() []float32 {
+type CommandSetCellArchive struct {
+	CellID                *CellID              `protobuf:"bytes,1,req,name=cellID" json:"cellID,omitempty"`
+	Newcell               *Cell                `protobuf:"bytes,2,opt,name=newcell" json:"newcell,omitempty"`
+	Oldcell               *Cell                `protobuf:"bytes,3,opt,name=oldcell" json:"oldcell,omitempty"`
+	Super                 *TableCommandArchive `protobuf:"bytes,5,req,name=super" json:"super,omitempty"`
+	PostUndoRedoSelection *bool                `protobuf:"varint,6,opt,name=post_undo_redo_selection,json=postUndoRedoSelection" json:"post_undo_redo_selection,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{}             `json:"-"`
+	XXX_unrecognized      []byte               `json:"-"`
+	XXX_sizecache         int32                `json:"-"`
+}
+
+func (m *CommandSetCellArchive) Reset()         { *m = CommandSetCellArchive{} }
+func (m *CommandSetCellArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetCellArchive) ProtoMessage()    {}
+func (*CommandSetCellArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{15}
+}
+
+func (m *CommandSetCellArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetCellArchive.Unmarshal(m, b)
+}
+func (m *CommandSetCellArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetCellArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetCellArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetCellArchive.Merge(m, src)
+}
+func (m *CommandSetCellArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetCellArchive.Size(m)
+}
+func (m *CommandSetCellArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetCellArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetCellArchive proto.InternalMessageInfo
+
+func (m *CommandSetCellArchive) GetCellID() *CellID {
 	if m != nil {
-		return m.Sizes
+		return m.CellID
 	}
 	return nil
 }
 
-func (m *CommandResizeColumnOrRowArchive) GetSizesForUndo() []float32 {
+func (m *CommandSetCellArchive) GetNewcell() *Cell {
 	if m != nil {
-		return m.SizesForUndo
+		return m.Newcell
 	}
 	return nil
 }
 
-type CommandCategoryResizeColumnOrRowArchive struct {
-	Super                        *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CategoryRowSizes             []float32            `protobuf:"fixed32,2,rep,name=category_row_sizes,json=categoryRowSizes" json:"category_row_sizes,omitempty"`
-	CategoryRowSizesForUndo      []float32            `protobuf:"fixed32,3,rep,name=category_row_sizes_for_undo,json=categoryRowSizesForUndo" json:"category_row_sizes_for_undo,omitempty"`
-	CategoryLabelRowSizes        []float32            `protobuf:"fixed32,4,rep,name=category_label_row_sizes,json=categoryLabelRowSizes" json:"category_label_row_sizes,omitempty"`
-	CategoryLabelRowSizesForUndo []float32            `protobuf:"fixed32,5,rep,name=category_label_row_sizes_for_undo,json=categoryLabelRowSizesForUndo" json:"category_label_row_sizes_for_undo,omitempty"`
-	CategoryColumnSize           *float64             `protobuf:"fixed64,6,opt,name=category_column_size,json=categoryColumnSize" json:"category_column_size,omitempty"`
-	CategoryColumnSizeForUndo    *float64             `protobuf:"fixed64,7,opt,name=category_column_size_for_undo,json=categoryColumnSizeForUndo" json:"category_column_size_for_undo,omitempty"`
-	XXX_NoUnkeyedLiteral         struct{}             `json:"-"`
-	XXX_unrecognized             []byte               `json:"-"`
-	XXX_sizecache                int32                `json:"-"`
-}
-
-func (m *CommandCategoryResizeColumnOrRowArchive) Reset() {
-	*m = CommandCategoryResizeColumnOrRowArchive{}
-}
-func (m *CommandCategoryResizeColumnOrRowArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandCategoryResizeColumnOrRowArchive) ProtoMessage()    {}
-func (*CommandCategoryResizeColumnOrRowArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{19}
-}
-
-func (m *CommandCategoryResizeColumnOrRowArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandCategoryResizeColumnOrRowArchive.Unmarshal(m, b)
-}
-func (m *CommandCategoryResizeColumnOrRowArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandCategoryResizeColumnOrRowArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandCategoryResizeColumnOrRowArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandCategoryResizeColumnOrRowArchive.Merge(m, src)
-}
-func (m *CommandCategoryResizeColumnOrRowArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandCategoryResizeColumnOrRowArchive.Size(m)
-}
-func (m *CommandCategoryResizeColumnOrRowArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandCategoryResizeColumnOrRowArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandCategoryResizeColumnOrRowArchive proto.InternalMessageInfo
-
-func (m *CommandCategoryResizeColumnOrRowArchive) GetSuper() *TableCommandArchive {
+func (m *CommandSetCellArchive) GetOldcell() *Cell {
 	if m != nil {
-		return m.Super
+		return m.Oldcell
 	}
 	return nil
 }
 
-func (m *CommandCategoryResizeColumnOrRowArchive) GetCategoryRowSizes() []float32 {
-	if m != nil {
-		return m.CategoryRowSizes
-	}
-	return nil
-}
-
-func (m *CommandCategoryResizeColumnOrRowArchive) GetCategoryRowSizesForUndo() []float32 {
-	if m != nil {
-		return m.CategoryRowSizesForUndo
-	}
-	return nil
-}
-
-func (m *CommandCategoryResizeColumnOrRowArchive) GetCategoryLabelRowSizes() []float32 {
-	if m != nil {
-		return m.CategoryLabelRowSizes
-	}
-	return nil
-}
-
-func (m *CommandCategoryResizeColumnOrRowArchive) GetCategoryLabelRowSizesForUndo() []float32 {
-	if m != nil {
-		return m.CategoryLabelRowSizesForUndo
-	}
-	return nil
-}
-
-func (m *CommandCategoryResizeColumnOrRowArchive) GetCategoryColumnSize() float64 {
-	if m != nil && m.CategoryColumnSize != nil {
-		return *m.CategoryColumnSize
-	}
-	return 0
-}
-
-func (m *CommandCategoryResizeColumnOrRowArchive) GetCategoryColumnSizeForUndo() float64 {
-	if m != nil && m.CategoryColumnSizeForUndo != nil {
-		return *m.CategoryColumnSizeForUndo
-	}
-	return 0
-}
-
-type CommandHideShowArchive struct {
-	Super                 *CommandRowColumnRangeArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	HideShowAction        *HideShowActionArchive        `protobuf:"varint,2,req,name=hide_show_action,json=hideShowAction,enum=TST.HideShowActionArchive" json:"hide_show_action,omitempty"`
-	HidingAction          *uint32                       `protobuf:"varint,3,req,name=hiding_action,json=hidingAction" json:"hiding_action,omitempty"`
-	HideShowActionForUndo []HideShowActionArchive       `protobuf:"varint,4,rep,name=hide_show_action_for_undo,json=hideShowActionForUndo,enum=TST.HideShowActionArchive" json:"hide_show_action_for_undo,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}                      `json:"-"`
-	XXX_unrecognized      []byte                        `json:"-"`
-	XXX_sizecache         int32                         `json:"-"`
-}
-
-func (m *CommandHideShowArchive) Reset()         { *m = CommandHideShowArchive{} }
-func (m *CommandHideShowArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandHideShowArchive) ProtoMessage()    {}
-func (*CommandHideShowArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{20}
-}
-
-func (m *CommandHideShowArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandHideShowArchive.Unmarshal(m, b)
-}
-func (m *CommandHideShowArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandHideShowArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandHideShowArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandHideShowArchive.Merge(m, src)
-}
-func (m *CommandHideShowArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandHideShowArchive.Size(m)
-}
-func (m *CommandHideShowArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandHideShowArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandHideShowArchive proto.InternalMessageInfo
-
-func (m *CommandHideShowArchive) GetSuper() *CommandRowColumnRangeArchive {
+func (m *CommandSetCellArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandHideShowArchive) GetHideShowAction() HideShowActionArchive {
-	if m != nil && m.HideShowAction != nil {
-		return *m.HideShowAction
+func (m *CommandSetCellArchive) GetPostUndoRedoSelection() bool {
+	if m != nil && m.PostUndoRedoSelection != nil {
+		return *m.PostUndoRedoSelection
 	}
-	return HideShowActionArchive_hideShowActionHide
-}
-
-func (m *CommandHideShowArchive) GetHidingAction() uint32 {
-	if m != nil && m.HidingAction != nil {
-		return *m.HidingAction
-	}
-	return 0
-}
-
-func (m *CommandHideShowArchive) GetHideShowActionForUndo() []HideShowActionArchive {
-	if m != nil {
-		return m.HideShowActionForUndo
-	}
-	return nil
+	return false
 }
 
 type CommandTextPreflightInsertCellArchive struct {
-	Super                        *TableCommandArchive      `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
-	CoalescedTextcommand         *TSP.Reference            `protobuf:"bytes,6,opt,name=coalesced_textcommand,json=coalescedTextcommand" json:"coalesced_textcommand,omitempty"`
-	Postflightcommand            *TSP.Reference            `protobuf:"bytes,8,opt,name=postflightcommand" json:"postflightcommand,omitempty"`
-	GroupedWithPostflight        *bool                     `protobuf:"varint,9,opt,name=grouped_with_postflight,json=groupedWithPostflight" json:"grouped_with_postflight,omitempty"`
-	EditingCell                  *Cell                     `protobuf:"bytes,10,req,name=editing_cell,json=editingCell" json:"editing_cell,omitempty"`
-	EditingStorage               *TSP.Reference            `protobuf:"bytes,11,req,name=editing_storage,json=editingStorage" json:"editing_storage,omitempty"`
-	LastColumnHitByTap           *uint32                   `protobuf:"varint,12,opt,name=last_column_hit_by_tap,json=lastColumnHitByTap" json:"last_column_hit_by_tap,omitempty"`
-	CellUid                      *TSP.UUIDCoordArchive     `protobuf:"bytes,13,req,name=cell_uid,json=cellUid" json:"cell_uid,omitempty"`
-	ArchivedInitialSelectionPath *TSK.SelectionPathArchive `protobuf:"bytes,14,opt,name=archived_initial_selection_path,json=archivedInitialSelectionPath" json:"archived_initial_selection_path,omitempty"`
-	XXX_NoUnkeyedLiteral         struct{}                  `json:"-"`
-	XXX_unrecognized             []byte                    `json:"-"`
-	XXX_sizecache                int32                     `json:"-"`
+	EditingCellID         *CellID              `protobuf:"bytes,1,req,name=editing_cellID,json=editingCellID" json:"editing_cellID,omitempty"`
+	Super                 *TableCommandArchive `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
+	CoalescedTextcommand  *Reference           `protobuf:"bytes,6,opt,name=coalesced_textcommand,json=coalescedTextcommand" json:"coalesced_textcommand,omitempty"`
+	Postflightcommand     *Reference           `protobuf:"bytes,8,opt,name=postflightcommand" json:"postflightcommand,omitempty"`
+	GroupedWithPostflight *bool                `protobuf:"varint,9,opt,name=grouped_with_postflight,json=groupedWithPostflight" json:"grouped_with_postflight,omitempty"`
+	EditingCell           *Cell                `protobuf:"bytes,10,req,name=editing_cell,json=editingCell" json:"editing_cell,omitempty"`
+	EditingStorage        *Reference           `protobuf:"bytes,11,req,name=editing_storage,json=editingStorage" json:"editing_storage,omitempty"`
+	LastColumnHitByTap    *uint32              `protobuf:"varint,12,opt,name=last_column_hit_by_tap,json=lastColumnHitByTap" json:"last_column_hit_by_tap,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{}             `json:"-"`
+	XXX_unrecognized      []byte               `json:"-"`
+	XXX_sizecache         int32                `json:"-"`
 }
 
 func (m *CommandTextPreflightInsertCellArchive) Reset()         { *m = CommandTextPreflightInsertCellArchive{} }
 func (m *CommandTextPreflightInsertCellArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandTextPreflightInsertCellArchive) ProtoMessage()    {}
 func (*CommandTextPreflightInsertCellArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{21}
+	return fileDescriptor_5d102eeb586b2c5c, []int{16}
 }
 
 func (m *CommandTextPreflightInsertCellArchive) XXX_Unmarshal(b []byte) error {
@@ -1843,6 +1598,13 @@ func (m *CommandTextPreflightInsertCellArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandTextPreflightInsertCellArchive proto.InternalMessageInfo
 
+func (m *CommandTextPreflightInsertCellArchive) GetEditingCellID() *CellID {
+	if m != nil {
+		return m.EditingCellID
+	}
+	return nil
+}
+
 func (m *CommandTextPreflightInsertCellArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
@@ -1850,14 +1612,14 @@ func (m *CommandTextPreflightInsertCellArchive) GetSuper() *TableCommandArchive 
 	return nil
 }
 
-func (m *CommandTextPreflightInsertCellArchive) GetCoalescedTextcommand() *TSP.Reference {
+func (m *CommandTextPreflightInsertCellArchive) GetCoalescedTextcommand() *Reference {
 	if m != nil {
 		return m.CoalescedTextcommand
 	}
 	return nil
 }
 
-func (m *CommandTextPreflightInsertCellArchive) GetPostflightcommand() *TSP.Reference {
+func (m *CommandTextPreflightInsertCellArchive) GetPostflightcommand() *Reference {
 	if m != nil {
 		return m.Postflightcommand
 	}
@@ -1878,7 +1640,7 @@ func (m *CommandTextPreflightInsertCellArchive) GetEditingCell() *Cell {
 	return nil
 }
 
-func (m *CommandTextPreflightInsertCellArchive) GetEditingStorage() *TSP.Reference {
+func (m *CommandTextPreflightInsertCellArchive) GetEditingStorage() *Reference {
 	if m != nil {
 		return m.EditingStorage
 	}
@@ -1892,38 +1654,24 @@ func (m *CommandTextPreflightInsertCellArchive) GetLastColumnHitByTap() uint32 {
 	return 0
 }
 
-func (m *CommandTextPreflightInsertCellArchive) GetCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.CellUid
-	}
-	return nil
-}
-
-func (m *CommandTextPreflightInsertCellArchive) GetArchivedInitialSelectionPath() *TSK.SelectionPathArchive {
-	if m != nil {
-		return m.ArchivedInitialSelectionPath
-	}
-	return nil
-}
-
 type CommandPostflightSetCellArchive struct {
-	Super                *TableCommandArchive  `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
-	Childcommandundo     *TSP.Reference        `protobuf:"bytes,4,opt,name=childcommandundo" json:"childcommandundo,omitempty"`
-	EditingCell          *Cell                 `protobuf:"bytes,6,req,name=editing_cell,json=editingCell" json:"editing_cell,omitempty"`
-	NewCell              *Cell                 `protobuf:"bytes,7,req,name=new_cell,json=newCell" json:"new_cell,omitempty"`
-	EditingStorage       *TSP.Reference        `protobuf:"bytes,8,req,name=editing_storage,json=editingStorage" json:"editing_storage,omitempty"`
-	LastColumnHitByTap   *uint32               `protobuf:"varint,9,opt,name=last_column_hit_by_tap,json=lastColumnHitByTap" json:"last_column_hit_by_tap,omitempty"`
-	CellUid              *TSP.UUIDCoordArchive `protobuf:"bytes,10,req,name=cell_uid,json=cellUid" json:"cell_uid,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	CellID               *CellID              `protobuf:"bytes,1,req,name=cellID" json:"cellID,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
+	Childcommandundo     *Reference           `protobuf:"bytes,4,opt,name=childcommandundo" json:"childcommandundo,omitempty"`
+	EditingCell          *Cell                `protobuf:"bytes,6,req,name=editing_cell,json=editingCell" json:"editing_cell,omitempty"`
+	NewCell              *Cell                `protobuf:"bytes,7,req,name=new_cell,json=newCell" json:"new_cell,omitempty"`
+	EditingStorage       *Reference           `protobuf:"bytes,8,req,name=editing_storage,json=editingStorage" json:"editing_storage,omitempty"`
+	LastColumnHitByTap   *uint32              `protobuf:"varint,9,opt,name=last_column_hit_by_tap,json=lastColumnHitByTap" json:"last_column_hit_by_tap,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *CommandPostflightSetCellArchive) Reset()         { *m = CommandPostflightSetCellArchive{} }
 func (m *CommandPostflightSetCellArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandPostflightSetCellArchive) ProtoMessage()    {}
 func (*CommandPostflightSetCellArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{22}
+	return fileDescriptor_5d102eeb586b2c5c, []int{17}
 }
 
 func (m *CommandPostflightSetCellArchive) XXX_Unmarshal(b []byte) error {
@@ -1944,6 +1692,13 @@ func (m *CommandPostflightSetCellArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandPostflightSetCellArchive proto.InternalMessageInfo
 
+func (m *CommandPostflightSetCellArchive) GetCellID() *CellID {
+	if m != nil {
+		return m.CellID
+	}
+	return nil
+}
+
 func (m *CommandPostflightSetCellArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
@@ -1951,7 +1706,7 @@ func (m *CommandPostflightSetCellArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandPostflightSetCellArchive) GetChildcommandundo() *TSP.Reference {
+func (m *CommandPostflightSetCellArchive) GetChildcommandundo() *Reference {
 	if m != nil {
 		return m.Childcommandundo
 	}
@@ -1972,7 +1727,7 @@ func (m *CommandPostflightSetCellArchive) GetNewCell() *Cell {
 	return nil
 }
 
-func (m *CommandPostflightSetCellArchive) GetEditingStorage() *TSP.Reference {
+func (m *CommandPostflightSetCellArchive) GetEditingStorage() *Reference {
 	if m != nil {
 		return m.EditingStorage
 	}
@@ -1986,191 +1741,265 @@ func (m *CommandPostflightSetCellArchive) GetLastColumnHitByTap() uint32 {
 	return 0
 }
 
-func (m *CommandPostflightSetCellArchive) GetCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.CellUid
+type CommandSetNumberOfHeadersOrFootersArchive struct {
+	Region               *CommandRegionArchive `protobuf:"varint,1,req,name=region,enum=TST.CommandRegionArchive" json:"region,omitempty"`
+	Count                *uint32               `protobuf:"varint,2,req,name=count" json:"count,omitempty"`
+	Oldcount             *uint32               `protobuf:"varint,3,req,name=oldcount" json:"oldcount,omitempty"`
+	Super                *TableCommandArchive  `protobuf:"bytes,6,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *CommandSetNumberOfHeadersOrFootersArchive) Reset() {
+	*m = CommandSetNumberOfHeadersOrFootersArchive{}
+}
+func (m *CommandSetNumberOfHeadersOrFootersArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetNumberOfHeadersOrFootersArchive) ProtoMessage()    {}
+func (*CommandSetNumberOfHeadersOrFootersArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{18}
+}
+
+func (m *CommandSetNumberOfHeadersOrFootersArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetNumberOfHeadersOrFootersArchive.Unmarshal(m, b)
+}
+func (m *CommandSetNumberOfHeadersOrFootersArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetNumberOfHeadersOrFootersArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetNumberOfHeadersOrFootersArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetNumberOfHeadersOrFootersArchive.Merge(m, src)
+}
+func (m *CommandSetNumberOfHeadersOrFootersArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetNumberOfHeadersOrFootersArchive.Size(m)
+}
+func (m *CommandSetNumberOfHeadersOrFootersArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetNumberOfHeadersOrFootersArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetNumberOfHeadersOrFootersArchive proto.InternalMessageInfo
+
+func (m *CommandSetNumberOfHeadersOrFootersArchive) GetRegion() CommandRegionArchive {
+	if m != nil && m.Region != nil {
+		return *m.Region
 	}
-	return nil
+	return CommandRegionArchive_bodyRegion
 }
 
-type CommandChangeTableAreaForColumnOrRowArchive struct {
-	Super                *CommandRowColumnRangeArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	TableAreaTransition  *TableAreaTransition          `protobuf:"varint,2,req,name=table_area_transition,json=tableAreaTransition,enum=TST.TableAreaTransition" json:"table_area_transition,omitempty"`
-	CellDiffMap          *TSP.Reference                `protobuf:"bytes,3,opt,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	UndoCellDiffMap      *TSP.Reference                `protobuf:"bytes,4,opt,name=undo_cell_diff_map,json=undoCellDiffMap" json:"undo_cell_diff_map,omitempty"`
-	UndoCommands         *TSP.Reference                `protobuf:"bytes,5,opt,name=undo_commands,json=undoCommands" json:"undo_commands,omitempty"`
-	ActionString         *string                       `protobuf:"bytes,6,opt,name=action_string,json=actionString" json:"action_string,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
-	XXX_unrecognized     []byte                        `json:"-"`
-	XXX_sizecache        int32                         `json:"-"`
-}
-
-func (m *CommandChangeTableAreaForColumnOrRowArchive) Reset() {
-	*m = CommandChangeTableAreaForColumnOrRowArchive{}
-}
-func (m *CommandChangeTableAreaForColumnOrRowArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandChangeTableAreaForColumnOrRowArchive) ProtoMessage() {}
-func (*CommandChangeTableAreaForColumnOrRowArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{23}
-}
-
-func (m *CommandChangeTableAreaForColumnOrRowArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandChangeTableAreaForColumnOrRowArchive.Unmarshal(m, b)
-}
-func (m *CommandChangeTableAreaForColumnOrRowArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandChangeTableAreaForColumnOrRowArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandChangeTableAreaForColumnOrRowArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandChangeTableAreaForColumnOrRowArchive.Merge(m, src)
-}
-func (m *CommandChangeTableAreaForColumnOrRowArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandChangeTableAreaForColumnOrRowArchive.Size(m)
-}
-func (m *CommandChangeTableAreaForColumnOrRowArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandChangeTableAreaForColumnOrRowArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandChangeTableAreaForColumnOrRowArchive proto.InternalMessageInfo
-
-func (m *CommandChangeTableAreaForColumnOrRowArchive) GetSuper() *CommandRowColumnRangeArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandChangeTableAreaForColumnOrRowArchive) GetTableAreaTransition() TableAreaTransition {
-	if m != nil && m.TableAreaTransition != nil {
-		return *m.TableAreaTransition
-	}
-	return TableAreaTransition_TableAreaTransitionHeaderRowToBody
-}
-
-func (m *CommandChangeTableAreaForColumnOrRowArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandChangeTableAreaForColumnOrRowArchive) GetUndoCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.UndoCellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandChangeTableAreaForColumnOrRowArchive) GetUndoCommands() *TSP.Reference {
-	if m != nil {
-		return m.UndoCommands
-	}
-	return nil
-}
-
-func (m *CommandChangeTableAreaForColumnOrRowArchive) GetActionString() string {
-	if m != nil && m.ActionString != nil {
-		return *m.ActionString
-	}
-	return ""
-}
-
-type CommandSetPencilAnnotationsArchive struct {
-	Super                 *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Annotations           []*TSP.Reference       `protobuf:"bytes,2,rep,name=annotations" json:"annotations,omitempty"`
-	Formulas              []*TSCE.FormulaArchive `protobuf:"bytes,3,rep,name=formulas" json:"formulas,omitempty"`
-	FormulaIndexes        []uint64               `protobuf:"varint,4,rep,name=formula_indexes,json=formulaIndexes" json:"formula_indexes,omitempty"`
-	InverseFormulas       []*TSCE.FormulaArchive `protobuf:"bytes,5,rep,name=inverse_formulas,json=inverseFormulas" json:"inverse_formulas,omitempty"`
-	InverseFormulaIndexes []uint64               `protobuf:"varint,6,rep,name=inverse_formula_indexes,json=inverseFormulaIndexes" json:"inverse_formula_indexes,omitempty"`
-	RollbackIndex         *uint64                `protobuf:"varint,7,opt,name=rollback_index,json=rollbackIndex" json:"rollback_index,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}               `json:"-"`
-	XXX_unrecognized      []byte                 `json:"-"`
-	XXX_sizecache         int32                  `json:"-"`
-}
-
-func (m *CommandSetPencilAnnotationsArchive) Reset()         { *m = CommandSetPencilAnnotationsArchive{} }
-func (m *CommandSetPencilAnnotationsArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSetPencilAnnotationsArchive) ProtoMessage()    {}
-func (*CommandSetPencilAnnotationsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{24}
-}
-
-func (m *CommandSetPencilAnnotationsArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetPencilAnnotationsArchive.Unmarshal(m, b)
-}
-func (m *CommandSetPencilAnnotationsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetPencilAnnotationsArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetPencilAnnotationsArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetPencilAnnotationsArchive.Merge(m, src)
-}
-func (m *CommandSetPencilAnnotationsArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetPencilAnnotationsArchive.Size(m)
-}
-func (m *CommandSetPencilAnnotationsArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetPencilAnnotationsArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetPencilAnnotationsArchive proto.InternalMessageInfo
-
-func (m *CommandSetPencilAnnotationsArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandSetPencilAnnotationsArchive) GetAnnotations() []*TSP.Reference {
-	if m != nil {
-		return m.Annotations
-	}
-	return nil
-}
-
-func (m *CommandSetPencilAnnotationsArchive) GetFormulas() []*TSCE.FormulaArchive {
-	if m != nil {
-		return m.Formulas
-	}
-	return nil
-}
-
-func (m *CommandSetPencilAnnotationsArchive) GetFormulaIndexes() []uint64 {
-	if m != nil {
-		return m.FormulaIndexes
-	}
-	return nil
-}
-
-func (m *CommandSetPencilAnnotationsArchive) GetInverseFormulas() []*TSCE.FormulaArchive {
-	if m != nil {
-		return m.InverseFormulas
-	}
-	return nil
-}
-
-func (m *CommandSetPencilAnnotationsArchive) GetInverseFormulaIndexes() []uint64 {
-	if m != nil {
-		return m.InverseFormulaIndexes
-	}
-	return nil
-}
-
-func (m *CommandSetPencilAnnotationsArchive) GetRollbackIndex() uint64 {
-	if m != nil && m.RollbackIndex != nil {
-		return *m.RollbackIndex
+func (m *CommandSetNumberOfHeadersOrFootersArchive) GetCount() uint32 {
+	if m != nil && m.Count != nil {
+		return *m.Count
 	}
 	return 0
 }
 
+func (m *CommandSetNumberOfHeadersOrFootersArchive) GetOldcount() uint32 {
+	if m != nil && m.Oldcount != nil {
+		return *m.Oldcount
+	}
+	return 0
+}
+
+func (m *CommandSetNumberOfHeadersOrFootersArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+type CommandFixWPStylesInRowsOrColumnsArchive struct {
+	Direction            *CommandDirectionArchive `protobuf:"varint,1,req,name=direction,enum=TST.CommandDirectionArchive" json:"direction,omitempty"`
+	Index                *uint32                  `protobuf:"varint,2,req,name=index" json:"index,omitempty"`
+	UndoCellMap          *CellMapArchive          `protobuf:"bytes,3,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive          `protobuf:"bytes,4,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	Super                *TableCommandArchive     `protobuf:"bytes,6,req,name=super" json:"super,omitempty"`
+	ReferenceIndex       *uint32                  `protobuf:"varint,7,req,name=reference_index,json=referenceIndex" json:"reference_index,omitempty"`
+	InheritStyles        *bool                    `protobuf:"varint,8,req,name=inherit_styles,json=inheritStyles" json:"inherit_styles,omitempty"`
+	Count                *uint32                  `protobuf:"varint,9,opt,name=count" json:"count,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) Reset() {
+	*m = CommandFixWPStylesInRowsOrColumnsArchive{}
+}
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandFixWPStylesInRowsOrColumnsArchive) ProtoMessage()    {}
+func (*CommandFixWPStylesInRowsOrColumnsArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{19}
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandFixWPStylesInRowsOrColumnsArchive.Unmarshal(m, b)
+}
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandFixWPStylesInRowsOrColumnsArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandFixWPStylesInRowsOrColumnsArchive.Merge(m, src)
+}
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandFixWPStylesInRowsOrColumnsArchive.Size(m)
+}
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandFixWPStylesInRowsOrColumnsArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandFixWPStylesInRowsOrColumnsArchive proto.InternalMessageInfo
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) GetDirection() CommandDirectionArchive {
+	if m != nil && m.Direction != nil {
+		return *m.Direction
+	}
+	return CommandDirectionArchive_directionRow
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) GetReferenceIndex() uint32 {
+	if m != nil && m.ReferenceIndex != nil {
+		return *m.ReferenceIndex
+	}
+	return 0
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) GetInheritStyles() bool {
+	if m != nil && m.InheritStyles != nil {
+		return *m.InheritStyles
+	}
+	return false
+}
+
+func (m *CommandFixWPStylesInRowsOrColumnsArchive) GetCount() uint32 {
+	if m != nil && m.Count != nil {
+		return *m.Count
+	}
+	return 0
+}
+
+type CommandFixStylesInHeadersOrFootersArchive struct {
+	Region               *CommandRegionArchive `protobuf:"varint,1,req,name=region,enum=TST.CommandRegionArchive" json:"region,omitempty"`
+	OldNumber            *uint32               `protobuf:"varint,2,req,name=old_number,json=oldNumber" json:"old_number,omitempty"`
+	NewNumber            *uint32               `protobuf:"varint,3,req,name=new_number,json=newNumber" json:"new_number,omitempty"`
+	RedoCellMap          *CellMapArchive       `protobuf:"bytes,4,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	UndoCellMap          *CellMapArchive       `protobuf:"bytes,5,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	Super                *TableCommandArchive  `protobuf:"bytes,6,req,name=super" json:"super,omitempty"`
+	Textundo             *Reference            `protobuf:"bytes,7,opt,name=textundo" json:"textundo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) Reset() {
+	*m = CommandFixStylesInHeadersOrFootersArchive{}
+}
+func (m *CommandFixStylesInHeadersOrFootersArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandFixStylesInHeadersOrFootersArchive) ProtoMessage()    {}
+func (*CommandFixStylesInHeadersOrFootersArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{20}
+}
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandFixStylesInHeadersOrFootersArchive.Unmarshal(m, b)
+}
+func (m *CommandFixStylesInHeadersOrFootersArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandFixStylesInHeadersOrFootersArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandFixStylesInHeadersOrFootersArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandFixStylesInHeadersOrFootersArchive.Merge(m, src)
+}
+func (m *CommandFixStylesInHeadersOrFootersArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandFixStylesInHeadersOrFootersArchive.Size(m)
+}
+func (m *CommandFixStylesInHeadersOrFootersArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandFixStylesInHeadersOrFootersArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandFixStylesInHeadersOrFootersArchive proto.InternalMessageInfo
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) GetRegion() CommandRegionArchive {
+	if m != nil && m.Region != nil {
+		return *m.Region
+	}
+	return CommandRegionArchive_bodyRegion
+}
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) GetOldNumber() uint32 {
+	if m != nil && m.OldNumber != nil {
+		return *m.OldNumber
+	}
+	return 0
+}
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) GetNewNumber() uint32 {
+	if m != nil && m.NewNumber != nil {
+		return *m.NewNumber
+	}
+	return 0
+}
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandFixStylesInHeadersOrFootersArchive) GetTextundo() *Reference {
+	if m != nil {
+		return m.Textundo
+	}
+	return nil
+}
+
 type CommandSetTableNameArchive struct {
 	Newtablename              *string              `protobuf:"bytes,1,req,name=newtablename" json:"newtablename,omitempty"`
-	Oldtablename              *string              `protobuf:"bytes,2,opt,name=oldtablename" json:"oldtablename,omitempty"`
-	Newstyle                  *TSP.Reference       `protobuf:"bytes,3,opt,name=newstyle" json:"newstyle,omitempty"`
-	Oldstyle                  *TSP.Reference       `protobuf:"bytes,4,opt,name=oldstyle" json:"oldstyle,omitempty"`
+	Oldtablename              *string              `protobuf:"bytes,2,req,name=oldtablename" json:"oldtablename,omitempty"`
+	Newstyle                  *Reference           `protobuf:"bytes,3,opt,name=newstyle" json:"newstyle,omitempty"`
+	Oldstyle                  *Reference           `protobuf:"bytes,4,opt,name=oldstyle" json:"oldstyle,omitempty"`
 	Super                     *TableCommandArchive `protobuf:"bytes,5,req,name=super" json:"super,omitempty"`
-	OldShapeStyle             *TSP.Reference       `protobuf:"bytes,6,opt,name=old_shape_style,json=oldShapeStyle" json:"old_shape_style,omitempty"`
-	NewShapeStyle             *TSP.Reference       `protobuf:"bytes,7,opt,name=new_shape_style,json=newShapeStyle" json:"new_shape_style,omitempty"`
+	OldShapeStyle             *Reference           `protobuf:"bytes,6,opt,name=old_shape_style,json=oldShapeStyle" json:"old_shape_style,omitempty"`
+	NewShapeStyle             *Reference           `protobuf:"bytes,7,opt,name=new_shape_style,json=newShapeStyle" json:"new_shape_style,omitempty"`
 	OldTableNameBorderEnabled *bool                `protobuf:"varint,8,opt,name=old_table_name_border_enabled,json=oldTableNameBorderEnabled" json:"old_table_name_border_enabled,omitempty"`
 	NewTableNameBorderEnabled *bool                `protobuf:"varint,9,opt,name=new_table_name_border_enabled,json=newTableNameBorderEnabled" json:"new_table_name_border_enabled,omitempty"`
 	XXX_NoUnkeyedLiteral      struct{}             `json:"-"`
@@ -2182,7 +2011,7 @@ func (m *CommandSetTableNameArchive) Reset()         { *m = CommandSetTableNameA
 func (m *CommandSetTableNameArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetTableNameArchive) ProtoMessage()    {}
 func (*CommandSetTableNameArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{25}
+	return fileDescriptor_5d102eeb586b2c5c, []int{21}
 }
 
 func (m *CommandSetTableNameArchive) XXX_Unmarshal(b []byte) error {
@@ -2217,14 +2046,14 @@ func (m *CommandSetTableNameArchive) GetOldtablename() string {
 	return ""
 }
 
-func (m *CommandSetTableNameArchive) GetNewstyle() *TSP.Reference {
+func (m *CommandSetTableNameArchive) GetNewstyle() *Reference {
 	if m != nil {
 		return m.Newstyle
 	}
 	return nil
 }
 
-func (m *CommandSetTableNameArchive) GetOldstyle() *TSP.Reference {
+func (m *CommandSetTableNameArchive) GetOldstyle() *Reference {
 	if m != nil {
 		return m.Oldstyle
 	}
@@ -2238,14 +2067,14 @@ func (m *CommandSetTableNameArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandSetTableNameArchive) GetOldShapeStyle() *TSP.Reference {
+func (m *CommandSetTableNameArchive) GetOldShapeStyle() *Reference {
 	if m != nil {
 		return m.OldShapeStyle
 	}
 	return nil
 }
 
-func (m *CommandSetTableNameArchive) GetNewShapeStyle() *TSP.Reference {
+func (m *CommandSetTableNameArchive) GetNewShapeStyle() *Reference {
 	if m != nil {
 		return m.NewShapeStyle
 	}
@@ -2267,9 +2096,8 @@ func (m *CommandSetTableNameArchive) GetNewTableNameBorderEnabled() bool {
 }
 
 type CommandSetTableNameEnabledArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	TableNameEnabled     *bool                `protobuf:"varint,2,req,name=table_name_enabled,json=tableNameEnabled" json:"table_name_enabled,omitempty"`
-	PrevTableNameEnabled *bool                `protobuf:"varint,3,opt,name=prev_table_name_enabled,json=prevTableNameEnabled" json:"prev_table_name_enabled,omitempty"`
+	TableNameEnabled     *bool                `protobuf:"varint,1,req,name=table_name_enabled,json=tableNameEnabled" json:"table_name_enabled,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -2279,7 +2107,7 @@ func (m *CommandSetTableNameEnabledArchive) Reset()         { *m = CommandSetTab
 func (m *CommandSetTableNameEnabledArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetTableNameEnabledArchive) ProtoMessage()    {}
 func (*CommandSetTableNameEnabledArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{26}
+	return fileDescriptor_5d102eeb586b2c5c, []int{22}
 }
 
 func (m *CommandSetTableNameEnabledArchive) XXX_Unmarshal(b []byte) error {
@@ -2300,13 +2128,6 @@ func (m *CommandSetTableNameEnabledArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetTableNameEnabledArchive proto.InternalMessageInfo
 
-func (m *CommandSetTableNameEnabledArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
 func (m *CommandSetTableNameEnabledArchive) GetTableNameEnabled() bool {
 	if m != nil && m.TableNameEnabled != nil {
 		return *m.TableNameEnabled
@@ -2314,32 +2135,30 @@ func (m *CommandSetTableNameEnabledArchive) GetTableNameEnabled() bool {
 	return false
 }
 
-func (m *CommandSetTableNameEnabledArchive) GetPrevTableNameEnabled() bool {
-	if m != nil && m.PrevTableNameEnabled != nil {
-		return *m.PrevTableNameEnabled
+func (m *CommandSetTableNameEnabledArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
 	}
-	return false
+	return nil
 }
 
 type CommandSetTableFontSizeArchive struct {
-	Super                      *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	IsIncrease                 *bool                `protobuf:"varint,2,req,name=is_increase,json=isIncrease" json:"is_increase,omitempty"`
-	FontSizeDiff               *int32               `protobuf:"varint,3,req,name=font_size_diff,json=fontSizeDiff" json:"font_size_diff,omitempty"`
-	FontSizeList               []float64            `protobuf:"fixed64,4,rep,name=font_size_list,json=fontSizeList" json:"font_size_list,omitempty"`
-	InverseFontSizeList        []float64            `protobuf:"fixed64,5,rep,name=inverse_font_size_list,json=inverseFontSizeList" json:"inverse_font_size_list,omitempty"`
-	CellDiffMap                *TSP.Reference       `protobuf:"bytes,6,opt,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	InverseCellDiffMap         *TSP.Reference       `protobuf:"bytes,7,opt,name=inverse_cell_diff_map,json=inverseCellDiffMap" json:"inverse_cell_diff_map,omitempty"`
-	StylesContainerRefreshDone *bool                `protobuf:"varint,8,req,name=styles_container_refresh_done,json=stylesContainerRefreshDone" json:"styles_container_refresh_done,omitempty"`
-	XXX_NoUnkeyedLiteral       struct{}             `json:"-"`
-	XXX_unrecognized           []byte               `json:"-"`
-	XXX_sizecache              int32                `json:"-"`
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ScaleFactor          *float32             `protobuf:"fixed32,9,req,name=scale_factor,json=scaleFactor" json:"scale_factor,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,5,opt,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,6,opt,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	ResizeDefaultCells   *bool                `protobuf:"varint,7,opt,name=resize_default_cells,json=resizeDefaultCells" json:"resize_default_cells,omitempty"`
+	TextUndo             *Reference           `protobuf:"bytes,8,opt,name=text_undo,json=textUndo" json:"text_undo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *CommandSetTableFontSizeArchive) Reset()         { *m = CommandSetTableFontSizeArchive{} }
 func (m *CommandSetTableFontSizeArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetTableFontSizeArchive) ProtoMessage()    {}
 func (*CommandSetTableFontSizeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{27}
+	return fileDescriptor_5d102eeb586b2c5c, []int{23}
 }
 
 func (m *CommandSetTableFontSizeArchive) XXX_Unmarshal(b []byte) error {
@@ -2367,64 +2186,49 @@ func (m *CommandSetTableFontSizeArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandSetTableFontSizeArchive) GetIsIncrease() bool {
-	if m != nil && m.IsIncrease != nil {
-		return *m.IsIncrease
-	}
-	return false
-}
-
-func (m *CommandSetTableFontSizeArchive) GetFontSizeDiff() int32 {
-	if m != nil && m.FontSizeDiff != nil {
-		return *m.FontSizeDiff
+func (m *CommandSetTableFontSizeArchive) GetScaleFactor() float32 {
+	if m != nil && m.ScaleFactor != nil {
+		return *m.ScaleFactor
 	}
 	return 0
 }
 
-func (m *CommandSetTableFontSizeArchive) GetFontSizeList() []float64 {
+func (m *CommandSetTableFontSizeArchive) GetUndoCellMap() *CellMapArchive {
 	if m != nil {
-		return m.FontSizeList
+		return m.UndoCellMap
 	}
 	return nil
 }
 
-func (m *CommandSetTableFontSizeArchive) GetInverseFontSizeList() []float64 {
+func (m *CommandSetTableFontSizeArchive) GetRedoCellMap() *CellMapArchive {
 	if m != nil {
-		return m.InverseFontSizeList
+		return m.RedoCellMap
 	}
 	return nil
 }
 
-func (m *CommandSetTableFontSizeArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandSetTableFontSizeArchive) GetInverseCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.InverseCellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandSetTableFontSizeArchive) GetStylesContainerRefreshDone() bool {
-	if m != nil && m.StylesContainerRefreshDone != nil {
-		return *m.StylesContainerRefreshDone
+func (m *CommandSetTableFontSizeArchive) GetResizeDefaultCells() bool {
+	if m != nil && m.ResizeDefaultCells != nil {
+		return *m.ResizeDefaultCells
 	}
 	return false
+}
+
+func (m *CommandSetTableFontSizeArchive) GetTextUndo() *Reference {
+	if m != nil {
+		return m.TextUndo
+	}
+	return nil
 }
 
 type CommandSetTableFontNameArchive struct {
 	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
 	FontName             *string              `protobuf:"bytes,2,req,name=font_name,json=fontName" json:"font_name,omitempty"`
-	PreserveFace         *bool                `protobuf:"varint,3,req,name=preserve_face,json=preserveFace" json:"preserve_face,omitempty"`
-	PreviousFontName     *string              `protobuf:"bytes,4,opt,name=previous_font_name,json=previousFontName" json:"previous_font_name,omitempty"`
-	PreviousTableStyle   *TSP.Reference       `protobuf:"bytes,5,opt,name=previous_table_style,json=previousTableStyle" json:"previous_table_style,omitempty"`
-	PreviousTextStyles   []*TSP.Reference     `protobuf:"bytes,6,rep,name=previous_text_styles,json=previousTextStyles" json:"previous_text_styles,omitempty"`
-	CellDiffMap          *TSP.Reference       `protobuf:"bytes,7,req,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	InverseCellDiffMap   *TSP.Reference       `protobuf:"bytes,8,opt,name=inverse_cell_diff_map,json=inverseCellDiffMap" json:"inverse_cell_diff_map,omitempty"`
+	OldFontName          *string              `protobuf:"bytes,3,req,name=old_font_name,json=oldFontName" json:"old_font_name,omitempty"`
+	PreserveFace         *bool                `protobuf:"varint,5,opt,name=preserve_face,json=preserveFace" json:"preserve_face,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,6,opt,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,7,opt,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	TextUndo             *Reference           `protobuf:"bytes,8,opt,name=text_undo,json=textUndo" json:"text_undo,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -2434,7 +2238,7 @@ func (m *CommandSetTableFontNameArchive) Reset()         { *m = CommandSetTableF
 func (m *CommandSetTableFontNameArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetTableFontNameArchive) ProtoMessage()    {}
 func (*CommandSetTableFontNameArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{28}
+	return fileDescriptor_5d102eeb586b2c5c, []int{24}
 }
 
 func (m *CommandSetTableFontNameArchive) XXX_Unmarshal(b []byte) error {
@@ -2469,6 +2273,13 @@ func (m *CommandSetTableFontNameArchive) GetFontName() string {
 	return ""
 }
 
+func (m *CommandSetTableFontNameArchive) GetOldFontName() string {
+	if m != nil && m.OldFontName != nil {
+		return *m.OldFontName
+	}
+	return ""
+}
+
 func (m *CommandSetTableFontNameArchive) GetPreserveFace() bool {
 	if m != nil && m.PreserveFace != nil {
 		return *m.PreserveFace
@@ -2476,37 +2287,23 @@ func (m *CommandSetTableFontNameArchive) GetPreserveFace() bool {
 	return false
 }
 
-func (m *CommandSetTableFontNameArchive) GetPreviousFontName() string {
-	if m != nil && m.PreviousFontName != nil {
-		return *m.PreviousFontName
-	}
-	return ""
-}
-
-func (m *CommandSetTableFontNameArchive) GetPreviousTableStyle() *TSP.Reference {
+func (m *CommandSetTableFontNameArchive) GetUndoCellMap() *CellMapArchive {
 	if m != nil {
-		return m.PreviousTableStyle
+		return m.UndoCellMap
 	}
 	return nil
 }
 
-func (m *CommandSetTableFontNameArchive) GetPreviousTextStyles() []*TSP.Reference {
+func (m *CommandSetTableFontNameArchive) GetRedoCellMap() *CellMapArchive {
 	if m != nil {
-		return m.PreviousTextStyles
+		return m.RedoCellMap
 	}
 	return nil
 }
 
-func (m *CommandSetTableFontNameArchive) GetCellDiffMap() *TSP.Reference {
+func (m *CommandSetTableFontNameArchive) GetTextUndo() *Reference {
 	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandSetTableFontNameArchive) GetInverseCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.InverseCellDiffMap
+		return m.TextUndo
 	}
 	return nil
 }
@@ -2524,7 +2321,7 @@ func (m *CommandSetTableNameHeightArchive) Reset()         { *m = CommandSetTabl
 func (m *CommandSetTableNameHeightArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetTableNameHeightArchive) ProtoMessage()    {}
 func (*CommandSetTableNameHeightArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{29}
+	return fileDescriptor_5d102eeb586b2c5c, []int{25}
 }
 
 func (m *CommandSetTableNameHeightArchive) XXX_Unmarshal(b []byte) error {
@@ -2566,133 +2363,23 @@ func (m *CommandSetTableNameHeightArchive) GetNewTableNameHeight() float64 {
 	return 0
 }
 
-type CommandSetNowArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *CommandSetNowArchive) Reset()         { *m = CommandSetNowArchive{} }
-func (m *CommandSetNowArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSetNowArchive) ProtoMessage()    {}
-func (*CommandSetNowArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{30}
-}
-
-func (m *CommandSetNowArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetNowArchive.Unmarshal(m, b)
-}
-func (m *CommandSetNowArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetNowArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetNowArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetNowArchive.Merge(m, src)
-}
-func (m *CommandSetNowArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetNowArchive.Size(m)
-}
-func (m *CommandSetNowArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetNowArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetNowArchive proto.InternalMessageInfo
-
-func (m *CommandSetNowArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type CommandSetWasCutArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	FromTableUid         *TSP.UUID            `protobuf:"bytes,2,req,name=from_table_uid,json=fromTableUid" json:"from_table_uid,omitempty"`
-	PrevFromTableUid     *TSP.UUID            `protobuf:"bytes,3,req,name=prev_from_table_uid,json=prevFromTableUid" json:"prev_from_table_uid,omitempty"`
-	WasCut               *bool                `protobuf:"varint,4,req,name=was_cut,json=wasCut" json:"was_cut,omitempty"`
-	PrevWasCut           *bool                `protobuf:"varint,5,req,name=prev_was_cut,json=prevWasCut" json:"prev_was_cut,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *CommandSetWasCutArchive) Reset()         { *m = CommandSetWasCutArchive{} }
-func (m *CommandSetWasCutArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSetWasCutArchive) ProtoMessage()    {}
-func (*CommandSetWasCutArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{31}
-}
-
-func (m *CommandSetWasCutArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetWasCutArchive.Unmarshal(m, b)
-}
-func (m *CommandSetWasCutArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetWasCutArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetWasCutArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetWasCutArchive.Merge(m, src)
-}
-func (m *CommandSetWasCutArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetWasCutArchive.Size(m)
-}
-func (m *CommandSetWasCutArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetWasCutArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetWasCutArchive proto.InternalMessageInfo
-
-func (m *CommandSetWasCutArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandSetWasCutArchive) GetFromTableUid() *TSP.UUID {
-	if m != nil {
-		return m.FromTableUid
-	}
-	return nil
-}
-
-func (m *CommandSetWasCutArchive) GetPrevFromTableUid() *TSP.UUID {
-	if m != nil {
-		return m.PrevFromTableUid
-	}
-	return nil
-}
-
-func (m *CommandSetWasCutArchive) GetWasCut() bool {
-	if m != nil && m.WasCut != nil {
-		return *m.WasCut
-	}
-	return false
-}
-
-func (m *CommandSetWasCutArchive) GetPrevWasCut() bool {
-	if m != nil && m.PrevWasCut != nil {
-		return *m.PrevWasCut
-	}
-	return false
-}
-
 type CommandStyleCellsArchive struct {
-	Super                *TableCommandArchive     `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	FormatProperties     *TSP.ReferenceDictionary `protobuf:"bytes,2,opt,name=format_properties,json=formatProperties" json:"format_properties,omitempty"`
-	Selection            *SelectionArchive        `protobuf:"bytes,3,req,name=selection" json:"selection,omitempty"`
-	UndoCellMap          *TSP.Reference           `protobuf:"bytes,4,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
-	RedoCellMap          *TSP.Reference           `protobuf:"bytes,5,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
-	TextUndo             *TSP.Reference           `protobuf:"bytes,6,opt,name=text_undo,json=textUndo" json:"text_undo,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
-	XXX_unrecognized     []byte                   `json:"-"`
-	XXX_sizecache        int32                    `json:"-"`
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FormatProperties     *ReferenceDictionary `protobuf:"bytes,2,opt,name=format_properties,json=formatProperties" json:"format_properties,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,3,req,name=selection" json:"selection,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,4,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,5,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	TextUndo             *Reference           `protobuf:"bytes,6,opt,name=text_undo,json=textUndo" json:"text_undo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *CommandStyleCellsArchive) Reset()         { *m = CommandStyleCellsArchive{} }
 func (m *CommandStyleCellsArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandStyleCellsArchive) ProtoMessage()    {}
 func (*CommandStyleCellsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{32}
+	return fileDescriptor_5d102eeb586b2c5c, []int{26}
 }
 
 func (m *CommandStyleCellsArchive) XXX_Unmarshal(b []byte) error {
@@ -2720,7 +2407,7 @@ func (m *CommandStyleCellsArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandStyleCellsArchive) GetFormatProperties() *TSP.ReferenceDictionary {
+func (m *CommandStyleCellsArchive) GetFormatProperties() *ReferenceDictionary {
 	if m != nil {
 		return m.FormatProperties
 	}
@@ -2734,21 +2421,21 @@ func (m *CommandStyleCellsArchive) GetSelection() *SelectionArchive {
 	return nil
 }
 
-func (m *CommandStyleCellsArchive) GetUndoCellMap() *TSP.Reference {
+func (m *CommandStyleCellsArchive) GetUndoCellMap() *CellMapArchive {
 	if m != nil {
 		return m.UndoCellMap
 	}
 	return nil
 }
 
-func (m *CommandStyleCellsArchive) GetRedoCellMap() *TSP.Reference {
+func (m *CommandStyleCellsArchive) GetRedoCellMap() *CellMapArchive {
 	if m != nil {
 		return m.RedoCellMap
 	}
 	return nil
 }
 
-func (m *CommandStyleCellsArchive) GetTextUndo() *TSP.Reference {
+func (m *CommandStyleCellsArchive) GetTextUndo() *Reference {
 	if m != nil {
 		return m.TextUndo
 	}
@@ -2756,20 +2443,20 @@ func (m *CommandStyleCellsArchive) GetTextUndo() *TSP.Reference {
 }
 
 type CommandStyleTableArchive struct {
-	Super                *TableCommandArchive                `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	FormatProperties     *TSP.ReferenceDictionary            `protobuf:"bytes,2,opt,name=format_properties,json=formatProperties" json:"format_properties,omitempty"`
-	OldStyle             *TableStylePropertyChangeSetArchive `protobuf:"bytes,3,opt,name=old_style,json=oldStyle" json:"old_style,omitempty"`
-	NewStyle             *TableStylePropertyChangeSetArchive `protobuf:"bytes,4,opt,name=new_style,json=newStyle" json:"new_style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
-	XXX_unrecognized     []byte                              `json:"-"`
-	XXX_sizecache        int32                               `json:"-"`
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FormatProperties     *ReferenceDictionary `protobuf:"bytes,2,opt,name=format_properties,json=formatProperties" json:"format_properties,omitempty"`
+	OldStyle             *Reference           `protobuf:"bytes,3,opt,name=old_style,json=oldStyle" json:"old_style,omitempty"`
+	NewStyle             *Reference           `protobuf:"bytes,4,opt,name=new_style,json=newStyle" json:"new_style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *CommandStyleTableArchive) Reset()         { *m = CommandStyleTableArchive{} }
 func (m *CommandStyleTableArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandStyleTableArchive) ProtoMessage()    {}
 func (*CommandStyleTableArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{33}
+	return fileDescriptor_5d102eeb586b2c5c, []int{27}
 }
 
 func (m *CommandStyleTableArchive) XXX_Unmarshal(b []byte) error {
@@ -2797,35 +2484,255 @@ func (m *CommandStyleTableArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandStyleTableArchive) GetFormatProperties() *TSP.ReferenceDictionary {
+func (m *CommandStyleTableArchive) GetFormatProperties() *ReferenceDictionary {
 	if m != nil {
 		return m.FormatProperties
 	}
 	return nil
 }
 
-func (m *CommandStyleTableArchive) GetOldStyle() *TableStylePropertyChangeSetArchive {
+func (m *CommandStyleTableArchive) GetOldStyle() *Reference {
 	if m != nil {
 		return m.OldStyle
 	}
 	return nil
 }
 
-func (m *CommandStyleTableArchive) GetNewStyle() *TableStylePropertyChangeSetArchive {
+func (m *CommandStyleTableArchive) GetNewStyle() *Reference {
 	if m != nil {
 		return m.NewStyle
 	}
 	return nil
 }
 
+type CommandFillCellsArchive struct {
+	Super                *TableCommandArchive  `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Sourceselection      *SelectionArchive     `protobuf:"bytes,2,req,name=sourceselection" json:"sourceselection,omitempty"`
+	Sourcecellrange      *CellRange            `protobuf:"bytes,3,req,name=sourcecellrange" json:"sourcecellrange,omitempty"`
+	Targetcellrange      *CellRange            `protobuf:"bytes,4,req,name=targetcellrange" json:"targetcellrange,omitempty"`
+	UndoCellMap          *CellMapArchive       `protobuf:"bytes,5,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	FillDirection        *FillDirectionArchive `protobuf:"varint,6,req,name=fillDirection,enum=TST.FillDirectionArchive" json:"fillDirection,omitempty"`
+	Targetselection      *SelectionArchive     `protobuf:"bytes,7,req,name=targetselection" json:"targetselection,omitempty"`
+	RedoCellMap          *CellMapArchive       `protobuf:"bytes,8,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *CommandFillCellsArchive) Reset()         { *m = CommandFillCellsArchive{} }
+func (m *CommandFillCellsArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandFillCellsArchive) ProtoMessage()    {}
+func (*CommandFillCellsArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{28}
+}
+
+func (m *CommandFillCellsArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandFillCellsArchive.Unmarshal(m, b)
+}
+func (m *CommandFillCellsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandFillCellsArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandFillCellsArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandFillCellsArchive.Merge(m, src)
+}
+func (m *CommandFillCellsArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandFillCellsArchive.Size(m)
+}
+func (m *CommandFillCellsArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandFillCellsArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandFillCellsArchive proto.InternalMessageInfo
+
+func (m *CommandFillCellsArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandFillCellsArchive) GetSourceselection() *SelectionArchive {
+	if m != nil {
+		return m.Sourceselection
+	}
+	return nil
+}
+
+func (m *CommandFillCellsArchive) GetSourcecellrange() *CellRange {
+	if m != nil {
+		return m.Sourcecellrange
+	}
+	return nil
+}
+
+func (m *CommandFillCellsArchive) GetTargetcellrange() *CellRange {
+	if m != nil {
+		return m.Targetcellrange
+	}
+	return nil
+}
+
+func (m *CommandFillCellsArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandFillCellsArchive) GetFillDirection() FillDirectionArchive {
+	if m != nil && m.FillDirection != nil {
+		return *m.FillDirection
+	}
+	return FillDirectionArchive_kTSTFillDownArchive
+}
+
+func (m *CommandFillCellsArchive) GetTargetselection() *SelectionArchive {
+	if m != nil {
+		return m.Targetselection
+	}
+	return nil
+}
+
+func (m *CommandFillCellsArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+type CommandReplaceTextArchive struct {
+	CellID               *CellID              `protobuf:"bytes,1,req,name=cellID" json:"cellID,omitempty"`
+	Newcell              *Cell                `protobuf:"bytes,2,req,name=newcell" json:"newcell,omitempty"`
+	Oldcell              *Cell                `protobuf:"bytes,3,req,name=oldcell" json:"oldcell,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,4,req,name=super" json:"super,omitempty"`
+	ChildCommandUndo     *Reference           `protobuf:"bytes,5,opt,name=child_command_undo,json=childCommandUndo" json:"child_command_undo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandReplaceTextArchive) Reset()         { *m = CommandReplaceTextArchive{} }
+func (m *CommandReplaceTextArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandReplaceTextArchive) ProtoMessage()    {}
+func (*CommandReplaceTextArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{29}
+}
+
+func (m *CommandReplaceTextArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandReplaceTextArchive.Unmarshal(m, b)
+}
+func (m *CommandReplaceTextArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandReplaceTextArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandReplaceTextArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandReplaceTextArchive.Merge(m, src)
+}
+func (m *CommandReplaceTextArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandReplaceTextArchive.Size(m)
+}
+func (m *CommandReplaceTextArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandReplaceTextArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandReplaceTextArchive proto.InternalMessageInfo
+
+func (m *CommandReplaceTextArchive) GetCellID() *CellID {
+	if m != nil {
+		return m.CellID
+	}
+	return nil
+}
+
+func (m *CommandReplaceTextArchive) GetNewcell() *Cell {
+	if m != nil {
+		return m.Newcell
+	}
+	return nil
+}
+
+func (m *CommandReplaceTextArchive) GetOldcell() *Cell {
+	if m != nil {
+		return m.Oldcell
+	}
+	return nil
+}
+
+func (m *CommandReplaceTextArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandReplaceTextArchive) GetChildCommandUndo() *Reference {
+	if m != nil {
+		return m.ChildCommandUndo
+	}
+	return nil
+}
+
+type CommandReplaceAllTextArchive struct {
+	TableInfo            *Reference      `protobuf:"bytes,1,req,name=tableInfo" json:"tableInfo,omitempty"`
+	UndoCellMap          *CellMapArchive `protobuf:"bytes,2,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive `protobuf:"bytes,3,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
+}
+
+func (m *CommandReplaceAllTextArchive) Reset()         { *m = CommandReplaceAllTextArchive{} }
+func (m *CommandReplaceAllTextArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandReplaceAllTextArchive) ProtoMessage()    {}
+func (*CommandReplaceAllTextArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{30}
+}
+
+func (m *CommandReplaceAllTextArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandReplaceAllTextArchive.Unmarshal(m, b)
+}
+func (m *CommandReplaceAllTextArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandReplaceAllTextArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandReplaceAllTextArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandReplaceAllTextArchive.Merge(m, src)
+}
+func (m *CommandReplaceAllTextArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandReplaceAllTextArchive.Size(m)
+}
+func (m *CommandReplaceAllTextArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandReplaceAllTextArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandReplaceAllTextArchive proto.InternalMessageInfo
+
+func (m *CommandReplaceAllTextArchive) GetTableInfo() *Reference {
+	if m != nil {
+		return m.TableInfo
+	}
+	return nil
+}
+
+func (m *CommandReplaceAllTextArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandReplaceAllTextArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
 type CommandSetRepeatingHeaderEnabledArchive struct {
-	RepeatingHeaderEnabled     *bool                  `protobuf:"varint,1,req,name=repeating_header_enabled,json=repeatingHeaderEnabled" json:"repeating_header_enabled,omitempty"`
-	Direction                  *TableDimensionArchive `protobuf:"varint,2,req,name=direction,enum=TST.TableDimensionArchive" json:"direction,omitempty"`
-	Super                      *TableCommandArchive   `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
-	PrevRepeatingHeaderEnabled *bool                  `protobuf:"varint,4,opt,name=prev_repeating_header_enabled,json=prevRepeatingHeaderEnabled" json:"prev_repeating_header_enabled,omitempty"`
-	XXX_NoUnkeyedLiteral       struct{}               `json:"-"`
-	XXX_unrecognized           []byte                 `json:"-"`
-	XXX_sizecache              int32                  `json:"-"`
+	RepeatingHeaderEnabled *bool                    `protobuf:"varint,1,req,name=repeating_header_enabled,json=repeatingHeaderEnabled" json:"repeating_header_enabled,omitempty"`
+	Direction              *CommandDirectionArchive `protobuf:"varint,2,req,name=direction,enum=TST.CommandDirectionArchive" json:"direction,omitempty"`
+	Super                  *TableCommandArchive     `protobuf:"bytes,3,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{}                 `json:"-"`
+	XXX_unrecognized       []byte                   `json:"-"`
+	XXX_sizecache          int32                    `json:"-"`
 }
 
 func (m *CommandSetRepeatingHeaderEnabledArchive) Reset() {
@@ -2834,7 +2741,7 @@ func (m *CommandSetRepeatingHeaderEnabledArchive) Reset() {
 func (m *CommandSetRepeatingHeaderEnabledArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetRepeatingHeaderEnabledArchive) ProtoMessage()    {}
 func (*CommandSetRepeatingHeaderEnabledArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{34}
+	return fileDescriptor_5d102eeb586b2c5c, []int{31}
 }
 
 func (m *CommandSetRepeatingHeaderEnabledArchive) XXX_Unmarshal(b []byte) error {
@@ -2862,11 +2769,11 @@ func (m *CommandSetRepeatingHeaderEnabledArchive) GetRepeatingHeaderEnabled() bo
 	return false
 }
 
-func (m *CommandSetRepeatingHeaderEnabledArchive) GetDirection() TableDimensionArchive {
+func (m *CommandSetRepeatingHeaderEnabledArchive) GetDirection() CommandDirectionArchive {
 	if m != nil && m.Direction != nil {
 		return *m.Direction
 	}
-	return TableDimensionArchive_dimensionRow
+	return CommandDirectionArchive_directionRow
 }
 
 func (m *CommandSetRepeatingHeaderEnabledArchive) GetSuper() *TableCommandArchive {
@@ -2876,18 +2783,9 @@ func (m *CommandSetRepeatingHeaderEnabledArchive) GetSuper() *TableCommandArchiv
 	return nil
 }
 
-func (m *CommandSetRepeatingHeaderEnabledArchive) GetPrevRepeatingHeaderEnabled() bool {
-	if m != nil && m.PrevRepeatingHeaderEnabled != nil {
-		return *m.PrevRepeatingHeaderEnabled
-	}
-	return false
-}
-
 type CommandSetFiltersEnabledArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewFiltersEnabled    *bool                `protobuf:"varint,2,req,name=new_filters_enabled,json=newFiltersEnabled" json:"new_filters_enabled,omitempty"`
-	OldFiltersEnabled    *bool                `protobuf:"varint,3,opt,name=old_filters_enabled,json=oldFiltersEnabled" json:"old_filters_enabled,omitempty"`
-	RollbackUidList      []*TSP.UUID          `protobuf:"bytes,4,rep,name=rollback_uid_list,json=rollbackUidList" json:"rollback_uid_list,omitempty"`
+	EnableFilters        *bool                `protobuf:"varint,1,req,name=enable_filters,json=enableFilters" json:"enable_filters,omitempty"`
+	Super                *TableCommandArchive `protobuf:"bytes,2,req,name=super" json:"super,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -2897,7 +2795,7 @@ func (m *CommandSetFiltersEnabledArchive) Reset()         { *m = CommandSetFilte
 func (m *CommandSetFiltersEnabledArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetFiltersEnabledArchive) ProtoMessage()    {}
 func (*CommandSetFiltersEnabledArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{35}
+	return fileDescriptor_5d102eeb586b2c5c, []int{32}
 }
 
 func (m *CommandSetFiltersEnabledArchive) XXX_Unmarshal(b []byte) error {
@@ -2918,6 +2816,13 @@ func (m *CommandSetFiltersEnabledArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetFiltersEnabledArchive proto.InternalMessageInfo
 
+func (m *CommandSetFiltersEnabledArchive) GetEnableFilters() bool {
+	if m != nil && m.EnableFilters != nil {
+		return *m.EnableFilters
+	}
+	return false
+}
+
 func (m *CommandSetFiltersEnabledArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
@@ -2925,248 +2830,328 @@ func (m *CommandSetFiltersEnabledArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandSetFiltersEnabledArchive) GetNewFiltersEnabled() bool {
-	if m != nil && m.NewFiltersEnabled != nil {
-		return *m.NewFiltersEnabled
-	}
-	return false
-}
-
-func (m *CommandSetFiltersEnabledArchive) GetOldFiltersEnabled() bool {
-	if m != nil && m.OldFiltersEnabled != nil {
-		return *m.OldFiltersEnabled
-	}
-	return false
-}
-
-func (m *CommandSetFiltersEnabledArchive) GetRollbackUidList() []*TSP.UUID {
-	if m != nil {
-		return m.RollbackUidList
-	}
-	return nil
-}
-
-type CommandAddTableStylePresetArchive struct {
+type CommandAddQuickFilterRulesArchive struct {
 	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	PresetIndex          *int32               `protobuf:"varint,2,req,name=preset_index,json=presetIndex" json:"preset_index,omitempty"`
-	TableStyles          *TSP.Reference       `protobuf:"bytes,3,req,name=table_styles,json=tableStyles" json:"table_styles,omitempty"`
-	SendNotification     *bool                `protobuf:"varint,4,req,name=send_notification,json=sendNotification" json:"send_notification,omitempty"`
+	Rules                []*FilterRuleArchive `protobuf:"bytes,2,rep,name=rules" json:"rules,omitempty"`
+	FilterIndex          *uint32              `protobuf:"varint,3,req,name=filter_index,json=filterIndex" json:"filter_index,omitempty"`
+	RuleIndices          []uint32             `protobuf:"varint,4,rep,name=rule_indices,json=ruleIndices" json:"rule_indices,omitempty"`
+	FilterSetEnabled     *bool                `protobuf:"varint,5,req,name=filter_set_enabled,json=filterSetEnabled" json:"filter_set_enabled,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CommandAddTableStylePresetArchive) Reset()         { *m = CommandAddTableStylePresetArchive{} }
-func (m *CommandAddTableStylePresetArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandAddTableStylePresetArchive) ProtoMessage()    {}
-func (*CommandAddTableStylePresetArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{36}
+func (m *CommandAddQuickFilterRulesArchive) Reset()         { *m = CommandAddQuickFilterRulesArchive{} }
+func (m *CommandAddQuickFilterRulesArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandAddQuickFilterRulesArchive) ProtoMessage()    {}
+func (*CommandAddQuickFilterRulesArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{33}
 }
 
-func (m *CommandAddTableStylePresetArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandAddTableStylePresetArchive.Unmarshal(m, b)
+func (m *CommandAddQuickFilterRulesArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandAddQuickFilterRulesArchive.Unmarshal(m, b)
 }
-func (m *CommandAddTableStylePresetArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandAddTableStylePresetArchive.Marshal(b, m, deterministic)
+func (m *CommandAddQuickFilterRulesArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandAddQuickFilterRulesArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandAddTableStylePresetArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandAddTableStylePresetArchive.Merge(m, src)
+func (m *CommandAddQuickFilterRulesArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandAddQuickFilterRulesArchive.Merge(m, src)
 }
-func (m *CommandAddTableStylePresetArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandAddTableStylePresetArchive.Size(m)
+func (m *CommandAddQuickFilterRulesArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandAddQuickFilterRulesArchive.Size(m)
 }
-func (m *CommandAddTableStylePresetArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandAddTableStylePresetArchive.DiscardUnknown(m)
+func (m *CommandAddQuickFilterRulesArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandAddQuickFilterRulesArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandAddTableStylePresetArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandAddQuickFilterRulesArchive proto.InternalMessageInfo
 
-func (m *CommandAddTableStylePresetArchive) GetSuper() *TableCommandArchive {
+func (m *CommandAddQuickFilterRulesArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandAddTableStylePresetArchive) GetPresetIndex() int32 {
+func (m *CommandAddQuickFilterRulesArchive) GetRules() []*FilterRuleArchive {
+	if m != nil {
+		return m.Rules
+	}
+	return nil
+}
+
+func (m *CommandAddQuickFilterRulesArchive) GetFilterIndex() uint32 {
+	if m != nil && m.FilterIndex != nil {
+		return *m.FilterIndex
+	}
+	return 0
+}
+
+func (m *CommandAddQuickFilterRulesArchive) GetRuleIndices() []uint32 {
+	if m != nil {
+		return m.RuleIndices
+	}
+	return nil
+}
+
+func (m *CommandAddQuickFilterRulesArchive) GetFilterSetEnabled() bool {
+	if m != nil && m.FilterSetEnabled != nil {
+		return *m.FilterSetEnabled
+	}
+	return false
+}
+
+type CommandDeleteFilterRulesArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UndoRules            []*FilterRuleArchive `protobuf:"bytes,2,rep,name=undo_rules,json=undoRules" json:"undo_rules,omitempty"`
+	RuleIndices          []uint32             `protobuf:"varint,3,rep,name=rule_indices,json=ruleIndices" json:"rule_indices,omitempty"`
+	FilterRemoved        *bool                `protobuf:"varint,4,req,name=filter_removed,json=filterRemoved" json:"filter_removed,omitempty"`
+	FilterIndex          *uint32              `protobuf:"varint,5,req,name=filter_index,json=filterIndex" json:"filter_index,omitempty"`
+	FilterSetEnabled     *bool                `protobuf:"varint,6,req,name=filter_set_enabled,json=filterSetEnabled" json:"filter_set_enabled,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandDeleteFilterRulesArchive) Reset()         { *m = CommandDeleteFilterRulesArchive{} }
+func (m *CommandDeleteFilterRulesArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandDeleteFilterRulesArchive) ProtoMessage()    {}
+func (*CommandDeleteFilterRulesArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{34}
+}
+
+func (m *CommandDeleteFilterRulesArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandDeleteFilterRulesArchive.Unmarshal(m, b)
+}
+func (m *CommandDeleteFilterRulesArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandDeleteFilterRulesArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandDeleteFilterRulesArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandDeleteFilterRulesArchive.Merge(m, src)
+}
+func (m *CommandDeleteFilterRulesArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandDeleteFilterRulesArchive.Size(m)
+}
+func (m *CommandDeleteFilterRulesArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandDeleteFilterRulesArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandDeleteFilterRulesArchive proto.InternalMessageInfo
+
+func (m *CommandDeleteFilterRulesArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandDeleteFilterRulesArchive) GetUndoRules() []*FilterRuleArchive {
+	if m != nil {
+		return m.UndoRules
+	}
+	return nil
+}
+
+func (m *CommandDeleteFilterRulesArchive) GetRuleIndices() []uint32 {
+	if m != nil {
+		return m.RuleIndices
+	}
+	return nil
+}
+
+func (m *CommandDeleteFilterRulesArchive) GetFilterRemoved() bool {
+	if m != nil && m.FilterRemoved != nil {
+		return *m.FilterRemoved
+	}
+	return false
+}
+
+func (m *CommandDeleteFilterRulesArchive) GetFilterIndex() uint32 {
+	if m != nil && m.FilterIndex != nil {
+		return *m.FilterIndex
+	}
+	return 0
+}
+
+func (m *CommandDeleteFilterRulesArchive) GetFilterSetEnabled() bool {
+	if m != nil && m.FilterSetEnabled != nil {
+		return *m.FilterSetEnabled
+	}
+	return false
+}
+
+type CommandModifyFilterRuleArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UndoRule             *FilterRuleArchive   `protobuf:"bytes,2,req,name=undo_rule,json=undoRule" json:"undo_rule,omitempty"`
+	RedoRule             *FilterRuleArchive   `protobuf:"bytes,3,req,name=redo_rule,json=redoRule" json:"redo_rule,omitempty"`
+	RuleIndex            *uint32              `protobuf:"varint,4,req,name=rule_index,json=ruleIndex" json:"rule_index,omitempty"`
+	FilterIndex          *uint32              `protobuf:"varint,5,req,name=filter_index,json=filterIndex" json:"filter_index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandModifyFilterRuleArchive) Reset()         { *m = CommandModifyFilterRuleArchive{} }
+func (m *CommandModifyFilterRuleArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandModifyFilterRuleArchive) ProtoMessage()    {}
+func (*CommandModifyFilterRuleArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{35}
+}
+
+func (m *CommandModifyFilterRuleArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandModifyFilterRuleArchive.Unmarshal(m, b)
+}
+func (m *CommandModifyFilterRuleArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandModifyFilterRuleArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandModifyFilterRuleArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandModifyFilterRuleArchive.Merge(m, src)
+}
+func (m *CommandModifyFilterRuleArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandModifyFilterRuleArchive.Size(m)
+}
+func (m *CommandModifyFilterRuleArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandModifyFilterRuleArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandModifyFilterRuleArchive proto.InternalMessageInfo
+
+func (m *CommandModifyFilterRuleArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandModifyFilterRuleArchive) GetUndoRule() *FilterRuleArchive {
+	if m != nil {
+		return m.UndoRule
+	}
+	return nil
+}
+
+func (m *CommandModifyFilterRuleArchive) GetRedoRule() *FilterRuleArchive {
+	if m != nil {
+		return m.RedoRule
+	}
+	return nil
+}
+
+func (m *CommandModifyFilterRuleArchive) GetRuleIndex() uint32 {
+	if m != nil && m.RuleIndex != nil {
+		return *m.RuleIndex
+	}
+	return 0
+}
+
+func (m *CommandModifyFilterRuleArchive) GetFilterIndex() uint32 {
+	if m != nil && m.FilterIndex != nil {
+		return *m.FilterIndex
+	}
+	return 0
+}
+
+type CommandApplyStrokePresetArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,2,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,4,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,3,req,name=selection" json:"selection,omitempty"`
+	ExpandedSelection    *SelectionArchive    `protobuf:"bytes,6,opt,name=expanded_selection,json=expandedSelection" json:"expanded_selection,omitempty"`
+	PresetIndex          *int32               `protobuf:"varint,5,req,name=preset_index,json=presetIndex" json:"preset_index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandApplyStrokePresetArchive) Reset()         { *m = CommandApplyStrokePresetArchive{} }
+func (m *CommandApplyStrokePresetArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandApplyStrokePresetArchive) ProtoMessage()    {}
+func (*CommandApplyStrokePresetArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{36}
+}
+
+func (m *CommandApplyStrokePresetArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandApplyStrokePresetArchive.Unmarshal(m, b)
+}
+func (m *CommandApplyStrokePresetArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandApplyStrokePresetArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandApplyStrokePresetArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandApplyStrokePresetArchive.Merge(m, src)
+}
+func (m *CommandApplyStrokePresetArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandApplyStrokePresetArchive.Size(m)
+}
+func (m *CommandApplyStrokePresetArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandApplyStrokePresetArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandApplyStrokePresetArchive proto.InternalMessageInfo
+
+func (m *CommandApplyStrokePresetArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandApplyStrokePresetArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandApplyStrokePresetArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+func (m *CommandApplyStrokePresetArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandApplyStrokePresetArchive) GetExpandedSelection() *SelectionArchive {
+	if m != nil {
+		return m.ExpandedSelection
+	}
+	return nil
+}
+
+func (m *CommandApplyStrokePresetArchive) GetPresetIndex() int32 {
 	if m != nil && m.PresetIndex != nil {
 		return *m.PresetIndex
 	}
 	return 0
 }
 
-func (m *CommandAddTableStylePresetArchive) GetTableStyles() *TSP.Reference {
-	if m != nil {
-		return m.TableStyles
-	}
-	return nil
-}
-
-func (m *CommandAddTableStylePresetArchive) GetSendNotification() bool {
-	if m != nil && m.SendNotification != nil {
-		return *m.SendNotification
-	}
-	return false
-}
-
-type CommandRemoveTableStylePresetArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	RemovedTableStyles   *TSP.Reference      `protobuf:"bytes,3,req,name=removed_table_styles,json=removedTableStyles" json:"removed_table_styles,omitempty"`
-	PresetId             *int32              `protobuf:"varint,4,req,name=preset_id,json=presetId" json:"preset_id,omitempty"`
-	PresetIndexInTheme   *int32              `protobuf:"varint,5,req,name=preset_index_in_theme,json=presetIndexInTheme" json:"preset_index_in_theme,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *CommandRemoveTableStylePresetArchive) Reset()         { *m = CommandRemoveTableStylePresetArchive{} }
-func (m *CommandRemoveTableStylePresetArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandRemoveTableStylePresetArchive) ProtoMessage()    {}
-func (*CommandRemoveTableStylePresetArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{37}
-}
-
-func (m *CommandRemoveTableStylePresetArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRemoveTableStylePresetArchive.Unmarshal(m, b)
-}
-func (m *CommandRemoveTableStylePresetArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRemoveTableStylePresetArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandRemoveTableStylePresetArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRemoveTableStylePresetArchive.Merge(m, src)
-}
-func (m *CommandRemoveTableStylePresetArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRemoveTableStylePresetArchive.Size(m)
-}
-func (m *CommandRemoveTableStylePresetArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRemoveTableStylePresetArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandRemoveTableStylePresetArchive proto.InternalMessageInfo
-
-func (m *CommandRemoveTableStylePresetArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandRemoveTableStylePresetArchive) GetTheme() *TSP.Reference {
-	if m != nil {
-		return m.Theme
-	}
-	return nil
-}
-
-func (m *CommandRemoveTableStylePresetArchive) GetRemovedTableStyles() *TSP.Reference {
-	if m != nil {
-		return m.RemovedTableStyles
-	}
-	return nil
-}
-
-func (m *CommandRemoveTableStylePresetArchive) GetPresetId() int32 {
-	if m != nil && m.PresetId != nil {
-		return *m.PresetId
-	}
-	return 0
-}
-
-func (m *CommandRemoveTableStylePresetArchive) GetPresetIndexInTheme() int32 {
-	if m != nil && m.PresetIndexInTheme != nil {
-		return *m.PresetIndexInTheme
-	}
-	return 0
-}
-
-type CommandReplaceTableStylePresetArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	OldTableStyles       *TSP.Reference      `protobuf:"bytes,3,req,name=old_table_styles,json=oldTableStyles" json:"old_table_styles,omitempty"`
-	NewTableStyles       *TSP.Reference      `protobuf:"bytes,4,req,name=new_table_styles,json=newTableStyles" json:"new_table_styles,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *CommandReplaceTableStylePresetArchive) Reset()         { *m = CommandReplaceTableStylePresetArchive{} }
-func (m *CommandReplaceTableStylePresetArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandReplaceTableStylePresetArchive) ProtoMessage()    {}
-func (*CommandReplaceTableStylePresetArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{38}
-}
-
-func (m *CommandReplaceTableStylePresetArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandReplaceTableStylePresetArchive.Unmarshal(m, b)
-}
-func (m *CommandReplaceTableStylePresetArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandReplaceTableStylePresetArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandReplaceTableStylePresetArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandReplaceTableStylePresetArchive.Merge(m, src)
-}
-func (m *CommandReplaceTableStylePresetArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandReplaceTableStylePresetArchive.Size(m)
-}
-func (m *CommandReplaceTableStylePresetArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandReplaceTableStylePresetArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandReplaceTableStylePresetArchive proto.InternalMessageInfo
-
-func (m *CommandReplaceTableStylePresetArchive) GetSuper() *TSK.CommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandReplaceTableStylePresetArchive) GetTheme() *TSP.Reference {
-	if m != nil {
-		return m.Theme
-	}
-	return nil
-}
-
-func (m *CommandReplaceTableStylePresetArchive) GetOldTableStyles() *TSP.Reference {
-	if m != nil {
-		return m.OldTableStyles
-	}
-	return nil
-}
-
-func (m *CommandReplaceTableStylePresetArchive) GetNewTableStyles() *TSP.Reference {
-	if m != nil {
-		return m.NewTableStyles
-	}
-	return nil
-}
-
 type CommandApplyTableStylePresetArchive struct {
-	Super                  *TableCommandArchive        `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Preset                 *TSP.Reference              `protobuf:"bytes,2,opt,name=preset" json:"preset,omitempty"`
-	Styles                 *TSP.Reference              `protobuf:"bytes,3,opt,name=styles" json:"styles,omitempty"`
-	UndoPreset             *TSP.Reference              `protobuf:"bytes,4,opt,name=undo_preset,json=undoPreset" json:"undo_preset,omitempty"`
-	UndoStyles             *TSP.Reference              `protobuf:"bytes,5,opt,name=undo_styles,json=undoStyles" json:"undo_styles,omitempty"`
-	CellDiffMap            *TSP.Reference              `protobuf:"bytes,6,opt,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	UndoCellDiffMap        *TSP.Reference              `protobuf:"bytes,7,opt,name=undo_cell_diff_map,json=undoCellDiffMap" json:"undo_cell_diff_map,omitempty"`
-	ApplyPresetOption      *int32                      `protobuf:"varint,8,req,name=apply_preset_option,json=applyPresetOption" json:"apply_preset_option,omitempty"`
-	TableClearsAllFlag     *bool                       `protobuf:"varint,11,req,name=table_clears_all_flag,json=tableClearsAllFlag" json:"table_clears_all_flag,omitempty"`
-	UndoTableClearsAllFlag *bool                       `protobuf:"varint,12,req,name=undo_table_clears_all_flag,json=undoTableClearsAllFlag" json:"undo_table_clears_all_flag,omitempty"`
-	RowColStyles           []*ColumnRowMetadataArchive `protobuf:"bytes,13,rep,name=row_col_styles,json=rowColStyles" json:"row_col_styles,omitempty"`
-	UndoRowColStyles       []*ColumnRowMetadataArchive `protobuf:"bytes,14,rep,name=undo_row_col_styles,json=undoRowColStyles" json:"undo_row_col_styles,omitempty"`
-	ChangePropMapWrapper   *TSP.Reference              `protobuf:"bytes,15,opt,name=change_prop_map_wrapper,json=changePropMapWrapper" json:"change_prop_map_wrapper,omitempty"`
-	XXX_NoUnkeyedLiteral   struct{}                    `json:"-"`
-	XXX_unrecognized       []byte                      `json:"-"`
-	XXX_sizecache          int32                       `json:"-"`
+	Super                             *TableCommandArchive                                   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UndoCellMap                       *CellMapArchive                                        `protobuf:"bytes,2,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap                       *CellMapArchive                                        `protobuf:"bytes,4,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	PresetIndex                       *int32                                                 `protobuf:"varint,5,req,name=preset_index,json=presetIndex" json:"preset_index,omitempty"`
+	OldTableStyles                    *TableStyleNetworkArchive                              `protobuf:"bytes,7,req,name=old_table_styles,json=oldTableStyles" json:"old_table_styles,omitempty"`
+	NewTableStyles                    *TableStyleNetworkArchive                              `protobuf:"bytes,8,req,name=new_table_styles,json=newTableStyles" json:"new_table_styles,omitempty"`
+	ApplyClearsAll                    *bool                                                  `protobuf:"varint,10,opt,name=apply_clears_all,json=applyClearsAll" json:"apply_clears_all,omitempty"`
+	FontSizeCommand                   *Reference                                             `protobuf:"bytes,11,opt,name=font_size_command,json=fontSizeCommand" json:"font_size_command,omitempty"`
+	SetStyleApplyClearsAllFlagCommand *Reference                                             `protobuf:"bytes,12,opt,name=set_style_apply_clears_all_flag_command,json=setStyleApplyClearsAllFlagCommand" json:"set_style_apply_clears_all_flag_command,omitempty"`
+	RowStyleIndexTuples               []*CommandApplyTableStylePresetArchive_StyleIndexTuple `protobuf:"bytes,13,rep,name=row_style_index_tuples,json=rowStyleIndexTuples" json:"row_style_index_tuples,omitempty"`
+	ColStyleIndexTuples               []*CommandApplyTableStylePresetArchive_StyleIndexTuple `protobuf:"bytes,14,rep,name=col_style_index_tuples,json=colStyleIndexTuples" json:"col_style_index_tuples,omitempty"`
+	XXX_NoUnkeyedLiteral              struct{}                                               `json:"-"`
+	XXX_unrecognized                  []byte                                                 `json:"-"`
+	XXX_sizecache                     int32                                                  `json:"-"`
 }
 
 func (m *CommandApplyTableStylePresetArchive) Reset()         { *m = CommandApplyTableStylePresetArchive{} }
 func (m *CommandApplyTableStylePresetArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandApplyTableStylePresetArchive) ProtoMessage()    {}
 func (*CommandApplyTableStylePresetArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{39}
+	return fileDescriptor_5d102eeb586b2c5c, []int{37}
 }
 
 func (m *CommandApplyTableStylePresetArchive) XXX_Unmarshal(b []byte) error {
@@ -3194,103 +3179,556 @@ func (m *CommandApplyTableStylePresetArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandApplyTableStylePresetArchive) GetPreset() *TSP.Reference {
+func (m *CommandApplyTableStylePresetArchive) GetUndoCellMap() *CellMapArchive {
 	if m != nil {
-		return m.Preset
+		return m.UndoCellMap
 	}
 	return nil
 }
 
-func (m *CommandApplyTableStylePresetArchive) GetStyles() *TSP.Reference {
+func (m *CommandApplyTableStylePresetArchive) GetRedoCellMap() *CellMapArchive {
 	if m != nil {
-		return m.Styles
+		return m.RedoCellMap
 	}
 	return nil
 }
 
-func (m *CommandApplyTableStylePresetArchive) GetUndoPreset() *TSP.Reference {
-	if m != nil {
-		return m.UndoPreset
-	}
-	return nil
-}
-
-func (m *CommandApplyTableStylePresetArchive) GetUndoStyles() *TSP.Reference {
-	if m != nil {
-		return m.UndoStyles
-	}
-	return nil
-}
-
-func (m *CommandApplyTableStylePresetArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandApplyTableStylePresetArchive) GetUndoCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.UndoCellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandApplyTableStylePresetArchive) GetApplyPresetOption() int32 {
-	if m != nil && m.ApplyPresetOption != nil {
-		return *m.ApplyPresetOption
+func (m *CommandApplyTableStylePresetArchive) GetPresetIndex() int32 {
+	if m != nil && m.PresetIndex != nil {
+		return *m.PresetIndex
 	}
 	return 0
 }
 
-func (m *CommandApplyTableStylePresetArchive) GetTableClearsAllFlag() bool {
-	if m != nil && m.TableClearsAllFlag != nil {
-		return *m.TableClearsAllFlag
-	}
-	return false
-}
-
-func (m *CommandApplyTableStylePresetArchive) GetUndoTableClearsAllFlag() bool {
-	if m != nil && m.UndoTableClearsAllFlag != nil {
-		return *m.UndoTableClearsAllFlag
-	}
-	return false
-}
-
-func (m *CommandApplyTableStylePresetArchive) GetRowColStyles() []*ColumnRowMetadataArchive {
+func (m *CommandApplyTableStylePresetArchive) GetOldTableStyles() *TableStyleNetworkArchive {
 	if m != nil {
-		return m.RowColStyles
+		return m.OldTableStyles
 	}
 	return nil
 }
 
-func (m *CommandApplyTableStylePresetArchive) GetUndoRowColStyles() []*ColumnRowMetadataArchive {
+func (m *CommandApplyTableStylePresetArchive) GetNewTableStyles() *TableStyleNetworkArchive {
 	if m != nil {
-		return m.UndoRowColStyles
+		return m.NewTableStyles
 	}
 	return nil
 }
 
-func (m *CommandApplyTableStylePresetArchive) GetChangePropMapWrapper() *TSP.Reference {
+func (m *CommandApplyTableStylePresetArchive) GetApplyClearsAll() bool {
+	if m != nil && m.ApplyClearsAll != nil {
+		return *m.ApplyClearsAll
+	}
+	return false
+}
+
+func (m *CommandApplyTableStylePresetArchive) GetFontSizeCommand() *Reference {
 	if m != nil {
-		return m.ChangePropMapWrapper
+		return m.FontSizeCommand
+	}
+	return nil
+}
+
+func (m *CommandApplyTableStylePresetArchive) GetSetStyleApplyClearsAllFlagCommand() *Reference {
+	if m != nil {
+		return m.SetStyleApplyClearsAllFlagCommand
+	}
+	return nil
+}
+
+func (m *CommandApplyTableStylePresetArchive) GetRowStyleIndexTuples() []*CommandApplyTableStylePresetArchive_StyleIndexTuple {
+	if m != nil {
+		return m.RowStyleIndexTuples
+	}
+	return nil
+}
+
+func (m *CommandApplyTableStylePresetArchive) GetColStyleIndexTuples() []*CommandApplyTableStylePresetArchive_StyleIndexTuple {
+	if m != nil {
+		return m.ColStyleIndexTuples
+	}
+	return nil
+}
+
+type CommandApplyTableStylePresetArchive_StyleIndexTuple struct {
+	Index                *uint32    `protobuf:"varint,1,req,name=index" json:"index,omitempty"`
+	CellStyle            *Reference `protobuf:"bytes,5,opt,name=cell_style,json=cellStyle" json:"cell_style,omitempty"`
+	TextStyle            *Reference `protobuf:"bytes,6,opt,name=text_style,json=textStyle" json:"text_style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
+}
+
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) Reset() {
+	*m = CommandApplyTableStylePresetArchive_StyleIndexTuple{}
+}
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandApplyTableStylePresetArchive_StyleIndexTuple) ProtoMessage() {}
+func (*CommandApplyTableStylePresetArchive_StyleIndexTuple) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{37, 0}
+}
+
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandApplyTableStylePresetArchive_StyleIndexTuple.Unmarshal(m, b)
+}
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandApplyTableStylePresetArchive_StyleIndexTuple.Marshal(b, m, deterministic)
+}
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandApplyTableStylePresetArchive_StyleIndexTuple.Merge(m, src)
+}
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) XXX_Size() int {
+	return xxx_messageInfo_CommandApplyTableStylePresetArchive_StyleIndexTuple.Size(m)
+}
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandApplyTableStylePresetArchive_StyleIndexTuple.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandApplyTableStylePresetArchive_StyleIndexTuple proto.InternalMessageInfo
+
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) GetIndex() uint32 {
+	if m != nil && m.Index != nil {
+		return *m.Index
+	}
+	return 0
+}
+
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) GetCellStyle() *Reference {
+	if m != nil {
+		return m.CellStyle
+	}
+	return nil
+}
+
+func (m *CommandApplyTableStylePresetArchive_StyleIndexTuple) GetTextStyle() *Reference {
+	if m != nil {
+		return m.TextStyle
+	}
+	return nil
+}
+
+type CommandSetStyleApplyClearsAllFlagArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ApplyClearsAll       *bool                `protobuf:"varint,2,req,name=apply_clears_all,json=applyClearsAll" json:"apply_clears_all,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetStyleApplyClearsAllFlagArchive) Reset() {
+	*m = CommandSetStyleApplyClearsAllFlagArchive{}
+}
+func (m *CommandSetStyleApplyClearsAllFlagArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetStyleApplyClearsAllFlagArchive) ProtoMessage()    {}
+func (*CommandSetStyleApplyClearsAllFlagArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{38}
+}
+
+func (m *CommandSetStyleApplyClearsAllFlagArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetStyleApplyClearsAllFlagArchive.Unmarshal(m, b)
+}
+func (m *CommandSetStyleApplyClearsAllFlagArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetStyleApplyClearsAllFlagArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetStyleApplyClearsAllFlagArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetStyleApplyClearsAllFlagArchive.Merge(m, src)
+}
+func (m *CommandSetStyleApplyClearsAllFlagArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetStyleApplyClearsAllFlagArchive.Size(m)
+}
+func (m *CommandSetStyleApplyClearsAllFlagArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetStyleApplyClearsAllFlagArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetStyleApplyClearsAllFlagArchive proto.InternalMessageInfo
+
+func (m *CommandSetStyleApplyClearsAllFlagArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetStyleApplyClearsAllFlagArchive) GetApplyClearsAll() bool {
+	if m != nil && m.ApplyClearsAll != nil {
+		return *m.ApplyClearsAll
+	}
+	return false
+}
+
+type CommandApplyThemeToTableArchive struct {
+	Super                *TableCommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UndoCellMap          *CellMapArchive           `protobuf:"bytes,2,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive           `protobuf:"bytes,4,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	OldTableStyles       *TableStyleNetworkArchive `protobuf:"bytes,7,req,name=old_table_styles,json=oldTableStyles" json:"old_table_styles,omitempty"`
+	NewTableStyles       *TableStyleNetworkArchive `protobuf:"bytes,8,req,name=new_table_styles,json=newTableStyles" json:"new_table_styles,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *CommandApplyThemeToTableArchive) Reset()         { *m = CommandApplyThemeToTableArchive{} }
+func (m *CommandApplyThemeToTableArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandApplyThemeToTableArchive) ProtoMessage()    {}
+func (*CommandApplyThemeToTableArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{39}
+}
+
+func (m *CommandApplyThemeToTableArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandApplyThemeToTableArchive.Unmarshal(m, b)
+}
+func (m *CommandApplyThemeToTableArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandApplyThemeToTableArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandApplyThemeToTableArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandApplyThemeToTableArchive.Merge(m, src)
+}
+func (m *CommandApplyThemeToTableArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandApplyThemeToTableArchive.Size(m)
+}
+func (m *CommandApplyThemeToTableArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandApplyThemeToTableArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandApplyThemeToTableArchive proto.InternalMessageInfo
+
+func (m *CommandApplyThemeToTableArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandApplyThemeToTableArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandApplyThemeToTableArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+func (m *CommandApplyThemeToTableArchive) GetOldTableStyles() *TableStyleNetworkArchive {
+	if m != nil {
+		return m.OldTableStyles
+	}
+	return nil
+}
+
+func (m *CommandApplyThemeToTableArchive) GetNewTableStyles() *TableStyleNetworkArchive {
+	if m != nil {
+		return m.NewTableStyles
+	}
+	return nil
+}
+
+type CommandApplyThemeChildForTableArchive struct {
+	Super                *ApplyThemeChildCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ApplyCommand         *Reference                     `protobuf:"bytes,2,req,name=apply_command,json=applyCommand" json:"apply_command,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                       `json:"-"`
+	XXX_unrecognized     []byte                         `json:"-"`
+	XXX_sizecache        int32                          `json:"-"`
+}
+
+func (m *CommandApplyThemeChildForTableArchive) Reset()         { *m = CommandApplyThemeChildForTableArchive{} }
+func (m *CommandApplyThemeChildForTableArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandApplyThemeChildForTableArchive) ProtoMessage()    {}
+func (*CommandApplyThemeChildForTableArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{40}
+}
+
+func (m *CommandApplyThemeChildForTableArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandApplyThemeChildForTableArchive.Unmarshal(m, b)
+}
+func (m *CommandApplyThemeChildForTableArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandApplyThemeChildForTableArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandApplyThemeChildForTableArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandApplyThemeChildForTableArchive.Merge(m, src)
+}
+func (m *CommandApplyThemeChildForTableArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandApplyThemeChildForTableArchive.Size(m)
+}
+func (m *CommandApplyThemeChildForTableArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandApplyThemeChildForTableArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandApplyThemeChildForTableArchive proto.InternalMessageInfo
+
+func (m *CommandApplyThemeChildForTableArchive) GetSuper() *ApplyThemeChildCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandApplyThemeChildForTableArchive) GetApplyCommand() *Reference {
+	if m != nil {
+		return m.ApplyCommand
+	}
+	return nil
+}
+
+type CommandToggleTextPropertyArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,2,req,name=selection" json:"selection,omitempty"`
+	Property             *uint32              `protobuf:"varint,3,req,name=property" json:"property,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,4,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,5,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	DefaultBodyCell      *Cell                `protobuf:"bytes,6,req,name=default_body_cell,json=defaultBodyCell" json:"default_body_cell,omitempty"`
+	DefaultHrCell        *Cell                `protobuf:"bytes,7,req,name=default_hr_cell,json=defaultHrCell" json:"default_hr_cell,omitempty"`
+	DefaultHcCell        *Cell                `protobuf:"bytes,8,req,name=default_hc_cell,json=defaultHcCell" json:"default_hc_cell,omitempty"`
+	DefaultFrCell        *Cell                `protobuf:"bytes,9,req,name=default_fr_cell,json=defaultFrCell" json:"default_fr_cell,omitempty"`
+	TextUndo             *Reference           `protobuf:"bytes,10,opt,name=text_undo,json=textUndo" json:"text_undo,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandToggleTextPropertyArchive) Reset()         { *m = CommandToggleTextPropertyArchive{} }
+func (m *CommandToggleTextPropertyArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandToggleTextPropertyArchive) ProtoMessage()    {}
+func (*CommandToggleTextPropertyArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{41}
+}
+
+func (m *CommandToggleTextPropertyArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandToggleTextPropertyArchive.Unmarshal(m, b)
+}
+func (m *CommandToggleTextPropertyArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandToggleTextPropertyArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandToggleTextPropertyArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandToggleTextPropertyArchive.Merge(m, src)
+}
+func (m *CommandToggleTextPropertyArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandToggleTextPropertyArchive.Size(m)
+}
+func (m *CommandToggleTextPropertyArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandToggleTextPropertyArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandToggleTextPropertyArchive proto.InternalMessageInfo
+
+func (m *CommandToggleTextPropertyArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandToggleTextPropertyArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandToggleTextPropertyArchive) GetProperty() uint32 {
+	if m != nil && m.Property != nil {
+		return *m.Property
+	}
+	return 0
+}
+
+func (m *CommandToggleTextPropertyArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandToggleTextPropertyArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+func (m *CommandToggleTextPropertyArchive) GetDefaultBodyCell() *Cell {
+	if m != nil {
+		return m.DefaultBodyCell
+	}
+	return nil
+}
+
+func (m *CommandToggleTextPropertyArchive) GetDefaultHrCell() *Cell {
+	if m != nil {
+		return m.DefaultHrCell
+	}
+	return nil
+}
+
+func (m *CommandToggleTextPropertyArchive) GetDefaultHcCell() *Cell {
+	if m != nil {
+		return m.DefaultHcCell
+	}
+	return nil
+}
+
+func (m *CommandToggleTextPropertyArchive) GetDefaultFrCell() *Cell {
+	if m != nil {
+		return m.DefaultFrCell
+	}
+	return nil
+}
+
+func (m *CommandToggleTextPropertyArchive) GetTextUndo() *Reference {
+	if m != nil {
+		return m.TextUndo
+	}
+	return nil
+}
+
+type CommandResetFillPropertyToDefault struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,2,req,name=selection" json:"selection,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,4,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,5,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandResetFillPropertyToDefault) Reset()         { *m = CommandResetFillPropertyToDefault{} }
+func (m *CommandResetFillPropertyToDefault) String() string { return proto.CompactTextString(m) }
+func (*CommandResetFillPropertyToDefault) ProtoMessage()    {}
+func (*CommandResetFillPropertyToDefault) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{42}
+}
+
+func (m *CommandResetFillPropertyToDefault) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandResetFillPropertyToDefault.Unmarshal(m, b)
+}
+func (m *CommandResetFillPropertyToDefault) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandResetFillPropertyToDefault.Marshal(b, m, deterministic)
+}
+func (m *CommandResetFillPropertyToDefault) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandResetFillPropertyToDefault.Merge(m, src)
+}
+func (m *CommandResetFillPropertyToDefault) XXX_Size() int {
+	return xxx_messageInfo_CommandResetFillPropertyToDefault.Size(m)
+}
+func (m *CommandResetFillPropertyToDefault) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandResetFillPropertyToDefault.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandResetFillPropertyToDefault proto.InternalMessageInfo
+
+func (m *CommandResetFillPropertyToDefault) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandResetFillPropertyToDefault) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandResetFillPropertyToDefault) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandResetFillPropertyToDefault) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+type CommandSetSingleNumberFormatParameterArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,2,req,name=selection" json:"selection,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,3,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,4,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetSingleNumberFormatParameterArchive) Reset() {
+	*m = CommandSetSingleNumberFormatParameterArchive{}
+}
+func (m *CommandSetSingleNumberFormatParameterArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandSetSingleNumberFormatParameterArchive) ProtoMessage() {}
+func (*CommandSetSingleNumberFormatParameterArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{43}
+}
+
+func (m *CommandSetSingleNumberFormatParameterArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetSingleNumberFormatParameterArchive.Unmarshal(m, b)
+}
+func (m *CommandSetSingleNumberFormatParameterArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetSingleNumberFormatParameterArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetSingleNumberFormatParameterArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetSingleNumberFormatParameterArchive.Merge(m, src)
+}
+func (m *CommandSetSingleNumberFormatParameterArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetSingleNumberFormatParameterArchive.Size(m)
+}
+func (m *CommandSetSingleNumberFormatParameterArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetSingleNumberFormatParameterArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetSingleNumberFormatParameterArchive proto.InternalMessageInfo
+
+func (m *CommandSetSingleNumberFormatParameterArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetSingleNumberFormatParameterArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandSetSingleNumberFormatParameterArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandSetSingleNumberFormatParameterArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
 	}
 	return nil
 }
 
 type CommandSetBaseArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Base                 *uint32                         `protobuf:"varint,2,req,name=base" json:"base,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Base                 *uint32                                       `protobuf:"varint,2,req,name=base" json:"base,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetBaseArchive) Reset()         { *m = CommandSetBaseArchive{} }
 func (m *CommandSetBaseArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetBaseArchive) ProtoMessage()    {}
 func (*CommandSetBaseArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{40}
+	return fileDescriptor_5d102eeb586b2c5c, []int{44}
 }
 
 func (m *CommandSetBaseArchive) XXX_Unmarshal(b []byte) error {
@@ -3311,7 +3749,7 @@ func (m *CommandSetBaseArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetBaseArchive proto.InternalMessageInfo
 
-func (m *CommandSetBaseArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetBaseArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3326,18 +3764,18 @@ func (m *CommandSetBaseArchive) GetBase() uint32 {
 }
 
 type CommandSetBasePlacesArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	BasePlaces           *uint32                         `protobuf:"varint,2,req,name=base_places,json=basePlaces" json:"base_places,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	BasePlaces           *uint32                                       `protobuf:"varint,2,req,name=base_places,json=basePlaces" json:"base_places,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetBasePlacesArchive) Reset()         { *m = CommandSetBasePlacesArchive{} }
 func (m *CommandSetBasePlacesArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetBasePlacesArchive) ProtoMessage()    {}
 func (*CommandSetBasePlacesArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{41}
+	return fileDescriptor_5d102eeb586b2c5c, []int{45}
 }
 
 func (m *CommandSetBasePlacesArchive) XXX_Unmarshal(b []byte) error {
@@ -3358,7 +3796,7 @@ func (m *CommandSetBasePlacesArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetBasePlacesArchive proto.InternalMessageInfo
 
-func (m *CommandSetBasePlacesArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetBasePlacesArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3373,18 +3811,18 @@ func (m *CommandSetBasePlacesArchive) GetBasePlaces() uint32 {
 }
 
 type CommandSetBaseUseMinusSignArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	BaseUseMinusSign     *bool                           `protobuf:"varint,2,req,name=base_use_minus_sign,json=baseUseMinusSign" json:"base_use_minus_sign,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	BaseUseMinusSign     *bool                                         `protobuf:"varint,2,req,name=base_use_minus_sign,json=baseUseMinusSign" json:"base_use_minus_sign,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetBaseUseMinusSignArchive) Reset()         { *m = CommandSetBaseUseMinusSignArchive{} }
 func (m *CommandSetBaseUseMinusSignArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetBaseUseMinusSignArchive) ProtoMessage()    {}
 func (*CommandSetBaseUseMinusSignArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{42}
+	return fileDescriptor_5d102eeb586b2c5c, []int{46}
 }
 
 func (m *CommandSetBaseUseMinusSignArchive) XXX_Unmarshal(b []byte) error {
@@ -3405,7 +3843,7 @@ func (m *CommandSetBaseUseMinusSignArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetBaseUseMinusSignArchive proto.InternalMessageInfo
 
-func (m *CommandSetBaseUseMinusSignArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetBaseUseMinusSignArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3419,19 +3857,184 @@ func (m *CommandSetBaseUseMinusSignArchive) GetBaseUseMinusSign() bool {
 	return false
 }
 
+type CommandSetControlMinimumArchive struct {
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Minimum              *float64                                      `protobuf:"fixed64,2,req,name=minimum" json:"minimum,omitempty"`
+	FormatType           *uint32                                       `protobuf:"varint,3,req,name=format_type,json=formatType" json:"format_type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
+}
+
+func (m *CommandSetControlMinimumArchive) Reset()         { *m = CommandSetControlMinimumArchive{} }
+func (m *CommandSetControlMinimumArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetControlMinimumArchive) ProtoMessage()    {}
+func (*CommandSetControlMinimumArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{47}
+}
+
+func (m *CommandSetControlMinimumArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetControlMinimumArchive.Unmarshal(m, b)
+}
+func (m *CommandSetControlMinimumArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetControlMinimumArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetControlMinimumArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetControlMinimumArchive.Merge(m, src)
+}
+func (m *CommandSetControlMinimumArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetControlMinimumArchive.Size(m)
+}
+func (m *CommandSetControlMinimumArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetControlMinimumArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetControlMinimumArchive proto.InternalMessageInfo
+
+func (m *CommandSetControlMinimumArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetControlMinimumArchive) GetMinimum() float64 {
+	if m != nil && m.Minimum != nil {
+		return *m.Minimum
+	}
+	return 0
+}
+
+func (m *CommandSetControlMinimumArchive) GetFormatType() uint32 {
+	if m != nil && m.FormatType != nil {
+		return *m.FormatType
+	}
+	return 0
+}
+
+type CommandSetControlMaximumArchive struct {
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Maximum              *float64                                      `protobuf:"fixed64,2,req,name=maximum" json:"maximum,omitempty"`
+	FormatType           *uint32                                       `protobuf:"varint,3,req,name=format_type,json=formatType" json:"format_type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
+}
+
+func (m *CommandSetControlMaximumArchive) Reset()         { *m = CommandSetControlMaximumArchive{} }
+func (m *CommandSetControlMaximumArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetControlMaximumArchive) ProtoMessage()    {}
+func (*CommandSetControlMaximumArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{48}
+}
+
+func (m *CommandSetControlMaximumArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetControlMaximumArchive.Unmarshal(m, b)
+}
+func (m *CommandSetControlMaximumArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetControlMaximumArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetControlMaximumArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetControlMaximumArchive.Merge(m, src)
+}
+func (m *CommandSetControlMaximumArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetControlMaximumArchive.Size(m)
+}
+func (m *CommandSetControlMaximumArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetControlMaximumArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetControlMaximumArchive proto.InternalMessageInfo
+
+func (m *CommandSetControlMaximumArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetControlMaximumArchive) GetMaximum() float64 {
+	if m != nil && m.Maximum != nil {
+		return *m.Maximum
+	}
+	return 0
+}
+
+func (m *CommandSetControlMaximumArchive) GetFormatType() uint32 {
+	if m != nil && m.FormatType != nil {
+		return *m.FormatType
+	}
+	return 0
+}
+
+type CommandSetControlIncrementArchive struct {
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Increment            *float64                                      `protobuf:"fixed64,2,req,name=increment" json:"increment,omitempty"`
+	FormatType           *uint32                                       `protobuf:"varint,3,req,name=format_type,json=formatType" json:"format_type,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
+}
+
+func (m *CommandSetControlIncrementArchive) Reset()         { *m = CommandSetControlIncrementArchive{} }
+func (m *CommandSetControlIncrementArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetControlIncrementArchive) ProtoMessage()    {}
+func (*CommandSetControlIncrementArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{49}
+}
+
+func (m *CommandSetControlIncrementArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetControlIncrementArchive.Unmarshal(m, b)
+}
+func (m *CommandSetControlIncrementArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetControlIncrementArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetControlIncrementArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetControlIncrementArchive.Merge(m, src)
+}
+func (m *CommandSetControlIncrementArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetControlIncrementArchive.Size(m)
+}
+func (m *CommandSetControlIncrementArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetControlIncrementArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetControlIncrementArchive proto.InternalMessageInfo
+
+func (m *CommandSetControlIncrementArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetControlIncrementArchive) GetIncrement() float64 {
+	if m != nil && m.Increment != nil {
+		return *m.Increment
+	}
+	return 0
+}
+
+func (m *CommandSetControlIncrementArchive) GetFormatType() uint32 {
+	if m != nil && m.FormatType != nil {
+		return *m.FormatType
+	}
+	return 0
+}
+
 type CommandSetCurrencyCodeArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CurrencyCode         *string                         `protobuf:"bytes,2,req,name=currency_code,json=currencyCode" json:"currency_code,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	CurrencyCode         *string                                       `protobuf:"bytes,2,req,name=currency_code,json=currencyCode" json:"currency_code,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetCurrencyCodeArchive) Reset()         { *m = CommandSetCurrencyCodeArchive{} }
 func (m *CommandSetCurrencyCodeArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetCurrencyCodeArchive) ProtoMessage()    {}
 func (*CommandSetCurrencyCodeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{43}
+	return fileDescriptor_5d102eeb586b2c5c, []int{50}
 }
 
 func (m *CommandSetCurrencyCodeArchive) XXX_Unmarshal(b []byte) error {
@@ -3452,7 +4055,7 @@ func (m *CommandSetCurrencyCodeArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetCurrencyCodeArchive proto.InternalMessageInfo
 
-func (m *CommandSetCurrencyCodeArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetCurrencyCodeArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3467,18 +4070,18 @@ func (m *CommandSetCurrencyCodeArchive) GetCurrencyCode() string {
 }
 
 type CommandSetFractionAccuracyArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	FractionAccuracy     *uint32                         `protobuf:"varint,2,req,name=fraction_accuracy,json=fractionAccuracy" json:"fraction_accuracy,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FractionAccuracy     *uint32                                       `protobuf:"varint,2,req,name=fraction_accuracy,json=fractionAccuracy" json:"fraction_accuracy,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetFractionAccuracyArchive) Reset()         { *m = CommandSetFractionAccuracyArchive{} }
 func (m *CommandSetFractionAccuracyArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetFractionAccuracyArchive) ProtoMessage()    {}
 func (*CommandSetFractionAccuracyArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{44}
+	return fileDescriptor_5d102eeb586b2c5c, []int{51}
 }
 
 func (m *CommandSetFractionAccuracyArchive) XXX_Unmarshal(b []byte) error {
@@ -3499,7 +4102,7 @@ func (m *CommandSetFractionAccuracyArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetFractionAccuracyArchive proto.InternalMessageInfo
 
-func (m *CommandSetFractionAccuracyArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetFractionAccuracyArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3513,19 +4116,191 @@ func (m *CommandSetFractionAccuracyArchive) GetFractionAccuracy() uint32 {
 	return 0
 }
 
+type CommandSetMultipleChoiceListFormatForEditedItemArchive struct {
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
+}
+
+func (m *CommandSetMultipleChoiceListFormatForEditedItemArchive) Reset() {
+	*m = CommandSetMultipleChoiceListFormatForEditedItemArchive{}
+}
+func (m *CommandSetMultipleChoiceListFormatForEditedItemArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandSetMultipleChoiceListFormatForEditedItemArchive) ProtoMessage() {}
+func (*CommandSetMultipleChoiceListFormatForEditedItemArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{52}
+}
+
+func (m *CommandSetMultipleChoiceListFormatForEditedItemArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForEditedItemArchive.Unmarshal(m, b)
+}
+func (m *CommandSetMultipleChoiceListFormatForEditedItemArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForEditedItemArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetMultipleChoiceListFormatForEditedItemArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetMultipleChoiceListFormatForEditedItemArchive.Merge(m, src)
+}
+func (m *CommandSetMultipleChoiceListFormatForEditedItemArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForEditedItemArchive.Size(m)
+}
+func (m *CommandSetMultipleChoiceListFormatForEditedItemArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetMultipleChoiceListFormatForEditedItemArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetMultipleChoiceListFormatForEditedItemArchive proto.InternalMessageInfo
+
+func (m *CommandSetMultipleChoiceListFormatForEditedItemArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+type CommandSetMultipleChoiceListFormatForDeleteItemArchive struct {
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
+}
+
+func (m *CommandSetMultipleChoiceListFormatForDeleteItemArchive) Reset() {
+	*m = CommandSetMultipleChoiceListFormatForDeleteItemArchive{}
+}
+func (m *CommandSetMultipleChoiceListFormatForDeleteItemArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandSetMultipleChoiceListFormatForDeleteItemArchive) ProtoMessage() {}
+func (*CommandSetMultipleChoiceListFormatForDeleteItemArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{53}
+}
+
+func (m *CommandSetMultipleChoiceListFormatForDeleteItemArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForDeleteItemArchive.Unmarshal(m, b)
+}
+func (m *CommandSetMultipleChoiceListFormatForDeleteItemArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForDeleteItemArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetMultipleChoiceListFormatForDeleteItemArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetMultipleChoiceListFormatForDeleteItemArchive.Merge(m, src)
+}
+func (m *CommandSetMultipleChoiceListFormatForDeleteItemArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForDeleteItemArchive.Size(m)
+}
+func (m *CommandSetMultipleChoiceListFormatForDeleteItemArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetMultipleChoiceListFormatForDeleteItemArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetMultipleChoiceListFormatForDeleteItemArchive proto.InternalMessageInfo
+
+func (m *CommandSetMultipleChoiceListFormatForDeleteItemArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+type CommandSetMultipleChoiceListFormatForReorderItemArchive struct {
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
+}
+
+func (m *CommandSetMultipleChoiceListFormatForReorderItemArchive) Reset() {
+	*m = CommandSetMultipleChoiceListFormatForReorderItemArchive{}
+}
+func (m *CommandSetMultipleChoiceListFormatForReorderItemArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandSetMultipleChoiceListFormatForReorderItemArchive) ProtoMessage() {}
+func (*CommandSetMultipleChoiceListFormatForReorderItemArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{54}
+}
+
+func (m *CommandSetMultipleChoiceListFormatForReorderItemArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForReorderItemArchive.Unmarshal(m, b)
+}
+func (m *CommandSetMultipleChoiceListFormatForReorderItemArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForReorderItemArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetMultipleChoiceListFormatForReorderItemArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetMultipleChoiceListFormatForReorderItemArchive.Merge(m, src)
+}
+func (m *CommandSetMultipleChoiceListFormatForReorderItemArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForReorderItemArchive.Size(m)
+}
+func (m *CommandSetMultipleChoiceListFormatForReorderItemArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetMultipleChoiceListFormatForReorderItemArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetMultipleChoiceListFormatForReorderItemArchive proto.InternalMessageInfo
+
+func (m *CommandSetMultipleChoiceListFormatForReorderItemArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+type CommandSetMultipleChoiceListFormatForInitialValueArchive struct {
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
+}
+
+func (m *CommandSetMultipleChoiceListFormatForInitialValueArchive) Reset() {
+	*m = CommandSetMultipleChoiceListFormatForInitialValueArchive{}
+}
+func (m *CommandSetMultipleChoiceListFormatForInitialValueArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandSetMultipleChoiceListFormatForInitialValueArchive) ProtoMessage() {}
+func (*CommandSetMultipleChoiceListFormatForInitialValueArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{55}
+}
+
+func (m *CommandSetMultipleChoiceListFormatForInitialValueArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForInitialValueArchive.Unmarshal(m, b)
+}
+func (m *CommandSetMultipleChoiceListFormatForInitialValueArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForInitialValueArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetMultipleChoiceListFormatForInitialValueArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetMultipleChoiceListFormatForInitialValueArchive.Merge(m, src)
+}
+func (m *CommandSetMultipleChoiceListFormatForInitialValueArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetMultipleChoiceListFormatForInitialValueArchive.Size(m)
+}
+func (m *CommandSetMultipleChoiceListFormatForInitialValueArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetMultipleChoiceListFormatForInitialValueArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetMultipleChoiceListFormatForInitialValueArchive proto.InternalMessageInfo
+
+func (m *CommandSetMultipleChoiceListFormatForInitialValueArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
 type CommandSetNegativeNumberStyleArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NegativeNumberStyle  *uint32                         `protobuf:"varint,2,req,name=negative_number_style,json=negativeNumberStyle" json:"negative_number_style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	NegativeNumberStyle  *uint32                                       `protobuf:"varint,2,req,name=negative_number_style,json=negativeNumberStyle" json:"negative_number_style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetNegativeNumberStyleArchive) Reset()         { *m = CommandSetNegativeNumberStyleArchive{} }
 func (m *CommandSetNegativeNumberStyleArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetNegativeNumberStyleArchive) ProtoMessage()    {}
 func (*CommandSetNegativeNumberStyleArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{45}
+	return fileDescriptor_5d102eeb586b2c5c, []int{56}
 }
 
 func (m *CommandSetNegativeNumberStyleArchive) XXX_Unmarshal(b []byte) error {
@@ -3546,7 +4321,7 @@ func (m *CommandSetNegativeNumberStyleArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetNegativeNumberStyleArchive proto.InternalMessageInfo
 
-func (m *CommandSetNegativeNumberStyleArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetNegativeNumberStyleArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3560,12 +4335,83 @@ func (m *CommandSetNegativeNumberStyleArchive) GetNegativeNumberStyle() uint32 {
 	return 0
 }
 
+type CommandSetExplicitFormatArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,2,req,name=selection" json:"selection,omitempty"`
+	CellFormat           *FormatStructArchive `protobuf:"bytes,3,req,name=cell_format,json=cellFormat" json:"cell_format,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,4,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,5,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetExplicitFormatArchive) Reset()         { *m = CommandSetExplicitFormatArchive{} }
+func (m *CommandSetExplicitFormatArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetExplicitFormatArchive) ProtoMessage()    {}
+func (*CommandSetExplicitFormatArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{57}
+}
+
+func (m *CommandSetExplicitFormatArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetExplicitFormatArchive.Unmarshal(m, b)
+}
+func (m *CommandSetExplicitFormatArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetExplicitFormatArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetExplicitFormatArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetExplicitFormatArchive.Merge(m, src)
+}
+func (m *CommandSetExplicitFormatArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetExplicitFormatArchive.Size(m)
+}
+func (m *CommandSetExplicitFormatArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetExplicitFormatArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetExplicitFormatArchive proto.InternalMessageInfo
+
+func (m *CommandSetExplicitFormatArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetExplicitFormatArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandSetExplicitFormatArchive) GetCellFormat() *FormatStructArchive {
+	if m != nil {
+		return m.CellFormat
+	}
+	return nil
+}
+
+func (m *CommandSetExplicitFormatArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandSetExplicitFormatArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
 type CommandSetNumberOfDecimalPlacesArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	DecimalPlaces        *uint32                         `protobuf:"varint,2,req,name=decimal_places,json=decimalPlaces" json:"decimal_places,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	DecimalPlaces        *uint32                                       `protobuf:"varint,2,req,name=decimal_places,json=decimalPlaces" json:"decimal_places,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetNumberOfDecimalPlacesArchive) Reset() {
@@ -3574,7 +4420,7 @@ func (m *CommandSetNumberOfDecimalPlacesArchive) Reset() {
 func (m *CommandSetNumberOfDecimalPlacesArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetNumberOfDecimalPlacesArchive) ProtoMessage()    {}
 func (*CommandSetNumberOfDecimalPlacesArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{46}
+	return fileDescriptor_5d102eeb586b2c5c, []int{58}
 }
 
 func (m *CommandSetNumberOfDecimalPlacesArchive) XXX_Unmarshal(b []byte) error {
@@ -3595,7 +4441,7 @@ func (m *CommandSetNumberOfDecimalPlacesArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetNumberOfDecimalPlacesArchive proto.InternalMessageInfo
 
-func (m *CommandSetNumberOfDecimalPlacesArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetNumberOfDecimalPlacesArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3610,19 +4456,17 @@ func (m *CommandSetNumberOfDecimalPlacesArchive) GetDecimalPlaces() uint32 {
 }
 
 type CommandSetDateTimeFormatArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	DateFormatString     *string                         `protobuf:"bytes,2,opt,name=date_format_string,json=dateFormatString" json:"date_format_string,omitempty"`
-	TimeFormatString     *string                         `protobuf:"bytes,3,opt,name=time_format_string,json=timeFormatString" json:"time_format_string,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetDateTimeFormatArchive) Reset()         { *m = CommandSetDateTimeFormatArchive{} }
 func (m *CommandSetDateTimeFormatArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetDateTimeFormatArchive) ProtoMessage()    {}
 func (*CommandSetDateTimeFormatArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{47}
+	return fileDescriptor_5d102eeb586b2c5c, []int{59}
 }
 
 func (m *CommandSetDateTimeFormatArchive) XXX_Unmarshal(b []byte) error {
@@ -3643,33 +4487,19 @@ func (m *CommandSetDateTimeFormatArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetDateTimeFormatArchive proto.InternalMessageInfo
 
-func (m *CommandSetDateTimeFormatArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetDateTimeFormatArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSetDateTimeFormatArchive) GetDateFormatString() string {
-	if m != nil && m.DateFormatString != nil {
-		return *m.DateFormatString
-	}
-	return ""
-}
-
-func (m *CommandSetDateTimeFormatArchive) GetTimeFormatString() string {
-	if m != nil && m.TimeFormatString != nil {
-		return *m.TimeFormatString
-	}
-	return ""
-}
-
 type CommandSetShowThousandsSeparatorArchive struct {
-	Super                  *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ShowThousandsSeparator *bool                           `protobuf:"varint,2,req,name=show_thousands_separator,json=showThousandsSeparator" json:"show_thousands_separator,omitempty"`
-	XXX_NoUnkeyedLiteral   struct{}                        `json:"-"`
-	XXX_unrecognized       []byte                          `json:"-"`
-	XXX_sizecache          int32                           `json:"-"`
+	Super                  *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ShowThousandsSeparator *bool                                         `protobuf:"varint,2,req,name=show_thousands_separator,json=showThousandsSeparator" json:"show_thousands_separator,omitempty"`
+	XXX_NoUnkeyedLiteral   struct{}                                      `json:"-"`
+	XXX_unrecognized       []byte                                        `json:"-"`
+	XXX_sizecache          int32                                         `json:"-"`
 }
 
 func (m *CommandSetShowThousandsSeparatorArchive) Reset() {
@@ -3678,7 +4508,7 @@ func (m *CommandSetShowThousandsSeparatorArchive) Reset() {
 func (m *CommandSetShowThousandsSeparatorArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetShowThousandsSeparatorArchive) ProtoMessage()    {}
 func (*CommandSetShowThousandsSeparatorArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{48}
+	return fileDescriptor_5d102eeb586b2c5c, []int{60}
 }
 
 func (m *CommandSetShowThousandsSeparatorArchive) XXX_Unmarshal(b []byte) error {
@@ -3699,7 +4529,7 @@ func (m *CommandSetShowThousandsSeparatorArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetShowThousandsSeparatorArchive proto.InternalMessageInfo
 
-func (m *CommandSetShowThousandsSeparatorArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetShowThousandsSeparatorArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3714,18 +4544,18 @@ func (m *CommandSetShowThousandsSeparatorArchive) GetShowThousandsSeparator() bo
 }
 
 type CommandSetUseAccountingStyleArchive struct {
-	Super                *CommandMutateCellFormatArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	UseAccountingStyle   *bool                           `protobuf:"varint,2,req,name=use_accounting_style,json=useAccountingStyle" json:"use_accounting_style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+	Super                *CommandSetSingleNumberFormatParameterArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UseAccountingStyle   *bool                                         `protobuf:"varint,2,req,name=use_accounting_style,json=useAccountingStyle" json:"use_accounting_style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                                      `json:"-"`
+	XXX_unrecognized     []byte                                        `json:"-"`
+	XXX_sizecache        int32                                         `json:"-"`
 }
 
 func (m *CommandSetUseAccountingStyleArchive) Reset()         { *m = CommandSetUseAccountingStyleArchive{} }
 func (m *CommandSetUseAccountingStyleArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetUseAccountingStyleArchive) ProtoMessage()    {}
 func (*CommandSetUseAccountingStyleArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{49}
+	return fileDescriptor_5d102eeb586b2c5c, []int{61}
 }
 
 func (m *CommandSetUseAccountingStyleArchive) XXX_Unmarshal(b []byte) error {
@@ -3746,7 +4576,7 @@ func (m *CommandSetUseAccountingStyleArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetUseAccountingStyleArchive proto.InternalMessageInfo
 
-func (m *CommandSetUseAccountingStyleArchive) GetSuper() *CommandMutateCellFormatArchive {
+func (m *CommandSetUseAccountingStyleArchive) GetSuper() *CommandSetSingleNumberFormatParameterArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -3760,213 +4590,202 @@ func (m *CommandSetUseAccountingStyleArchive) GetUseAccountingStyle() bool {
 	return false
 }
 
-type CommandSetRangeControlMinMaxIncArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Minimum              *float64             `protobuf:"fixed64,2,opt,name=minimum" json:"minimum,omitempty"`
-	Maximum              *float64             `protobuf:"fixed64,3,opt,name=maximum" json:"maximum,omitempty"`
-	Increment            *float64             `protobuf:"fixed64,4,opt,name=increment" json:"increment,omitempty"`
-	CellDiffMap          *TSP.Reference       `protobuf:"bytes,5,opt,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	CellUidList          *CellUIDListArchive  `protobuf:"bytes,6,opt,name=cell_uid_list,json=cellUidList" json:"cell_uid_list,omitempty"`
-	InverseCellDiffMap   *TSP.Reference       `protobuf:"bytes,7,opt,name=inverse_cell_diff_map,json=inverseCellDiffMap" json:"inverse_cell_diff_map,omitempty"`
-	IsFirstCommit        *bool                `protobuf:"varint,8,req,name=is_first_commit,json=isFirstCommit" json:"is_first_commit,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
+type CommandMoveRowsArchive struct {
+	Super                       *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Selection                   *SelectionArchive    `protobuf:"bytes,2,opt,name=selection" json:"selection,omitempty"`
+	StartRowIndex               *uint32              `protobuf:"varint,3,req,name=start_row_index,json=startRowIndex" json:"start_row_index,omitempty"`
+	DestRowIndex                *uint32              `protobuf:"varint,4,req,name=dest_row_index,json=destRowIndex" json:"dest_row_index,omitempty"`
+	NumberOfRows                *uint32              `protobuf:"varint,5,req,name=number_of_rows,json=numberOfRows" json:"number_of_rows,omitempty"`
+	FormulaRewriteCommand       *Reference           `protobuf:"bytes,7,opt,name=formula_rewrite_command,json=formulaRewriteCommand" json:"formula_rewrite_command,omitempty"`
+	ShowCommand                 *Reference           `protobuf:"bytes,8,opt,name=show_command,json=showCommand" json:"show_command,omitempty"`
+	UnmergeInvalidRangesCommand *Reference           `protobuf:"bytes,9,opt,name=unmerge_invalid_ranges_command,json=unmergeInvalidRangesCommand" json:"unmerge_invalid_ranges_command,omitempty"`
+	XXX_NoUnkeyedLiteral        struct{}             `json:"-"`
+	XXX_unrecognized            []byte               `json:"-"`
+	XXX_sizecache               int32                `json:"-"`
 }
 
-func (m *CommandSetRangeControlMinMaxIncArchive) Reset() {
-	*m = CommandSetRangeControlMinMaxIncArchive{}
-}
-func (m *CommandSetRangeControlMinMaxIncArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSetRangeControlMinMaxIncArchive) ProtoMessage()    {}
-func (*CommandSetRangeControlMinMaxIncArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{50}
+func (m *CommandMoveRowsArchive) Reset()         { *m = CommandMoveRowsArchive{} }
+func (m *CommandMoveRowsArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandMoveRowsArchive) ProtoMessage()    {}
+func (*CommandMoveRowsArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{62}
 }
 
-func (m *CommandSetRangeControlMinMaxIncArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetRangeControlMinMaxIncArchive.Unmarshal(m, b)
+func (m *CommandMoveRowsArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandMoveRowsArchive.Unmarshal(m, b)
 }
-func (m *CommandSetRangeControlMinMaxIncArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetRangeControlMinMaxIncArchive.Marshal(b, m, deterministic)
+func (m *CommandMoveRowsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandMoveRowsArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandSetRangeControlMinMaxIncArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetRangeControlMinMaxIncArchive.Merge(m, src)
+func (m *CommandMoveRowsArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandMoveRowsArchive.Merge(m, src)
 }
-func (m *CommandSetRangeControlMinMaxIncArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetRangeControlMinMaxIncArchive.Size(m)
+func (m *CommandMoveRowsArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandMoveRowsArchive.Size(m)
 }
-func (m *CommandSetRangeControlMinMaxIncArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetRangeControlMinMaxIncArchive.DiscardUnknown(m)
+func (m *CommandMoveRowsArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandMoveRowsArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandSetRangeControlMinMaxIncArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandMoveRowsArchive proto.InternalMessageInfo
 
-func (m *CommandSetRangeControlMinMaxIncArchive) GetSuper() *TableCommandArchive {
+func (m *CommandMoveRowsArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSetRangeControlMinMaxIncArchive) GetMinimum() float64 {
-	if m != nil && m.Minimum != nil {
-		return *m.Minimum
+func (m *CommandMoveRowsArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandMoveRowsArchive) GetStartRowIndex() uint32 {
+	if m != nil && m.StartRowIndex != nil {
+		return *m.StartRowIndex
 	}
 	return 0
 }
 
-func (m *CommandSetRangeControlMinMaxIncArchive) GetMaximum() float64 {
-	if m != nil && m.Maximum != nil {
-		return *m.Maximum
+func (m *CommandMoveRowsArchive) GetDestRowIndex() uint32 {
+	if m != nil && m.DestRowIndex != nil {
+		return *m.DestRowIndex
 	}
 	return 0
 }
 
-func (m *CommandSetRangeControlMinMaxIncArchive) GetIncrement() float64 {
-	if m != nil && m.Increment != nil {
-		return *m.Increment
+func (m *CommandMoveRowsArchive) GetNumberOfRows() uint32 {
+	if m != nil && m.NumberOfRows != nil {
+		return *m.NumberOfRows
 	}
 	return 0
 }
 
-func (m *CommandSetRangeControlMinMaxIncArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandSetRangeControlMinMaxIncArchive) GetCellUidList() *CellUIDListArchive {
-	if m != nil {
-		return m.CellUidList
-	}
-	return nil
-}
-
-func (m *CommandSetRangeControlMinMaxIncArchive) GetInverseCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.InverseCellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandSetRangeControlMinMaxIncArchive) GetIsFirstCommit() bool {
-	if m != nil && m.IsFirstCommit != nil {
-		return *m.IsFirstCommit
-	}
-	return false
-}
-
-type CommandMoveColumnsOrRowsArchive struct {
-	Super                 *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	DestUid               *TSP.UUID              `protobuf:"bytes,2,req,name=dest_uid,json=destUid" json:"dest_uid,omitempty"`
-	Before                *bool                  `protobuf:"varint,3,req,name=before" json:"before,omitempty"`
-	UndoDestUid           *TSP.UUID              `protobuf:"bytes,4,req,name=undo_dest_uid,json=undoDestUid" json:"undo_dest_uid,omitempty"`
-	UndoBefore            *bool                  `protobuf:"varint,5,req,name=undo_before,json=undoBefore" json:"undo_before,omitempty"`
-	Uids                  []*TSP.UUID            `protobuf:"bytes,6,rep,name=uids" json:"uids,omitempty"`
-	Direction             *TableDimensionArchive `protobuf:"varint,7,req,name=direction,enum=TST.TableDimensionArchive" json:"direction,omitempty"`
-	FormulaRewriteCommand *TSP.Reference         `protobuf:"bytes,8,opt,name=formula_rewrite_command,json=formulaRewriteCommand" json:"formula_rewrite_command,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}               `json:"-"`
-	XXX_unrecognized      []byte                 `json:"-"`
-	XXX_sizecache         int32                  `json:"-"`
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) Reset()         { *m = CommandMoveColumnsOrRowsArchive{} }
-func (m *CommandMoveColumnsOrRowsArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandMoveColumnsOrRowsArchive) ProtoMessage()    {}
-func (*CommandMoveColumnsOrRowsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{51}
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandMoveColumnsOrRowsArchive.Unmarshal(m, b)
-}
-func (m *CommandMoveColumnsOrRowsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandMoveColumnsOrRowsArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandMoveColumnsOrRowsArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandMoveColumnsOrRowsArchive.Merge(m, src)
-}
-func (m *CommandMoveColumnsOrRowsArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandMoveColumnsOrRowsArchive.Size(m)
-}
-func (m *CommandMoveColumnsOrRowsArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandMoveColumnsOrRowsArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandMoveColumnsOrRowsArchive proto.InternalMessageInfo
-
-func (m *CommandMoveColumnsOrRowsArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) GetDestUid() *TSP.UUID {
-	if m != nil {
-		return m.DestUid
-	}
-	return nil
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) GetBefore() bool {
-	if m != nil && m.Before != nil {
-		return *m.Before
-	}
-	return false
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) GetUndoDestUid() *TSP.UUID {
-	if m != nil {
-		return m.UndoDestUid
-	}
-	return nil
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) GetUndoBefore() bool {
-	if m != nil && m.UndoBefore != nil {
-		return *m.UndoBefore
-	}
-	return false
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) GetUids() []*TSP.UUID {
-	if m != nil {
-		return m.Uids
-	}
-	return nil
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) GetDirection() TableDimensionArchive {
-	if m != nil && m.Direction != nil {
-		return *m.Direction
-	}
-	return TableDimensionArchive_dimensionRow
-}
-
-func (m *CommandMoveColumnsOrRowsArchive) GetFormulaRewriteCommand() *TSP.Reference {
+func (m *CommandMoveRowsArchive) GetFormulaRewriteCommand() *Reference {
 	if m != nil {
 		return m.FormulaRewriteCommand
 	}
 	return nil
 }
 
-type CommandSortArchive struct {
+func (m *CommandMoveRowsArchive) GetShowCommand() *Reference {
+	if m != nil {
+		return m.ShowCommand
+	}
+	return nil
+}
+
+func (m *CommandMoveRowsArchive) GetUnmergeInvalidRangesCommand() *Reference {
+	if m != nil {
+		return m.UnmergeInvalidRangesCommand
+	}
+	return nil
+}
+
+type CommandMoveColumnsArchive struct {
 	Super                 *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	FromRowUids           []*TSP.UUID          `protobuf:"bytes,2,rep,name=from_row_uids,json=fromRowUids" json:"from_row_uids,omitempty"`
-	ToRowUids             []*TSP.UUID          `protobuf:"bytes,3,rep,name=to_row_uids,json=toRowUids" json:"to_row_uids,omitempty"`
-	FormulaRewriteCommand *TSP.Reference       `protobuf:"bytes,4,opt,name=formula_rewrite_command,json=formulaRewriteCommand" json:"formula_rewrite_command,omitempty"`
+	Selection             *SelectionArchive    `protobuf:"bytes,2,opt,name=selection" json:"selection,omitempty"`
+	StartColumnIndex      *uint32              `protobuf:"varint,3,req,name=start_column_index,json=startColumnIndex" json:"start_column_index,omitempty"`
+	DestColumnIndex       *uint32              `protobuf:"varint,4,req,name=dest_column_index,json=destColumnIndex" json:"dest_column_index,omitempty"`
+	NumberOfColumns       *uint32              `protobuf:"varint,5,req,name=number_of_columns,json=numberOfColumns" json:"number_of_columns,omitempty"`
+	FormulaRewriteCommand *Reference           `protobuf:"bytes,7,opt,name=formula_rewrite_command,json=formulaRewriteCommand" json:"formula_rewrite_command,omitempty"`
+	ShowCommand           *Reference           `protobuf:"bytes,8,opt,name=show_command,json=showCommand" json:"show_command,omitempty"`
 	XXX_NoUnkeyedLiteral  struct{}             `json:"-"`
 	XXX_unrecognized      []byte               `json:"-"`
 	XXX_sizecache         int32                `json:"-"`
+}
+
+func (m *CommandMoveColumnsArchive) Reset()         { *m = CommandMoveColumnsArchive{} }
+func (m *CommandMoveColumnsArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandMoveColumnsArchive) ProtoMessage()    {}
+func (*CommandMoveColumnsArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{63}
+}
+
+func (m *CommandMoveColumnsArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandMoveColumnsArchive.Unmarshal(m, b)
+}
+func (m *CommandMoveColumnsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandMoveColumnsArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandMoveColumnsArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandMoveColumnsArchive.Merge(m, src)
+}
+func (m *CommandMoveColumnsArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandMoveColumnsArchive.Size(m)
+}
+func (m *CommandMoveColumnsArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandMoveColumnsArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandMoveColumnsArchive proto.InternalMessageInfo
+
+func (m *CommandMoveColumnsArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandMoveColumnsArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandMoveColumnsArchive) GetStartColumnIndex() uint32 {
+	if m != nil && m.StartColumnIndex != nil {
+		return *m.StartColumnIndex
+	}
+	return 0
+}
+
+func (m *CommandMoveColumnsArchive) GetDestColumnIndex() uint32 {
+	if m != nil && m.DestColumnIndex != nil {
+		return *m.DestColumnIndex
+	}
+	return 0
+}
+
+func (m *CommandMoveColumnsArchive) GetNumberOfColumns() uint32 {
+	if m != nil && m.NumberOfColumns != nil {
+		return *m.NumberOfColumns
+	}
+	return 0
+}
+
+func (m *CommandMoveColumnsArchive) GetFormulaRewriteCommand() *Reference {
+	if m != nil {
+		return m.FormulaRewriteCommand
+	}
+	return nil
+}
+
+func (m *CommandMoveColumnsArchive) GetShowCommand() *Reference {
+	if m != nil {
+		return m.ShowCommand
+	}
+	return nil
+}
+
+type CommandSortArchive struct {
+	Super                 *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Mapping               *ShuffleMappingArchive `protobuf:"bytes,5,req,name=mapping" json:"mapping,omitempty"`
+	FormulaRewriteCommand *Reference             `protobuf:"bytes,7,opt,name=formula_rewrite_command,json=formulaRewriteCommand" json:"formula_rewrite_command,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{}               `json:"-"`
+	XXX_unrecognized      []byte                 `json:"-"`
+	XXX_sizecache         int32                  `json:"-"`
 }
 
 func (m *CommandSortArchive) Reset()         { *m = CommandSortArchive{} }
 func (m *CommandSortArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSortArchive) ProtoMessage()    {}
 func (*CommandSortArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{52}
+	return fileDescriptor_5d102eeb586b2c5c, []int{64}
 }
 
 func (m *CommandSortArchive) XXX_Unmarshal(b []byte) error {
@@ -3994,257 +4813,274 @@ func (m *CommandSortArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandSortArchive) GetFromRowUids() []*TSP.UUID {
+func (m *CommandSortArchive) GetMapping() *ShuffleMappingArchive {
 	if m != nil {
-		return m.FromRowUids
+		return m.Mapping
 	}
 	return nil
 }
 
-func (m *CommandSortArchive) GetToRowUids() []*TSP.UUID {
-	if m != nil {
-		return m.ToRowUids
-	}
-	return nil
-}
-
-func (m *CommandSortArchive) GetFormulaRewriteCommand() *TSP.Reference {
+func (m *CommandSortArchive) GetFormulaRewriteCommand() *Reference {
 	if m != nil {
 		return m.FormulaRewriteCommand
 	}
 	return nil
 }
 
-type CommandRewriteFormulasForTransposeArchive struct {
-	Super                *TableCommandArchive              `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RewriteSpec          *TSCE.FormulaRewriteSpecArchive   `protobuf:"bytes,2,req,name=rewrite_spec,json=rewriteSpec" json:"rewrite_spec,omitempty"`
-	FormulasToRewrite    *TSCE.FormulasForUndoArchive      `protobuf:"bytes,3,req,name=formulas_to_rewrite,json=formulasToRewrite" json:"formulas_to_rewrite,omitempty"`
-	WarningsetMap        *ImportWarningSetByCellRefArchive `protobuf:"bytes,4,opt,name=warningset_map,json=warningsetMap" json:"warningset_map,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                          `json:"-"`
-	XXX_unrecognized     []byte                            `json:"-"`
-	XXX_sizecache        int32                             `json:"-"`
+type CommandRewriteFormulasForSortArchive struct {
+	Super                *TableCommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FormulaMap           *OwnerFormulaMapArchive `protobuf:"bytes,2,req,name=formula_map,json=formulaMap" json:"formula_map,omitempty"`
+	SortMapping          *ShuffleMappingArchive  `protobuf:"bytes,3,req,name=sort_mapping,json=sortMapping" json:"sort_mapping,omitempty"`
+	SortedTableId        *CFUUIDArchive          `protobuf:"bytes,4,req,name=sorted_table_id,json=sortedTableId" json:"sorted_table_id,omitempty"`
+	ExplodeRanges        *bool                   `protobuf:"varint,5,req,name=explode_ranges,json=explodeRanges" json:"explode_ranges,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
 }
 
-func (m *CommandRewriteFormulasForTransposeArchive) Reset() {
-	*m = CommandRewriteFormulasForTransposeArchive{}
-}
-func (m *CommandRewriteFormulasForTransposeArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandRewriteFormulasForTransposeArchive) ProtoMessage()    {}
-func (*CommandRewriteFormulasForTransposeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{53}
+func (m *CommandRewriteFormulasForSortArchive) Reset()         { *m = CommandRewriteFormulasForSortArchive{} }
+func (m *CommandRewriteFormulasForSortArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandRewriteFormulasForSortArchive) ProtoMessage()    {}
+func (*CommandRewriteFormulasForSortArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{65}
 }
 
-func (m *CommandRewriteFormulasForTransposeArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteFormulasForTransposeArchive.Unmarshal(m, b)
+func (m *CommandRewriteFormulasForSortArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteFormulasForSortArchive.Unmarshal(m, b)
 }
-func (m *CommandRewriteFormulasForTransposeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteFormulasForTransposeArchive.Marshal(b, m, deterministic)
+func (m *CommandRewriteFormulasForSortArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteFormulasForSortArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandRewriteFormulasForTransposeArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteFormulasForTransposeArchive.Merge(m, src)
+func (m *CommandRewriteFormulasForSortArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteFormulasForSortArchive.Merge(m, src)
 }
-func (m *CommandRewriteFormulasForTransposeArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteFormulasForTransposeArchive.Size(m)
+func (m *CommandRewriteFormulasForSortArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteFormulasForSortArchive.Size(m)
 }
-func (m *CommandRewriteFormulasForTransposeArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteFormulasForTransposeArchive.DiscardUnknown(m)
+func (m *CommandRewriteFormulasForSortArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteFormulasForSortArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandRewriteFormulasForTransposeArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandRewriteFormulasForSortArchive proto.InternalMessageInfo
 
-func (m *CommandRewriteFormulasForTransposeArchive) GetSuper() *TableCommandArchive {
+func (m *CommandRewriteFormulasForSortArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandRewriteFormulasForTransposeArchive) GetRewriteSpec() *TSCE.FormulaRewriteSpecArchive {
+func (m *CommandRewriteFormulasForSortArchive) GetFormulaMap() *OwnerFormulaMapArchive {
 	if m != nil {
-		return m.RewriteSpec
+		return m.FormulaMap
 	}
 	return nil
 }
 
-func (m *CommandRewriteFormulasForTransposeArchive) GetFormulasToRewrite() *TSCE.FormulasForUndoArchive {
+func (m *CommandRewriteFormulasForSortArchive) GetSortMapping() *ShuffleMappingArchive {
 	if m != nil {
-		return m.FormulasToRewrite
+		return m.SortMapping
 	}
 	return nil
 }
 
-func (m *CommandRewriteFormulasForTransposeArchive) GetWarningsetMap() *ImportWarningSetByCellRefArchive {
+func (m *CommandRewriteFormulasForSortArchive) GetSortedTableId() *CFUUIDArchive {
 	if m != nil {
-		return m.WarningsetMap
+		return m.SortedTableId
 	}
 	return nil
 }
 
-type CommandRewriteTableFormulasForRewriteSpecArchive struct {
-	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RewriteSpec          *TSCE.FormulaRewriteSpecArchive `protobuf:"bytes,2,req,name=rewrite_spec,json=rewriteSpec" json:"rewrite_spec,omitempty"`
-	FormulasToRewrite    *TSCE.FormulasForUndoArchive    `protobuf:"bytes,3,req,name=formulas_to_rewrite,json=formulasToRewrite" json:"formulas_to_rewrite,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+func (m *CommandRewriteFormulasForSortArchive) GetExplodeRanges() bool {
+	if m != nil && m.ExplodeRanges != nil {
+		return *m.ExplodeRanges
+	}
+	return false
 }
 
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) Reset() {
-	*m = CommandRewriteTableFormulasForRewriteSpecArchive{}
+type CommandRewriteFormulasForTectonicShiftArchive struct {
+	Super                *TableCommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FormulaMap           *OwnerFormulaMapArchive `protobuf:"bytes,2,req,name=formula_map,json=formulaMap" json:"formula_map,omitempty"`
+	TectonicShift        *TectonicShiftArchive   `protobuf:"bytes,3,req,name=tectonic_shift,json=tectonicShift" json:"tectonic_shift,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
 }
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) String() string {
+
+func (m *CommandRewriteFormulasForTectonicShiftArchive) Reset() {
+	*m = CommandRewriteFormulasForTectonicShiftArchive{}
+}
+func (m *CommandRewriteFormulasForTectonicShiftArchive) String() string {
 	return proto.CompactTextString(m)
 }
-func (*CommandRewriteTableFormulasForRewriteSpecArchive) ProtoMessage() {}
-func (*CommandRewriteTableFormulasForRewriteSpecArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{54}
+func (*CommandRewriteFormulasForTectonicShiftArchive) ProtoMessage() {}
+func (*CommandRewriteFormulasForTectonicShiftArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{66}
 }
 
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteTableFormulasForRewriteSpecArchive.Unmarshal(m, b)
+func (m *CommandRewriteFormulasForTectonicShiftArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteFormulasForTectonicShiftArchive.Unmarshal(m, b)
 }
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteTableFormulasForRewriteSpecArchive.Marshal(b, m, deterministic)
+func (m *CommandRewriteFormulasForTectonicShiftArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteFormulasForTectonicShiftArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteTableFormulasForRewriteSpecArchive.Merge(m, src)
+func (m *CommandRewriteFormulasForTectonicShiftArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteFormulasForTectonicShiftArchive.Merge(m, src)
 }
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteTableFormulasForRewriteSpecArchive.Size(m)
+func (m *CommandRewriteFormulasForTectonicShiftArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteFormulasForTectonicShiftArchive.Size(m)
 }
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteTableFormulasForRewriteSpecArchive.DiscardUnknown(m)
+func (m *CommandRewriteFormulasForTectonicShiftArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteFormulasForTectonicShiftArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandRewriteTableFormulasForRewriteSpecArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandRewriteFormulasForTectonicShiftArchive proto.InternalMessageInfo
 
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) GetSuper() *TableCommandArchive {
+func (m *CommandRewriteFormulasForTectonicShiftArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) GetRewriteSpec() *TSCE.FormulaRewriteSpecArchive {
+func (m *CommandRewriteFormulasForTectonicShiftArchive) GetFormulaMap() *OwnerFormulaMapArchive {
 	if m != nil {
-		return m.RewriteSpec
+		return m.FormulaMap
 	}
 	return nil
 }
 
-func (m *CommandRewriteTableFormulasForRewriteSpecArchive) GetFormulasToRewrite() *TSCE.FormulasForUndoArchive {
+func (m *CommandRewriteFormulasForTectonicShiftArchive) GetTectonicShift() *TectonicShiftArchive {
 	if m != nil {
-		return m.FormulasToRewrite
+		return m.TectonicShift
 	}
 	return nil
 }
 
-type CommandRewriteMergeFormulasArchive struct {
-	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RewriteSpec          *TSCE.FormulaRewriteSpecArchive `protobuf:"bytes,2,req,name=rewrite_spec,json=rewriteSpec" json:"rewrite_spec,omitempty"`
-	FormulasToRewrite    *TSCE.FormulasForUndoArchive    `protobuf:"bytes,3,req,name=formulas_to_rewrite,json=formulasToRewrite" json:"formulas_to_rewrite,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+type CommandRewriteFormulasForMoveArchive struct {
+	Super                *TableCommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FormulaMap           *OwnerFormulaMapArchive `protobuf:"bytes,2,req,name=formula_map,json=formulaMap" json:"formula_map,omitempty"`
+	FromReference        *RangeReferenceArchive  `protobuf:"bytes,6,req,name=from_reference,json=fromReference" json:"from_reference,omitempty"`
+	ToReference          *RangeReferenceArchive  `protobuf:"bytes,7,req,name=to_reference,json=toReference" json:"to_reference,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
 }
 
-func (m *CommandRewriteMergeFormulasArchive) Reset()         { *m = CommandRewriteMergeFormulasArchive{} }
-func (m *CommandRewriteMergeFormulasArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandRewriteMergeFormulasArchive) ProtoMessage()    {}
-func (*CommandRewriteMergeFormulasArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{55}
+func (m *CommandRewriteFormulasForMoveArchive) Reset()         { *m = CommandRewriteFormulasForMoveArchive{} }
+func (m *CommandRewriteFormulasForMoveArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandRewriteFormulasForMoveArchive) ProtoMessage()    {}
+func (*CommandRewriteFormulasForMoveArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{67}
 }
 
-func (m *CommandRewriteMergeFormulasArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteMergeFormulasArchive.Unmarshal(m, b)
+func (m *CommandRewriteFormulasForMoveArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteFormulasForMoveArchive.Unmarshal(m, b)
 }
-func (m *CommandRewriteMergeFormulasArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteMergeFormulasArchive.Marshal(b, m, deterministic)
+func (m *CommandRewriteFormulasForMoveArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteFormulasForMoveArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandRewriteMergeFormulasArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteMergeFormulasArchive.Merge(m, src)
+func (m *CommandRewriteFormulasForMoveArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteFormulasForMoveArchive.Merge(m, src)
 }
-func (m *CommandRewriteMergeFormulasArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteMergeFormulasArchive.Size(m)
+func (m *CommandRewriteFormulasForMoveArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteFormulasForMoveArchive.Size(m)
 }
-func (m *CommandRewriteMergeFormulasArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteMergeFormulasArchive.DiscardUnknown(m)
+func (m *CommandRewriteFormulasForMoveArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteFormulasForMoveArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandRewriteMergeFormulasArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandRewriteFormulasForMoveArchive proto.InternalMessageInfo
 
-func (m *CommandRewriteMergeFormulasArchive) GetSuper() *TableCommandArchive {
+func (m *CommandRewriteFormulasForMoveArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandRewriteMergeFormulasArchive) GetRewriteSpec() *TSCE.FormulaRewriteSpecArchive {
+func (m *CommandRewriteFormulasForMoveArchive) GetFormulaMap() *OwnerFormulaMapArchive {
 	if m != nil {
-		return m.RewriteSpec
+		return m.FormulaMap
 	}
 	return nil
 }
 
-func (m *CommandRewriteMergeFormulasArchive) GetFormulasToRewrite() *TSCE.FormulasForUndoArchive {
+func (m *CommandRewriteFormulasForMoveArchive) GetFromReference() *RangeReferenceArchive {
 	if m != nil {
-		return m.FormulasToRewrite
+		return m.FromReference
 	}
 	return nil
 }
 
-type CommandRewriteCategoryFormulasArchive struct {
-	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RewriteSpec          *TSCE.FormulaRewriteSpecArchive `protobuf:"bytes,2,req,name=rewrite_spec,json=rewriteSpec" json:"rewrite_spec,omitempty"`
-	FormulasToRewrite    *TSCE.FormulasForUndoArchive    `protobuf:"bytes,3,req,name=formulas_to_rewrite,json=formulasToRewrite" json:"formulas_to_rewrite,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+func (m *CommandRewriteFormulasForMoveArchive) GetToReference() *RangeReferenceArchive {
+	if m != nil {
+		return m.ToReference
+	}
+	return nil
 }
 
-func (m *CommandRewriteCategoryFormulasArchive) Reset()         { *m = CommandRewriteCategoryFormulasArchive{} }
-func (m *CommandRewriteCategoryFormulasArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandRewriteCategoryFormulasArchive) ProtoMessage()    {}
-func (*CommandRewriteCategoryFormulasArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{56}
+type CommandRewriteFormulasForCellMergeArchive struct {
+	Super                *TableCommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FormulaMap           *OwnerFormulaMapArchive `protobuf:"bytes,2,req,name=formula_map,json=formulaMap" json:"formula_map,omitempty"`
+	MergedRange          *RangeCoordinateArchive `protobuf:"bytes,3,req,name=merged_range,json=mergedRange" json:"merged_range,omitempty"`
+	TableId              *CFUUIDArchive          `protobuf:"bytes,4,req,name=table_id,json=tableId" json:"table_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
+	XXX_unrecognized     []byte                  `json:"-"`
+	XXX_sizecache        int32                   `json:"-"`
 }
 
-func (m *CommandRewriteCategoryFormulasArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteCategoryFormulasArchive.Unmarshal(m, b)
+func (m *CommandRewriteFormulasForCellMergeArchive) Reset() {
+	*m = CommandRewriteFormulasForCellMergeArchive{}
 }
-func (m *CommandRewriteCategoryFormulasArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteCategoryFormulasArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandRewriteCategoryFormulasArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteCategoryFormulasArchive.Merge(m, src)
-}
-func (m *CommandRewriteCategoryFormulasArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteCategoryFormulasArchive.Size(m)
-}
-func (m *CommandRewriteCategoryFormulasArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteCategoryFormulasArchive.DiscardUnknown(m)
+func (m *CommandRewriteFormulasForCellMergeArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandRewriteFormulasForCellMergeArchive) ProtoMessage()    {}
+func (*CommandRewriteFormulasForCellMergeArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{68}
 }
 
-var xxx_messageInfo_CommandRewriteCategoryFormulasArchive proto.InternalMessageInfo
+func (m *CommandRewriteFormulasForCellMergeArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteFormulasForCellMergeArchive.Unmarshal(m, b)
+}
+func (m *CommandRewriteFormulasForCellMergeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteFormulasForCellMergeArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandRewriteFormulasForCellMergeArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteFormulasForCellMergeArchive.Merge(m, src)
+}
+func (m *CommandRewriteFormulasForCellMergeArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteFormulasForCellMergeArchive.Size(m)
+}
+func (m *CommandRewriteFormulasForCellMergeArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteFormulasForCellMergeArchive.DiscardUnknown(m)
+}
 
-func (m *CommandRewriteCategoryFormulasArchive) GetSuper() *TableCommandArchive {
+var xxx_messageInfo_CommandRewriteFormulasForCellMergeArchive proto.InternalMessageInfo
+
+func (m *CommandRewriteFormulasForCellMergeArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandRewriteCategoryFormulasArchive) GetRewriteSpec() *TSCE.FormulaRewriteSpecArchive {
+func (m *CommandRewriteFormulasForCellMergeArchive) GetFormulaMap() *OwnerFormulaMapArchive {
 	if m != nil {
-		return m.RewriteSpec
+		return m.FormulaMap
 	}
 	return nil
 }
 
-func (m *CommandRewriteCategoryFormulasArchive) GetFormulasToRewrite() *TSCE.FormulasForUndoArchive {
+func (m *CommandRewriteFormulasForCellMergeArchive) GetMergedRange() *RangeCoordinateArchive {
 	if m != nil {
-		return m.FormulasToRewrite
+		return m.MergedRange
+	}
+	return nil
+}
+
+func (m *CommandRewriteFormulasForCellMergeArchive) GetTableId() *CFUUIDArchive {
+	if m != nil {
+		return m.TableId
 	}
 	return nil
 }
@@ -4264,7 +5100,7 @@ func (m *CommandRewriteFilterFormulasForTableResizeArchive) String() string {
 }
 func (*CommandRewriteFilterFormulasForTableResizeArchive) ProtoMessage() {}
 func (*CommandRewriteFilterFormulasForTableResizeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{57}
+	return fileDescriptor_5d102eeb586b2c5c, []int{69}
 }
 
 func (m *CommandRewriteFilterFormulasForTableResizeArchive) XXX_Unmarshal(b []byte) error {
@@ -4292,629 +5128,705 @@ func (m *CommandRewriteFilterFormulasForTableResizeArchive) GetSuper() *TableCom
 	return nil
 }
 
-type CommandRewriteFilterFormulasForRewriteSpecArchive struct {
-	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	FilterSet            *TSP.Reference                  `protobuf:"bytes,2,req,name=filter_set,json=filterSet" json:"filter_set,omitempty"`
-	RewriteSpec          *TSCE.FormulaRewriteSpecArchive `protobuf:"bytes,3,req,name=rewrite_spec,json=rewriteSpec" json:"rewrite_spec,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
+type CommandRewriteFilterFormulasForTectonicShiftArchive struct {
+	Super                *TableCommandArchive  `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FilterSet            *Reference            `protobuf:"bytes,2,req,name=filter_set,json=filterSet" json:"filter_set,omitempty"`
+	TectonicShift        *TectonicShiftArchive `protobuf:"bytes,3,req,name=tectonic_shift,json=tectonicShift" json:"tectonic_shift,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
 }
 
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) Reset() {
-	*m = CommandRewriteFilterFormulasForRewriteSpecArchive{}
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) Reset() {
+	*m = CommandRewriteFilterFormulasForTectonicShiftArchive{}
 }
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) String() string {
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) String() string {
 	return proto.CompactTextString(m)
 }
-func (*CommandRewriteFilterFormulasForRewriteSpecArchive) ProtoMessage() {}
-func (*CommandRewriteFilterFormulasForRewriteSpecArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{58}
+func (*CommandRewriteFilterFormulasForTectonicShiftArchive) ProtoMessage() {}
+func (*CommandRewriteFilterFormulasForTectonicShiftArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{70}
 }
 
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteFilterFormulasForRewriteSpecArchive.Unmarshal(m, b)
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteFilterFormulasForTectonicShiftArchive.Unmarshal(m, b)
 }
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteFilterFormulasForRewriteSpecArchive.Marshal(b, m, deterministic)
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteFilterFormulasForTectonicShiftArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteFilterFormulasForRewriteSpecArchive.Merge(m, src)
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteFilterFormulasForTectonicShiftArchive.Merge(m, src)
 }
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteFilterFormulasForRewriteSpecArchive.Size(m)
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteFilterFormulasForTectonicShiftArchive.Size(m)
 }
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteFilterFormulasForRewriteSpecArchive.DiscardUnknown(m)
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteFilterFormulasForTectonicShiftArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandRewriteFilterFormulasForRewriteSpecArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandRewriteFilterFormulasForTectonicShiftArchive proto.InternalMessageInfo
 
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) GetSuper() *TableCommandArchive {
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) GetFilterSet() *TSP.Reference {
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) GetFilterSet() *Reference {
 	if m != nil {
 		return m.FilterSet
 	}
 	return nil
 }
 
-func (m *CommandRewriteFilterFormulasForRewriteSpecArchive) GetRewriteSpec() *TSCE.FormulaRewriteSpecArchive {
+func (m *CommandRewriteFilterFormulasForTectonicShiftArchive) GetTectonicShift() *TectonicShiftArchive {
 	if m != nil {
-		return m.RewriteSpec
+		return m.TectonicShift
 	}
 	return nil
 }
 
-type CommandRewriteConditionalStylesForRewriteSpecArchive struct {
-	Super                *TableCommandArchive                  `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RewriteSpec          *TSCE.FormulaRewriteSpecArchive       `protobuf:"bytes,2,req,name=rewrite_spec,json=rewriteSpec" json:"rewrite_spec,omitempty"`
-	FormulasToRewrite    *TSCE.FormulasForUndoArchive          `protobuf:"bytes,3,opt,name=formulas_to_rewrite,json=formulasToRewrite" json:"formulas_to_rewrite,omitempty"`
-	ConditionalStyleSets *TSCE.ExpandedCellRefObjectMapArchive `protobuf:"bytes,4,opt,name=conditional_style_sets,json=conditionalStyleSets" json:"conditional_style_sets,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                              `json:"-"`
-	XXX_unrecognized     []byte                                `json:"-"`
-	XXX_sizecache        int32                                 `json:"-"`
+type CommandRewriteFilterFormulasForSortArchive struct {
+	Super                *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FilterSet            *Reference             `protobuf:"bytes,2,req,name=filter_set,json=filterSet" json:"filter_set,omitempty"`
+	SortMapping          *ShuffleMappingArchive `protobuf:"bytes,3,req,name=sort_mapping,json=sortMapping" json:"sort_mapping,omitempty"`
+	SortedTableId        *CFUUIDArchive         `protobuf:"bytes,4,req,name=sorted_table_id,json=sortedTableId" json:"sorted_table_id,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
+	XXX_unrecognized     []byte                 `json:"-"`
+	XXX_sizecache        int32                  `json:"-"`
 }
 
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) Reset() {
-	*m = CommandRewriteConditionalStylesForRewriteSpecArchive{}
+func (m *CommandRewriteFilterFormulasForSortArchive) Reset() {
+	*m = CommandRewriteFilterFormulasForSortArchive{}
 }
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) String() string {
+func (m *CommandRewriteFilterFormulasForSortArchive) String() string {
 	return proto.CompactTextString(m)
 }
-func (*CommandRewriteConditionalStylesForRewriteSpecArchive) ProtoMessage() {}
-func (*CommandRewriteConditionalStylesForRewriteSpecArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{59}
+func (*CommandRewriteFilterFormulasForSortArchive) ProtoMessage() {}
+func (*CommandRewriteFilterFormulasForSortArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{71}
 }
 
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteConditionalStylesForRewriteSpecArchive.Unmarshal(m, b)
+func (m *CommandRewriteFilterFormulasForSortArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteFilterFormulasForSortArchive.Unmarshal(m, b)
 }
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteConditionalStylesForRewriteSpecArchive.Marshal(b, m, deterministic)
+func (m *CommandRewriteFilterFormulasForSortArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteFilterFormulasForSortArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteConditionalStylesForRewriteSpecArchive.Merge(m, src)
+func (m *CommandRewriteFilterFormulasForSortArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteFilterFormulasForSortArchive.Merge(m, src)
 }
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteConditionalStylesForRewriteSpecArchive.Size(m)
+func (m *CommandRewriteFilterFormulasForSortArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteFilterFormulasForSortArchive.Size(m)
 }
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteConditionalStylesForRewriteSpecArchive.DiscardUnknown(m)
+func (m *CommandRewriteFilterFormulasForSortArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteFilterFormulasForSortArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandRewriteConditionalStylesForRewriteSpecArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandRewriteFilterFormulasForSortArchive proto.InternalMessageInfo
 
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) GetSuper() *TableCommandArchive {
+func (m *CommandRewriteFilterFormulasForSortArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) GetRewriteSpec() *TSCE.FormulaRewriteSpecArchive {
+func (m *CommandRewriteFilterFormulasForSortArchive) GetFilterSet() *Reference {
 	if m != nil {
-		return m.RewriteSpec
+		return m.FilterSet
 	}
 	return nil
 }
 
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) GetFormulasToRewrite() *TSCE.FormulasForUndoArchive {
+func (m *CommandRewriteFilterFormulasForSortArchive) GetSortMapping() *ShuffleMappingArchive {
 	if m != nil {
-		return m.FormulasToRewrite
+		return m.SortMapping
 	}
 	return nil
 }
 
-func (m *CommandRewriteConditionalStylesForRewriteSpecArchive) GetConditionalStyleSets() *TSCE.ExpandedCellRefObjectMapArchive {
+func (m *CommandRewriteFilterFormulasForSortArchive) GetSortedTableId() *CFUUIDArchive {
+	if m != nil {
+		return m.SortedTableId
+	}
+	return nil
+}
+
+type CommandRewriteConditionalStylesForTectonicShiftArchive struct {
+	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	TectonicShift        *TectonicShiftArchive           `protobuf:"bytes,2,req,name=tectonic_shift,json=tectonicShift" json:"tectonic_shift,omitempty"`
+	CellsToRewrite       *CellCoordinateVectorArchive    `protobuf:"bytes,3,opt,name=cells_to_rewrite,json=cellsToRewrite" json:"cells_to_rewrite,omitempty"`
+	ConditionalStyleSets *CellCoordinateObjectMapArchive `protobuf:"bytes,4,opt,name=conditional_style_sets,json=conditionalStyleSets" json:"conditional_style_sets,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
+	XXX_unrecognized     []byte                          `json:"-"`
+	XXX_sizecache        int32                           `json:"-"`
+}
+
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) Reset() {
+	*m = CommandRewriteConditionalStylesForTectonicShiftArchive{}
+}
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandRewriteConditionalStylesForTectonicShiftArchive) ProtoMessage() {}
+func (*CommandRewriteConditionalStylesForTectonicShiftArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{72}
+}
+
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForTectonicShiftArchive.Unmarshal(m, b)
+}
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForTectonicShiftArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteConditionalStylesForTectonicShiftArchive.Merge(m, src)
+}
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForTectonicShiftArchive.Size(m)
+}
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteConditionalStylesForTectonicShiftArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandRewriteConditionalStylesForTectonicShiftArchive proto.InternalMessageInfo
+
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) GetTectonicShift() *TectonicShiftArchive {
+	if m != nil {
+		return m.TectonicShift
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) GetCellsToRewrite() *CellCoordinateVectorArchive {
+	if m != nil {
+		return m.CellsToRewrite
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForTectonicShiftArchive) GetConditionalStyleSets() *CellCoordinateObjectMapArchive {
 	if m != nil {
 		return m.ConditionalStyleSets
 	}
 	return nil
 }
 
-type CommandMergeArchive struct {
+type CommandRewriteConditionalStylesForSortArchive struct {
+	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	SortMapping          *ShuffleMappingArchive          `protobuf:"bytes,2,req,name=sort_mapping,json=sortMapping" json:"sort_mapping,omitempty"`
+	SortedTableId        *CFUUIDArchive                  `protobuf:"bytes,3,req,name=sorted_table_id,json=sortedTableId" json:"sorted_table_id,omitempty"`
+	CellsToRewrite       *CellCoordinateVectorArchive    `protobuf:"bytes,4,opt,name=cells_to_rewrite,json=cellsToRewrite" json:"cells_to_rewrite,omitempty"`
+	ConditionalStyleSets *CellCoordinateObjectMapArchive `protobuf:"bytes,5,opt,name=conditional_style_sets,json=conditionalStyleSets" json:"conditional_style_sets,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
+	XXX_unrecognized     []byte                          `json:"-"`
+	XXX_sizecache        int32                           `json:"-"`
+}
+
+func (m *CommandRewriteConditionalStylesForSortArchive) Reset() {
+	*m = CommandRewriteConditionalStylesForSortArchive{}
+}
+func (m *CommandRewriteConditionalStylesForSortArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandRewriteConditionalStylesForSortArchive) ProtoMessage() {}
+func (*CommandRewriteConditionalStylesForSortArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{73}
+}
+
+func (m *CommandRewriteConditionalStylesForSortArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForSortArchive.Unmarshal(m, b)
+}
+func (m *CommandRewriteConditionalStylesForSortArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForSortArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandRewriteConditionalStylesForSortArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteConditionalStylesForSortArchive.Merge(m, src)
+}
+func (m *CommandRewriteConditionalStylesForSortArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForSortArchive.Size(m)
+}
+func (m *CommandRewriteConditionalStylesForSortArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteConditionalStylesForSortArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandRewriteConditionalStylesForSortArchive proto.InternalMessageInfo
+
+func (m *CommandRewriteConditionalStylesForSortArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForSortArchive) GetSortMapping() *ShuffleMappingArchive {
+	if m != nil {
+		return m.SortMapping
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForSortArchive) GetSortedTableId() *CFUUIDArchive {
+	if m != nil {
+		return m.SortedTableId
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForSortArchive) GetCellsToRewrite() *CellCoordinateVectorArchive {
+	if m != nil {
+		return m.CellsToRewrite
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForSortArchive) GetConditionalStyleSets() *CellCoordinateObjectMapArchive {
+	if m != nil {
+		return m.ConditionalStyleSets
+	}
+	return nil
+}
+
+type CommandRewriteConditionalStylesForRangeMoveArchive struct {
+	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FromRangeReference   *RangeReferenceArchive          `protobuf:"bytes,7,opt,name=from_range_reference,json=fromRangeReference" json:"from_range_reference,omitempty"`
+	ToRangeReference     *RangeReferenceArchive          `protobuf:"bytes,8,opt,name=to_range_reference,json=toRangeReference" json:"to_range_reference,omitempty"`
+	CellsToRewrite       *CellCoordinateVectorArchive    `protobuf:"bytes,5,opt,name=cells_to_rewrite,json=cellsToRewrite" json:"cells_to_rewrite,omitempty"`
+	ConditionalStyleSets *CellCoordinateObjectMapArchive `protobuf:"bytes,6,opt,name=conditional_style_sets,json=conditionalStyleSets" json:"conditional_style_sets,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
+	XXX_unrecognized     []byte                          `json:"-"`
+	XXX_sizecache        int32                           `json:"-"`
+}
+
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) Reset() {
+	*m = CommandRewriteConditionalStylesForRangeMoveArchive{}
+}
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandRewriteConditionalStylesForRangeMoveArchive) ProtoMessage() {}
+func (*CommandRewriteConditionalStylesForRangeMoveArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{74}
+}
+
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForRangeMoveArchive.Unmarshal(m, b)
+}
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForRangeMoveArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteConditionalStylesForRangeMoveArchive.Merge(m, src)
+}
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForRangeMoveArchive.Size(m)
+}
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteConditionalStylesForRangeMoveArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandRewriteConditionalStylesForRangeMoveArchive proto.InternalMessageInfo
+
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) GetFromRangeReference() *RangeReferenceArchive {
+	if m != nil {
+		return m.FromRangeReference
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) GetToRangeReference() *RangeReferenceArchive {
+	if m != nil {
+		return m.ToRangeReference
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) GetCellsToRewrite() *CellCoordinateVectorArchive {
+	if m != nil {
+		return m.CellsToRewrite
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForRangeMoveArchive) GetConditionalStyleSets() *CellCoordinateObjectMapArchive {
+	if m != nil {
+		return m.ConditionalStyleSets
+	}
+	return nil
+}
+
+type CommandRewriteConditionalStylesForCellMergeArchive struct {
+	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	MergedTableId        *CFUUIDArchive                  `protobuf:"bytes,2,req,name=merged_table_id,json=mergedTableId" json:"merged_table_id,omitempty"`
+	MergedRange          *RangeCoordinateArchive         `protobuf:"bytes,3,req,name=merged_range,json=mergedRange" json:"merged_range,omitempty"`
+	CellsToRewrite       *CellCoordinateVectorArchive    `protobuf:"bytes,4,opt,name=cells_to_rewrite,json=cellsToRewrite" json:"cells_to_rewrite,omitempty"`
+	ConditionalStyleSets *CellCoordinateObjectMapArchive `protobuf:"bytes,5,opt,name=conditional_style_sets,json=conditionalStyleSets" json:"conditional_style_sets,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
+	XXX_unrecognized     []byte                          `json:"-"`
+	XXX_sizecache        int32                           `json:"-"`
+}
+
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) Reset() {
+	*m = CommandRewriteConditionalStylesForCellMergeArchive{}
+}
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*CommandRewriteConditionalStylesForCellMergeArchive) ProtoMessage() {}
+func (*CommandRewriteConditionalStylesForCellMergeArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{75}
+}
+
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForCellMergeArchive.Unmarshal(m, b)
+}
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForCellMergeArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandRewriteConditionalStylesForCellMergeArchive.Merge(m, src)
+}
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandRewriteConditionalStylesForCellMergeArchive.Size(m)
+}
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandRewriteConditionalStylesForCellMergeArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandRewriteConditionalStylesForCellMergeArchive proto.InternalMessageInfo
+
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) GetMergedTableId() *CFUUIDArchive {
+	if m != nil {
+		return m.MergedTableId
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) GetMergedRange() *RangeCoordinateArchive {
+	if m != nil {
+		return m.MergedRange
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) GetCellsToRewrite() *CellCoordinateVectorArchive {
+	if m != nil {
+		return m.CellsToRewrite
+	}
+	return nil
+}
+
+func (m *CommandRewriteConditionalStylesForCellMergeArchive) GetConditionalStyleSets() *CellCoordinateObjectMapArchive {
+	if m != nil {
+		return m.ConditionalStyleSets
+	}
+	return nil
+}
+
+type CommandMergeUnmergeArchive struct {
 	Super                     *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellUidList               *CellUIDListArchive  `protobuf:"bytes,2,req,name=cell_uid_list,json=cellUidList" json:"cell_uid_list,omitempty"`
-	UndoCellMap               *TSP.Reference       `protobuf:"bytes,3,opt,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
-	UndoFormulaRewriteCommand *TSP.Reference       `protobuf:"bytes,4,opt,name=undo_formula_rewrite_command,json=undoFormulaRewriteCommand" json:"undo_formula_rewrite_command,omitempty"`
-	MergeOwnerRollback        *uint32              `protobuf:"varint,5,opt,name=merge_owner_rollback,json=mergeOwnerRollback" json:"merge_owner_rollback,omitempty"`
-	CommitCellMap             *TSP.Reference       `protobuf:"bytes,6,opt,name=commit_cell_map,json=commitCellMap" json:"commit_cell_map,omitempty"`
+	MergeAction               *MergeActionArchive  `protobuf:"varint,2,req,name=merge_action,json=mergeAction,enum=TST.MergeActionArchive" json:"merge_action,omitempty"`
+	Selection                 *SelectionArchive    `protobuf:"bytes,3,req,name=selection" json:"selection,omitempty"`
+	UndoCellMap               *CellMapArchive      `protobuf:"bytes,4,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap               *CellMapArchive      `protobuf:"bytes,5,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	OldMergeRanges            *Reference           `protobuf:"bytes,8,opt,name=old_merge_ranges,json=oldMergeRanges" json:"old_merge_ranges,omitempty"`
+	UndoFormulaRewriteCommand *Reference           `protobuf:"bytes,9,opt,name=undo_formula_rewrite_command,json=undoFormulaRewriteCommand" json:"undo_formula_rewrite_command,omitempty"`
 	XXX_NoUnkeyedLiteral      struct{}             `json:"-"`
 	XXX_unrecognized          []byte               `json:"-"`
 	XXX_sizecache             int32                `json:"-"`
 }
 
-func (m *CommandMergeArchive) Reset()         { *m = CommandMergeArchive{} }
-func (m *CommandMergeArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandMergeArchive) ProtoMessage()    {}
-func (*CommandMergeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{60}
+func (m *CommandMergeUnmergeArchive) Reset()         { *m = CommandMergeUnmergeArchive{} }
+func (m *CommandMergeUnmergeArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandMergeUnmergeArchive) ProtoMessage()    {}
+func (*CommandMergeUnmergeArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{76}
 }
 
-func (m *CommandMergeArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandMergeArchive.Unmarshal(m, b)
+func (m *CommandMergeUnmergeArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandMergeUnmergeArchive.Unmarshal(m, b)
 }
-func (m *CommandMergeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandMergeArchive.Marshal(b, m, deterministic)
+func (m *CommandMergeUnmergeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandMergeUnmergeArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandMergeArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandMergeArchive.Merge(m, src)
+func (m *CommandMergeUnmergeArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandMergeUnmergeArchive.Merge(m, src)
 }
-func (m *CommandMergeArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandMergeArchive.Size(m)
+func (m *CommandMergeUnmergeArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandMergeUnmergeArchive.Size(m)
 }
-func (m *CommandMergeArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandMergeArchive.DiscardUnknown(m)
+func (m *CommandMergeUnmergeArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandMergeUnmergeArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandMergeArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandMergeUnmergeArchive proto.InternalMessageInfo
 
-func (m *CommandMergeArchive) GetSuper() *TableCommandArchive {
+func (m *CommandMergeUnmergeArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandMergeArchive) GetCellUidList() *CellUIDListArchive {
+func (m *CommandMergeUnmergeArchive) GetMergeAction() MergeActionArchive {
+	if m != nil && m.MergeAction != nil {
+		return *m.MergeAction
+	}
+	return MergeActionArchive_mergeActionMerge
+}
+
+func (m *CommandMergeUnmergeArchive) GetSelection() *SelectionArchive {
 	if m != nil {
-		return m.CellUidList
+		return m.Selection
 	}
 	return nil
 }
 
-func (m *CommandMergeArchive) GetUndoCellMap() *TSP.Reference {
+func (m *CommandMergeUnmergeArchive) GetUndoCellMap() *CellMapArchive {
 	if m != nil {
 		return m.UndoCellMap
 	}
 	return nil
 }
 
-func (m *CommandMergeArchive) GetUndoFormulaRewriteCommand() *TSP.Reference {
+func (m *CommandMergeUnmergeArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+func (m *CommandMergeUnmergeArchive) GetOldMergeRanges() *Reference {
+	if m != nil {
+		return m.OldMergeRanges
+	}
+	return nil
+}
+
+func (m *CommandMergeUnmergeArchive) GetUndoFormulaRewriteCommand() *Reference {
 	if m != nil {
 		return m.UndoFormulaRewriteCommand
 	}
 	return nil
 }
 
-func (m *CommandMergeArchive) GetMergeOwnerRollback() uint32 {
-	if m != nil && m.MergeOwnerRollback != nil {
-		return *m.MergeOwnerRollback
+type CommandHideShowArchive struct {
+	Super                *TableCommandArchive     `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Direction            *CommandDirectionArchive `protobuf:"varint,2,req,name=direction,enum=TST.CommandDirectionArchive" json:"direction,omitempty"`
+	HideShowAction       *HideShowActionArchive   `protobuf:"varint,3,req,name=hide_show_action,json=hideShowAction,enum=TST.HideShowActionArchive" json:"hide_show_action,omitempty"`
+	HidingAction         *uint32                  `protobuf:"varint,4,req,name=hiding_action,json=hidingAction" json:"hiding_action,omitempty"`
+	ElementsAffected     *IndexSet                `protobuf:"bytes,5,req,name=elements_affected,json=elementsAffected" json:"elements_affected,omitempty"`
+	OldHidingStates      []uint32                 `protobuf:"varint,7,rep,name=old_hiding_states,json=oldHidingStates" json:"old_hiding_states,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                 `json:"-"`
+	XXX_unrecognized     []byte                   `json:"-"`
+	XXX_sizecache        int32                    `json:"-"`
+}
+
+func (m *CommandHideShowArchive) Reset()         { *m = CommandHideShowArchive{} }
+func (m *CommandHideShowArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandHideShowArchive) ProtoMessage()    {}
+func (*CommandHideShowArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{77}
+}
+
+func (m *CommandHideShowArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandHideShowArchive.Unmarshal(m, b)
+}
+func (m *CommandHideShowArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandHideShowArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandHideShowArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandHideShowArchive.Merge(m, src)
+}
+func (m *CommandHideShowArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandHideShowArchive.Size(m)
+}
+func (m *CommandHideShowArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandHideShowArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandHideShowArchive proto.InternalMessageInfo
+
+func (m *CommandHideShowArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandHideShowArchive) GetDirection() CommandDirectionArchive {
+	if m != nil && m.Direction != nil {
+		return *m.Direction
+	}
+	return CommandDirectionArchive_directionRow
+}
+
+func (m *CommandHideShowArchive) GetHideShowAction() HideShowActionArchive {
+	if m != nil && m.HideShowAction != nil {
+		return *m.HideShowAction
+	}
+	return HideShowActionArchive_hideShowActionHide
+}
+
+func (m *CommandHideShowArchive) GetHidingAction() uint32 {
+	if m != nil && m.HidingAction != nil {
+		return *m.HidingAction
 	}
 	return 0
 }
 
-func (m *CommandMergeArchive) GetCommitCellMap() *TSP.Reference {
+func (m *CommandHideShowArchive) GetElementsAffected() *IndexSet {
 	if m != nil {
-		return m.CommitCellMap
+		return m.ElementsAffected
 	}
 	return nil
 }
 
-type CommandInverseMergeArchive struct {
-	Super                *CommandApplyCellMapArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	MergeSourceCellUid   *TSP.UUIDCoordArchive       `protobuf:"bytes,2,req,name=merge_source_cell_uid,json=mergeSourceCellUid" json:"merge_source_cell_uid,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
-	XXX_unrecognized     []byte                      `json:"-"`
-	XXX_sizecache        int32                       `json:"-"`
-}
-
-func (m *CommandInverseMergeArchive) Reset()         { *m = CommandInverseMergeArchive{} }
-func (m *CommandInverseMergeArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandInverseMergeArchive) ProtoMessage()    {}
-func (*CommandInverseMergeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{61}
-}
-
-func (m *CommandInverseMergeArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandInverseMergeArchive.Unmarshal(m, b)
-}
-func (m *CommandInverseMergeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandInverseMergeArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandInverseMergeArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandInverseMergeArchive.Merge(m, src)
-}
-func (m *CommandInverseMergeArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandInverseMergeArchive.Size(m)
-}
-func (m *CommandInverseMergeArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandInverseMergeArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandInverseMergeArchive proto.InternalMessageInfo
-
-func (m *CommandInverseMergeArchive) GetSuper() *CommandApplyCellMapArchive {
+func (m *CommandHideShowArchive) GetOldHidingStates() []uint32 {
 	if m != nil {
-		return m.Super
+		return m.OldHidingStates
 	}
 	return nil
 }
 
-func (m *CommandInverseMergeArchive) GetMergeSourceCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.MergeSourceCellUid
-	}
-	return nil
+type TableInfoGeometryCommandArchive struct {
+	Super                             *CommandArchive  `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ScaleFactor                       *Size            `protobuf:"bytes,2,req,name=scale_factor,json=scaleFactor" json:"scale_factor,omitempty"`
+	TableInfo                         *Reference       `protobuf:"bytes,3,opt,name=table_info,json=tableInfo" json:"table_info,omitempty"`
+	NewGeometry                       *GeometryArchive `protobuf:"bytes,4,opt,name=new_geometry,json=newGeometry" json:"new_geometry,omitempty"`
+	OldGeometry                       *GeometryArchive `protobuf:"bytes,5,opt,name=old_geometry,json=oldGeometry" json:"old_geometry,omitempty"`
+	TurnOffAutoResize                 *bool            `protobuf:"varint,6,opt,name=turn_off_auto_resize,json=turnOffAutoResize" json:"turn_off_auto_resize,omitempty"`
+	ShouldClearObjectPlaceholderFlag  *bool            `protobuf:"varint,7,opt,name=should_clear_object_placeholder_flag,json=shouldClearObjectPlaceholderFlag" json:"should_clear_object_placeholder_flag,omitempty"`
+	DidMatchObjectPlaceholderGeometry *bool            `protobuf:"varint,8,opt,name=did_match_object_placeholder_geometry,json=didMatchObjectPlaceholderGeometry" json:"did_match_object_placeholder_geometry,omitempty"`
+	XXX_NoUnkeyedLiteral              struct{}         `json:"-"`
+	XXX_unrecognized                  []byte           `json:"-"`
+	XXX_sizecache                     int32            `json:"-"`
 }
 
-type CommandUnmergeArchive struct {
-	Super                     *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	UnmergeUidRanges          []*TSP.UUIDRectArchive `protobuf:"bytes,2,rep,name=unmerge_uid_ranges,json=unmergeUidRanges" json:"unmerge_uid_ranges,omitempty"`
-	UndoCellMap               *TSP.Reference         `protobuf:"bytes,3,opt,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
-	UndoFormulaRewriteCommand *TSP.Reference         `protobuf:"bytes,4,opt,name=undo_formula_rewrite_command,json=undoFormulaRewriteCommand" json:"undo_formula_rewrite_command,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}               `json:"-"`
-	XXX_unrecognized          []byte                 `json:"-"`
-	XXX_sizecache             int32                  `json:"-"`
+func (m *TableInfoGeometryCommandArchive) Reset()         { *m = TableInfoGeometryCommandArchive{} }
+func (m *TableInfoGeometryCommandArchive) String() string { return proto.CompactTextString(m) }
+func (*TableInfoGeometryCommandArchive) ProtoMessage()    {}
+func (*TableInfoGeometryCommandArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{78}
 }
 
-func (m *CommandUnmergeArchive) Reset()         { *m = CommandUnmergeArchive{} }
-func (m *CommandUnmergeArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandUnmergeArchive) ProtoMessage()    {}
-func (*CommandUnmergeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{62}
+func (m *TableInfoGeometryCommandArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_TableInfoGeometryCommandArchive.Unmarshal(m, b)
+}
+func (m *TableInfoGeometryCommandArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_TableInfoGeometryCommandArchive.Marshal(b, m, deterministic)
+}
+func (m *TableInfoGeometryCommandArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TableInfoGeometryCommandArchive.Merge(m, src)
+}
+func (m *TableInfoGeometryCommandArchive) XXX_Size() int {
+	return xxx_messageInfo_TableInfoGeometryCommandArchive.Size(m)
+}
+func (m *TableInfoGeometryCommandArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_TableInfoGeometryCommandArchive.DiscardUnknown(m)
 }
 
-func (m *CommandUnmergeArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandUnmergeArchive.Unmarshal(m, b)
-}
-func (m *CommandUnmergeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandUnmergeArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandUnmergeArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandUnmergeArchive.Merge(m, src)
-}
-func (m *CommandUnmergeArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandUnmergeArchive.Size(m)
-}
-func (m *CommandUnmergeArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandUnmergeArchive.DiscardUnknown(m)
-}
+var xxx_messageInfo_TableInfoGeometryCommandArchive proto.InternalMessageInfo
 
-var xxx_messageInfo_CommandUnmergeArchive proto.InternalMessageInfo
-
-func (m *CommandUnmergeArchive) GetSuper() *TableCommandArchive {
+func (m *TableInfoGeometryCommandArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandUnmergeArchive) GetUnmergeUidRanges() []*TSP.UUIDRectArchive {
+func (m *TableInfoGeometryCommandArchive) GetScaleFactor() *Size {
 	if m != nil {
-		return m.UnmergeUidRanges
+		return m.ScaleFactor
 	}
 	return nil
 }
 
-func (m *CommandUnmergeArchive) GetUndoCellMap() *TSP.Reference {
+func (m *TableInfoGeometryCommandArchive) GetTableInfo() *Reference {
 	if m != nil {
-		return m.UndoCellMap
+		return m.TableInfo
 	}
 	return nil
 }
 
-func (m *CommandUnmergeArchive) GetUndoFormulaRewriteCommand() *TSP.Reference {
+func (m *TableInfoGeometryCommandArchive) GetNewGeometry() *GeometryArchive {
 	if m != nil {
-		return m.UndoFormulaRewriteCommand
+		return m.NewGeometry
 	}
 	return nil
 }
 
-type CommandChooseTableIdRemapperArchive struct {
-	Super                        *TSK.CommandArchive        `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	TableIdMapper                *MultiTableRemapperArchive `protobuf:"bytes,2,req,name=table_id_mapper,json=tableIdMapper" json:"table_id_mapper,omitempty"`
-	FormulaRewriteCommandForUndo *TSP.Reference             `protobuf:"bytes,3,opt,name=formula_rewrite_command_for_undo,json=formulaRewriteCommandForUndo" json:"formula_rewrite_command_for_undo,omitempty"`
-	ApplyAndClear                *bool                      `protobuf:"varint,4,req,name=apply_and_clear,json=applyAndClear" json:"apply_and_clear,omitempty"`
-	XXX_NoUnkeyedLiteral         struct{}                   `json:"-"`
-	XXX_unrecognized             []byte                     `json:"-"`
-	XXX_sizecache                int32                      `json:"-"`
-}
-
-func (m *CommandChooseTableIdRemapperArchive) Reset()         { *m = CommandChooseTableIdRemapperArchive{} }
-func (m *CommandChooseTableIdRemapperArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandChooseTableIdRemapperArchive) ProtoMessage()    {}
-func (*CommandChooseTableIdRemapperArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{63}
-}
-
-func (m *CommandChooseTableIdRemapperArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandChooseTableIdRemapperArchive.Unmarshal(m, b)
-}
-func (m *CommandChooseTableIdRemapperArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandChooseTableIdRemapperArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandChooseTableIdRemapperArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandChooseTableIdRemapperArchive.Merge(m, src)
-}
-func (m *CommandChooseTableIdRemapperArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandChooseTableIdRemapperArchive.Size(m)
-}
-func (m *CommandChooseTableIdRemapperArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandChooseTableIdRemapperArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandChooseTableIdRemapperArchive proto.InternalMessageInfo
-
-func (m *CommandChooseTableIdRemapperArchive) GetSuper() *TSK.CommandArchive {
+func (m *TableInfoGeometryCommandArchive) GetOldGeometry() *GeometryArchive {
 	if m != nil {
-		return m.Super
+		return m.OldGeometry
 	}
 	return nil
 }
 
-func (m *CommandChooseTableIdRemapperArchive) GetTableIdMapper() *MultiTableRemapperArchive {
-	if m != nil {
-		return m.TableIdMapper
-	}
-	return nil
-}
-
-func (m *CommandChooseTableIdRemapperArchive) GetFormulaRewriteCommandForUndo() *TSP.Reference {
-	if m != nil {
-		return m.FormulaRewriteCommandForUndo
-	}
-	return nil
-}
-
-func (m *CommandChooseTableIdRemapperArchive) GetApplyAndClear() bool {
-	if m != nil && m.ApplyAndClear != nil {
-		return *m.ApplyAndClear
+func (m *TableInfoGeometryCommandArchive) GetTurnOffAutoResize() bool {
+	if m != nil && m.TurnOffAutoResize != nil {
+		return *m.TurnOffAutoResize
 	}
 	return false
 }
 
-type CommandCategorySetGroupingColumnsArchive struct {
-	Super                        *TableCommandArchive                   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewEnabledChanging           *int32                                 `protobuf:"varint,2,req,name=new_enabled_changing,json=newEnabledChanging" json:"new_enabled_changing,omitempty"`
-	OldEnabledChanging           *int32                                 `protobuf:"varint,3,req,name=old_enabled_changing,json=oldEnabledChanging" json:"old_enabled_changing,omitempty"`
-	NewGroupingColumns           *GroupColumnListArchive                `protobuf:"bytes,4,req,name=new_grouping_columns,json=newGroupingColumns" json:"new_grouping_columns,omitempty"`
-	OldGroupingColumns           *GroupColumnListArchive                `protobuf:"bytes,5,opt,name=old_grouping_columns,json=oldGroupingColumns" json:"old_grouping_columns,omitempty"`
-	RestoreBaseOrder             *bool                                  `protobuf:"varint,6,req,name=restore_base_order,json=restoreBaseOrder" json:"restore_base_order,omitempty"`
-	BaseRowOrder                 []*TSP.UUID                            `protobuf:"bytes,7,rep,name=base_row_order,json=baseRowOrder" json:"base_row_order,omitempty"`
-	UndoRestoreBaseOrder         *bool                                  `protobuf:"varint,8,req,name=undo_restore_base_order,json=undoRestoreBaseOrder" json:"undo_restore_base_order,omitempty"`
-	UndoBaseRowOrder             []*TSP.UUID                            `protobuf:"bytes,9,rep,name=undo_base_row_order,json=undoBaseRowOrder" json:"undo_base_row_order,omitempty"`
-	RestoreViewOrder             *bool                                  `protobuf:"varint,10,req,name=restore_view_order,json=restoreViewOrder" json:"restore_view_order,omitempty"`
-	ViewRowOrder                 []*TSP.UUID                            `protobuf:"bytes,11,rep,name=view_row_order,json=viewRowOrder" json:"view_row_order,omitempty"`
-	UndoRestoreViewOrder         *bool                                  `protobuf:"varint,12,req,name=undo_restore_view_order,json=undoRestoreViewOrder" json:"undo_restore_view_order,omitempty"`
-	UndoViewRowOrder             []*TSP.UUID                            `protobuf:"bytes,13,rep,name=undo_view_row_order,json=undoViewRowOrder" json:"undo_view_row_order,omitempty"`
-	CollapseState                []*TSP.UUID                            `protobuf:"bytes,14,rep,name=collapse_state,json=collapseState" json:"collapse_state,omitempty"`
-	UndoCollapseState            []*TSP.UUID                            `protobuf:"bytes,15,rep,name=undo_collapse_state,json=undoCollapseState" json:"undo_collapse_state,omitempty"`
-	SummaryChangeState           *SummaryModelGroupByChangeStateArchive `protobuf:"bytes,16,opt,name=summary_change_state,json=summaryChangeState" json:"summary_change_state,omitempty"`
-	UndoSummaryChangeState       *SummaryModelGroupByChangeStateArchive `protobuf:"bytes,17,opt,name=undo_summary_change_state,json=undoSummaryChangeState" json:"undo_summary_change_state,omitempty"`
-	NewColumnAggregates          *ColumnAggregateListArchive            `protobuf:"bytes,18,opt,name=new_column_aggregates,json=newColumnAggregates" json:"new_column_aggregates,omitempty"`
-	OldColumnAggregates          *ColumnAggregateListArchive            `protobuf:"bytes,19,opt,name=old_column_aggregates,json=oldColumnAggregates" json:"old_column_aggregates,omitempty"`
-	UndoSetEnabledRewriteCommand *TSP.Reference                         `protobuf:"bytes,20,opt,name=undo_set_enabled_rewrite_command,json=undoSetEnabledRewriteCommand" json:"undo_set_enabled_rewrite_command,omitempty"`
-	UndoSetColumnsRewriteCommand *TSP.Reference                         `protobuf:"bytes,21,opt,name=undo_set_columns_rewrite_command,json=undoSetColumnsRewriteCommand" json:"undo_set_columns_rewrite_command,omitempty"`
-	ForceRestoreAllStates        *bool                                  `protobuf:"varint,22,req,name=force_restore_all_states,json=forceRestoreAllStates" json:"force_restore_all_states,omitempty"`
-	CellDiffMap                  *TSP.Reference                         `protobuf:"bytes,23,opt,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	UndoCellDiffMap              *TSP.Reference                         `protobuf:"bytes,24,opt,name=undo_cell_diff_map,json=undoCellDiffMap" json:"undo_cell_diff_map,omitempty"`
-	XXX_NoUnkeyedLiteral         struct{}                               `json:"-"`
-	XXX_unrecognized             []byte                                 `json:"-"`
-	XXX_sizecache                int32                                  `json:"-"`
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) Reset() {
-	*m = CommandCategorySetGroupingColumnsArchive{}
-}
-func (m *CommandCategorySetGroupingColumnsArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandCategorySetGroupingColumnsArchive) ProtoMessage()    {}
-func (*CommandCategorySetGroupingColumnsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{64}
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandCategorySetGroupingColumnsArchive.Unmarshal(m, b)
-}
-func (m *CommandCategorySetGroupingColumnsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandCategorySetGroupingColumnsArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandCategorySetGroupingColumnsArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandCategorySetGroupingColumnsArchive.Merge(m, src)
-}
-func (m *CommandCategorySetGroupingColumnsArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandCategorySetGroupingColumnsArchive.Size(m)
-}
-func (m *CommandCategorySetGroupingColumnsArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandCategorySetGroupingColumnsArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandCategorySetGroupingColumnsArchive proto.InternalMessageInfo
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetNewEnabledChanging() int32 {
-	if m != nil && m.NewEnabledChanging != nil {
-		return *m.NewEnabledChanging
-	}
-	return 0
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetOldEnabledChanging() int32 {
-	if m != nil && m.OldEnabledChanging != nil {
-		return *m.OldEnabledChanging
-	}
-	return 0
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetNewGroupingColumns() *GroupColumnListArchive {
-	if m != nil {
-		return m.NewGroupingColumns
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetOldGroupingColumns() *GroupColumnListArchive {
-	if m != nil {
-		return m.OldGroupingColumns
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetRestoreBaseOrder() bool {
-	if m != nil && m.RestoreBaseOrder != nil {
-		return *m.RestoreBaseOrder
+func (m *TableInfoGeometryCommandArchive) GetShouldClearObjectPlaceholderFlag() bool {
+	if m != nil && m.ShouldClearObjectPlaceholderFlag != nil {
+		return *m.ShouldClearObjectPlaceholderFlag
 	}
 	return false
 }
 
-func (m *CommandCategorySetGroupingColumnsArchive) GetBaseRowOrder() []*TSP.UUID {
-	if m != nil {
-		return m.BaseRowOrder
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoRestoreBaseOrder() bool {
-	if m != nil && m.UndoRestoreBaseOrder != nil {
-		return *m.UndoRestoreBaseOrder
+func (m *TableInfoGeometryCommandArchive) GetDidMatchObjectPlaceholderGeometry() bool {
+	if m != nil && m.DidMatchObjectPlaceholderGeometry != nil {
+		return *m.DidMatchObjectPlaceholderGeometry
 	}
 	return false
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoBaseRowOrder() []*TSP.UUID {
-	if m != nil {
-		return m.UndoBaseRowOrder
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetRestoreViewOrder() bool {
-	if m != nil && m.RestoreViewOrder != nil {
-		return *m.RestoreViewOrder
-	}
-	return false
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetViewRowOrder() []*TSP.UUID {
-	if m != nil {
-		return m.ViewRowOrder
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoRestoreViewOrder() bool {
-	if m != nil && m.UndoRestoreViewOrder != nil {
-		return *m.UndoRestoreViewOrder
-	}
-	return false
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoViewRowOrder() []*TSP.UUID {
-	if m != nil {
-		return m.UndoViewRowOrder
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetCollapseState() []*TSP.UUID {
-	if m != nil {
-		return m.CollapseState
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoCollapseState() []*TSP.UUID {
-	if m != nil {
-		return m.UndoCollapseState
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetSummaryChangeState() *SummaryModelGroupByChangeStateArchive {
-	if m != nil {
-		return m.SummaryChangeState
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoSummaryChangeState() *SummaryModelGroupByChangeStateArchive {
-	if m != nil {
-		return m.UndoSummaryChangeState
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetNewColumnAggregates() *ColumnAggregateListArchive {
-	if m != nil {
-		return m.NewColumnAggregates
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetOldColumnAggregates() *ColumnAggregateListArchive {
-	if m != nil {
-		return m.OldColumnAggregates
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoSetEnabledRewriteCommand() *TSP.Reference {
-	if m != nil {
-		return m.UndoSetEnabledRewriteCommand
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoSetColumnsRewriteCommand() *TSP.Reference {
-	if m != nil {
-		return m.UndoSetColumnsRewriteCommand
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetForceRestoreAllStates() bool {
-	if m != nil && m.ForceRestoreAllStates != nil {
-		return *m.ForceRestoreAllStates
-	}
-	return false
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandCategorySetGroupingColumnsArchive) GetUndoCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.UndoCellDiffMap
-	}
-	return nil
 }
 
 type FormulaEditingCommandGroupArchive struct {
-	Super                *TSK.ProgressiveCommandGroupArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	UndoSelectionValid   *bool                               `protobuf:"varint,2,req,name=undoSelectionValid" json:"undoSelectionValid,omitempty"`
-	UndoSelectionStart   *uint32                             `protobuf:"varint,3,req,name=undoSelectionStart" json:"undoSelectionStart,omitempty"`
-	UndoSelectionLength  *uint32                             `protobuf:"varint,4,req,name=undoSelectionLength" json:"undoSelectionLength,omitempty"`
-	UndoActiveToken      *uint32                             `protobuf:"varint,5,req,name=undoActiveToken" json:"undoActiveToken,omitempty"`
-	RedoSelectionValid   *bool                               `protobuf:"varint,6,req,name=redoSelectionValid" json:"redoSelectionValid,omitempty"`
-	RedoSelectionStart   *uint32                             `protobuf:"varint,7,req,name=redoSelectionStart" json:"redoSelectionStart,omitempty"`
-	RedoSelectionLength  *uint32                             `protobuf:"varint,8,req,name=redoSelectionLength" json:"redoSelectionLength,omitempty"`
-	RedoActiveToken      *uint32                             `protobuf:"varint,9,req,name=redoActiveToken" json:"redoActiveToken,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                            `json:"-"`
-	XXX_unrecognized     []byte                              `json:"-"`
-	XXX_sizecache        int32                               `json:"-"`
+	Super                *ProgressiveCommandGroupArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UndoSelectionValid   *bool                           `protobuf:"varint,2,req,name=undoSelectionValid" json:"undoSelectionValid,omitempty"`
+	UndoSelectionStart   *uint32                         `protobuf:"varint,3,req,name=undoSelectionStart" json:"undoSelectionStart,omitempty"`
+	UndoSelectionLength  *uint32                         `protobuf:"varint,4,req,name=undoSelectionLength" json:"undoSelectionLength,omitempty"`
+	UndoActiveToken      *uint32                         `protobuf:"varint,5,req,name=undoActiveToken" json:"undoActiveToken,omitempty"`
+	RedoSelectionValid   *bool                           `protobuf:"varint,6,req,name=redoSelectionValid" json:"redoSelectionValid,omitempty"`
+	RedoSelectionStart   *uint32                         `protobuf:"varint,7,req,name=redoSelectionStart" json:"redoSelectionStart,omitempty"`
+	RedoSelectionLength  *uint32                         `protobuf:"varint,8,req,name=redoSelectionLength" json:"redoSelectionLength,omitempty"`
+	RedoActiveToken      *uint32                         `protobuf:"varint,9,req,name=redoActiveToken" json:"redoActiveToken,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
+	XXX_unrecognized     []byte                          `json:"-"`
+	XXX_sizecache        int32                           `json:"-"`
 }
 
 func (m *FormulaEditingCommandGroupArchive) Reset()         { *m = FormulaEditingCommandGroupArchive{} }
 func (m *FormulaEditingCommandGroupArchive) String() string { return proto.CompactTextString(m) }
 func (*FormulaEditingCommandGroupArchive) ProtoMessage()    {}
 func (*FormulaEditingCommandGroupArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{65}
+	return fileDescriptor_5d102eeb586b2c5c, []int{79}
 }
 
 func (m *FormulaEditingCommandGroupArchive) XXX_Unmarshal(b []byte) error {
@@ -4935,7 +5847,7 @@ func (m *FormulaEditingCommandGroupArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_FormulaEditingCommandGroupArchive proto.InternalMessageInfo
 
-func (m *FormulaEditingCommandGroupArchive) GetSuper() *TSK.ProgressiveCommandGroupArchive {
+func (m *FormulaEditingCommandGroupArchive) GetSuper() *ProgressiveCommandGroupArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -4999,12 +5911,18 @@ func (m *FormulaEditingCommandGroupArchive) GetRedoActiveToken() uint32 {
 }
 
 type FormulaEditingCommandSelectionBehaviorArchive struct {
-	Super                *TSK.CommandSelectionBehaviorArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	UndoActiveToken      *uint32                              `protobuf:"varint,2,opt,name=undoActiveToken" json:"undoActiveToken,omitempty"`
-	RedoActiveToken      *uint32                              `protobuf:"varint,3,opt,name=redoActiveToken" json:"redoActiveToken,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                             `json:"-"`
-	XXX_unrecognized     []byte                               `json:"-"`
-	XXX_sizecache        int32                                `json:"-"`
+	UndoSelectionValid   *bool      `protobuf:"varint,2,opt,name=undoSelectionValid" json:"undoSelectionValid,omitempty"`
+	UndoSelectionStart   *uint32    `protobuf:"varint,3,opt,name=undoSelectionStart" json:"undoSelectionStart,omitempty"`
+	UndoSelectionLength  *uint32    `protobuf:"varint,4,opt,name=undoSelectionLength" json:"undoSelectionLength,omitempty"`
+	UndoActiveToken      *uint32    `protobuf:"varint,5,opt,name=undoActiveToken" json:"undoActiveToken,omitempty"`
+	RedoSelectionValid   *bool      `protobuf:"varint,6,opt,name=redoSelectionValid" json:"redoSelectionValid,omitempty"`
+	RedoSelectionStart   *uint32    `protobuf:"varint,7,opt,name=redoSelectionStart" json:"redoSelectionStart,omitempty"`
+	RedoSelectionLength  *uint32    `protobuf:"varint,8,opt,name=redoSelectionLength" json:"redoSelectionLength,omitempty"`
+	RedoActiveToken      *uint32    `protobuf:"varint,9,opt,name=redoActiveToken" json:"redoActiveToken,omitempty"`
+	Storage              *Reference `protobuf:"bytes,10,opt,name=storage" json:"storage,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
+	XXX_unrecognized     []byte     `json:"-"`
+	XXX_sizecache        int32      `json:"-"`
 }
 
 func (m *FormulaEditingCommandSelectionBehaviorArchive) Reset() {
@@ -5015,7 +5933,7 @@ func (m *FormulaEditingCommandSelectionBehaviorArchive) String() string {
 }
 func (*FormulaEditingCommandSelectionBehaviorArchive) ProtoMessage() {}
 func (*FormulaEditingCommandSelectionBehaviorArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{66}
+	return fileDescriptor_5d102eeb586b2c5c, []int{80}
 }
 
 func (m *FormulaEditingCommandSelectionBehaviorArchive) XXX_Unmarshal(b []byte) error {
@@ -5036,16 +5954,51 @@ func (m *FormulaEditingCommandSelectionBehaviorArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_FormulaEditingCommandSelectionBehaviorArchive proto.InternalMessageInfo
 
-func (m *FormulaEditingCommandSelectionBehaviorArchive) GetSuper() *TSK.CommandSelectionBehaviorArchive {
-	if m != nil {
-		return m.Super
+func (m *FormulaEditingCommandSelectionBehaviorArchive) GetUndoSelectionValid() bool {
+	if m != nil && m.UndoSelectionValid != nil {
+		return *m.UndoSelectionValid
 	}
-	return nil
+	return false
+}
+
+func (m *FormulaEditingCommandSelectionBehaviorArchive) GetUndoSelectionStart() uint32 {
+	if m != nil && m.UndoSelectionStart != nil {
+		return *m.UndoSelectionStart
+	}
+	return 0
+}
+
+func (m *FormulaEditingCommandSelectionBehaviorArchive) GetUndoSelectionLength() uint32 {
+	if m != nil && m.UndoSelectionLength != nil {
+		return *m.UndoSelectionLength
+	}
+	return 0
 }
 
 func (m *FormulaEditingCommandSelectionBehaviorArchive) GetUndoActiveToken() uint32 {
 	if m != nil && m.UndoActiveToken != nil {
 		return *m.UndoActiveToken
+	}
+	return 0
+}
+
+func (m *FormulaEditingCommandSelectionBehaviorArchive) GetRedoSelectionValid() bool {
+	if m != nil && m.RedoSelectionValid != nil {
+		return *m.RedoSelectionValid
+	}
+	return false
+}
+
+func (m *FormulaEditingCommandSelectionBehaviorArchive) GetRedoSelectionStart() uint32 {
+	if m != nil && m.RedoSelectionStart != nil {
+		return *m.RedoSelectionStart
+	}
+	return 0
+}
+
+func (m *FormulaEditingCommandSelectionBehaviorArchive) GetRedoSelectionLength() uint32 {
+	if m != nil && m.RedoSelectionLength != nil {
+		return *m.RedoSelectionLength
 	}
 	return 0
 }
@@ -5057,21 +6010,105 @@ func (m *FormulaEditingCommandSelectionBehaviorArchive) GetRedoActiveToken() uin
 	return 0
 }
 
+func (m *FormulaEditingCommandSelectionBehaviorArchive) GetStorage() *Reference {
+	if m != nil {
+		return m.Storage
+	}
+	return nil
+}
+
+type UndoRedoStateCommandSelectionBehaviorArchive struct {
+	BeforeUndoRedoState  *Reference        `protobuf:"bytes,1,opt,name=before_undo_redo_state,json=beforeUndoRedoState" json:"before_undo_redo_state,omitempty"` // Deprecated: Do not use.
+	AfterUndoRedoState   *Reference        `protobuf:"bytes,2,opt,name=after_undo_redo_state,json=afterUndoRedoState" json:"after_undo_redo_state,omitempty"`    // Deprecated: Do not use.
+	TableInfo            *Reference        `protobuf:"bytes,3,opt,name=table_info,json=tableInfo" json:"table_info,omitempty"`
+	BeforeTableSelection *SelectionArchive `protobuf:"bytes,4,opt,name=before_table_selection,json=beforeTableSelection" json:"before_table_selection,omitempty"`
+	AfterTableSelection  *SelectionArchive `protobuf:"bytes,6,opt,name=after_table_selection,json=afterTableSelection" json:"after_table_selection,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) Reset() {
+	*m = UndoRedoStateCommandSelectionBehaviorArchive{}
+}
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) String() string {
+	return proto.CompactTextString(m)
+}
+func (*UndoRedoStateCommandSelectionBehaviorArchive) ProtoMessage() {}
+func (*UndoRedoStateCommandSelectionBehaviorArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{81}
+}
+
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UndoRedoStateCommandSelectionBehaviorArchive.Unmarshal(m, b)
+}
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UndoRedoStateCommandSelectionBehaviorArchive.Marshal(b, m, deterministic)
+}
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UndoRedoStateCommandSelectionBehaviorArchive.Merge(m, src)
+}
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) XXX_Size() int {
+	return xxx_messageInfo_UndoRedoStateCommandSelectionBehaviorArchive.Size(m)
+}
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_UndoRedoStateCommandSelectionBehaviorArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UndoRedoStateCommandSelectionBehaviorArchive proto.InternalMessageInfo
+
+// Deprecated: Do not use.
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) GetBeforeUndoRedoState() *Reference {
+	if m != nil {
+		return m.BeforeUndoRedoState
+	}
+	return nil
+}
+
+// Deprecated: Do not use.
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) GetAfterUndoRedoState() *Reference {
+	if m != nil {
+		return m.AfterUndoRedoState
+	}
+	return nil
+}
+
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) GetTableInfo() *Reference {
+	if m != nil {
+		return m.TableInfo
+	}
+	return nil
+}
+
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) GetBeforeTableSelection() *SelectionArchive {
+	if m != nil {
+		return m.BeforeTableSelection
+	}
+	return nil
+}
+
+func (m *UndoRedoStateCommandSelectionBehaviorArchive) GetAfterTableSelection() *SelectionArchive {
+	if m != nil {
+		return m.AfterTableSelection
+	}
+	return nil
+}
+
 type TableCommandSelectionBehaviorArchive struct {
-	Super                 *TSK.CommandSelectionBehaviorArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	TableInfo             *TSP.Reference                       `protobuf:"bytes,2,opt,name=table_info,json=tableInfo" json:"table_info,omitempty"`
-	LastColumnUidHitByTap *TSP.UUID                            `protobuf:"bytes,3,opt,name=last_column_uid_hit_by_tap,json=lastColumnUidHitByTap" json:"last_column_uid_hit_by_tap,omitempty"`
-	InvalidateComments    *uint32                              `protobuf:"varint,4,opt,name=invalidate_comments,json=invalidateComments" json:"invalidate_comments,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}                             `json:"-"`
-	XXX_unrecognized      []byte                               `json:"-"`
-	XXX_sizecache         int32                                `json:"-"`
+	BeforeTableSelection *SelectionArchive `protobuf:"bytes,1,opt,name=before_table_selection,json=beforeTableSelection" json:"before_table_selection,omitempty"`
+	AfterTableSelection  *SelectionArchive `protobuf:"bytes,2,opt,name=after_table_selection,json=afterTableSelection" json:"after_table_selection,omitempty"`
+	TableInfo            *Reference        `protobuf:"bytes,3,opt,name=table_info,json=tableInfo" json:"table_info,omitempty"`
+	LastColumnHitByTap   *uint32           `protobuf:"varint,4,opt,name=last_column_hit_by_tap,json=lastColumnHitByTap" json:"last_column_hit_by_tap,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
 func (m *TableCommandSelectionBehaviorArchive) Reset()         { *m = TableCommandSelectionBehaviorArchive{} }
 func (m *TableCommandSelectionBehaviorArchive) String() string { return proto.CompactTextString(m) }
 func (*TableCommandSelectionBehaviorArchive) ProtoMessage()    {}
 func (*TableCommandSelectionBehaviorArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{67}
+	return fileDescriptor_5d102eeb586b2c5c, []int{82}
 }
 
 func (m *TableCommandSelectionBehaviorArchive) XXX_Unmarshal(b []byte) error {
@@ -5092,51 +6129,90 @@ func (m *TableCommandSelectionBehaviorArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_TableCommandSelectionBehaviorArchive proto.InternalMessageInfo
 
-func (m *TableCommandSelectionBehaviorArchive) GetSuper() *TSK.CommandSelectionBehaviorArchive {
+func (m *TableCommandSelectionBehaviorArchive) GetBeforeTableSelection() *SelectionArchive {
 	if m != nil {
-		return m.Super
+		return m.BeforeTableSelection
 	}
 	return nil
 }
 
-func (m *TableCommandSelectionBehaviorArchive) GetTableInfo() *TSP.Reference {
+func (m *TableCommandSelectionBehaviorArchive) GetAfterTableSelection() *SelectionArchive {
+	if m != nil {
+		return m.AfterTableSelection
+	}
+	return nil
+}
+
+func (m *TableCommandSelectionBehaviorArchive) GetTableInfo() *Reference {
 	if m != nil {
 		return m.TableInfo
 	}
 	return nil
 }
 
-func (m *TableCommandSelectionBehaviorArchive) GetLastColumnUidHitByTap() *TSP.UUID {
-	if m != nil {
-		return m.LastColumnUidHitByTap
-	}
-	return nil
-}
-
-func (m *TableCommandSelectionBehaviorArchive) GetInvalidateComments() uint32 {
-	if m != nil && m.InvalidateComments != nil {
-		return *m.InvalidateComments
+func (m *TableCommandSelectionBehaviorArchive) GetLastColumnHitByTap() uint32 {
+	if m != nil && m.LastColumnHitByTap != nil {
+		return *m.LastColumnHitByTap
 	}
 	return 0
 }
 
+type DisableTableNameSelectionBehaviorArchive struct {
+	Super                *TableCommandSelectionBehaviorArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                              `json:"-"`
+	XXX_unrecognized     []byte                                `json:"-"`
+	XXX_sizecache        int32                                 `json:"-"`
+}
+
+func (m *DisableTableNameSelectionBehaviorArchive) Reset() {
+	*m = DisableTableNameSelectionBehaviorArchive{}
+}
+func (m *DisableTableNameSelectionBehaviorArchive) String() string { return proto.CompactTextString(m) }
+func (*DisableTableNameSelectionBehaviorArchive) ProtoMessage()    {}
+func (*DisableTableNameSelectionBehaviorArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{83}
+}
+
+func (m *DisableTableNameSelectionBehaviorArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_DisableTableNameSelectionBehaviorArchive.Unmarshal(m, b)
+}
+func (m *DisableTableNameSelectionBehaviorArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_DisableTableNameSelectionBehaviorArchive.Marshal(b, m, deterministic)
+}
+func (m *DisableTableNameSelectionBehaviorArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DisableTableNameSelectionBehaviorArchive.Merge(m, src)
+}
+func (m *DisableTableNameSelectionBehaviorArchive) XXX_Size() int {
+	return xxx_messageInfo_DisableTableNameSelectionBehaviorArchive.Size(m)
+}
+func (m *DisableTableNameSelectionBehaviorArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_DisableTableNameSelectionBehaviorArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DisableTableNameSelectionBehaviorArchive proto.InternalMessageInfo
+
+func (m *DisableTableNameSelectionBehaviorArchive) GetSuper() *TableCommandSelectionBehaviorArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
 type CommandApplyCellCommentArchive struct {
-	Super                *TableCommandArchive       `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellUid              *TSP.UUIDCoordArchive      `protobuf:"bytes,2,req,name=cell_uid,json=cellUid" json:"cell_uid,omitempty"`
-	OldCommentStorage    *TSP.Reference             `protobuf:"bytes,3,opt,name=old_comment_storage,json=oldCommentStorage" json:"old_comment_storage,omitempty"`
-	NewCommentStorage    *TSP.Reference             `protobuf:"bytes,4,opt,name=new_comment_storage,json=newCommentStorage" json:"new_comment_storage,omitempty"`
-	ForwardVariant       *TSD.CommentCommandVariant `protobuf:"varint,5,opt,name=forward_variant,json=forwardVariant,enum=TSD.CommentCommandVariant" json:"forward_variant,omitempty"`
-	InverseVariant       *TSD.CommentCommandVariant `protobuf:"varint,6,opt,name=inverse_variant,json=inverseVariant,enum=TSD.CommentCommandVariant" json:"inverse_variant,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                   `json:"-"`
-	XXX_unrecognized     []byte                     `json:"-"`
-	XXX_sizecache        int32                      `json:"-"`
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	CellId               *CellID              `protobuf:"bytes,2,req,name=cell_id,json=cellId" json:"cell_id,omitempty"`
+	OldCommentStorage    *Reference           `protobuf:"bytes,3,opt,name=old_comment_storage,json=oldCommentStorage" json:"old_comment_storage,omitempty"`
+	NewCommentStorage    *Reference           `protobuf:"bytes,4,opt,name=new_comment_storage,json=newCommentStorage" json:"new_comment_storage,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
 func (m *CommandApplyCellCommentArchive) Reset()         { *m = CommandApplyCellCommentArchive{} }
 func (m *CommandApplyCellCommentArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandApplyCellCommentArchive) ProtoMessage()    {}
 func (*CommandApplyCellCommentArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{68}
+	return fileDescriptor_5d102eeb586b2c5c, []int{84}
 }
 
 func (m *CommandApplyCellCommentArchive) XXX_Unmarshal(b []byte) error {
@@ -5164,54 +6240,105 @@ func (m *CommandApplyCellCommentArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandApplyCellCommentArchive) GetCellUid() *TSP.UUIDCoordArchive {
+func (m *CommandApplyCellCommentArchive) GetCellId() *CellID {
 	if m != nil {
-		return m.CellUid
+		return m.CellId
 	}
 	return nil
 }
 
-func (m *CommandApplyCellCommentArchive) GetOldCommentStorage() *TSP.Reference {
+func (m *CommandApplyCellCommentArchive) GetOldCommentStorage() *Reference {
 	if m != nil {
 		return m.OldCommentStorage
 	}
 	return nil
 }
 
-func (m *CommandApplyCellCommentArchive) GetNewCommentStorage() *TSP.Reference {
+func (m *CommandApplyCellCommentArchive) GetNewCommentStorage() *Reference {
 	if m != nil {
 		return m.NewCommentStorage
 	}
 	return nil
 }
 
-func (m *CommandApplyCellCommentArchive) GetForwardVariant() TSD.CommentCommandVariant {
-	if m != nil && m.ForwardVariant != nil {
-		return *m.ForwardVariant
-	}
-	return TSD.CommentCommandVariant_BaseComment
+type CommandApplyConditionalStyleSetArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,2,req,name=selection" json:"selection,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,3,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,4,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CommandApplyCellCommentArchive) GetInverseVariant() TSD.CommentCommandVariant {
-	if m != nil && m.InverseVariant != nil {
-		return *m.InverseVariant
+func (m *CommandApplyConditionalStyleSetArchive) Reset() {
+	*m = CommandApplyConditionalStyleSetArchive{}
+}
+func (m *CommandApplyConditionalStyleSetArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandApplyConditionalStyleSetArchive) ProtoMessage()    {}
+func (*CommandApplyConditionalStyleSetArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{85}
+}
+
+func (m *CommandApplyConditionalStyleSetArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandApplyConditionalStyleSetArchive.Unmarshal(m, b)
+}
+func (m *CommandApplyConditionalStyleSetArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandApplyConditionalStyleSetArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandApplyConditionalStyleSetArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandApplyConditionalStyleSetArchive.Merge(m, src)
+}
+func (m *CommandApplyConditionalStyleSetArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandApplyConditionalStyleSetArchive.Size(m)
+}
+func (m *CommandApplyConditionalStyleSetArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandApplyConditionalStyleSetArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandApplyConditionalStyleSetArchive proto.InternalMessageInfo
+
+func (m *CommandApplyConditionalStyleSetArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
 	}
-	return TSD.CommentCommandVariant_BaseComment
+	return nil
+}
+
+func (m *CommandApplyConditionalStyleSetArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+func (m *CommandApplyConditionalStyleSetArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandApplyConditionalStyleSetArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
 }
 
 type CommandSetFormulaTokenizationArchive struct {
-	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Tokenization         *bool               `protobuf:"varint,2,req,name=tokenization" json:"tokenization,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
+	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Tokenization         *bool           `protobuf:"varint,2,req,name=tokenization" json:"tokenization,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
+	XXX_unrecognized     []byte          `json:"-"`
+	XXX_sizecache        int32           `json:"-"`
 }
 
 func (m *CommandSetFormulaTokenizationArchive) Reset()         { *m = CommandSetFormulaTokenizationArchive{} }
 func (m *CommandSetFormulaTokenizationArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetFormulaTokenizationArchive) ProtoMessage()    {}
 func (*CommandSetFormulaTokenizationArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{69}
+	return fileDescriptor_5d102eeb586b2c5c, []int{86}
 }
 
 func (m *CommandSetFormulaTokenizationArchive) XXX_Unmarshal(b []byte) error {
@@ -5232,7 +6359,7 @@ func (m *CommandSetFormulaTokenizationArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetFormulaTokenizationArchive proto.InternalMessageInfo
 
-func (m *CommandSetFormulaTokenizationArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSetFormulaTokenizationArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
@@ -5246,11 +6373,128 @@ func (m *CommandSetFormulaTokenizationArchive) GetTokenization() bool {
 	return false
 }
 
+type CommandSetFilterEnabledArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FilterIndex          *uint32              `protobuf:"varint,2,req,name=filter_index,json=filterIndex" json:"filter_index,omitempty"`
+	Enabled              *bool                `protobuf:"varint,4,req,name=enabled" json:"enabled,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetFilterEnabledArchive) Reset()         { *m = CommandSetFilterEnabledArchive{} }
+func (m *CommandSetFilterEnabledArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetFilterEnabledArchive) ProtoMessage()    {}
+func (*CommandSetFilterEnabledArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{87}
+}
+
+func (m *CommandSetFilterEnabledArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetFilterEnabledArchive.Unmarshal(m, b)
+}
+func (m *CommandSetFilterEnabledArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetFilterEnabledArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetFilterEnabledArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetFilterEnabledArchive.Merge(m, src)
+}
+func (m *CommandSetFilterEnabledArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetFilterEnabledArchive.Size(m)
+}
+func (m *CommandSetFilterEnabledArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetFilterEnabledArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetFilterEnabledArchive proto.InternalMessageInfo
+
+func (m *CommandSetFilterEnabledArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetFilterEnabledArchive) GetFilterIndex() uint32 {
+	if m != nil && m.FilterIndex != nil {
+		return *m.FilterIndex
+	}
+	return 0
+}
+
+func (m *CommandSetFilterEnabledArchive) GetEnabled() bool {
+	if m != nil && m.Enabled != nil {
+		return *m.Enabled
+	}
+	return false
+}
+
+type CommandSetFilterRuleEnabledArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	FilterIndex          *uint32              `protobuf:"varint,2,req,name=filter_index,json=filterIndex" json:"filter_index,omitempty"`
+	RuleIndex            *uint32              `protobuf:"varint,3,req,name=rule_index,json=ruleIndex" json:"rule_index,omitempty"`
+	Enabled              *bool                `protobuf:"varint,4,req,name=enabled" json:"enabled,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandSetFilterRuleEnabledArchive) Reset()         { *m = CommandSetFilterRuleEnabledArchive{} }
+func (m *CommandSetFilterRuleEnabledArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetFilterRuleEnabledArchive) ProtoMessage()    {}
+func (*CommandSetFilterRuleEnabledArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{88}
+}
+
+func (m *CommandSetFilterRuleEnabledArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetFilterRuleEnabledArchive.Unmarshal(m, b)
+}
+func (m *CommandSetFilterRuleEnabledArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetFilterRuleEnabledArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetFilterRuleEnabledArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetFilterRuleEnabledArchive.Merge(m, src)
+}
+func (m *CommandSetFilterRuleEnabledArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetFilterRuleEnabledArchive.Size(m)
+}
+func (m *CommandSetFilterRuleEnabledArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetFilterRuleEnabledArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetFilterRuleEnabledArchive proto.InternalMessageInfo
+
+func (m *CommandSetFilterRuleEnabledArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetFilterRuleEnabledArchive) GetFilterIndex() uint32 {
+	if m != nil && m.FilterIndex != nil {
+		return *m.FilterIndex
+	}
+	return 0
+}
+
+func (m *CommandSetFilterRuleEnabledArchive) GetRuleIndex() uint32 {
+	if m != nil && m.RuleIndex != nil {
+		return *m.RuleIndex
+	}
+	return 0
+}
+
+func (m *CommandSetFilterRuleEnabledArchive) GetEnabled() bool {
+	if m != nil && m.Enabled != nil {
+		return *m.Enabled
+	}
+	return false
+}
+
 type CommandSetFilterSetTypeArchive struct {
 	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldFilterSetType     *FilterSetArchive_FilterSetType `protobuf:"varint,2,opt,name=old_filter_set_type,json=oldFilterSetType,enum=TST.FilterSetArchive_FilterSetType" json:"old_filter_set_type,omitempty"`
+	OldFilterSetType     *FilterSetArchive_FilterSetType `protobuf:"varint,2,req,name=old_filter_set_type,json=oldFilterSetType,enum=TST.FilterSetArchive_FilterSetType" json:"old_filter_set_type,omitempty"`
 	NewFilterSetType     *FilterSetArchive_FilterSetType `protobuf:"varint,3,req,name=new_filter_set_type,json=newFilterSetType,enum=TST.FilterSetArchive_FilterSetType" json:"new_filter_set_type,omitempty"`
-	RollbackUidList      []*TSP.UUID                     `protobuf:"bytes,4,rep,name=rollback_uid_list,json=rollbackUidList" json:"rollback_uid_list,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
 	XXX_unrecognized     []byte                          `json:"-"`
 	XXX_sizecache        int32                           `json:"-"`
@@ -5260,7 +6504,7 @@ func (m *CommandSetFilterSetTypeArchive) Reset()         { *m = CommandSetFilter
 func (m *CommandSetFilterSetTypeArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetFilterSetTypeArchive) ProtoMessage()    {}
 func (*CommandSetFilterSetTypeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{70}
+	return fileDescriptor_5d102eeb586b2c5c, []int{89}
 }
 
 func (m *CommandSetFilterSetTypeArchive) XXX_Unmarshal(b []byte) error {
@@ -5302,17 +6546,187 @@ func (m *CommandSetFilterSetTypeArchive) GetNewFilterSetType() FilterSetArchive_
 	return FilterSetArchive_FilterSetArchiveTypeAll
 }
 
-func (m *CommandSetFilterSetTypeArchive) GetRollbackUidList() []*TSP.UUID {
+type CommandSetStyleNetworkArchive struct {
+	Super                *TableCommandArchive      `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	OldStyleNetwork      *TableStyleNetworkArchive `protobuf:"bytes,2,req,name=old_style_network,json=oldStyleNetwork" json:"old_style_network,omitempty"`
+	NewStyleNetwork      *TableStyleNetworkArchive `protobuf:"bytes,3,req,name=new_style_network,json=newStyleNetwork" json:"new_style_network,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *CommandSetStyleNetworkArchive) Reset()         { *m = CommandSetStyleNetworkArchive{} }
+func (m *CommandSetStyleNetworkArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandSetStyleNetworkArchive) ProtoMessage()    {}
+func (*CommandSetStyleNetworkArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{90}
+}
+
+func (m *CommandSetStyleNetworkArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandSetStyleNetworkArchive.Unmarshal(m, b)
+}
+func (m *CommandSetStyleNetworkArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandSetStyleNetworkArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandSetStyleNetworkArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandSetStyleNetworkArchive.Merge(m, src)
+}
+func (m *CommandSetStyleNetworkArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandSetStyleNetworkArchive.Size(m)
+}
+func (m *CommandSetStyleNetworkArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandSetStyleNetworkArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandSetStyleNetworkArchive proto.InternalMessageInfo
+
+func (m *CommandSetStyleNetworkArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
-		return m.RollbackUidList
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandSetStyleNetworkArchive) GetOldStyleNetwork() *TableStyleNetworkArchive {
+	if m != nil {
+		return m.OldStyleNetwork
+	}
+	return nil
+}
+
+func (m *CommandSetStyleNetworkArchive) GetNewStyleNetwork() *TableStyleNetworkArchive {
+	if m != nil {
+		return m.NewStyleNetwork
+	}
+	return nil
+}
+
+type CommandMutateCellsArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,2,req,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,3,req,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	Selection            *SelectionArchive    `protobuf:"bytes,4,opt,name=selection" json:"selection,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandMutateCellsArchive) Reset()         { *m = CommandMutateCellsArchive{} }
+func (m *CommandMutateCellsArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandMutateCellsArchive) ProtoMessage()    {}
+func (*CommandMutateCellsArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{91}
+}
+
+func (m *CommandMutateCellsArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandMutateCellsArchive.Unmarshal(m, b)
+}
+func (m *CommandMutateCellsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandMutateCellsArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandMutateCellsArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandMutateCellsArchive.Merge(m, src)
+}
+func (m *CommandMutateCellsArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandMutateCellsArchive.Size(m)
+}
+func (m *CommandMutateCellsArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandMutateCellsArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandMutateCellsArchive proto.InternalMessageInfo
+
+func (m *CommandMutateCellsArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandMutateCellsArchive) GetUndoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.UndoCellMap
+	}
+	return nil
+}
+
+func (m *CommandMutateCellsArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+func (m *CommandMutateCellsArchive) GetSelection() *SelectionArchive {
+	if m != nil {
+		return m.Selection
+	}
+	return nil
+}
+
+type CommandDisableFilterRulesForColumnArchive struct {
+	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	ColumnIndex          *uint32              `protobuf:"varint,2,req,name=column_index,json=columnIndex" json:"column_index,omitempty"`
+	RuleIndices          []uint32             `protobuf:"varint,3,rep,name=rule_indices,json=ruleIndices" json:"rule_indices,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
+	XXX_unrecognized     []byte               `json:"-"`
+	XXX_sizecache        int32                `json:"-"`
+}
+
+func (m *CommandDisableFilterRulesForColumnArchive) Reset() {
+	*m = CommandDisableFilterRulesForColumnArchive{}
+}
+func (m *CommandDisableFilterRulesForColumnArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandDisableFilterRulesForColumnArchive) ProtoMessage()    {}
+func (*CommandDisableFilterRulesForColumnArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{92}
+}
+
+func (m *CommandDisableFilterRulesForColumnArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandDisableFilterRulesForColumnArchive.Unmarshal(m, b)
+}
+func (m *CommandDisableFilterRulesForColumnArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandDisableFilterRulesForColumnArchive.Marshal(b, m, deterministic)
+}
+func (m *CommandDisableFilterRulesForColumnArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandDisableFilterRulesForColumnArchive.Merge(m, src)
+}
+func (m *CommandDisableFilterRulesForColumnArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandDisableFilterRulesForColumnArchive.Size(m)
+}
+func (m *CommandDisableFilterRulesForColumnArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandDisableFilterRulesForColumnArchive.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_CommandDisableFilterRulesForColumnArchive proto.InternalMessageInfo
+
+func (m *CommandDisableFilterRulesForColumnArchive) GetSuper() *TableCommandArchive {
+	if m != nil {
+		return m.Super
+	}
+	return nil
+}
+
+func (m *CommandDisableFilterRulesForColumnArchive) GetColumnIndex() uint32 {
+	if m != nil && m.ColumnIndex != nil {
+		return *m.ColumnIndex
+	}
+	return 0
+}
+
+func (m *CommandDisableFilterRulesForColumnArchive) GetRuleIndices() []uint32 {
+	if m != nil {
+		return m.RuleIndices
 	}
 	return nil
 }
 
 type CommandSetTextStyleArchive struct {
 	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellDiffMap          *TSP.Reference       `protobuf:"bytes,2,req,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	InverseCellDiffMap   *TSP.Reference       `protobuf:"bytes,3,opt,name=inverse_cell_diff_map,json=inverseCellDiffMap" json:"inverse_cell_diff_map,omitempty"`
+	Region               *CellRegion          `protobuf:"bytes,2,req,name=region" json:"region,omitempty"`
+	UndoCellMap          *CellMapArchive      `protobuf:"bytes,3,opt,name=undo_cell_map,json=undoCellMap" json:"undo_cell_map,omitempty"`
+	RedoCellMap          *CellMapArchive      `protobuf:"bytes,4,opt,name=redo_cell_map,json=redoCellMap" json:"redo_cell_map,omitempty"`
+	Subcommands          *Reference           `protobuf:"bytes,5,opt,name=subcommands" json:"subcommands,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
@@ -5322,7 +6736,7 @@ func (m *CommandSetTextStyleArchive) Reset()         { *m = CommandSetTextStyleA
 func (m *CommandSetTextStyleArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetTextStyleArchive) ProtoMessage()    {}
 func (*CommandSetTextStyleArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{71}
+	return fileDescriptor_5d102eeb586b2c5c, []int{93}
 }
 
 func (m *CommandSetTextStyleArchive) XXX_Unmarshal(b []byte) error {
@@ -5350,147 +6764,90 @@ func (m *CommandSetTextStyleArchive) GetSuper() *TableCommandArchive {
 	return nil
 }
 
-func (m *CommandSetTextStyleArchive) GetCellDiffMap() *TSP.Reference {
+func (m *CommandSetTextStyleArchive) GetRegion() *CellRegion {
 	if m != nil {
-		return m.CellDiffMap
+		return m.Region
 	}
 	return nil
 }
 
-func (m *CommandSetTextStyleArchive) GetInverseCellDiffMap() *TSP.Reference {
+func (m *CommandSetTextStyleArchive) GetUndoCellMap() *CellMapArchive {
 	if m != nil {
-		return m.InverseCellDiffMap
+		return m.UndoCellMap
 	}
 	return nil
 }
 
-type CommandSetTextStylePropertiesArchive struct {
+func (m *CommandSetTextStyleArchive) GetRedoCellMap() *CellMapArchive {
+	if m != nil {
+		return m.RedoCellMap
+	}
+	return nil
+}
+
+func (m *CommandSetTextStyleArchive) GetSubcommands() *Reference {
+	if m != nil {
+		return m.Subcommands
+	}
+	return nil
+}
+
+type CommandNotifyForTransformingArchive struct {
 	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellDiffMap          *TSP.Reference       `protobuf:"bytes,2,req,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	CellWasRichText      []bool               `protobuf:"varint,3,rep,name=cell_was_rich_text,json=cellWasRichText" json:"cell_was_rich_text,omitempty"`
-	InverseCellDiffMap   *TSP.Reference       `protobuf:"bytes,4,opt,name=inverse_cell_diff_map,json=inverseCellDiffMap" json:"inverse_cell_diff_map,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
 	XXX_unrecognized     []byte               `json:"-"`
 	XXX_sizecache        int32                `json:"-"`
 }
 
-func (m *CommandSetTextStylePropertiesArchive) Reset()         { *m = CommandSetTextStylePropertiesArchive{} }
-func (m *CommandSetTextStylePropertiesArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSetTextStylePropertiesArchive) ProtoMessage()    {}
-func (*CommandSetTextStylePropertiesArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{72}
+func (m *CommandNotifyForTransformingArchive) Reset()         { *m = CommandNotifyForTransformingArchive{} }
+func (m *CommandNotifyForTransformingArchive) String() string { return proto.CompactTextString(m) }
+func (*CommandNotifyForTransformingArchive) ProtoMessage()    {}
+func (*CommandNotifyForTransformingArchive) Descriptor() ([]byte, []int) {
+	return fileDescriptor_5d102eeb586b2c5c, []int{94}
 }
 
-func (m *CommandSetTextStylePropertiesArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetTextStylePropertiesArchive.Unmarshal(m, b)
+func (m *CommandNotifyForTransformingArchive) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_CommandNotifyForTransformingArchive.Unmarshal(m, b)
 }
-func (m *CommandSetTextStylePropertiesArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetTextStylePropertiesArchive.Marshal(b, m, deterministic)
+func (m *CommandNotifyForTransformingArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_CommandNotifyForTransformingArchive.Marshal(b, m, deterministic)
 }
-func (m *CommandSetTextStylePropertiesArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetTextStylePropertiesArchive.Merge(m, src)
+func (m *CommandNotifyForTransformingArchive) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CommandNotifyForTransformingArchive.Merge(m, src)
 }
-func (m *CommandSetTextStylePropertiesArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetTextStylePropertiesArchive.Size(m)
+func (m *CommandNotifyForTransformingArchive) XXX_Size() int {
+	return xxx_messageInfo_CommandNotifyForTransformingArchive.Size(m)
 }
-func (m *CommandSetTextStylePropertiesArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetTextStylePropertiesArchive.DiscardUnknown(m)
+func (m *CommandNotifyForTransformingArchive) XXX_DiscardUnknown() {
+	xxx_messageInfo_CommandNotifyForTransformingArchive.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CommandSetTextStylePropertiesArchive proto.InternalMessageInfo
+var xxx_messageInfo_CommandNotifyForTransformingArchive proto.InternalMessageInfo
 
-func (m *CommandSetTextStylePropertiesArchive) GetSuper() *TableCommandArchive {
+func (m *CommandNotifyForTransformingArchive) GetSuper() *TableCommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
-}
-
-func (m *CommandSetTextStylePropertiesArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandSetTextStylePropertiesArchive) GetCellWasRichText() []bool {
-	if m != nil {
-		return m.CellWasRichText
-	}
-	return nil
-}
-
-func (m *CommandSetTextStylePropertiesArchive) GetInverseCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.InverseCellDiffMap
-	}
-	return nil
-}
-
-type CommandJustForNotifyingArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ChangeDescriptorType *uint32              `protobuf:"varint,2,req,name=change_descriptor_type,json=changeDescriptorType" json:"change_descriptor_type,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *CommandJustForNotifyingArchive) Reset()         { *m = CommandJustForNotifyingArchive{} }
-func (m *CommandJustForNotifyingArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandJustForNotifyingArchive) ProtoMessage()    {}
-func (*CommandJustForNotifyingArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{73}
-}
-
-func (m *CommandJustForNotifyingArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandJustForNotifyingArchive.Unmarshal(m, b)
-}
-func (m *CommandJustForNotifyingArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandJustForNotifyingArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandJustForNotifyingArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandJustForNotifyingArchive.Merge(m, src)
-}
-func (m *CommandJustForNotifyingArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandJustForNotifyingArchive.Size(m)
-}
-func (m *CommandJustForNotifyingArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandJustForNotifyingArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandJustForNotifyingArchive proto.InternalMessageInfo
-
-func (m *CommandJustForNotifyingArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandJustForNotifyingArchive) GetChangeDescriptorType() uint32 {
-	if m != nil && m.ChangeDescriptorType != nil {
-		return *m.ChangeDescriptorType
-	}
-	return 0
 }
 
 type CommandSetStorageLanguageArchive struct {
-	Super                *TSK.CommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Storage              *TSP.Reference        `protobuf:"bytes,2,req,name=storage" json:"storage,omitempty"`
-	Language             *string               `protobuf:"bytes,3,req,name=language" json:"language,omitempty"`
-	RangeLocation        *uint32               `protobuf:"varint,4,req,name=range_location,json=rangeLocation" json:"range_location,omitempty"`
-	RangeLength          *uint32               `protobuf:"varint,5,req,name=range_length,json=rangeLength" json:"range_length,omitempty"`
-	UndoTransaction      *TSWP.UndoTransaction `protobuf:"bytes,6,opt,name=undo_transaction,json=undoTransaction" json:"undo_transaction,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Super                *CommandArchive  `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Storage              *Reference       `protobuf:"bytes,2,req,name=storage" json:"storage,omitempty"`
+	Language             *string          `protobuf:"bytes,3,req,name=language" json:"language,omitempty"`
+	RangeLocation        *uint32          `protobuf:"varint,4,req,name=range_location,json=rangeLocation" json:"range_location,omitempty"`
+	RangeLength          *uint32          `protobuf:"varint,5,req,name=range_length,json=rangeLength" json:"range_length,omitempty"`
+	UndoTransaction      *UndoTransaction `protobuf:"bytes,6,opt,name=undo_transaction,json=undoTransaction" json:"undo_transaction,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
 func (m *CommandSetStorageLanguageArchive) Reset()         { *m = CommandSetStorageLanguageArchive{} }
 func (m *CommandSetStorageLanguageArchive) String() string { return proto.CompactTextString(m) }
 func (*CommandSetStorageLanguageArchive) ProtoMessage()    {}
 func (*CommandSetStorageLanguageArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{74}
+	return fileDescriptor_5d102eeb586b2c5c, []int{95}
 }
 
 func (m *CommandSetStorageLanguageArchive) XXX_Unmarshal(b []byte) error {
@@ -5511,14 +6868,14 @@ func (m *CommandSetStorageLanguageArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_CommandSetStorageLanguageArchive proto.InternalMessageInfo
 
-func (m *CommandSetStorageLanguageArchive) GetSuper() *TSK.CommandArchive {
+func (m *CommandSetStorageLanguageArchive) GetSuper() *CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *CommandSetStorageLanguageArchive) GetStorage() *TSP.Reference {
+func (m *CommandSetStorageLanguageArchive) GetStorage() *Reference {
 	if m != nil {
 		return m.Storage
 	}
@@ -5546,2043 +6903,491 @@ func (m *CommandSetStorageLanguageArchive) GetRangeLength() uint32 {
 	return 0
 }
 
-func (m *CommandSetStorageLanguageArchive) GetUndoTransaction() *TSWP.UndoTransaction {
+func (m *CommandSetStorageLanguageArchive) GetUndoTransaction() *UndoTransaction {
 	if m != nil {
 		return m.UndoTransaction
 	}
 	return nil
 }
 
-type CommandSetSortOrderArchive struct {
-	Super                *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldSortOrder         *TableSortOrderArchive `protobuf:"bytes,2,opt,name=old_sort_order,json=oldSortOrder" json:"old_sort_order,omitempty"`
-	NewSortOrder         *TableSortOrderArchive `protobuf:"bytes,3,opt,name=new_sort_order,json=newSortOrder" json:"new_sort_order,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
-}
-
-func (m *CommandSetSortOrderArchive) Reset()         { *m = CommandSetSortOrderArchive{} }
-func (m *CommandSetSortOrderArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSetSortOrderArchive) ProtoMessage()    {}
-func (*CommandSetSortOrderArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{75}
-}
-
-func (m *CommandSetSortOrderArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetSortOrderArchive.Unmarshal(m, b)
-}
-func (m *CommandSetSortOrderArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetSortOrderArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetSortOrderArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetSortOrderArchive.Merge(m, src)
-}
-func (m *CommandSetSortOrderArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetSortOrderArchive.Size(m)
-}
-func (m *CommandSetSortOrderArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetSortOrderArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetSortOrderArchive proto.InternalMessageInfo
-
-func (m *CommandSetSortOrderArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandSetSortOrderArchive) GetOldSortOrder() *TableSortOrderArchive {
-	if m != nil {
-		return m.OldSortOrder
-	}
-	return nil
-}
-
-func (m *CommandSetSortOrderArchive) GetNewSortOrder() *TableSortOrderArchive {
-	if m != nil {
-		return m.NewSortOrder
-	}
-	return nil
-}
-
-type CommandRewriteSortOrderForTableResizeArchive struct {
-	Super                *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OldSortOrder         *TableSortOrderArchive `protobuf:"bytes,2,opt,name=old_sort_order,json=oldSortOrder" json:"old_sort_order,omitempty"`
-	NewSortOrder         *TableSortOrderArchive `protobuf:"bytes,3,opt,name=new_sort_order,json=newSortOrder" json:"new_sort_order,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}               `json:"-"`
-	XXX_unrecognized     []byte                 `json:"-"`
-	XXX_sizecache        int32                  `json:"-"`
-}
-
-func (m *CommandRewriteSortOrderForTableResizeArchive) Reset() {
-	*m = CommandRewriteSortOrderForTableResizeArchive{}
-}
-func (m *CommandRewriteSortOrderForTableResizeArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandRewriteSortOrderForTableResizeArchive) ProtoMessage() {}
-func (*CommandRewriteSortOrderForTableResizeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{76}
-}
-
-func (m *CommandRewriteSortOrderForTableResizeArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteSortOrderForTableResizeArchive.Unmarshal(m, b)
-}
-func (m *CommandRewriteSortOrderForTableResizeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteSortOrderForTableResizeArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandRewriteSortOrderForTableResizeArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteSortOrderForTableResizeArchive.Merge(m, src)
-}
-func (m *CommandRewriteSortOrderForTableResizeArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteSortOrderForTableResizeArchive.Size(m)
-}
-func (m *CommandRewriteSortOrderForTableResizeArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteSortOrderForTableResizeArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandRewriteSortOrderForTableResizeArchive proto.InternalMessageInfo
-
-func (m *CommandRewriteSortOrderForTableResizeArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandRewriteSortOrderForTableResizeArchive) GetOldSortOrder() *TableSortOrderArchive {
-	if m != nil {
-		return m.OldSortOrder
-	}
-	return nil
-}
-
-func (m *CommandRewriteSortOrderForTableResizeArchive) GetNewSortOrder() *TableSortOrderArchive {
-	if m != nil {
-		return m.NewSortOrder
-	}
-	return nil
-}
-
-type CommandRewriteSortOrderForRewriteSpecArchive struct {
-	Super                *TableCommandArchive            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RewriteSpec          *TSCE.FormulaRewriteSpecArchive `protobuf:"bytes,2,req,name=rewrite_spec,json=rewriteSpec" json:"rewrite_spec,omitempty"`
-	OldSortOrder         *TableSortOrderArchive          `protobuf:"bytes,3,opt,name=old_sort_order,json=oldSortOrder" json:"old_sort_order,omitempty"`
-	NewSortOrder         *TableSortOrderArchive          `protobuf:"bytes,4,opt,name=new_sort_order,json=newSortOrder" json:"new_sort_order,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                        `json:"-"`
-	XXX_unrecognized     []byte                          `json:"-"`
-	XXX_sizecache        int32                           `json:"-"`
-}
-
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) Reset() {
-	*m = CommandRewriteSortOrderForRewriteSpecArchive{}
-}
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandRewriteSortOrderForRewriteSpecArchive) ProtoMessage() {}
-func (*CommandRewriteSortOrderForRewriteSpecArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{77}
-}
-
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteSortOrderForRewriteSpecArchive.Unmarshal(m, b)
-}
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteSortOrderForRewriteSpecArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteSortOrderForRewriteSpecArchive.Merge(m, src)
-}
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteSortOrderForRewriteSpecArchive.Size(m)
-}
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteSortOrderForRewriteSpecArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandRewriteSortOrderForRewriteSpecArchive proto.InternalMessageInfo
-
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) GetRewriteSpec() *TSCE.FormulaRewriteSpecArchive {
-	if m != nil {
-		return m.RewriteSpec
-	}
-	return nil
-}
-
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) GetOldSortOrder() *TableSortOrderArchive {
-	if m != nil {
-		return m.OldSortOrder
-	}
-	return nil
-}
-
-func (m *CommandRewriteSortOrderForRewriteSpecArchive) GetNewSortOrder() *TableSortOrderArchive {
-	if m != nil {
-		return m.NewSortOrder
-	}
-	return nil
-}
-
-type CommandSetFilterSetArchive struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewFilterSet         *TSP.Reference       `protobuf:"bytes,2,req,name=new_filter_set,json=newFilterSet" json:"new_filter_set,omitempty"`
-	OldFilterSet         *TSP.Reference       `protobuf:"bytes,3,opt,name=old_filter_set,json=oldFilterSet" json:"old_filter_set,omitempty"`
-	RollbackUidList      []*TSP.UUID          `protobuf:"bytes,4,rep,name=rollback_uid_list,json=rollbackUidList" json:"rollback_uid_list,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *CommandSetFilterSetArchive) Reset()         { *m = CommandSetFilterSetArchive{} }
-func (m *CommandSetFilterSetArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandSetFilterSetArchive) ProtoMessage()    {}
-func (*CommandSetFilterSetArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{78}
-}
-
-func (m *CommandSetFilterSetArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetFilterSetArchive.Unmarshal(m, b)
-}
-func (m *CommandSetFilterSetArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetFilterSetArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetFilterSetArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetFilterSetArchive.Merge(m, src)
-}
-func (m *CommandSetFilterSetArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetFilterSetArchive.Size(m)
-}
-func (m *CommandSetFilterSetArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetFilterSetArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetFilterSetArchive proto.InternalMessageInfo
-
-func (m *CommandSetFilterSetArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandSetFilterSetArchive) GetNewFilterSet() *TSP.Reference {
-	if m != nil {
-		return m.NewFilterSet
-	}
-	return nil
-}
-
-func (m *CommandSetFilterSetArchive) GetOldFilterSet() *TSP.Reference {
-	if m != nil {
-		return m.OldFilterSet
-	}
-	return nil
-}
-
-func (m *CommandSetFilterSetArchive) GetRollbackUidList() []*TSP.UUID {
-	if m != nil {
-		return m.RollbackUidList
-	}
-	return nil
-}
-
-type ColumnRowRestoreDataArchive struct {
-	UidList              []*TSP.UUID                 `protobuf:"bytes,1,rep,name=uid_list,json=uidList" json:"uid_list,omitempty"`
-	Metadatas            []*ColumnRowMetadataArchive `protobuf:"bytes,2,rep,name=metadatas" json:"metadatas,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
-	XXX_unrecognized     []byte                      `json:"-"`
-	XXX_sizecache        int32                       `json:"-"`
-}
-
-func (m *ColumnRowRestoreDataArchive) Reset()         { *m = ColumnRowRestoreDataArchive{} }
-func (m *ColumnRowRestoreDataArchive) String() string { return proto.CompactTextString(m) }
-func (*ColumnRowRestoreDataArchive) ProtoMessage()    {}
-func (*ColumnRowRestoreDataArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{79}
-}
-
-func (m *ColumnRowRestoreDataArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ColumnRowRestoreDataArchive.Unmarshal(m, b)
-}
-func (m *ColumnRowRestoreDataArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ColumnRowRestoreDataArchive.Marshal(b, m, deterministic)
-}
-func (m *ColumnRowRestoreDataArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ColumnRowRestoreDataArchive.Merge(m, src)
-}
-func (m *ColumnRowRestoreDataArchive) XXX_Size() int {
-	return xxx_messageInfo_ColumnRowRestoreDataArchive.Size(m)
-}
-func (m *ColumnRowRestoreDataArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ColumnRowRestoreDataArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ColumnRowRestoreDataArchive proto.InternalMessageInfo
-
-func (m *ColumnRowRestoreDataArchive) GetUidList() []*TSP.UUID {
-	if m != nil {
-		return m.UidList
-	}
-	return nil
-}
-
-func (m *ColumnRowRestoreDataArchive) GetMetadatas() []*ColumnRowMetadataArchive {
-	if m != nil {
-		return m.Metadatas
-	}
-	return nil
-}
-
-type CommandTransposeTableArchive struct {
-	Super                     *TableCommandArchive         `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	OriginalTableRange        *ExpandedCellRange           `protobuf:"bytes,2,req,name=original_table_range,json=originalTableRange" json:"original_table_range,omitempty"`
-	OriginalCellMap           *TSP.Reference               `protobuf:"bytes,3,req,name=original_cell_map,json=originalCellMap" json:"original_cell_map,omitempty"`
-	OriginalFooterRowCount    *uint32                      `protobuf:"varint,4,req,name=original_footer_row_count,json=originalFooterRowCount" json:"original_footer_row_count,omitempty"`
-	OriginalColumnWidths      []float32                    `protobuf:"fixed32,5,rep,name=original_column_widths,json=originalColumnWidths" json:"original_column_widths,omitempty"`
-	OriginalRowHeights        []float32                    `protobuf:"fixed32,6,rep,name=original_row_heights,json=originalRowHeights" json:"original_row_heights,omitempty"`
-	IneligibleMergeList       []*CellRange                 `protobuf:"bytes,7,rep,name=ineligible_merge_list,json=ineligibleMergeList" json:"ineligible_merge_list,omitempty"`
-	TransposedCellMap         *TSP.Reference               `protobuf:"bytes,8,req,name=transposed_cell_map,json=transposedCellMap" json:"transposed_cell_map,omitempty"`
-	UndoFormulaRewriteCommand *TSP.Reference               `protobuf:"bytes,9,opt,name=undo_formula_rewrite_command,json=undoFormulaRewriteCommand" json:"undo_formula_rewrite_command,omitempty"`
-	RichTextSubcommands       *TSP.Reference               `protobuf:"bytes,10,opt,name=rich_text_subcommands,json=richTextSubcommands" json:"rich_text_subcommands,omitempty"`
-	ColumnRestoreData         *ColumnRowRestoreDataArchive `protobuf:"bytes,11,opt,name=column_restore_data,json=columnRestoreData" json:"column_restore_data,omitempty"`
-	RowRestoreData            *ColumnRowRestoreDataArchive `protobuf:"bytes,12,opt,name=row_restore_data,json=rowRestoreData" json:"row_restore_data,omitempty"`
-	XXX_NoUnkeyedLiteral      struct{}                     `json:"-"`
-	XXX_unrecognized          []byte                       `json:"-"`
-	XXX_sizecache             int32                        `json:"-"`
-}
-
-func (m *CommandTransposeTableArchive) Reset()         { *m = CommandTransposeTableArchive{} }
-func (m *CommandTransposeTableArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandTransposeTableArchive) ProtoMessage()    {}
-func (*CommandTransposeTableArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{80}
-}
-
-func (m *CommandTransposeTableArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandTransposeTableArchive.Unmarshal(m, b)
-}
-func (m *CommandTransposeTableArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandTransposeTableArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandTransposeTableArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandTransposeTableArchive.Merge(m, src)
-}
-func (m *CommandTransposeTableArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandTransposeTableArchive.Size(m)
-}
-func (m *CommandTransposeTableArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandTransposeTableArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandTransposeTableArchive proto.InternalMessageInfo
-
-func (m *CommandTransposeTableArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetOriginalTableRange() *ExpandedCellRange {
-	if m != nil {
-		return m.OriginalTableRange
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetOriginalCellMap() *TSP.Reference {
-	if m != nil {
-		return m.OriginalCellMap
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetOriginalFooterRowCount() uint32 {
-	if m != nil && m.OriginalFooterRowCount != nil {
-		return *m.OriginalFooterRowCount
-	}
-	return 0
-}
-
-func (m *CommandTransposeTableArchive) GetOriginalColumnWidths() []float32 {
-	if m != nil {
-		return m.OriginalColumnWidths
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetOriginalRowHeights() []float32 {
-	if m != nil {
-		return m.OriginalRowHeights
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetIneligibleMergeList() []*CellRange {
-	if m != nil {
-		return m.IneligibleMergeList
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetTransposedCellMap() *TSP.Reference {
-	if m != nil {
-		return m.TransposedCellMap
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetUndoFormulaRewriteCommand() *TSP.Reference {
-	if m != nil {
-		return m.UndoFormulaRewriteCommand
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetRichTextSubcommands() *TSP.Reference {
-	if m != nil {
-		return m.RichTextSubcommands
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetColumnRestoreData() *ColumnRowRestoreDataArchive {
-	if m != nil {
-		return m.ColumnRestoreData
-	}
-	return nil
-}
-
-func (m *CommandTransposeTableArchive) GetRowRestoreData() *ColumnRowRestoreDataArchive {
-	if m != nil {
-		return m.RowRestoreData
-	}
-	return nil
-}
-
-type CommandSetStructuredTextImportRecordArchive struct {
-	Super                *TableCommandArchive        `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	NewImportRecord      *StructuredTextImportRecord `protobuf:"bytes,2,opt,name=new_import_record,json=newImportRecord" json:"new_import_record,omitempty"`
-	OldImportRecord      *StructuredTextImportRecord `protobuf:"bytes,3,opt,name=old_import_record,json=oldImportRecord" json:"old_import_record,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
-	XXX_unrecognized     []byte                      `json:"-"`
-	XXX_sizecache        int32                       `json:"-"`
-}
-
-func (m *CommandSetStructuredTextImportRecordArchive) Reset() {
-	*m = CommandSetStructuredTextImportRecordArchive{}
-}
-func (m *CommandSetStructuredTextImportRecordArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandSetStructuredTextImportRecordArchive) ProtoMessage() {}
-func (*CommandSetStructuredTextImportRecordArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{81}
-}
-
-func (m *CommandSetStructuredTextImportRecordArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandSetStructuredTextImportRecordArchive.Unmarshal(m, b)
-}
-func (m *CommandSetStructuredTextImportRecordArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandSetStructuredTextImportRecordArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandSetStructuredTextImportRecordArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandSetStructuredTextImportRecordArchive.Merge(m, src)
-}
-func (m *CommandSetStructuredTextImportRecordArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandSetStructuredTextImportRecordArchive.Size(m)
-}
-func (m *CommandSetStructuredTextImportRecordArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandSetStructuredTextImportRecordArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandSetStructuredTextImportRecordArchive proto.InternalMessageInfo
-
-func (m *CommandSetStructuredTextImportRecordArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandSetStructuredTextImportRecordArchive) GetNewImportRecord() *StructuredTextImportRecord {
-	if m != nil {
-		return m.NewImportRecord
-	}
-	return nil
-}
-
-func (m *CommandSetStructuredTextImportRecordArchive) GetOldImportRecord() *StructuredTextImportRecord {
-	if m != nil {
-		return m.OldImportRecord
-	}
-	return nil
-}
-
-type CommandCategoryCollapseExpandGroupArchive struct {
-	Super                *TableCommandArchive        `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	IsCollapsing         *bool                       `protobuf:"varint,2,req,name=is_collapsing,json=isCollapsing" json:"is_collapsing,omitempty"`
-	GroupingColumns      *GroupColumnListArchive     `protobuf:"bytes,3,req,name=grouping_columns,json=groupingColumns" json:"grouping_columns,omitempty"`
-	CollapseState        *ExpandCollapseStateArchive `protobuf:"bytes,4,req,name=collapse_state,json=collapseState" json:"collapse_state,omitempty"`
-	UndoCollapseState    *ExpandCollapseStateArchive `protobuf:"bytes,5,opt,name=undo_collapse_state,json=undoCollapseState" json:"undo_collapse_state,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
-	XXX_unrecognized     []byte                      `json:"-"`
-	XXX_sizecache        int32                       `json:"-"`
-}
-
-func (m *CommandCategoryCollapseExpandGroupArchive) Reset() {
-	*m = CommandCategoryCollapseExpandGroupArchive{}
-}
-func (m *CommandCategoryCollapseExpandGroupArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandCategoryCollapseExpandGroupArchive) ProtoMessage()    {}
-func (*CommandCategoryCollapseExpandGroupArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{82}
-}
-
-func (m *CommandCategoryCollapseExpandGroupArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandCategoryCollapseExpandGroupArchive.Unmarshal(m, b)
-}
-func (m *CommandCategoryCollapseExpandGroupArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandCategoryCollapseExpandGroupArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandCategoryCollapseExpandGroupArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandCategoryCollapseExpandGroupArchive.Merge(m, src)
-}
-func (m *CommandCategoryCollapseExpandGroupArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandCategoryCollapseExpandGroupArchive.Size(m)
-}
-func (m *CommandCategoryCollapseExpandGroupArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandCategoryCollapseExpandGroupArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandCategoryCollapseExpandGroupArchive proto.InternalMessageInfo
-
-func (m *CommandCategoryCollapseExpandGroupArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandCategoryCollapseExpandGroupArchive) GetIsCollapsing() bool {
-	if m != nil && m.IsCollapsing != nil {
-		return *m.IsCollapsing
-	}
-	return false
-}
-
-func (m *CommandCategoryCollapseExpandGroupArchive) GetGroupingColumns() *GroupColumnListArchive {
-	if m != nil {
-		return m.GroupingColumns
-	}
-	return nil
-}
-
-func (m *CommandCategoryCollapseExpandGroupArchive) GetCollapseState() *ExpandCollapseStateArchive {
-	if m != nil {
-		return m.CollapseState
-	}
-	return nil
-}
-
-func (m *CommandCategoryCollapseExpandGroupArchive) GetUndoCollapseState() *ExpandCollapseStateArchive {
-	if m != nil {
-		return m.UndoCollapseState
-	}
-	return nil
-}
-
-type CommandCategoryChangeSummaryAggregateType struct {
-	Super                *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	AggregateType        *uint32              `protobuf:"varint,2,req,name=aggregate_type,json=aggregateType" json:"aggregate_type,omitempty"`
-	UndoAggregateType    *uint32              `protobuf:"varint,3,req,name=undo_aggregate_type,json=undoAggregateType" json:"undo_aggregate_type,omitempty"`
-	ColumnUid            *TSP.UUID            `protobuf:"bytes,4,req,name=column_uid,json=columnUid" json:"column_uid,omitempty"`
-	GroupLevel           *int32               `protobuf:"zigzag32,5,req,name=group_level,json=groupLevel" json:"group_level,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}             `json:"-"`
-	XXX_unrecognized     []byte               `json:"-"`
-	XXX_sizecache        int32                `json:"-"`
-}
-
-func (m *CommandCategoryChangeSummaryAggregateType) Reset() {
-	*m = CommandCategoryChangeSummaryAggregateType{}
-}
-func (m *CommandCategoryChangeSummaryAggregateType) String() string { return proto.CompactTextString(m) }
-func (*CommandCategoryChangeSummaryAggregateType) ProtoMessage()    {}
-func (*CommandCategoryChangeSummaryAggregateType) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{83}
-}
-
-func (m *CommandCategoryChangeSummaryAggregateType) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandCategoryChangeSummaryAggregateType.Unmarshal(m, b)
-}
-func (m *CommandCategoryChangeSummaryAggregateType) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandCategoryChangeSummaryAggregateType.Marshal(b, m, deterministic)
-}
-func (m *CommandCategoryChangeSummaryAggregateType) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandCategoryChangeSummaryAggregateType.Merge(m, src)
-}
-func (m *CommandCategoryChangeSummaryAggregateType) XXX_Size() int {
-	return xxx_messageInfo_CommandCategoryChangeSummaryAggregateType.Size(m)
-}
-func (m *CommandCategoryChangeSummaryAggregateType) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandCategoryChangeSummaryAggregateType.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandCategoryChangeSummaryAggregateType proto.InternalMessageInfo
-
-func (m *CommandCategoryChangeSummaryAggregateType) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandCategoryChangeSummaryAggregateType) GetAggregateType() uint32 {
-	if m != nil && m.AggregateType != nil {
-		return *m.AggregateType
-	}
-	return 0
-}
-
-func (m *CommandCategoryChangeSummaryAggregateType) GetUndoAggregateType() uint32 {
-	if m != nil && m.UndoAggregateType != nil {
-		return *m.UndoAggregateType
-	}
-	return 0
-}
-
-func (m *CommandCategoryChangeSummaryAggregateType) GetColumnUid() *TSP.UUID {
-	if m != nil {
-		return m.ColumnUid
-	}
-	return nil
-}
-
-func (m *CommandCategoryChangeSummaryAggregateType) GetGroupLevel() int32 {
-	if m != nil && m.GroupLevel != nil {
-		return *m.GroupLevel
-	}
-	return 0
-}
-
-type CommandCategorySetLabelRowVisibility struct {
-	Super                  *TableCommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	GroupLevel             *uint32              `protobuf:"varint,2,req,name=group_level,json=groupLevel" json:"group_level,omitempty"`
-	LabelRowVisibility     *uint32              `protobuf:"varint,3,req,name=label_row_visibility,json=labelRowVisibility" json:"label_row_visibility,omitempty"`
-	UndoLabelRowVisibility *uint32              `protobuf:"varint,4,req,name=undo_label_row_visibility,json=undoLabelRowVisibility" json:"undo_label_row_visibility,omitempty"`
-	XXX_NoUnkeyedLiteral   struct{}             `json:"-"`
-	XXX_unrecognized       []byte               `json:"-"`
-	XXX_sizecache          int32                `json:"-"`
-}
-
-func (m *CommandCategorySetLabelRowVisibility) Reset()         { *m = CommandCategorySetLabelRowVisibility{} }
-func (m *CommandCategorySetLabelRowVisibility) String() string { return proto.CompactTextString(m) }
-func (*CommandCategorySetLabelRowVisibility) ProtoMessage()    {}
-func (*CommandCategorySetLabelRowVisibility) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{84}
-}
-
-func (m *CommandCategorySetLabelRowVisibility) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandCategorySetLabelRowVisibility.Unmarshal(m, b)
-}
-func (m *CommandCategorySetLabelRowVisibility) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandCategorySetLabelRowVisibility.Marshal(b, m, deterministic)
-}
-func (m *CommandCategorySetLabelRowVisibility) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandCategorySetLabelRowVisibility.Merge(m, src)
-}
-func (m *CommandCategorySetLabelRowVisibility) XXX_Size() int {
-	return xxx_messageInfo_CommandCategorySetLabelRowVisibility.Size(m)
-}
-func (m *CommandCategorySetLabelRowVisibility) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandCategorySetLabelRowVisibility.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandCategorySetLabelRowVisibility proto.InternalMessageInfo
-
-func (m *CommandCategorySetLabelRowVisibility) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandCategorySetLabelRowVisibility) GetGroupLevel() uint32 {
-	if m != nil && m.GroupLevel != nil {
-		return *m.GroupLevel
-	}
-	return 0
-}
-
-func (m *CommandCategorySetLabelRowVisibility) GetLabelRowVisibility() uint32 {
-	if m != nil && m.LabelRowVisibility != nil {
-		return *m.LabelRowVisibility
-	}
-	return 0
-}
-
-func (m *CommandCategorySetLabelRowVisibility) GetUndoLabelRowVisibility() uint32 {
-	if m != nil && m.UndoLabelRowVisibility != nil {
-		return *m.UndoLabelRowVisibility
-	}
-	return 0
-}
-
-type CommandCategoryWillChangeGroupValue struct {
-	Super                 *TableCommandArchive   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	GroupNodeUid          *TSP.UUID              `protobuf:"bytes,2,req,name=group_node_uid,json=groupNodeUid" json:"group_node_uid,omitempty"`
-	UndoGroupNodeUid      *TSP.UUID              `protobuf:"bytes,3,opt,name=undo_group_node_uid,json=undoGroupNodeUid" json:"undo_group_node_uid,omitempty"`
-	GroupValue            *TSCE.CellValueArchive `protobuf:"bytes,4,opt,name=group_value,json=groupValue" json:"group_value,omitempty"`
-	UndoGroupValue        *TSCE.CellValueArchive `protobuf:"bytes,5,opt,name=undo_group_value,json=undoGroupValue" json:"undo_group_value,omitempty"`
-	RewriteCommandForUndo *TSP.Reference         `protobuf:"bytes,6,opt,name=rewrite_command_for_undo,json=rewriteCommandForUndo" json:"rewrite_command_for_undo,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}               `json:"-"`
-	XXX_unrecognized      []byte                 `json:"-"`
-	XXX_sizecache         int32                  `json:"-"`
-}
-
-func (m *CommandCategoryWillChangeGroupValue) Reset()         { *m = CommandCategoryWillChangeGroupValue{} }
-func (m *CommandCategoryWillChangeGroupValue) String() string { return proto.CompactTextString(m) }
-func (*CommandCategoryWillChangeGroupValue) ProtoMessage()    {}
-func (*CommandCategoryWillChangeGroupValue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{85}
-}
-
-func (m *CommandCategoryWillChangeGroupValue) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandCategoryWillChangeGroupValue.Unmarshal(m, b)
-}
-func (m *CommandCategoryWillChangeGroupValue) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandCategoryWillChangeGroupValue.Marshal(b, m, deterministic)
-}
-func (m *CommandCategoryWillChangeGroupValue) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandCategoryWillChangeGroupValue.Merge(m, src)
-}
-func (m *CommandCategoryWillChangeGroupValue) XXX_Size() int {
-	return xxx_messageInfo_CommandCategoryWillChangeGroupValue.Size(m)
-}
-func (m *CommandCategoryWillChangeGroupValue) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandCategoryWillChangeGroupValue.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandCategoryWillChangeGroupValue proto.InternalMessageInfo
-
-func (m *CommandCategoryWillChangeGroupValue) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandCategoryWillChangeGroupValue) GetGroupNodeUid() *TSP.UUID {
-	if m != nil {
-		return m.GroupNodeUid
-	}
-	return nil
-}
-
-func (m *CommandCategoryWillChangeGroupValue) GetUndoGroupNodeUid() *TSP.UUID {
-	if m != nil {
-		return m.UndoGroupNodeUid
-	}
-	return nil
-}
-
-func (m *CommandCategoryWillChangeGroupValue) GetGroupValue() *TSCE.CellValueArchive {
-	if m != nil {
-		return m.GroupValue
-	}
-	return nil
-}
-
-func (m *CommandCategoryWillChangeGroupValue) GetUndoGroupValue() *TSCE.CellValueArchive {
-	if m != nil {
-		return m.UndoGroupValue
-	}
-	return nil
-}
-
-func (m *CommandCategoryWillChangeGroupValue) GetRewriteCommandForUndo() *TSP.Reference {
-	if m != nil {
-		return m.RewriteCommandForUndo
-	}
-	return nil
-}
-
-type IdempotentSelectionTransformerArchive struct {
-	ArchivedSelection    *TSP.Reference `protobuf:"bytes,1,req,name=archived_selection,json=archivedSelection" json:"archived_selection,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
-}
-
-func (m *IdempotentSelectionTransformerArchive) Reset()         { *m = IdempotentSelectionTransformerArchive{} }
-func (m *IdempotentSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*IdempotentSelectionTransformerArchive) ProtoMessage()    {}
-func (*IdempotentSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{86}
-}
-
-func (m *IdempotentSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_IdempotentSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *IdempotentSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_IdempotentSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *IdempotentSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_IdempotentSelectionTransformerArchive.Merge(m, src)
-}
-func (m *IdempotentSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_IdempotentSelectionTransformerArchive.Size(m)
-}
-func (m *IdempotentSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_IdempotentSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_IdempotentSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *IdempotentSelectionTransformerArchive) GetArchivedSelection() *TSP.Reference {
-	if m != nil {
-		return m.ArchivedSelection
-	}
-	return nil
-}
-
-type WPSelectionTransformerArchive struct {
-	Super                *TableSubSelectionTransformerBaseArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ArchivedSelection    *TSP.Reference                           `protobuf:"bytes,2,req,name=archived_selection,json=archivedSelection" json:"archived_selection,omitempty"`
-	OriginCellUid        *TSP.UUIDCoordArchive                    `protobuf:"bytes,3,opt,name=origin_cell_uid,json=originCellUid" json:"origin_cell_uid,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *WPSelectionTransformerArchive) Reset()         { *m = WPSelectionTransformerArchive{} }
-func (m *WPSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*WPSelectionTransformerArchive) ProtoMessage()    {}
-func (*WPSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{87}
-}
-
-func (m *WPSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_WPSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *WPSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_WPSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *WPSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_WPSelectionTransformerArchive.Merge(m, src)
-}
-func (m *WPSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_WPSelectionTransformerArchive.Size(m)
-}
-func (m *WPSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_WPSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_WPSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *WPSelectionTransformerArchive) GetSuper() *TableSubSelectionTransformerBaseArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *WPSelectionTransformerArchive) GetArchivedSelection() *TSP.Reference {
-	if m != nil {
-		return m.ArchivedSelection
-	}
-	return nil
-}
-
-func (m *WPSelectionTransformerArchive) GetOriginCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.OriginCellUid
-	}
-	return nil
-}
-
-type TableSubSelectionTransformerBaseArchive struct {
-	TableInfoIdPath      *TSP.UUIDPath `protobuf:"bytes,1,req,name=table_info_id_path,json=tableInfoIdPath" json:"table_info_id_path,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *TableSubSelectionTransformerBaseArchive) Reset() {
-	*m = TableSubSelectionTransformerBaseArchive{}
-}
-func (m *TableSubSelectionTransformerBaseArchive) String() string { return proto.CompactTextString(m) }
-func (*TableSubSelectionTransformerBaseArchive) ProtoMessage()    {}
-func (*TableSubSelectionTransformerBaseArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{88}
-}
-
-func (m *TableSubSelectionTransformerBaseArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TableSubSelectionTransformerBaseArchive.Unmarshal(m, b)
-}
-func (m *TableSubSelectionTransformerBaseArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TableSubSelectionTransformerBaseArchive.Marshal(b, m, deterministic)
-}
-func (m *TableSubSelectionTransformerBaseArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TableSubSelectionTransformerBaseArchive.Merge(m, src)
-}
-func (m *TableSubSelectionTransformerBaseArchive) XXX_Size() int {
-	return xxx_messageInfo_TableSubSelectionTransformerBaseArchive.Size(m)
-}
-func (m *TableSubSelectionTransformerBaseArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_TableSubSelectionTransformerBaseArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TableSubSelectionTransformerBaseArchive proto.InternalMessageInfo
-
-func (m *TableSubSelectionTransformerBaseArchive) GetTableInfoIdPath() *TSP.UUIDPath {
-	if m != nil {
-		return m.TableInfoIdPath
-	}
-	return nil
-}
-
-type TableNameSelectionTransformerArchive struct {
-	Super                *TableSubSelectionTransformerBaseArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *TableNameSelectionTransformerArchive) Reset()         { *m = TableNameSelectionTransformerArchive{} }
-func (m *TableNameSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*TableNameSelectionTransformerArchive) ProtoMessage()    {}
-func (*TableNameSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{89}
-}
-
-func (m *TableNameSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_TableNameSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *TableNameSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_TableNameSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *TableNameSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TableNameSelectionTransformerArchive.Merge(m, src)
-}
-func (m *TableNameSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_TableNameSelectionTransformerArchive.Size(m)
-}
-func (m *TableNameSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_TableNameSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TableNameSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *TableNameSelectionTransformerArchive) GetSuper() *TableSubSelectionTransformerBaseArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-type ControlCellSelectionTransformerArchive struct {
-	Super                *TableSubSelectionTransformerBaseArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellUids             *CellUIDListArchive                      `protobuf:"bytes,2,opt,name=cell_uids,json=cellUids" json:"cell_uids,omitempty"`
-	OriginCellUid        *TSP.UUIDCoordArchive                    `protobuf:"bytes,3,opt,name=origin_cell_uid,json=originCellUid" json:"origin_cell_uid,omitempty"`
-	OriginCellId         *TSCE.CellCoordinateArchive              `protobuf:"bytes,4,req,name=origin_cell_id,json=originCellId" json:"origin_cell_id,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *ControlCellSelectionTransformerArchive) Reset() {
-	*m = ControlCellSelectionTransformerArchive{}
-}
-func (m *ControlCellSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*ControlCellSelectionTransformerArchive) ProtoMessage()    {}
-func (*ControlCellSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{90}
-}
-
-func (m *ControlCellSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ControlCellSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *ControlCellSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ControlCellSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *ControlCellSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ControlCellSelectionTransformerArchive.Merge(m, src)
-}
-func (m *ControlCellSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_ControlCellSelectionTransformerArchive.Size(m)
-}
-func (m *ControlCellSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_ControlCellSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ControlCellSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *ControlCellSelectionTransformerArchive) GetSuper() *TableSubSelectionTransformerBaseArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *ControlCellSelectionTransformerArchive) GetCellUids() *CellUIDListArchive {
-	if m != nil {
-		return m.CellUids
-	}
-	return nil
-}
-
-func (m *ControlCellSelectionTransformerArchive) GetOriginCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.OriginCellUid
-	}
-	return nil
-}
-
-func (m *ControlCellSelectionTransformerArchive) GetOriginCellId() *TSCE.CellCoordinateArchive {
-	if m != nil {
-		return m.OriginCellId
-	}
-	return nil
-}
-
-type StockCellSelectionTransformerArchive struct {
-	Super                *TableSubSelectionTransformerBaseArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellUids             *CellUIDListArchive                      `protobuf:"bytes,2,opt,name=cell_uids,json=cellUids" json:"cell_uids,omitempty"`
-	OriginCellUid        *TSP.UUIDCoordArchive                    `protobuf:"bytes,3,opt,name=origin_cell_uid,json=originCellUid" json:"origin_cell_uid,omitempty"`
-	OriginCellId         *TSCE.CellCoordinateArchive              `protobuf:"bytes,4,req,name=origin_cell_id,json=originCellId" json:"origin_cell_id,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *StockCellSelectionTransformerArchive) Reset()         { *m = StockCellSelectionTransformerArchive{} }
-func (m *StockCellSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*StockCellSelectionTransformerArchive) ProtoMessage()    {}
-func (*StockCellSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{91}
-}
-
-func (m *StockCellSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_StockCellSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *StockCellSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_StockCellSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *StockCellSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_StockCellSelectionTransformerArchive.Merge(m, src)
-}
-func (m *StockCellSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_StockCellSelectionTransformerArchive.Size(m)
-}
-func (m *StockCellSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_StockCellSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_StockCellSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *StockCellSelectionTransformerArchive) GetSuper() *TableSubSelectionTransformerBaseArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *StockCellSelectionTransformerArchive) GetCellUids() *CellUIDListArchive {
-	if m != nil {
-		return m.CellUids
-	}
-	return nil
-}
-
-func (m *StockCellSelectionTransformerArchive) GetOriginCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.OriginCellUid
-	}
-	return nil
-}
-
-func (m *StockCellSelectionTransformerArchive) GetOriginCellId() *TSCE.CellCoordinateArchive {
-	if m != nil {
-		return m.OriginCellId
-	}
-	return nil
-}
-
-type RegionSelectionTransformerArchive struct {
-	Super                *TableSubSelectionTransformerBaseArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CellUids             *CellUIDListArchive                      `protobuf:"bytes,2,opt,name=cell_uids,json=cellUids" json:"cell_uids,omitempty"`
-	OriginCellUid        *TSP.UUIDCoordArchive                    `protobuf:"bytes,3,opt,name=origin_cell_uid,json=originCellUid" json:"origin_cell_uid,omitempty"`
-	AnchorCellUid        *TSP.UUIDCoordArchive                    `protobuf:"bytes,4,req,name=anchor_cell_uid,json=anchorCellUid" json:"anchor_cell_uid,omitempty"`
-	CursorCellUid        *TSP.UUIDCoordArchive                    `protobuf:"bytes,5,req,name=cursor_cell_uid,json=cursorCellUid" json:"cursor_cell_uid,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *RegionSelectionTransformerArchive) Reset()         { *m = RegionSelectionTransformerArchive{} }
-func (m *RegionSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*RegionSelectionTransformerArchive) ProtoMessage()    {}
-func (*RegionSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{92}
-}
-
-func (m *RegionSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RegionSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *RegionSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RegionSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *RegionSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegionSelectionTransformerArchive.Merge(m, src)
-}
-func (m *RegionSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_RegionSelectionTransformerArchive.Size(m)
-}
-func (m *RegionSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_RegionSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RegionSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *RegionSelectionTransformerArchive) GetSuper() *TableSubSelectionTransformerBaseArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *RegionSelectionTransformerArchive) GetCellUids() *CellUIDListArchive {
-	if m != nil {
-		return m.CellUids
-	}
-	return nil
-}
-
-func (m *RegionSelectionTransformerArchive) GetOriginCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.OriginCellUid
-	}
-	return nil
-}
-
-func (m *RegionSelectionTransformerArchive) GetAnchorCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.AnchorCellUid
-	}
-	return nil
-}
-
-func (m *RegionSelectionTransformerArchive) GetCursorCellUid() *TSP.UUIDCoordArchive {
-	if m != nil {
-		return m.CursorCellUid
-	}
-	return nil
-}
-
-type RowColumnSelectionTransformerArchive struct {
-	Super                *TableSubSelectionTransformerBaseArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	SelectionType        *SelectionTypeArchive                    `protobuf:"varint,2,req,name=selection_type,json=selectionType,enum=TST.SelectionTypeArchive" json:"selection_type,omitempty"`
-	RowColUids           []*TSP.UUID                              `protobuf:"bytes,3,rep,name=row_col_uids,json=rowColUids" json:"row_col_uids,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                 `json:"-"`
-	XXX_unrecognized     []byte                                   `json:"-"`
-	XXX_sizecache        int32                                    `json:"-"`
-}
-
-func (m *RowColumnSelectionTransformerArchive) Reset()         { *m = RowColumnSelectionTransformerArchive{} }
-func (m *RowColumnSelectionTransformerArchive) String() string { return proto.CompactTextString(m) }
-func (*RowColumnSelectionTransformerArchive) ProtoMessage()    {}
-func (*RowColumnSelectionTransformerArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{93}
-}
-
-func (m *RowColumnSelectionTransformerArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RowColumnSelectionTransformerArchive.Unmarshal(m, b)
-}
-func (m *RowColumnSelectionTransformerArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RowColumnSelectionTransformerArchive.Marshal(b, m, deterministic)
-}
-func (m *RowColumnSelectionTransformerArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RowColumnSelectionTransformerArchive.Merge(m, src)
-}
-func (m *RowColumnSelectionTransformerArchive) XXX_Size() int {
-	return xxx_messageInfo_RowColumnSelectionTransformerArchive.Size(m)
-}
-func (m *RowColumnSelectionTransformerArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_RowColumnSelectionTransformerArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RowColumnSelectionTransformerArchive proto.InternalMessageInfo
-
-func (m *RowColumnSelectionTransformerArchive) GetSuper() *TableSubSelectionTransformerBaseArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *RowColumnSelectionTransformerArchive) GetSelectionType() SelectionTypeArchive {
-	if m != nil && m.SelectionType != nil {
-		return *m.SelectionType
-	}
-	return SelectionTypeArchive_deprecatedCellSelectionType
-}
-
-func (m *RowColumnSelectionTransformerArchive) GetRowColUids() []*TSP.UUID {
-	if m != nil {
-		return m.RowColUids
-	}
-	return nil
-}
-
-type CommandCategoryMoveRowsArchive struct {
-	Super                *TableCommandArchive    `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	ActionType           *uint32                 `protobuf:"varint,2,req,name=action_type,json=actionType" json:"action_type,omitempty"`
-	CategoryRowOrder     []*TSP.UUID             `protobuf:"bytes,3,rep,name=category_row_order,json=categoryRowOrder" json:"category_row_order,omitempty"`
-	UndoCategoryRowOrder []*TSP.UUID             `protobuf:"bytes,4,rep,name=undo_category_row_order,json=undoCategoryRowOrder" json:"undo_category_row_order,omitempty"`
-	CellDiffMap          *TSP.Reference          `protobuf:"bytes,5,req,name=cell_diff_map,json=cellDiffMap" json:"cell_diff_map,omitempty"`
-	UndoCellDiffMap      *TSP.Reference          `protobuf:"bytes,6,opt,name=undo_cell_diff_map,json=undoCellDiffMap" json:"undo_cell_diff_map,omitempty"`
-	GroupingColumns      *GroupColumnListArchive `protobuf:"bytes,7,opt,name=grouping_columns,json=groupingColumns" json:"grouping_columns,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
-	XXX_unrecognized     []byte                  `json:"-"`
-	XXX_sizecache        int32                   `json:"-"`
-}
-
-func (m *CommandCategoryMoveRowsArchive) Reset()         { *m = CommandCategoryMoveRowsArchive{} }
-func (m *CommandCategoryMoveRowsArchive) String() string { return proto.CompactTextString(m) }
-func (*CommandCategoryMoveRowsArchive) ProtoMessage()    {}
-func (*CommandCategoryMoveRowsArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{94}
-}
-
-func (m *CommandCategoryMoveRowsArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandCategoryMoveRowsArchive.Unmarshal(m, b)
-}
-func (m *CommandCategoryMoveRowsArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandCategoryMoveRowsArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandCategoryMoveRowsArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandCategoryMoveRowsArchive.Merge(m, src)
-}
-func (m *CommandCategoryMoveRowsArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandCategoryMoveRowsArchive.Size(m)
-}
-func (m *CommandCategoryMoveRowsArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandCategoryMoveRowsArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandCategoryMoveRowsArchive proto.InternalMessageInfo
-
-func (m *CommandCategoryMoveRowsArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandCategoryMoveRowsArchive) GetActionType() uint32 {
-	if m != nil && m.ActionType != nil {
-		return *m.ActionType
-	}
-	return 0
-}
-
-func (m *CommandCategoryMoveRowsArchive) GetCategoryRowOrder() []*TSP.UUID {
-	if m != nil {
-		return m.CategoryRowOrder
-	}
-	return nil
-}
-
-func (m *CommandCategoryMoveRowsArchive) GetUndoCategoryRowOrder() []*TSP.UUID {
-	if m != nil {
-		return m.UndoCategoryRowOrder
-	}
-	return nil
-}
-
-func (m *CommandCategoryMoveRowsArchive) GetCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.CellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandCategoryMoveRowsArchive) GetUndoCellDiffMap() *TSP.Reference {
-	if m != nil {
-		return m.UndoCellDiffMap
-	}
-	return nil
-}
-
-func (m *CommandCategoryMoveRowsArchive) GetGroupingColumns() *GroupColumnListArchive {
-	if m != nil {
-		return m.GroupingColumns
-	}
-	return nil
-}
-
-type CommandRewriteHiddenStatesForGroupByChangeArchive struct {
-	Super                *TableCommandArchive        `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	GroupByChange        *TSCE.GroupByChangeArchive  `protobuf:"bytes,2,req,name=group_by_change,json=groupByChange" json:"group_by_change,omitempty"`
-	CollapsedState       *ExpandCollapseStateArchive `protobuf:"bytes,3,opt,name=collapsed_state,json=collapsedState" json:"collapsed_state,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                    `json:"-"`
-	XXX_unrecognized     []byte                      `json:"-"`
-	XXX_sizecache        int32                       `json:"-"`
-}
-
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) Reset() {
-	*m = CommandRewriteHiddenStatesForGroupByChangeArchive{}
-}
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandRewriteHiddenStatesForGroupByChangeArchive) ProtoMessage() {}
-func (*CommandRewriteHiddenStatesForGroupByChangeArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{95}
-}
-
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewriteHiddenStatesForGroupByChangeArchive.Unmarshal(m, b)
-}
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewriteHiddenStatesForGroupByChangeArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewriteHiddenStatesForGroupByChangeArchive.Merge(m, src)
-}
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewriteHiddenStatesForGroupByChangeArchive.Size(m)
-}
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewriteHiddenStatesForGroupByChangeArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandRewriteHiddenStatesForGroupByChangeArchive proto.InternalMessageInfo
-
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) GetGroupByChange() *TSCE.GroupByChangeArchive {
-	if m != nil {
-		return m.GroupByChange
-	}
-	return nil
-}
-
-func (m *CommandRewriteHiddenStatesForGroupByChangeArchive) GetCollapsedState() *ExpandCollapseStateArchive {
-	if m != nil {
-		return m.CollapsedState
-	}
-	return nil
-}
-
-type CommandRewritePencilAnnotationFormulasArchive struct {
-	Super                *TableCommandArchive                                            `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	RewriteSpec          *TSCE.FormulaRewriteSpecArchive                                 `protobuf:"bytes,2,req,name=rewrite_spec,json=rewriteSpec" json:"rewrite_spec,omitempty"`
-	FormulasToRewrite    *TSCE.FormulasForUndoArchive                                    `protobuf:"bytes,3,req,name=formulas_to_rewrite,json=formulasToRewrite" json:"formulas_to_rewrite,omitempty"`
-	AnnotationsForUndo   []*CommandRewritePencilAnnotationFormulasArchive_AnnotationPair `protobuf:"bytes,4,rep,name=annotations_for_undo,json=annotationsForUndo" json:"annotations_for_undo,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                                                        `json:"-"`
-	XXX_unrecognized     []byte                                                          `json:"-"`
-	XXX_sizecache        int32                                                           `json:"-"`
-}
-
-func (m *CommandRewritePencilAnnotationFormulasArchive) Reset() {
-	*m = CommandRewritePencilAnnotationFormulasArchive{}
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandRewritePencilAnnotationFormulasArchive) ProtoMessage() {}
-func (*CommandRewritePencilAnnotationFormulasArchive) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{96}
-}
-
-func (m *CommandRewritePencilAnnotationFormulasArchive) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive.Unmarshal(m, b)
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive.Marshal(b, m, deterministic)
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive.Merge(m, src)
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive) XXX_Size() int {
-	return xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive.Size(m)
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive proto.InternalMessageInfo
-
-func (m *CommandRewritePencilAnnotationFormulasArchive) GetSuper() *TableCommandArchive {
-	if m != nil {
-		return m.Super
-	}
-	return nil
-}
-
-func (m *CommandRewritePencilAnnotationFormulasArchive) GetRewriteSpec() *TSCE.FormulaRewriteSpecArchive {
-	if m != nil {
-		return m.RewriteSpec
-	}
-	return nil
-}
-
-func (m *CommandRewritePencilAnnotationFormulasArchive) GetFormulasToRewrite() *TSCE.FormulasForUndoArchive {
-	if m != nil {
-		return m.FormulasToRewrite
-	}
-	return nil
-}
-
-func (m *CommandRewritePencilAnnotationFormulasArchive) GetAnnotationsForUndo() []*CommandRewritePencilAnnotationFormulasArchive_AnnotationPair {
-	if m != nil {
-		return m.AnnotationsForUndo
-	}
-	return nil
-}
-
-type CommandRewritePencilAnnotationFormulasArchive_AnnotationPair struct {
-	Index                *uint64        `protobuf:"varint,1,req,name=index" json:"index,omitempty"`
-	Annotation           *TSP.Reference `protobuf:"bytes,2,req,name=annotation" json:"annotation,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
-}
-
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) Reset() {
-	*m = CommandRewritePencilAnnotationFormulasArchive_AnnotationPair{}
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) String() string {
-	return proto.CompactTextString(m)
-}
-func (*CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) ProtoMessage() {}
-func (*CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) Descriptor() ([]byte, []int) {
-	return fileDescriptor_5d102eeb586b2c5c, []int{96, 0}
-}
-
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive_AnnotationPair.Unmarshal(m, b)
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive_AnnotationPair.Marshal(b, m, deterministic)
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive_AnnotationPair.Merge(m, src)
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) XXX_Size() int {
-	return xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive_AnnotationPair.Size(m)
-}
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) XXX_DiscardUnknown() {
-	xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive_AnnotationPair.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CommandRewritePencilAnnotationFormulasArchive_AnnotationPair proto.InternalMessageInfo
-
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) GetIndex() uint64 {
-	if m != nil && m.Index != nil {
-		return *m.Index
-	}
-	return 0
-}
-
-func (m *CommandRewritePencilAnnotationFormulasArchive_AnnotationPair) GetAnnotation() *TSP.Reference {
-	if m != nil {
-		return m.Annotation
-	}
-	return nil
-}
-
 func init() {
-	proto.RegisterEnum("TST.TableArea", TableArea_name, TableArea_value)
-	proto.RegisterEnum("TST.TableAreaTransition", TableAreaTransition_name, TableAreaTransition_value)
-	proto.RegisterEnum("TST.ColumnRowTypeEnum", ColumnRowTypeEnum_name, ColumnRowTypeEnum_value)
+	proto.RegisterEnum("TST.CommandDirectionArchive", CommandDirectionArchive_name, CommandDirectionArchive_value)
+	proto.RegisterEnum("TST.CommandRegionArchive", CommandRegionArchive_name, CommandRegionArchive_value)
 	proto.RegisterType((*TableCommandArchive)(nil), "TST.TableCommandArchive")
-	proto.RegisterType((*CommandApplyCellContentsArchive)(nil), "TST.CommandApplyCellContentsArchive")
-	proto.RegisterType((*CommandApplyCellDiffMapArchive)(nil), "TST.CommandApplyCellDiffMapArchive")
-	proto.RegisterType((*CommandApplyCellMapArchive)(nil), "TST.CommandApplyCellMapArchive")
 	proto.RegisterType((*CommandChangeFreezeHeaderStateArchive)(nil), "TST.CommandChangeFreezeHeaderStateArchive")
 	proto.RegisterType((*CommandDeleteCellsArchive)(nil), "TST.CommandDeleteCellsArchive")
 	proto.RegisterType((*CommandDeleteCellContentsArchive)(nil), "TST.CommandDeleteCellContentsArchive")
-	proto.RegisterType((*CommandMutateCellFormatArchive)(nil), "TST.CommandMutateCellFormatArchive")
+	proto.RegisterType((*CommandSetMultipleCellsArchive)(nil), "TST.CommandSetMultipleCellsArchive")
+	proto.RegisterType((*CommandSetMultipleCellsCustomArchive)(nil), "TST.CommandSetMultipleCellsCustomArchive")
+	proto.RegisterType((*CommandSetMultipleCellsMultipleChoiceListArchive)(nil), "TST.CommandSetMultipleCellsMultipleChoiceListArchive")
+	proto.RegisterType((*CommandCoerceMultipleCellsArchive)(nil), "TST.CommandCoerceMultipleCellsArchive")
+	proto.RegisterType((*CommandSetControlCellsDisplayNumberFormatArchive)(nil), "TST.CommandSetControlCellsDisplayNumberFormatArchive")
+	proto.RegisterType((*CommandSetAutomaticFormatArchive)(nil), "TST.CommandSetAutomaticFormatArchive")
 	proto.RegisterType((*CommandSetAutomaticDurationUnitsArchive)(nil), "TST.CommandSetAutomaticDurationUnitsArchive")
-	proto.RegisterType((*CommandSetDurationStyleArchive)(nil), "TST.CommandSetDurationStyleArchive")
-	proto.RegisterType((*CommandSetDurationUnitSmallestLargestArchive)(nil), "TST.CommandSetDurationUnitSmallestLargestArchive")
-	proto.RegisterType((*CommandReplaceCustomFormatArchive)(nil), "TST.CommandReplaceCustomFormatArchive")
-	proto.RegisterType((*CommandMoveCellsArchive)(nil), "TST.CommandMoveCellsArchive")
-	proto.RegisterType((*ColumnRowMetadataArchive)(nil), "TST.ColumnRowMetadataArchive")
 	proto.RegisterType((*CommandInsertColumnsOrRowsArchive)(nil), "TST.CommandInsertColumnsOrRowsArchive")
-	proto.RegisterType((*ColumnRowBundleArchive)(nil), "TST.ColumnRowBundleArchive")
+	proto.RegisterType((*CommandInsertColumnsOrRowsArchive_StyleIndexPair)(nil), "TST.CommandInsertColumnsOrRowsArchive.StyleIndexPair")
+	proto.RegisterType((*CommandPasteArchive)(nil), "TST.CommandPasteArchive")
 	proto.RegisterType((*CommandRemoveColumnsOrRowsArchive)(nil), "TST.CommandRemoveColumnsOrRowsArchive")
-	proto.RegisterType((*CommandRowColumnRangeArchive)(nil), "TST.CommandRowColumnRangeArchive")
 	proto.RegisterType((*CommandResizeColumnOrRowArchive)(nil), "TST.CommandResizeColumnOrRowArchive")
-	proto.RegisterType((*CommandCategoryResizeColumnOrRowArchive)(nil), "TST.CommandCategoryResizeColumnOrRowArchive")
-	proto.RegisterType((*CommandHideShowArchive)(nil), "TST.CommandHideShowArchive")
+	proto.RegisterType((*CommandSetCellArchive)(nil), "TST.CommandSetCellArchive")
 	proto.RegisterType((*CommandTextPreflightInsertCellArchive)(nil), "TST.CommandTextPreflightInsertCellArchive")
 	proto.RegisterType((*CommandPostflightSetCellArchive)(nil), "TST.CommandPostflightSetCellArchive")
-	proto.RegisterType((*CommandChangeTableAreaForColumnOrRowArchive)(nil), "TST.CommandChangeTableAreaForColumnOrRowArchive")
-	proto.RegisterType((*CommandSetPencilAnnotationsArchive)(nil), "TST.CommandSetPencilAnnotationsArchive")
+	proto.RegisterType((*CommandSetNumberOfHeadersOrFootersArchive)(nil), "TST.CommandSetNumberOfHeadersOrFootersArchive")
+	proto.RegisterType((*CommandFixWPStylesInRowsOrColumnsArchive)(nil), "TST.CommandFixWPStylesInRowsOrColumnsArchive")
+	proto.RegisterType((*CommandFixStylesInHeadersOrFootersArchive)(nil), "TST.CommandFixStylesInHeadersOrFootersArchive")
 	proto.RegisterType((*CommandSetTableNameArchive)(nil), "TST.CommandSetTableNameArchive")
 	proto.RegisterType((*CommandSetTableNameEnabledArchive)(nil), "TST.CommandSetTableNameEnabledArchive")
 	proto.RegisterType((*CommandSetTableFontSizeArchive)(nil), "TST.CommandSetTableFontSizeArchive")
 	proto.RegisterType((*CommandSetTableFontNameArchive)(nil), "TST.CommandSetTableFontNameArchive")
 	proto.RegisterType((*CommandSetTableNameHeightArchive)(nil), "TST.CommandSetTableNameHeightArchive")
-	proto.RegisterType((*CommandSetNowArchive)(nil), "TST.CommandSetNowArchive")
-	proto.RegisterType((*CommandSetWasCutArchive)(nil), "TST.CommandSetWasCutArchive")
 	proto.RegisterType((*CommandStyleCellsArchive)(nil), "TST.CommandStyleCellsArchive")
 	proto.RegisterType((*CommandStyleTableArchive)(nil), "TST.CommandStyleTableArchive")
+	proto.RegisterType((*CommandFillCellsArchive)(nil), "TST.CommandFillCellsArchive")
+	proto.RegisterType((*CommandReplaceTextArchive)(nil), "TST.CommandReplaceTextArchive")
+	proto.RegisterType((*CommandReplaceAllTextArchive)(nil), "TST.CommandReplaceAllTextArchive")
 	proto.RegisterType((*CommandSetRepeatingHeaderEnabledArchive)(nil), "TST.CommandSetRepeatingHeaderEnabledArchive")
 	proto.RegisterType((*CommandSetFiltersEnabledArchive)(nil), "TST.CommandSetFiltersEnabledArchive")
-	proto.RegisterType((*CommandAddTableStylePresetArchive)(nil), "TST.CommandAddTableStylePresetArchive")
-	proto.RegisterType((*CommandRemoveTableStylePresetArchive)(nil), "TST.CommandRemoveTableStylePresetArchive")
-	proto.RegisterType((*CommandReplaceTableStylePresetArchive)(nil), "TST.CommandReplaceTableStylePresetArchive")
+	proto.RegisterType((*CommandAddQuickFilterRulesArchive)(nil), "TST.CommandAddQuickFilterRulesArchive")
+	proto.RegisterType((*CommandDeleteFilterRulesArchive)(nil), "TST.CommandDeleteFilterRulesArchive")
+	proto.RegisterType((*CommandModifyFilterRuleArchive)(nil), "TST.CommandModifyFilterRuleArchive")
+	proto.RegisterType((*CommandApplyStrokePresetArchive)(nil), "TST.CommandApplyStrokePresetArchive")
 	proto.RegisterType((*CommandApplyTableStylePresetArchive)(nil), "TST.CommandApplyTableStylePresetArchive")
+	proto.RegisterType((*CommandApplyTableStylePresetArchive_StyleIndexTuple)(nil), "TST.CommandApplyTableStylePresetArchive.StyleIndexTuple")
+	proto.RegisterType((*CommandSetStyleApplyClearsAllFlagArchive)(nil), "TST.CommandSetStyleApplyClearsAllFlagArchive")
+	proto.RegisterType((*CommandApplyThemeToTableArchive)(nil), "TST.CommandApplyThemeToTableArchive")
+	proto.RegisterType((*CommandApplyThemeChildForTableArchive)(nil), "TST.CommandApplyThemeChildForTableArchive")
+	proto.RegisterType((*CommandToggleTextPropertyArchive)(nil), "TST.CommandToggleTextPropertyArchive")
+	proto.RegisterType((*CommandResetFillPropertyToDefault)(nil), "TST.CommandResetFillPropertyToDefault")
+	proto.RegisterType((*CommandSetSingleNumberFormatParameterArchive)(nil), "TST.CommandSetSingleNumberFormatParameterArchive")
 	proto.RegisterType((*CommandSetBaseArchive)(nil), "TST.CommandSetBaseArchive")
 	proto.RegisterType((*CommandSetBasePlacesArchive)(nil), "TST.CommandSetBasePlacesArchive")
 	proto.RegisterType((*CommandSetBaseUseMinusSignArchive)(nil), "TST.CommandSetBaseUseMinusSignArchive")
+	proto.RegisterType((*CommandSetControlMinimumArchive)(nil), "TST.CommandSetControlMinimumArchive")
+	proto.RegisterType((*CommandSetControlMaximumArchive)(nil), "TST.CommandSetControlMaximumArchive")
+	proto.RegisterType((*CommandSetControlIncrementArchive)(nil), "TST.CommandSetControlIncrementArchive")
 	proto.RegisterType((*CommandSetCurrencyCodeArchive)(nil), "TST.CommandSetCurrencyCodeArchive")
 	proto.RegisterType((*CommandSetFractionAccuracyArchive)(nil), "TST.CommandSetFractionAccuracyArchive")
+	proto.RegisterType((*CommandSetMultipleChoiceListFormatForEditedItemArchive)(nil), "TST.CommandSetMultipleChoiceListFormatForEditedItemArchive")
+	proto.RegisterType((*CommandSetMultipleChoiceListFormatForDeleteItemArchive)(nil), "TST.CommandSetMultipleChoiceListFormatForDeleteItemArchive")
+	proto.RegisterType((*CommandSetMultipleChoiceListFormatForReorderItemArchive)(nil), "TST.CommandSetMultipleChoiceListFormatForReorderItemArchive")
+	proto.RegisterType((*CommandSetMultipleChoiceListFormatForInitialValueArchive)(nil), "TST.CommandSetMultipleChoiceListFormatForInitialValueArchive")
 	proto.RegisterType((*CommandSetNegativeNumberStyleArchive)(nil), "TST.CommandSetNegativeNumberStyleArchive")
+	proto.RegisterType((*CommandSetExplicitFormatArchive)(nil), "TST.CommandSetExplicitFormatArchive")
 	proto.RegisterType((*CommandSetNumberOfDecimalPlacesArchive)(nil), "TST.CommandSetNumberOfDecimalPlacesArchive")
 	proto.RegisterType((*CommandSetDateTimeFormatArchive)(nil), "TST.CommandSetDateTimeFormatArchive")
 	proto.RegisterType((*CommandSetShowThousandsSeparatorArchive)(nil), "TST.CommandSetShowThousandsSeparatorArchive")
 	proto.RegisterType((*CommandSetUseAccountingStyleArchive)(nil), "TST.CommandSetUseAccountingStyleArchive")
-	proto.RegisterType((*CommandSetRangeControlMinMaxIncArchive)(nil), "TST.CommandSetRangeControlMinMaxIncArchive")
-	proto.RegisterType((*CommandMoveColumnsOrRowsArchive)(nil), "TST.CommandMoveColumnsOrRowsArchive")
+	proto.RegisterType((*CommandMoveRowsArchive)(nil), "TST.CommandMoveRowsArchive")
+	proto.RegisterType((*CommandMoveColumnsArchive)(nil), "TST.CommandMoveColumnsArchive")
 	proto.RegisterType((*CommandSortArchive)(nil), "TST.CommandSortArchive")
-	proto.RegisterType((*CommandRewriteFormulasForTransposeArchive)(nil), "TST.CommandRewriteFormulasForTransposeArchive")
-	proto.RegisterType((*CommandRewriteTableFormulasForRewriteSpecArchive)(nil), "TST.CommandRewriteTableFormulasForRewriteSpecArchive")
-	proto.RegisterType((*CommandRewriteMergeFormulasArchive)(nil), "TST.CommandRewriteMergeFormulasArchive")
-	proto.RegisterType((*CommandRewriteCategoryFormulasArchive)(nil), "TST.CommandRewriteCategoryFormulasArchive")
+	proto.RegisterType((*CommandRewriteFormulasForSortArchive)(nil), "TST.CommandRewriteFormulasForSortArchive")
+	proto.RegisterType((*CommandRewriteFormulasForTectonicShiftArchive)(nil), "TST.CommandRewriteFormulasForTectonicShiftArchive")
+	proto.RegisterType((*CommandRewriteFormulasForMoveArchive)(nil), "TST.CommandRewriteFormulasForMoveArchive")
+	proto.RegisterType((*CommandRewriteFormulasForCellMergeArchive)(nil), "TST.CommandRewriteFormulasForCellMergeArchive")
 	proto.RegisterType((*CommandRewriteFilterFormulasForTableResizeArchive)(nil), "TST.CommandRewriteFilterFormulasForTableResizeArchive")
-	proto.RegisterType((*CommandRewriteFilterFormulasForRewriteSpecArchive)(nil), "TST.CommandRewriteFilterFormulasForRewriteSpecArchive")
-	proto.RegisterType((*CommandRewriteConditionalStylesForRewriteSpecArchive)(nil), "TST.CommandRewriteConditionalStylesForRewriteSpecArchive")
-	proto.RegisterType((*CommandMergeArchive)(nil), "TST.CommandMergeArchive")
-	proto.RegisterType((*CommandInverseMergeArchive)(nil), "TST.CommandInverseMergeArchive")
-	proto.RegisterType((*CommandUnmergeArchive)(nil), "TST.CommandUnmergeArchive")
-	proto.RegisterType((*CommandChooseTableIdRemapperArchive)(nil), "TST.CommandChooseTableIdRemapperArchive")
-	proto.RegisterType((*CommandCategorySetGroupingColumnsArchive)(nil), "TST.CommandCategorySetGroupingColumnsArchive")
+	proto.RegisterType((*CommandRewriteFilterFormulasForTectonicShiftArchive)(nil), "TST.CommandRewriteFilterFormulasForTectonicShiftArchive")
+	proto.RegisterType((*CommandRewriteFilterFormulasForSortArchive)(nil), "TST.CommandRewriteFilterFormulasForSortArchive")
+	proto.RegisterType((*CommandRewriteConditionalStylesForTectonicShiftArchive)(nil), "TST.CommandRewriteConditionalStylesForTectonicShiftArchive")
+	proto.RegisterType((*CommandRewriteConditionalStylesForSortArchive)(nil), "TST.CommandRewriteConditionalStylesForSortArchive")
+	proto.RegisterType((*CommandRewriteConditionalStylesForRangeMoveArchive)(nil), "TST.CommandRewriteConditionalStylesForRangeMoveArchive")
+	proto.RegisterType((*CommandRewriteConditionalStylesForCellMergeArchive)(nil), "TST.CommandRewriteConditionalStylesForCellMergeArchive")
+	proto.RegisterType((*CommandMergeUnmergeArchive)(nil), "TST.CommandMergeUnmergeArchive")
+	proto.RegisterType((*CommandHideShowArchive)(nil), "TST.CommandHideShowArchive")
+	proto.RegisterType((*TableInfoGeometryCommandArchive)(nil), "TST.TableInfoGeometryCommandArchive")
 	proto.RegisterType((*FormulaEditingCommandGroupArchive)(nil), "TST.FormulaEditingCommandGroupArchive")
 	proto.RegisterType((*FormulaEditingCommandSelectionBehaviorArchive)(nil), "TST.FormulaEditingCommandSelectionBehaviorArchive")
+	proto.RegisterType((*UndoRedoStateCommandSelectionBehaviorArchive)(nil), "TST.UndoRedoStateCommandSelectionBehaviorArchive")
 	proto.RegisterType((*TableCommandSelectionBehaviorArchive)(nil), "TST.TableCommandSelectionBehaviorArchive")
+	proto.RegisterType((*DisableTableNameSelectionBehaviorArchive)(nil), "TST.DisableTableNameSelectionBehaviorArchive")
 	proto.RegisterType((*CommandApplyCellCommentArchive)(nil), "TST.CommandApplyCellCommentArchive")
+	proto.RegisterType((*CommandApplyConditionalStyleSetArchive)(nil), "TST.CommandApplyConditionalStyleSetArchive")
 	proto.RegisterType((*CommandSetFormulaTokenizationArchive)(nil), "TST.CommandSetFormulaTokenizationArchive")
+	proto.RegisterType((*CommandSetFilterEnabledArchive)(nil), "TST.CommandSetFilterEnabledArchive")
+	proto.RegisterType((*CommandSetFilterRuleEnabledArchive)(nil), "TST.CommandSetFilterRuleEnabledArchive")
 	proto.RegisterType((*CommandSetFilterSetTypeArchive)(nil), "TST.CommandSetFilterSetTypeArchive")
+	proto.RegisterType((*CommandSetStyleNetworkArchive)(nil), "TST.CommandSetStyleNetworkArchive")
+	proto.RegisterType((*CommandMutateCellsArchive)(nil), "TST.CommandMutateCellsArchive")
+	proto.RegisterType((*CommandDisableFilterRulesForColumnArchive)(nil), "TST.CommandDisableFilterRulesForColumnArchive")
 	proto.RegisterType((*CommandSetTextStyleArchive)(nil), "TST.CommandSetTextStyleArchive")
-	proto.RegisterType((*CommandSetTextStylePropertiesArchive)(nil), "TST.CommandSetTextStylePropertiesArchive")
-	proto.RegisterType((*CommandJustForNotifyingArchive)(nil), "TST.CommandJustForNotifyingArchive")
+	proto.RegisterType((*CommandNotifyForTransformingArchive)(nil), "TST.CommandNotifyForTransformingArchive")
 	proto.RegisterType((*CommandSetStorageLanguageArchive)(nil), "TST.CommandSetStorageLanguageArchive")
-	proto.RegisterType((*CommandSetSortOrderArchive)(nil), "TST.CommandSetSortOrderArchive")
-	proto.RegisterType((*CommandRewriteSortOrderForTableResizeArchive)(nil), "TST.CommandRewriteSortOrderForTableResizeArchive")
-	proto.RegisterType((*CommandRewriteSortOrderForRewriteSpecArchive)(nil), "TST.CommandRewriteSortOrderForRewriteSpecArchive")
-	proto.RegisterType((*CommandSetFilterSetArchive)(nil), "TST.CommandSetFilterSetArchive")
-	proto.RegisterType((*ColumnRowRestoreDataArchive)(nil), "TST.ColumnRowRestoreDataArchive")
-	proto.RegisterType((*CommandTransposeTableArchive)(nil), "TST.CommandTransposeTableArchive")
-	proto.RegisterType((*CommandSetStructuredTextImportRecordArchive)(nil), "TST.CommandSetStructuredTextImportRecordArchive")
-	proto.RegisterType((*CommandCategoryCollapseExpandGroupArchive)(nil), "TST.CommandCategoryCollapseExpandGroupArchive")
-	proto.RegisterType((*CommandCategoryChangeSummaryAggregateType)(nil), "TST.CommandCategoryChangeSummaryAggregateType")
-	proto.RegisterType((*CommandCategorySetLabelRowVisibility)(nil), "TST.CommandCategorySetLabelRowVisibility")
-	proto.RegisterType((*CommandCategoryWillChangeGroupValue)(nil), "TST.CommandCategoryWillChangeGroupValue")
-	proto.RegisterType((*IdempotentSelectionTransformerArchive)(nil), "TST.IdempotentSelectionTransformerArchive")
-	proto.RegisterType((*WPSelectionTransformerArchive)(nil), "TST.WPSelectionTransformerArchive")
-	proto.RegisterType((*TableSubSelectionTransformerBaseArchive)(nil), "TST.TableSubSelectionTransformerBaseArchive")
-	proto.RegisterType((*TableNameSelectionTransformerArchive)(nil), "TST.TableNameSelectionTransformerArchive")
-	proto.RegisterType((*ControlCellSelectionTransformerArchive)(nil), "TST.ControlCellSelectionTransformerArchive")
-	proto.RegisterType((*StockCellSelectionTransformerArchive)(nil), "TST.StockCellSelectionTransformerArchive")
-	proto.RegisterType((*RegionSelectionTransformerArchive)(nil), "TST.RegionSelectionTransformerArchive")
-	proto.RegisterType((*RowColumnSelectionTransformerArchive)(nil), "TST.RowColumnSelectionTransformerArchive")
-	proto.RegisterType((*CommandCategoryMoveRowsArchive)(nil), "TST.CommandCategoryMoveRowsArchive")
-	proto.RegisterType((*CommandRewriteHiddenStatesForGroupByChangeArchive)(nil), "TST.CommandRewriteHiddenStatesForGroupByChangeArchive")
-	proto.RegisterType((*CommandRewritePencilAnnotationFormulasArchive)(nil), "TST.CommandRewritePencilAnnotationFormulasArchive")
-	proto.RegisterType((*CommandRewritePencilAnnotationFormulasArchive_AnnotationPair)(nil), "TST.CommandRewritePencilAnnotationFormulasArchive.AnnotationPair")
 }
 
 func init() { proto.RegisterFile("TSTCommandArchives.proto", fileDescriptor_5d102eeb586b2c5c) }
 
 var fileDescriptor_5d102eeb586b2c5c = []byte{
-	// 7462 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xec, 0x7d, 0x5b, 0x88, 0x24, 0xd9,
-	0x75, 0xe0, 0x66, 0x66, 0x3d, 0x4f, 0x65, 0x66, 0x55, 0x45, 0xbd, 0xb2, 0xab, 0xbb, 0xd5, 0xd5,
-	0x31, 0xdd, 0x33, 0x35, 0x8f, 0xae, 0x6e, 0xf5, 0x68, 0x66, 0x7a, 0x1e, 0x92, 0xba, 0x1e, 0x5d,
-	0xd3, 0xa5, 0xe9, 0x9a, 0x2e, 0x45, 0x66, 0x77, 0xc3, 0xee, 0x42, 0x6c, 0x54, 0xc6, 0xcd, 0xac,
-	0xd0, 0x44, 0x46, 0x24, 0x11, 0x91, 0x95, 0x53, 0xf3, 0xb3, 0xda, 0x45, 0x88, 0xdd, 0xd5, 0x0a,
-	0x84, 0x60, 0x97, 0xfd, 0xd1, 0x2e, 0x2c, 0xbb, 0xcb, 0x7e, 0x18, 0x1b, 0xfb, 0x4b, 0x58, 0x60,
-	0x21, 0x8c, 0xf1, 0xaf, 0x30, 0x58, 0x60, 0x1b, 0x8c, 0x65, 0x8c, 0x6d, 0x81, 0x41, 0x08, 0x1b,
-	0x0c, 0x06, 0x63, 0x73, 0xcf, 0x7d, 0xc4, 0x8d, 0x47, 0xd6, 0x23, 0xab, 0x66, 0x34, 0x1a, 0xfc,
-	0x57, 0x79, 0xef, 0x39, 0xe7, 0x9e, 0x7b, 0xee, 0x8d, 0x73, 0xcf, 0xeb, 0xde, 0x82, 0x5a, 0xa3,
-	0xde, 0xd8, 0xf4, 0x3b, 0x1d, 0xcb, 0xb3, 0xd7, 0x83, 0xe6, 0x81, 0x73, 0x48, 0xc2, 0xb5, 0x6e,
-	0xe0, 0x47, 0xbe, 0x56, 0x6a, 0xd4, 0x1b, 0xcb, 0xb3, 0x8d, 0xfa, 0xde, 0x2e, 0x09, 0x43, 0xab,
-	0x2d, 0xda, 0x69, 0xd3, 0x56, 0x12, 0x74, 0xb9, 0xd6, 0xa8, 0x6f, 0xe5, 0x12, 0xa1, 0xc0, 0xef,
-	0x65, 0x9b, 0xea, 0xa9, 0x26, 0xad, 0x51, 0xdf, 0x7c, 0x90, 0x6d, 0x7b, 0xb6, 0x97, 0x45, 0x6d,
-	0xa4, 0x9a, 0x16, 0x94, 0x26, 0x33, 0xf4, 0x79, 0xb3, 0xfe, 0xfb, 0x25, 0x98, 0x6b, 0x58, 0xfb,
-	0x2e, 0x49, 0xb2, 0xa5, 0xbd, 0x08, 0xa3, 0x61, 0xaf, 0x4b, 0x82, 0x5a, 0x61, 0xa5, 0xb8, 0x3a,
-	0x75, 0x77, 0x6e, 0xad, 0x51, 0x7f, 0x6f, 0x2d, 0x09, 0x63, 0x30, 0x08, 0xed, 0x2d, 0xd0, 0x22,
-	0x4a, 0xc1, 0x74, 0xbc, 0x96, 0x6f, 0x3a, 0xb6, 0xd9, 0xb5, 0xa2, 0x83, 0x5a, 0x11, 0xf1, 0x2a,
-	0x6b, 0x8d, 0xfa, 0xde, 0xda, 0x93, 0x27, 0x3b, 0x5b, 0x7b, 0x56, 0x74, 0x60, 0x4c, 0x23, 0xe0,
-	0x8e, 0xd7, 0xf2, 0x77, 0x6c, 0xda, 0xa0, 0xad, 0xc0, 0x54, 0x93, 0x11, 0xf5, 0xac, 0x0e, 0xa9,
-	0x95, 0x56, 0x0a, 0xab, 0x93, 0x86, 0xda, 0xa4, 0x7d, 0x15, 0xae, 0xda, 0xa4, 0x65, 0xf5, 0xdc,
-	0xc8, 0x6c, 0x12, 0xd7, 0x35, 0xc3, 0xe8, 0xc8, 0x25, 0xa1, 0xd9, 0xf4, 0xbd, 0xc8, 0x72, 0x3c,
-	0x12, 0xd4, 0x46, 0x56, 0x0a, 0xab, 0x53, 0x77, 0xab, 0x38, 0x90, 0x41, 0x5a, 0x24, 0x20, 0x5e,
-	0x93, 0x18, 0xcb, 0x1c, 0x69, 0x93, 0xb8, 0x6e, 0x1d, 0x51, 0x36, 0x05, 0x86, 0x76, 0x05, 0x26,
-	0x23, 0xa7, 0x43, 0xc2, 0xc8, 0xea, 0x74, 0x6b, 0xa3, 0x2b, 0x85, 0xd5, 0x82, 0x11, 0x37, 0x68,
-	0x37, 0xa0, 0x1a, 0x58, 0x9e, 0xed, 0x77, 0xcc, 0x90, 0x10, 0xdb, 0x74, 0xfd, 0xda, 0xd8, 0x4a,
-	0x61, 0xb5, 0x62, 0x94, 0x59, 0x6b, 0x9d, 0x10, 0xfb, 0x91, 0x9f, 0x86, 0x3a, 0x70, 0x6a, 0xe3,
-	0x69, 0xa8, 0x87, 0x8e, 0x76, 0x15, 0xc0, 0x09, 0x4d, 0xc7, 0x3b, 0x24, 0x41, 0x48, 0x6a, 0x13,
-	0x2b, 0x85, 0xd5, 0x09, 0x63, 0xd2, 0x09, 0x77, 0x58, 0x83, 0xf6, 0x1c, 0x54, 0x7c, 0xd7, 0x36,
-	0x63, 0x66, 0x26, 0x91, 0x99, 0xb2, 0xef, 0xda, 0x0d, 0xc9, 0xcf, 0xf3, 0x30, 0x4d, 0x81, 0x94,
-	0xd1, 0x6a, 0xb0, 0x52, 0x58, 0x1d, 0x31, 0x28, 0xae, 0x21, 0x47, 0xd3, 0xff, 0x7f, 0x11, 0xae,
-	0x89, 0x05, 0xea, 0x76, 0xdd, 0x23, 0x3a, 0x73, 0x3a, 0x67, 0xe2, 0x45, 0xa1, 0x58, 0xd5, 0xb5,
-	0xe4, 0xaa, 0xd6, 0xd6, 0x1a, 0xf5, 0xc6, 0x5a, 0xce, 0xf2, 0x8b, 0xa5, 0xbd, 0x0b, 0x15, 0x14,
-	0xba, 0xed, 0xb4, 0x5a, 0x66, 0xc7, 0xea, 0xf2, 0x55, 0x4d, 0x0b, 0x7b, 0x8a, 0x02, 0x6d, 0x39,
-	0xad, 0xd6, 0xae, 0xd5, 0xd5, 0x36, 0x61, 0x31, 0xf0, 0x5d, 0x77, 0xdf, 0x6a, 0x7e, 0x60, 0x26,
-	0x91, 0x4b, 0xb9, 0x2b, 0x35, 0x27, 0xa0, 0x37, 0x15, 0x22, 0x6f, 0x80, 0xd6, 0xec, 0x85, 0x91,
-	0xdf, 0x31, 0x5b, 0x7e, 0xd0, 0xb1, 0x22, 0xf3, 0x03, 0x72, 0x14, 0xd6, 0x46, 0x56, 0x4a, 0xab,
-	0x53, 0x77, 0x27, 0xe5, 0x9e, 0x32, 0x66, 0x18, 0xd0, 0x36, 0xc2, 0xbc, 0x47, 0x8e, 0x42, 0x2a,
-	0x52, 0xab, 0x19, 0x39, 0xbe, 0x67, 0x86, 0x51, 0xe0, 0x78, 0x6d, 0x5c, 0xdf, 0x49, 0xa3, 0xcc,
-	0x1a, 0xeb, 0xd8, 0xa6, 0xff, 0xa8, 0x08, 0x9f, 0x4b, 0x8b, 0x8a, 0x8f, 0xfc, 0x49, 0x4a, 0xea,
-	0xcb, 0x70, 0x25, 0x3c, 0xf0, 0x7b, 0xae, 0x6d, 0x5a, 0xae, 0xeb, 0xf7, 0xcd, 0x0e, 0x09, 0xda,
-	0xc4, 0x6c, 0x05, 0x56, 0xbb, 0x43, 0x17, 0xad, 0x56, 0x5a, 0x29, 0xae, 0x4e, 0x18, 0x97, 0x18,
-	0xcc, 0x3a, 0x05, 0xd9, 0xa5, 0x10, 0xdb, 0x02, 0x40, 0x5b, 0x87, 0x05, 0xbe, 0xb7, 0x52, 0x92,
-	0xce, 0xff, 0x26, 0x34, 0x0e, 0x7c, 0xb2, 0xa0, 0x47, 0x4f, 0x14, 0xb4, 0xfe, 0xb3, 0x12, 0x2c,
-	0xa7, 0x65, 0x78, 0x3e, 0xf9, 0x05, 0xc4, 0xf6, 0xd9, 0x3c, 0x8e, 0x91, 0x1f, 0x05, 0xe2, 0x43,
-	0x51, 0x9c, 0x9e, 0xa7, 0xe2, 0xe4, 0x6f, 0xb0, 0x29, 0x0a, 0x24, 0x70, 0x1e, 0xc3, 0x15, 0xc4,
-	0xa1, 0xb3, 0xed, 0xb9, 0x96, 0x19, 0x90, 0x7e, 0xe0, 0x44, 0xc4, 0xe4, 0x2a, 0x67, 0x80, 0xe4,
-	0x2e, 0x51, 0x9c, 0x6d, 0x86, 0x62, 0x30, 0x0c, 0x3e, 0x8d, 0xa1, 0x05, 0xa8, 0xbd, 0x0d, 0xcb,
-	0x6c, 0xc1, 0xfd, 0xbe, 0x47, 0x02, 0x53, 0x7e, 0x33, 0x8e, 0x67, 0x93, 0x0f, 0xb9, 0xce, 0x59,
-	0x42, 0x88, 0xc7, 0x14, 0xc0, 0xe0, 0xfd, 0x3b, 0xb4, 0x5b, 0xd3, 0xa1, 0xe2, 0x84, 0x66, 0x2b,
-	0xf0, 0x3b, 0x66, 0xd7, 0x0a, 0x23, 0x52, 0x1b, 0xc7, 0xbd, 0x32, 0xe5, 0x84, 0xdb, 0x81, 0xdf,
-	0xd9, 0xa3, 0x4d, 0xda, 0x43, 0xa8, 0x0d, 0x98, 0x65, 0x58, 0x9b, 0x40, 0xfe, 0xd2, 0xd3, 0x5c,
-	0x6c, 0xe5, 0x4d, 0x31, 0xd4, 0xff, 0xaa, 0x00, 0x37, 0xf9, 0x8f, 0xcd, 0x03, 0xcb, 0xa3, 0x5b,
-	0x90, 0x90, 0x8f, 0xc8, 0x43, 0x62, 0xd9, 0x24, 0xa8, 0x47, 0x56, 0x44, 0x86, 0x5d, 0xf6, 0x7b,
-	0x30, 0x69, 0x3b, 0x01, 0xc1, 0x8f, 0x13, 0x97, 0xbc, 0x7a, 0x77, 0x39, 0xc6, 0xd9, 0x72, 0x3a,
-	0xc4, 0x0b, 0x1d, 0xdf, 0x13, 0x58, 0x31, 0xb0, 0xb6, 0x0a, 0x33, 0x1e, 0xe9, 0x9b, 0x2d, 0xe4,
-	0xc4, 0x0c, 0x29, 0x13, 0xfc, 0x83, 0xa9, 0x7a, 0xa4, 0xcf, 0x18, 0x44, 0xd6, 0xb4, 0x97, 0x60,
-	0xb6, 0x1b, 0x90, 0xc3, 0x24, 0xe8, 0x08, 0x82, 0x4e, 0xd3, 0x0e, 0x05, 0x56, 0xff, 0x59, 0x11,
-	0x2e, 0x71, 0x4e, 0xb7, 0x88, 0x4b, 0x22, 0xfc, 0x56, 0x86, 0x56, 0x9f, 0x6f, 0x73, 0xa5, 0xd0,
-	0x73, 0x6c, 0xd3, 0x75, 0xc2, 0x88, 0x6f, 0xea, 0x25, 0xc4, 0xa3, 0x94, 0x9f, 0xec, 0x6c, 0x3d,
-	0x72, 0xc2, 0x48, 0xa0, 0xa1, 0x76, 0x78, 0xe2, 0xd8, 0xb4, 0x4d, 0xbb, 0x07, 0x33, 0x89, 0x8f,
-	0x7b, 0xf0, 0x06, 0xaf, 0x2a, 0xdf, 0x35, 0xdd, 0xe3, 0xf7, 0xa0, 0xd6, 0xeb, 0xda, 0x56, 0x44,
-	0xcc, 0x7d, 0x3f, 0xb0, 0x49, 0x60, 0x1e, 0x3a, 0xa1, 0xb3, 0xef, 0xb8, 0x4e, 0x74, 0x84, 0xfb,
-	0x7b, 0xc2, 0x58, 0x64, 0xfd, 0x1b, 0xd8, 0xfd, 0x54, 0xf6, 0x6a, 0xb7, 0x61, 0xce, 0xf1, 0x0e,
-	0x2d, 0xd7, 0x41, 0x6c, 0xba, 0x5b, 0x50, 0x11, 0x8d, 0x22, 0x92, 0x16, 0x77, 0x6d, 0xf2, 0x1e,
-	0xed, 0x2d, 0xb8, 0x94, 0x83, 0x60, 0x62, 0x0b, 0xee, 0xe1, 0x09, 0x63, 0x29, 0x8b, 0xf6, 0x94,
-	0xfe, 0xd6, 0xff, 0xa0, 0x00, 0x2b, 0x19, 0x59, 0x9f, 0xf7, 0xc4, 0x3a, 0x97, 0xc8, 0x07, 0xea,
-	0xd3, 0xd2, 0x69, 0xf5, 0xa9, 0xfe, 0x7b, 0xf1, 0xd1, 0xb2, 0xdb, 0xa3, 0x5b, 0x8a, 0x76, 0xb2,
-	0xaf, 0xfe, 0x02, 0xa7, 0x54, 0xf8, 0x04, 0xa7, 0x44, 0x49, 0xf4, 0x0f, 0x7c, 0x97, 0x08, 0x05,
-	0x77, 0xd2, 0x29, 0x83, 0xc0, 0x6c, 0xca, 0x82, 0xc4, 0x1d, 0x98, 0x77, 0xe8, 0xba, 0xda, 0xc4,
-	0x16, 0x54, 0xa2, 0xa3, 0x2e, 0xa9, 0x8d, 0xae, 0x14, 0x57, 0x2b, 0x74, 0x50, 0xd6, 0xc7, 0x90,
-	0x1a, 0x47, 0x5d, 0xa2, 0x7f, 0xbb, 0x00, 0x2f, 0x70, 0x71, 0xd4, 0x49, 0xb4, 0xde, 0x8b, 0xfc,
-	0x8e, 0x15, 0x39, 0xcd, 0xad, 0x5e, 0x60, 0xd1, 0xcf, 0xff, 0x89, 0xe7, 0xc4, 0x7b, 0xe4, 0xcd,
-	0xa4, 0x40, 0x9f, 0x63, 0x82, 0x39, 0x76, 0x11, 0x84, 0x6c, 0x5f, 0x80, 0x69, 0x4b, 0xd0, 0x36,
-	0x7b, 0x94, 0x28, 0xff, 0x42, 0xaa, 0xb2, 0x19, 0x87, 0xd2, 0xff, 0x63, 0x41, 0xae, 0x6b, 0x9d,
-	0x44, 0x82, 0x0d, 0xb4, 0x2c, 0x2f, 0x80, 0x8d, 0x9b, 0x50, 0xb5, 0x39, 0x49, 0x66, 0xe0, 0xe2,
-	0x1a, 0x57, 0x8c, 0x8a, 0xad, 0x0e, 0xa4, 0xff, 0x66, 0x01, 0x5e, 0xc9, 0x32, 0x41, 0x19, 0xac,
-	0x77, 0x2c, 0xd7, 0x25, 0x61, 0xf4, 0xc8, 0x0a, 0xda, 0x44, 0x6e, 0x85, 0xf3, 0xb0, 0xf4, 0x1c,
-	0x54, 0x42, 0x4e, 0x14, 0x05, 0xc3, 0x39, 0x2a, 0x8b, 0x46, 0x3a, 0xaa, 0x76, 0x1d, 0xca, 0x2e,
-	0x1b, 0x91, 0xc1, 0x94, 0x10, 0x66, 0x8a, 0xb7, 0x51, 0x10, 0xfd, 0x87, 0x05, 0xb8, 0xce, 0x47,
-	0x34, 0x48, 0xd7, 0xb5, 0x9a, 0x64, 0x53, 0x39, 0x09, 0x05, 0xa3, 0xe2, 0x28, 0x97, 0x7b, 0xab,
-	0x30, 0xf8, 0x28, 0x17, 0x9b, 0xea, 0x75, 0x98, 0xa6, 0x0a, 0xc7, 0x89, 0x54, 0xa3, 0x2b, 0x0f,
-	0xab, 0xc2, 0xc0, 0x04, 0x9e, 0xfc, 0xfe, 0xc6, 0x4e, 0xf5, 0xfd, 0xe9, 0x7f, 0x3b, 0x0e, 0x4b,
-	0x42, 0x66, 0xfe, 0xe1, 0xf9, 0x4e, 0x84, 0x75, 0x58, 0xb4, 0xc3, 0xc8, 0x3c, 0xad, 0xbf, 0xa4,
-	0xd9, 0x61, 0xd4, 0x48, 0xb9, 0x4c, 0xf7, 0xa0, 0x12, 0x06, 0x4d, 0xd4, 0x06, 0x01, 0x3d, 0x8b,
-	0xf1, 0xd4, 0x9b, 0xba, 0x3b, 0x1f, 0xdb, 0x1a, 0xa4, 0x19, 0xeb, 0x82, 0x30, 0x68, 0x3e, 0x71,
-	0xa8, 0x9b, 0xd0, 0x26, 0x14, 0x93, 0x0e, 0x1e, 0x63, 0x8e, 0x1c, 0x87, 0x69, 0x87, 0x91, 0xc4,
-	0xdc, 0x04, 0xe6, 0xb9, 0x99, 0xb6, 0x38, 0x91, 0xf1, 0x4c, 0x38, 0xfe, 0xb0, 0xae, 0x46, 0x89,
-	0x66, 0xed, 0x0e, 0x94, 0x29, 0xe3, 0xf2, 0x30, 0x1b, 0xcb, 0xb5, 0xf0, 0x20, 0x0c, 0x9a, 0xe2,
-	0x20, 0xbb, 0x03, 0x65, 0xca, 0xb0, 0xc4, 0x18, 0xcf, 0x5d, 0x5e, 0xb0, 0xc3, 0x48, 0x60, 0xec,
-	0xc0, 0x25, 0x89, 0x91, 0xf1, 0x14, 0x27, 0x72, 0xd1, 0x17, 0x39, 0x7a, 0xda, 0x4b, 0x7c, 0x13,
-	0x66, 0x51, 0xce, 0x09, 0x0b, 0x73, 0x32, 0xff, 0x00, 0xa6, 0x52, 0x56, 0x8c, 0xcc, 0x37, 0x61,
-	0x16, 0x05, 0x9d, 0x40, 0x85, 0x7c, 0x54, 0x2a, 0x66, 0x05, 0x75, 0x03, 0x3e, 0x47, 0x51, 0x8f,
-	0xb1, 0x0c, 0xa7, 0x50, 0x67, 0x2e, 0xdb, 0x61, 0xb4, 0x3b, 0xc0, 0x38, 0x3c, 0xce, 0xf0, 0x2b,
-	0x9f, 0xc5, 0xf0, 0xd3, 0xbe, 0x0a, 0xcc, 0x02, 0x35, 0xb9, 0x4f, 0x15, 0xf9, 0x66, 0x40, 0xc2,
-	0xc8, 0x0f, 0x48, 0xad, 0x82, 0xd3, 0x61, 0xeb, 0xcf, 0x18, 0xe9, 0x12, 0xa6, 0x8f, 0xc4, 0xfa,
-	0xcf, 0x23, 0xea, 0x3a, 0x62, 0x36, 0x7c, 0x83, 0xe1, 0x69, 0xcf, 0xe0, 0x0a, 0x37, 0x13, 0x4c,
-	0x71, 0xaa, 0x85, 0x2a, 0xdd, 0xea, 0xf1, 0x87, 0x5b, 0x8d, 0x23, 0x6f, 0xb2, 0x33, 0x2e, 0x8c,
-	0x09, 0xef, 0xc2, 0x65, 0x41, 0x98, 0x36, 0x58, 0x6d, 0x92, 0xa0, 0x3b, 0x9d, 0x3b, 0x71, 0x41,
-	0xae, 0xce, 0x31, 0x24, 0x39, 0xfd, 0xc7, 0x05, 0xa8, 0x6d, 0xfa, 0x6e, 0xaf, 0xe3, 0x19, 0xd4,
-	0xef, 0x8a, 0x2c, 0xdb, 0x8a, 0x2c, 0xf1, 0xd9, 0x6b, 0x30, 0x12, 0x3a, 0x1f, 0x11, 0xfc, 0xea,
-	0x0b, 0x06, 0xfe, 0x4d, 0x15, 0xe6, 0x81, 0x63, 0x3b, 0x5e, 0x9b, 0x0b, 0x0b, 0xbf, 0xe8, 0x8a,
-	0x51, 0x66, 0x8d, 0x4c, 0x0c, 0xda, 0x2d, 0x80, 0x78, 0x6f, 0x0e, 0x38, 0x83, 0x27, 0x9b, 0x62,
-	0x37, 0x52, 0xf0, 0x88, 0x7c, 0x18, 0x71, 0xf0, 0xfc, 0xf3, 0x76, 0x92, 0x42, 0x30, 0xf0, 0xab,
-	0x30, 0xd2, 0xeb, 0x39, 0x36, 0x7e, 0x9b, 0x09, 0xef, 0x03, 0x9b, 0xf5, 0x3f, 0x1d, 0x91, 0xaa,
-	0x78, 0xc7, 0x0b, 0x49, 0x10, 0xb1, 0xf9, 0x85, 0x8f, 0x03, 0xc3, 0xef, 0x0f, 0xad, 0xd2, 0x5e,
-	0x85, 0xb1, 0xfd, 0x9e, 0x67, 0xe3, 0x99, 0x45, 0x11, 0x2e, 0xf3, 0x43, 0x86, 0x8b, 0x6e, 0x03,
-	0xfb, 0x04, 0x0e, 0x07, 0xd5, 0x5e, 0x84, 0x89, 0x13, 0x8c, 0xda, 0xf1, 0x26, 0xff, 0x22, 0x5e,
-	0x07, 0x8d, 0x7e, 0x87, 0x81, 0xdf, 0x37, 0x9b, 0x48, 0x94, 0x6e, 0x19, 0xfc, 0x0a, 0x12, 0x53,
-	0x9c, 0x0e, 0x83, 0xa6, 0xe1, 0xf7, 0xd9, 0xb8, 0x4f, 0x1c, 0x5b, 0x7b, 0x55, 0x78, 0x87, 0x62,
-	0xeb, 0xe7, 0x8b, 0xaf, 0x8c, 0xde, 0xa1, 0xd8, 0xf0, 0x19, 0x97, 0x72, 0xf4, 0x64, 0x97, 0xf2,
-	0x1d, 0x80, 0xd0, 0x0f, 0x22, 0x13, 0x8d, 0x69, 0x34, 0x7a, 0xa7, 0xee, 0x5e, 0x8d, 0xa5, 0x56,
-	0xf7, 0x83, 0xe8, 0x31, 0xed, 0x7a, 0xb2, 0xb3, 0x25, 0xfd, 0x98, 0x50, 0x34, 0xd2, 0x25, 0x6e,
-	0x39, 0x6e, 0x44, 0x02, 0x33, 0x24, 0xd1, 0x00, 0x0d, 0x37, 0xc9, 0x20, 0xea, 0x24, 0xd2, 0x1e,
-	0xc2, 0x75, 0x1e, 0x33, 0x20, 0x76, 0x9b, 0x98, 0xe4, 0xc3, 0xae, 0xe5, 0xd9, 0xb1, 0x37, 0x4b,
-	0xb5, 0x75, 0xc8, 0x03, 0x4d, 0x57, 0x19, 0xe0, 0x03, 0xbb, 0x4d, 0x1e, 0x20, 0x98, 0x70, 0x60,
-	0x11, 0x88, 0x9a, 0x3e, 0x7d, 0x2b, 0x34, 0x9b, 0x56, 0x44, 0xda, 0x7e, 0xe0, 0x7c, 0x44, 0x6c,
-	0xd4, 0x6e, 0x13, 0x46, 0xb5, 0x6f, 0x85, 0x9b, 0x71, 0xab, 0xb6, 0x0a, 0x80, 0x32, 0x61, 0xf3,
-	0x83, 0xb4, 0x67, 0x3b, 0x49, 0x3b, 0x71, 0x2e, 0xfa, 0x9f, 0x95, 0x60, 0x31, 0x7f, 0xe1, 0xb5,
-	0x05, 0x18, 0x73, 0x42, 0xba, 0x88, 0xb8, 0xad, 0x26, 0x8c, 0x51, 0x27, 0x34, 0xfc, 0xbe, 0x76,
-	0x0b, 0x2a, 0x87, 0x0e, 0xe9, 0xab, 0xb6, 0x6d, 0x8a, 0xfc, 0x14, 0xed, 0x17, 0xd6, 0xec, 0x3b,
-	0x50, 0x45, 0x70, 0x6a, 0x3c, 0x32, 0xf8, 0xd2, 0x4a, 0x69, 0xb5, 0x7a, 0x77, 0x31, 0xb9, 0xe7,
-	0xa8, 0x05, 0xf9, 0xc0, 0xeb, 0x75, 0x8c, 0x32, 0x85, 0xa6, 0xbf, 0x10, 0xfb, 0x16, 0x54, 0xf6,
-	0xad, 0x90, 0xc4, 0x83, 0x65, 0xe2, 0x49, 0x53, 0xb4, 0x5f, 0x19, 0x0c, 0xc1, 0xe3, 0xc1, 0x46,
-	0x8f, 0x1f, 0x8c, 0x42, 0xcb, 0xc1, 0xee, 0xc3, 0x12, 0x17, 0xed, 0x11, 0x93, 0x5c, 0x3c, 0xec,
-	0x58, 0x7a, 0xd8, 0x79, 0x01, 0xc9, 0xf6, 0x09, 0x1f, 0xff, 0x31, 0xd4, 0x52, 0x14, 0x62, 0x4e,
-	0xc6, 0x8f, 0xe5, 0x64, 0x21, 0x41, 0x4f, 0xb2, 0xb4, 0x01, 0x95, 0x0e, 0x57, 0x64, 0x8c, 0x0a,
-	0x8b, 0x02, 0x5c, 0x4d, 0x52, 0x49, 0xe9, 0x3a, 0xa3, 0x2c, 0x70, 0x28, 0x0d, 0xfd, 0x47, 0x23,
-	0x8a, 0x39, 0xd7, 0xa1, 0xe6, 0xd0, 0xaf, 0x82, 0x0e, 0xc9, 0x7c, 0xd6, 0x23, 0x27, 0x7f, 0xd6,
-	0xaf, 0xc3, 0x34, 0x8b, 0x14, 0xc5, 0x5f, 0x67, 0xbe, 0x32, 0x40, 0xd2, 0xdb, 0xf2, 0x0b, 0x7d,
-	0xc0, 0xf1, 0xce, 0xaa, 0x13, 0x90, 0x8c, 0xec, 0xd0, 0x9e, 0xc2, 0xca, 0x80, 0x43, 0x9c, 0x7e,
-	0xed, 0x68, 0x5b, 0x0c, 0xd0, 0x16, 0x57, 0x72, 0x0f, 0xf3, 0x6d, 0x3f, 0xa0, 0x76, 0x86, 0xf6,
-	0x0c, 0x5e, 0x14, 0x0e, 0xe1, 0x69, 0x15, 0xc9, 0x0d, 0x8e, 0x50, 0x3f, 0x56, 0x9f, 0x24, 0xd5,
-	0xc4, 0xe4, 0x31, 0x6a, 0xe2, 0x1b, 0x05, 0xb8, 0x22, 0xf6, 0x90, 0xd0, 0xd8, 0x48, 0x64, 0xd8,
-	0xed, 0x43, 0xcf, 0x3d, 0xc7, 0x0e, 0xb3, 0xca, 0x03, 0x9b, 0x15, 0xdd, 0x53, 0x52, 0x74, 0x8f,
-	0xfe, 0xdf, 0x0b, 0x32, 0x60, 0x6e, 0x10, 0x7a, 0x84, 0x33, 0x4e, 0x70, 0x27, 0x0b, 0x4e, 0xde,
-	0x48, 0x72, 0x72, 0x5d, 0x75, 0xa0, 0x72, 0x79, 0x17, 0x2c, 0xcd, 0xc3, 0x28, 0x25, 0xc9, 0x78,
-	0x2a, 0x1a, 0xec, 0x87, 0x76, 0x03, 0xaa, 0xf8, 0x47, 0xbc, 0x84, 0x25, 0xec, 0x2e, 0x63, 0x2b,
-	0x5f, 0x22, 0xfd, 0x07, 0x25, 0xe9, 0xfb, 0x72, 0x3d, 0x7c, 0x34, 0x90, 0xc1, 0xb3, 0x8a, 0xea,
-	0x15, 0xd0, 0xa4, 0x52, 0xa1, 0x47, 0xaa, 0xca, 0xe4, 0x8c, 0xe8, 0x31, 0xfc, 0x7e, 0x1d, 0xf9,
-	0x7d, 0x07, 0x2e, 0x67, 0xa1, 0xd3, 0xcc, 0x2f, 0xa5, 0xd1, 0xc4, 0x56, 0x7b, 0x43, 0x51, 0x60,
-	0xae, 0xb5, 0x4f, 0x5c, 0x65, 0xc4, 0x11, 0x44, 0x95, 0x8a, 0xea, 0x11, 0xed, 0x96, 0xc3, 0xbe,
-	0x0b, 0xd7, 0x07, 0x21, 0xc6, 0x83, 0x8f, 0x22, 0x85, 0x2b, 0xb9, 0x14, 0x04, 0x07, 0x77, 0x40,
-	0xaa, 0x56, 0x61, 0x3c, 0xa0, 0xdd, 0x36, 0x86, 0x79, 0x16, 0x29, 0x09, 0x26, 0x57, 0x8a, 0xa9,
-	0xdd, 0x87, 0xab, 0x79, 0x18, 0xc9, 0x6f, 0xae, 0x60, 0x5c, 0xca, 0xa2, 0x8a, 0xd5, 0xfb, 0x6e,
-	0x91, 0x1e, 0x82, 0x28, 0xfb, 0x87, 0x8e, 0x4d, 0x3f, 0x9a, 0xf3, 0xef, 0xa6, 0x2d, 0x98, 0x39,
-	0x70, 0x6c, 0xfc, 0x62, 0xfb, 0xaa, 0x79, 0x29, 0x1c, 0x30, 0x39, 0x50, 0x53, 0x35, 0xc0, 0xab,
-	0x07, 0x89, 0xe6, 0xac, 0x85, 0x5a, 0xca, 0xb1, 0x50, 0x1b, 0x70, 0x29, 0x3d, 0x54, 0x3c, 0xf9,
-	0x11, 0x3c, 0x76, 0x8e, 0x1b, 0x73, 0x21, 0x39, 0xa6, 0x10, 0xca, 0x8f, 0x46, 0x64, 0x04, 0xb9,
-	0x41, 0x3e, 0x8c, 0xf6, 0x02, 0xd2, 0x72, 0x9d, 0xf6, 0x41, 0xc4, 0xed, 0x50, 0xe2, 0xba, 0x99,
-	0x0d, 0x5d, 0x3a, 0xdd, 0x86, 0xde, 0x84, 0x85, 0xa6, 0x6f, 0xb9, 0x24, 0x6c, 0x12, 0xdb, 0xa4,
-	0xa6, 0xb0, 0x88, 0xe4, 0x8f, 0xe5, 0x2a, 0xc7, 0x79, 0x09, 0xdc, 0x88, 0x61, 0xb5, 0x77, 0x60,
-	0xb6, 0xeb, 0x87, 0x11, 0xe3, 0x49, 0x10, 0xc8, 0x77, 0x17, 0xb3, 0x80, 0xda, 0xeb, 0xb0, 0xd4,
-	0x0e, 0xfc, 0x5e, 0x97, 0xd8, 0x66, 0xdf, 0x89, 0x0e, 0xcc, 0x18, 0x82, 0x5b, 0x54, 0x0b, 0xbc,
-	0xfb, 0x99, 0x13, 0x1d, 0xec, 0xc9, 0x4e, 0xed, 0x15, 0x28, 0x13, 0xdb, 0x89, 0xe8, 0x82, 0xd0,
-	0x83, 0xa9, 0x06, 0xd2, 0xa6, 0x65, 0xae, 0x8f, 0x31, 0xc5, 0xbb, 0xe9, 0x0f, 0xed, 0x0d, 0x98,
-	0x16, 0xd0, 0xdc, 0xbf, 0xe1, 0x46, 0x70, 0xc6, 0xa5, 0xe4, 0x60, 0xdc, 0xa7, 0xd1, 0xee, 0xc2,
-	0xa2, 0x6b, 0x51, 0xa7, 0x98, 0x6d, 0xe7, 0x03, 0x27, 0x32, 0xf7, 0x8f, 0xcc, 0xc8, 0xea, 0xd6,
-	0xca, 0x18, 0xae, 0xd1, 0x68, 0x2f, 0xdb, 0x7b, 0x0f, 0x9d, 0x68, 0xe3, 0xa8, 0x81, 0x9e, 0xf7,
-	0x84, 0xf0, 0xce, 0x6a, 0x15, 0x1c, 0x65, 0x41, 0x6a, 0xd5, 0x4d, 0xdf, 0x0f, 0xe4, 0x2a, 0x8c,
-	0xf3, 0x60, 0xa3, 0xf6, 0xef, 0xe0, 0x9a, 0xc5, 0xda, 0x6c, 0xd3, 0xf1, 0x9c, 0xc8, 0xb1, 0x5c,
-	0x33, 0x24, 0x2e, 0x8b, 0xd6, 0xb3, 0x10, 0x07, 0x73, 0xed, 0x2e, 0x61, 0x2a, 0xb9, 0x2e, 0xba,
-	0xf6, 0xac, 0xe8, 0x40, 0x10, 0xbb, 0x22, 0x28, 0xec, 0x30, 0x02, 0x09, 0x20, 0xfd, 0xeb, 0x25,
-	0xa9, 0xaf, 0x63, 0x21, 0xd6, 0xc9, 0xb9, 0x76, 0xcf, 0x5b, 0x30, 0xd3, 0x3c, 0x70, 0x5c, 0x9b,
-	0x2f, 0x25, 0xdf, 0xe4, 0x79, 0xeb, 0x9e, 0x81, 0xcb, 0x2c, 0xdf, 0xd8, 0xb1, 0xcb, 0x77, 0x03,
-	0x26, 0x3c, 0xd2, 0x67, 0x90, 0xe3, 0x69, 0xc8, 0x71, 0x8f, 0xf4, 0x07, 0x2d, 0xf2, 0xc4, 0x39,
-	0x17, 0x79, 0xf2, 0x54, 0x8b, 0x0c, 0xa7, 0x59, 0x64, 0xfd, 0x9f, 0x8a, 0xf0, 0x72, 0x22, 0x11,
-	0x84, 0xa2, 0x5d, 0x0f, 0x88, 0xb5, 0xed, 0x07, 0x17, 0x79, 0x7c, 0x3e, 0x82, 0x05, 0x16, 0x70,
-	0xb2, 0x02, 0x62, 0x99, 0x51, 0x60, 0x79, 0xa1, 0xa3, 0x68, 0x3d, 0x65, 0x5d, 0xe9, 0xe0, 0x0d,
-	0xd9, 0x6f, 0xcc, 0x45, 0xd9, 0xc6, 0x6c, 0x72, 0x76, 0x40, 0xa2, 0x50, 0x4d, 0xce, 0xbe, 0x0d,
-	0x5a, 0x6c, 0x32, 0x9e, 0x10, 0xf2, 0x9e, 0x16, 0x76, 0xa3, 0x40, 0xce, 0xf8, 0x9e, 0xa3, 0xa7,
-	0xf0, 0x3d, 0x33, 0xa9, 0xeb, 0xb1, 0x9c, 0xd4, 0xf5, 0x7f, 0x28, 0x81, 0x1e, 0x87, 0x80, 0xf7,
-	0x88, 0xd7, 0x74, 0xdc, 0x75, 0xcf, 0xf3, 0x23, 0x0c, 0xbd, 0x0c, 0x6d, 0x80, 0xdf, 0x81, 0x29,
-	0x2b, 0xa6, 0xc2, 0x0d, 0xa9, 0x8c, 0x7c, 0x14, 0x10, 0xba, 0x79, 0xb8, 0xb1, 0x18, 0xa2, 0x1d,
-	0xc0, 0xe2, 0x88, 0x9b, 0x0f, 0xd6, 0xb8, 0x55, 0x28, 0x06, 0x90, 0x50, 0xd4, 0xe1, 0x14, 0xe6,
-	0x25, 0x46, 0xb2, 0xb8, 0x15, 0x30, 0x62, 0x54, 0x79, 0xf3, 0x0e, 0x6b, 0xd5, 0xbe, 0x1c, 0x67,
-	0xbe, 0xe4, 0x10, 0xa3, 0xc7, 0x0c, 0x31, 0xcd, 0xa1, 0xb7, 0xc5, 0x48, 0xaf, 0xc3, 0x52, 0x8a,
-	0x80, 0x1c, 0x71, 0x0c, 0x47, 0x5c, 0x48, 0x62, 0x88, 0x81, 0x6f, 0x42, 0x35, 0x15, 0x6c, 0x1b,
-	0x67, 0x95, 0x16, 0x81, 0x1a, 0x5f, 0xa3, 0x6e, 0xee, 0x72, 0xbc, 0x06, 0x28, 0xd5, 0xf7, 0xad,
-	0x8e, 0xb4, 0x5e, 0x75, 0x28, 0x7b, 0xa4, 0x8f, 0xfb, 0x10, 0x8b, 0x5a, 0xe8, 0x12, 0x4c, 0x1a,
-	0x89, 0x36, 0x0a, 0xe3, 0xbb, 0x76, 0x0c, 0x53, 0x64, 0x4b, 0xad, 0xb6, 0x69, 0x2f, 0xa1, 0xc6,
-	0x38, 0x2e, 0x52, 0x24, 0xfb, 0x29, 0xac, 0xef, 0xda, 0xc7, 0x85, 0x89, 0x64, 0x7f, 0xbc, 0x37,
-	0x46, 0x4f, 0xb7, 0x37, 0x5e, 0x67, 0x05, 0x28, 0xe1, 0x81, 0xd5, 0x25, 0x3c, 0x12, 0x95, 0x7f,
-	0xb6, 0x56, 0x7c, 0xd7, 0xae, 0x53, 0x28, 0x16, 0x8d, 0x7a, 0x1d, 0xa6, 0xa9, 0xc6, 0x53, 0xf1,
-	0xf2, 0x1d, 0x96, 0x8a, 0x47, 0xfa, 0x0a, 0xde, 0x7d, 0xb8, 0x8a, 0x55, 0x31, 0xf8, 0xfd, 0x53,
-	0x49, 0x88, 0x34, 0x26, 0xf1, 0x68, 0x93, 0xcd, 0xbd, 0x92, 0x4b, 0xbe, 0x6b, 0x4b, 0xd9, 0xb3,
-	0x4c, 0xe6, 0x03, 0x06, 0x40, 0x29, 0xd0, 0x91, 0x07, 0x53, 0x60, 0xc7, 0xf2, 0x25, 0x8f, 0xf4,
-	0xf3, 0x29, 0xe8, 0xdf, 0x8f, 0xb3, 0x16, 0xea, 0x12, 0xf3, 0xee, 0x73, 0x18, 0xdf, 0x0a, 0x4f,
-	0x82, 0x99, 0x22, 0x3a, 0x25, 0x33, 0x51, 0x6a, 0x10, 0xed, 0x35, 0x58, 0xc2, 0xbc, 0x75, 0x0e,
-	0x4a, 0x09, 0xf9, 0x9f, 0xa7, 0xdd, 0x69, 0xde, 0xf4, 0x5f, 0x2b, 0xa9, 0x99, 0x2a, 0xec, 0xde,
-	0xf6, 0xbd, 0x88, 0x9a, 0xa8, 0xc3, 0xf2, 0x7d, 0x0d, 0xa6, 0xb0, 0x8c, 0xa9, 0x19, 0x10, 0x2b,
-	0x24, 0x9c, 0x61, 0x70, 0xc2, 0x1d, 0xde, 0x42, 0xfd, 0x9a, 0x96, 0xef, 0x45, 0xcc, 0x54, 0xa6,
-	0xca, 0x12, 0xcf, 0xdf, 0x51, 0xa3, 0xdc, 0xe2, 0x23, 0x53, 0xc5, 0x98, 0x84, 0x92, 0x01, 0x98,
-	0x42, 0x0c, 0x85, 0x51, 0x8a, 0x57, 0x61, 0x31, 0xfe, 0x78, 0x13, 0xd0, 0xa3, 0x08, 0x3d, 0x27,
-	0xbf, 0x5d, 0x05, 0x29, 0xa3, 0xe1, 0xc7, 0x4e, 0xd6, 0xf0, 0x03, 0x53, 0xa3, 0xe3, 0x67, 0x48,
-	0x8d, 0x5e, 0x4d, 0x67, 0x19, 0xcc, 0x80, 0xb4, 0x02, 0x12, 0x1e, 0x98, 0xb6, 0xef, 0xb1, 0xc3,
-	0x7b, 0xc2, 0x58, 0x0e, 0x93, 0xb9, 0x05, 0x83, 0x81, 0x6c, 0xf9, 0x1e, 0xa1, 0xce, 0x5e, 0xde,
-	0x72, 0xa9, 0x0a, 0xe5, 0xac, 0xcb, 0x75, 0x19, 0x26, 0x51, 0x72, 0x5c, 0xb3, 0x50, 0xed, 0x33,
-	0xd1, 0xe2, 0x34, 0xe9, 0x29, 0xd3, 0x0d, 0x48, 0x48, 0x82, 0x43, 0x62, 0xb6, 0xac, 0xa6, 0x28,
-	0x9a, 0x28, 0x8b, 0xc6, 0x6d, 0xab, 0x49, 0xe8, 0x46, 0xa5, 0x7b, 0xcb, 0xf1, 0x7b, 0xa1, 0x19,
-	0x93, 0x1a, 0x41, 0x25, 0x35, 0x23, 0x7a, 0x04, 0x9b, 0xda, 0x7d, 0x98, 0x97, 0xd0, 0x6c, 0xb3,
-	0xb2, 0xaf, 0x3d, 0xff, 0xd0, 0x93, 0x94, 0x59, 0x24, 0x84, 0x7f, 0xf2, 0x0a, 0x05, 0x19, 0xf0,
-	0x0e, 0x79, 0xa4, 0x6c, 0x30, 0x05, 0x11, 0xf9, 0x0e, 0xb3, 0x1b, 0x60, 0xfc, 0xe4, 0xfa, 0xab,
-	0x81, 0x1b, 0x60, 0xe2, 0xd4, 0xe9, 0xfe, 0xef, 0xc7, 0x35, 0x0c, 0xaa, 0x9e, 0x78, 0x48, 0xa8,
-	0x6d, 0x3a, 0xec, 0xfa, 0x7d, 0x1e, 0x16, 0x52, 0x0a, 0xf0, 0x00, 0xe9, 0xe1, 0x5a, 0x16, 0x0c,
-	0x4d, 0x55, 0x7c, 0x6c, 0x24, 0x8a, 0x92, 0xd2, 0x78, 0x1c, 0xa5, 0xc4, 0x50, 0x54, 0x4d, 0xc7,
-	0x50, 0xf4, 0x6d, 0x98, 0x8f, 0x39, 0x7f, 0x7f, 0xe8, 0x88, 0x82, 0xfe, 0xf3, 0x82, 0x4c, 0x8f,
-	0xd6, 0x49, 0xf4, 0xcc, 0x0a, 0x37, 0x7b, 0x43, 0xcf, 0xfc, 0x36, 0x54, 0xb1, 0xa6, 0x89, 0xcd,
-	0x83, 0xda, 0xa5, 0xc5, 0x74, 0x9c, 0xbf, 0x4c, 0x01, 0x90, 0x04, 0xf5, 0x3a, 0xee, 0xc1, 0x1c,
-	0xaf, 0xed, 0x49, 0x60, 0x95, 0xd2, 0x58, 0x33, 0xac, 0xd0, 0x47, 0xc1, 0x5c, 0x82, 0x71, 0x0c,
-	0x7f, 0xf7, 0x22, 0x5e, 0x0b, 0x34, 0xd6, 0x47, 0xd6, 0xb5, 0x15, 0x28, 0x23, 0x49, 0xd1, 0x3b,
-	0xca, 0xb4, 0x1d, 0x6d, 0x63, 0x93, 0xd3, 0xff, 0xa4, 0x08, 0x35, 0x31, 0x63, 0xba, 0xfb, 0xce,
-	0x95, 0x11, 0x7e, 0x00, 0xb3, 0xbc, 0x22, 0xa2, 0x1b, 0xf8, 0x5d, 0x12, 0x44, 0x0e, 0xc6, 0x63,
-	0x0a, 0x1c, 0x57, 0xd9, 0x80, 0x5b, 0x0e, 0x1a, 0x82, 0x56, 0x70, 0x64, 0xcc, 0x30, 0x94, 0x3d,
-	0x89, 0xa1, 0xbd, 0x0a, 0x93, 0xd2, 0xdb, 0xe2, 0xd3, 0x5f, 0xc0, 0xa1, 0xa5, 0x0f, 0x15, 0xe7,
-	0x1e, 0x44, 0x4b, 0x5e, 0x58, 0xb4, 0x78, 0x52, 0x58, 0x34, 0x53, 0xa8, 0x37, 0x7a, 0x72, 0xa1,
-	0xde, 0xcb, 0x80, 0x49, 0x2a, 0x16, 0x43, 0xc8, 0xd7, 0xcc, 0x13, 0x14, 0x00, 0x43, 0x05, 0xdf,
-	0x4b, 0x49, 0x97, 0x5b, 0xf9, 0xbf, 0x54, 0xe9, 0x6e, 0xc1, 0x24, 0x9a, 0x40, 0x8a, 0x2d, 0xf6,
-	0x82, 0x12, 0xcd, 0xa5, 0xcd, 0x1c, 0xfa, 0x88, 0xf9, 0x45, 0x75, 0x22, 0x33, 0x96, 0xd4, 0xf0,
-	0x62, 0x5a, 0x6e, 0x0b, 0x26, 0xd1, 0x20, 0x52, 0xac, 0xb4, 0xd3, 0x53, 0xa1, 0x36, 0x12, 0x16,
-	0x81, 0x7c, 0xa7, 0xa8, 0x56, 0xc6, 0x18, 0xa4, 0x4b, 0x2c, 0xea, 0x08, 0xb2, 0x62, 0xbc, 0x94,
-	0x81, 0x72, 0x0f, 0x6a, 0x81, 0x00, 0x30, 0x0f, 0x10, 0x42, 0xda, 0x10, 0x2c, 0x0f, 0xb3, 0x18,
-	0xe4, 0x12, 0x38, 0x47, 0x61, 0xde, 0x59, 0x5d, 0xf0, 0x75, 0xb8, 0x8a, 0xdf, 0xdb, 0x40, 0x46,
-	0x59, 0x41, 0xce, 0x32, 0x05, 0xca, 0x9f, 0xad, 0xfe, 0xd7, 0x71, 0x24, 0xb7, 0x4e, 0x22, 0x16,
-	0x8a, 0x0f, 0xcf, 0x69, 0xab, 0xad, 0xc1, 0x1c, 0xd6, 0x17, 0x32, 0x62, 0x29, 0x63, 0x6d, 0xd6,
-	0x23, 0xfd, 0xe4, 0x30, 0x14, 0x9e, 0x6e, 0x91, 0x34, 0x3c, 0xb3, 0xd4, 0x66, 0x7d, 0xd7, 0x4e,
-	0xc1, 0xbf, 0x06, 0xb3, 0xd2, 0xd7, 0x18, 0x9c, 0x90, 0x9a, 0x16, 0x30, 0x3c, 0x29, 0xa4, 0xff,
-	0x24, 0x36, 0x4c, 0xd7, 0x6d, 0x5b, 0xdd, 0x38, 0x24, 0x24, 0x43, 0xeb, 0xdd, 0xeb, 0xc0, 0xce,
-	0xff, 0x88, 0xbb, 0x3d, 0x45, 0xb4, 0xde, 0xa6, 0x58, 0x1b, 0x2b, 0x2a, 0xf8, 0x3c, 0x94, 0x95,
-	0xb3, 0x3d, 0xe4, 0xab, 0x9b, 0xf9, 0xec, 0x23, 0xc9, 0x51, 0xa8, 0xbd, 0x0c, 0xb3, 0x21, 0xf1,
-	0x6c, 0xd3, 0xf3, 0x23, 0xa7, 0xe5, 0x34, 0xd1, 0x71, 0xe4, 0xca, 0x76, 0x86, 0x76, 0xbc, 0xaf,
-	0xb4, 0xeb, 0xff, 0xb9, 0x08, 0x37, 0x12, 0x89, 0xa5, 0x41, 0x73, 0x3b, 0xc3, 0xcd, 0x84, 0x1b,
-	0x30, 0x1a, 0x1d, 0x90, 0x0e, 0x19, 0x50, 0x4c, 0xcc, 0x3a, 0xa9, 0xf1, 0x11, 0xe0, 0x88, 0xb6,
-	0x79, 0x8a, 0x19, 0x6a, 0x1c, 0xb6, 0xa1, 0x4c, 0xf4, 0x32, 0x4c, 0x0a, 0xf1, 0xd9, 0x38, 0xc1,
-	0x51, 0x63, 0x82, 0xcb, 0xce, 0xa6, 0x47, 0xb3, 0x2a, 0x5b, 0xd3, 0xf1, 0x4c, 0xc6, 0xd4, 0x28,
-	0x02, 0x6a, 0x8a, 0x90, 0x77, 0xbc, 0x06, 0xed, 0xd1, 0xff, 0x26, 0xae, 0xb7, 0xe5, 0x35, 0x53,
-	0x9f, 0x98, 0x30, 0xee, 0xc1, 0x4c, 0x6c, 0x7b, 0x1c, 0x2b, 0x88, 0xaa, 0x30, 0x43, 0xb8, 0x10,
-	0xee, 0xb1, 0x82, 0xdc, 0x04, 0x66, 0xfe, 0x79, 0x52, 0x15, 0xd6, 0x08, 0xc3, 0xd4, 0x7f, 0x31,
-	0x0a, 0xcf, 0xa9, 0xa5, 0xe4, 0x17, 0xb5, 0xab, 0x9f, 0x87, 0x31, 0x26, 0xdc, 0x01, 0x75, 0x61,
-	0xbc, 0x97, 0xc2, 0xc9, 0x99, 0xe6, 0xc2, 0xb1, 0x5e, 0xed, 0x36, 0xe0, 0x49, 0x68, 0x72, 0xa2,
-	0xf9, 0x7e, 0x36, 0x26, 0xc1, 0x18, 0xdf, 0x12, 0x81, 0x53, 0x1f, 0x1d, 0x8c, 0x30, 0xc8, 0x8a,
-	0x1d, 0x1b, 0x36, 0x50, 0x35, 0x7e, 0xba, 0x40, 0xd5, 0x1a, 0xcc, 0x59, 0x54, 0xe4, 0x7c, 0x4e,
-	0xa6, 0xdf, 0xc5, 0x8f, 0x74, 0x02, 0xb7, 0xe6, 0x2c, 0x76, 0xb1, 0xb9, 0x3c, 0xc6, 0x0e, 0xba,
-	0x99, 0xd9, 0x02, 0x37, 0x5d, 0x62, 0x05, 0xa1, 0x69, 0xb9, 0xae, 0xd9, 0x72, 0xad, 0x36, 0x86,
-	0xa2, 0x27, 0x0c, 0xe6, 0xde, 0x6e, 0x62, 0xdf, 0xba, 0xeb, 0x6e, 0xbb, 0x56, 0x5b, 0x7b, 0x0b,
-	0x96, 0x91, 0xbf, 0x7c, 0xbc, 0x32, 0x3b, 0x85, 0x28, 0x44, 0x23, 0x8b, 0xbb, 0x09, 0x55, 0x5e,
-	0xf7, 0x21, 0x64, 0x58, 0x39, 0x55, 0xca, 0x3a, 0xc0, 0xd8, 0x22, 0x17, 0xea, 0x23, 0x98, 0x43,
-	0x06, 0x52, 0x94, 0xaa, 0xa7, 0xa1, 0x34, 0x43, 0x31, 0x0d, 0x95, 0xda, 0x03, 0x58, 0x6a, 0xe2,
-	0xe1, 0x8c, 0x16, 0x05, 0x95, 0xb5, 0xd9, 0x0f, 0xac, 0x2e, 0xdd, 0x96, 0xd3, 0x03, 0x32, 0x0e,
-	0x08, 0x4e, 0x4f, 0xf6, 0x5d, 0xab, 0xfb, 0x8c, 0xc1, 0xea, 0x2d, 0x58, 0x88, 0x4f, 0xac, 0x0d,
-	0x2b, 0xbc, 0x88, 0x2a, 0x52, 0x0d, 0x46, 0xf6, 0x85, 0x7f, 0x5e, 0x31, 0xf0, 0x6f, 0xfd, 0x08,
-	0x2e, 0x27, 0xc7, 0xd9, 0xa3, 0xea, 0xe4, 0x22, 0x4a, 0x67, 0xaf, 0x01, 0x56, 0x4b, 0x98, 0xa8,
-	0x9f, 0x42, 0x3e, 0x28, 0xec, 0xcb, 0x21, 0xf4, 0x6f, 0x27, 0x62, 0x28, 0x74, 0xec, 0x27, 0x21,
-	0xd9, 0x75, 0xbc, 0x5e, 0x58, 0x77, 0xda, 0xde, 0x05, 0x70, 0x70, 0x0b, 0xe6, 0x58, 0x3d, 0x47,
-	0x48, 0xcc, 0x0e, 0xa5, 0x6b, 0x86, 0x4e, 0xdb, 0x13, 0xf1, 0x94, 0xfd, 0xd4, 0x80, 0xfa, 0xbf,
-	0x87, 0xab, 0x31, 0x3b, 0x9b, 0xbd, 0x80, 0x2e, 0xcf, 0xd1, 0xa6, 0x6f, 0x93, 0x8b, 0xa9, 0x96,
-	0x6d, 0x72, 0x8a, 0x66, 0xd3, 0xb7, 0x85, 0xdb, 0x5d, 0x6e, 0x2a, 0xc3, 0xe8, 0xdf, 0x4a, 0x08,
-	0x64, 0x3b, 0x60, 0x81, 0xdd, 0xf5, 0x66, 0xb3, 0x17, 0x58, 0xcd, 0xa3, 0x0b, 0xe0, 0xe2, 0x65,
-	0x98, 0x6d, 0x71, 0xaa, 0xa6, 0xc5, 0xc9, 0xf2, 0x85, 0x99, 0x69, 0xa5, 0x86, 0xd3, 0xff, 0x5b,
-	0x41, 0x1e, 0xb8, 0xd4, 0x01, 0x24, 0x6d, 0x2b, 0x72, 0x0e, 0xc9, 0xfb, 0xbd, 0xce, 0x3e, 0x09,
-	0x2e, 0xaa, 0xae, 0xf9, 0x2e, 0x75, 0x4b, 0x19, 0x61, 0xd3, 0x43, 0xca, 0xb2, 0xbc, 0x99, 0x32,
-	0x35, 0xe7, 0x65, 0x47, 0xd5, 0xff, 0x4b, 0x01, 0x9e, 0x57, 0xf8, 0xc2, 0x9e, 0xc7, 0xad, 0x2d,
-	0xd2, 0x74, 0x3a, 0x96, 0x7b, 0x61, 0xbb, 0xf7, 0x26, 0x54, 0x6d, 0x46, 0x32, 0xb9, 0x81, 0x2b,
-	0xb6, 0x3a, 0x10, 0xf5, 0xef, 0x15, 0xcb, 0x72, 0xcb, 0x8a, 0x48, 0xc3, 0xe9, 0x90, 0x64, 0xed,
-	0xf2, 0x39, 0xb8, 0x78, 0x05, 0x34, 0xbc, 0x38, 0xc1, 0x7d, 0x14, 0x1e, 0xf7, 0x67, 0xc1, 0xe0,
-	0x19, 0xda, 0xc3, 0xb0, 0x58, 0xec, 0x1f, 0xc3, 0x87, 0x4e, 0x27, 0x0d, 0xcd, 0xee, 0x4c, 0xce,
-	0x44, 0x92, 0x2f, 0x9e, 0x29, 0xf8, 0x9f, 0x89, 0x0a, 0xfa, 0xfa, 0x81, 0xdf, 0x6f, 0x1c, 0xf8,
-	0xbd, 0xd0, 0xf2, 0xec, 0xb0, 0x4e, 0xba, 0x56, 0x60, 0x45, 0x7e, 0x70, 0x01, 0x53, 0xb8, 0x07,
-	0x35, 0x4c, 0x15, 0x47, 0x82, 0xb8, 0x19, 0x0a, 0xea, 0xfc, 0x4b, 0x5c, 0x0c, 0x73, 0xc7, 0xd6,
-	0xbf, 0x5b, 0x90, 0xc7, 0x7e, 0x9d, 0x44, 0x4f, 0x42, 0xb2, 0xde, 0x6c, 0xfa, 0x3d, 0x8f, 0x65,
-	0xb5, 0x2e, 0x66, 0xff, 0xdd, 0x81, 0x79, 0xaa, 0x1c, 0x2c, 0x49, 0x58, 0xd9, 0x7e, 0x13, 0x86,
-	0xd6, 0xcb, 0x8c, 0xa9, 0x7f, 0xb3, 0xa4, 0xee, 0x3e, 0x4c, 0x4d, 0x6d, 0xfa, 0x5e, 0x14, 0xf8,
-	0xee, 0xae, 0xe3, 0xed, 0x5a, 0x1f, 0xee, 0x78, 0xcd, 0x61, 0xcd, 0x91, 0x1a, 0x8c, 0x77, 0x1c,
-	0xcf, 0xe9, 0xf4, 0x3a, 0xb8, 0xc2, 0x05, 0x43, 0xfc, 0xc4, 0x1e, 0xeb, 0x43, 0xec, 0x29, 0xf1,
-	0x1e, 0xf6, 0x53, 0xbb, 0x02, 0x93, 0x18, 0x76, 0xed, 0x10, 0x8f, 0x19, 0x1c, 0x05, 0x23, 0x6e,
-	0xc8, 0x9a, 0x0b, 0xa3, 0xa7, 0x31, 0x17, 0x52, 0xb7, 0x49, 0xc6, 0x2e, 0xe2, 0x36, 0xc9, 0xe9,
-	0x43, 0xa6, 0xcf, 0xc3, 0xb4, 0x13, 0x9a, 0x2d, 0x27, 0xc0, 0x64, 0x65, 0xa7, 0xe3, 0x44, 0x3c,
-	0x48, 0x5a, 0x71, 0xc2, 0x6d, 0xda, 0xba, 0x89, 0x8d, 0x6a, 0xb6, 0x77, 0xf7, 0xa2, 0xca, 0xcc,
-	0x6e, 0xc0, 0x84, 0x4d, 0x58, 0x05, 0x7c, 0x36, 0xb0, 0x34, 0x4e, 0xbb, 0x9e, 0x38, 0xb6, 0xb6,
-	0x08, 0x63, 0xfb, 0xa4, 0xe5, 0x07, 0x22, 0x34, 0xca, 0x7f, 0x69, 0xb7, 0xc4, 0x1d, 0x05, 0x41,
-	0x62, 0x24, 0x4d, 0x82, 0x5d, 0x4f, 0xe0, 0x64, 0xae, 0x71, 0xe3, 0x8f, 0xd3, 0xe2, 0x61, 0x24,
-	0xda, 0xb4, 0xc1, 0xe8, 0x89, 0xaa, 0xa5, 0xb1, 0xfc, 0xaa, 0xa5, 0x84, 0x07, 0x3e, 0x7e, 0x16,
-	0x0f, 0x7c, 0x1b, 0x96, 0x06, 0x5d, 0x6f, 0xcc, 0x8f, 0x6c, 0x2e, 0xe4, 0x56, 0x8c, 0xe9, 0x7f,
-	0x59, 0x00, 0x4d, 0x7c, 0x0b, 0x7e, 0x30, 0xb4, 0x19, 0x7e, 0x0b, 0x2a, 0x18, 0x9e, 0xa3, 0xf6,
-	0x57, 0x7e, 0x99, 0xd6, 0x14, 0xed, 0x37, 0xfc, 0xfe, 0x13, 0x3a, 0xef, 0x17, 0x61, 0x2a, 0xf2,
-	0x63, 0xe0, 0x52, 0xa6, 0x90, 0x2c, 0xf2, 0x05, 0xe8, 0x31, 0x13, 0x1d, 0x39, 0xcb, 0x44, 0x7f,
-	0x50, 0x84, 0x17, 0xa5, 0xbf, 0x85, 0x3d, 0x22, 0x95, 0xb8, 0xed, 0x07, 0x98, 0x47, 0xee, 0xfa,
-	0xe1, 0xd0, 0x31, 0xa8, 0x0d, 0x28, 0x0b, 0xee, 0xc2, 0x2e, 0x69, 0xf2, 0x9d, 0x77, 0x2d, 0x91,
-	0xca, 0xe4, 0xc3, 0xd6, 0xbb, 0xa4, 0x29, 0x3f, 0xbc, 0x20, 0x6e, 0xa3, 0x36, 0xac, 0x48, 0x85,
-	0xb2, 0xa2, 0x76, 0xec, 0xe2, 0x9e, 0xd9, 0x95, 0x04, 0x29, 0x51, 0xfc, 0x24, 0xe8, 0xcc, 0x0a,
-	0xc4, 0x86, 0xcf, 0x47, 0xd1, 0x1e, 0x41, 0xb5, 0x6f, 0x05, 0x9e, 0xe3, 0xb5, 0xa9, 0xcd, 0x1f,
-	0xe7, 0xb5, 0x6f, 0xe2, 0x54, 0x76, 0x3a, 0x5d, 0x3f, 0x88, 0x9e, 0x31, 0x00, 0x6a, 0xb9, 0xe1,
-	0xdd, 0x5e, 0x83, 0xb4, 0x64, 0xa5, 0x62, 0x8c, 0xbc, 0x6b, 0x75, 0xf5, 0xbf, 0x2b, 0xc0, 0x9d,
-	0xa4, 0xf4, 0x78, 0x16, 0x43, 0xb2, 0x93, 0x9d, 0xdd, 0xaf, 0xbe, 0x10, 0xe9, 0xd7, 0xa1, 0x27,
-	0xa7, 0xcd, 0x6e, 0x67, 0x73, 0xc0, 0xcf, 0xce, 0x44, 0x7f, 0xa6, 0x46, 0x23, 0xd8, 0x77, 0xc3,
-	0x8b, 0xdf, 0x3e, 0x7b, 0x73, 0x6d, 0xc2, 0xe7, 0x53, 0x8a, 0x00, 0xa3, 0x76, 0xaa, 0x3a, 0xa0,
-	0xd3, 0x61, 0xe5, 0x98, 0xc3, 0x66, 0x4c, 0x7e, 0x52, 0x38, 0x71, 0x94, 0x0b, 0xf8, 0x62, 0x92,
-	0x17, 0x0b, 0xf2, 0x83, 0x3e, 0xca, 0xc5, 0x82, 0xf4, 0x5a, 0x94, 0xce, 0xbe, 0x16, 0xfa, 0x1f,
-	0x16, 0xe1, 0x0b, 0xa9, 0x9d, 0xe2, 0x7b, 0x36, 0xd6, 0xe0, 0x58, 0xdc, 0x7f, 0xfe, 0x15, 0xd0,
-	0x06, 0x85, 0x61, 0x54, 0xea, 0xbf, 0x81, 0xc5, 0x66, 0x3c, 0x57, 0x66, 0x66, 0x52, 0xc1, 0x87,
-	0x8a, 0x6a, 0xdd, 0x7c, 0xb0, 0xc6, 0x0a, 0xa7, 0x89, 0xcd, 0x35, 0xea, 0xe3, 0xfd, 0xaf, 0x91,
-	0x66, 0x14, 0x3f, 0x9b, 0x60, 0xcc, 0x37, 0x53, 0x02, 0xab, 0x93, 0x28, 0xd4, 0x7f, 0x51, 0x84,
-	0x39, 0x61, 0x0b, 0xe1, 0x9d, 0xaa, 0x5f, 0xc6, 0xe5, 0xe8, 0x4f, 0xc5, 0x6b, 0x0b, 0x77, 0x60,
-	0x3e, 0xef, 0x6a, 0x1c, 0x1a, 0xbe, 0x15, 0x43, 0xcb, 0x3e, 0x97, 0xa0, 0xdc, 0x12, 0x55, 0x2e,
-	0x1e, 0x1e, 0x73, 0x4b, 0x94, 0xb3, 0xae, 0x7f, 0xaf, 0x20, 0x8b, 0x7c, 0xf8, 0x73, 0x2d, 0x09,
-	0xd1, 0xbf, 0x96, 0x14, 0xfd, 0x35, 0xd5, 0x29, 0xc9, 0x79, 0x0f, 0x43, 0xac, 0xc0, 0x43, 0x58,
-	0x60, 0xfc, 0x87, 0x7e, 0x2f, 0x68, 0x12, 0x79, 0x05, 0x8e, 0xaf, 0xc4, 0x80, 0xfa, 0x3b, 0x36,
-	0xaf, 0x3a, 0xa2, 0xf0, 0x8b, 0x6f, 0xfa, 0x77, 0x8a, 0x32, 0x82, 0xf4, 0xc4, 0xeb, 0x9c, 0x67,
-	0x57, 0x6c, 0x80, 0xd6, 0x63, 0x14, 0xe2, 0xab, 0xa1, 0xc2, 0x48, 0xcb, 0xbf, 0x1b, 0x3a, 0xc3,
-	0xe1, 0xc5, 0xfd, 0xd0, 0xf0, 0x53, 0xb1, 0x39, 0xf4, 0xff, 0x51, 0x94, 0x0e, 0xe5, 0xe6, 0x81,
-	0xef, 0x87, 0xcc, 0x0e, 0xd9, 0xb1, 0x0d, 0xd2, 0xc1, 0xa0, 0xdb, 0x10, 0x41, 0xf3, 0x6d, 0x71,
-	0xf1, 0xd5, 0xb1, 0x4d, 0x46, 0x84, 0xaf, 0xd4, 0xe7, 0xd8, 0xc5, 0xc7, 0x9e, 0x1b, 0x39, 0xfc,
-	0x44, 0x48, 0x8c, 0x61, 0x54, 0xd8, 0x4b, 0x47, 0xf6, 0x2e, 0xb6, 0x9e, 0xea, 0x36, 0x47, 0x69,
-	0x88, 0xdb, 0x1c, 0xcf, 0xc3, 0x34, 0x8b, 0xdf, 0x52, 0x4a, 0x18, 0x5b, 0xe5, 0x09, 0x96, 0x0a,
-	0x36, 0xaf, 0x7b, 0x36, 0x06, 0x54, 0xf5, 0xdf, 0x2a, 0xc3, 0x6a, 0xea, 0x4a, 0x41, 0x9d, 0x44,
-	0xef, 0x06, 0x7e, 0xaf, 0xeb, 0x78, 0x6d, 0xee, 0x5c, 0x0d, 0x5f, 0x3c, 0x38, 0xef, 0x91, 0xbe,
-	0x48, 0x79, 0x99, 0x18, 0xef, 0x64, 0x71, 0x0c, 0x4c, 0x70, 0x78, 0xa4, 0xcf, 0x93, 0x5e, 0x9b,
-	0xbc, 0x87, 0x62, 0xf8, 0xae, 0x9d, 0xc5, 0x60, 0x55, 0x43, 0x9a, 0xef, 0xda, 0x69, 0x8c, 0x5d,
-	0x36, 0x46, 0x9b, 0x73, 0xcc, 0xeb, 0x5c, 0x45, 0x86, 0x81, 0xdd, 0x17, 0xc2, 0xe9, 0xb0, 0xb9,
-	0xa8, 0x5a, 0x8c, 0x32, 0x90, 0x9a, 0x29, 0x25, 0x47, 0x19, 0xc8, 0x90, 0x63, 0x0e, 0xf4, 0xf1,
-	0xe4, 0x7c, 0xd7, 0x4e, 0x93, 0x7b, 0x05, 0x34, 0x7e, 0xcf, 0xd4, 0xc4, 0x88, 0xa4, 0xb8, 0xf6,
-	0x83, 0x81, 0x48, 0xde, 0xb3, 0x61, 0x85, 0x84, 0x5d, 0xed, 0xb9, 0xcd, 0x2f, 0x96, 0x51, 0x1f,
-	0x87, 0x41, 0x8e, 0xa7, 0x9d, 0x1c, 0xbc, 0x4b, 0x66, 0xf8, 0x7d, 0x86, 0xf0, 0x1a, 0x2c, 0xb1,
-	0x08, 0x76, 0x76, 0x0c, 0xe6, 0x3b, 0xcf, 0x63, 0x98, 0x3a, 0x3d, 0xce, 0x3d, 0x1e, 0xf8, 0x4e,
-	0x0d, 0x96, 0xb9, 0x9a, 0x83, 0x41, 0xee, 0x0d, 0x75, 0x40, 0x65, 0x3e, 0x78, 0xdf, 0x4e, 0x5c,
-	0xfd, 0x53, 0xe7, 0xf3, 0xd4, 0x21, 0x7d, 0x39, 0x1f, 0x84, 0x8a, 0x87, 0x98, 0xca, 0xcc, 0x87,
-	0x02, 0x0c, 0x9c, 0x8f, 0x32, 0x46, 0x39, 0x33, 0x9f, 0x78, 0x1c, 0x31, 0x9f, 0xd4, 0x60, 0x95,
-	0xdc, 0xf9, 0x3c, 0x55, 0x07, 0xbc, 0x03, 0xd5, 0xa6, 0xef, 0xba, 0x56, 0x37, 0x14, 0xef, 0xbf,
-	0x54, 0xd3, 0x48, 0x15, 0x01, 0xc0, 0x1e, 0x8d, 0x79, 0x93, 0x8f, 0x95, 0x42, 0x9b, 0x4e, 0xa3,
-	0xcd, 0xb2, 0x12, 0x5e, 0x15, 0xf5, 0xdf, 0xc2, 0x7c, 0xd8, 0xeb, 0x74, 0xac, 0xe0, 0xc8, 0xe4,
-	0x99, 0x02, 0x86, 0x3b, 0x83, 0x7b, 0xeb, 0x25, 0x56, 0x95, 0xc1, 0x00, 0x76, 0x7d, 0x9b, 0xb8,
-	0xb8, 0x99, 0x36, 0x44, 0xca, 0x5f, 0x79, 0x4d, 0xc7, 0xd0, 0x38, 0x1d, 0xa5, 0x4b, 0x23, 0x70,
-	0x89, 0xe5, 0x94, 0xf2, 0x86, 0x98, 0x3d, 0xf3, 0x10, 0x98, 0x79, 0xa9, 0x67, 0x87, 0xa9, 0xb3,
-	0x82, 0x22, 0x5e, 0x4e, 0x6e, 0xb5, 0xdb, 0x01, 0x69, 0x5b, 0x11, 0x09, 0x6b, 0x1a, 0x0e, 0x71,
-	0x4d, 0x49, 0x9b, 0xac, 0x8b, 0x4e, 0xf5, 0x2b, 0x99, 0xf3, 0x48, 0x3f, 0xd5, 0x1d, 0x52, 0xa2,
-	0xf4, 0xab, 0xcb, 0x12, 0x9d, 0x3b, 0x25, 0x51, 0xdf, 0xb5, 0x33, 0x44, 0x9f, 0xc2, 0x0a, 0x13,
-	0x08, 0x89, 0xa4, 0x42, 0x49, 0x1f, 0x25, 0xf3, 0xf9, 0xaa, 0x15, 0xe7, 0x4e, 0x22, 0xae, 0x6b,
-	0x52, 0xa6, 0x86, 0x4a, 0x97, 0xab, 0x87, 0x0c, 0xdd, 0x85, 0x63, 0xe9, 0x72, 0xed, 0x90, 0x79,
-	0x30, 0xaa, 0xd6, 0xf2, 0xe9, 0xd9, 0x2f, 0x76, 0xbf, 0x85, 0xf7, 0xc1, 0x51, 0x0e, 0x8b, 0xb8,
-	0xfb, 0x17, 0xb0, 0x9f, 0x6f, 0xff, 0x75, 0xd7, 0xc5, 0x15, 0xc9, 0x49, 0x0e, 0x2e, 0x0d, 0x9b,
-	0x1c, 0xac, 0x9d, 0x2a, 0x39, 0xa8, 0xff, 0xa4, 0x04, 0xd7, 0xf9, 0x49, 0xfb, 0x80, 0xdf, 0x64,
-	0x60, 0x73, 0xc0, 0xed, 0x74, 0x4c, 0x78, 0xf6, 0xbd, 0xb5, 0xbd, 0xc0, 0x6f, 0x07, 0x24, 0x0c,
-	0x9d, 0x43, 0x92, 0x83, 0x13, 0xd7, 0x58, 0x68, 0x4c, 0x54, 0xbc, 0x20, 0x09, 0xdf, 0x05, 0x92,
-	0xc1, 0xd9, 0x4c, 0x4f, 0x06, 0xbe, 0x1e, 0x59, 0x41, 0xc4, 0x6f, 0x31, 0xe5, 0xf4, 0x68, 0x77,
-	0xd8, 0x47, 0x2c, 0x5b, 0x1f, 0x11, 0xaf, 0x1d, 0x1d, 0xe0, 0x99, 0x51, 0x31, 0xf2, 0xba, 0xb4,
-	0x55, 0x76, 0x79, 0x73, 0xbd, 0x19, 0x39, 0x87, 0xa4, 0xe1, 0x7f, 0x40, 0x3c, 0xfe, 0x46, 0x4d,
-	0xba, 0x99, 0xf2, 0x12, 0x90, 0x0c, 0xef, 0x4c, 0xe5, 0xe7, 0xf4, 0x64, 0xe0, 0x19, 0xef, 0xe3,
-	0x8c, 0xf7, 0x6c, 0x0f, 0xe5, 0x3d, 0xd1, 0xca, 0x79, 0x9f, 0x60, 0xbc, 0xe7, 0x74, 0x51, 0xde,
-	0x69, 0xb3, 0xca, 0xfb, 0x24, 0xe3, 0x3d, 0xd5, 0xac, 0xff, 0xb0, 0x00, 0xb7, 0x72, 0x17, 0x56,
-	0x92, 0xdc, 0x20, 0x07, 0xd6, 0xa1, 0x13, 0x27, 0x08, 0xde, 0x4a, 0x2e, 0xf2, 0x0d, 0xd5, 0x64,
-	0x1a, 0x84, 0x24, 0x56, 0x39, 0x47, 0xa6, 0xec, 0x2d, 0x99, 0x8c, 0x4c, 0x73, 0x66, 0xc0, 0x5e,
-	0x94, 0xc9, 0xcc, 0xe0, 0x3f, 0x15, 0xe1, 0x86, 0x6a, 0x91, 0x7c, 0x2c, 0x8c, 0xdf, 0x02, 0x88,
-	0x1f, 0x6a, 0x19, 0x50, 0x43, 0x30, 0x29, 0x5f, 0xb4, 0xd4, 0xb6, 0x60, 0x59, 0xbd, 0x82, 0x43,
-	0x6d, 0x69, 0xe5, 0x1a, 0x4e, 0x29, 0xfd, 0x26, 0xc3, 0x42, 0x7c, 0x23, 0xe7, 0x89, 0x63, 0xcb,
-	0x4b, 0x39, 0x03, 0x9e, 0xe0, 0x1a, 0x61, 0x0e, 0x4e, 0xf6, 0x2d, 0x2d, 0xfd, 0xbf, 0x96, 0xb2,
-	0x8f, 0x19, 0xf2, 0xce, 0xe1, 0x0d, 0xba, 0x89, 0xd3, 0x39, 0x26, 0xf2, 0xf6, 0xd7, 0x97, 0x58,
-	0xf5, 0x53, 0xea, 0x01, 0x8e, 0x01, 0x26, 0xed, 0x2c, 0xaa, 0x71, 0xf5, 0xdd, 0x0d, 0x8a, 0xcf,
-	0x8e, 0x9b, 0x24, 0x7e, 0xbe, 0x0b, 0x30, 0x8b, 0x67, 0x4b, 0x02, 0x7f, 0x13, 0xef, 0x96, 0xf4,
-	0xad, 0xc0, 0x36, 0x0f, 0xad, 0xc0, 0xb1, 0xbc, 0x48, 0x79, 0xa0, 0x66, 0x6b, 0x8d, 0x43, 0xf3,
-	0xd9, 0x3e, 0x65, 0x10, 0x78, 0xef, 0x84, 0xa2, 0xf0, 0xdf, 0x94, 0x88, 0xc8, 0x6e, 0x08, 0x22,
-	0x63, 0x27, 0x13, 0xe1, 0x28, 0xfc, 0xb7, 0xde, 0x53, 0xb3, 0xaa, 0xfc, 0x23, 0xc3, 0x3d, 0xeb,
-	0x7c, 0xa4, 0xbe, 0x8e, 0x72, 0x16, 0x27, 0x44, 0x87, 0x72, 0xa4, 0x50, 0xe0, 0x0a, 0x32, 0xd1,
-	0xa6, 0xff, 0x46, 0x51, 0x2d, 0x23, 0x97, 0xb7, 0xd1, 0x1b, 0x47, 0xdd, 0xa1, 0xfd, 0x42, 0x43,
-	0xad, 0x68, 0xc3, 0x63, 0x10, 0xdf, 0xec, 0x2a, 0xa2, 0x48, 0x58, 0x16, 0x4e, 0x8e, 0xc3, 0x51,
-	0xd7, 0x12, 0x03, 0x1b, 0x33, 0xb2, 0xec, 0x8d, 0xb7, 0x50, 0x9a, 0x71, 0x55, 0x5d, 0x4c, 0xb3,
-	0x84, 0xe9, 0x8d, 0xd3, 0xd1, 0x94, 0xa5, 0x77, 0x82, 0xe6, 0x90, 0x95, 0x74, 0xbf, 0x5b, 0x48,
-	0xdc, 0xe2, 0x11, 0xa5, 0xe4, 0x9f, 0xe4, 0x03, 0xa0, 0x17, 0xf0, 0xde, 0xdc, 0x3f, 0x24, 0xb2,
-	0xf8, 0x72, 0x16, 0x71, 0xed, 0xea, 0x27, 0x39, 0x9f, 0x97, 0x41, 0x43, 0x9c, 0xbe, 0x15, 0x9a,
-	0x81, 0xd3, 0x3c, 0xc0, 0x5a, 0x7e, 0xcc, 0xe0, 0x4c, 0x18, 0xd3, 0xb4, 0xe7, 0x99, 0x15, 0x1a,
-	0x4e, 0xf3, 0x80, 0xb2, 0x79, 0x01, 0x8f, 0x97, 0xea, 0xdf, 0x8c, 0x1f, 0x65, 0xfb, 0x4a, 0x2f,
-	0xa4, 0x5f, 0x1b, 0x96, 0x14, 0x1e, 0x39, 0x5e, 0x7b, 0xd8, 0x69, 0x7f, 0x01, 0x16, 0xb9, 0x45,
-	0x6d, 0x93, 0xb0, 0x19, 0x38, 0xdd, 0xc8, 0x0f, 0xc4, 0xbe, 0xa7, 0x67, 0x29, 0xaf, 0xe6, 0xd9,
-	0x92, 0x9d, 0xf8, 0x5a, 0xdd, 0xff, 0x2a, 0xaa, 0xd7, 0x00, 0xb8, 0x52, 0x7a, 0x64, 0x79, 0xed,
-	0x9e, 0x15, 0xc7, 0x65, 0xce, 0xf0, 0xc5, 0xaf, 0xc2, 0xb8, 0x50, 0x81, 0xf9, 0x62, 0x17, 0xdd,
-	0xda, 0x32, 0x4c, 0xb8, 0x7c, 0x1c, 0xfc, 0x8a, 0x26, 0x0d, 0xf9, 0x1b, 0xaf, 0xb3, 0xe1, 0x54,
-	0x5c, 0x5f, 0x29, 0xbe, 0xac, 0x18, 0x15, 0x6c, 0x7d, 0xc4, 0x1b, 0xb5, 0xeb, 0x50, 0xe6, 0x60,
-	0xcc, 0xc4, 0x60, 0x06, 0xcf, 0x14, 0x03, 0x62, 0xa6, 0xc5, 0x7d, 0x98, 0x61, 0x35, 0x5c, 0x81,
-	0xe5, 0x85, 0xfc, 0xf2, 0x38, 0x8b, 0xa2, 0xd1, 0x83, 0xe1, 0xd9, 0xde, 0xda, 0x13, 0xcf, 0xf6,
-	0x1b, 0x71, 0x27, 0x3b, 0xda, 0x95, 0x06, 0xfd, 0xc7, 0x89, 0xaf, 0x4d, 0x3e, 0x73, 0x31, 0xec,
-	0x32, 0xdd, 0x87, 0x2a, 0x16, 0x64, 0xc7, 0x6f, 0x6c, 0x14, 0x95, 0xf7, 0xa8, 0x92, 0x6f, 0x6c,
-	0xc8, 0xaa, 0x30, 0xdf, 0xb5, 0xe3, 0xf7, 0x35, 0xee, 0x43, 0x15, 0x8b, 0xb1, 0x63, 0x0a, 0xa5,
-	0x93, 0x29, 0x78, 0xa4, 0x2f, 0x1b, 0xf5, 0x3f, 0x8f, 0x5f, 0xe3, 0x13, 0xb1, 0x66, 0xd1, 0x77,
-	0x21, 0x79, 0x82, 0x4f, 0xc5, 0x24, 0xff, 0x5f, 0xf1, 0xb8, 0x49, 0x7e, 0x4a, 0x42, 0xf9, 0x59,
-	0x41, 0x95, 0xce, 0x2d, 0xa8, 0x91, 0x33, 0x0a, 0xea, 0xe7, 0x89, 0x0d, 0x9e, 0x3e, 0xc4, 0x86,
-	0xd0, 0x43, 0xd5, 0xe4, 0x41, 0x39, 0x40, 0x11, 0x94, 0xd5, 0xe3, 0x90, 0x62, 0x25, 0x8f, 0xec,
-	0x01, 0x27, 0x49, 0x59, 0x3d, 0x98, 0x87, 0x3d, 0x40, 0xbf, 0x5e, 0x80, 0xcb, 0xb2, 0x70, 0x92,
-	0x7b, 0xab, 0x5b, 0xca, 0x23, 0x69, 0x37, 0x60, 0x42, 0x52, 0x2b, 0xa4, 0xa9, 0x8d, 0xf7, 0x78,
-	0x5a, 0xe1, 0x6d, 0x98, 0x14, 0x0f, 0x0c, 0x89, 0xa0, 0xf3, 0x09, 0x35, 0x99, 0x31, 0xbc, 0xfe,
-	0xeb, 0x63, 0xf2, 0x25, 0x19, 0x99, 0xa6, 0x3f, 0xd7, 0x7d, 0x91, 0x87, 0x30, 0xef, 0x07, 0x4e,
-	0xdb, 0xf1, 0x2c, 0x97, 0x17, 0xac, 0xb2, 0x97, 0x12, 0x99, 0xf0, 0xd9, 0x7b, 0x4b, 0x89, 0x1c,
-	0x0e, 0xed, 0x35, 0x34, 0x81, 0xc3, 0x3e, 0x7a, 0x7c, 0x32, 0xf1, 0x2d, 0x98, 0x95, 0x94, 0x94,
-	0xa8, 0x78, 0xde, 0x1a, 0x4e, 0x0b, 0xc0, 0xf8, 0xfd, 0xc0, 0x4b, 0x12, 0xb7, 0xe5, 0xfb, 0x11,
-	0x66, 0x3a, 0xa8, 0x75, 0xdc, 0xf3, 0x22, 0xae, 0xc3, 0x17, 0x05, 0xc0, 0x36, 0xf6, 0x63, 0x89,
-	0x6a, 0xcf, 0xa3, 0x3b, 0x60, 0x31, 0x1e, 0x96, 0x39, 0x22, 0x7d, 0xc7, 0x8e, 0x0e, 0x42, 0xfe,
-	0x5e, 0x8a, 0x9c, 0x1e, 0x13, 0xef, 0x33, 0xec, 0xc3, 0x78, 0xac, 0xc0, 0xa2, 0x23, 0xb1, 0xcb,
-	0x63, 0xac, 0x34, 0xa5, 0x18, 0x4f, 0xcf, 0xf0, 0xfb, 0xec, 0xf2, 0x58, 0xa8, 0x6d, 0xd0, 0xd3,
-	0x9b, 0xb8, 0x4e, 0xdb, 0xa1, 0x42, 0x62, 0xd9, 0x03, 0xf9, 0x32, 0x15, 0x9b, 0x22, 0x7f, 0xdb,
-	0x00, 0x25, 0x34, 0x17, 0x03, 0x63, 0x1a, 0x05, 0x97, 0xfe, 0x4b, 0x30, 0x17, 0x89, 0x55, 0xb3,
-	0x63, 0x21, 0xe5, 0x3f, 0x78, 0x30, 0x1b, 0x83, 0x9e, 0x36, 0x81, 0x30, 0x79, 0xd6, 0xec, 0xd2,
-	0x06, 0x2c, 0x48, 0xb3, 0xc5, 0x0c, 0x7b, 0xfb, 0xf2, 0xfa, 0x3e, 0x0c, 0x78, 0xb9, 0x9e, 0xdb,
-	0x32, 0xf5, 0x18, 0x54, 0xdb, 0x83, 0x39, 0x2e, 0x77, 0x11, 0xdf, 0xa1, 0x5b, 0xb5, 0x36, 0x85,
-	0x14, 0x56, 0x92, 0x3b, 0x3b, 0xfb, 0xd1, 0x18, 0xb3, 0x0c, 0x59, 0xe9, 0xd1, 0xbe, 0x02, 0x33,
-	0x74, 0x4d, 0x12, 0xe4, 0xca, 0xa7, 0x24, 0x57, 0x0d, 0x12, 0xcd, 0xfa, 0xdf, 0x17, 0xe4, 0x03,
-	0x0e, 0x68, 0xa8, 0x04, 0xbd, 0x66, 0xd4, 0x0b, 0xd8, 0x63, 0x28, 0xac, 0xee, 0xc3, 0x20, 0xcd,
-	0xd8, 0xc1, 0x3b, 0xf3, 0xf7, 0xf3, 0x1e, 0x50, 0xe7, 0xcc, 0x74, 0x90, 0x94, 0x19, 0x20, 0x2d,
-	0x7e, 0x6a, 0xb1, 0xe8, 0xde, 0xe0, 0x21, 0x8d, 0x69, 0x8f, 0xf4, 0xd5, 0x06, 0x4a, 0x8c, 0x6a,
-	0xb3, 0x24, 0xb1, 0xd2, 0x29, 0x89, 0xf9, 0xae, 0xad, 0x36, 0xe8, 0x3f, 0x8d, 0x6b, 0x7c, 0x36,
-	0xe3, 0xb7, 0x7b, 0x30, 0x6c, 0xcb, 0x3e, 0xe8, 0x44, 0x50, 0xeb, 0xac, 0xf3, 0x7e, 0x0e, 0xdf,
-	0x63, 0xe7, 0xc1, 0x62, 0x91, 0xfb, 0x98, 0x30, 0xca, 0x4e, 0xb8, 0x29, 0xdb, 0xb4, 0x6d, 0x98,
-	0xc9, 0x24, 0x1c, 0x4a, 0x27, 0xe7, 0x2f, 0xa6, 0xdb, 0xa9, 0x6c, 0xc3, 0x76, 0x26, 0x9a, 0x3d,
-	0xa2, 0x24, 0x21, 0xd9, 0x6c, 0x12, 0x21, 0x69, 0x99, 0x94, 0x4a, 0xc6, 0xb8, 0x1f, 0xe7, 0xc7,
-	0xb8, 0x47, 0x15, 0x09, 0x1f, 0x43, 0x2c, 0x1b, 0xf9, 0xd6, 0xff, 0xb1, 0x90, 0x95, 0x31, 0x8b,
-	0x29, 0xb3, 0x00, 0xb3, 0x8c, 0xda, 0xa2, 0xdf, 0x76, 0x56, 0x19, 0xdf, 0x84, 0xaa, 0x0c, 0x19,
-	0xab, 0x26, 0x79, 0xc5, 0x4a, 0x91, 0x65, 0xb3, 0x4a, 0xc1, 0xb2, 0x28, 0x21, 0x32, 0x9d, 0x64,
-	0x63, 0x15, 0x40, 0x79, 0x57, 0x32, 0x53, 0xd3, 0x37, 0xd9, 0x94, 0x2f, 0x4a, 0x5e, 0x83, 0x29,
-	0x5c, 0x0a, 0xd3, 0x25, 0x87, 0xc4, 0x45, 0x3b, 0x79, 0xd6, 0x00, 0x6c, 0x7a, 0x44, 0x5b, 0xf4,
-	0xbf, 0x88, 0x9d, 0x31, 0x25, 0xcb, 0x26, 0x5e, 0xa6, 0x52, 0xde, 0x59, 0x1f, 0xe2, 0x02, 0xbe,
-	0x3a, 0x32, 0xaf, 0xb5, 0x8f, 0x47, 0xa6, 0x0a, 0x3c, 0x7e, 0x28, 0x4b, 0x79, 0xee, 0x9d, 0xc7,
-	0x46, 0xdd, 0x2c, 0x0b, 0x6f, 0xf2, 0x3c, 0x42, 0x2e, 0x1a, 0x3f, 0x63, 0x28, 0x40, 0x96, 0x7b,
-	0xfd, 0x1b, 0xa5, 0x38, 0xcf, 0xca, 0xa7, 0xf9, 0xcc, 0x71, 0x5d, 0xb6, 0xd4, 0xb8, 0x89, 0x9f,
-	0x5a, 0x6e, 0x6f, 0xa8, 0xdb, 0xbf, 0x6c, 0x96, 0x9e, 0x6f, 0x0f, 0xba, 0xfd, 0x8b, 0x00, 0xef,
-	0xfb, 0xb6, 0xb8, 0xfd, 0x8b, 0x73, 0x48, 0x61, 0x65, 0x42, 0x6d, 0xe8, 0xbc, 0xbc, 0xab, 0x62,
-	0xbe, 0x21, 0x04, 0x7a, 0x48, 0x39, 0xe5, 0xc6, 0xde, 0x22, 0x33, 0x3a, 0xe9, 0xf1, 0x82, 0x13,
-	0x10, 0xec, 0x31, 0x41, 0xb3, 0x39, 0x09, 0x4f, 0x48, 0xc5, 0x1e, 0x3d, 0x16, 0xbb, 0x2a, 0x07,
-	0x67, 0x14, 0xde, 0x85, 0xda, 0xc0, 0x14, 0x70, 0x7e, 0x65, 0xc2, 0x42, 0x90, 0x97, 0xfb, 0xd5,
-	0x5b, 0x70, 0x73, 0xc7, 0x26, 0x9d, 0xae, 0x1f, 0x11, 0x2f, 0x92, 0xb1, 0x4c, 0xb4, 0x83, 0xe8,
-	0x89, 0x18, 0x3b, 0x57, 0x5f, 0x04, 0x4d, 0x3e, 0xcd, 0x14, 0x5f, 0x12, 0x2e, 0xe4, 0x1f, 0xb3,
-	0x02, 0x52, 0x12, 0xd4, 0x7f, 0x5a, 0x80, 0xab, 0xcf, 0xf6, 0x8e, 0x1b, 0x60, 0x23, 0xb9, 0xd0,
-	0xaf, 0x28, 0x46, 0x73, 0x6f, 0x3f, 0x0f, 0x51, 0xb9, 0xf0, 0x22, 0x16, 0x3f, 0x9f, 0xc9, 0xe2,
-	0x29, 0x99, 0xd4, 0xbe, 0x08, 0xdc, 0x8a, 0x8a, 0x4b, 0x2a, 0x4a, 0xd2, 0x41, 0xcd, 0x89, 0x5c,
-	0x56, 0x18, 0xb4, 0xa8, 0xa6, 0x20, 0xf0, 0xc2, 0x29, 0xf9, 0x1d, 0xf0, 0xef, 0x8e, 0x0a, 0xa7,
-	0xf9, 0x77, 0x47, 0xfa, 0xd7, 0x78, 0xd4, 0xfa, 0x7d, 0xab, 0x43, 0x3e, 0x66, 0x81, 0xea, 0xff,
-	0xa7, 0x08, 0xcf, 0xf3, 0xd2, 0x75, 0x7c, 0xde, 0xfa, 0x63, 0x5e, 0xbf, 0x2f, 0xc0, 0xa4, 0x7c,
-	0xcf, 0xf9, 0xa4, 0xff, 0x50, 0x30, 0xc1, 0xc3, 0xc6, 0xe1, 0x39, 0x97, 0x4d, 0x5b, 0x87, 0xaa,
-	0x8a, 0x2e, 0xf5, 0xf7, 0xe5, 0xf8, 0x5b, 0x44, 0x74, 0xc7, 0x53, 0x0e, 0xae, 0x72, 0x4c, 0x63,
-	0xc7, 0xd6, 0xff, 0x77, 0x11, 0x6e, 0xd4, 0x23, 0x9f, 0xfd, 0xfb, 0xa1, 0x7f, 0x11, 0x52, 0xbe,
-	0x90, 0xfe, 0xb8, 0x08, 0xd7, 0x0d, 0xd2, 0x76, 0x7c, 0xef, 0x33, 0x29, 0xa1, 0x2f, 0xc2, 0xb4,
-	0xe5, 0x35, 0x0f, 0xfc, 0x20, 0x46, 0x1f, 0x39, 0x2e, 0xed, 0x51, 0x61, 0xd0, 0x0a, 0x7a, 0xb3,
-	0x17, 0x84, 0x2a, 0xfa, 0xe8, 0xb1, 0xe8, 0x0c, 0x5a, 0xe8, 0x9e, 0x3f, 0x2a, 0xc0, 0x0d, 0xf9,
-	0x18, 0xda, 0xc7, 0x2d, 0xdf, 0xfb, 0x50, 0x8d, 0x5f, 0xe5, 0x93, 0x46, 0x54, 0x15, 0x5f, 0xe5,
-	0x53, 0x1e, 0x8b, 0x50, 0xf2, 0x06, 0x46, 0x25, 0x54, 0x5b, 0xb5, 0x97, 0xa1, 0x2c, 0x6e, 0x52,
-	0xe6, 0x17, 0xe8, 0x03, 0xbb, 0x7d, 0x49, 0x17, 0x46, 0xff, 0xbf, 0x71, 0x72, 0x4a, 0x98, 0x0a,
-	0xbb, 0xfe, 0x21, 0x39, 0xcf, 0x25, 0x8e, 0x6b, 0x30, 0x65, 0xa5, 0xd8, 0xaf, 0x18, 0x60, 0xc5,
-	0x0c, 0xbe, 0x91, 0x7a, 0xe2, 0x54, 0x44, 0x84, 0x32, 0xff, 0x91, 0x29, 0x7e, 0xb6, 0x54, 0x04,
-	0x81, 0x58, 0x59, 0x4a, 0x0e, 0x76, 0x26, 0x1a, 0x82, 0x15, 0x2a, 0x9b, 0x69, 0x0a, 0x39, 0x17,
-	0x72, 0x8a, 0xc3, 0xa5, 0xe8, 0xc7, 0x4e, 0x77, 0x7f, 0x37, 0xcf, 0xa5, 0x18, 0x3f, 0xb9, 0x86,
-	0x29, 0xed, 0x52, 0xe8, 0xbf, 0xc8, 0x94, 0x24, 0x3f, 0x74, 0x6c, 0x9b, 0x78, 0xac, 0xf4, 0x60,
-	0xdb, 0x0f, 0x12, 0x15, 0x24, 0xc3, 0xc7, 0xfa, 0xd8, 0xc0, 0xe6, 0xbe, 0xa8, 0x5b, 0xe1, 0x07,
-	0xfc, 0x32, 0x53, 0x45, 0x79, 0x83, 0x18, 0x95, 0xb6, 0xda, 0xaa, 0x3d, 0x84, 0x69, 0xe1, 0xaf,
-	0xd8, 0xf2, 0xdf, 0x3e, 0x9d, 0xca, 0x61, 0x91, 0x4e, 0x93, 0xcd, 0xbc, 0x95, 0xdf, 0x29, 0xc1,
-	0xad, 0xe4, 0x9c, 0xd3, 0xcf, 0xe9, 0x7d, 0xe6, 0xea, 0xdb, 0xb5, 0x10, 0xe6, 0x95, 0x47, 0xfc,
-	0x92, 0x0f, 0xbb, 0x4e, 0xdd, 0x5d, 0x4f, 0xbc, 0xcf, 0x78, 0x2a, 0x99, 0xac, 0xc5, 0x3d, 0x7b,
-	0x96, 0x13, 0x18, 0x9a, 0x42, 0x9e, 0xb3, 0xb3, 0xfc, 0x14, 0xaa, 0x49, 0x28, 0x6d, 0x1e, 0x46,
-	0xd9, 0x43, 0x13, 0x54, 0x90, 0x23, 0x06, 0xfb, 0xa1, 0xad, 0x01, 0xc4, 0xd8, 0x03, 0x4c, 0x3f,
-	0x05, 0xe2, 0x25, 0x07, 0x26, 0xe5, 0x13, 0x90, 0xda, 0x2c, 0x54, 0xe4, 0x8f, 0x0d, 0xdf, 0x3e,
-	0x9a, 0x29, 0x68, 0x8b, 0xa0, 0xc9, 0x26, 0xf6, 0x60, 0x88, 0xe1, 0xf7, 0x67, 0x8a, 0xda, 0x25,
-	0x58, 0x48, 0xb5, 0xb3, 0xcf, 0x60, 0xa6, 0x94, 0x40, 0x91, 0x91, 0xb5, 0x99, 0x91, 0x97, 0xbe,
-	0x55, 0xe4, 0xff, 0x26, 0x33, 0xf5, 0xb2, 0xe4, 0xf3, 0xa0, 0xe7, 0x34, 0xcb, 0xc1, 0x1a, 0x3e,
-	0x67, 0x25, 0x1f, 0x8e, 0x76, 0x36, 0x7c, 0x95, 0xb5, 0x7c, 0x38, 0xc9, 0x09, 0xa7, 0x57, 0x3a,
-	0x96, 0x9e, 0xc2, 0xb7, 0xf6, 0x22, 0xdc, 0x1c, 0xc8, 0x1f, 0x9b, 0x34, 0x27, 0x39, 0x3a, 0x00,
-	0x54, 0x65, 0x91, 0x4b, 0x69, 0xec, 0xa5, 0xdf, 0x2e, 0xc0, 0x6c, 0xe6, 0xd5, 0x79, 0x6d, 0x09,
-	0xe6, 0x12, 0x8d, 0xeb, 0x78, 0x48, 0xce, 0xfc, 0x2b, 0x6d, 0x59, 0xf9, 0xaf, 0x00, 0xb4, 0x23,
-	0x9e, 0x70, 0x41, 0xab, 0xc1, 0x7c, 0xa2, 0x8f, 0x8e, 0xc7, 0x44, 0x91, 0xc6, 0x8a, 0xa7, 0x55,
-	0xd2, 0xae, 0xc2, 0xa5, 0x1c, 0x8a, 0x9c, 0xbf, 0x11, 0xed, 0x32, 0x2c, 0x65, 0x88, 0xf2, 0xce,
-	0xd1, 0x8d, 0x17, 0xfe, 0xf5, 0xcd, 0xb6, 0x13, 0x1d, 0xf4, 0xf6, 0xd7, 0x9a, 0x7e, 0xe7, 0xf6,
-	0x47, 0x4e, 0x67, 0xdf, 0xda, 0xb7, 0xfc, 0xdb, 0xb6, 0xdf, 0x6c, 0xfa, 0xde, 0xe1, 0x6d, 0xe7,
-	0x99, 0x1f, 0x7c, 0x70, 0xbb, 0x51, 0x6f, 0xfc, 0x73, 0x00, 0x00, 0x00, 0xff, 0xff, 0x4b, 0x0d,
-	0xec, 0x4b, 0xf2, 0x75, 0x00, 0x00,
+	// 5968 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe4, 0x7d, 0x5d, 0x6c, 0x23, 0xd7,
+	0x75, 0xf0, 0x37, 0xa4, 0x7e, 0xc8, 0x43, 0x91, 0x92, 0x46, 0x5a, 0x99, 0x5e, 0xdb, 0xf1, 0xee,
+	0xec, 0x6e, 0x2c, 0xaf, 0x77, 0x19, 0xef, 0x3a, 0xb1, 0x37, 0x4e, 0x62, 0x47, 0x2b, 0xad, 0xbc,
+	0x82, 0x2d, 0xaf, 0xbe, 0x21, 0x37, 0x06, 0xfa, 0x32, 0x18, 0xcd, 0x5c, 0x92, 0x13, 0x0f, 0xe7,
+	0x12, 0x33, 0x97, 0x4b, 0x69, 0xdf, 0xd2, 0x26, 0xc8, 0x43, 0x10, 0x14, 0xed, 0x43, 0x9b, 0xa0,
+	0x0f, 0x6d, 0x10, 0xb4, 0x7d, 0x68, 0x1e, 0x0a, 0xb4, 0x0f, 0x41, 0x81, 0x16, 0xfd, 0x43, 0x5f,
+	0x8b, 0x16, 0x4d, 0xf3, 0xda, 0xa0, 0x08, 0x0a, 0xb4, 0x40, 0x8b, 0xa6, 0x68, 0x1b, 0x14, 0x05,
+	0x5a, 0xdc, 0xdf, 0xf9, 0xe1, 0x50, 0x22, 0x25, 0xad, 0xd6, 0x4e, 0xdf, 0x38, 0xe7, 0x9e, 0x7b,
+	0xee, 0xb9, 0xe7, 0xdc, 0x7b, 0xee, 0x39, 0xe7, 0xfe, 0x10, 0xea, 0xad, 0x66, 0x6b, 0x13, 0xf7,
+	0x7a, 0x76, 0xe0, 0x6e, 0x84, 0x4e, 0xd7, 0x7b, 0x84, 0xa2, 0x46, 0x3f, 0xc4, 0x04, 0xeb, 0xc5,
+	0x56, 0xb3, 0x75, 0x71, 0xb9, 0xd5, 0xdc, 0xdb, 0x45, 0x51, 0x64, 0x77, 0x24, 0x9c, 0x82, 0xb6,
+	0xd2, 0xa8, 0x14, 0xf4, 0xee, 0x28, 0xa8, 0x99, 0x01, 0xe9, 0xad, 0xe6, 0xe6, 0xbd, 0x51, 0xd8,
+	0x07, 0x7b, 0xa3, 0x55, 0x5b, 0x69, 0x90, 0xf1, 0x67, 0x1a, 0xac, 0xb4, 0xec, 0x7d, 0x1f, 0xa5,
+	0x59, 0xd5, 0x6f, 0x40, 0x99, 0x50, 0xf0, 0x4e, 0xd0, 0xc6, 0x75, 0xed, 0x52, 0x61, 0xbd, 0x72,
+	0xbb, 0xd6, 0x68, 0x35, 0xf7, 0x1a, 0x26, 0x6a, 0xa3, 0x10, 0x05, 0x0e, 0x32, 0x63, 0x04, 0xfd,
+	0x12, 0x54, 0x1c, 0x5e, 0x3f, 0xb0, 0x7b, 0xa8, 0x5e, 0xb8, 0xa4, 0xad, 0x97, 0xcd, 0x24, 0x48,
+	0x7f, 0x19, 0x66, 0xa3, 0x41, 0x1f, 0x85, 0xf5, 0x22, 0xa3, 0xb5, 0xd2, 0x68, 0x35, 0xdf, 0x6d,
+	0xa4, 0xdb, 0x34, 0x39, 0x86, 0x7e, 0x0b, 0x2e, 0x20, 0xd7, 0x23, 0x5e, 0xd0, 0xb1, 0x7a, 0xd8,
+	0x45, 0x96, 0x4d, 0xac, 0x88, 0xd8, 0x21, 0xa9, 0xcf, 0x5c, 0xd2, 0xd6, 0xab, 0xa6, 0x2e, 0x0a,
+	0x77, 0xb1, 0x8b, 0x36, 0x48, 0x93, 0x96, 0x18, 0x7f, 0xa8, 0xc1, 0x35, 0x41, 0x6c, 0xb3, 0x6b,
+	0x07, 0x1d, 0xb4, 0x1d, 0x22, 0xf4, 0x18, 0xdd, 0x47, 0xb6, 0x8b, 0xc2, 0x26, 0xb1, 0x09, 0x92,
+	0xfd, 0x7a, 0x13, 0xca, 0xae, 0x17, 0x22, 0x87, 0x78, 0x38, 0x60, 0xfd, 0xaa, 0xdd, 0x7e, 0xbe,
+	0xd1, 0x6a, 0xb6, 0x24, 0x2f, 0x5b, 0xb2, 0x50, 0x32, 0x15, 0xa3, 0xeb, 0xeb, 0xb0, 0x14, 0xa0,
+	0xa1, 0xd5, 0x66, 0xb4, 0x29, 0x4f, 0x84, 0x76, 0xb5, 0xb0, 0x5e, 0x32, 0x6b, 0x01, 0x1a, 0xf2,
+	0x26, 0x59, 0x63, 0x7a, 0x23, 0xdd, 0xdb, 0x3a, 0x6b, 0x21, 0x47, 0xcc, 0xa2, 0xcb, 0xc6, 0x2f,
+	0x15, 0xe0, 0x59, 0xc9, 0x00, 0xf2, 0x11, 0x41, 0x9b, 0xc8, 0xf7, 0x23, 0xc9, 0xf3, 0x6b, 0x50,
+	0x8e, 0x90, 0x9f, 0xe0, 0xb9, 0x72, 0xfb, 0x02, 0xa3, 0xd8, 0x94, 0x50, 0xc5, 0xac, 0xc2, 0xd3,
+	0x1b, 0x50, 0x1a, 0x04, 0x2e, 0xb6, 0x7a, 0x76, 0x9f, 0x31, 0xc9, 0x65, 0xde, 0x6a, 0x50, 0xca,
+	0xbb, 0x76, 0x5f, 0xd6, 0x98, 0xa7, 0x48, 0xbb, 0x76, 0x7f, 0x5a, 0x96, 0x29, 0xfd, 0x10, 0x09,
+	0xfa, 0x33, 0x47, 0xd0, 0xa7, 0x48, 0x94, 0xfe, 0xa7, 0x60, 0xc5, 0x0b, 0x1e, 0xd9, 0xbe, 0xe7,
+	0xda, 0x04, 0x59, 0x74, 0x68, 0xa0, 0x80, 0x44, 0xf5, 0x59, 0x26, 0x3f, 0x3d, 0x2e, 0xda, 0x14,
+	0x25, 0xc6, 0xb7, 0x0a, 0x70, 0x69, 0x44, 0x26, 0x9b, 0x38, 0x20, 0xb4, 0xf4, 0xff, 0xb6, 0x68,
+	0xfe, 0xa2, 0x00, 0x9f, 0x10, 0x4d, 0x37, 0x11, 0xd9, 0x1d, 0xf8, 0xc4, 0xeb, 0xfb, 0x4f, 0x65,
+	0xcc, 0xc4, 0x1d, 0x2d, 0x4e, 0xd0, 0xd1, 0xeb, 0x50, 0x89, 0xf0, 0x20, 0x74, 0x90, 0xe5, 0x20,
+	0xdf, 0x67, 0xf3, 0xb9, 0x72, 0xbb, 0xac, 0xaa, 0x98, 0xc0, 0x4b, 0xe9, 0x6f, 0xfd, 0x35, 0x58,
+	0xc3, 0x81, 0x7f, 0x68, 0x79, 0x6d, 0xab, 0x8d, 0xc3, 0x9e, 0x4d, 0x2c, 0xd7, 0x6b, 0xb7, 0x51,
+	0x18, 0xd5, 0xe7, 0x2e, 0x69, 0xeb, 0x25, 0x73, 0x85, 0x96, 0xee, 0xb4, 0xb7, 0x59, 0xd9, 0x16,
+	0x2f, 0x8a, 0x35, 0x35, 0x3f, 0xd9, 0xbc, 0xfb, 0xad, 0x02, 0x5c, 0x1d, 0x23, 0xc8, 0xcd, 0x41,
+	0x44, 0x70, 0xef, 0x23, 0x2d, 0xce, 0xcf, 0x42, 0x85, 0xca, 0x51, 0xc8, 0x47, 0x0c, 0xb5, 0x3a,
+	0xb3, 0xac, 0x5c, 0x2c, 0x4d, 0x12, 0x0e, 0x1c, 0x22, 0xeb, 0x01, 0x45, 0xe6, 0x05, 0x53, 0x0b,
+	0xea, 0x3f, 0x35, 0x78, 0x75, 0x8c, 0xa0, 0xd4, 0x47, 0x17, 0x7b, 0x0e, 0x7a, 0xcf, 0x8b, 0xc8,
+	0x47, 0x5a, 0x68, 0xaa, 0xe7, 0xb3, 0x93, 0xf5, 0xfc, 0x17, 0x0b, 0x70, 0x59, 0x2e, 0x2d, 0x18,
+	0x85, 0x0e, 0xfa, 0xf8, 0x4c, 0xb7, 0x6b, 0x50, 0x73, 0x51, 0xe4, 0x85, 0xc8, 0x4d, 0x0e, 0x91,
+	0x59, 0xb3, 0x2a, 0xa0, 0xd9, 0xb1, 0x30, 0x77, 0x92, 0xb1, 0x40, 0x2d, 0x72, 0x88, 0x7d, 0x26,
+	0x8d, 0x2d, 0x2f, 0xea, 0xfb, 0xf6, 0xe1, 0xfb, 0x83, 0xde, 0x3e, 0x0a, 0x39, 0xf5, 0x8f, 0xc7,
+	0x58, 0x98, 0xb0, 0xe7, 0xff, 0xa0, 0xa9, 0x25, 0xa9, 0x89, 0xc8, 0xc6, 0x80, 0xe0, 0x9e, 0x4d,
+	0x3c, 0xe7, 0x67, 0xb0, 0xa7, 0xbf, 0x5a, 0x80, 0x97, 0x72, 0x7a, 0xba, 0x35, 0x08, 0x6d, 0xca,
+	0xef, 0xc3, 0xc0, 0x23, 0x1f, 0xed, 0xb1, 0xff, 0x12, 0x2c, 0xda, 0x92, 0x6b, 0x6b, 0x40, 0xd9,
+	0x65, 0xcb, 0x4d, 0xc9, 0xac, 0x29, 0x30, 0xeb, 0xc4, 0xd4, 0x92, 0xf9, 0xd7, 0x92, 0xb2, 0x07,
+	0x3b, 0x41, 0x84, 0x42, 0xb2, 0x89, 0xfd, 0x41, 0x2f, 0x88, 0x1e, 0x84, 0x26, 0x1e, 0x46, 0x67,
+	0xe1, 0x66, 0xae, 0xc2, 0xac, 0x17, 0xb8, 0xe8, 0x80, 0xc9, 0xa5, 0x6a, 0xf2, 0x0f, 0x0a, 0x75,
+	0xf0, 0x20, 0x20, 0xac, 0xf7, 0x55, 0x93, 0x7f, 0xe8, 0x3a, 0xcc, 0x44, 0xde, 0x63, 0xc4, 0x26,
+	0x76, 0xc1, 0x64, 0xbf, 0xf5, 0x35, 0x98, 0xdb, 0x47, 0x6d, 0x1c, 0x22, 0xe1, 0x41, 0x88, 0x2f,
+	0xfd, 0x32, 0x2c, 0x74, 0x99, 0x43, 0x6c, 0x71, 0x42, 0x15, 0x46, 0xa8, 0xc2, 0x61, 0x9b, 0x8c,
+	0xdc, 0x15, 0xa8, 0xf2, 0xcf, 0xc8, 0xb2, 0x5d, 0x17, 0xb9, 0xf5, 0x05, 0x86, 0x23, 0xea, 0x45,
+	0x1b, 0x14, 0x46, 0xe9, 0xb4, 0x31, 0x26, 0x8a, 0x4e, 0x95, 0xd3, 0xe1, 0x30, 0x45, 0x87, 0x7f,
+	0x4a, 0x3a, 0x35, 0x4e, 0x47, 0x00, 0x39, 0x9d, 0x3b, 0xb0, 0x14, 0xe2, 0xa1, 0xe5, 0x30, 0xf9,
+	0x59, 0x11, 0x39, 0xf4, 0x51, 0xbd, 0xc4, 0x5c, 0x82, 0x6c, 0xa4, 0x51, 0x0b, 0xf1, 0x90, 0x8b,
+	0xb9, 0x49, 0xb1, 0xf4, 0xcf, 0xc1, 0x22, 0x5b, 0xf8, 0x58, 0x1d, 0x8b, 0xaa, 0xbc, 0x5e, 0x66,
+	0x15, 0x73, 0xc7, 0x44, 0x95, 0xe2, 0xb2, 0x8a, 0x26, 0x72, 0x71, 0xac, 0x70, 0x98, 0xcc, 0x9b,
+	0xdb, 0x86, 0x67, 0xa8, 0xf5, 0x1c, 0xf8, 0xb6, 0x15, 0xa2, 0x61, 0xe8, 0x09, 0x17, 0xcd, 0x0e,
+	0xdc, 0xfa, 0x62, 0x2e, 0xb7, 0x17, 0x04, 0xba, 0xc9, 0xb1, 0x05, 0x55, 0x2a, 0xb6, 0xa1, 0xe7,
+	0x92, 0xae, 0xd5, 0xb6, 0x1d, 0x82, 0xc3, 0xfa, 0x12, 0x53, 0x59, 0x85, 0xc1, 0xb6, 0x19, 0x88,
+	0x8b, 0xdf, 0xeb, 0x74, 0x89, 0xc4, 0x59, 0x66, 0x38, 0x0b, 0x1c, 0x28, 0x90, 0xde, 0x84, 0x67,
+	0x6d, 0xdf, 0xc7, 0x43, 0xab, 0x8b, 0x43, 0xef, 0x31, 0x0e, 0x88, 0xed, 0x5b, 0x74, 0x4c, 0xb3,
+	0x71, 0xa0, 0xb3, 0x31, 0xfe, 0x0c, 0x43, 0xb8, 0xaf, 0xca, 0x37, 0x44, 0x31, 0x5d, 0x11, 0xbc,
+	0xa0, 0x8b, 0x42, 0x8f, 0x70, 0xd9, 0x45, 0xf5, 0x15, 0x56, 0xa1, 0x2a, 0xa0, 0x4c, 0x4a, 0x11,
+	0x9d, 0x3c, 0x12, 0x8d, 0x2f, 0x1c, 0x51, 0x7d, 0x95, 0x4f, 0x1e, 0x01, 0xe6, 0x16, 0x2f, 0xd2,
+	0x5f, 0x86, 0xa5, 0x24, 0xe2, 0xc0, 0xb7, 0xa3, 0x7a, 0x9d, 0x61, 0x2e, 0x26, 0x30, 0x29, 0x58,
+	0xff, 0x32, 0xac, 0x25, 0x74, 0xc6, 0xc6, 0xb4, 0xd5, 0xb7, 0xbd, 0x30, 0xaa, 0x5f, 0xb8, 0x54,
+	0x5c, 0xaf, 0xdc, 0xfe, 0x4c, 0x72, 0x7a, 0x8c, 0x9f, 0x59, 0x0d, 0xc6, 0xe2, 0x0e, 0xad, 0xbe,
+	0x67, 0x7b, 0xa1, 0xb9, 0xa2, 0x94, 0xab, 0x60, 0xac, 0x2d, 0x82, 0x0e, 0x48, 0x4e, 0x5b, 0x6b,
+	0xa7, 0x6a, 0x8b, 0x12, 0xcd, 0xb6, 0xb5, 0x0a, 0xb3, 0x54, 0xb4, 0x51, 0xfd, 0x99, 0x4b, 0xc5,
+	0x75, 0xcd, 0xe4, 0x1f, 0x17, 0xdf, 0x83, 0x5a, 0x1a, 0x51, 0xbf, 0x0a, 0xb3, 0x7c, 0x88, 0xe7,
+	0x07, 0xd3, 0xbc, 0x30, 0x7f, 0xee, 0x1b, 0x7f, 0x5f, 0x84, 0x15, 0xc1, 0xed, 0x9e, 0x1d, 0xc5,
+	0xc1, 0xec, 0xe7, 0xa1, 0x36, 0x88, 0x50, 0x68, 0x4d, 0x68, 0x7e, 0xab, 0x14, 0x59, 0x41, 0xf5,
+	0xb7, 0x60, 0xb1, 0xed, 0x05, 0xb6, 0x9f, 0xa8, 0x5e, 0x38, 0xaa, 0x7a, 0x8d, 0x61, 0xc7, 0xf5,
+	0xdf, 0x80, 0x2a, 0x33, 0xe1, 0x4c, 0xad, 0xc7, 0xd8, 0xe5, 0x0a, 0xc5, 0x14, 0x30, 0x5a, 0x91,
+	0xd9, 0x72, 0x55, 0xf1, 0x88, 0x20, 0xa9, 0x42, 0x31, 0x65, 0xc5, 0x5b, 0xb0, 0x20, 0xa6, 0x9e,
+	0x45, 0xe9, 0xb1, 0x48, 0x60, 0x54, 0x94, 0x32, 0xef, 0xf0, 0x30, 0x70, 0xf1, 0xb8, 0xd8, 0x6a,
+	0x7e, 0x5c, 0x6c, 0x15, 0x9b, 0x87, 0xca, 0x64, 0xe6, 0xe1, 0x3e, 0xd4, 0xc7, 0x98, 0x87, 0xa8,
+	0xbe, 0xc8, 0x46, 0x5b, 0x96, 0xbf, 0xb5, 0x5c, 0xfb, 0x10, 0x19, 0x7f, 0x3d, 0xa7, 0x56, 0x16,
+	0x13, 0xf5, 0xf0, 0x23, 0x94, 0xbb, 0xb2, 0x28, 0xfe, 0xb4, 0xc9, 0xf8, 0x4b, 0xad, 0x44, 0x85,
+	0xe9, 0x56, 0xa2, 0xcf, 0xc2, 0xb2, 0x17, 0xb8, 0x9e, 0x83, 0x22, 0x8b, 0x60, 0x2b, 0x64, 0x4c,
+	0x09, 0x2d, 0x57, 0x59, 0xa7, 0xd8, 0xf0, 0x6e, 0x22, 0x42, 0xa7, 0x3b, 0xc3, 0x6b, 0x61, 0xce,
+	0xba, 0x7e, 0x13, 0xe6, 0x1d, 0xae, 0x35, 0x11, 0xe6, 0xe5, 0x2f, 0xd7, 0x02, 0x47, 0x6f, 0xc0,
+	0x3c, 0xf6, 0xdd, 0x0e, 0xc2, 0x3d, 0xe1, 0x97, 0xaf, 0x36, 0x5a, 0xcd, 0xad, 0xc6, 0x3b, 0x08,
+	0xf7, 0x10, 0x09, 0x0f, 0x15, 0xbe, 0x40, 0xa2, 0xf8, 0x01, 0x1a, 0x32, 0xfc, 0xb9, 0xa3, 0xf0,
+	0x05, 0x92, 0x7e, 0x11, 0x4a, 0xd1, 0x60, 0x9f, 0x4f, 0xd4, 0xf9, 0x4b, 0xc5, 0xf5, 0x82, 0xa9,
+	0xbe, 0x8f, 0x32, 0xf0, 0xa5, 0xd3, 0x18, 0xf8, 0xf2, 0x04, 0x06, 0x1e, 0xa6, 0x35, 0xf0, 0x95,
+	0xa3, 0x0d, 0xfc, 0xa7, 0xa1, 0xc6, 0xdd, 0x2a, 0x14, 0x76, 0x10, 0x9b, 0x5b, 0x0b, 0xb9, 0x5d,
+	0x58, 0x60, 0x7e, 0x15, 0x45, 0xa2, 0xd2, 0xff, 0x34, 0xd4, 0xb8, 0x73, 0xa5, 0x6a, 0x55, 0xf3,
+	0x6b, 0x31, 0xef, 0x4a, 0xd6, 0xba, 0x06, 0xb5, 0xae, 0xe7, 0x7a, 0x41, 0xc7, 0xb2, 0xd9, 0x70,
+	0x89, 0xea, 0xb5, 0x4b, 0xc5, 0xf5, 0xaa, 0x59, 0xe5, 0xd0, 0x0d, 0x0e, 0xd4, 0x5f, 0x87, 0x45,
+	0x1c, 0x7a, 0x1d, 0xab, 0xed, 0xf9, 0x84, 0xd9, 0x2a, 0x32, 0x66, 0xdd, 0xac, 0x52, 0xb4, 0x6d,
+	0x86, 0xd5, 0x44, 0x44, 0xdf, 0x82, 0x35, 0x6e, 0x5e, 0xc4, 0x8c, 0x77, 0xb0, 0x4f, 0x2d, 0x0f,
+	0x5b, 0x39, 0xf3, 0xa6, 0xd5, 0x2a, 0x33, 0x31, 0x32, 0x52, 0x13, 0xb8, 0xc6, 0xef, 0x17, 0xe1,
+	0x45, 0x35, 0xa9, 0xa8, 0x88, 0xf8, 0xa4, 0x62, 0x73, 0xea, 0xbc, 0x9d, 0xb5, 0x3a, 0x1b, 0xb4,
+	0x09, 0x7f, 0x4d, 0x7e, 0xa6, 0x87, 0xbf, 0x36, 0xe5, 0xf0, 0xd7, 0x4e, 0x37, 0xfc, 0x5f, 0x84,
+	0x0a, 0xf6, 0x5d, 0xcb, 0x45, 0x6d, 0x7b, 0xe0, 0x13, 0x36, 0xe4, 0x0b, 0x26, 0x60, 0xdf, 0xdd,
+	0xe2, 0x10, 0xdd, 0x80, 0x85, 0x41, 0xe0, 0xd1, 0x31, 0xcf, 0x09, 0x94, 0xd9, 0x10, 0x4c, 0xc1,
+	0xf4, 0x4f, 0x00, 0x84, 0x4c, 0xbc, 0x3d, 0xec, 0xa2, 0x3a, 0xb0, 0x44, 0x6d, 0x02, 0x32, 0xad,
+	0x55, 0x35, 0xfe, 0x45, 0x83, 0x0b, 0x89, 0x18, 0x13, 0xf9, 0xbe, 0x54, 0xd6, 0x15, 0x98, 0xa3,
+	0x46, 0x63, 0x67, 0x4b, 0x18, 0xc0, 0x8a, 0xb2, 0x2b, 0x3b, 0x5b, 0xa6, 0x28, 0xd2, 0xaf, 0x30,
+	0xf9, 0xb0, 0x24, 0x53, 0x21, 0x9b, 0x64, 0x92, 0x25, 0x14, 0x09, 0xfb, 0x2e, 0x43, 0x2a, 0x8e,
+	0x20, 0x89, 0x92, 0x69, 0xd3, 0x05, 0xfa, 0x1b, 0x50, 0xef, 0xe3, 0x88, 0xb0, 0xf5, 0x89, 0x79,
+	0xa6, 0x89, 0xd5, 0x95, 0x27, 0xae, 0x2e, 0xd0, 0x72, 0xba, 0x36, 0x51, 0x6f, 0x54, 0xad, 0xa6,
+	0xc6, 0x8f, 0x8a, 0x2a, 0x85, 0xdd, 0x42, 0x07, 0x64, 0x2f, 0x44, 0x6d, 0x9f, 0x1a, 0x05, 0xe1,
+	0x9e, 0x24, 0x24, 0x70, 0x1b, 0x6a, 0x32, 0x3f, 0x3e, 0x5e, 0x12, 0x55, 0x81, 0xc2, 0x3f, 0xa7,
+	0x4e, 0x61, 0x6e, 0xc2, 0x05, 0x07, 0xdb, 0x3e, 0x8a, 0x1c, 0xe4, 0x5a, 0xd4, 0xed, 0x91, 0x16,
+	0x31, 0x7f, 0xc9, 0x5d, 0x55, 0xc8, 0xad, 0x18, 0x57, 0xff, 0x3c, 0x2c, 0xd3, 0xbe, 0xf2, 0x7e,
+	0x1c, 0x6d, 0x52, 0x47, 0x11, 0xf5, 0xd7, 0xe1, 0x99, 0x4e, 0x88, 0x07, 0x7d, 0xe4, 0x5a, 0x43,
+	0x8f, 0x74, 0xad, 0x18, 0x43, 0x8c, 0xc0, 0x0b, 0xa2, 0xf8, 0x03, 0x8f, 0x74, 0xf7, 0x54, 0xa1,
+	0x7e, 0x03, 0x16, 0x92, 0xe2, 0x11, 0x6e, 0x7e, 0x42, 0xb7, 0x95, 0x84, 0x68, 0xf4, 0x37, 0x60,
+	0x51, 0x62, 0x47, 0x04, 0x87, 0x76, 0x07, 0x89, 0x21, 0x3a, 0x12, 0x83, 0x08, 0xb4, 0x26, 0xc7,
+	0xd2, 0x6f, 0xc3, 0x9a, 0x6f, 0x47, 0x44, 0x86, 0x2f, 0x5d, 0x8f, 0x58, 0xfb, 0x87, 0x16, 0x11,
+	0x16, 0xb7, 0x6a, 0xea, 0xb4, 0x94, 0x1b, 0x9b, 0xfb, 0x1e, 0xb9, 0x7b, 0xd8, 0xb2, 0xfb, 0xc6,
+	0xbf, 0x15, 0x94, 0x31, 0x8a, 0x19, 0x3e, 0xc9, 0xf8, 0x9e, 0x56, 0x9d, 0x6f, 0xc2, 0x92, 0xd3,
+	0xf5, 0x7c, 0x57, 0xc8, 0x96, 0x39, 0x4f, 0x33, 0xb9, 0x8a, 0x18, 0xc1, 0x1b, 0x91, 0xe7, 0xdc,
+	0x91, 0xf2, 0xbc, 0x0a, 0xa5, 0x00, 0x0d, 0x39, 0xe6, 0x7c, 0x16, 0x93, 0x4e, 0xbd, 0x71, 0x52,
+	0x2f, 0x9d, 0x52, 0xea, 0xe5, 0xb1, 0x52, 0xff, 0x63, 0x0d, 0x5e, 0x8e, 0x6d, 0x09, 0x4f, 0x4e,
+	0x3d, 0x68, 0xf3, 0xbd, 0xa1, 0xe8, 0x41, 0xb8, 0x2d, 0x62, 0x52, 0x21, 0xff, 0x5b, 0x30, 0x17,
+	0xa2, 0x4e, 0xbc, 0x12, 0x3c, 0x9b, 0x5c, 0x09, 0x4c, 0x56, 0x22, 0x85, 0x2b, 0x10, 0x63, 0x6b,
+	0x5f, 0x48, 0x5a, 0xfb, 0x8b, 0x50, 0xa2, 0x46, 0x24, 0xb1, 0x0c, 0xa8, 0xef, 0xa9, 0x93, 0x0e,
+	0x5f, 0x2d, 0xc2, 0xba, 0x28, 0xd9, 0xf6, 0x0e, 0x3e, 0xd8, 0xe3, 0x71, 0xda, 0x4e, 0x40, 0x1d,
+	0xc3, 0x07, 0xa1, 0xf0, 0x13, 0x9f, 0xdc, 0x72, 0x76, 0xfe, 0x9e, 0xfe, 0x94, 0x02, 0xa2, 0x11,
+	0x6b, 0x28, 0x07, 0x0d, 0x0f, 0xf8, 0xd8, 0xe8, 0xab, 0x9a, 0x35, 0x05, 0x66, 0xbe, 0x6a, 0x4e,
+	0x04, 0x5c, 0x62, 0xa1, 0x40, 0x26, 0x02, 0x56, 0x2a, 0xe5, 0xc3, 0x8a, 0x7f, 0x18, 0xff, 0x58,
+	0x50, 0x23, 0x69, 0xdb, 0x3b, 0x90, 0x4a, 0x38, 0xc3, 0x91, 0xf4, 0x02, 0xd0, 0x85, 0xd7, 0x0a,
+	0xd8, 0x18, 0x15, 0x3a, 0x28, 0x63, 0xdf, 0xe5, 0x83, 0x96, 0x16, 0xd3, 0xc9, 0x25, 0x8a, 0xf9,
+	0xa0, 0x2a, 0x07, 0x68, 0x28, 0x8a, 0x4f, 0x2c, 0xed, 0x11, 0xfd, 0xce, 0x4e, 0xa8, 0xdf, 0x69,
+	0xd5, 0x74, 0x1d, 0x4a, 0x74, 0x31, 0x61, 0xf6, 0x67, 0x3e, 0xd7, 0xfe, 0xa8, 0x72, 0xe3, 0xef,
+	0x8a, 0x70, 0x31, 0x9e, 0xb6, 0x8c, 0xe8, 0xfb, 0x76, 0x4f, 0xc5, 0xbe, 0x06, 0x2c, 0x04, 0x68,
+	0xc8, 0xb6, 0xa0, 0xd9, 0x9e, 0x33, 0x95, 0x71, 0xd9, 0x4c, 0xc1, 0x28, 0x0e, 0xf6, 0xdd, 0x18,
+	0xa7, 0xc0, 0x71, 0x92, 0x30, 0xca, 0x12, 0xf5, 0xc2, 0x58, 0x68, 0x5e, 0xcc, 0x67, 0x49, 0x96,
+	0x53, 0x5c, 0xec, 0xbb, 0x1c, 0x37, 0xdf, 0x7c, 0xaa, 0xf2, 0xa9, 0x1d, 0x07, 0xea, 0x26, 0xfb,
+	0xae, 0x15, 0x75, 0xed, 0x3e, 0x12, 0xc9, 0xb0, 0xb9, 0x31, 0x6e, 0xb2, 0xef, 0x36, 0x29, 0x16,
+	0xcf, 0x85, 0xbd, 0x0e, 0x8b, 0x74, 0x4c, 0x24, 0xeb, 0xe5, 0x4b, 0xb6, 0x1a, 0xa0, 0x61, 0xa2,
+	0xde, 0x17, 0xe1, 0x05, 0xda, 0x1e, 0x13, 0x84, 0x45, 0x25, 0x61, 0xed, 0xe3, 0xd0, 0x45, 0xa1,
+	0x85, 0x02, 0x0a, 0xe2, 0x0b, 0x75, 0xc9, 0x7c, 0x16, 0xfb, 0xae, 0x92, 0xfd, 0x5d, 0x86, 0x71,
+	0x8f, 0x23, 0x50, 0x0a, 0xb4, 0xe5, 0xf1, 0x14, 0xf8, 0x32, 0xfd, 0x6c, 0x80, 0x86, 0xf9, 0x14,
+	0x8c, 0xaf, 0x68, 0x2a, 0xe2, 0x4d, 0xaa, 0x58, 0x14, 0xc7, 0x47, 0x11, 0xf4, 0x44, 0x1b, 0x92,
+	0xb8, 0xc6, 0xa6, 0xed, 0x12, 0xc9, 0x54, 0x9a, 0x7a, 0xeb, 0xfd, 0xcf, 0x53, 0x7b, 0xa9, 0x0c,
+	0x71, 0x1b, 0x07, 0xa4, 0xe9, 0x3d, 0x46, 0x27, 0x0d, 0xb9, 0x2f, 0xc3, 0x42, 0xe4, 0xd8, 0x3e,
+	0xca, 0x04, 0x82, 0x0c, 0x26, 0x62, 0xbc, 0x9c, 0x19, 0xa7, 0x9d, 0xcc, 0xa2, 0xce, 0x1d, 0x51,
+	0x31, 0x39, 0xc7, 0x5f, 0x85, 0x55, 0xee, 0x8f, 0x4b, 0x4f, 0x9f, 0x91, 0x88, 0xd8, 0x60, 0x29,
+	0x99, 0x3a, 0x2f, 0x13, 0x2e, 0x3f, 0xdb, 0xcc, 0xd1, 0x5f, 0x81, 0x32, 0xcb, 0xa2, 0xb1, 0xd9,
+	0x5a, 0x1a, 0x3f, 0x5b, 0xa9, 0x2f, 0x6b, 0xfc, 0x20, 0x5f, 0x8c, 0xc9, 0x19, 0x3b, 0xad, 0x18,
+	0x9f, 0x83, 0x72, 0x1b, 0x07, 0xc4, 0x4a, 0x4c, 0xdd, 0x52, 0x5b, 0xd0, 0xd4, 0x0d, 0xa0, 0xf3,
+	0xc0, 0x8a, 0x11, 0x8a, 0x0c, 0x81, 0x86, 0x32, 0xb2, 0x5d, 0x1a, 0x6d, 0xf7, 0x43, 0x14, 0xa1,
+	0xf0, 0x11, 0x53, 0x05, 0x62, 0x42, 0x2e, 0x99, 0x0b, 0x12, 0xb8, 0x6d, 0x3b, 0x68, 0x54, 0x13,
+	0x73, 0x27, 0xd5, 0xc4, 0xfc, 0x84, 0x9a, 0x98, 0x4a, 0xae, 0xdf, 0x4f, 0x6d, 0x39, 0xa9, 0x29,
+	0x72, 0x9f, 0x25, 0x0c, 0x4e, 0x2a, 0xd9, 0x5b, 0x70, 0x21, 0x33, 0xf7, 0x79, 0x02, 0x82, 0x49,
+	0x59, 0x33, 0xf5, 0xe4, 0x9c, 0xe7, 0x2d, 0xd1, 0x2a, 0x99, 0xc9, 0x2e, 0xaa, 0x14, 0x79, 0x95,
+	0xe4, 0x24, 0xe7, 0x55, 0x8c, 0x1f, 0x17, 0xa0, 0x2e, 0x59, 0xa7, 0x26, 0x27, 0xb5, 0x61, 0x3a,
+	0x2d, 0xcb, 0xf7, 0x60, 0x59, 0x1c, 0x03, 0xe8, 0x87, 0xb8, 0x8f, 0x42, 0xe2, 0xa1, 0x48, 0xc4,
+	0x76, 0xf5, 0xb4, 0xf0, 0xb6, 0x3c, 0xe6, 0xca, 0xd8, 0xe1, 0xa1, 0xb9, 0xc4, 0xab, 0xec, 0xa9,
+	0x1a, 0xe9, 0xbd, 0xaa, 0xe2, 0x84, 0x7b, 0x55, 0x23, 0x43, 0x64, 0xe6, 0xa4, 0xee, 0xcf, 0xec,
+	0x84, 0x0b, 0x72, 0x6a, 0x88, 0xcc, 0x1d, 0x33, 0x44, 0xfe, 0x49, 0x4b, 0xcb, 0x99, 0x49, 0xf1,
+	0x29, 0xcb, 0xf9, 0x15, 0x28, 0xb3, 0xd5, 0xec, 0xa8, 0x65, 0x95, 0xae, 0x63, 0x6c, 0x29, 0x7a,
+	0x05, 0xca, 0x6c, 0x09, 0x3b, 0x6a, 0x5d, 0xa5, 0x8b, 0x17, 0x2d, 0x37, 0x7e, 0x52, 0x84, 0x67,
+	0x94, 0x0f, 0xe6, 0xfb, 0xa7, 0x1a, 0x54, 0x6f, 0xc3, 0x22, 0x3f, 0x71, 0x32, 0x61, 0x06, 0x3c,
+	0x8b, 0xad, 0xdf, 0x91, 0x04, 0xa8, 0x86, 0x43, 0x3b, 0xe8, 0xc8, 0xf4, 0x68, 0x2d, 0x0e, 0x7a,
+	0x28, 0xd4, 0xcc, 0xa2, 0xd1, 0x9a, 0xc4, 0x0e, 0x3b, 0x88, 0xc4, 0x35, 0x67, 0xf2, 0x6b, 0x66,
+	0xd0, 0x4e, 0xee, 0xac, 0xbd, 0x0d, 0xd5, 0xb6, 0xe7, 0xfb, 0xca, 0xfd, 0x67, 0x4e, 0x9b, 0x74,
+	0x4b, 0xb7, 0x93, 0x25, 0x6a, 0xc3, 0x20, 0x85, 0x4f, 0xc5, 0xc5, 0x99, 0x89, 0xc5, 0x35, 0x7f,
+	0xa4, 0xb8, 0x32, 0xd8, 0xa3, 0xf3, 0xa1, 0x34, 0xd9, 0x7c, 0x30, 0x7e, 0xaa, 0xa9, 0xf3, 0x71,
+	0x26, 0xea, 0xfb, 0xb6, 0x83, 0x5a, 0xe8, 0x80, 0x9c, 0x3c, 0x25, 0x54, 0x98, 0x24, 0x25, 0x54,
+	0x38, 0x2e, 0x25, 0x34, 0x33, 0xd9, 0x28, 0xfb, 0x3c, 0xe8, 0x2c, 0xa8, 0xb6, 0x52, 0x7b, 0x17,
+	0xb3, 0x47, 0x84, 0xdf, 0x9b, 0xf1, 0x06, 0x86, 0xf1, 0x47, 0x1a, 0x3c, 0x9f, 0xee, 0xfa, 0x86,
+	0xef, 0x27, 0x7b, 0x3f, 0xdd, 0x49, 0xcd, 0x91, 0xd1, 0x53, 0x38, 0xa9, 0x2d, 0x2b, 0x4e, 0xa8,
+	0xbb, 0xbf, 0xd4, 0x92, 0x47, 0x09, 0x4c, 0xd4, 0x47, 0x36, 0x8d, 0xe8, 0x79, 0xd4, 0x94, 0x71,
+	0xf5, 0xee, 0x40, 0x3d, 0x94, 0x08, 0x96, 0xd8, 0xac, 0x4e, 0x3b, 0x7c, 0x6b, 0x61, 0x2e, 0x81,
+	0x53, 0x6d, 0x73, 0x4c, 0xeb, 0x32, 0x1e, 0xa8, 0x2c, 0x4e, 0x13, 0x11, 0x9e, 0xb0, 0x8e, 0x32,
+	0x1d, 0xb9, 0x06, 0x35, 0xce, 0xb7, 0x48, 0x7b, 0x47, 0x82, 0xfd, 0x2a, 0x87, 0x8a, 0x4a, 0x71,
+	0xcb, 0x85, 0xc9, 0x5a, 0xfe, 0xf7, 0xd8, 0x61, 0xde, 0x70, 0xdd, 0xff, 0x3f, 0xf0, 0x9c, 0x0f,
+	0x39, 0x29, 0x73, 0xe0, 0xa3, 0x13, 0x9b, 0xc1, 0x1b, 0x30, 0x1b, 0xd2, 0xfa, 0xf5, 0x02, 0x4b,
+	0xac, 0xaf, 0x49, 0x83, 0x20, 0xe8, 0x2a, 0x6c, 0x86, 0xc4, 0xb6, 0xff, 0x79, 0x2a, 0x9f, 0xc7,
+	0xd9, 0x45, 0xb1, 0xfd, 0xcf, 0x60, 0x3c, 0xc8, 0xbe, 0x0c, 0x0b, 0x14, 0xd7, 0x12, 0x9b, 0x42,
+	0xf5, 0x19, 0xb6, 0x2f, 0x50, 0xa1, 0xb0, 0x1d, 0x0e, 0xa2, 0x4e, 0x7d, 0xbc, 0x21, 0xa0, 0x74,
+	0xcc, 0x0f, 0x2c, 0x2c, 0xb5, 0xe5, 0x26, 0x80, 0x0c, 0x14, 0xbe, 0x1b, 0x27, 0xce, 0xf8, 0x59,
+	0xd0, 0x33, 0xe8, 0xf5, 0x67, 0x00, 0x78, 0x92, 0x76, 0x82, 0xae, 0x97, 0x29, 0xa6, 0x29, 0xbb,
+	0x9f, 0xea, 0x5b, 0x71, 0xb4, 0x6f, 0xd7, 0xa0, 0x26, 0xfa, 0xc6, 0xb7, 0xcc, 0x5c, 0x66, 0x29,
+	0x4a, 0xcc, 0x9c, 0x52, 0xc2, 0x1c, 0x38, 0x22, 0xc8, 0xd9, 0x51, 0x41, 0xe6, 0x4b, 0x69, 0x6e,
+	0x8c, 0x94, 0xfe, 0x5b, 0x53, 0x3e, 0xf8, 0x2e, 0x76, 0xbd, 0xf6, 0xe1, 0x48, 0x47, 0xa6, 0x16,
+	0xd2, 0x6b, 0x50, 0x56, 0x42, 0x12, 0x83, 0x74, 0x9c, 0x8c, 0x4a, 0x52, 0x46, 0xb4, 0x12, 0x33,
+	0x15, 0xac, 0x52, 0xf1, 0xe8, 0x4a, 0x14, 0x91, 0x55, 0x7a, 0x01, 0x40, 0xca, 0x15, 0x1d, 0x30,
+	0x81, 0x55, 0xcd, 0xb2, 0x90, 0x2a, 0x1f, 0x52, 0xc7, 0x08, 0xcb, 0xf8, 0x51, 0x3c, 0x48, 0x36,
+	0xfa, 0x7d, 0xff, 0xb0, 0x49, 0x42, 0xfc, 0x21, 0xda, 0xa3, 0xce, 0xfe, 0x89, 0x3d, 0xe5, 0xb3,
+	0x33, 0x97, 0x93, 0xe6, 0x62, 0x4e, 0xe4, 0xa1, 0x6e, 0x81, 0x8e, 0x0e, 0xfa, 0x76, 0xe0, 0x22,
+	0x37, 0xb3, 0xdf, 0x30, 0xb6, 0xf6, 0xb2, 0xac, 0x10, 0x6f, 0xe8, 0x5f, 0x06, 0x1e, 0x1a, 0x91,
+	0x84, 0x8c, 0x67, 0xcd, 0x0a, 0x87, 0x71, 0x19, 0x7f, 0x6f, 0x1e, 0xae, 0x24, 0x65, 0xcc, 0x44,
+	0xc7, 0x1c, 0xb3, 0x8f, 0x9b, 0x9c, 0x8f, 0xef, 0xac, 0xfe, 0x0e, 0x2c, 0xc5, 0x61, 0x92, 0xc8,
+	0x16, 0x72, 0x87, 0xe7, 0x85, 0xb8, 0x3f, 0xac, 0xf3, 0xef, 0x23, 0x32, 0xc4, 0xe1, 0x87, 0xea,
+	0xa4, 0x84, 0x0c, 0xa0, 0x44, 0x36, 0xf1, 0x1d, 0x7e, 0x71, 0x20, 0x45, 0xa8, 0x34, 0x11, 0x21,
+	0x19, 0x56, 0x09, 0x42, 0xeb, 0xb0, 0x64, 0x53, 0xb1, 0x5b, 0x8e, 0x8f, 0xec, 0x30, 0xb2, 0x6c,
+	0xb6, 0xbf, 0xc1, 0x8f, 0xb5, 0x51, 0xf8, 0x26, 0x03, 0x6f, 0xf8, 0xbe, 0xfe, 0x26, 0xf5, 0xe3,
+	0x03, 0x62, 0xb1, 0x88, 0x5f, 0xee, 0xbd, 0x54, 0x72, 0x7d, 0x8e, 0xc5, 0xb6, 0xc8, 0x77, 0xc8,
+	0x8d, 0xec, 0x7d, 0x78, 0x89, 0xca, 0x85, 0x9f, 0x9e, 0xc9, 0xb6, 0x67, 0xb5, 0x7d, 0xbb, 0xa3,
+	0x28, 0xe6, 0xef, 0x2e, 0x5f, 0x8e, 0x10, 0x4f, 0xa4, 0x6e, 0xa4, 0x98, 0xda, 0xf6, 0xed, 0x8e,
+	0x6c, 0xa3, 0x07, 0x6b, 0x21, 0x1e, 0xa6, 0x4e, 0xe8, 0x90, 0x41, 0x9f, 0x0a, 0xa6, 0xca, 0x2c,
+	0xf1, 0x9d, 0xe4, 0xe2, 0x7d, 0xd4, 0x50, 0x4b, 0x1c, 0xd2, 0x69, 0x51, 0x02, 0xe6, 0x4a, 0x88,
+	0x87, 0x19, 0x58, 0x44, 0x9b, 0x73, 0xb0, 0x9f, 0xd7, 0x5c, 0xed, 0xb4, 0xcd, 0x39, 0xd8, 0xcf,
+	0x36, 0x77, 0xf1, 0x6b, 0x1a, 0x2c, 0x66, 0x80, 0x71, 0x6a, 0x5d, 0x4b, 0xa6, 0xd6, 0x6f, 0x02,
+	0xc4, 0xc7, 0xa2, 0xc6, 0x38, 0x85, 0x65, 0x75, 0xc6, 0x89, 0xa2, 0xc7, 0x27, 0x9b, 0xc6, 0x44,
+	0x86, 0x65, 0x75, 0x4c, 0xc9, 0xf8, 0xaa, 0xa6, 0xf6, 0x0d, 0x9a, 0x63, 0x55, 0x72, 0xd2, 0x39,
+	0x9b, 0x37, 0x18, 0xc5, 0x75, 0x98, 0xf4, 0x60, 0x34, 0x7e, 0x90, 0xb1, 0xcc, 0xad, 0x2e, 0xea,
+	0xa1, 0x16, 0x3e, 0x55, 0xa0, 0x7a, 0xfe, 0x16, 0xe3, 0x23, 0x67, 0x0e, 0x8c, 0x5f, 0x89, 0xaf,
+	0x3d, 0xc5, 0x72, 0xdd, 0xa4, 0x11, 0xc4, 0x36, 0x0e, 0x53, 0xd2, 0xbd, 0x93, 0x96, 0xae, 0xd1,
+	0x68, 0x35, 0x9b, 0x8d, 0x4c, 0x9d, 0x71, 0x1e, 0x40, 0x55, 0x68, 0x59, 0x4c, 0xf9, 0x42, 0x6e,
+	0x88, 0xb1, 0xc0, 0x55, 0xce, 0x71, 0x8c, 0x5f, 0x9e, 0x51, 0x59, 0xab, 0x16, 0xee, 0x74, 0x7c,
+	0xc4, 0xb7, 0xb4, 0x59, 0x7a, 0xe0, 0xf0, 0x14, 0xbe, 0xc8, 0x84, 0x71, 0x7a, 0x62, 0x65, 0xbc,
+	0x08, 0x25, 0x91, 0xc8, 0x38, 0x94, 0xbb, 0x70, 0xf2, 0xfb, 0x29, 0xe4, 0x75, 0x3e, 0x03, 0xcb,
+	0x32, 0xfb, 0xba, 0x8f, 0xdd, 0xc3, 0x31, 0x1b, 0xaa, 0x8b, 0x02, 0xe7, 0x2e, 0x76, 0x0f, 0xd9,
+	0x76, 0xe9, 0x2d, 0x90, 0x20, 0xab, 0x1b, 0x8e, 0xd9, 0x5b, 0xad, 0x0a, 0x8c, 0xfb, 0xe1, 0x48,
+	0x15, 0x87, 0x57, 0x29, 0x8d, 0xad, 0xe2, 0x64, 0xab, 0xb4, 0x45, 0x2b, 0xe5, 0x71, 0x55, 0xb6,
+	0x79, 0x2b, 0xa9, 0x3c, 0x15, 0x1c, 0x93, 0xa7, 0xfa, 0x2f, 0x2d, 0x71, 0xbe, 0x2d, 0x62, 0x91,
+	0x93, 0x2f, 0xc7, 0x44, 0x0b, 0xcb, 0xd3, 0x26, 0xe7, 0x32, 0x2a, 0xce, 0x5d, 0xf3, 0xc6, 0xd7,
+	0x0a, 0x70, 0x23, 0x61, 0x89, 0xbd, 0xa0, 0xe3, 0xa3, 0xe4, 0x3d, 0x89, 0x3d, 0x3b, 0xb4, 0x7b,
+	0x88, 0xa0, 0xf0, 0x5c, 0x67, 0xc7, 0xb9, 0x6f, 0xec, 0x1a, 0x24, 0x79, 0xae, 0xe7, 0xae, 0x1d,
+	0x29, 0x0b, 0xf5, 0x4e, 0xba, 0xbf, 0xb7, 0x92, 0x0b, 0xf2, 0x44, 0x12, 0x93, 0x82, 0xd0, 0x61,
+	0x66, 0xdf, 0x8e, 0x90, 0xd8, 0x3d, 0x65, 0xbf, 0x8d, 0xaf, 0x6b, 0xf0, 0x5c, 0xba, 0xd9, 0x3d,
+	0xdf, 0x76, 0xe2, 0xd8, 0xf1, 0xcc, 0x1a, 0x7f, 0x11, 0x2a, 0xb4, 0x41, 0x8b, 0x25, 0x6a, 0x22,
+	0xc1, 0x03, 0xec, 0xab, 0x06, 0x8d, 0x5f, 0x4b, 0x6d, 0x79, 0x51, 0x4e, 0x1e, 0x46, 0x68, 0xd7,
+	0x0b, 0x06, 0x51, 0xd3, 0xeb, 0x04, 0x67, 0xce, 0xcf, 0x4d, 0x58, 0x61, 0xfc, 0x0c, 0x22, 0x64,
+	0xf5, 0x68, 0x2b, 0x56, 0xe4, 0x75, 0x02, 0xb1, 0x4c, 0x2f, 0xed, 0x67, 0x9a, 0x37, 0x7e, 0x53,
+	0x4b, 0xa6, 0x36, 0xc4, 0xd5, 0x9e, 0x5d, 0x2f, 0xf0, 0x7a, 0x83, 0xde, 0x99, 0xf3, 0x56, 0x87,
+	0xf9, 0x1e, 0x27, 0x2d, 0xf6, 0x1d, 0xe4, 0x27, 0x95, 0xa2, 0x48, 0x42, 0x93, 0xc3, 0x3e, 0x12,
+	0x76, 0x1b, 0x38, 0xa8, 0x75, 0xd8, 0x47, 0x63, 0xf8, 0xb4, 0x0f, 0x9e, 0x18, 0x9f, 0x9c, 0xb4,
+	0xe2, 0x93, 0x7f, 0x1e, 0xcf, 0xe7, 0xef, 0xa4, 0xb4, 0x2d, 0xf8, 0xdc, 0x09, 0x9c, 0x10, 0xf5,
+	0x50, 0x40, 0xce, 0x9c, 0xd3, 0xe7, 0xa1, 0xec, 0x49, 0xe2, 0x82, 0xd7, 0x18, 0x70, 0x3c, 0xb7,
+	0xdf, 0xd4, 0xe0, 0x85, 0x04, 0xb7, 0x83, 0x90, 0x5a, 0xf0, 0xc3, 0x4d, 0xec, 0x9e, 0xfd, 0x24,
+	0xbd, 0x02, 0x55, 0x47, 0xd0, 0xb7, 0x1c, 0xec, 0xaa, 0xad, 0x79, 0x27, 0xd1, 0xa8, 0xf1, 0xed,
+	0x94, 0xf4, 0xb6, 0x43, 0x7e, 0xcc, 0x74, 0xc3, 0x71, 0x06, 0xa1, 0xed, 0x1c, 0x9e, 0x39, 0x4f,
+	0xaf, 0xc0, 0x72, 0x5b, 0xb4, 0x61, 0xd9, 0xa2, 0x11, 0x31, 0x83, 0x97, 0xda, 0x99, 0xc6, 0x8d,
+	0xaf, 0x68, 0xf0, 0x7a, 0xce, 0x85, 0x48, 0x75, 0x07, 0x92, 0x37, 0xb5, 0x8d, 0xc3, 0x7b, 0xae,
+	0x47, 0x90, 0xbb, 0x43, 0xd0, 0x99, 0x0f, 0xcc, 0xc9, 0x79, 0xe0, 0x39, 0xb3, 0x27, 0xc2, 0xc3,
+	0xcf, 0x6b, 0xf0, 0xc6, 0x44, 0x3c, 0x98, 0x88, 0x6d, 0xfd, 0x3f, 0x11, 0x26, 0x7e, 0x41, 0x83,
+	0x3b, 0x13, 0x31, 0xb1, 0x13, 0x78, 0xc4, 0xb3, 0xfd, 0x2f, 0xd9, 0xfe, 0xe0, 0xcc, 0xc7, 0xb4,
+	0xf1, 0x5d, 0x2d, 0x79, 0x99, 0xf8, 0x7d, 0xd4, 0xb1, 0x89, 0xf7, 0x48, 0xd4, 0xe4, 0xa1, 0xd7,
+	0x59, 0x8f, 0xd8, 0xdb, 0x70, 0x21, 0x10, 0xcd, 0x88, 0x43, 0x41, 0x22, 0x30, 0xe4, 0xa3, 0x76,
+	0x25, 0x18, 0xe5, 0xc1, 0xf8, 0xbd, 0x42, 0xd2, 0x74, 0xde, 0x3b, 0xe8, 0xfb, 0x9e, 0x23, 0x2f,
+	0xf4, 0x9c, 0xab, 0xef, 0x91, 0xb9, 0xbd, 0x5c, 0x9c, 0xe2, 0xf6, 0xf2, 0xf9, 0xbb, 0x6f, 0xdf,
+	0xd2, 0xe0, 0x93, 0xa3, 0x67, 0x08, 0xb7, 0x90, 0xe3, 0xf5, 0x6c, 0xff, 0x09, 0xf9, 0x12, 0xec,
+	0xfa, 0x2e, 0x6b, 0x20, 0xed, 0x4e, 0x54, 0xdd, 0x64, 0xb3, 0xc6, 0x97, 0x93, 0xfa, 0xdc, 0xb2,
+	0x09, 0x6a, 0x79, 0x3d, 0x94, 0xd6, 0xe7, 0x99, 0x0d, 0xf1, 0xef, 0xa5, 0xf6, 0x72, 0x9a, 0x5d,
+	0x3c, 0x6c, 0x75, 0xf1, 0x20, 0xb2, 0x03, 0x37, 0x6a, 0xa2, 0xbe, 0x1d, 0xda, 0x04, 0x87, 0x67,
+	0x2e, 0x87, 0x3b, 0x50, 0x8f, 0xba, 0x78, 0x68, 0x11, 0xd9, 0x94, 0x15, 0xc9, 0xb6, 0x84, 0x23,
+	0xb3, 0x16, 0xe5, 0x72, 0x62, 0xfc, 0x86, 0xa6, 0xb2, 0x95, 0x4d, 0x44, 0x1e, 0x46, 0x68, 0xc3,
+	0x61, 0x07, 0xf9, 0xd8, 0x81, 0xd2, 0x27, 0x31, 0x21, 0x5f, 0x85, 0x55, 0xea, 0x69, 0xd9, 0xaa,
+	0x99, 0xc4, 0x7c, 0x2c, 0x99, 0xfa, 0x60, 0x84, 0x03, 0xe3, 0x4f, 0x8a, 0xb0, 0xa6, 0x72, 0xf6,
+	0x8f, 0xd0, 0x69, 0x6e, 0xfa, 0x64, 0x66, 0xa1, 0x36, 0xd1, 0x2c, 0xfc, 0x24, 0x2c, 0xb2, 0xc7,
+	0x55, 0xac, 0x10, 0x0f, 0x53, 0x1b, 0x3a, 0x55, 0x06, 0x36, 0xf1, 0x90, 0xe7, 0x42, 0xaf, 0xb2,
+	0xbb, 0xe4, 0x49, 0x34, 0x9e, 0xa2, 0x5f, 0xa0, 0xd0, 0x24, 0x96, 0xb0, 0x43, 0xb8, 0x4d, 0x51,
+	0x23, 0x91, 0xa7, 0x5f, 0x08, 0xc4, 0x8c, 0xa1, 0xfd, 0x3b, 0xea, 0xc2, 0xcd, 0xfc, 0x34, 0x17,
+	0x6e, 0x6e, 0xc1, 0x02, 0x1b, 0x18, 0x47, 0x1f, 0x2d, 0xaf, 0x50, 0x1c, 0x59, 0xa5, 0x09, 0x9f,
+	0x18, 0x04, 0xfc, 0x9a, 0x8b, 0xb8, 0xfb, 0x65, 0xb1, 0x5d, 0xf5, 0x48, 0x11, 0x29, 0xe7, 0x12,
+	0x79, 0x4e, 0xd4, 0xda, 0xe1, 0x95, 0xd8, 0xd6, 0x7c, 0x24, 0xb3, 0x1d, 0x5f, 0x29, 0xaa, 0xdd,
+	0xe9, 0xdd, 0xf8, 0xda, 0xd6, 0xb9, 0xaa, 0xf1, 0x06, 0xe8, 0x5c, 0x8d, 0xe2, 0x60, 0x74, 0x52,
+	0x93, 0x4b, 0xac, 0x84, 0x73, 0xc5, 0xd5, 0x74, 0x1d, 0x96, 0x99, 0x32, 0x53, 0xc8, 0x5c, 0x9f,
+	0x8b, 0xb4, 0x20, 0x83, 0x1b, 0xab, 0x94, 0x57, 0x90, 0x5a, 0x5d, 0x94, 0x5a, 0x15, 0x3d, 0x7e,
+	0x8a, 0x8a, 0x35, 0xfe, 0x54, 0x03, 0x5d, 0xce, 0x58, 0x1c, 0x9e, 0x78, 0x25, 0xfb, 0x34, 0xf5,
+	0xf5, 0xfb, 0x7d, 0x2f, 0xe8, 0x88, 0xa5, 0xe1, 0x22, 0x5b, 0x90, 0x9a, 0xdd, 0x41, 0xbb, 0xed,
+	0xa3, 0x5d, 0x5e, 0xa4, 0xae, 0xd7, 0x08, 0xd4, 0xb3, 0xea, 0xb7, 0xf1, 0xfd, 0xf8, 0x39, 0x12,
+	0x51, 0x22, 0xaf, 0xcf, 0x6e, 0xe3, 0xf0, 0x34, 0xdd, 0xfa, 0x02, 0x77, 0xfd, 0x29, 0x83, 0x71,
+	0xaa, 0xf4, 0xf9, 0x46, 0xab, 0xb9, 0x79, 0xaf, 0xf1, 0x60, 0x18, 0x70, 0xb3, 0x36, 0xf0, 0xed,
+	0xc4, 0xf2, 0x07, 0x6d, 0x05, 0xd2, 0xbf, 0x00, 0x0b, 0x11, 0x0e, 0x89, 0x25, 0x45, 0x53, 0x3c,
+	0x56, 0x34, 0x15, 0x8a, 0x2f, 0x60, 0xfa, 0xe7, 0x60, 0x91, 0x7e, 0x22, 0x99, 0x3b, 0xf5, 0xdc,
+	0xc4, 0x82, 0xbd, 0x79, 0xaf, 0xb1, 0xb9, 0xfd, 0xf0, 0xe1, 0xce, 0x96, 0x3a, 0x74, 0xc2, 0x71,
+	0x59, 0x6f, 0x76, 0x5c, 0xb6, 0x93, 0x7e, 0xd0, 0xf7, 0xb1, 0x8b, 0xc4, 0x4c, 0x15, 0x9b, 0xc4,
+	0x55, 0x01, 0xe5, 0x53, 0xd1, 0xf8, 0x91, 0x06, 0x37, 0xc7, 0x8a, 0xae, 0x85, 0x1c, 0x82, 0x03,
+	0xcf, 0x69, 0x76, 0xbd, 0xf6, 0xd3, 0x92, 0xe1, 0x06, 0xd4, 0x88, 0x60, 0xc3, 0x8a, 0x28, 0x1f,
+	0x09, 0x29, 0x6e, 0xde, 0x6b, 0xe4, 0xb1, 0x68, 0x56, 0x49, 0x12, 0x6a, 0x7c, 0xfb, 0xa8, 0xe1,
+	0x41, 0x2d, 0xcf, 0x53, 0xea, 0xda, 0x5d, 0xa8, 0xb5, 0x43, 0xdc, 0xb3, 0xd4, 0x51, 0x7b, 0x91,
+	0xd2, 0x7c, 0x8e, 0x53, 0xe0, 0xe7, 0x98, 0x64, 0x59, 0x7c, 0xb6, 0x28, 0xc4, 0x3d, 0x05, 0xd5,
+	0xdf, 0x82, 0x05, 0x76, 0xc5, 0x54, 0x52, 0x98, 0x3f, 0x9e, 0x42, 0x85, 0x60, 0x05, 0x33, 0xbe,
+	0x11, 0x1f, 0xcd, 0x1f, 0x95, 0x0d, 0xf3, 0xe2, 0xa8, 0xf9, 0x7e, 0x4a, 0x02, 0x7a, 0x1b, 0x16,
+	0xd8, 0xea, 0x21, 0x16, 0x1b, 0xa1, 0xf9, 0xe7, 0x13, 0x9d, 0xdb, 0xc4, 0x38, 0x74, 0xbd, 0x20,
+	0x7e, 0xa8, 0xcc, 0xac, 0xf0, 0x1a, 0xac, 0x54, 0x6f, 0x40, 0x69, 0x92, 0xa9, 0x33, 0xcf, 0xcf,
+	0xf9, 0xb8, 0x86, 0x03, 0xb7, 0x32, 0xc2, 0x60, 0xfb, 0xe4, 0xc9, 0x29, 0x41, 0x31, 0xf9, 0x8d,
+	0xc8, 0x13, 0x0a, 0xc5, 0xf8, 0xa1, 0x06, 0xaf, 0x1d, 0xd7, 0xca, 0x59, 0x4c, 0xbc, 0x9b, 0x00,
+	0x89, 0xbb, 0xa3, 0xf9, 0xdb, 0x0f, 0x65, 0x75, 0x18, 0xe2, 0x2c, 0x26, 0xda, 0xd7, 0x0b, 0x70,
+	0xfd, 0x98, 0x9e, 0x9d, 0xc6, 0x1a, 0x4f, 0xd9, 0xa1, 0xa7, 0x68, 0x7d, 0x8d, 0xbf, 0x29, 0xa8,
+	0x14, 0x83, 0x5a, 0xab, 0x02, 0xd7, 0x63, 0x07, 0x3f, 0xf9, 0x96, 0xe4, 0x99, 0xa9, 0x79, 0x54,
+	0x6f, 0x85, 0x29, 0xf5, 0xa6, 0xbf, 0x0b, 0x4b, 0xec, 0x50, 0x3b, 0xbf, 0xad, 0xce, 0xd8, 0x15,
+	0x87, 0x4f, 0x2f, 0x8b, 0xbe, 0xb2, 0x27, 0xe4, 0xe4, 0x54, 0xfb, 0x12, 0xbb, 0x22, 0xac, 0x36,
+	0xd7, 0x58, 0xd5, 0x16, 0x16, 0xfd, 0xd4, 0x7f, 0x0e, 0xd6, 0x9c, 0xb8, 0xaf, 0x62, 0xeb, 0x38,
+	0x42, 0xe2, 0x21, 0x99, 0xca, 0xed, 0xab, 0x79, 0x24, 0x1f, 0xec, 0x7f, 0x19, 0x39, 0x24, 0x61,
+	0x06, 0x56, 0x9d, 0x8c, 0xbc, 0x9a, 0x88, 0x44, 0xc6, 0x57, 0x8b, 0xd9, 0xd5, 0x2a, 0x4f, 0xac,
+	0xa7, 0x5b, 0xf1, 0xd3, 0x83, 0xa6, 0x70, 0xea, 0x41, 0x53, 0x9c, 0x78, 0xc9, 0xce, 0x53, 0xc3,
+	0xcc, 0xd9, 0xab, 0x61, 0xf6, 0xd4, 0x6a, 0xf8, 0xed, 0x22, 0xdc, 0x3e, 0x5e, 0x0d, 0xcc, 0x04,
+	0x9f, 0x66, 0x79, 0xdd, 0x85, 0x55, 0xbe, 0x3e, 0x52, 0x42, 0xa9, 0x35, 0x4e, 0x3b, 0x6e, 0x8d,
+	0xd3, 0xd9, 0x2a, 0x99, 0x2a, 0xd2, 0x77, 0x40, 0xa7, 0x82, 0xcd, 0x10, 0x2b, 0x1d, 0x4f, 0x6c,
+	0x89, 0xe0, 0x0c, 0xa9, 0x3c, 0x4d, 0xcd, 0x9e, 0xbd, 0xa6, 0xe6, 0x4e, 0xad, 0xa9, 0x6f, 0x4c,
+	0xa4, 0xa9, 0x53, 0xaf, 0xf3, 0x9f, 0x83, 0x45, 0xb1, 0x50, 0xab, 0x61, 0x5f, 0x38, 0x62, 0xd8,
+	0x73, 0x5c, 0x39, 0xec, 0x4f, 0xbd, 0xca, 0x7f, 0x6c, 0xe6, 0xcd, 0x1f, 0xc4, 0x57, 0xf3, 0x98,
+	0xb8, 0x1f, 0xf2, 0xe0, 0xf8, 0xe4, 0x4f, 0x94, 0x70, 0xc1, 0x89, 0x77, 0x24, 0xc4, 0xf1, 0xdd,
+	0x67, 0x58, 0x35, 0xae, 0xce, 0x54, 0xd8, 0xcb, 0x65, 0xc6, 0x61, 0x1f, 0x97, 0x0b, 0x1d, 0x77,
+	0xf8, 0xd9, 0x11, 0xde, 0x4d, 0x11, 0xc7, 0x8c, 0x79, 0xeb, 0x0a, 0xfb, 0x5c, 0xa8, 0x3c, 0xb0,
+	0xd1, 0x1f, 0xc0, 0xf3, 0x8c, 0xd7, 0x71, 0x01, 0x66, 0x7e, 0xbe, 0xe2, 0x59, 0x5a, 0x67, 0x3b,
+	0x37, 0xc8, 0xfc, 0x61, 0x41, 0x65, 0x9c, 0xee, 0x7b, 0x2e, 0x6a, 0x76, 0xe3, 0x87, 0x30, 0xce,
+	0xf3, 0x6d, 0x99, 0x2d, 0x58, 0xea, 0x7a, 0x2e, 0xb2, 0x58, 0xa0, 0x6f, 0xc7, 0xfa, 0xab, 0xb1,
+	0x45, 0xaa, 0xd5, 0x50, 0xbc, 0xa5, 0xdf, 0x20, 0xea, 0xa6, 0xc0, 0xec, 0x41, 0x95, 0xe4, 0x1b,
+	0x24, 0x32, 0x2b, 0x95, 0x7c, 0x82, 0x44, 0x7f, 0x13, 0x96, 0x91, 0xcf, 0xf6, 0xc0, 0x22, 0xcb,
+	0x6e, 0xb7, 0x91, 0x43, 0xc4, 0x51, 0xe3, 0x91, 0x67, 0x6c, 0x96, 0x24, 0xde, 0x86, 0x40, 0xd3,
+	0xaf, 0xc3, 0x32, 0x55, 0x9c, 0x68, 0x84, 0xbd, 0xf9, 0xcb, 0x9f, 0xd0, 0xa8, 0x9a, 0x8b, 0xd8,
+	0xa7, 0x12, 0x64, 0xa9, 0x3c, 0x0a, 0x36, 0xfe, 0xb9, 0x08, 0x2f, 0xb6, 0xe4, 0x49, 0x7b, 0xf9,
+	0x16, 0x47, 0xe6, 0x5d, 0xe5, 0x97, 0xd3, 0x22, 0x3e, 0xea, 0x1d, 0xe4, 0x1b, 0x99, 0x6b, 0x84,
+	0xf1, 0xb5, 0x85, 0xbd, 0x46, 0xd3, 0x7b, 0x8c, 0xd2, 0x37, 0x0a, 0x6f, 0x02, 0x08, 0x9b, 0x15,
+	0xb4, 0xf1, 0x98, 0x2b, 0x37, 0xa9, 0x7b, 0x00, 0x0b, 0x01, 0x1a, 0x5a, 0x1d, 0xc1, 0xa5, 0xb0,
+	0x33, 0xf9, 0xcf, 0x88, 0x54, 0x02, 0x34, 0x94, 0x30, 0x5a, 0x91, 0x0a, 0x44, 0x55, 0x3c, 0xea,
+	0xbd, 0x92, 0x0a, 0xf6, 0x5d, 0x55, 0xf1, 0x53, 0xb0, 0x4a, 0x06, 0x61, 0x60, 0xe1, 0x76, 0x9b,
+	0x3d, 0x67, 0x63, 0xf1, 0x2b, 0x87, 0xe2, 0x55, 0x8c, 0x65, 0x5a, 0xf6, 0xa0, 0xdd, 0xde, 0x18,
+	0xd0, 0xa8, 0x8e, 0x3d, 0x8a, 0xf2, 0x3e, 0x5c, 0x8d, 0xba, 0x78, 0xe0, 0xbb, 0xfc, 0x80, 0x99,
+	0x85, 0x99, 0x71, 0xe2, 0xb9, 0xf0, 0x2e, 0xf6, 0x5d, 0x14, 0xb2, 0xb3, 0x88, 0xe2, 0x06, 0xe3,
+	0x25, 0x8e, 0xcb, 0x0e, 0x9d, 0x71, 0x33, 0xb6, 0x17, 0x23, 0x6e, 0xfb, 0x76, 0x47, 0xdf, 0x83,
+	0x6b, 0xae, 0xe7, 0x5a, 0x3d, 0x9b, 0x38, 0xdd, 0x3c, 0x62, 0xaa, 0x4b, 0xfc, 0xe6, 0xeb, 0x65,
+	0xd7, 0x73, 0x77, 0x29, 0xee, 0x08, 0x35, 0xd9, 0x25, 0xe3, 0x6f, 0x8b, 0x70, 0x59, 0x4c, 0xb2,
+	0x7b, 0xe2, 0x0d, 0x04, 0xae, 0xc9, 0x77, 0x42, 0x3c, 0x90, 0x86, 0x40, 0xff, 0x6c, 0x5a, 0xe5,
+	0x57, 0x98, 0xca, 0xf7, 0x42, 0xdc, 0x09, 0x51, 0x14, 0x79, 0x8f, 0x50, 0x4e, 0x9d, 0xf8, 0x25,
+	0x61, 0x9d, 0x4e, 0x64, 0x65, 0xcb, 0xbe, 0x64, 0xfb, 0x62, 0x49, 0x2a, 0x99, 0x39, 0x25, 0x23,
+	0xf8, 0xec, 0x75, 0x6c, 0x91, 0x06, 0xcc, 0x29, 0xd1, 0x5f, 0x85, 0x95, 0x14, 0xf4, 0x3d, 0x14,
+	0x74, 0x48, 0x57, 0x4c, 0xa2, 0xbc, 0x22, 0x7d, 0x1d, 0x16, 0x29, 0x98, 0xce, 0xac, 0x47, 0xa8,
+	0x85, 0x3f, 0x44, 0x81, 0x4c, 0x06, 0x66, 0xc0, 0x94, 0x97, 0x10, 0x8d, 0xf0, 0xce, 0xcf, 0xae,
+	0xe7, 0x94, 0x8c, 0xe0, 0x73, 0xde, 0xf9, 0x2d, 0xfe, 0x9c, 0x12, 0xca, 0x7b, 0x0a, 0x2a, 0x78,
+	0x2f, 0x71, 0xde, 0x73, 0x8a, 0x28, 0xef, 0x14, 0x9c, 0xe4, 0xbd, 0xcc, 0x79, 0xcf, 0x80, 0x8d,
+	0xbf, 0x2a, 0xc2, 0xcd, 0x5c, 0xc5, 0x2a, 0x92, 0x77, 0x51, 0xd7, 0x7e, 0xe4, 0xe1, 0xc4, 0x71,
+	0x9d, 0x7c, 0x4d, 0x69, 0x53, 0x6a, 0x4a, 0x9b, 0x56, 0x53, 0xda, 0x54, 0x9a, 0xd2, 0xa6, 0xd1,
+	0x94, 0x36, 0xa5, 0xa6, 0xb4, 0x69, 0x35, 0xa5, 0x4d, 0xa5, 0x29, 0x2d, 0x47, 0x53, 0xfa, 0x3a,
+	0xcc, 0xcb, 0x17, 0x44, 0xf2, 0xcf, 0x9f, 0xc9, 0x62, 0xe3, 0x6b, 0x45, 0xb8, 0xa1, 0x9e, 0xdd,
+	0x21, 0xb6, 0x5a, 0x10, 0xc7, 0xaa, 0xf4, 0x1d, 0x58, 0xe3, 0x2f, 0x67, 0x26, 0x1f, 0xf3, 0x61,
+	0x8f, 0xbe, 0x6b, 0x79, 0x2d, 0xdd, 0x2d, 0xd4, 0x35, 0x73, 0x85, 0xd7, 0x48, 0xb5, 0xa3, 0xdf,
+	0x83, 0x0b, 0x76, 0x9b, 0x86, 0xfb, 0x59, 0x3a, 0x85, 0xb1, 0x74, 0x74, 0x56, 0x21, 0x4d, 0x66,
+	0x4a, 0x0b, 0xff, 0xae, 0x62, 0x5f, 0x1c, 0x34, 0x55, 0x6e, 0xd2, 0xcc, 0x51, 0x9b, 0x0a, 0xab,
+	0xbc, 0x12, 0x3f, 0x66, 0xaa, 0x3c, 0xa6, 0x1d, 0xd9, 0x85, 0x2c, 0xad, 0x23, 0xef, 0x18, 0xac,
+	0xb0, 0x3a, 0x69, 0x52, 0xc6, 0x77, 0x0a, 0x70, 0x35, 0xe9, 0x53, 0x8c, 0x95, 0xff, 0xf8, 0x0e,
+	0x68, 0x67, 0xd8, 0x81, 0xc2, 0xb4, 0x1d, 0x98, 0x56, 0x0f, 0xe3, 0x9f, 0xac, 0x99, 0x19, 0xfb,
+	0x64, 0xcd, 0x87, 0xb0, 0xbe, 0xe5, 0x45, 0x94, 0x84, 0xba, 0x54, 0x3d, 0x56, 0x4c, 0x6f, 0xa7,
+	0x97, 0x97, 0x97, 0x47, 0x9c, 0xb6, 0x71, 0x35, 0x65, 0x1e, 0xef, 0x3f, 0xe2, 0x6b, 0x43, 0xfc,
+	0x70, 0x38, 0x0b, 0x09, 0x7a, 0xc9, 0x13, 0x4a, 0xd3, 0x3a, 0x86, 0x57, 0xf9, 0xeb, 0x7f, 0x71,
+	0xfc, 0x94, 0x73, 0x25, 0xd3, 0xd5, 0xdf, 0x82, 0x15, 0x2c, 0xae, 0x45, 0xa2, 0x80, 0xa8, 0x97,
+	0x80, 0xf2, 0x25, 0x4a, 0xdd, 0x30, 0xc1, 0x95, 0x7c, 0x0c, 0xe8, 0x2d, 0x58, 0x61, 0x6f, 0x0d,
+	0x65, 0xea, 0xe7, 0xdf, 0x20, 0x5e, 0x0e, 0xd0, 0x30, 0x5d, 0xdf, 0xf8, 0x9f, 0x78, 0x53, 0x9f,
+	0x77, 0x7c, 0x34, 0xd6, 0xf9, 0x19, 0x3f, 0x8d, 0x39, 0x48, 0x9e, 0x58, 0x11, 0x0b, 0x1e, 0xb3,
+	0xab, 0xde, 0x63, 0x3b, 0xc1, 0xe4, 0x34, 0x5e, 0xab, 0x01, 0x0b, 0x24, 0x41, 0x41, 0x38, 0x2b,
+	0x29, 0x98, 0xf1, 0x4d, 0x2d, 0xf9, 0x58, 0x04, 0xcf, 0xad, 0x66, 0x2e, 0x50, 0x9e, 0xe0, 0xcd,
+	0x8d, 0xd4, 0xfd, 0xb0, 0xc2, 0xe8, 0x65, 0xba, 0x3a, 0xcc, 0xcb, 0x1b, 0x74, 0xfc, 0x3e, 0x9e,
+	0xfc, 0x34, 0x7e, 0x57, 0x03, 0x23, 0xcb, 0x8f, 0x39, 0xf0, 0xd1, 0x93, 0xe7, 0x29, 0x7d, 0xeb,
+	0xad, 0x98, 0xbd, 0xf5, 0x36, 0x9e, 0xe5, 0x9f, 0xe6, 0x88, 0xb0, 0x89, 0xd8, 0x39, 0xbe, 0x93,
+	0xb2, 0x6b, 0xf2, 0xe9, 0x98, 0xb8, 0x70, 0xc8, 0xce, 0x09, 0xf2, 0xb8, 0xee, 0x4a, 0xe2, 0x02,
+	0x5f, 0x3c, 0x2f, 0x1a, 0xa9, 0x86, 0x4d, 0x1a, 0xe3, 0xa6, 0x20, 0x94, 0x26, 0xfb, 0xcb, 0x94,
+	0x0c, 0xcd, 0xe2, 0x14, 0x34, 0x03, 0x34, 0x4c, 0x41, 0x8c, 0x1f, 0xa7, 0x8e, 0x29, 0xe6, 0xdc,
+	0x93, 0x98, 0xba, 0xe7, 0x3b, 0x3c, 0xc8, 0xe3, 0x39, 0x92, 0x80, 0xd3, 0x12, 0xb3, 0xf6, 0x98,
+	0x1b, 0x19, 0x8b, 0xf2, 0x11, 0x03, 0x01, 0xa7, 0xa4, 0xd4, 0x5b, 0x06, 0x8a, 0x54, 0x71, 0x22,
+	0x52, 0xf2, 0x89, 0x03, 0x01, 0x37, 0x7e, 0x12, 0x5f, 0x7a, 0xdf, 0x1d, 0x30, 0x87, 0xe5, 0x34,
+	0x6f, 0x1d, 0x9c, 0xfb, 0xc5, 0xef, 0xb4, 0x0d, 0x9c, 0x99, 0xec, 0x20, 0x83, 0xf1, 0x9d, 0xf8,
+	0xb1, 0x36, 0xb1, 0x02, 0x26, 0xae, 0xfa, 0x6e, 0x63, 0xf1, 0xd6, 0xd9, 0x29, 0x66, 0x64, 0xea,
+	0xcc, 0x83, 0x98, 0x91, 0x4e, 0xe2, 0xbc, 0xc3, 0xf1, 0xf7, 0x7b, 0x8d, 0x6f, 0x17, 0x52, 0x2f,
+	0x53, 0xc9, 0xdb, 0x56, 0x27, 0x65, 0xea, 0x25, 0xf5, 0x4e, 0x18, 0x57, 0xc9, 0x62, 0x7c, 0xdd,
+	0x82, 0x81, 0xd5, 0xeb, 0x60, 0x39, 0xeb, 0x83, 0x76, 0xd2, 0xf5, 0x61, 0xd2, 0x47, 0x83, 0x2a,
+	0xd1, 0x60, 0x5f, 0xbd, 0x67, 0x3c, 0x3b, 0xe6, 0x1c, 0x46, 0x8c, 0x62, 0x3c, 0x54, 0x27, 0xae,
+	0xde, 0xc7, 0xc4, 0x6b, 0x1f, 0x6e, 0xe3, 0xb0, 0x15, 0xda, 0x41, 0xd4, 0xc6, 0x61, 0x2f, 0xde,
+	0x6c, 0x98, 0x7a, 0xaf, 0xf1, 0xd7, 0x0b, 0xc9, 0x67, 0x70, 0xc4, 0x02, 0xfe, 0x9e, 0x1d, 0x74,
+	0x06, 0x76, 0x9c, 0x77, 0x9c, 0x62, 0x95, 0x4a, 0x84, 0x0d, 0xf9, 0xfb, 0x6f, 0xb2, 0x58, 0xbf,
+	0x08, 0x25, 0x5f, 0xb4, 0x23, 0xde, 0x18, 0x52, 0xdf, 0xfa, 0x35, 0xa8, 0xf1, 0x34, 0xbc, 0x8f,
+	0x1d, 0x3b, 0x91, 0x7e, 0xaa, 0x32, 0xe8, 0x7b, 0x02, 0xc8, 0x86, 0x14, 0x47, 0xe3, 0x81, 0x8f,
+	0xb8, 0xbb, 0xcc, 0x91, 0x78, 0xc0, 0xf3, 0x45, 0x58, 0x62, 0xaa, 0x25, 0x54, 0x56, 0x76, 0xd6,
+	0xb5, 0xfe, 0x60, 0xaf, 0x41, 0x43, 0x81, 0x56, 0x5c, 0xc8, 0x83, 0xb8, 0x04, 0xe0, 0xfa, 0x17,
+	0xd5, 0xb3, 0x28, 0xd9, 0xac, 0x9b, 0xbe, 0x04, 0x0b, 0x2a, 0xef, 0x66, 0xe2, 0xe1, 0xd2, 0xff,
+	0xd3, 0x57, 0x60, 0x51, 0x41, 0xf8, 0x8c, 0x5a, 0xd2, 0xae, 0x77, 0x61, 0x35, 0xef, 0x71, 0x3a,
+	0xbd, 0x06, 0xb0, 0x8f, 0xdd, 0x43, 0x0e, 0xe4, 0x95, 0xf9, 0xd3, 0x0c, 0x26, 0x1e, 0x0a, 0xa0,
+	0xa6, 0xaf, 0x81, 0x2e, 0xff, 0x48, 0x80, 0x92, 0x13, 0xf0, 0x02, 0x45, 0xe6, 0x8f, 0xfe, 0xc7,
+	0xc8, 0xc5, 0xff, 0x0d, 0x00, 0x00, 0xff, 0xff, 0x4b, 0x04, 0x80, 0x63, 0x1b, 0x6d, 0x00, 0x00,
 }
