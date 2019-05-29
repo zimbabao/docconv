@@ -2,6 +2,8 @@ syntax = "proto2";
 
 import "TSPMessages.proto";
 import "TSDArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TSCH";
 package TSCH;
 
 enum TextureTilingMode {
