@@ -6,6 +6,8 @@ import "TSDArchives.proto";
 //import "TSSArchives.proto";
 import "TSCHArchives.Common.proto";
 import "TSCH3DArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TSCH/Generated";
 package TSCH.Generated;
 
 message ChartStyleArchive {

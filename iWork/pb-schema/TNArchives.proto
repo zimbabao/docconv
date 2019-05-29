@@ -9,6 +9,8 @@ import "TSDArchives.proto";
 import "TSWPArchives.proto";
 import "TSAArchives.proto";
 import "TSTArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TN";
 package TN;
 
 enum SheetPageOrder {

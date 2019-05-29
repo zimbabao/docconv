@@ -7,6 +7,8 @@ import "TSWPArchives.proto";
 import "TSSArchives.proto";
 import "TSAArchives.proto";
 import "TSCHArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TP";
 package TP;
 
 enum ViewScaleMode {

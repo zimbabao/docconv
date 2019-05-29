@@ -8,6 +8,8 @@ import "TSCHArchives.Common.proto";
 //import "TSCHArchives.GEN.proto";
 //import "TSCH3DArchives.proto";
 //import "TSCHArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TSCH";
 package TSCH;
 
 enum StyleOwnerType {

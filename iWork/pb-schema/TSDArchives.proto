@@ -3,6 +3,8 @@ syntax = "proto2";
 import "TSPMessages.proto";
 import "TSKArchives.proto";
 import "TSSArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TSD";
 package TSD;
 
 enum LineJoin {

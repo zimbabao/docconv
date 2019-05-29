@@ -8,6 +8,8 @@ import "TSWPArchives.proto";
 //import "TSAArchives.proto";
 //mport "TPArchives.proto";
 import "TSWPCommandArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TP";
 package TP;
 
 message InsertDrawablesCommandArchive {

@@ -6,6 +6,8 @@ package TSS
 import (
 	fmt "fmt"
 	proto "github.com/golang/protobuf/proto"
+	TSK "github.com/zimbabao/docconv/iWork/TSK"
+	TSP "github.com/zimbabao/docconv/iWork/TSP"
 	math "math"
 )
 
@@ -21,14 +23,14 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 type StyleArchive struct {
-	Name                 *string    `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
-	StyleIdentifier      *string    `protobuf:"bytes,2,opt,name=style_identifier,json=styleIdentifier" json:"style_identifier,omitempty"`
-	Parent               *Reference `protobuf:"bytes,3,opt,name=parent" json:"parent,omitempty"`
-	IsVariation          *bool      `protobuf:"varint,4,opt,name=is_variation,json=isVariation,def=0" json:"is_variation,omitempty"`
-	Stylesheet           *Reference `protobuf:"bytes,5,opt,name=stylesheet" json:"stylesheet,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Name                 *string        `protobuf:"bytes,1,opt,name=name" json:"name,omitempty"`
+	StyleIdentifier      *string        `protobuf:"bytes,2,opt,name=style_identifier,json=styleIdentifier" json:"style_identifier,omitempty"`
+	Parent               *TSP.Reference `protobuf:"bytes,3,opt,name=parent" json:"parent,omitempty"`
+	IsVariation          *bool          `protobuf:"varint,4,opt,name=is_variation,json=isVariation,def=0" json:"is_variation,omitempty"`
+	Stylesheet           *TSP.Reference `protobuf:"bytes,5,opt,name=stylesheet" json:"stylesheet,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
 func (m *StyleArchive) Reset()         { *m = StyleArchive{} }
@@ -72,7 +74,7 @@ func (m *StyleArchive) GetStyleIdentifier() string {
 	return ""
 }
 
-func (m *StyleArchive) GetParent() *Reference {
+func (m *StyleArchive) GetParent() *TSP.Reference {
 	if m != nil {
 		return m.Parent
 	}
@@ -86,7 +88,7 @@ func (m *StyleArchive) GetIsVariation() bool {
 	return Default_StyleArchive_IsVariation
 }
 
-func (m *StyleArchive) GetStylesheet() *Reference {
+func (m *StyleArchive) GetStylesheet() *TSP.Reference {
 	if m != nil {
 		return m.Stylesheet
 	}
@@ -94,9 +96,9 @@ func (m *StyleArchive) GetStylesheet() *Reference {
 }
 
 type StylesheetArchive struct {
-	Styles                   []*Reference                              `protobuf:"bytes,1,rep,name=styles" json:"styles,omitempty"`
+	Styles                   []*TSP.Reference                          `protobuf:"bytes,1,rep,name=styles" json:"styles,omitempty"`
 	IdentifierToStyleMap     []*StylesheetArchive_IdentifiedStyleEntry `protobuf:"bytes,2,rep,name=identifier_to_style_map,json=identifierToStyleMap" json:"identifier_to_style_map,omitempty"`
-	Parent                   *Reference                                `protobuf:"bytes,3,opt,name=parent" json:"parent,omitempty"`
+	Parent                   *TSP.Reference                            `protobuf:"bytes,3,opt,name=parent" json:"parent,omitempty"`
 	IsLocked                 *bool                                     `protobuf:"varint,4,opt,name=is_locked,json=isLocked,def=1" json:"is_locked,omitempty"`
 	ParentToChildrenStyleMap []*StylesheetArchive_StyleChildrenEntry   `protobuf:"bytes,5,rep,name=parent_to_children_style_map,json=parentToChildrenStyleMap" json:"parent_to_children_style_map,omitempty"`
 	CanCullStyles            *bool                                     `protobuf:"varint,6,opt,name=can_cull_styles,json=canCullStyles,def=0" json:"can_cull_styles,omitempty"`
@@ -133,7 +135,7 @@ var xxx_messageInfo_StylesheetArchive proto.InternalMessageInfo
 const Default_StylesheetArchive_IsLocked bool = true
 const Default_StylesheetArchive_CanCullStyles bool = false
 
-func (m *StylesheetArchive) GetStyles() []*Reference {
+func (m *StylesheetArchive) GetStyles() []*TSP.Reference {
 	if m != nil {
 		return m.Styles
 	}
@@ -147,7 +149,7 @@ func (m *StylesheetArchive) GetIdentifierToStyleMap() []*StylesheetArchive_Ident
 	return nil
 }
 
-func (m *StylesheetArchive) GetParent() *Reference {
+func (m *StylesheetArchive) GetParent() *TSP.Reference {
 	if m != nil {
 		return m.Parent
 	}
@@ -176,11 +178,11 @@ func (m *StylesheetArchive) GetCanCullStyles() bool {
 }
 
 type StylesheetArchive_IdentifiedStyleEntry struct {
-	Identifier           *string    `protobuf:"bytes,1,req,name=identifier" json:"identifier,omitempty"`
-	Style                *Reference `protobuf:"bytes,2,req,name=style" json:"style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Identifier           *string        `protobuf:"bytes,1,req,name=identifier" json:"identifier,omitempty"`
+	Style                *TSP.Reference `protobuf:"bytes,2,req,name=style" json:"style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
 func (m *StylesheetArchive_IdentifiedStyleEntry) Reset() {
@@ -217,7 +219,7 @@ func (m *StylesheetArchive_IdentifiedStyleEntry) GetIdentifier() string {
 	return ""
 }
 
-func (m *StylesheetArchive_IdentifiedStyleEntry) GetStyle() *Reference {
+func (m *StylesheetArchive_IdentifiedStyleEntry) GetStyle() *TSP.Reference {
 	if m != nil {
 		return m.Style
 	}
@@ -225,11 +227,11 @@ func (m *StylesheetArchive_IdentifiedStyleEntry) GetStyle() *Reference {
 }
 
 type StylesheetArchive_StyleChildrenEntry struct {
-	Parent               *Reference   `protobuf:"bytes,1,req,name=parent" json:"parent,omitempty"`
-	Children             []*Reference `protobuf:"bytes,2,rep,name=children" json:"children,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}     `json:"-"`
-	XXX_unrecognized     []byte       `json:"-"`
-	XXX_sizecache        int32        `json:"-"`
+	Parent               *TSP.Reference   `protobuf:"bytes,1,req,name=parent" json:"parent,omitempty"`
+	Children             []*TSP.Reference `protobuf:"bytes,2,rep,name=children" json:"children,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
+	XXX_unrecognized     []byte           `json:"-"`
+	XXX_sizecache        int32            `json:"-"`
 }
 
 func (m *StylesheetArchive_StyleChildrenEntry) Reset()         { *m = StylesheetArchive_StyleChildrenEntry{} }
@@ -257,14 +259,14 @@ func (m *StylesheetArchive_StyleChildrenEntry) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_StylesheetArchive_StyleChildrenEntry proto.InternalMessageInfo
 
-func (m *StylesheetArchive_StyleChildrenEntry) GetParent() *Reference {
+func (m *StylesheetArchive_StyleChildrenEntry) GetParent() *TSP.Reference {
 	if m != nil {
 		return m.Parent
 	}
 	return nil
 }
 
-func (m *StylesheetArchive_StyleChildrenEntry) GetChildren() []*Reference {
+func (m *StylesheetArchive_StyleChildrenEntry) GetChildren() []*TSP.Reference {
 	if m != nil {
 		return m.Children
 	}
@@ -272,10 +274,10 @@ func (m *StylesheetArchive_StyleChildrenEntry) GetChildren() []*Reference {
 }
 
 type ThemeArchive struct {
-	Stylesheet                   *Reference `protobuf:"bytes,1,opt,name=stylesheet" json:"stylesheet,omitempty"`
-	ThemeIdentifier              *string    `protobuf:"bytes,3,opt,name=theme_identifier,json=themeIdentifier" json:"theme_identifier,omitempty"`
-	ColorPresets                 []*Color   `protobuf:"bytes,10,rep,name=color_presets,json=colorPresets" json:"color_presets,omitempty"`
-	XXX_NoUnkeyedLiteral         struct{}   `json:"-"`
+	Stylesheet                   *TSP.Reference `protobuf:"bytes,1,opt,name=stylesheet" json:"stylesheet,omitempty"`
+	ThemeIdentifier              *string        `protobuf:"bytes,3,opt,name=theme_identifier,json=themeIdentifier" json:"theme_identifier,omitempty"`
+	ColorPresets                 []*TSP.Color   `protobuf:"bytes,10,rep,name=color_presets,json=colorPresets" json:"color_presets,omitempty"`
+	XXX_NoUnkeyedLiteral         struct{}       `json:"-"`
 	proto.XXX_InternalExtensions `json:"-"`
 	XXX_unrecognized             []byte `json:"-"`
 	XXX_sizecache                int32  `json:"-"`
@@ -314,7 +316,7 @@ func (m *ThemeArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ThemeArchive proto.InternalMessageInfo
 
-func (m *ThemeArchive) GetStylesheet() *Reference {
+func (m *ThemeArchive) GetStylesheet() *TSP.Reference {
 	if m != nil {
 		return m.Stylesheet
 	}
@@ -328,7 +330,7 @@ func (m *ThemeArchive) GetThemeIdentifier() string {
 	return ""
 }
 
-func (m *ThemeArchive) GetColorPresets() []*Color {
+func (m *ThemeArchive) GetColorPresets() []*TSP.Color {
 	if m != nil {
 		return m.ColorPresets
 	}
@@ -336,13 +338,13 @@ func (m *ThemeArchive) GetColorPresets() []*Color {
 }
 
 type ApplyThemeCommandArchive struct {
-	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Commands             []*Reference    `protobuf:"bytes,2,rep,name=commands" json:"commands,omitempty"`
-	OldTheme             *Reference      `protobuf:"bytes,3,opt,name=old_theme,json=oldTheme" json:"old_theme,omitempty"`
-	NewTheme             *Reference      `protobuf:"bytes,4,opt,name=new_theme,json=newTheme" json:"new_theme,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Commands             []*TSP.Reference    `protobuf:"bytes,2,rep,name=commands" json:"commands,omitempty"`
+	OldTheme             *TSP.Reference      `protobuf:"bytes,3,opt,name=old_theme,json=oldTheme" json:"old_theme,omitempty"`
+	NewTheme             *TSP.Reference      `protobuf:"bytes,4,opt,name=new_theme,json=newTheme" json:"new_theme,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *ApplyThemeCommandArchive) Reset()         { *m = ApplyThemeCommandArchive{} }
@@ -370,28 +372,28 @@ func (m *ApplyThemeCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ApplyThemeCommandArchive proto.InternalMessageInfo
 
-func (m *ApplyThemeCommandArchive) GetSuper() *CommandArchive {
+func (m *ApplyThemeCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ApplyThemeCommandArchive) GetCommands() []*Reference {
+func (m *ApplyThemeCommandArchive) GetCommands() []*TSP.Reference {
 	if m != nil {
 		return m.Commands
 	}
 	return nil
 }
 
-func (m *ApplyThemeCommandArchive) GetOldTheme() *Reference {
+func (m *ApplyThemeCommandArchive) GetOldTheme() *TSP.Reference {
 	if m != nil {
 		return m.OldTheme
 	}
 	return nil
 }
 
-func (m *ApplyThemeCommandArchive) GetNewTheme() *Reference {
+func (m *ApplyThemeCommandArchive) GetNewTheme() *TSP.Reference {
 	if m != nil {
 		return m.NewTheme
 	}
@@ -399,11 +401,11 @@ func (m *ApplyThemeCommandArchive) GetNewTheme() *Reference {
 }
 
 type ApplyThemeChildCommandArchive struct {
-	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Parent               *Reference      `protobuf:"bytes,2,opt,name=parent" json:"parent,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Parent               *TSP.Reference      `protobuf:"bytes,2,opt,name=parent" json:"parent,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *ApplyThemeChildCommandArchive) Reset()         { *m = ApplyThemeChildCommandArchive{} }
@@ -431,14 +433,14 @@ func (m *ApplyThemeChildCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ApplyThemeChildCommandArchive proto.InternalMessageInfo
 
-func (m *ApplyThemeChildCommandArchive) GetSuper() *CommandArchive {
+func (m *ApplyThemeChildCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ApplyThemeChildCommandArchive) GetParent() *Reference {
+func (m *ApplyThemeChildCommandArchive) GetParent() *TSP.Reference {
 	if m != nil {
 		return m.Parent
 	}
@@ -446,9 +448,9 @@ func (m *ApplyThemeChildCommandArchive) GetParent() *Reference {
 }
 
 type ReapUnusedStyleCommandArchive struct {
-	Super                *CommandArchive                                       `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Stylesheet           *Reference                                            `protobuf:"bytes,2,opt,name=stylesheet" json:"stylesheet,omitempty"`
-	Styles               []*Reference                                          `protobuf:"bytes,3,rep,name=styles" json:"styles,omitempty"`
+	Super                *TSK.CommandArchive                                   `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Stylesheet           *TSP.Reference                                        `protobuf:"bytes,2,opt,name=stylesheet" json:"stylesheet,omitempty"`
+	Styles               []*TSP.Reference                                      `protobuf:"bytes,3,rep,name=styles" json:"styles,omitempty"`
 	IdentifiedStyles     []*ReapUnusedStyleCommandArchive_IdentifiedStyleEntry `protobuf:"bytes,4,rep,name=identified_styles,json=identifiedStyles" json:"identified_styles,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                                              `json:"-"`
 	XXX_unrecognized     []byte                                                `json:"-"`
@@ -480,21 +482,21 @@ func (m *ReapUnusedStyleCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ReapUnusedStyleCommandArchive proto.InternalMessageInfo
 
-func (m *ReapUnusedStyleCommandArchive) GetSuper() *CommandArchive {
+func (m *ReapUnusedStyleCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ReapUnusedStyleCommandArchive) GetStylesheet() *Reference {
+func (m *ReapUnusedStyleCommandArchive) GetStylesheet() *TSP.Reference {
 	if m != nil {
 		return m.Stylesheet
 	}
 	return nil
 }
 
-func (m *ReapUnusedStyleCommandArchive) GetStyles() []*Reference {
+func (m *ReapUnusedStyleCommandArchive) GetStyles() []*TSP.Reference {
 	if m != nil {
 		return m.Styles
 	}
@@ -509,11 +511,11 @@ func (m *ReapUnusedStyleCommandArchive) GetIdentifiedStyles() []*ReapUnusedStyle
 }
 
 type ReapUnusedStyleCommandArchive_IdentifiedStyleEntry struct {
-	Identifier           *string    `protobuf:"bytes,1,req,name=identifier" json:"identifier,omitempty"`
-	Style                *Reference `protobuf:"bytes,2,req,name=style" json:"style,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}   `json:"-"`
-	XXX_unrecognized     []byte     `json:"-"`
-	XXX_sizecache        int32      `json:"-"`
+	Identifier           *string        `protobuf:"bytes,1,req,name=identifier" json:"identifier,omitempty"`
+	Style                *TSP.Reference `protobuf:"bytes,2,req,name=style" json:"style,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
+	XXX_unrecognized     []byte         `json:"-"`
+	XXX_sizecache        int32          `json:"-"`
 }
 
 func (m *ReapUnusedStyleCommandArchive_IdentifiedStyleEntry) Reset() {
@@ -552,7 +554,7 @@ func (m *ReapUnusedStyleCommandArchive_IdentifiedStyleEntry) GetIdentifier() str
 	return ""
 }
 
-func (m *ReapUnusedStyleCommandArchive_IdentifiedStyleEntry) GetStyle() *Reference {
+func (m *ReapUnusedStyleCommandArchive_IdentifiedStyleEntry) GetStyle() *TSP.Reference {
 	if m != nil {
 		return m.Style
 	}
@@ -560,14 +562,14 @@ func (m *ReapUnusedStyleCommandArchive_IdentifiedStyleEntry) GetStyle() *Referen
 }
 
 type StyleUpdatePropertyMapCommandArchive struct {
-	Super                   *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	CurrentStyle            *Reference      `protobuf:"bytes,2,req,name=current_style,json=currentStyle" json:"current_style,omitempty"`
-	StyleWithOldPropertyMap *Reference      `protobuf:"bytes,3,req,name=style_with_old_property_map,json=styleWithOldPropertyMap" json:"style_with_old_property_map,omitempty"`
-	StyleWithNewPropertyMap *Reference      `protobuf:"bytes,4,req,name=style_with_new_property_map,json=styleWithNewPropertyMap" json:"style_with_new_property_map,omitempty"`
-	NotifyForStyleClients   *bool           `protobuf:"varint,6,opt,name=notify_for_style_clients,json=notifyForStyleClients,def=1" json:"notify_for_style_clients,omitempty"`
-	XXX_NoUnkeyedLiteral    struct{}        `json:"-"`
-	XXX_unrecognized        []byte          `json:"-"`
-	XXX_sizecache           int32           `json:"-"`
+	Super                   *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	CurrentStyle            *TSP.Reference      `protobuf:"bytes,2,req,name=current_style,json=currentStyle" json:"current_style,omitempty"`
+	StyleWithOldPropertyMap *TSP.Reference      `protobuf:"bytes,3,req,name=style_with_old_property_map,json=styleWithOldPropertyMap" json:"style_with_old_property_map,omitempty"`
+	StyleWithNewPropertyMap *TSP.Reference      `protobuf:"bytes,4,req,name=style_with_new_property_map,json=styleWithNewPropertyMap" json:"style_with_new_property_map,omitempty"`
+	NotifyForStyleClients   *bool               `protobuf:"varint,6,opt,name=notify_for_style_clients,json=notifyForStyleClients,def=1" json:"notify_for_style_clients,omitempty"`
+	XXX_NoUnkeyedLiteral    struct{}            `json:"-"`
+	XXX_unrecognized        []byte              `json:"-"`
+	XXX_sizecache           int32               `json:"-"`
 }
 
 func (m *StyleUpdatePropertyMapCommandArchive) Reset()         { *m = StyleUpdatePropertyMapCommandArchive{} }
@@ -597,28 +599,28 @@ var xxx_messageInfo_StyleUpdatePropertyMapCommandArchive proto.InternalMessageIn
 
 const Default_StyleUpdatePropertyMapCommandArchive_NotifyForStyleClients bool = true
 
-func (m *StyleUpdatePropertyMapCommandArchive) GetSuper() *CommandArchive {
+func (m *StyleUpdatePropertyMapCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *StyleUpdatePropertyMapCommandArchive) GetCurrentStyle() *Reference {
+func (m *StyleUpdatePropertyMapCommandArchive) GetCurrentStyle() *TSP.Reference {
 	if m != nil {
 		return m.CurrentStyle
 	}
 	return nil
 }
 
-func (m *StyleUpdatePropertyMapCommandArchive) GetStyleWithOldPropertyMap() *Reference {
+func (m *StyleUpdatePropertyMapCommandArchive) GetStyleWithOldPropertyMap() *TSP.Reference {
 	if m != nil {
 		return m.StyleWithOldPropertyMap
 	}
 	return nil
 }
 
-func (m *StyleUpdatePropertyMapCommandArchive) GetStyleWithNewPropertyMap() *Reference {
+func (m *StyleUpdatePropertyMapCommandArchive) GetStyleWithNewPropertyMap() *TSP.Reference {
 	if m != nil {
 		return m.StyleWithNewPropertyMap
 	}
@@ -633,14 +635,14 @@ func (m *StyleUpdatePropertyMapCommandArchive) GetNotifyForStyleClients() bool {
 }
 
 type ThemeReplacePresetCommandArchive struct {
-	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                *Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	Preset               *Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
-	OldPreset            *Reference      `protobuf:"bytes,4,req,name=oldPreset" json:"oldPreset,omitempty"`
-	Index                *uint32         `protobuf:"varint,5,req,name=index" json:"index,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Theme                *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
+	Preset               *TSP.Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
+	OldPreset            *TSP.Reference      `protobuf:"bytes,4,req,name=oldPreset" json:"oldPreset,omitempty"`
+	Index                *uint32             `protobuf:"varint,5,req,name=index" json:"index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *ThemeReplacePresetCommandArchive) Reset()         { *m = ThemeReplacePresetCommandArchive{} }
@@ -668,28 +670,28 @@ func (m *ThemeReplacePresetCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ThemeReplacePresetCommandArchive proto.InternalMessageInfo
 
-func (m *ThemeReplacePresetCommandArchive) GetSuper() *CommandArchive {
+func (m *ThemeReplacePresetCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ThemeReplacePresetCommandArchive) GetTheme() *Reference {
+func (m *ThemeReplacePresetCommandArchive) GetTheme() *TSP.Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *ThemeReplacePresetCommandArchive) GetPreset() *Reference {
+func (m *ThemeReplacePresetCommandArchive) GetPreset() *TSP.Reference {
 	if m != nil {
 		return m.Preset
 	}
 	return nil
 }
 
-func (m *ThemeReplacePresetCommandArchive) GetOldPreset() *Reference {
+func (m *ThemeReplacePresetCommandArchive) GetOldPreset() *TSP.Reference {
 	if m != nil {
 		return m.OldPreset
 	}
@@ -704,14 +706,14 @@ func (m *ThemeReplacePresetCommandArchive) GetIndex() uint32 {
 }
 
 type ThemeReplaceColorPresetCommandArchive struct {
-	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                *Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	Color                *Color          `protobuf:"bytes,3,req,name=color" json:"color,omitempty"`
-	OldColor             *Color          `protobuf:"bytes,4,req,name=old_color,json=oldColor" json:"old_color,omitempty"`
-	Index                *uint32         `protobuf:"varint,5,req,name=index" json:"index,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Theme                *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
+	Color                *TSP.Color          `protobuf:"bytes,3,req,name=color" json:"color,omitempty"`
+	OldColor             *TSP.Color          `protobuf:"bytes,4,req,name=old_color,json=oldColor" json:"old_color,omitempty"`
+	Index                *uint32             `protobuf:"varint,5,req,name=index" json:"index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *ThemeReplaceColorPresetCommandArchive) Reset()         { *m = ThemeReplaceColorPresetCommandArchive{} }
@@ -739,28 +741,28 @@ func (m *ThemeReplaceColorPresetCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ThemeReplaceColorPresetCommandArchive proto.InternalMessageInfo
 
-func (m *ThemeReplaceColorPresetCommandArchive) GetSuper() *CommandArchive {
+func (m *ThemeReplaceColorPresetCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ThemeReplaceColorPresetCommandArchive) GetTheme() *Reference {
+func (m *ThemeReplaceColorPresetCommandArchive) GetTheme() *TSP.Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *ThemeReplaceColorPresetCommandArchive) GetColor() *Color {
+func (m *ThemeReplaceColorPresetCommandArchive) GetColor() *TSP.Color {
 	if m != nil {
 		return m.Color
 	}
 	return nil
 }
 
-func (m *ThemeReplaceColorPresetCommandArchive) GetOldColor() *Color {
+func (m *ThemeReplaceColorPresetCommandArchive) GetOldColor() *TSP.Color {
 	if m != nil {
 		return m.OldColor
 	}
@@ -775,15 +777,15 @@ func (m *ThemeReplaceColorPresetCommandArchive) GetIndex() uint32 {
 }
 
 type ThemeAddStylePresetCommandArchive struct {
-	Super                 *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                 *Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	Preset                *Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
-	PresetKind            *string         `protobuf:"bytes,4,req,name=preset_kind,json=presetKind" json:"preset_kind,omitempty"`
-	Identifier            *string         `protobuf:"bytes,5,opt,name=identifier" json:"identifier,omitempty"`
-	AddPresetToStylesheet *bool           `protobuf:"varint,6,opt,name=add_preset_to_stylesheet,json=addPresetToStylesheet" json:"add_preset_to_stylesheet,omitempty"`
-	XXX_NoUnkeyedLiteral  struct{}        `json:"-"`
-	XXX_unrecognized      []byte          `json:"-"`
-	XXX_sizecache         int32           `json:"-"`
+	Super                 *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Theme                 *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
+	Preset                *TSP.Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
+	PresetKind            *string             `protobuf:"bytes,4,req,name=preset_kind,json=presetKind" json:"preset_kind,omitempty"`
+	Identifier            *string             `protobuf:"bytes,5,opt,name=identifier" json:"identifier,omitempty"`
+	AddPresetToStylesheet *bool               `protobuf:"varint,6,opt,name=add_preset_to_stylesheet,json=addPresetToStylesheet" json:"add_preset_to_stylesheet,omitempty"`
+	XXX_NoUnkeyedLiteral  struct{}            `json:"-"`
+	XXX_unrecognized      []byte              `json:"-"`
+	XXX_sizecache         int32               `json:"-"`
 }
 
 func (m *ThemeAddStylePresetCommandArchive) Reset()         { *m = ThemeAddStylePresetCommandArchive{} }
@@ -811,21 +813,21 @@ func (m *ThemeAddStylePresetCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ThemeAddStylePresetCommandArchive proto.InternalMessageInfo
 
-func (m *ThemeAddStylePresetCommandArchive) GetSuper() *CommandArchive {
+func (m *ThemeAddStylePresetCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ThemeAddStylePresetCommandArchive) GetTheme() *Reference {
+func (m *ThemeAddStylePresetCommandArchive) GetTheme() *TSP.Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *ThemeAddStylePresetCommandArchive) GetPreset() *Reference {
+func (m *ThemeAddStylePresetCommandArchive) GetPreset() *TSP.Reference {
 	if m != nil {
 		return m.Preset
 	}
@@ -854,15 +856,15 @@ func (m *ThemeAddStylePresetCommandArchive) GetAddPresetToStylesheet() bool {
 }
 
 type ThemeRemoveStylePresetCommandArchive struct {
-	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                *Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	Preset               *Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
-	PresetIndex          *uint32         `protobuf:"varint,4,req,name=preset_index,json=presetIndex" json:"preset_index,omitempty"`
-	PresetKind           *string         `protobuf:"bytes,5,req,name=preset_kind,json=presetKind" json:"preset_kind,omitempty"`
-	Identifier           *string         `protobuf:"bytes,6,opt,name=identifier" json:"identifier,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Theme                *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
+	Preset               *TSP.Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
+	PresetIndex          *uint32             `protobuf:"varint,4,req,name=preset_index,json=presetIndex" json:"preset_index,omitempty"`
+	PresetKind           *string             `protobuf:"bytes,5,req,name=preset_kind,json=presetKind" json:"preset_kind,omitempty"`
+	Identifier           *string             `protobuf:"bytes,6,opt,name=identifier" json:"identifier,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *ThemeRemoveStylePresetCommandArchive) Reset()         { *m = ThemeRemoveStylePresetCommandArchive{} }
@@ -890,21 +892,21 @@ func (m *ThemeRemoveStylePresetCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ThemeRemoveStylePresetCommandArchive proto.InternalMessageInfo
 
-func (m *ThemeRemoveStylePresetCommandArchive) GetSuper() *CommandArchive {
+func (m *ThemeRemoveStylePresetCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ThemeRemoveStylePresetCommandArchive) GetTheme() *Reference {
+func (m *ThemeRemoveStylePresetCommandArchive) GetTheme() *TSP.Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *ThemeRemoveStylePresetCommandArchive) GetPreset() *Reference {
+func (m *ThemeRemoveStylePresetCommandArchive) GetPreset() *TSP.Reference {
 	if m != nil {
 		return m.Preset
 	}
@@ -933,14 +935,14 @@ func (m *ThemeRemoveStylePresetCommandArchive) GetIdentifier() string {
 }
 
 type ThemeMovePresetCommandArchive struct {
-	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Theme                *Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
-	Preset               *Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
-	NewIndex             *uint32         `protobuf:"varint,4,req,name=new_index,json=newIndex" json:"new_index,omitempty"`
-	OldIndex             *uint32         `protobuf:"varint,5,req,name=old_index,json=oldIndex" json:"old_index,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Theme                *TSP.Reference      `protobuf:"bytes,2,req,name=theme" json:"theme,omitempty"`
+	Preset               *TSP.Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
+	NewIndex             *uint32             `protobuf:"varint,4,req,name=new_index,json=newIndex" json:"new_index,omitempty"`
+	OldIndex             *uint32             `protobuf:"varint,5,req,name=old_index,json=oldIndex" json:"old_index,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *ThemeMovePresetCommandArchive) Reset()         { *m = ThemeMovePresetCommandArchive{} }
@@ -968,21 +970,21 @@ func (m *ThemeMovePresetCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ThemeMovePresetCommandArchive proto.InternalMessageInfo
 
-func (m *ThemeMovePresetCommandArchive) GetSuper() *CommandArchive {
+func (m *ThemeMovePresetCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ThemeMovePresetCommandArchive) GetTheme() *Reference {
+func (m *ThemeMovePresetCommandArchive) GetTheme() *TSP.Reference {
 	if m != nil {
 		return m.Theme
 	}
 	return nil
 }
 
-func (m *ThemeMovePresetCommandArchive) GetPreset() *Reference {
+func (m *ThemeMovePresetCommandArchive) GetPreset() *TSP.Reference {
 	if m != nil {
 		return m.Preset
 	}
@@ -1004,12 +1006,12 @@ func (m *ThemeMovePresetCommandArchive) GetOldIndex() uint32 {
 }
 
 type ThemeReplaceStylePresetCommandArchive struct {
-	Super                *CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
-	Preset               *Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
-	OldPreset            *Reference      `protobuf:"bytes,4,req,name=old_preset,json=oldPreset" json:"old_preset,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
-	XXX_unrecognized     []byte          `json:"-"`
-	XXX_sizecache        int32           `json:"-"`
+	Super                *TSK.CommandArchive `protobuf:"bytes,1,req,name=super" json:"super,omitempty"`
+	Preset               *TSP.Reference      `protobuf:"bytes,3,req,name=preset" json:"preset,omitempty"`
+	OldPreset            *TSP.Reference      `protobuf:"bytes,4,req,name=old_preset,json=oldPreset" json:"old_preset,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
 }
 
 func (m *ThemeReplaceStylePresetCommandArchive) Reset()         { *m = ThemeReplaceStylePresetCommandArchive{} }
@@ -1037,21 +1039,21 @@ func (m *ThemeReplaceStylePresetCommandArchive) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_ThemeReplaceStylePresetCommandArchive proto.InternalMessageInfo
 
-func (m *ThemeReplaceStylePresetCommandArchive) GetSuper() *CommandArchive {
+func (m *ThemeReplaceStylePresetCommandArchive) GetSuper() *TSK.CommandArchive {
 	if m != nil {
 		return m.Super
 	}
 	return nil
 }
 
-func (m *ThemeReplaceStylePresetCommandArchive) GetPreset() *Reference {
+func (m *ThemeReplaceStylePresetCommandArchive) GetPreset() *TSP.Reference {
 	if m != nil {
 		return m.Preset
 	}
 	return nil
 }
 
-func (m *ThemeReplaceStylePresetCommandArchive) GetOldPreset() *Reference {
+func (m *ThemeReplaceStylePresetCommandArchive) GetOldPreset() *TSP.Reference {
 	if m != nil {
 		return m.OldPreset
 	}
@@ -1080,68 +1082,70 @@ func init() {
 func init() { proto.RegisterFile("TSSArchives.proto", fileDescriptor_13d6b42bd2e3737f) }
 
 var fileDescriptor_13d6b42bd2e3737f = []byte{
-	// 999 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x56, 0x51, 0x6f, 0xe3, 0x44,
-	0x10, 0x96, 0x1d, 0xbb, 0x4a, 0xa6, 0x29, 0xd7, 0x9a, 0x9e, 0xce, 0x6a, 0x29, 0xb8, 0x56, 0x39,
-	0xd2, 0x3b, 0xce, 0x48, 0xc7, 0xc3, 0x49, 0x48, 0x3c, 0x9c, 0x22, 0x90, 0x4e, 0xbd, 0x42, 0x65,
-	0xfb, 0xe0, 0x05, 0xc9, 0x32, 0xde, 0x0d, 0x59, 0x9d, 0xb3, 0x6b, 0xd9, 0x4e, 0x4b, 0xde, 0x2a,
-	0xf1, 0x1f, 0xf8, 0x05, 0xbc, 0xf0, 0x5b, 0x40, 0x42, 0xe2, 0x8d, 0x27, 0xc4, 0x0b, 0xbf, 0x03,
-	0x79, 0x76, 0x9d, 0x38, 0x69, 0xd2, 0x56, 0x11, 0x95, 0xfa, 0x96, 0xcc, 0x7c, 0x3b, 0x3b, 0xf3,
-	0xcd, 0xcc, 0xb7, 0x86, 0x9d, 0x30, 0x08, 0x5e, 0xe6, 0xc9, 0x90, 0x9d, 0xd3, 0xc2, 0xcb, 0x72,
-	0x51, 0x0a, 0xab, 0x15, 0x06, 0xc1, 0xde, 0x4e, 0x18, 0x9c, 0x9d, 0xd2, 0xa2, 0x88, 0x7f, 0xa8,
-	0xed, 0x95, 0xe9, 0x64, 0x1e, 0xea, 0xfe, 0xa1, 0x41, 0x37, 0x28, 0x27, 0x29, 0x55, 0x76, 0xcb,
-	0x02, 0x83, 0xc7, 0x23, 0x6a, 0x6b, 0x8e, 0xd6, 0xeb, 0xf8, 0xf8, 0xdb, 0x3a, 0x86, 0xed, 0xa2,
-	0xc2, 0x44, 0x8c, 0x50, 0x5e, 0xb2, 0x01, 0xa3, 0xb9, 0xad, 0xa3, 0xff, 0x01, 0xda, 0x5f, 0x4d,
-	0xcd, 0xd6, 0x63, 0xd8, 0xc8, 0xe2, 0x9c, 0xf2, 0xd2, 0x6e, 0x39, 0x5a, 0x6f, 0xf3, 0xf9, 0x3b,
-	0x5e, 0x18, 0x9c, 0x79, 0x3e, 0x1d, 0xd0, 0x9c, 0xf2, 0x84, 0xfa, 0xca, 0x6b, 0xf5, 0xa0, 0xcb,
-	0x8a, 0xe8, 0x3c, 0xce, 0x59, 0x5c, 0x32, 0xc1, 0x6d, 0xc3, 0xd1, 0x7a, 0xed, 0xcf, 0xcc, 0x41,
-	0x9c, 0x16, 0xd4, 0xdf, 0x64, 0xc5, 0x37, 0xb5, 0xc7, 0xf2, 0x00, 0xf0, 0x92, 0x62, 0x48, 0x69,
-	0x69, 0x9b, 0x4b, 0xa3, 0x36, 0x10, 0xee, 0xef, 0x06, 0xec, 0x04, 0xd3, 0xbf, 0x75, 0x59, 0x8f,
-	0x61, 0x43, 0x62, 0x6c, 0xcd, 0x69, 0x2d, 0xcb, 0x4b, 0x7a, 0xad, 0xef, 0xe1, 0xd1, 0xac, 0xc8,
-	0xa8, 0x14, 0x91, 0x2c, 0x7c, 0x14, 0x67, 0xb6, 0x8e, 0x07, 0x9f, 0x7a, 0x61, 0x10, 0x78, 0x57,
-	0x2e, 0xf0, 0xa6, 0x1c, 0x10, 0xf4, 0x7d, 0xc1, 0xcb, 0x7c, 0xe2, 0xef, 0xce, 0x62, 0x85, 0x02,
-	0xed, 0xa7, 0x71, 0x76, 0x6b, 0x8e, 0x0e, 0xa1, 0xc3, 0x8a, 0x28, 0x15, 0xc9, 0x5b, 0x4a, 0x14,
-	0x41, 0x46, 0x99, 0x8f, 0xa9, 0xdf, 0x66, 0xc5, 0x6b, 0xb4, 0x5a, 0x0c, 0xde, 0x93, 0xe0, 0x2a,
-	0xd5, 0x64, 0xc8, 0x52, 0x92, 0x53, 0xde, 0xc8, 0xd9, 0xc4, 0x9c, 0x8f, 0x57, 0xe4, 0x8c, 0x96,
-	0xbe, 0x3a, 0x25, 0x33, 0xb6, 0x65, 0xb8, 0x50, 0xd4, 0xe6, 0x69, 0xd6, 0xcf, 0xe0, 0x41, 0x12,
-	0xf3, 0x28, 0x19, 0xa7, 0x69, 0xa4, 0xa8, 0xdc, 0x68, 0x36, 0x6d, 0x2b, 0x89, 0x79, 0x7f, 0x9c,
-	0xa6, 0xf2, 0x9a, 0xbd, 0xef, 0x60, 0x77, 0x19, 0x25, 0xd6, 0xfb, 0x00, 0x8d, 0x29, 0xd2, 0x1c,
-	0xbd, 0xd7, 0xf1, 0x1b, 0x16, 0xeb, 0x08, 0x4c, 0x8c, 0x6e, 0xeb, 0x8e, 0xbe, 0x84, 0x1b, 0xe9,
-	0xdc, 0x1b, 0x82, 0x75, 0x35, 0xf9, 0x06, 0xb1, 0xda, 0xd2, 0xc3, 0x35, 0xb1, 0x4f, 0xa0, 0x5d,
-	0x73, 0xa5, 0xba, 0xba, 0x88, 0x9c, 0xfa, 0xdd, 0x5f, 0x34, 0xe8, 0x86, 0x43, 0x3a, 0x9a, 0x2e,
-	0xc8, 0xfc, 0x3c, 0x6a, 0x37, 0xcd, 0x63, 0xb5, 0x3c, 0x65, 0x75, 0xbe, 0xb9, 0x3c, 0x2d, 0xb9,
-	0x3c, 0x68, 0x6f, 0x2c, 0xcf, 0x27, 0xb0, 0x95, 0x88, 0x54, 0xe4, 0x51, 0x96, 0xd3, 0x82, 0x96,
-	0x85, 0x0d, 0x98, 0x1c, 0x60, 0xf4, 0x7e, 0xe5, 0xf1, 0xbb, 0x08, 0x38, 0x93, 0xfe, 0x27, 0xed,
-	0x36, 0xd9, 0xbe, 0xbc, 0xbc, 0xbc, 0xd4, 0xdd, 0xdf, 0x34, 0xb0, 0x5f, 0x66, 0x59, 0x3a, 0xc1,
-	0x5c, 0xfb, 0x62, 0x34, 0x8a, 0x39, 0xa9, 0x53, 0x3e, 0x06, 0xb3, 0x18, 0x67, 0x8a, 0xee, 0xcd,
-	0xe7, 0xef, 0x7a, 0x61, 0x70, 0xe2, 0xcd, 0x63, 0x7c, 0x89, 0x40, 0x6a, 0xa4, 0xa3, 0x58, 0x49,
-	0x8d, 0xf2, 0x5b, 0x4f, 0xa1, 0x23, 0x52, 0x12, 0x61, 0x15, 0x2b, 0x46, 0xb9, 0x2d, 0x52, 0x82,
-	0x19, 0x55, 0x60, 0x4e, 0x2f, 0x14, 0xd8, 0x58, 0x0e, 0xe6, 0xf4, 0x02, 0xc1, 0x6e, 0x0e, 0x07,
-	0x8d, 0x62, 0xaa, 0x56, 0xac, 0x5f, 0xd1, 0x6c, 0x28, 0xf4, 0xeb, 0xb6, 0xcd, 0xfd, 0x57, 0x87,
-	0x03, 0x9f, 0xc6, 0xd9, 0x1b, 0x3e, 0x2e, 0xd4, 0xc4, 0xae, 0x7f, 0xe9, 0xfc, 0x90, 0xe8, 0x37,
-	0x0e, 0xc9, 0x4c, 0x9e, 0x5a, 0xd7, 0xca, 0x13, 0x81, 0x9d, 0xe9, 0x18, 0x91, 0x7a, 0x0d, 0x0d,
-	0x3c, 0xf2, 0x02, 0x97, 0xfc, 0xda, 0x0a, 0x96, 0x8b, 0xd4, 0x36, 0x9b, 0xb7, 0xde, 0xf1, 0xee,
-	0xba, 0xff, 0xe8, 0x70, 0x84, 0x41, 0xdf, 0x64, 0x24, 0x2e, 0xe9, 0x59, 0x2e, 0x32, 0x9a, 0x97,
-	0x93, 0xd3, 0x38, 0x5b, 0x9f, 0xef, 0x4f, 0x61, 0x2b, 0x19, 0xe7, 0x28, 0x84, 0xd7, 0x65, 0xd0,
-	0x55, 0x20, 0xbc, 0xde, 0x7a, 0x0d, 0xfb, 0x52, 0x29, 0x2f, 0x58, 0x39, 0x8c, 0xaa, 0x51, 0xce,
-	0x54, 0x2e, 0xa8, 0x9d, 0xad, 0xa5, 0x21, 0x1e, 0xe1, 0x91, 0x6f, 0x59, 0x39, 0xfc, 0x3a, 0x25,
-	0x8d, 0xdc, 0x17, 0xa2, 0x55, 0xb3, 0x3e, 0x17, 0xcd, 0xb8, 0x21, 0xda, 0x57, 0xf4, 0xa2, 0x19,
-	0xed, 0x73, 0xb0, 0xb9, 0x28, 0xd9, 0x60, 0x12, 0x0d, 0x44, 0xae, 0x04, 0x3d, 0x49, 0x19, 0xe5,
-	0x65, 0x2d, 0xbb, 0xf2, 0x29, 0x78, 0x28, 0x51, 0x5f, 0x8a, 0x5c, 0xf6, 0x5b, 0x42, 0xdc, 0xbf,
-	0x35, 0x70, 0x70, 0x79, 0x7c, 0x9a, 0xa5, 0x71, 0x42, 0xa5, 0x60, 0xac, 0xcf, 0xef, 0x11, 0x98,
-	0x72, 0x73, 0x57, 0x74, 0x16, 0x9d, 0xb8, 0x6a, 0x78, 0xd1, 0x0a, 0xee, 0x94, 0xd7, 0xfa, 0x18,
-	0x85, 0x43, 0xe6, 0xb4, 0x82, 0x98, 0x19, 0xc0, 0xda, 0x05, 0x93, 0x71, 0x42, 0x7f, 0xb4, 0x4d,
-	0x47, 0xef, 0x6d, 0xf9, 0xf2, 0x8f, 0xfb, 0x97, 0x06, 0x1f, 0x36, 0x2b, 0xec, 0xcf, 0x74, 0xf1,
-	0xae, 0xcb, 0x74, 0xc0, 0x44, 0x15, 0x56, 0x55, 0x36, 0xe5, 0x59, 0x3a, 0xac, 0x8f, 0xa4, 0x32,
-	0x4a, 0x94, 0x71, 0x05, 0x55, 0xa9, 0x22, 0xfe, 0x5a, 0x51, 0xdb, 0xcf, 0x3a, 0x1c, 0xca, 0x37,
-	0x87, 0xc8, 0xf5, 0xbb, 0x5f, 0xed, 0xfb, 0x00, 0x36, 0xe5, 0xaf, 0xe8, 0x2d, 0xe3, 0x04, 0xeb,
-	0xeb, 0xf8, 0x20, 0x4d, 0x27, 0x8c, 0x93, 0x05, 0x9d, 0x30, 0xf1, 0xb1, 0x6b, 0xea, 0xc4, 0x0b,
-	0xb0, 0x63, 0x42, 0xd4, 0x2b, 0x37, 0xfd, 0xc8, 0x92, 0x5a, 0x89, 0xc3, 0xed, 0x3f, 0x8c, 0x89,
-	0x6a, 0xbf, 0xfa, 0x6e, 0x92, 0xdf, 0x76, 0x3f, 0xe9, 0x70, 0xa4, 0x9a, 0x3e, 0x12, 0xe7, 0xf4,
-	0x1e, 0x72, 0x73, 0x08, 0x5d, 0x55, 0x96, 0xec, 0xab, 0x81, 0x7d, 0x55, 0x7c, 0xbd, 0xaa, 0x4c,
-	0x8b, 0xf4, 0x99, 0x37, 0xd0, 0xb7, 0xb1, 0x48, 0x9f, 0xfb, 0xa7, 0x06, 0x07, 0xc8, 0xc2, 0xa9,
-	0x38, 0xbf, 0x67, 0xe5, 0xef, 0xcb, 0x57, 0xbe, 0x59, 0x7b, 0xf5, 0xaa, 0xcb, 0xc2, 0xf7, 0xe5,
-	0x56, 0x34, 0x07, 0xbe, 0xda, 0x04, 0x74, 0xba, 0xbf, 0x2e, 0xec, 0xf3, 0xff, 0xd2, 0xdb, 0xdb,
-	0xa6, 0xfd, 0x0c, 0x40, 0xca, 0xff, 0xad, 0x14, 0xe9, 0xbf, 0x00, 0x00, 0x00, 0xff, 0xff, 0x9f,
-	0x2f, 0x63, 0xef, 0x73, 0x0d, 0x00, 0x00,
+	// 1038 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x56, 0x51, 0x6b, 0xe3, 0xc6,
+	0x13, 0x47, 0xb2, 0x15, 0x9c, 0x89, 0xf3, 0xbf, 0x44, 0xff, 0x1c, 0x27, 0x92, 0xa6, 0x75, 0x44,
+	0xee, 0xce, 0xb9, 0xeb, 0x29, 0x70, 0x7d, 0x38, 0x28, 0xf4, 0xe1, 0x6a, 0x5a, 0x38, 0x72, 0x69,
+	0x83, 0xa4, 0xeb, 0x41, 0x29, 0x88, 0x8d, 0x76, 0x7d, 0x5e, 0x22, 0xef, 0x0a, 0x49, 0x76, 0xea,
+	0x3e, 0x05, 0xfa, 0x1d, 0xfa, 0x09, 0xfa, 0xd2, 0xcf, 0xd2, 0x42, 0xa1, 0x6f, 0x7d, 0x2a, 0x7d,
+	0xe9, 0xe7, 0x28, 0x9a, 0x5d, 0xdb, 0xb2, 0x63, 0x27, 0x21, 0xf4, 0x20, 0x6f, 0xf6, 0xcc, 0x6f,
+	0x67, 0x67, 0x7e, 0x33, 0xf3, 0x5b, 0xc1, 0x66, 0x18, 0x04, 0x2f, 0xb3, 0xb8, 0xc7, 0x87, 0x2c,
+	0xf7, 0xd2, 0x4c, 0x16, 0xd2, 0xae, 0x85, 0x41, 0xb0, 0xbd, 0x19, 0x06, 0x27, 0xc7, 0x2c, 0xcf,
+	0xc9, 0xbb, 0xb1, 0xbd, 0x34, 0x1d, 0xcd, 0x42, 0xdd, 0xdf, 0x0d, 0x68, 0x06, 0xc5, 0x28, 0x61,
+	0xda, 0x6e, 0xdb, 0x50, 0x17, 0xa4, 0xcf, 0x1c, 0xa3, 0x65, 0xb4, 0x57, 0x7d, 0xfc, 0x6d, 0x1f,
+	0xc0, 0x46, 0x5e, 0x62, 0x22, 0x4e, 0x99, 0x28, 0x78, 0x97, 0xb3, 0xcc, 0x31, 0xd1, 0x7f, 0x0f,
+	0xed, 0xaf, 0x26, 0x66, 0xfb, 0x11, 0xac, 0xa4, 0x24, 0x63, 0xa2, 0x70, 0x6a, 0x2d, 0xa3, 0xbd,
+	0xf6, 0xfc, 0x7f, 0x5e, 0x18, 0x9c, 0x78, 0x3e, 0xeb, 0xb2, 0x8c, 0x89, 0x98, 0xf9, 0xda, 0x6b,
+	0xb7, 0xa1, 0xc9, 0xf3, 0x68, 0x48, 0x32, 0x4e, 0x0a, 0x2e, 0x85, 0x53, 0x6f, 0x19, 0xed, 0xc6,
+	0xa7, 0x56, 0x97, 0x24, 0x39, 0xf3, 0xd7, 0x78, 0xfe, 0xcd, 0xd8, 0x63, 0x7b, 0x00, 0x78, 0x49,
+	0xde, 0x63, 0xac, 0x70, 0xac, 0x85, 0x51, 0x2b, 0x08, 0xf7, 0xb7, 0x3a, 0x6c, 0x06, 0x93, 0xbf,
+	0xe3, 0xb2, 0x1e, 0xc1, 0x8a, 0xc2, 0x38, 0x46, 0xab, 0xb6, 0x28, 0x2f, 0xe5, 0xb5, 0x4f, 0xe1,
+	0xc1, 0xb4, 0xc8, 0xa8, 0x90, 0x91, 0x2a, 0xbc, 0x4f, 0x52, 0xc7, 0xc4, 0x83, 0x4f, 0xbd, 0x30,
+	0x08, 0xbc, 0x4b, 0x17, 0x78, 0x13, 0x0e, 0x28, 0xfa, 0xbe, 0x10, 0x45, 0x36, 0xf2, 0xb7, 0xa6,
+	0xb1, 0x42, 0x89, 0xf6, 0x63, 0x92, 0xde, 0x98, 0xa3, 0x3d, 0x58, 0xe5, 0x79, 0x94, 0xc8, 0xf8,
+	0x8c, 0x51, 0x4d, 0x50, 0xbd, 0xc8, 0x06, 0xcc, 0x6f, 0xf0, 0xfc, 0x35, 0x5a, 0x6d, 0x0e, 0x1f,
+	0x28, 0x70, 0x99, 0x6a, 0xdc, 0xe3, 0x09, 0xcd, 0x98, 0xa8, 0xe4, 0x6c, 0x61, 0xce, 0x07, 0x4b,
+	0x72, 0x46, 0x4b, 0x47, 0x9f, 0x52, 0x19, 0x3b, 0x2a, 0x5c, 0x28, 0xc7, 0xe6, 0x49, 0xd6, 0xcf,
+	0xe0, 0x5e, 0x4c, 0x44, 0x14, 0x0f, 0x92, 0x24, 0xd2, 0x54, 0xae, 0x54, 0x9b, 0xb6, 0x1e, 0x13,
+	0xd1, 0x19, 0x24, 0x89, 0xba, 0x66, 0xfb, 0x3b, 0xd8, 0x5a, 0x44, 0x89, 0xfd, 0x21, 0x40, 0x65,
+	0x8a, 0x8c, 0x96, 0xd9, 0x5e, 0xf5, 0x2b, 0x16, 0x7b, 0x1f, 0x2c, 0x8c, 0xee, 0x98, 0x2d, 0x73,
+	0x01, 0x37, 0xca, 0xb9, 0xdd, 0x03, 0xfb, 0x72, 0xf2, 0x15, 0x62, 0x8d, 0x85, 0x87, 0xc7, 0xc4,
+	0x3e, 0x81, 0xc6, 0x98, 0x2b, 0xdd, 0xd5, 0x79, 0xe4, 0xc4, 0xef, 0xfe, 0x6c, 0x40, 0x33, 0xec,
+	0xb1, 0xfe, 0x64, 0x41, 0x66, 0xe7, 0xd1, 0xb8, 0x6e, 0x1e, 0xcb, 0xe5, 0x29, 0xca, 0xf3, 0xd5,
+	0xe5, 0xa9, 0xa9, 0xe5, 0x41, 0x7b, 0x65, 0x79, 0x0e, 0x61, 0x3d, 0x96, 0x89, 0xcc, 0xa2, 0x34,
+	0x63, 0x39, 0x2b, 0x72, 0x07, 0x30, 0x39, 0xc0, 0xe8, 0x9d, 0xd2, 0xe3, 0x37, 0x11, 0x70, 0xa2,
+	0xfc, 0x4f, 0x1a, 0x0d, 0xba, 0x71, 0x71, 0x71, 0x71, 0x61, 0xba, 0xbf, 0x1a, 0xe0, 0xbc, 0x4c,
+	0xd3, 0x64, 0x84, 0xb9, 0x76, 0x64, 0xbf, 0x4f, 0x04, 0x1d, 0xa7, 0x7c, 0x00, 0x56, 0x3e, 0x48,
+	0x35, 0xdd, 0x6b, 0xcf, 0xff, 0xef, 0x85, 0xc1, 0x91, 0x37, 0x8b, 0xf1, 0x15, 0x02, 0xa9, 0x51,
+	0x8e, 0x7c, 0x29, 0x35, 0xda, 0x6f, 0x3f, 0x85, 0x55, 0x99, 0xd0, 0x08, 0xab, 0x58, 0x32, 0xca,
+	0x0d, 0x99, 0x50, 0xcc, 0xa8, 0x04, 0x0b, 0x76, 0xae, 0xc1, 0xf5, 0xc5, 0x60, 0xc1, 0xce, 0x11,
+	0xec, 0x66, 0xb0, 0x5b, 0x29, 0xa6, 0x6c, 0xc5, 0xed, 0x2b, 0x9a, 0x0e, 0x85, 0x79, 0xd5, 0xb6,
+	0xb9, 0xff, 0x98, 0xb0, 0xeb, 0x33, 0x92, 0xbe, 0x11, 0x83, 0x5c, 0x4f, 0xec, 0xed, 0x2f, 0x9d,
+	0x1d, 0x12, 0xf3, 0xda, 0x21, 0x99, 0xca, 0x53, 0xed, 0x4a, 0x79, 0xa2, 0xb0, 0x39, 0x19, 0x23,
+	0x3a, 0x5e, 0xc3, 0x3a, 0x1e, 0x79, 0x81, 0x4b, 0x7e, 0x65, 0x05, 0x8b, 0x45, 0x6a, 0x83, 0xcf,
+	0x5a, 0xdf, 0xf3, 0xee, 0xba, 0x7f, 0x9b, 0xb0, 0x8f, 0x41, 0xdf, 0xa4, 0x94, 0x14, 0xec, 0x24,
+	0x93, 0x29, 0xcb, 0x8a, 0xd1, 0x31, 0x49, 0x6f, 0xcf, 0xf7, 0x27, 0xb0, 0x1e, 0x0f, 0x32, 0x14,
+	0xc2, 0xab, 0x32, 0x68, 0x6a, 0x10, 0x5e, 0x6f, 0xbf, 0x86, 0x1d, 0xa5, 0x94, 0xe7, 0xbc, 0xe8,
+	0x45, 0xe5, 0x28, 0xa7, 0x3a, 0x17, 0xd4, 0xce, 0xda, 0xc2, 0x10, 0x0f, 0xf0, 0xc8, 0x5b, 0x5e,
+	0xf4, 0xbe, 0x4e, 0x68, 0x25, 0xf7, 0xb9, 0x68, 0xe5, 0xac, 0xcf, 0x44, 0xab, 0x5f, 0x13, 0xed,
+	0x2b, 0x76, 0x5e, 0x8d, 0xf6, 0x19, 0x38, 0x42, 0x16, 0xbc, 0x3b, 0x8a, 0xba, 0x32, 0xd3, 0x82,
+	0x1e, 0x27, 0x9c, 0x89, 0x62, 0x2c, 0xbb, 0xea, 0x29, 0xb8, 0xaf, 0x50, 0x5f, 0xca, 0x4c, 0xf5,
+	0x5b, 0x41, 0xdc, 0xbf, 0x0c, 0x68, 0xe1, 0xf2, 0xf8, 0x2c, 0x4d, 0x48, 0xcc, 0x94, 0x60, 0xdc,
+	0x9e, 0xdf, 0x7d, 0xb0, 0xd4, 0xe6, 0x2e, 0xe9, 0x2c, 0x3a, 0x71, 0xd5, 0xf0, 0xa2, 0x25, 0xdc,
+	0x69, 0xaf, 0xfd, 0x31, 0x0a, 0x87, 0xca, 0x69, 0x09, 0x31, 0x53, 0x80, 0xbd, 0x05, 0x16, 0x17,
+	0x94, 0x7d, 0xef, 0x58, 0x2d, 0xb3, 0xbd, 0xee, 0xab, 0x3f, 0xee, 0x9f, 0x06, 0x3c, 0xac, 0x56,
+	0xd8, 0x99, 0xea, 0xe2, 0xfb, 0x2e, 0xb3, 0x05, 0x16, 0xaa, 0xb0, 0xae, 0xb2, 0x2a, 0xcf, 0xca,
+	0x61, 0x3f, 0x56, 0xca, 0xa8, 0x50, 0xf5, 0x4b, 0xa8, 0x52, 0x15, 0xf1, 0xd7, 0x92, 0xda, 0x7e,
+	0x32, 0x61, 0x4f, 0xbd, 0x39, 0x54, 0xad, 0xdf, 0xdd, 0x6a, 0xdf, 0x47, 0xb0, 0xa6, 0x7e, 0x45,
+	0x67, 0x5c, 0x50, 0xac, 0x6f, 0xd5, 0x07, 0x65, 0x3a, 0xe2, 0x82, 0xce, 0xe9, 0x84, 0x85, 0x8f,
+	0x5d, 0x55, 0x27, 0x5e, 0x80, 0x43, 0x28, 0xd5, 0xaf, 0xdc, 0xe4, 0x23, 0x4b, 0x69, 0x25, 0x0e,
+	0xb7, 0x7f, 0x9f, 0x50, 0xdd, 0x7e, 0xfd, 0xdd, 0xa4, 0xbe, 0xed, 0x7e, 0x34, 0x61, 0x5f, 0x37,
+	0xbd, 0x2f, 0x87, 0xec, 0x0e, 0x72, 0xb3, 0x07, 0x4d, 0x5d, 0x96, 0xea, 0x6b, 0x1d, 0xfb, 0xaa,
+	0xf9, 0x7a, 0x55, 0x9a, 0xe6, 0xe9, 0xb3, 0xae, 0xa1, 0x6f, 0x65, 0x9e, 0x3e, 0xf7, 0x0f, 0x03,
+	0x76, 0x91, 0x85, 0x63, 0x39, 0xbc, 0x63, 0xe5, 0xef, 0xa8, 0x57, 0xbe, 0x5a, 0x7b, 0xf9, 0xaa,
+	0xab, 0xc2, 0x77, 0xd4, 0x56, 0x54, 0x07, 0xbe, 0xdc, 0x04, 0x74, 0xba, 0xbf, 0xcc, 0xed, 0xf3,
+	0x7f, 0xd2, 0xdb, 0x9b, 0xa6, 0xfd, 0x0c, 0x40, 0xc9, 0xff, 0x8d, 0x14, 0xe9, 0xf3, 0xc7, 0xdf,
+	0x3e, 0x7c, 0xc7, 0x8b, 0xde, 0xe0, 0xd4, 0x8b, 0x65, 0xff, 0xf0, 0x07, 0xde, 0x3f, 0x25, 0xa7,
+	0x44, 0x1e, 0x52, 0x19, 0xc7, 0x52, 0x0c, 0x0f, 0xf9, 0x5b, 0x99, 0x9d, 0x1d, 0x86, 0x41, 0xf0,
+	0x6f, 0x00, 0x00, 0x00, 0xff, 0xff, 0x6e, 0x6d, 0x5d, 0xf9, 0x9c, 0x0d, 0x00, 0x00,
 }

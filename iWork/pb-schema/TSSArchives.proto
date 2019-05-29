@@ -2,6 +2,8 @@ syntax = "proto2";
 
 import "TSPMessages.proto";
 import "TSKArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TSS";
 package TSS;
 
 message StyleArchive {

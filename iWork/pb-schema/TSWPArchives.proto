@@ -4,6 +4,8 @@ import "TSPMessages.proto";
 import "TSSArchives.proto";
 import "TSDArchives.proto";
 //import "TSKArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TSWP";
 package TSWP;
 
 enum SelectionType {

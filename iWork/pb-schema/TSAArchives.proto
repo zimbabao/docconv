@@ -4,6 +4,8 @@ import "TSKArchives.proto";
 import "TSPMessages.proto";
 import "TSWPArchives.proto";
 //import "TSSArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TSA";
 package TSA;
 
 message DocumentArchive {

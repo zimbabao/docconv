@@ -6,6 +6,8 @@ import "TSSArchives.proto";
 import "TSDCommandArchives.proto";
 import "TSKArchives.proto";
 import "TSWPArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TSWP";
 package TSWP;
 
 message DummyCommandArchive {

@@ -11,6 +11,8 @@ import "TSCEArchives.proto";
 //import "TSAArchives.proto";
 //import "TSTArchives.proto";
 import "TNArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TN";
 package TN;
 
 message SheetCommandSelectionBehaviorArchive {

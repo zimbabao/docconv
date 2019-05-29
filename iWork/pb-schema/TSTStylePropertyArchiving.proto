@@ -5,6 +5,8 @@ import "TSDArchives.proto";
 import "TSKArchives.proto";
 import "TSSArchives.proto";
 import "TSWPArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/TST";
 package TST;
 
 message Deprecated_TableStrokeArchive {

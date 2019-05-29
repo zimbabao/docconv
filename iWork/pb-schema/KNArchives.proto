@@ -7,6 +7,8 @@ import "TSDArchives.proto";
 import "TSWPArchives.proto";
 import "TSAArchives.proto";
 import "TSCHArchives.proto";
+
+option go_package = "github.com/zimbabao/docconv/iWork/KN";
 package KN;
 
 message AnimationAttributesArchive {
